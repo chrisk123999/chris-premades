@@ -36,13 +36,28 @@ export { primalKnowldege as 'primal-knowledge', primalKnowledgeEffect } from './
 export { extendRage, keepRage } from './modern/classFeatures/barbarian/rage.mjs';
 
 /*           Berserker           */
-export { intimidatingPresence as 'intimidating-presence' } from './modern/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
+export { frenzy, frenzyDamage } from './modern/classFeatures/barbarian/berserker/frenzy.mjs';
+
+/*            Zealot             */
+export { rageOfTheGods as 'rage-of-the-gods', rageOfTheGodsRevivification } from './modern/classFeatures/barbarian/zealot/rageOfTheGods.mjs';
+export { warriorOfTheGods as 'warrior-of-the-gods' } from './modern/classFeatures/barbarian/zealot/warriorOfTheGods.mjs';
 
 /*         Muscle Wizard         */
+export { cantrips, cantripsShockingGrasp, cantripsTrueStrike } from './modern/classFeatures/barbarian/muscleWizard/cantrips.mjs';
+export { iCastFist as 'i-cast-fist' } from './modern/classFeatures/barbarian/muscleWizard/iCastFist.mjs';
+export { spells, spellsBurningHands, spellsMagicMissile, spellsShield, spellsShieldDamaged } from './modern/classFeatures/barbarian/muscleWizard/spells.mjs';
 export { unarguableWizardry as 'unarguable-wizardry' } from './modern/classFeatures/barbarian/muscleWizard/unarguableWizardry.mjs';
 
 /*          Wild Heart           */
 export { aspectOfTheWilds as 'aspect-of-the-wilds' } from './modern/classFeatures/barbarian/wildHeart/aspectOfTheWilds.mjs';
+export { powerOfTheWilds as 'power-of-the-wilds', lionAttack } from './modern/classFeatures/barbarian/wildHeart/powerOfTheWilds.mjs';
+export { rageOfTheWilds as 'rage-of-the-wilds', rageOfTheWildsPreCheck, rageOfTheWildsUnfavorite } from './modern/classFeatures/barbarian/wildHeart/rageOfTheWilds.mjs';
+
+/*          World Tree           */
+export { batteringRoots as 'battering-roots' } from './modern/classFeatures/barbarian/worldTree/batteringRoots.mjs';
+export { branchesOfTheTree as 'branches-of-the-tree' } from './modern/classFeatures/barbarian/worldTree/branchesOfTheTree.mjs';
+export { travelAlongTheTree as 'travel-along-the-tree', travelAlongTheTreePreChecks }  from './modern/classFeatures/barbarian/worldTree/travelAlongTheTree.mjs';
+export { vitalityOfTheTree as 'vitality-of-the-tree', lifeGivingForce } from './modern/classFeatures/barbarian/worldTree/vitalityOfTheTree.mjs';
 
 /*********************************/
 /*             Bard              */

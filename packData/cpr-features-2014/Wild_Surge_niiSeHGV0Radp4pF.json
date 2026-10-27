@@ -1,18 +1,155 @@
 {
   "name": "Wild Surge",
   "type": "feat",
+  "effects": [
+    {
+      "name": "Bolt of Light: Blinded",
+      "img": "icons/magic/fire/projectile-wave-arrow.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "fAzprZz9S9blPq9k",
+      "type": "base",
+      "system": {
+        "changes": [],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "disabled": false,
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceStart",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "blinded"
+      ],
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "applicationMode": "default",
+          "expiryMode": "delete"
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!niiSeHGV0Radp4pF.fAzprZz9S9blPq9k"
+    },
+    {
+      "_id": "protectiveLight1",
+      "name": "Protective Lights",
+      "img": "icons/magic/fire/projectile-wave-arrow.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.ac.bonus",
+            "type": "add",
+            "value": 1,
+            "priority": 20,
+            "phase": "initial",
+            "_id": "vwNwnh41LZXZZoyD",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "applicationMode": "default",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "statuses": [],
+      "description": "",
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "origin": null,
+      "tint": "#ffffff",
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!niiSeHGV0Radp4pF.protectiveLight1"
+    }
+  ],
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": "",
-      "revision": 1,
-      "rules": "2014",
-      "book": "",
+      "book": "TCoE",
       "page": "",
-      "license": ""
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
     },
     "uses": {
       "max": "",
@@ -154,7 +291,24 @@
         },
         "otherActivityId": "none",
         "behaviors": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2024",
+                  "identifier": "travelAlongTheTreePreChecks"
+                },
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "wildSurgeManual"
+                }
+              ]
+            }
+          }
+        },
         "visibility": {
           "level": {},
           "requireAttunement": false,
@@ -183,8 +337,7 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityAsParentType": true,
-        "identifier": "wild-surge"
+        "otherActivityAsParentType": true
       },
       "yZL9ocYC0HK89HO1": {
         "type": "save",
@@ -366,8 +519,7 @@
           "animationType": "",
           "animationSpeed": 5,
           "animationIntensity": 5
-        },
-        "identifier": "shadowy-tendrils"
+        }
       },
       "eGE1kqW2n2aYFV6n": {
         "type": "utility",
@@ -537,8 +689,7 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityAsParentType": true,
-        "identifier": "teleport"
+        "otherActivityAsParentType": true
       },
       "Z6hDqRP21vKrzDZc": {
         "type": "damage",
@@ -705,8 +856,7 @@
           "animationType": "",
           "animationSpeed": 5,
           "animationIntensity": 5
-        },
-        "identifier": "retribution"
+        }
       },
       "neBFHkmgFVJTEtwu": {
         "type": "save",
@@ -893,8 +1043,7 @@
           "animationType": "",
           "animationSpeed": 5,
           "animationIntensity": 5
-        },
-        "identifier": "bolt-of-light"
+        }
       },
       "AhhrRuNJ9GFV9368": {
         "type": "summon",
@@ -1039,8 +1188,6 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "otherActivityAsParentType": true,
-        "identifier": "intangible-spirit",
         "profiles": [
           {
             "_id": "intangibleFlumph",
@@ -1088,7 +1235,8 @@
         },
         "creatureSizes": [],
         "creatureTypes": [],
-        "tempHP": ""
+        "tempHP": "",
+        "friendlySummon": false
       },
       "tendrilsTempHP01": {
         "type": "heal",
@@ -1235,7 +1383,6 @@
           "animationSpeed": 5,
           "animationIntensity": 5
         },
-        "identifier": "shadowy-tendrils-temp",
         "healing": {
           "number": 1,
           "denomination": 12,
@@ -1251,7 +1398,8 @@
             "mode": "",
             "number": 1,
             "formula": ""
-          }
+          },
+          "modifiers": []
         }
       },
       "intangExplode001": {
@@ -1434,8 +1582,175 @@
           "animationIntensity": 5
         },
         "otherActivityAsParentType": true,
-        "friendlySave": "default",
-        "identifier": "intangible-explode"
+        "friendlySave": "default"
+      },
+      "i0TqXtFzCM11f1k7": {
+        "type": "utility",
+        "name": "Flowers and Vines",
+        "_id": "i0TqXtFzCM11f1k7",
+        "img": "",
+        "sort": 100000,
+        "activation": {
+          "type": "special",
+          "override": false,
+          "condition": ""
+        },
+        "behaviors": [],
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "value": "",
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "disp",
+          "expiry": null,
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {
+          "cat": {
+            "placed": {
+              "region": {
+                "attachToCaster": true,
+                "macros": {
+                  "region": [
+                    {
+                      "source": "chris-premades",
+                      "rules": "2014",
+                      "identifier": "wildSurgeFlowers"
+                    }
+                  ]
+                }
+              }
+            },
+            "hidden": true
+          }
+        },
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": "radius",
+            "size": "15",
+            "count": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "none",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "flowers-and-vines",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "caster",
+          "templateOrigin": "base",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
       }
     },
     "identifier": "wild-surge",
@@ -1444,66 +1759,12 @@
     "crewed": false
   },
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "reactionCondition": "",
-      "otherCondition": ""
-    },
-    "midiProperties": {
-      "confirmTargets": "never",
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "rollOther": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.4"
       },
       "macros": {
-        "move": [
-          {
-            "source": "cat",
-            "rules": "all",
-            "identifier": "summon"
-          }
-        ],
-        "summon": [
-          {
-            "source": "cat",
-            "rules": "all",
-            "identifier": "summon"
-          }
-        ],
         "called": [
           {
             "source": "chris-premades",
@@ -1516,6 +1777,27 @@
             "source": "chris-premades",
             "rules": "2014",
             "identifier": "wild-surge"
+          }
+        ],
+        "move": [
+          {
+            "source": "cat",
+            "identifier": "summon",
+            "rules": "all"
+          }
+        ],
+        "summon": [
+          {
+            "source": "cat",
+            "identifier": "summon",
+            "rules": "all"
+          }
+        ],
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "areaAnimation",
+            "rules": "all"
           }
         ]
       },
@@ -1544,136 +1826,36 @@
               }
             ]
           }
+        },
+        "chris-premades": {
+          "areaAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "spikeGrowth"
+            }
+          }
+        }
+      },
+      "animationGenericConfig": {
+        "chris-premades": {
+          "areaAnimation": {
+            "chris-premades": {
+              "spikeGrowth": {
+                "opacity": 0.6
+              }
+            }
+          }
         }
       }
     }
   },
-  "effects": [
-    {
-      "name": "Bolt of Light: Blinded",
-      "img": "icons/magic/fire/projectile-wave-arrow.webp",
-      "origin": null,
-      "transfer": false,
-      "_id": "fAzprZz9S9blPq9k",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "origin": {
-          "actor": null,
-          "behavior": null,
-          "effect": null,
-          "item": null,
-          "message": null
-        },
-        "conditions": "{}",
-        "magical": false,
-        "rider": {
-          "statuses": []
-        }
-      },
-      "disabled": false,
-      "duration": {
-        "value": 1,
-        "units": "rounds",
-        "expiry": "turnStart",
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [
-        "blinded"
-      ],
-      "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "multi",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [
-            "turnStartSource"
-          ]
-        },
-        "core": {
-          "overlay": false
-        }
-      },
-      "sort": 0,
-      "showIcon": 1,
-      "folder": null,
-      "_stats": {
-        "coreVersion": "14.369",
-        "systemId": "dnd5e",
-        "systemVersion": "6.0.6"
-      },
-      "_key": "!items.effects!xOzt2dB74iKEa8bv.fAzprZz9S9blPq9k"
-    },
-    {
-      "_id": "protectiveLight1",
-      "name": "Protective Lights",
-      "img": "icons/magic/fire/projectile-wave-arrow.webp",
-      "type": "base",
-      "transfer": false,
-      "disabled": false,
-      "system": {
-        "changes": [
-          {
-            "key": "system.attributes.ac.bonus",
-            "type": "add",
-            "value": "1",
-            "priority": 20
-          }
-        ]
-      },
-      "flags": {},
-      "statuses": [],
-      "description": "",
-      "_stats": {
-        "coreVersion": "14.369",
-        "systemId": "dnd5e",
-        "systemVersion": "6.0.6"
-      },
-      "_key": "!items.effects!xOzt2dB74iKEa8bv.protectiveLight1"
-    },
-    {
-      "_id": "flowersAndVines1",
-      "name": "Flowers and Vines",
-      "img": "icons/magic/fire/projectile-wave-arrow.webp",
-      "type": "base",
-      "transfer": false,
-      "disabled": false,
-      "system": {
-        "changes": [
-          {
-            "key": "system.attributes.movement.multiplier",
-            "type": "multiply",
-            "value": "0.5",
-            "priority": 20
-          }
-        ]
-      },
-      "flags": {},
-      "statuses": [],
-      "description": "",
-      "_stats": {
-        "coreVersion": "14.369",
-        "systemId": "dnd5e",
-        "systemVersion": "6.0.6"
-      },
-      "_key": "!items.effects!xOzt2dB74iKEa8bv.flowersAndVines1"
-    }
-  ],
   "img": "icons/magic/fire/projectile-wave-arrow.webp",
   "folder": "pathOfWildMagic1",
-  "_id": "xOzt2dB74iKEa8bv",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!xOzt2dB74iKEa8bv"
+  "_id": "niiSeHGV0Radp4pF",
+  "_key": "!items!niiSeHGV0Radp4pF"
 }

@@ -6,11 +6,27 @@ async function pickCompanions({document, workflow}) {
     if (config.excludeUser && workflow.targets.has(workflow.token)) await workflowUtils.removeTargets(workflow, [workflow.token]);
     const max = Number(config.companions) || 0;
     if (!max) return;
-    const casterSize = actorUtils.getSize(workflow.actor);
-    const nearby = tokenUtils.findNearby(workflow.token.document, config.companionRange, {disposition: 'ally'}).filter(token => !config.companionMaxSize || actorUtils.getSize(token.actor) <= casterSize);
-    if (!nearby.length) return;
-    const selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Generic.Teleport.SelectCompanions', nearby, {type: 'multiple', maxAmount: max, skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(workflow.actor, true)});
-    const companions = selection?.result ?? [];
+    let companions = workflowUtils.getWorkflowProperty(workflow, 'chris-premades.teleportCompanions')?.map(t => {
+        if (typeof t === 'string') {
+            const token = workflow.token.scene.tokens.get(t);
+            if (token) return token;
+        }
+        if (t instanceof TokenDocument.implementation) return t;
+    }).filter(Boolean);
+    if (!companions?.length || companions.length > max) {
+        const casterSize = actorUtils.getSize(workflow.actor);
+        const nearby = tokenUtils.findNearby(workflow.token.document, config.companionRange, {disposition: 'ally'}).filter(token => !config.companionMaxSize || actorUtils.getSize(token.actor) <= casterSize);
+        if (!nearby.length) return;
+        const preselected = nearby.reduce((obj, each) => (obj[each.id] = obj.count++ < max, obj), {count: 0});
+        const selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Generic.Teleport.SelectCompanions', nearby, {
+            userId: queryUtils.firstOwner(workflow.actor, true),
+            skipDeadAndUnconscious: false,
+            type: 'multiple',
+            maxAmount: max,
+            preselected
+        });
+        companions = selection?.result ?? [];
+    }
     if (!companions.length) return;
     workflowUtils.setWorkflowProperty(workflow, 'chris-premades.teleportCompanions', companions);
     await workflowUtils.removeTargets(workflow, companions.map(token => token.object));
@@ -46,6 +62,7 @@ async function use({document, workflow}) {
 /**
  * Teleports the user, or each target that failed its save, once the roll finishes.
  * Bound on an activity. Fires on `activityRollFinished`.
+ * Provide preselected targets by setting the workflow property `chris-premades.teleportCompanions` to an array of token ids or token documents.
  *
  * Config:
  * - `targets`: teleport the user, each target that failed its save, or the user to a space near one of the targets. The user picks every destination. `swap` trades places with the first target that failed its save.

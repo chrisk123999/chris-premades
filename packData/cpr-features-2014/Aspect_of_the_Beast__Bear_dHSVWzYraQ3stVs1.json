@@ -1,0 +1,145 @@
+{
+  "name": "Aspect of the Beast: Bear",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Aspect of the Beast: Bear",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.encumbrance.multipliers.overall",
+            "value": 2,
+            "type": "upgrade",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "rLeuHobcgKZqrnwC",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "description": "",
+      "img": "icons/commodities/claws/claws-bear-brown-white.webp",
+      "_id": "c3TwNi280a8zF85M",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!dHSVWzYraQ3stVs1.c3TwNi280a8zF85M"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "aspect-of-the-beast-bear",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 6,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "macros": {
+        "check": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "aspect-of-the-beast-bear"
+          }
+        ],
+        "skill": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "aspect-of-the-beast-bear"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "img": "icons/commodities/claws/claws-bear-brown-white.webp",
+  "folder": "dTFZ3KN5Hlhhzt4A",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "dHSVWzYraQ3stVs1",
+  "_key": "!items!dHSVWzYraQ3stVs1"
+}

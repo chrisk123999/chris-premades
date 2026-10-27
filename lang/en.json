@@ -484,7 +484,8 @@
             "WeaponProperties": "Weapon Properties",
             "WeaponType": "Weapon Type",
             "WeaponTypes": "Weapon Types",
-            "SpellList": "Spell List"
+            "SpellList": "Spell List",
+            "Masteries": "Masteries"
         },
         "Error": {
             "ActorNotFound": "Could not find the summon actor.",
@@ -558,6 +559,9 @@
                     "SeeThroughIdentifiersHint": "Casting this spell through one of these features lets the caster see through the darkness it creates.",
                     "SpreadAroundCorners": "Spreads Around Corners",
                     "SpreadAroundCornersHint": "A placed darkness flows around wall corners instead of stopping at the first wall. Darkness cast on yourself stops at walls."
+                },
+                "DivineFury": {
+                    "FormulaHint": "An additional bonus. Evaluated and simplified into a numeric term."
                 },
                 "Dueling": "Identifiers for exceptions to the requirements of this feature.",
                 "Fall": {
@@ -685,6 +689,7 @@
                     "Shapechanger": "Shapechanger",
                     "ShapechangerDisadvantage": "Moonbeam: Shapechanger"
                 },
+                "Retaliation": "Spend a reaction to make a counterattack?",
                 "SpellStoringItem": {
                     "NoItems": "You and your allies are not carrying any valid items for spell storing!",
                     "Existing": "Existing Spell-Storing Item",
@@ -973,6 +978,12 @@
                     },
                     "RollActivityHint": "Activity rolled on the hit target after the bonus damage."
                 },
+                "PackTactics": {
+                    "Allies": "Allies",
+                    "Grant": "Grant Advantage",
+                    "GrantHint": "Who gains advantage when the conditions of this feature are met.",
+                    "SelfAndAllies": "Self and Allies"
+                },
                 "PreventDeath": {
                     "DCFromDamage": "Add Damage Dealt to DC",
                     "DeathOnly": "Killed Outright Only",
@@ -1206,6 +1217,7 @@
                     "Protect": "Protect {tokenName} with your arcane ward?",
                     "TempHP": "Consume Temp HP First:"
                 },
+                "AspectBeastBear": "Is this a check to push, pull, lift, or break?",
                 "AwakenedSpellbook": {
                     "ExtraDamageTypes": "Additional Damage Types",
                     "OncePerTurn": "Once Per Turn",
@@ -1215,6 +1227,7 @@
                     "ArmorRestriction": "You can't use Bladesong while wearing medium or heavy armor or wielding a shield.",
                     "EnforceArmorRestriction": "Enforce Armor Restriction"
                 },
+                "BolsteringMagic": "The target must finish a long rest before gaining this benefit again!",
                 "BoomingBlade": {
                     "WillingMove": "Did {actorName} move willingly?"
                 },
@@ -1293,8 +1306,13 @@
                     "Use": "Frighten the target?"
                 },
                 "FormOfTheBeast": {
+                    "Choose": "Choose a bestial form.",
+                    "Bite": "Bite",
+                    "Claws": "Claws",
+                    "Tail": "Tail",
                     "Keen": "Tracking or Stalking Prey"
                 },
+                "Frenzy": "Make a bonus action attack with a melee weapon?",
                 "GraspOfHadar": {
                     "Select": "Choose a creature to pull with {item}."
                 },
@@ -1341,6 +1359,10 @@
                     "Multiple": "Which target would you like to unmark?",
                     "NoTargets": "No valid targets within range!"
                 },
+                "InfectiousFury": {
+                    "Curses": "Curses",
+                    "WeaponPrompt": "{name} has been cursed by {feature} and must choose a weapon to attack a nearby target."
+                },
                 "InfuseItem": {
                     "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",
                     "BootsOfTheWindingPath": "Boots of the Winding Path",
@@ -1381,6 +1403,13 @@
                 "InspiringSmite": {
                     "Offer": "Use {item} to grant temporary hit points?",
                     "Select": "Distribute {total} temporary hit points among allies within 30 feet."
+                },
+                "IntimidatingPresence": {
+                    "Immune": "Immune",
+                    "ImmunityDuration": "Immunity Duration",
+                    "Range": "<b>{effect}</b> ends on {target} because they moved out of range!",
+                    "RangeLimit": "Effect ends beyond this range.",
+                    "Sight": "<b>{effect}</b> ends on {target} because they are out of sight!"
                 },
                 "InvestmentOfTheChainMaster": {
                     "Movement": "Choose a movement type for your familiar.",
@@ -1464,6 +1493,10 @@
                     "Mirthful": "Mirthful",
                     "Shortsword": "Shortsword",
                     "Tricksy": "Tricksy"
+                },
+                "TotemSpiritTiger": {
+                    "High": "High Jump Bonus",
+                    "Long": "Long Jump Bonus"
                 },
                 "ThrumOfTheLand": {
                     "Attack": "+{bonus} to attack rolls",
@@ -1565,9 +1598,18 @@
                 "Archdruid": {
                     "NoSpellSlots": "You have no expended spell slots to restore!"
                 },
+                "BranchesOfTheTree": {
+                    "Rage": "You must be raging to use this feature!",
+                    "Reaction": "You have already used your reaction!"
+                },
                 "BrutalStrike": {
                     "Choice": "Choice Count",
                     "Use": "Sacrifice advantage to use {item}?"
+                },
+                "Cantrips": {
+                    "TrueStrike": "True Strike Bonus",
+                    "TrueStrikeAbility": "True Strike Attack Ability",
+                    "TrueStrikeRage": "True Strike Raging Bonus"
                 },
                 "ChromaticOrb": {
                     "BaseMaxJumps": "Base Max Jumps",
@@ -1652,6 +1694,13 @@
                 "Rage": {
                     "EndEarly": "{actorName} has not attacked an enemy, forced an enemy to make a save, or continued their rage since their last turn. Remove Rage?"
                 },
+                "RageOfTheGods": "Use {item} to save {token}?",
+                "RageOfTheWilds": {
+                    "Active": "You must have Rage of the {type} active to use this feature!",
+                    "Dual": "Choose addtional rage effects.",
+                    "Eagle": "Dash and Disengage with Rage of the Eagle?",
+                    "Single": "Choose a rage effect."
+                },
                 "ReplicateMagicItem": {
                     "NotFound": "Could not find a magic item for the selected plan! ({plan})",
                     "PlanName": "Magic Item Plans"
@@ -1666,6 +1715,17 @@
                     "HPPerItem": "HP Per Item",
                     "Prompt": "Choose items to destroy and recover {amount} hit points for each:",
                     "Rarity": "Allowed Rarities"
+                },
+                "Spells": {
+                    "BurningHandsDamage": "Burning Hands Damage",
+                    "BurningHandsType": "Burning Hands Type",
+                    "MagicMissile": "Choose your missiles:",
+                    "MagicMissileAttacks": "Magic Missile Attacks",
+                    "MagicMissileAttackAbility": "Magic Missile Attack Ability",
+                    "MagicMissileHint": "Weapon options in addition to those that match other restrictions.",
+                    "MagicMissileNote": "Throwing {weapon} ({num} of {total})",
+                    "MagicMissileWeapons": "Magic Missile Weapons",
+                    "MagicMissileWeaponProps": "Magic Missile Weapon Properties"
                 },
                 "SpellThief": {
                     "Disabled": "Disabled"
@@ -1705,6 +1765,10 @@
                     "Prompt": "Choose an item to create:",
                     "RequireTools": "Require Tools",
                     "RequireToolsHint": "At least one of these tools must be equipped to use this feature."
+                },
+                "TravelAlongTheTree": {
+                    "Group": "Teleporting {name} ({num} of {total})",
+                    "Prompt": "Use {feature} to teleport?"
                 },
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
@@ -1878,6 +1942,10 @@
                     "CreaturesHint": "Number of other creatures that can be chosen.",
                     "MissingEffect": "Sanctum of the Shepherd is missing one of its effects.",
                     "Select": "Choose up to {max} creatures to share the sanctum."
+                },
+                "VitalityOfTheTree": {
+                    "Prompt": "Select an ally to grant temporary hit points:",
+                    "Tag": "Current {amount}"
                 }
             }
         },

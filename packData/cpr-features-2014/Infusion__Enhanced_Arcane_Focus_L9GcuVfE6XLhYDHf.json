@@ -459,7 +459,7 @@
       "system": {
         "changes": [
           {
-            "key": "system.bonuses.spell.attack",
+            "key": "system.rolls.attack.spell.bonus",
             "type": "add",
             "value": 1,
             "phase": "initial",

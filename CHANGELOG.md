@@ -17,6 +17,8 @@
 - 2024 Warrior of the Street: Air Dash, Combo, K.O. and Special Moves: Energy Blast, Guard Breaker and Uppercut.
 - 2024 Paladin: Abjure Foes, Aura of Courage, Aura of Protection, Radiant Strikes and Restoring Touch.
 - 2024 Oath of the Noble Genies: Aura of Elemental Shielding, Elemental Rebuke, Elemental Strike, Genie's Splendor and Noble Scion.
+- 2024 Barbarian Subclasses: Path of the Berserker, Path of the Muscle Wizard, Path of the Wild Heart, Path of the World Tree, and Path of the Zealot.
+- 2014 Barbarian Subclasses: Path of the Ancestral Guardian, Path of the Beast, Path of the Berserker, Path of the Totem Warrior, Path of Wild Magic, and Path of the Zealot.
 ## Automated Species Features:
 - 2014 Plasmoid: Amorphous and Natural Resilience.
 - 2024 Dhampir: Spider Climb, Trace of Undeath and Vampiric Bite.

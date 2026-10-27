@@ -53,7 +53,31 @@ export { soulOfArtifice as 'soul-of-artifice' } from './legacy/classFeatures/art
 export { brutalCritical as 'brutal-critical' } from './legacy/classFeatures/barbarian/brutalCritical.mjs';
 export { dangerSense as 'danger-sense' } from './legacy/classFeatures/barbarian/dangerSense.mjs';
 export { endRage, keepRage } from './legacy/classFeatures/barbarian/rage.mjs';
-export { wildSurge as 'wild-surge', wildSurgeRetribution as 'wild-surge-retribution' } from './legacy/classFeatures/barbarian/pathOfWildMagic/wildSurge.mjs';
+
+/*     Ancestral Guardian     */
+export { ancestralProtectors as 'ancestral-protectors', ancestralProtectorsAttack, ancestralProtectorsHinder } from './legacy/classFeatures/barbarian/ancestral/ancestralProtectors.mjs';
+export { spiritShield as 'spirit-shield', spiritShieldProtect } from './legacy/classFeatures/barbarian/ancestral/spiritShield.mjs';
+export { vengefulAncestors as 'vengeful-ancestors' } from './legacy/classFeatures/barbarian/ancestral/vengefulAncestors.mjs';
+
+/*           Beast            */
+export { bestialSoulJump } from './legacy/classFeatures/barbarian/beast/bestialSoul.mjs';
+export { callTheHunt as 'call-the-hunt', callTheHuntDamage } from './legacy/classFeatures/barbarian/beast/callTheHunt.mjs';
+export { formOfTheBeast as 'form-of-the-beast' } from './legacy/classFeatures/barbarian/beast/formOfTheBeast.mjs';
+export { infectiousFury as 'infectious-fury', infectiousFuryAttack } from './legacy/classFeatures/barbarian/beast/infectiousFury.mjs';
+
+/*         Berserker          */
+export { frenzy, frenzyRageEnd } from './legacy/classFeatures/barbarian/berserker/frenzy.mjs';
+export { intimidatingPresence as 'intimidating-presence', extendIntimidatingPresence, immuneIntimidatingPresence } from './legacy/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
+
+/*        Totem Warrior       */
+export { bearAspect as 'aspect-of-the-beast-bear' } from './legacy/classFeatures/barbarian/totem/bearAspect.mjs';
+export { bearAttunement as 'totemic-attunement-bear', bearAttack, eagleAttunement as 'totemic-attunement-eagle' } from './legacy/classFeatures/barbarian/totem/totemicAttunement.mjs';
+export { bearTotem as 'totem-spirit-bear', eagleTotem as 'totem-spirit-eagle', tigerTotem as 'totem-spirit-tiger', tigerJump } from './legacy/classFeatures/barbarian/totem/totemSpirit.mjs';
+
+/*         Wild Magic        */
+export { bolsteringMagic as 'bolstering-magic' } from './legacy/classFeatures/barbarian/pathOfWildMagic/bolsteringMagic.mjs';
+export { unstableBacklash as 'unstable-backlash' } from './legacy/classFeatures/barbarian/pathOfWildMagic/unstableBacklash.mjs';
+export { wildSurge as 'wild-surge', wildSurgeRetribution as 'wild-surge-retribution', wildSurgeFlowers, wildSurgeManual } from './legacy/classFeatures/barbarian/pathOfWildMagic/wildSurge.mjs';
 
 /******************************/
 /*            Bard            */
