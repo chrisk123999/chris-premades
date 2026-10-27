@@ -25,7 +25,7 @@ async function early({document, workflow}) {
 }
 export const psychicSpells = {
     name: 'Psychic Spells',
-    version: '2.0.0',
+    version: '2.1.4',
     rules: '2024',
     roll: [
         {pass: 'actorPreItemRoll', macro: early, priority: 50}
@@ -42,7 +42,7 @@ export const psychicSpells = {
             type: 'select',
             label: 'CHRISPREMADES.Macros.Modern.PsychicSpells.ChangeDamageMode',
             category: 'homebrew',
-            get options() { return ['always', 'prompt', 'never'].map(value => ({value, label: _loc('CHRISPREMADES.Macros.Modern.PsychicSpells.Modes.' + value)})); }
+            get options() { return ['always', 'prompt', 'never'].map(value => ({value, label: 'CHRISPREMADES.Macros.Modern.PsychicSpells.Modes.' + value})); }
         },
         damageType: {
             default: 'psychic',

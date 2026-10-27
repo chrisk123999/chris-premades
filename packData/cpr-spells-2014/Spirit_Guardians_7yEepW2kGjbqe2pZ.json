@@ -100,15 +100,17 @@
           "units": "self"
         },
         "target": {
-          "prompt": false,
+          "prompt": true,
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "type": "radius",
+            "size": "15"
           },
           "affects": {
             "choice": false,
             "count": "",
-            "type": "self",
+            "type": "",
             "special": ""
           },
           "override": true
@@ -180,7 +182,30 @@
         "otherActivityId": "none",
         "img": null,
         "behaviors": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "placed": {
+              "region": {
+                "activities": [
+                  {
+                    "id": "lPHL3nOMjsIHZuBI",
+                    "triggers": [
+                      "enter",
+                      "entered",
+                      "turnStart"
+                    ],
+                    "disposition": "all",
+                    "oncePerTurn": true
+                  }
+                ],
+                "filter": "chris-premades|all|notDesignatedBySource",
+                "effects": [
+                  "spiritGuardSlowE"
+                ]
+              }
+            }
+          }
+        },
         "visibility": {
           "level": {},
           "requireAttunement": false,
@@ -255,7 +280,7 @@
           },
           "affects": {
             "choice": false,
-            "count": "1",
+            "count": "",
             "type": "creature",
             "special": ""
           },
@@ -437,7 +462,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.4"
       },
       "macros": {
         "roll": [
@@ -518,32 +543,6 @@
       "flags": {
         "cat": {
           "identifier": "spirit-guardians",
-          "macros": {
-            "aura": [
-              {
-                "source": "cat",
-                "rules": "all",
-                "identifier": "aura"
-              }
-            ]
-          },
-          "genericConfig": {
-            "cat": {
-              "aura": {
-                "includeSelf": false,
-                "oncePerTurn": true,
-                "radius": "15",
-                "dispositions": [
-                  "all"
-                ],
-                "effect": "spiritGuardSlowE",
-                "enterActivity": "lPHL3nOMjsIHZuBI",
-                "turnStartActivity": "lPHL3nOMjsIHZuBI",
-                "enterOnCreate": false,
-                "filter": "chris-premades|all|notDesignatedBySource"
-              }
-            }
-          },
           "animation": {
             "create": {
               "source": "chris-premades",
@@ -557,6 +556,10 @@
               "identifier": "spiritGuardians"
             }
           }
+        },
+        "dae": {
+          "selfTarget": true,
+          "selfTargetAlways": true
         }
       },
       "_key": "!items.effects!7yEepW2kGjbqe2pZ.spiritGuardAura1"

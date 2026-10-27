@@ -101,7 +101,7 @@ async function early({document, workflow, token}) {
 }
 export const findFamiliar = {
     name: 'Find Familiar',
-    version: '2.0.4',
+    version: '2.1.4',
     rules: 'all',
     roll: [
         {
@@ -134,7 +134,7 @@ export const findFamiliar = {
             label: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureType',
             hint: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureTypeHint',
             category: 'summons',
-            get options() { return [{value: '', label: _loc('CHRISPREMADES.Macros.All.FindFamiliar.Ask')}, ...constants.spiritTypeOptions]; }
+            get options() { return [{value: '', label: 'CHRISPREMADES.Macros.All.FindFamiliar.Ask'}, ...constants.spiritTypeOptions]; }
         },
         touchRange: {
             default: 100,

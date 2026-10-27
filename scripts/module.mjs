@@ -35,6 +35,7 @@ Hooks.once('catReady', () => {
     });
     api.registerSourceName('chris-premades', 'Cauldron of Plentiful Resources');
     api.registerAutomationModule('chris-premades', {ignoredPackIds, infoFetcherCallback});
+    api.postWelcome('chris-premades', {title: 'CHRISPREMADES.Welcome.Title', content: 'CHRISPREMADES.Welcome.Content'});
 });
 
 // result is merged back into defaultInfo and used for the registered automation

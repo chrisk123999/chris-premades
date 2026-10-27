@@ -437,7 +437,7 @@
     },
     "uses": {
       "spent": 0,
-      "max": "3",
+      "max": "@scale.cleric.channel-divinity",
       "recovery": [
         {
           "period": "sr",
@@ -481,7 +481,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3",
+        "version": "2.1.4",
         "sourceType": "class:cleric"
       }
     }

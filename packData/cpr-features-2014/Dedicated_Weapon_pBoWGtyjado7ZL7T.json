@@ -43,7 +43,7 @@
           {
             "key": "system.damage.base.custom.formula",
             "type": "override",
-            "value": "@scale.monk.martial-arts + @mod",
+            "value": "@scale.monk.die",
             "phase": "initial",
             "priority": null,
             "_id": "pceCdygpV2DDcRH0",
@@ -307,7 +307,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.4"
       }
     }
   },

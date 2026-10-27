@@ -37,15 +37,17 @@
           "override": false
         },
         "target": {
-          "prompt": false,
+          "prompt": true,
           "template": {
             "contiguous": false,
-            "units": "ft"
+            "units": "ft",
+            "type": "radius",
+            "size": "10"
           },
           "affects": {
             "choice": false,
             "count": "",
-            "type": "self",
+            "type": "",
             "special": ""
           },
           "override": true
@@ -118,7 +120,28 @@
         "name": "",
         "img": null,
         "behaviors": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "placed": {
+              "region": {
+                "activities": [
+                  {
+                    "id": "GdHXQRhSX1PG21aO",
+                    "triggers": [
+                      "created",
+                      "enter",
+                      "entered",
+                      "turnEnd"
+                    ],
+                    "disposition": "all",
+                    "oncePerTurn": true
+                  }
+                ],
+                "filter": "chris-premades|all|notDesignatedBySource"
+              }
+            }
+          }
+        },
         "visibility": {
           "level": {},
           "requireAttunement": false,
@@ -545,7 +568,7 @@
           "stackable": "noneName",
           "disableIncapacitated": false,
           "selfTarget": true,
-          "selfTargetAlways": false,
+          "selfTargetAlways": true,
           "dontApply": false,
           "durationExpression": "",
           "macroRepeat": "none",
@@ -556,31 +579,6 @@
         },
         "cat": {
           "identifier": "cacophonic-shield",
-          "macros": {
-            "aura": [
-              {
-                "source": "cat",
-                "rules": "all",
-                "identifier": "aura"
-              }
-            ]
-          },
-          "genericConfig": {
-            "cat": {
-              "aura": {
-                "includeSelf": false,
-                "oncePerTurn": true,
-                "radius": "10",
-                "dispositions": [
-                  "all"
-                ],
-                "enterActivity": "GdHXQRhSX1PG21aO",
-                "turnEndActivity": "GdHXQRhSX1PG21aO",
-                "enterOnCreate": true,
-                "filter": "chris-premades|all|notDesignatedBySource"
-              }
-            }
-          },
           "animation": {
             "create": {
               "source": "chris-premades",
@@ -625,7 +623,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.4"
       },
       "macros": {
         "roll": [

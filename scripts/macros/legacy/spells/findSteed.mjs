@@ -96,7 +96,7 @@ const config = {
         label: 'CHRISPREMADES.Macros.Legacy.FindSteed.CreatureType',
         hint: 'CHRISPREMADES.Macros.Legacy.FindSteed.CreatureTypeHint',
         category: 'summons',
-        get options() { return [{value: '', label: _loc('CHRISPREMADES.Macros.Legacy.FindSteed.Ask')}, ...constants.spiritTypeOptions]; }
+        get options() { return [{value: '', label: 'CHRISPREMADES.Macros.Legacy.FindSteed.Ask'}, ...constants.spiritTypeOptions]; }
     },
     celestialAnimation: {
         default: {source: 'chris-premades', identifier: 'celestialSummon'},
@@ -122,7 +122,7 @@ const config = {
 };
 export const findSteed = {
     name: 'Find Steed',
-    version: '2.0.4',
+    version: '2.1.4',
     rules: '2014',
     roll: [
         {

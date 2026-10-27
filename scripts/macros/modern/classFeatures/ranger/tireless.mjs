@@ -7,7 +7,7 @@ async function short({actor}) {
 }
 export const tireless = {
     name: 'Tireless',
-    version: '2.0.0',
+    version: '2.1.4',
     rules: '2024',
     rest: [
         {

@@ -8,7 +8,7 @@ async function saveBonus({actor, config, roll}) {
 }
 export const relentlessHunter = {
     name: 'Relentless Hunter',
-    version: '2.0.0',
+    version: '2.1.4',
     rules: '2024',
     save: [
         {

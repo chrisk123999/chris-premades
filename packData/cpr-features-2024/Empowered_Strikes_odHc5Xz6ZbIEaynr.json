@@ -81,7 +81,7 @@
               ],
               "custom": {
                 "enabled": true,
-                "formula": "@scale.monk.martial-arts.die + @mod"
+                "formula": "@scale.monk.die + @mod"
               },
               "scaling": {
                 "mode": "whole",
@@ -198,7 +198,8 @@
     },
     "cat": {
       "automation": {
-        "version": "2.0.0"
+        "version": "2.1.4",
+        "source": "chris-premades"
       },
       "macros": {
         "roll": [

@@ -16,7 +16,7 @@ async function use({workflow}) {
 }
 export const arcaneRecovery = {
     name: 'Arcane Recovery',
-    version: '2.0.0',
+    version: '2.1.4',
     rules: '2024',
     notes: 'Use the "actorArcaneRecoveryBonus" called event (async) to modify the number of spell slots that can be recovered.\n\tData available: workflow.',
     roll: [

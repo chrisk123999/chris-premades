@@ -23,7 +23,7 @@ async function carryAlly({token, workflow}) {
 }
 export const heightenedFocus = {
     name: 'Heightened Focus',
-    version: '2.0.4',
+    version: '2.1.4',
     rules: '2024',
     called: [
         {

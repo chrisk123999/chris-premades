@@ -269,7 +269,17 @@
             "WallOfIce": "Wall of Ice",
             "WallOfThorns": "Wall of Thorns",
             "WallOfGloom": "Wall of Gloom",
-            "PrismaticWall": "Prismatic Wall"
+            "PrismaticWall": "Prismatic Wall",
+            "AirDash": "Air Dash",
+            "BewitchedEffigySummon": "Bewitched Effigy Summon",
+            "Combo": "Combo",
+            "ElementalStrike": "Elemental Strike",
+            "EnergyBlast": "Energy Blast",
+            "KnockOut": "K.O.",
+            "EntanglingVines": {
+                "Name": "Entangling Vines",
+                "ColorHint": "Color of the cast and the vines that grip the target. Colors beyond green need JB2A Patreon."
+            }
         },
         "Config": {
             "Abilities": "Abilities",
@@ -794,7 +804,9 @@
                     "TargetHint": "Any value less than one will count as unlimited."
                 },
                 "AuraDesignation": {
-                    "Prompt": "Choose creatures the spell leaves unaffected. You are always one."
+                    "Prompt": "Choose creatures the spell leaves unaffected. You are always one.",
+                    "Choose": "Choose on Cast",
+                    "ChooseHint": "Prompt for unaffected creatures on cast. When off, only enemies are affected."
                 },
                 "AttackRider": {
                     "BonusDamageTypeHint": "Damage type of the extra damage. Uses the attack's damage type when empty.",
@@ -854,7 +866,20 @@
                     "SelectNearbyTargets": "Select targets.",
                     "Weapon": "Attack with what weapon?"
                 },
-                "ChoiceRemoveCondition": "Select a condition to remove:",
+                "ChoiceRemoveCondition": {
+                    "Affects": "Remove From",
+                    "AffectsHint": "Remove conditions from the user of the activity or from its target.",
+                    "AutoSingle": "Remove Without Prompt",
+                    "AutoSingleHint": "Skip the prompt when no more qualifying conditions are present than can be removed.",
+                    "Count": "Number of Conditions",
+                    "CountHint": "Formula for how many conditions can be removed per use. @scaling reads the activity's consumption scaling.",
+                    "Select": "Select a condition to remove:",
+                    "SelectMany": "Select conditions to remove:",
+                    "Self": "Self",
+                    "Target": "Target",
+                    "TargetChooses": "Target Chooses",
+                    "TargetChoosesHint": "When removing from the target, the target's owner picks the conditions."
+                },
                 "Common": {
                     "AttackTypeHint": "Limit this feature by attack type.",
                     "Costs": "Use Activity Costs",
@@ -1151,6 +1176,15 @@
                     "Zone": "Within 20 Feet",
                     "FrigidAir": "Frigid Air",
                     "Designate": "Choose creatures that can pass through and stay near the wall without harm. You are always one."
+                },
+                "HeroicInspiration": {
+                    "Affects": "Recipients",
+                    "AffectsHint": "Give Heroic Inspiration to the activity's user or to its targets.",
+                    "Self": "Self",
+                    "Targets": "Targets"
+                },
+                "ProneOnHit": {
+                    "MaxSizeHint": "Targets larger than this size are not knocked prone."
                 }
             },
             "Legacy": {
@@ -1709,6 +1743,141 @@
                 },
                 "SummerWinds": {
                     "MissingActivity": "Summer Winds is missing its undead save activity."
+                },
+                "AdventurersAtlas": {
+                    "NeedTools": "{itemName} needs Cartographer's Tools.",
+                    "RangeHint": "Creatures within this many feet are offered maps when Make Maps is used without at least two targets.",
+                    "RequireTools": "Require Cartographer's Tools",
+                    "Select": "Choose up to {maxAmount} creatures to receive a map. At least two are needed.",
+                    "TooFew": "Adventurer's Atlas needs at least two creatures."
+                },
+                "AuraOfElementalShielding": {
+                    "Ask": "Ask Each Turn",
+                    "DamageTypeHint": "A fixed damage type skips the prompt when the item is added and at the start of each turn.",
+                    "Select": "Choose the damage type your aura grants Resistance to."
+                },
+                "BewitchedEffigy": {
+                    "NoEffigy": "You have no effigy.",
+                    "OutsideAura": "The target isn't within your effigy's aura.",
+                    "Sacrifice": "{name} took damage in your effigy's aura. Use your Reaction to burn it?",
+                    "WrongAura": "Your effigy doesn't radiate this aura."
+                },
+                "Combo": {
+                    "BonusStep": "Bonus Increase per Hit",
+                    "StartBonus": "Starting Bonus"
+                },
+                "ElementalStrike": {
+                    "FuryRange": "Efreeti's Fury Range",
+                    "Select": "Expend a use of Channel Divinity to invoke a genie?",
+                    "SelectFury": "Choose another creature for the fire to jump to.",
+                    "SelectSurge": "Choose the creatures in the emanation that make the saving throw.",
+                    "SurgeRange": "Marid's Surge Range"
+                },
+                "EntanglingVines": {
+                    "Airborne": "{name} is too far off the ground for the vines to reach.",
+                    "Ask": "Ask When Added",
+                    "AutumnRange": "Autumn Second Target Range",
+                    "Season": "Season",
+                    "SeasonHint": "The season the Mandrake was harvested in, which sets the extra effect.",
+                    "SeasonLevel": "Season Effect Level",
+                    "Seasons": {
+                        "autumn": "Autumn",
+                        "spring": "Spring",
+                        "summer": "Summer",
+                        "winter": "Winter"
+                    },
+                    "SecondTarget": "Choose a second creature for the vines to grasp.",
+                    "SelectSeason": "Choose the season you were harvested in.",
+                    "SpringHeight": "Spring Maximum Height",
+                    "SummerDistance": "Summer Move Distance",
+                    "TooLarge": "{name} is too large for the vines to grasp."
+                },
+                "ExploitOpening": {
+                    "Ask": "Ask Each Time",
+                    "Choose": "Choose which damage roll to use.",
+                    "First": "First Roll: {total}",
+                    "Higher": "Always Use the Higher Roll",
+                    "Keep": "Damage Roll to Keep",
+                    "Second": "Second Roll: {total}"
+                },
+                "GuidedPrecision": {
+                    "ConcentrationSpells": "Protected Concentration Spells",
+                    "TargetEffects": "Marking Effects"
+                },
+                "IngeniousMovement": {
+                    "Select": "Choose a creature to teleport up to {range} feet."
+                },
+                "MappingMagic": {
+                    "NoHolder": "Portal Jump needs a target holding one of your Adventurer's Atlas maps.",
+                    "NoMovement": "Portal Jump needs movement equal to half your Speed.",
+                    "NoSpeed": "Portal Jump can't be used while your Speed is 0.",
+                    "NotTurn": "Portal Jump can only be used on your turn."
+                },
+                "NobleScion": {
+                    "DistanceHint": "Minor Wish reaches creatures within this many feet, matching Aura of Protection."
+                },
+                "OldBlessing": {
+                    "Charms": "Wicker Charms",
+                    "NoCharm": "Old Blessing only targets creatures carrying one of your wicker charms. Removed: {names}.",
+                    "Poppet": "Soulbound Poppet"
+                },
+                "PackHunter": {
+                    "Attack": "Use your reaction to give {name} Advantage on its attack roll?",
+                    "Save": "Use your reaction to give {name} Advantage on its saving throw?"
+                },
+                "RootMagic": {
+                    "AbilityHint": "Spellcasting ability for the spells cast with this trait.",
+                    "Ask": "Ask When Added",
+                    "Limb": "Limb (Club)",
+                    "SelectAbility": "Choose your spellcasting ability for Root Magic."
+                },
+                "SoulboundPoppet": {
+                    "Doll": "Soulbound Poppet ({name})"
+                },
+                "SuperiorAtlas": {
+                    "Confirm": "Destroy your map? Your hit points become {hitPoints}.",
+                    "HaveMap": "Unerring Path needs you to hold one of your Adventurer's Atlas maps.",
+                    "HitPoints": "Safe Haven Hit Points",
+                    "Prompt": "Destroy your map? Your hit points become {hitPoints}, and you teleport next to the chosen creature."
+                },
+                "TwistedHex": {
+                    "Ability": "Choose the ability to hex.",
+                    "Ask": "Ask Each Time",
+                    "Charm": "Twisted Hex",
+                    "Target": "Twisted Hex needs another creature as its target."
+                },
+                "VampiricBite": {
+                    "Drain": "Drain",
+                    "Empower": "Your bite dealt {damage} damage. Empower yourself?",
+                    "Strengthen": "Strengthen"
+                },
+                "WickerRising": {
+                    "Ask": "Ask Each Effigy",
+                    "DamageTypeHint": "A fixed damage type skips the prompt when a Ward effigy is created.",
+                    "HitPointCost": "Hit Point Cost",
+                    "HitPointCostHint": "Effigy Hit Points spent to remove a condition with Soothe.",
+                    "RemoveCondition": "Spend {cost} of your effigy's Hit Points to remove a condition from {name}?",
+                    "SelectDamageType": "Choose the damage type your effigy wards against."
+                },
+                "WickerToken": {
+                    "Quantity": "Token Quantity",
+                    "Token": "Wicker Token"
+                },
+                "WickerZenith": {
+                    "AbilityHint": "A fixed ability skips the prompt when a Ward effigy is created.",
+                    "Ask": "Ask Each Effigy",
+                    "ChangeAura": "Change your effigy's aura?",
+                    "Keep": "Keep Current Aura",
+                    "SelectAbility": "Choose the ability your effigy grants Advantage on saving throws with."
+                },
+                "LuckyCharm": {
+                    "MissingEffect": "Lucky Charm is missing its caster effect.",
+                    "MissingItem": "The Lucky Charm item is missing from the automation items compendium."
+                },
+                "SanctumOfTheShepherd": {
+                    "CreaturesHint": "Number of other creatures that can be chosen.",
+                    "MissingEffect": "Sanctum of the Shepherd is missing one of its effects.",
+                    "Select": "Choose up to {max} creatures to share the sanctum."
                 }
             }
         },
@@ -1769,7 +1938,8 @@
                 "AnimatedObjectSmall": "Small Animated Object",
                 "AnimatedObjectMedium": "Medium Animated Object",
                 "AnimatedObjectLarge": "Large Animated Object",
-                "AnimatedObjectHuge": "Huge Animated Object"
+                "AnimatedObjectHuge": "Huge Animated Object",
+                "BewitchedEffigy": "Bewitched Effigy"
             },
             "SelectSummons": "Select Summons (Max {max})",
             "Multiattack": "Multiattack ({attacks} Attacks)",
@@ -1779,6 +1949,10 @@
                 "Rend": "Rend",
                 "Slam": "Slam"
             }
+        },
+        "Welcome": {
+            "Title": "Cauldron of Plentiful Resources",
+            "Content": "<p>Make Cauldron of Plentiful Resources your first automation source, then apply its automations with the CatKit.</p><p>Its options are in the CAT settings. For help, check the FAQ channel in the Coven's Discord, then ask in #support.</p><a class=\"cat-welcome-discord\" href=\"https://discord.gg/BumxBcQDrT\" target=\"_blank\" rel=\"noopener\"><i class=\"fa-brands fa-discord\"></i> Join the Coven's Discord</a><div class=\"cat-welcome-tours\"><button type=\"button\" data-cat-tour=\"cat.sources\"><i class=\"fa-solid fa-layer-group\"></i> Set Up Automation Sources</button></div>"
         }
     }
 }

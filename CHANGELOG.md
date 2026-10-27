@@ -1,3 +1,51 @@
+# 2.1.4 Pre-Release:
+## Update Notes:
+- Requires CAT 0.1.4.
+- Spirit Guardians and Cacophonic Shield are placed regions again instead of auras. Creatures moved by the same movement roll their saves together.
+- Spirit Guardians and Cacophonic Shield leave the caster's allies unaffected. Turn on Choose on Cast to pick the unaffected creatures when the spell is cast.
+- CPR posts a welcome card to the GM once per world, with a link to the Coven's Discord and the Automation Sources tour.
+- Channel Divinity (Paladin) and Channel Divinity (Cleric) are offered for both the PHB and the SRD version of the feature.
+- Flash of Genius fires the `flashOfGeniusUsed` called event after it is used.
+## Automated Spells:
+- 2024: Lucky Charm and Sanctum of the Shepherd.
+## Automated Class Features:
+- 2024 Artificer: Advanced Artifice, Magic Item Adept and Magic Item Master.
+- 2024 Cartographer: Adventurer's Atlas, Guided Precision, Ingenious Movement, Mapping Magic and Superior Atlas.
+- 2024 Druid: Primal Order: Magician.
+- 2024 Circle of Wicker: Bewitched Effigy, Soulbound Poppet, Wicker Rising, Wicker Token and Wicker Zenith.
+- 2024 Monk: Disciplined Survivor.
+- 2024 Warrior of the Street: Air Dash, Combo, K.O. and Special Moves: Energy Blast, Guard Breaker and Uppercut.
+- 2024 Paladin: Abjure Foes, Aura of Courage, Aura of Protection, Radiant Strikes and Restoring Touch.
+- 2024 Oath of the Noble Genies: Aura of Elemental Shielding, Elemental Rebuke, Elemental Strike, Genie's Splendor and Noble Scion.
+## Automated Species Features:
+- 2014 Plasmoid: Amorphous and Natural Resilience.
+- 2024 Dhampir: Spider Climb, Trace of Undeath and Vampiric Bite.
+- 2024 Mandrake: Entangling Vines and Root Magic.
+- 2024 Grim Hollow heritage traits: Battlefield Control, Burst of Speed, Centered, Climber, Hunter's Instinct, Natural Attack (Claws) and Pack Hunter.
+- 2024: Resourceful.
+## Automated Feats:
+- 2014: Precise Strike.
+- 2024: Exploit Opening, Family First and Tireless Reveler.
+- 2024 Charm Twister: Old Blessing and Twisted Hex.
+- 2024 Resolution of the Syndicate: Quick Strike and Resilient.
+## Summons:
+- New summon: Bewitched Effigy, with Sacrifice, Soothe and Ward profiles.
+## Generic Macros:
+- New generic macros: `heroicInspiration` and `pushOnHit`.
+- `choiceRemoveCondition` can let the target choose, skips the prompt when only one condition can be removed, and removes the chosen conditions together.
+- `grapple` applies its extra conditions through CAT's grapple.
+- `proneOnHit` has a Maximum Size option.
+- `auraDesignation` has a Choose on Cast option. When it is off, `notDesignatedBySource` affects only the source's enemies.
+- `ignoreCover` with total cover no longer has the target refused by Midi-QOL.
+## Bug Fixes:
+- Abjure Foes, Nature's Wrath and Elemental Strike spend Channel Divinity again.
+- Channel Divinity (Paladin) has 3 uses from level 11, and Channel Divinity (Cleric) 2014 uses the class scale.
+- Empowered Strikes rolls its die with the Force damage.
+- Martial Arts uses the Monk die scale.
+- Tinker's Magic casts Mending.
+- Several class features that showed as available after being applied now show as up to date.
+- Blink, Banishment and Banishing Smite no longer use Midi-QOL's deprecated save success flag.
+
 # 2.1.3 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.3.

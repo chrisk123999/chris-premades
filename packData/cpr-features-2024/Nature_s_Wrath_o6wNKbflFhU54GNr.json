@@ -89,7 +89,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "feat:channel-divinity-paladin",
+              "target": "feat:channel-divinity",
               "scaling": {}
             }
           ],
@@ -280,7 +280,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.4"
       },
       "macros": {
         "roll": [

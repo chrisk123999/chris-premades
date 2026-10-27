@@ -1,0 +1,127 @@
+{
+  "name": "Aura of Courage",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Aura of Courage",
+      "img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "Rf5TKZmOKKXB3Fe2",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.ci.value",
+            "type": "add",
+            "value": "frightened",
+            "phase": "initial",
+            "priority": 20,
+            "_id": "Gn21dHfsCwbtFwQV",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 2,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "auraOfCourageAura"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!AvdL4u5zitvO3FxY.Rf5TKZmOKKXB3Fe2"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "aura-of-courage",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 10,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      },
+      "macros": {
+        "aura": [
+          {
+            "source": "cat",
+            "rules": "all",
+            "identifier": "aura"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "aura": {
+            "radius": "10 + 20 * floor(@classes.paladin.levels / 18)",
+            "sourceDisable": [
+              "incapacitated",
+              "dead"
+            ],
+            "effect": "Rf5TKZmOKKXB3Fe2"
+          }
+        }
+      }
+    }
+  },
+  "img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
+  "folder": "bJCFudwxy4dFmGo1",
+  "_id": "AvdL4u5zitvO3FxY",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!AvdL4u5zitvO3FxY"
+}
