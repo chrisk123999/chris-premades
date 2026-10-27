@@ -35,7 +35,6 @@ async function damage({ditem, macroClass: {identifier, source}, targetToken, tok
         workflowUtils.modifyDamageAppliedFlat(ditem, -roll);
     }
 }
-// raging, reaction ally see 30ft reduce by roll
 export const spiritShield = {
     name: 'Spirit Shield',
     version: '2.1.4',

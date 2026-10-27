@@ -1271,6 +1271,10 @@
                     "Use": "Frighten the target?"
                 },
                 "FormOfTheBeast": {
+                    "Choose": "Choose a bestial form.",
+                    "Bite": "Bite",
+                    "Claws": "Claws",
+                    "Tail": "Tail",
                     "Keen": "Tracking or Stalking Prey"
                 },
                 "Frenzy": "Make a bonus action attack with a melee weapon?",
@@ -1319,6 +1323,10 @@
                     "MoveSelect": "Which target would you like to mark?",
                     "Multiple": "Which target would you like to unmark?",
                     "NoTargets": "No valid targets within range!"
+                },
+                "InfectiousFury": {
+                    "Curses": "Curses",
+                    "WeaponPrompt": "{name} has been cursed by {feature} and must choose a weapon to attack a nearby target."
                 },
                 "InfuseItem": {
                     "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",

@@ -60,6 +60,12 @@ export { ancestralProtectors as 'ancestral-protectors', ancestralProtectorsAttac
 export { spiritShield as 'spirit-shield', spiritShieldProtect } from './legacy/classFeatures/barbarian/ancestral/spiritShield.mjs';
 export { vengefulAncestors as 'vengeful-ancestors' } from './legacy/classFeatures/barbarian/ancestral/vengefulAncestors.mjs';
 
+/*           Beast            */
+export { bestialSoulJump } from './legacy/classFeatures/barbarian/beast/bestialSoul.mjs';
+export { callTheHunt as 'call-the-hunt', callTheHuntDamage } from './legacy/classFeatures/barbarian/beast/callTheHunt.mjs';
+export { formOfTheBeast as 'form-of-the-beast' } from './legacy/classFeatures/barbarian/beast/formOfTheBeast.mjs';
+export { infectiousFury as 'infectious-fury', infectiousFuryAttack } from './legacy/classFeatures/barbarian/beast/infectiousFury.mjs';
+
 /*         Berserker          */
 export { frenzy, frenzyRageEnd } from './legacy/classFeatures/barbarian/berserker/frenzy.mjs';
 export { intimidatingPresence as 'intimidating-presence', extendIntimidatingPresence, immuneIntimidatingPresence } from './legacy/classFeatures/barbarian/berserker/intimidatingPresence.mjs';

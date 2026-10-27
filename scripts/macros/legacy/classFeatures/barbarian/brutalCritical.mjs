@@ -1,19 +1,13 @@
-import {automationUtils, rollUtils, workflowUtils} from '../../../../proxy.mjs';
+import {workflowUtils} from '../../../../proxy.mjs';
+// uses flags.dnd5e.meleeCriticalDamageDice, this macro just shows a card for attribution
 async function critical({document: item, workflow}) {
     if (!workflow.isCritical) return;
     if (!workflowUtils.isAttackType(workflow, 'meleeWeaponAttack')) return;
-    const faces = workflow.damageRolls[0].dice[0]?.faces;
-    if (!faces) return;
-    const dice = automationUtils.getConfigValue(item, 'bonus');
-    const bonusDice = (await rollUtils.rollDice(dice, {document: item})).total;
-    if (!bonusDice) return;
-    workflow.damageRolls[0] = await rollUtils.addToRoll(workflow.damageRolls[0], bonusDice + 'd' + faces);
-    await workflow.setDamageRolls(workflow.damageRolls);
     await workflowUtils.completeItemUse(item);
 }
 export const brutalCritical = {
     name: 'Brutal Critical',
-    version: '2.0.2',
+    version: '2.1.4',
     rules: '2014',
     roll: [
         {
@@ -23,12 +17,6 @@ export const brutalCritical = {
         }
     ],
     config: {
-        bonus: {
-            default: '@scale.barbarian.brutal-critical',
-            type: 'text',
-            label: 'CHRISPREMADES.Config.Formula',
-            category: 'behavior'
-        },
         classIdentifier: {
             default: 'barbarian',
             type: 'text',
