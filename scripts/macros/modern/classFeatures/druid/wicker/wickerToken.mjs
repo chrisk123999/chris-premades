@@ -1,6 +1,6 @@
 import cprConstants from '../../../../../constants.mjs';
 import utils from '../../../../../utils.mjs';
-import {activityUtils, automationUtils, compendiumUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {automationUtils, compendiumUtils, constants, documentUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function weave({document, workflow}) {
     if (workflow.activity.identifier !== 'weave-wicker-tokens') return;
     await utils.deleteCharms(workflow.actor, 'wickerToken');
@@ -11,13 +11,22 @@ async function weave({document, workflow}) {
     itemData.system.quantity = quantity;
     await utils.createCharms(workflow.actor, [itemData], {key: 'wickerToken', source: workflow.actor});
 }
-function touch({activity, actor, token, config}) {
-    activityUtils.overrideNextUse(activity, null);
+async function touch({document, activity, actor, token, config}) {
     if (activity.item.type !== 'spell' || activity.range.units !== 'touch' || !token?.object) return;
     const targets = workflowUtils.getPreTargetingTargets(config).map(target => target.object).filter(target => target?.actor && target !== token.object);
     const outOfRange = targets.filter(target => MidiQOL.checkActivityRange(activity, token.object, [target], false).result === 'fail');
     if (!outOfRange.length || !outOfRange.every(target => utils.carriesCharm(target.actor, actor, ['wickerToken']))) return;
-    activityUtils.overrideNextUse(activity, {'range.override': true, 'range.units': 'any'});
+    const effectData = documentUtils.getBaseEffectData(document, {
+        name: document.name,
+        img: constants.tempConditionIcon,
+        origin: document.uuid,
+        changes: [
+            {key: 'system.activities.' + activity.id + '.range.override', type: 'override', value: true, priority: 20},
+            {key: 'system.activities.' + activity.id + '.range.units', type: 'override', value: 'any', priority: 20}
+        ],
+        specialDuration: ['endOfWorkflow']
+    });
+    await itemUtils.enchantItem(actor.items.get(activity.item.id), effectData);
 }
 export const wickerToken = {
     name: 'Wicker Token',

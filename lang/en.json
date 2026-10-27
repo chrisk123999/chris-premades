@@ -124,7 +124,8 @@
                 "Persist": "Persistent Area",
                 "PersistHint": "Keep a looping effect over the area until the area is removed.",
                 "Shimmer": "Heat Embers",
-                "Tether": "Tether"
+                "Tether": "Tether",
+                "Ground": "Ground"
             },
             "StepOfTheWind": "Step of the Wind",
             "SummonSoundHint": "Audio file played as the summon appears.",
@@ -279,7 +280,22 @@
             "EntanglingVines": {
                 "Name": "Entangling Vines",
                 "ColorHint": "Color of the cast and the vines that grip the target. Colors beyond green need JB2A Patreon."
-            }
+            },
+            "GlobeOfInvulnerability": {
+                "Name": "Globe of Invulnerability",
+                "OpacityHint": "Opacity of the dome."
+            },
+            "FireStorm": {
+                "Name": "Fire Storm",
+                "GroundHint": "Leave scorched cracks under each cube."
+            },
+            "CrownOfStars": "Crown of Stars",
+            "CrownOfStarsCrownColor": "Crown Color",
+            "CrownOfStarsBoltColor": "Bolt Color",
+            "ChainLightning": "Chain Lightning",
+            "Disintegrate": "Disintegrate",
+            "TeleportSpell": "Teleport",
+            "ConjureCelestial": "Conjure Celestial"
         },
         "Config": {
             "Abilities": "Abilities",
@@ -349,7 +365,10 @@
                 "GreenOrange": "Green Orange",
                 "BlueGreen": "Blue-Green",
                 "PinkPurple": "Pink-Purple",
-                "White": "White"
+                "White": "White",
+                "OrangePurple": "Orange/Purple",
+                "PurpleGreen": "Purple/Green",
+                "YellowBlue": "Yellow/Blue"
             },
             "CombatOnly": "Only Enable When in Combat",
             "CompendiumName": "{option} Compendium Name",
@@ -798,6 +817,57 @@
                 },
                 "WallOfStone": {
                     "Escape": "{name} is enclosed by the wall. Use its reaction to move out?"
+                },
+                "FireStorm": {
+                    "Place": "Place up to ten 10-foot cubes. Each must share a face with an earlier one. Right-click to finish.",
+                    "SparePlants": "Spare Plants",
+                    "SparePlantsHint": "Plant creatures in the storm are not affected."
+                },
+                "ChainLightning": {
+                    "Select": "Choose up to {maxTargets} creatures for the lightning to leap to.",
+                    "AnyCreature": "Leap to Any Creature",
+                    "AnyCreatureHint": "Leaps can target any creature near the first target. When off, only creatures sharing the first target's disposition."
+                },
+                "Disintegrate": {
+                    "Select": "Choose the creation of magical force to disintegrate.",
+                    "Destroy": "Disintegrate {name}?",
+                    "ForceCreations": "Force Creations",
+                    "WallOfForce": "Wall of Force"
+                },
+                "Teleport": {
+                    "Select": "Choose up to eight willing creatures within 10 feet to teleport with you.",
+                    "Familiarity": "How familiar is the caster with the destination?",
+                    "PermanentCircle": "Permanent Circle",
+                    "AssociatedObject": "Associated Object",
+                    "LinkedObject": "Linked Object",
+                    "VeryFamiliar": "Very Familiar",
+                    "SeenCasually": "Seen Casually",
+                    "ViewedOnce": "Viewed Once",
+                    "Description": "Description",
+                    "ViewedOnceDescribed": "Viewed Once or Described",
+                    "FalseDestination": "False Destination",
+                    "Mishap": "Mishap",
+                    "SimilarArea": "Similar Area",
+                    "OffTarget": "Off Target",
+                    "OnTarget": "On Target",
+                    "Distance": "Off Target: Distance",
+                    "Direction": "Off Target: Direction",
+                    "HowFar": "How far is the intended destination?",
+                    "TravelDistance": "Distance",
+                    "Units": "Which unit is that distance in?",
+                    "Miles": "Miles",
+                    "Feet": "Feet",
+                    "OffTargetString": "The travelers arrive {distance} {units} to the {direction} of the destination.",
+                    "Directions": {
+                        "North": "north",
+                        "Northeast": "northeast",
+                        "East": "east",
+                        "Southeast": "southeast",
+                        "South": "south",
+                        "Southwest": "southwest",
+                        "West": "west",
+                        "Northwest": "northwest"
+                    }
                 }
             },
             "Generic": {
@@ -883,7 +953,12 @@
                     "Self": "Self",
                     "Target": "Target",
                     "TargetChooses": "Target Chooses",
-                    "TargetChoosesHint": "When removing from the target, the target's owner picks the conditions."
+                    "TargetChoosesHint": "When removing from the target, the target's owner picks the conditions.",
+                    "RequireCondition": "Require a Condition",
+                    "RequireConditionHint": "Cancel the use when the creature has none of the listed conditions.",
+                    "ReactionConditions": "Reaction Conditions",
+                    "ReactionConditionsHint": "Conditions the creature can end by using its reaction. Its owner is asked after the roll.",
+                    "ReactionPrompt": "Use your reaction to end {conditions}?"
                 },
                 "Common": {
                     "AttackTypeHint": "Limit this feature by attack type.",
@@ -1196,6 +1271,10 @@
                 },
                 "ProneOnHit": {
                     "MaxSizeHint": "Targets larger than this size are not knocked prone."
+                },
+                "AreaAnimation": {
+                    "AreaOnly": "Area Activities Only",
+                    "AreaOnlyHint": "Only play for activities that have an area."
                 }
             },
             "Legacy": {
@@ -1943,9 +2022,24 @@
                     "MissingEffect": "Sanctum of the Shepherd is missing one of its effects.",
                     "Select": "Choose up to {max} creatures to share the sanctum."
                 },
+                "TimeStop": {
+                    "Affect": "The caster affected another creature. End Time Stop?"
+                },
                 "VitalityOfTheTree": {
                     "Prompt": "Select an ally to grant temporary hit points:",
                     "Tag": "Current {amount}"
+                },
+                "Wish": {
+                    "Blocked": "You are unable to cast this spell!",
+                    "BlockedLabel": "Wish Use Blocked",
+                    "BlockedHint": "Set after the stress roll when you lose the ability to cast Wish.",
+                    "ChanceFormula": "Blocked Chance Formula",
+                    "ChanceNumber": "Blocked Chance",
+                    "ChanceNumberHint": "Wish is blocked when the chance roll is at or below this number. 0 turns it off.",
+                    "InstantHealthConditions": "Instant Health Conditions",
+                    "MaxLevel": "Max Spell Level",
+                    "Rest": "Did you spend the day only doing light activity?",
+                    "StressDuration": "Stress Duration Formula"
                 }
             }
         },

@@ -8,6 +8,14 @@
 - Flash of Genius fires the `flashOfGeniusUsed` called event after it is used.
 ## Automated Spells:
 - 2024: Lucky Charm and Sanctum of the Shepherd.
+- 6th level:
+  - 2014: Chain Lightning, Conjure Fey, Disintegrate, Globe of Invulnerability, Investiture of Flame, Investiture of Ice, Investiture of Stone and Tasha's Otherworldly Guise.
+  - 2024: Chain Lightning, Circle of Death, Disintegrate and Globe of Invulnerability.
+- 7th level:
+  - 2014: Conjure Celestial, Crown of Stars, Fire Storm and Teleport.
+  - 2024: Conjure Celestial, Fire Storm and Teleport.
+- 9th level:
+  - 2024: Power Word Heal, Power Word Kill, Time Stop and Wish.
 ## Automated Class Features:
 - 2024 Artificer: Advanced Artifice, Magic Item Adept and Magic Item Master.
 - 2024 Cartographer: Adventurer's Atlas, Guided Precision, Ingenious Movement, Mapping Magic and Superior Atlas.
@@ -34,13 +42,17 @@
 - New summon: Bewitched Effigy, with Sacrifice, Soothe and Ward profiles.
 ## Generic Macros:
 - New generic macros: `heroicInspiration` and `pushOnHit`.
-- `choiceRemoveCondition` can let the target choose, skips the prompt when only one condition can be removed, and removes the chosen conditions together.
+- `choiceRemoveCondition` can let the target choose, and removes the chosen conditions together. It skips the prompt when only one condition can be removed. It can keep the use when the creature has none of the listed conditions, and can offer to end conditions with the creature's reaction.
 - `grapple` applies its extra conditions through CAT's grapple.
 - `proneOnHit` has a Maximum Size option.
 - `auraDesignation` has a Choose on Cast option. When it is off, `notDesignatedBySource` affects only the source's enemies.
 - `ignoreCover` with total cover no longer has the target refused by Midi-QOL.
+- `spellAnimation` tells its animation whether the roll dropped each target to 0 HP.
+- `areaAnimation` has an Area Only option. When it is on, the animation plays only for activities with an area.
+## Animations:
+- New animations: Chain Lightning, Conjure Celestial, Crown of Stars, Disintegrate, Fire Storm, Globe of Invulnerability and Teleport.
 ## Bug Fixes:
-- Abjure Foes, Nature's Wrath and Elemental Strike spend Channel Divinity again.
+- Nature's Wrath spends Channel Divinity again.
 - Channel Divinity (Paladin) has 3 uses from level 11, and Channel Divinity (Cleric) 2014 uses the class scale.
 - Empowered Strikes rolls its die with the Force damage.
 - Martial Arts uses the Monk die scale.
