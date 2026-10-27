@@ -1,0 +1,103 @@
+{
+  "name": "Climber",
+  "type": "feat",
+  "img": "icons/tools/hand/claws-climbing.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "climber",
+    "source": {
+      "book": "GHPG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "race",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Climber",
+      "img": "icons/tools/hand/claws-climbing.webp",
+      "origin": null,
+      "transfer": true,
+      "_id": "KlV9llIppmxEZunU",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.climb",
+            "value": "@attributes.movement.speeds.walk",
+            "priority": 40,
+            "type": "upgrade",
+            "_id": "33jkdLRsLuujLJzf",
+            "phase": "initial",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!Z1pwU7Vz6H4Ne2ZS.KlV9llIppmxEZunU"
+    }
+  ],
+  "folder": "qszA3cg87mjNcVc1",
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "_id": "Z1pwU7Vz6H4Ne2ZS",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!Z1pwU7Vz6H4Ne2ZS"
+}

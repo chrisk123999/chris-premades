@@ -30,7 +30,7 @@ async function deflect({document: activity, ditem, targetToken, workflow}) {
 }
 export const deflectAttacks = {
     name: 'Deflect Attacks',
-    version: '2.0.4',
+    version: '2.1.4',
     rules: '2024',
     roll: [
         {

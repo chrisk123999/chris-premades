@@ -244,8 +244,8 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.success.ability.save.all",
-            "type": "custom",
+            "key": "system.rolls.ability.save.success",
+            "type": "override",
             "value": "1",
             "priority": 20
           },
@@ -313,7 +313,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.4"
       },
       "macros": {
         "roll": [

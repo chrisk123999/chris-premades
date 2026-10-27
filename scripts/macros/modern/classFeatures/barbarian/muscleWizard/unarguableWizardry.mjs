@@ -4,7 +4,7 @@ async function context({skillId}) {
 }
 export const unarguableWizardry = {
     name: 'Unarguable Wizardry',
-    version: '2.0.0',
+    version: '2.1.4',
     rules: '2024',
     skill: [
         {

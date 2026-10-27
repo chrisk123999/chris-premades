@@ -2,7 +2,8 @@ import {actorUtils, automationUtils, constants, dialogUtils, genericUtils, rollU
 const variants = {
     pullOnFail: {direction: -1, targets: 'failedSaves'},
     pullOnHit: {direction: -1, targets: 'hitTargets'},
-    pushOnFail: {direction: 1, targets: 'failedSaves'}
+    pushOnFail: {direction: 1, targets: 'failedSaves'},
+    pushOnHit: {direction: 1, targets: 'hitTargets'}
 };
 async function getDistance(activity, config, sourceToken, targetToken, direction, maximum) {
     if (config.maxSize && actorUtils.getSize(targetToken.actor) > CONFIG.DND5E.actorSizes[config.maxSize]?.numerical) return 0;
@@ -87,7 +88,7 @@ function buildConfig(animationIdentifier) {
 }
 const base = {
     rules: 'all',
-    version: '2.1.0',
+    version: '2.1.4',
     category: 'utility',
     generic: true,
     documents: ['activity'],
@@ -107,6 +108,7 @@ const base = {
  * - `pushOnFail`: pushes targets that failed the save.
  * - `pullOnFail`: pulls targets that failed the save.
  * - `pullOnHit`: pulls targets that were hit.
+ * - `pushOnHit`: pushes targets that were hit.
  *
  * Config:
  * - `distance`: maximum distance in feet. Accepts a formula, rolled once per use.
@@ -118,4 +120,5 @@ const base = {
 export const pushOnFail = {...base, genericConfig: buildConfig()};
 export const pullOnFail = {...base, genericConfig: buildConfig('castBeam')};
 export const pullOnHit = {...base, genericConfig: buildConfig('castBeam')};
+export const pushOnHit = {...base, genericConfig: buildConfig()};
 const configKeys = Object.keys(pushOnFail.genericConfig);

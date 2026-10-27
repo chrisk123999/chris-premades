@@ -532,7 +532,8 @@
     },
     "cat": {
       "automation": {
-        "version": "2.1.0"
+        "source": "chris-premades",
+        "version": "2.1.4"
       },
       "macros": {
         "rest": [

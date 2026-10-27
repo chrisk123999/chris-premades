@@ -1,4 +1,4 @@
-import {activityUtils, automationUtils, dialogUtils, documentUtils, workflowUtils} from '../../../../proxy.mjs';
+import {automationUtils, dialogUtils, documentUtils, workflowUtils} from '../../../../proxy.mjs';
 async function attack({document, workflow}) {
     if (!workflow.item) return;
     const identifier = documentUtils.getIdentifier(workflow.item);
@@ -9,17 +9,26 @@ async function attack({document, workflow}) {
         const selection = await dialogUtils.confirmUseItem(document);
         if (!selection) return;
     }
-    const activityData = activityUtils.getDamageModifiedActivityData(workflow.activity, '', {types: ['force']});
-    workflowUtils.setActivity(workflow, activityData);
+    workflowUtils.setWorkflowProperty(workflow, 'empoweredStrikes', true);
+}
+async function damage({workflow}) {
+    if (!workflowUtils.getWorkflowProperty(workflow, 'empoweredStrikes') || !workflow.damageRolls?.length) return;
+    workflow.damageRolls[0].options.type = 'force';
+    await workflow.setDamageRolls(workflow.damageRolls);
 }
 export const empoweredStrikes = {
     name: 'Empowered Strikes',
-    version: '2.0.0',
+    version: '2.1.4',
     rules: '2024',
     roll: [
         {
             pass: 'actorPreambleComplete',
             macro: attack,
+            priority: 40
+        },
+        {
+            pass: 'actorDamageRoll',
+            macro: damage,
             priority: 40
         }
     ],

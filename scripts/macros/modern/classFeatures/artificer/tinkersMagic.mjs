@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, compendiumUtils, constants, documentUtils, effectUtils, genericUtils, itemUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils} from '../../../../proxy.mjs';
 const itemIDs = new Set([
     'ball-bearings', 'basket', 'bedroll', 'bell', 'blanket', 'block-and-tackle', 'bottle-glass', 'bucket',
     'caltrops', 'candle', 
@@ -60,7 +60,7 @@ async function use({workflow}) {
 }
 export const tinkersMagic = {
     name: 'Tinker\'s Magic',
-    version: '2.1.3',
+    version: '2.1.4',
     rules: '2024',
     notes: 'Target a willing creature to create an item in their inventory. The item is otherwise made on this character.',
     roll: [

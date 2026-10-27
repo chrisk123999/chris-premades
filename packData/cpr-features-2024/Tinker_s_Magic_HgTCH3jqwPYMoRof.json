@@ -238,7 +238,7 @@
           },
           "properties": [],
           "spellbook": true,
-          "uuid": "Compendium.dnd5e.spells24.phbsplMending000",
+          "uuid": "Compendium.dnd5e.spells24.Item.phbsplMending000",
           "ability": ""
         },
         "useConditionText": "",
@@ -360,7 +360,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.4"
       }
     }
   },

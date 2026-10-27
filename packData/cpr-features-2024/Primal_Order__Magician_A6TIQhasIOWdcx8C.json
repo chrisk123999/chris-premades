@@ -1,0 +1,120 @@
+{
+  "name": "Primal Order: Magician",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Magician",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.scale.druid.cantrips-known.value",
+            "value": 1,
+            "type": "add",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "1Fg2iOygdoTqIH5m",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.skills.arc.bonuses.check",
+            "value": "max(1, @abilities.wis.mod)",
+            "type": "add",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "6oEahTkPxtV7p8Lt",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.skills.nat.bonuses.check",
+            "value": "max(1, @abilities.wis.mod)",
+            "type": "add",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "2xoKb5dpLnPCCQpz",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ]
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {},
+      "description": "",
+      "img": "icons/magic/nature/leaf-hand-green.webp",
+      "_id": "n3MUrT7VDSkJ6R0C",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!A6TIQhasIOWdcx8C.n3MUrT7VDSkJ6R0C"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "primal-order-magician",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "Druid",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "img": "icons/magic/nature/leaf-hand-green.webp",
+  "folder": "bbR7kJffMX4MkL49",
+  "_id": "A6TIQhasIOWdcx8C",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!A6TIQhasIOWdcx8C"
+}

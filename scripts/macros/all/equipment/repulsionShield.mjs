@@ -20,7 +20,7 @@ async function push({document: activity, sourceToken, workflow}) {
 }
 export const repulsionShield = {
     name: 'Repulsion Shield',
-    version: '2.1.3',
+    version: '2.1.4',
     rules: 'all',
     roll: [
         {
@@ -42,7 +42,7 @@ export const repulsionShield = {
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SizeLimit',
-            get options() { return [{label: _loc('COMMON.None'), value: ''}, ...constants.sizeOptions]; }
+            get options() { return [{label: 'COMMON.None', value: ''}, ...constants.sizeOptions]; }
         }
     }
 };

@@ -1,4 +1,4 @@
-import {automationUtils, constants, genericUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, automationUtils, constants, genericUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function coverBonus({document, identifier, workflow}) {
     if (workflow.targets.size !== 1) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'ignoreCover', Object.keys(ignoreCover.genericConfig));
@@ -15,13 +15,26 @@ async function coverBonus({document, identifier, workflow}) {
         await workflowUtils.bonusAttack(workflow, cover);
     }
 }
+// Midi refuses a total cover target on the copy of the activity dnd5e makes for the use, so that copy is marked.
+function fullCover({document, activity}) {
+    activityUtils.overrideNextUse(activity, null);
+    const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'ignoreCover', Object.keys(ignoreCover.genericConfig));
+    if (config.cover != 999) return;
+    if (config.attack && !workflowUtils.isAttackType({activity}, config.attack)) return;
+    activityUtils.overrideNextUse(activity, {'midiProperties.ignoreFullCover': true});
+}
 export const ignoreCover = {
     rules: 'all',
-    version: '2.1.3',
+    version: '2.1.4',
     category: 'utility',
     generic: true,
     documents: ['activeeffect', 'item'],
     roll: [
+        {
+            pass: 'actorPreTargeting',
+            macro: fullCover,
+            priority: 50
+        },
         {
             pass: 'actorAttackRollBonuses',
             macro: coverBonus,

@@ -1,0 +1,105 @@
+{
+  "name": "Spider Climb",
+  "type": "feat",
+  "img": "icons/commodities/biological/legs-insect-brown.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "spider-climb",
+    "source": {
+      "book": "RtHW",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "Dhampir",
+    "type": {
+      "value": "race",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "_id": "bn9GENUiAIDbTqZz",
+      "name": "Spider Climb",
+      "img": "icons/commodities/biological/legs-insect-brown.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 0,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.climb",
+            "type": "upgrade",
+            "value": "@attributes.movement.speeds.walk",
+            "phase": "initial",
+            "priority": 40
+          }
+        ]
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "spiderClimb"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!xjU0BNAg1BHMw1ea.bn9GENUiAIDbTqZz"
+    }
+  ],
+  "folder": "G2UBStyyg1ZFzQ00",
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "_id": "xjU0BNAg1BHMw1ea",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!xjU0BNAg1BHMw1ea"
+}

@@ -52,7 +52,7 @@ async function summon({workflow}) {
 }
 export const flockOfFamiliars = {
     name: 'Flock of Familiars',
-    version: '2.1.3',
+    version: '2.1.4',
     rules: '2014',
     roll: [
         {pass: 'activityRollFinished', macro: summon, priority: 50}
@@ -70,7 +70,7 @@ export const flockOfFamiliars = {
             label: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureType',
             hint: 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.CreatureTypeHint',
             category: 'summons',
-            get options() { return [{value: '', label: _loc('CHRISPREMADES.Macros.All.FindFamiliar.Ask')}, ...constants.spiritTypeOptions]; }
+            get options() { return [{value: '', label: 'CHRISPREMADES.Macros.All.FindFamiliar.Ask'}, ...constants.spiritTypeOptions]; }
         },
         range: {
             default: 10,

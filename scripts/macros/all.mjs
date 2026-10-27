@@ -53,6 +53,7 @@ export { indomitable } from './all/classFeatures/fighter/indomitable.mjs';
 /******************************/
 /*            Monk            */
 /******************************/
+export { stepOfTheWindJump } from './all/classFeatures/monk/flurryOfBlows.mjs';
 export { slowFall as 'slow-fall' } from './all/classFeatures/monk/slowFall.mjs';
 
 /******************************/
@@ -96,6 +97,11 @@ export { repulsionShield as 'repulsion-shield' } from './all/equipment/repulsion
 export { spellRefuelingRing as 'spell-refueling-ring' } from './all/equipment/spellRefuelingRing.mjs';
 
 /*============================*/
+/*           FEATS            */
+/*============================*/
+export { preciseStrike as 'precise-strike' } from './all/feats/preciseStrike.mjs';
+
+/*============================*/
 /*      FIGHTING STYLES       */
 /*============================*/
 export { dueling, dueling as 'fighting-style-dueling' } from './all/fightingStyles/dueling.mjs';
@@ -103,6 +109,15 @@ export { greatWeaponFighting as 'fighting-style-great-weapon-fighting', greatWea
 export { interception as 'fighting-style-interception', interception } from './all/fightingStyles/interception.mjs';
 export { protection } from './all/fightingStyles/protection.mjs';
 export { unarmedFighting } from './all/fightingStyles/unarmedFighting.mjs';
+
+/*============================*/
+/*      SPECIES FEATURES      */
+/*============================*/
+
+/******************************/
+/*          Plasmoid          */
+/******************************/
+export { amorphous } from './all/speciesFeatures/plasmoid/amorphous.mjs';
 
 /*============================*/
 /*           SPELLS           */

@@ -49,7 +49,7 @@
       "alternateAttributes": {
         "DamageFormula": [
           {
-            "value": "@scale.monk.martial-arts",
+            "value": "@scale.monk.die",
             "restrictions": {
               "WeaponType": {
                 "value": [
@@ -71,7 +71,7 @@
             }
           },
           {
-            "value": "@scale.monk.martial-arts",
+            "value": "@scale.monk.die",
             "restrictions": {
               "WeaponType": {
                 "value": [
@@ -99,7 +99,7 @@
             }
           },
           {
-            "value": "@scale.monk.martial-arts",
+            "value": "@scale.monk.die",
             "restrictions": {
               "Identifier": {
                 "value": [
@@ -200,7 +200,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.4"
       }
     }
   },

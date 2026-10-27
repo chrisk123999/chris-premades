@@ -1,0 +1,148 @@
+{
+  "name": "Twisted Hex",
+  "type": "loot",
+  "img": "icons/commodities/treasure/doll-voodoo.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TCMP1",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "type": {
+      "value": "gear",
+      "subtype": ""
+    },
+    "properties": [],
+    "identifier": "twisted-hex-charm"
+  },
+  "effects": [
+    {
+      "name": "Twisted Hex",
+      "img": "icons/commodities/treasure/doll-voodoo.webp",
+      "origin": null,
+      "transfer": true,
+      "_id": "bNpddlRn5TSnhrbS",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.abilities.{ability}.check.roll.mode",
+            "value": "-1",
+            "priority": 20,
+            "type": "add",
+            "_id": "bNpddlRn5TSnhrb0",
+            "phase": "initial",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "flags.midi-qol.disadvantage.attack.{ability}",
+            "value": "1",
+            "priority": 20,
+            "type": "override",
+            "_id": "bNpddlRn5TSnhrb1",
+            "phase": "initial",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "twistedHex"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!mRCpzc3M9qxGkoWX.bNpddlRn5TSnhrbS"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "macros": {
+        "check": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "twisted-hex-charm"
+          }
+        ],
+        "skill": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "twisted-hex-charm"
+          }
+        ],
+        "tool": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "twisted-hex-charm"
+          }
+        ],
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "twisted-hex-charm"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "folder": "JQn36Kl1eGPKYT3E",
+  "_id": "mRCpzc3M9qxGkoWX",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!mRCpzc3M9qxGkoWX"
+}

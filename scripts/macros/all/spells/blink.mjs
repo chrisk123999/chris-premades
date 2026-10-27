@@ -20,7 +20,7 @@ async function reappear({document: effect}) {
 }
 export const blink = {
     name: 'Blink',
-    version: '2.1.3',
+    version: '2.1.4',
     rules: 'all',
     combat: [
         {pass: 'actorTurnEnd', macro: vanish, priority: 50}

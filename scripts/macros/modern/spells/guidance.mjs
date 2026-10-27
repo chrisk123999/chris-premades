@@ -17,7 +17,7 @@ async function skill({actor, document: item, skillId, token}) {
 }
 export const guidance = {
     name: 'Guidance',
-    version: '2.0.0',
+    version: '2.1.4',
     rules: '2024',
     skill: [
         {
@@ -32,7 +32,7 @@ export const guidance = {
             type: 'select',
             label: 'CHRISPREMADES.Config.PromptToUse',
             category: 'behavior',
-            get options() { return ['auto', 'prompt', 'never'].map(value => ({value, label: _loc('CHRISPREMADES.Macros.Modern.Guidance.Modes.' + value)})); }
+            get options() { return ['auto', 'prompt', 'never'].map(value => ({value, label: 'CHRISPREMADES.Macros.Modern.Guidance.Modes.' + value})); }
         }
     }
 };

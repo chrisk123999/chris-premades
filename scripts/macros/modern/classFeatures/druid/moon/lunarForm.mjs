@@ -1,7 +1,7 @@
 import {constants} from '../../../../../proxy.mjs';
 export const lunarForm = {
     name: 'Lunar Form',
-    version: '2.0.0',
+    version: '2.1.4',
     rules: '2024',
     config: {
         formula: {

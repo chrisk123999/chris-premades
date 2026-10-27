@@ -10,14 +10,18 @@
 /*============================*/
 /*          FEATURES          */
 /*============================*/
+export { bewitchedEffigySummon } from './animations/features/bewitchedEffigy.mjs';
 export { cunningActionDash } from './animations/features/cunningActionDash.mjs';
 export { cunningActionDisengage } from './animations/features/cunningActionDisengage.mjs';
 export { divineStrike } from './animations/features/divineStrike.mjs';
+export { elementalStrike } from './animations/features/elementalStrike.mjs';
+export { entanglingVines } from './animations/features/entanglingVines.mjs';
 export { flurryOfBlows } from './animations/features/flurryOfBlows.mjs';
 export { instinctivePounce } from './animations/features/instinctivePounce.mjs';
 export { rageDefault, rageLightning, rageSaiyan } from './animations/features/rage.mjs';
 export { sneakAttack } from './animations/features/sneakAttack.mjs';
 export { stepOfTheWind } from './animations/features/stepOfTheWind.mjs';
+export { airDash, combo, energyBlast, knockOut } from './animations/features/warriorOfTheStreet.mjs';
 
 /*============================*/
 /*          GENERIC           */

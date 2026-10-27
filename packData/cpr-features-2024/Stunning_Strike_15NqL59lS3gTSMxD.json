@@ -216,7 +216,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "aJO7EcNnWqStyquR",
+              "target": "feat:monks-focus",
               "scaling": {}
             },
             {
@@ -449,7 +449,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.4"
       }
     }
   },

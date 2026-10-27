@@ -1,0 +1,109 @@
+{
+  "name": "Battlefield Control",
+  "type": "feat",
+  "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "battlefield-control",
+    "source": {
+      "book": "GHPG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "race",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Battlefield Control",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "flags.gambits-premades.oaOnEnter",
+            "value": 1,
+            "type": "override",
+            "priority": null,
+            "phase": "initial",
+            "_id": "b2vl1jqab6zr9Cb3",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ]
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 0,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "default",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        }
+      },
+      "description": "",
+      "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+      "_id": "V5jJj47zNlFCyDtm",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!DAqLwEuatFsIohdI.V5jJj47zNlFCyDtm"
+    }
+  ],
+  "folder": "qszA3cg87mjNcVc1",
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.4"
+      }
+    }
+  },
+  "_id": "DAqLwEuatFsIohdI",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!DAqLwEuatFsIohdI"
+}
