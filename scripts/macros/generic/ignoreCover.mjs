@@ -1,4 +1,4 @@
-import {activityUtils, automationUtils, constants, genericUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {automationUtils, constants, documentUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function coverBonus({document, identifier, workflow}) {
     if (workflow.targets.size !== 1) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'ignoreCover', Object.keys(ignoreCover.genericConfig));
@@ -15,13 +15,19 @@ async function coverBonus({document, identifier, workflow}) {
         await workflowUtils.bonusAttack(workflow, cover);
     }
 }
-// Midi refuses a total cover target on the copy of the activity dnd5e makes for the use, so that copy is marked.
-function fullCover({document, activity}) {
-    activityUtils.overrideNextUse(activity, null);
+// Midi refuses a total cover target before the attack bonus pass, so the item is enchanted for the use.
+async function fullCover({document, activity}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'ignoreCover', Object.keys(ignoreCover.genericConfig));
     if (config.cover != 999) return;
     if (config.attack && !workflowUtils.isAttackType({activity}, config.attack)) return;
-    activityUtils.overrideNextUse(activity, {'midiProperties.ignoreFullCover': true});
+    const effectData = documentUtils.getBaseEffectData(document, {
+        name: document.name,
+        img: constants.tempConditionIcon,
+        origin: document.uuid,
+        changes: [{key: 'system.activities.' + activity.id + '.midiProperties.ignoreFullCover', type: 'override', value: true, priority: 20}],
+        specialDuration: ['endOfWorkflow']
+    });
+    await itemUtils.enchantItem(activity.actor.items.get(activity.item.id), effectData);
 }
 export const ignoreCover = {
     rules: 'all',

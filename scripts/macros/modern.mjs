@@ -268,6 +268,7 @@ export { banishingSmite as 'banishing-smite' } from './modern/spells/banishingSm
 export { bladeWard as 'blade-ward' } from './modern/spells/bladeWard.mjs';
 export { chromaticOrb as 'chromatic-orb' } from './modern/spells/chromaticOrb.mjs';
 export { commandEffect as 'command-effect' } from './modern/spells/command.mjs';
+export { conjureCelestial as 'conjure-celestial' } from './modern/spells/conjureCelestial.mjs';
 export { conjureElementalElement as 'conjure-elemental-element', conjureElementalFree as 'conjure-elemental-free' } from './modern/spells/conjureElemental.mjs';
 export { crimsonLash as 'crimson-lash' } from './modern/spells/crimsonLash.mjs';
 export { findSteed as 'find-steed', findSteedLifeBond as 'find-steed-life-bond', otherworldlySteedFeyStep as 'otherworldly-steed-fey-step' } from './modern/spells/findSteed.mjs';
@@ -277,6 +278,7 @@ export { hungerOfHadar as 'hunger-of-hadar' } from './modern/spells/hungerOfHada
 export { huntersMark as 'hunters-mark', huntersMarkAttack as 'hunters-mark-attack' } from './modern/spells/huntersMark.mjs';
 export { luckyCharm as 'lucky-charm', luckyCharmCaster as 'lucky-charm-caster', luckyCharmObject as 'lucky-charm-object' } from './modern/spells/luckyCharm.mjs';
 export { magicWeapon as 'magic-weapon' } from './modern/spells/magicWeapon.mjs';
+export { powerWordKill as 'power-word-kill' } from './modern/spells/powerWordKill.mjs';
 export { rayOfEnfeeblement as 'ray-of-enfeeblement' } from './modern/spells/rayOfEnfeeblement.mjs';
 export { resistance, resistanceEffect as 'resistance-effect' } from './modern/spells/resistance.mjs';
 export { sanctumOfTheShepherd as 'sanctum-of-the-shepherd', sanctumOfTheShepherdMarker as 'sanctum-of-the-shepherd-marker' } from './modern/spells/sanctumOfTheShepherd.mjs';
@@ -284,4 +286,7 @@ export { shockingGrasp as 'shocking-grasp' } from './modern/spells/shockingGrasp
 export { spellfireFlare as 'spellfire-flare' } from './modern/spells/spellfireFlare.mjs';
 export { sproutFoliage as 'sprout-foliage' } from './modern/spells/sproutFoliage.mjs';
 export { summerWinds as 'summer-winds' } from './modern/spells/summerWinds.mjs';
+export { teleportModern as teleport } from './all/spells/teleport.mjs';
+export { timeStop as 'time-stop', timeStopEffect as 'time-stop-effect' } from './modern/spells/timeStop.mjs';
 export { wiltingSmite as 'wilting-smite' } from './modern/spells/wiltingSmite.mjs';
+export { wish, wishImmunity as 'wish-immunity', wishStress as 'wish-stress' } from './modern/spells/wish.mjs';

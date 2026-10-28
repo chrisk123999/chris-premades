@@ -281,6 +281,7 @@ export { bigbysHand as 'bigbys-hand', bigbysHandInterposed as 'bigbys-hand-inter
 export { boomingBladeMoved as 'booming-blade-moved' } from './legacy/spells/boomingBlade.mjs';
 export { chaosBolt as 'chaos-bolt' } from './legacy/spells/chaosBolt.mjs';
 export { chillTouch as 'chill-touch', chillTouchUndead as 'chill-touch-undead' } from './legacy/spells/chillTouch.mjs';
+export { crownOfStars as 'crown-of-stars' } from './legacy/spells/crownOfStars.mjs';
 export { dawn } from './legacy/spells/dawn.mjs';
 export { findGreaterSteed as 'find-greater-steed', findSteed as 'find-steed', findSteedActive as 'find-steed-active', findSteedDismiss as 'find-steed-dismiss' } from './legacy/spells/findSteed.mjs';
 export { flockOfFamiliars as 'flock-of-familiars' } from './legacy/spells/flockOfFamiliars.mjs';
@@ -297,4 +298,6 @@ export { sickeningRadiance as 'sickening-radiance', sickeningRadianceSickened } 
 export { spiritOfDeathHaunt as 'spirit-of-death-haunt', spiritOfDeathHaunted as 'spirit-of-death-haunted', spiritOfDeathScythe as 'spirit-of-death-scythe' } from './legacy/spells/spiritOfDeath.mjs';
 export { stormSphere as 'storm-sphere' } from './legacy/spells/stormSphere.mjs';
 export { tashasCausticBrew as 'tashas-caustic-brew' } from './legacy/spells/tashasCausticBrew.mjs';
+export { tashasOtherworldlyGuise as 'tashas-otherworldly-guise' } from './legacy/spells/tashasOtherworldlyGuise.mjs';
+export { teleport } from './all/spells/teleport.mjs';
 export { witherAndBloom as 'wither-and-bloom' } from './legacy/spells/witherAndBloom.mjs';

@@ -3,13 +3,13 @@ import {addCast, casts, getPalette, partOption} from '../generic/spellParts.mjs'
 function getName(region) {
     return 'moonbeam ' + region.uuid;
 }
-function addBeam(sequence, region, {opacity, scale, fadeIn}) {
+function addBeam(sequence, region, {opacity, scale, fadeIn, color}) {
     const area = regionUtils.getArea(region);
     /* eslint-disable indent */
     sequence
         .effect()
             .name(getName(region))
-            .file('jb2a.moonbeam.01.loop.blue')
+            .file('jb2a.moonbeam.01.loop.' + color)
             .atLocation({x: area.x, y: area.y})
             .size(area.radius * 2 * scale)
             .opacity(opacity)
@@ -19,26 +19,26 @@ function addBeam(sequence, region, {opacity, scale, fadeIn}) {
             .tieToDocuments(region);
     /* eslint-enable indent */
 }
-async function play(sourceToken, region, {cast = true, impact = true, opacity = 0.8, scale = 1.5} = {}) {
+async function play(sourceToken, region, {cast = true, impact = true, opacity = 0.8, scale = 1.5, color = 'blue'} = {}) {
     if (!region) return;
     const area = regionUtils.getArea(region);
     const sequence = new Sequence();
-    if (cast && sourceToken) addCast(sequence, sourceToken, area, {file: getPalette(casts, 'blue'), wait: -750});
+    if (cast && sourceToken) addCast(sequence, sourceToken, area, {file: getPalette(casts, color), wait: -750});
     /* eslint-disable indent */
     sequence
         .effect()
-            .file('jb2a.moonbeam.01.complete.blue')
+            .file('jb2a.moonbeam.01.complete.' + color)
             .atLocation({x: area.x, y: area.y})
             .size(area.radius * 2 * scale)
             .playIf(impact);
     /* eslint-enable indent */
-    addBeam(sequence, region, {opacity, scale, fadeIn: 1500});
+    addBeam(sequence, region, {opacity, scale, fadeIn: 1500, color});
     await sequence.play();
 }
-async function move(region, {opacity = 0.8, scale = 1.5} = {}) {
+async function move(region, {opacity = 0.8, scale = 1.5, color = 'blue'} = {}) {
     await Sequencer.EffectManager.endEffects({name: getName(region)});
     const sequence = new Sequence();
-    addBeam(sequence, region, {opacity, scale, fadeIn: 500});
+    addBeam(sequence, region, {opacity, scale, fadeIn: 500, color});
     await sequence.play();
 }
 async function pulse(targetToken, {impact = true} = {}) {

@@ -6,7 +6,8 @@ export function getDamageType(workflow) {
 export function getTargetResult(workflow, token) {
     return {
         hit: workflow.attackRoll ? workflow.hitTargets.has(token) : undefined,
-        saved: workflow.activity?.save ? !workflow.failedSaves.has(token) : undefined
+        saved: workflow.activity?.save ? !workflow.failedSaves.has(token) : undefined,
+        killed: !!workflow.damageList?.some(entry => (entry.actorUuid ?? entry.actor?.uuid) === token.actor?.uuid && entry.oldHP > 0 && entry.newHP <= 0)
     };
 }
 export function getTargetResults(workflow) {
@@ -29,11 +30,11 @@ function late({document, workflow}) {
  * Bound on an item. Fires on `itemRollFinished`.
  *
  * Config:
- * - `animation`: played from the user to each target. Receives the damage type and each target's hit or save result.
+ * - `animation`: played from the user to each target. Receives the damage type, each target's hit or save result, and whether the roll dropped it to 0 HP.
  */
 export const spellAnimation = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.1.4',
     category: 'animations',
     generic: true,
     documents: ['item'],

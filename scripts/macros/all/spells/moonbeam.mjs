@@ -10,7 +10,7 @@ async function created({document: region, workflow}) {
     await createRegionLight(region, {color: color || null, animation: {type: animationType || null}});
     playAreaAnimation(workflow, automationUtils.getResolvedAnimation(originItem, 'animation'), {region});
 }
-async function moved({document: region}) {
+export async function moved({document: region}) {
     const originItem = regionUtils.getActivity(region)?.item;
     if (!originItem) return;
     const {animation, options} = automationUtils.getResolvedAnimation(originItem, 'animation');

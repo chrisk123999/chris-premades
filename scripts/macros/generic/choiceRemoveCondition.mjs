@@ -8,9 +8,10 @@ function getTargetActor(config) {
     return targets.length === 1 ? targets[0].actor : undefined;
 }
 async function preChecks({activity, config, macroClass: {identifier}}) {
-    if (automationUtils.getGenericConfigValue(activity, 'chris-premades', identifier, 'affects') === 'target') {
+    const {affects, requireCondition} = automationUtils.getGenericConfigValues(activity, 'chris-premades', identifier, ['affects', 'requireCondition']);
+    if (affects === 'target') {
         const targetActor = getTargetActor(config);
-        if (!targetActor || getConditions(activity, identifier, targetActor)?.length) return;
+        if (!targetActor || !requireCondition || getConditions(activity, identifier, targetActor)?.length) return;
         Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No removable conditions on target.');
         return true;
     }
@@ -21,18 +22,21 @@ async function preChecks({activity, config, macroClass: {identifier}}) {
         return;
     }
     const effects = getConditions(activity, identifier);
-    if (!effects?.length) {
+    if (!effects?.length && requireCondition) {
         Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No removable conditions on actor.');
         return true;
     }
     workflowUtils.setWorkflowProperty(config.workflow, 'choiceRemoveCondition', effects);
 }
-async function remove({workflow, macroClass: {identifier}}) {
-    const {affects, count, targetChooses, autoSingle} = automationUtils.getGenericConfigValues(workflow.activity, 'chris-premades', identifier, configKeys);
-    const actor = affects === 'target' ? workflow.targets.first()?.actor : workflow.actor;
-    if (!actor) return;
-    const conditions = affects === 'target' ? getConditions(workflow.activity, identifier, actor) : workflowUtils.getWorkflowProperty(workflow, 'choiceRemoveCondition');
-    if (!conditions?.length) return;
+async function removeEffects(actor, selected) {
+    const exhaustionId = CONFIG.ActiveEffect.documentClass.ID.EXHAUSTION;
+    if (selected.some(effect => effect.id === exhaustionId)) await actorUtils.addExhaustion(actor, -1);
+    const effects = selected.filter(effect => effect.id !== exhaustionId);
+    const owned = effects.filter(effect => effect.parent === actor).map(effect => effect.id);
+    if (owned.length) await documentUtils.deleteEmbeddedDocuments(actor, 'ActiveEffect', owned);
+    await Promise.all(effects.filter(effect => effect.parent !== actor).map(effect => documentUtils.deleteDocument(effect)));
+}
+async function chooseConditions(workflow, actor, conditions, {affects, count, targetChooses, autoSingle}) {
     const max = Math.max(1, rollUtils.rollDiceSync(String(count), {document: workflow.activity}).total);
     let selected;
     if (autoSingle && conditions.length <= max) {
@@ -48,12 +52,24 @@ async function remove({workflow, macroClass: {identifier}}) {
         if (!selection) return;
         selected = max > 1 ? selection.filter(i => i.amount).map(i => i.document) : [selection];
     }
-    const exhaustionId = CONFIG.ActiveEffect.documentClass.ID.EXHAUSTION;
-    if (selected.some(effect => effect.id === exhaustionId)) await actorUtils.addExhaustion(actor, -1);
-    const effects = selected.filter(effect => effect.id !== exhaustionId);
-    const owned = effects.filter(effect => effect.parent === actor).map(effect => effect.id);
-    if (owned.length) await documentUtils.deleteEmbeddedDocuments(actor, 'ActiveEffect', owned);
-    await Promise.all(effects.filter(effect => effect.parent !== actor).map(effect => documentUtils.deleteDocument(effect)));
+    await removeEffects(actor, selected);
+}
+async function reactionRemove(item, actor, reactionConditions) {
+    if (!reactionConditions?.length || actorUtils.hasUsedReaction(actor)) return;
+    const effects = actorUtils.getStatusSources(actor, reactionConditions);
+    if (!effects?.length) return;
+    const content = _loc('CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.ReactionPrompt', {conditions: effects.map(effect => effect.name).join(', ')});
+    if (!await dialogUtils.confirm(item.name, content, {userId: queryUtils.firstOwner(actor, true)})) return;
+    await actorUtils.setReactionUsed(actor);
+    await removeEffects(actor, effects);
+}
+async function remove({workflow, macroClass: {identifier}}) {
+    const config = automationUtils.getGenericConfigValues(workflow.activity, 'chris-premades', identifier, configKeys);
+    const actor = config.affects === 'target' ? workflow.targets.first()?.actor : workflow.actor;
+    if (!actor) return;
+    const conditions = config.affects === 'target' ? getConditions(workflow.activity, identifier, actor) : workflowUtils.getWorkflowProperty(workflow, 'choiceRemoveCondition');
+    if (conditions?.length) await chooseConditions(workflow, actor, conditions, config);
+    await reactionRemove(workflow.item, actor, config.reactionConditions);
 }
 async function rollFeature({document: activity, macroClass: {identifier}}) {
     const conditions = getConditions(activity, identifier);
@@ -78,6 +94,8 @@ async function rollFeature({document: activity, macroClass: {identifier}}) {
  * - `count`: formula for how many conditions can be removed per use.
  * - `targetChooses`: with `affects` set to target, the target's owner picks the conditions.
  * - `autoSingle`: remove the conditions without a prompt when no more than `count` qualify.
+ * - `requireCondition`: cancel the use when the creature has none of the conditions.
+ * - `reactionConditions`: conditions the creature can end with its reaction.
  */
 export const choiceRemoveCondition = {
     rules: 'all',
@@ -136,6 +154,21 @@ export const choiceRemoveCondition = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.AutoSingle',
             hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.AutoSingleHint'
+        },
+        requireCondition: {
+            default: true,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.RequireCondition',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.RequireConditionHint'
+        },
+        reactionConditions: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.ReactionConditions',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.ReactionConditionsHint',
+            get options() { return constants.statusOptions;}
         }
     }
 };
