@@ -1,8 +1,8 @@
 import {animationUtils, regionUtils} from '../../../proxy.mjs';
-import {addCast, casts, getPalette, partOption, persistName, pickFile} from '../generic/spellParts.mjs';
-import {addFill} from '../generic/wallParts.mjs';
+import {addCast, casts, getPalette, partOption, pickFile} from '../generic/spellParts.mjs';
+import {addFill, moveFill} from '../generic/wallParts.mjs';
 function addCloud(sequence, region, {fadeIn}) {
-    addFill(sequence, region, pickFile('jb2a.fog_cloud.02.green', 'jb2a.fog_cloud.01.white'), {prefix: 'cloudkill', opacity: 0.6, belowTokens: false, fadeIn, zIndex: 1});
+    addFill(sequence, region, pickFile('jb2a.ambient_fog.001.loop.large.greenyellow', 'jb2a.fog_cloud.02.green', 'jb2a.fog_cloud.01.white'), {prefix: 'cloudkill', opacity: 0.6, belowTokens: false, fadeIn, zIndex: 1});
 }
 async function play(sourceToken, region, {cast = true} = {}) {
     if (!region) return;
@@ -34,7 +34,7 @@ async function play(sourceToken, region, {cast = true} = {}) {
     await sequence.play();
 }
 async function move(region) {
-    await Sequencer.EffectManager.endEffects({name: persistName('cloudkill', region)});
+    if (await moveFill(region, 'cloudkill')) return;
     const sequence = new Sequence();
     addCloud(sequence, region, {fadeIn: 500});
     await sequence.play();

@@ -268,7 +268,14 @@ export { durableMagic as 'durable-magic' } from './legacy/classFeatures/wizard/w
 /*         EQUIPMENT          */
 /*============================*/
 export { amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect' } from './legacy/equipment/amuletOfTheLycanthrope.mjs';
-export { dancingSword as 'dancing-sword' } from './legacy/equipment/dancingSword.mjs';
+export {
+    dancingSword as 'dancing-sword',
+    dancingSword as 'dancing-greatsword',
+    dancingSword as 'dancing-longsword',
+    dancingSword as 'dancing-rapier',
+    dancingSword as 'dancing-scimitar',
+    dancingSword as 'dancing-shortsword'
+} from './legacy/equipment/dancingSword.mjs';
 export { harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect' } from './legacy/equipment/harkonsBite.mjs';
 
 /*============================*/

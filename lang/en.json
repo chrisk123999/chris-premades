@@ -125,7 +125,8 @@
                 "PersistHint": "Keep a looping effect over the area until the area is removed.",
                 "Shimmer": "Heat Embers",
                 "Tether": "Tether",
-                "Ground": "Ground"
+                "Ground": "Ground",
+                "Tint": "Damage Tint"
             },
             "StepOfTheWind": "Step of the Wind",
             "SummonSoundHint": "Audio file played as the summon appears.",
@@ -295,7 +296,26 @@
             "ChainLightning": "Chain Lightning",
             "Disintegrate": "Disintegrate",
             "TeleportSpell": "Teleport",
-            "ConjureCelestial": "Conjure Celestial"
+            "ConjureCelestial": "Conjure Celestial",
+            "WeaponAttack": {
+                "Name": "Weapon Attack",
+                "StyleHint": "Auto picks a swing, throw or shot based on the weapon and how it attacks.",
+                "Styles": {
+                    "Auto": "Auto",
+                    "Melee": "Melee Swing",
+                    "Thrown": "Thrown",
+                    "Ranged": "Ranged Projectile",
+                    "Firearm": "Firearm"
+                },
+                "WeaponHint": "Auto uses the base weapon, or its damage type if that weapon has no animation of its own.",
+                "Projectile": "Projectile",
+                "ProjectileHint": "Auto uses the ammunition, then the base weapon.",
+                "TintHint": "Tints the weapon for non-physical damage.",
+                "ImpactHint": "Plays an impact on targets hit with non-physical damage.",
+                "SoundHint": "Plays with each attack.",
+                "Generic": "Generic Slash",
+                "Boulder": "Boulder"
+            }
         },
         "Config": {
             "Abilities": "Abilities",
@@ -336,6 +356,44 @@
             "ClassIdentifier": "Class Identifier",
             "Clear": "Clear saved choices each combat",
             "Color": "Color",
+            "Weapons": {
+                "Butterflysword": "Butterfly Sword",
+                "Bone": "Bone",
+                "Hammer": "Hammer",
+                "Wrench": "Wrench",
+                "Pan": "Frying Pan",
+                "Greatbone": "Great Bone",
+                "Khybersword": "Khyber Sword",
+                "Falchion": "Falchion",
+                "Katana": "Katana",
+                "Scythe": "Scythe",
+                "Nodachi": "Nodachi",
+                "MagicSword": {
+                    "Yellow": "Magic Sword (Yellow)",
+                    "DarkGreen": "Magic Sword (Dark Green)",
+                    "DarkPurple": "Magic Sword (Dark Purple)",
+                    "Blue": "Magic Sword (Blue)",
+                    "Orange": "Magic Sword (Orange)",
+                    "Random": "Magic Sword (Random)"
+                },
+                "MagicalGreatsword": {
+                    "DarkGreen": "Magical Greatsword (Dark Green)",
+                    "DarkPurple": "Magical Greatsword (Dark Purple)",
+                    "Blue": "Magical Greatsword (Blue)",
+                    "Orange": "Magical Greatsword (Orange)",
+                    "Random": "Magical Greatsword (Random)"
+                },
+                "Chakram": {
+                    "Style01": "Chakram (Style 1)",
+                    "Style02": "Chakram (Style 2)",
+                    "Style03": "Chakram (Style 3)"
+                },
+                "Shield": {
+                    "Style01": "Shield (Style 1)",
+                    "Style02": "Shield (Style 2)",
+                    "Style04": "Shield (Style 3)"
+                }
+            },
             "Colors": {
                 "Auto": "Auto (Damage Type)",
                 "Black": "Black",
@@ -1272,9 +1330,19 @@
                 "ProneOnHit": {
                     "MaxSizeHint": "Targets larger than this size are not knocked prone."
                 },
-                "AreaAnimation": {
+                "WeaponAnimation": {
+                    "ActivityHint": "Only animate this activity. Leave empty for all of them.",
+                    "Advanced": "Advanced",
+                    "AdvancedHint": "Play the Advanced Animation instead. Its options add blood, screen shake and thrown attacks.",
+                    "AdvancedAnimation": "Advanced Animation"
+                },
+                "SpellAnimation": {
+                    "TargetAnimation": "Target Animation",
+                    "TargetAnimationHint": "Plays from the caster to each target.",
+                    "AreaAnimation": "Area Animation",
+                    "AreaAnimationHint": "Plays on the area, or around the caster if there is none.",
                     "AreaOnly": "Area Activities Only",
-                    "AreaOnlyHint": "Only play for activities that have an area."
+                    "AreaOnlyHint": "Skip the area animation for activities without an area."
                 }
             },
             "Legacy": {

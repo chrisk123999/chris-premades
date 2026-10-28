@@ -1,5 +1,5 @@
 import {actorUtils, activityUtils, automationUtils, dialogUtils, itemUtils, Logging, queryUtils, workflowUtils} from '../../../proxy.mjs';
-import {playAreaAnimation} from '../../generic/areaAnimation.mjs';
+import {playAreaAnimation} from '../../generic/spellAnimation.mjs';
 function damage({workflow, targetToken, ditem}) {
     if (!workflow.token || workflow.activity.identifier === 'bloom') return;
     if (targetToken.disposition !== workflow.token.document.disposition) return;

@@ -18,6 +18,7 @@ async function use({document: activity, workflow, macroClass: {source, identifie
     let targetData = await getTargets(workflow, range, totalAttacks, config.skip, Array.from(preselected));
     if (!targetData) return;
     const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(workflow.item, 'animation', {source, identifier});
+    const ownAnimation = animation?.macros?.attack;
     while (totalAttacks > 0) {
         for (let s = 0; s < targetData.result.length; s++) {
             const target = targetData.result[s].document; 
@@ -26,8 +27,8 @@ async function use({document: activity, workflow, macroClass: {source, identifie
             if (targetData.skip && target.actor.system.attributes.hp.value <= 0) continue;
             for (let i = 0; i < attacks; i++) {
                 if (targetData.skip && target.actor.system.attributes.hp.value <= 0) break;
-                const workflow = await workflowUtils.syntheticItemRoll(strike, [target]);
-                if (animation?.macros?.attack) await animation.macros.attack(workflow.token.document, [target], {missed: !workflow.hitTargets.size, ...animationOptions});
+                const workflow = await workflowUtils.syntheticItemRoll(strike, [target], {options: ownAnimation ? {cat: {skipWeaponAnimation: true}} : {}});
+                if (ownAnimation) await ownAnimation(workflow.token.document, [target], {missed: !workflow.hitTargets.size, ...animationOptions});
                 totalAttacks--;
                 if (targetData.skip && target.actor.system.attributes.hp.value <= 0) break;
             }
@@ -73,7 +74,7 @@ async function getTargets(workflow, range, maxAmount, skipDeadAndUnconscious, ne
  */
 export const extraAttack = {
     rules: 'all',
-    version: '2.0.4',
+    version: '2.1.5',
     category: 'targeting',
     generic: true,
     documents: ['activity'],

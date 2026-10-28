@@ -250,7 +250,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.5"
       },
       "macros": {
         "roll": [
@@ -265,6 +265,16 @@
             "identifier": "spellAnimation"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBurst"
+            }
+          }
+        }
       }
     }
   },

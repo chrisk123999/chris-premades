@@ -842,7 +842,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.5"
       },
       "macros": {
         "roll": [
@@ -850,8 +850,23 @@
             "source": "chris-premades",
             "rules": "2024",
             "identifier": "unarmed-strike"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "weaponAnimation"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "weaponAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "weaponAttack"
+            }
+          }
+        }
       }
     }
   },

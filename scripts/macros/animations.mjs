@@ -39,6 +39,7 @@ export { smite } from './animations/generic/smite.mjs';
 export { airSummon, celestialSummon, defaultSummon, earthSummon, fiendSummon, fireSummon, futureSummon, natureSummon, shadowSummon, smokeSummon, waterSummon } from './animations/generic/summons.mjs';
 export { mistyStep } from './animations/generic/teleport.mjs';
 export { wall } from './animations/generic/wallParts.mjs';
+export { weaponAttack } from './animations/generic/weaponAttack.mjs';
 
 /*============================*/
 /*           SPELLS           */

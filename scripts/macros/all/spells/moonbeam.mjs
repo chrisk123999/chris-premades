@@ -1,5 +1,5 @@
 import {actorUtils, automationUtils, regionUtils, workflowUtils} from '../../../proxy.mjs';
-import {playAreaAnimation} from '../../generic/areaAnimation.mjs';
+import {playAreaAnimation} from '../../generic/spellAnimation.mjs';
 import {createRegionLight, prepareMovableRegion} from '../../generic/moveRegion.mjs';
 async function created({document: region, workflow}) {
     const originItem = regionUtils.getActivity(region)?.item;

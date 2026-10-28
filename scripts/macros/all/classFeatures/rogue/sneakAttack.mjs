@@ -1,4 +1,4 @@
-import {actorUtils, animationUtils, automationUtils, DamageBonus, documentUtils, Logging, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, DamageBonus, documentUtils, Logging, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
 import {addRiders, getTaggedRiders} from '../../../generic/attackRider.mjs';
 async function bonus({workflow, document}) {
     if (!workflow.item || !workflow.activity) return;
@@ -65,8 +65,7 @@ function riderInput(name, label, riders, selected) {
 async function use({workflow, bonus}) {
     const inCombat = workflow.token.document.inCombat;
     await workflowUtils.completeItemUse(bonus.document, Array.from(workflow.targets, token => token.document ?? token), {fast: true, consumeResources: inCombat, consumeUsage: inCombat});
-    const animationSetting = automationUtils.getConfigValue(bonus.document, 'animation');
-    const animation = animationUtils.getAnimation(animationSetting);
+    const {animation} = automationUtils.getResolvedAnimation(bonus.document, 'animation');
     const targetToken = workflow.targets.first().document;
     if (animation) {
         const attackType = workflow.rangeDetails.range > 5 ? 'ranged' : workflow.defaultDamageType;
@@ -101,7 +100,7 @@ function validate({bonus, strikes = []}) {
 }
 export const sneakAttack = {
     name: 'Sneak Attack',
-    version: '2.1.0',
+    version: '2.1.5',
     rules: 'all',
     roll: [
         {

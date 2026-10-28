@@ -1,5 +1,5 @@
 import {automationUtils, documentUtils, effectUtils} from '../../../proxy.mjs';
-import {playAreaAnimation} from '../../generic/areaAnimation.mjs';
+import {playAreaAnimation} from '../../generic/spellAnimation.mjs';
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'tashasCausticBrew') return;
     const region = workflow.template;
