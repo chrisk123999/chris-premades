@@ -1,0 +1,227 @@
+{
+  "name": "Potion of Advantage",
+  "type": "consumable",
+  "img": "icons/consumables/potions/bottle-round-corked-blue.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "QTIq4oxIeRHmZhPF",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "WBtW",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "identifier": "potion-of-advantage",
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "uncommon",
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "properties": [],
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true,
+      "max": "1"
+    },
+    "activities": {
+      "potionOfAdvanta1": {
+        "_id": "potionOfAdvanta1",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "potion-of-advantage",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "advantageEffect1"
+          }
+        ],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "potion-of-advantage"
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "advantageEffect1",
+      "name": "Potion of Advantage",
+      "img": "icons/consumables/potions/bottle-round-corked-blue.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": 3600,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "potionOfAdvantage",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "potion-of-advantage-effect"
+              }
+            ],
+            "check": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "potion-of-advantage-effect"
+              }
+            ],
+            "save": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "potion-of-advantage-effect"
+              }
+            ],
+            "skill": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "potion-of-advantage-effect"
+              }
+            ],
+            "tool": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "potion-of-advantage-effect"
+              }
+            ]
+          }
+        }
+      },
+      "system": {
+        "changes": []
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!QTIq4oxIeRHmZhPF.advantageEffect1"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBuff"
+            },
+            "includeSelf": true
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!QTIq4oxIeRHmZhPF"
+}

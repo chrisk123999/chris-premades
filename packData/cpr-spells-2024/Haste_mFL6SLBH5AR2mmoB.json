@@ -1,0 +1,242 @@
+{
+  "name": "Haste",
+  "type": "spell",
+  "img": "icons/magic/time/clock-spinning-gold-pink.webp",
+  "folder": "dIULQZnOw9ECXyoi",
+  "_id": "mFL6SLBH5AR2mmoB",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "PHB 2024",
+      "rules": "2024",
+      "revision": 1
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": null
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "type": "willing",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "ft",
+        "contiguous": false,
+        "type": "",
+        "stationary": false
+      }
+    },
+    "range": {
+      "value": "30",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "level": 3,
+    "school": "trs",
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "activities": {
+      "utilityHaste0001": {
+        "_id": "utilityHaste0001",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "haste",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "hasteEffect00001"
+          }
+        ],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "ft",
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "willing",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "haste"
+        }
+      }
+    },
+    "identifier": "haste",
+    "method": "spell",
+    "prepared": 0
+  },
+  "effects": [
+    {
+      "_id": "hasteEffect00001",
+      "name": "Haste",
+      "img": "icons/magic/time/clock-spinning-gold-pink.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": 60,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "haste",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "haste-effect"
+              }
+            ]
+          }
+        },
+        "chris-premades": {
+          "haste": {
+            "lethargy": "2024"
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.ac.bonus",
+            "type": "add",
+            "value": "2",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.dex.save.roll.mode",
+            "type": "add",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.attributes.movement.multiplier",
+            "type": "multiply",
+            "value": "2",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!mFL6SLBH5AR2mmoB.hasteEffect00001"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBuff"
+            },
+            "includeSelf": true
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!mFL6SLBH5AR2mmoB"
+}

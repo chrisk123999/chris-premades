@@ -4,8 +4,16 @@
 ## Breaking:
 - `areaAnimation` is merged into `spellAnimation` as its Area Animation. Both of `spellAnimation`'s animations now default to none.
 - `advancedMeleeAttack` is replaced by `weaponAnimation` with Advanced on. An empty Activity now animates every activity.
+## Automated Spells:
+- 3rd level: Haste (2014 and 2024). Lethargy follows each version's rules when the spell ends.
+## Automated Equipment:
+- 2014: Elixir of Health, Oil of Sharpness, Potion of Advantage, Potion of Aqueous Form, Potion of Diminution, Potion of Fire Breath, Potion of Giant Size, Potion of Growth, Potion of Heroism, Potion of Invisibility, Potion of Invulnerability, Potion of Maximum Power, Potion of Poison, Potion of Speed and Potion of Vitality.
+- 2024: Elixir of Health, Oil of Sharpness, Potion of Diminution, Potion of Fire Breath, Potion of Growth, Potion of Heroism, Potion of Invisibility, Potion of Invulnerability, Potion of Poison, Potion of Speed and Potion of Vitality.
+- Maximize Damage and Double Damage, for critical and fumble tables.
+- Potions of Diminution, Fire Breath, Giant Size, Growth and Poison have homebrew configs.
 ## Generic Macros:
-- New generic macro: `weaponAnimation`. It plays a weapon animation after each attack roll.
+- New generic macros: `modifyNextDamage`, `rolledDuration` and `weaponAnimation`. `weaponAnimation` plays a weapon animation after each attack roll.
+- `spellAnimation` has an Animate Self Utility option. It plays the Target Animation on the user for self-only utility activities.
 - `extraAttack` skips `weaponAnimation` when it plays its own animation.
 ## Animations:
 - New animation: Weapon Attack. It picks a swing, throw or shot from the base weapon and ammunition, tinted for non-physical damage.
@@ -14,6 +22,8 @@
 - Dancing Sword (2014): the floating weapon lunges at its target on each Dancing Attack.
 - Dancing weapons (2014) animate their normal attack with `weaponAnimation`.
 - Cloudkill's cloud uses JB2A's green ambient fog when JB2A Patreon is installed, and slides with the cloud's drift instead of fading out and back in.
+## Bug Fixes:
+- Enlarge/Reduce effects still resize and animate after their item is gone.
 # 2.1.4 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.4.

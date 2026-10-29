@@ -13,12 +13,12 @@ export function getTargetResult(workflow, token) {
 export function getTargetResults(workflow) {
     return Array.from(workflow.targets, token => ({token: token.document, ...getTargetResult(workflow, token)}));
 }
-export function playTargetAnimations(workflow, {animation, options}) {
+export function playTargetAnimations(workflow, {animation, options}, {includeSelf} = {}) {
     if (!workflow.token || !workflow.targets.size || !animation?.macros?.play) return;
     const damageType = getDamageType(workflow);
     for (const token of workflow.targets) {
         const self = token.document === workflow.token.document;
-        if (self && workflow.activity?.type === 'utility') continue;
+        if (self && workflow.activity?.type === 'utility' && !includeSelf) continue;
         animation.macros.play(self ? undefined : workflow.token.document, token.document, {...options, damageType, ...getTargetResult(workflow, token)});
     }
 }
@@ -38,7 +38,8 @@ function playArea(document, workflow) {
     playAreaAnimation(workflow, automationUtils.getResolvedAnimation(document, 'areaAnimation', {source: 'chris-premades', identifier: 'spellAnimation'}), {region});
 }
 function late({document, workflow}) {
-    playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'spellAnimation'}));
+    const includeSelf = automationUtils.getGenericConfigValue(document, 'chris-premades', 'spellAnimation', 'includeSelf');
+    playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'spellAnimation'}), {includeSelf});
     playArea(document, workflow);
 }
 /**
@@ -47,6 +48,7 @@ function late({document, workflow}) {
  *
  * Config:
  * - `animation`: played from the user to each target. Receives the damage type, each target's hit or save result, and whether the roll dropped it to 0 HP.
+ * - `includeSelf`: also play the target animation on the user for utility activities that affect only the user.
  * - `areaAnimation`: played over the placed region, or around the user when no region was placed. Receives the damage type and each target's hit or save result.
  * - `areaOnly`: only play the area animation for activities that have an area.
  */
@@ -73,6 +75,12 @@ export const spellAnimation = {
             inputs: ['sourceToken', 'targetToken', 'options'],
             label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.TargetAnimation',
             hint: 'CHRISPREMADES.Macros.Generic.SpellAnimation.TargetAnimationHint'
+        },
+        includeSelf: {
+            default: false,
+            type: 'checkbox',
+            category: 'animations',
+            label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.IncludeSelf'
         },
         areaAnimation: {
             default: {

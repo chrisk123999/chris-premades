@@ -1,0 +1,160 @@
+{
+  "name": "Maximize Damage",
+  "type": "feat",
+  "img": "icons/skills/movement/ball-spinning-blue.webp",
+  "folder": "homebrewFolder24",
+  "_id": "gX6VkczMgaFKcdnR",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "maximize-damage",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "Homebrew",
+      "rules": "2024",
+      "revision": 1
+    },
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "properties": [],
+    "activities": {
+      "maximizeDmgUse01": {
+        "_id": "maximizeDmgUse01",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "maximize-damage",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "maximizeDmgFx001"
+          }
+        ],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "maximize-damage"
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "maximizeDmgFx001",
+      "name": "Maximize Damage",
+      "img": "icons/skills/movement/ball-spinning-blue.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": null,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "maximizeDamage",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "modifyNextDamage"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "modifyNextDamage": {}
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": []
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!gX6VkczMgaFKcdnR.maximizeDmgFx001"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!gX6VkczMgaFKcdnR"
+}

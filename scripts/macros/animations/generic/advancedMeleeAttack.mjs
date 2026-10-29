@@ -321,7 +321,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
                     gridUnits: true,
                     ease: easeOption
                 })
-                .scale({ x: targetScale.x, y: targetScale.y })
+                .scale({x: targetScale.x, y: targetScale.y})
                 .duration(interval * 9)
                 .playIf(enableShake)
                 .zIndex(1)

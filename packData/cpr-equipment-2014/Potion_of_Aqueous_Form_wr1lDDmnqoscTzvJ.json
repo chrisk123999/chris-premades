@@ -1,0 +1,294 @@
+{
+  "name": "Potion of Aqueous Form",
+  "type": "consumable",
+  "img": "icons/consumables/potions/bottle-bulb-corked-labeled-blue.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "wr1lDDmnqoscTzvJ",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "MOoT",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "identifier": "potion-of-aqueous-form",
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "rare",
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "properties": [],
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true,
+      "max": "1"
+    },
+    "activities": {
+      "potionAqueousFo1": {
+        "_id": "potionAqueousFo1",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "potion-of-aqueous-form",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "aqueousFormEffct"
+          }
+        ],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "potion-of-aqueous-form"
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "aqueousFormEffct",
+      "name": "Potion of Aqueous Form",
+      "img": "icons/consumables/potions/bottle-bulb-corked-labeled-blue.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": 600,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "potionOfAqueousForm",
+          "specialDuration": [
+            "incapacitated"
+          ]
+        },
+        "dae": {
+          "specialDuration": [
+            "zeroHP"
+          ]
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.swim",
+            "type": "upgrade",
+            "value": "30",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "bludgeoning",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "piercing",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "slashing",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.bypasses",
+            "type": "add",
+            "value": "mgc",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.str.save.roll.mode",
+            "type": "add",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.dex.save.roll.mode",
+            "type": "add",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.con.save.roll.mode",
+            "type": "add",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.fail.attack.all",
+            "type": "override",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.fail.spell.vocal",
+            "type": "override",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.fail.spell.somatic",
+            "type": "override",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.fail.spell.material",
+            "type": "override",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!wr1lDDmnqoscTzvJ.aqueousFormEffct"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBuff"
+            },
+            "includeSelf": true
+          }
+        }
+      },
+      "animationGenericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "chris-premades": {
+              "castBuff": {
+                "color": "blue"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!wr1lDDmnqoscTzvJ"
+}
