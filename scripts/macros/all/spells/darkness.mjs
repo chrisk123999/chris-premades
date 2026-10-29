@@ -71,7 +71,7 @@ async function deleted({document: region}) {
 }
 export const darkness = {
     name: 'Darkness',
-    version: '2.0.0',
+    version: '2.1.5',
     rules: 'all',
     region: [
         {pass: 'created', macro: created, priority: 50},

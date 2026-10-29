@@ -7,14 +7,13 @@
 /*============================*/
 /*         ANIMATIONS         */
 /*============================*/
-export { advancedMeleeAttack } from './generic/advancedMeleeAttack.mjs';
-export { areaAnimation } from './generic/areaAnimation.mjs';
 export { endIfUnaffected } from './generic/endIfUnaffected.mjs';
 export { inheritCastLevel } from './generic/inheritCastLevel.mjs';
 export { moveRegion } from './generic/moveRegion.mjs';
 export { wallPanels, wallPermanence } from './generic/wallSpell.mjs';
 export { reflectOnHit } from './generic/reflectOnHit.mjs';
 export { spellAnimation } from './generic/spellAnimation.mjs';
+export { weaponAnimation } from './generic/weaponAnimation.mjs';
 
 /*============================*/
 /*          BEHAVIOR          */

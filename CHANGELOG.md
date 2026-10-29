@@ -1,3 +1,19 @@
+# 2.1.5 Pre-Release:
+## Update Notes:
+- Requires CAT 0.1.5.
+## Breaking:
+- `areaAnimation` is merged into `spellAnimation` as its Area Animation. Both of `spellAnimation`'s animations now default to none.
+- `advancedMeleeAttack` is replaced by `weaponAnimation` with Advanced on. An empty Activity now animates every activity.
+## Generic Macros:
+- New generic macro: `weaponAnimation`. It plays a weapon animation after each attack roll.
+- `extraAttack` skips `weaponAnimation` when it plays its own animation.
+## Animations:
+- New animation: Weapon Attack. It picks a swing, throw or shot from the base weapon and ammunition, tinted for non-physical damage.
+- Weapon Attack lists the system's base weapons and ammunition. Weapons without their own animation use one for their damage type.
+- Advanced Melee Attack works with the free JB2A module.
+- Dancing Sword (2014): the floating weapon lunges at its target on each Dancing Attack.
+- Dancing weapons (2014) animate their normal attack with `weaponAnimation`.
+- Cloudkill's cloud uses JB2A's green ambient fog when JB2A Patreon is installed, and slides with the cloud's drift instead of fading out and back in.
 # 2.1.4 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.4.

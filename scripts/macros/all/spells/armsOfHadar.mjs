@@ -1,5 +1,5 @@
 import {actorUtils, automationUtils} from '../../../proxy.mjs';
-import {playAreaAnimation} from '../../generic/areaAnimation.mjs';
+import {playAreaAnimation} from '../../generic/spellAnimation.mjs';
 async function late({document, workflow}) {
     playAreaAnimation(workflow, automationUtils.getResolvedAnimation(document, 'animation'));
     await Promise.all(Array.from(workflow.failedSaves, token => actorUtils.setReactionUsed(token.actor)));

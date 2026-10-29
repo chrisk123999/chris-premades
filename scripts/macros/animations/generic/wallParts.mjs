@@ -69,6 +69,19 @@ export function addFill(sequence, region, file, {prefix, opacity = 1, belowToken
     /* eslint-enable indent */
 }
 /**
+ * Move a region's persisted fill to the region's current bounds.
+ * @param {object} region Region the fill is tied to.
+ * @param {string} prefix Name prefix the fill was added with.
+ * @returns {Promise<boolean>} False when the region has no fill to move.
+ */
+export async function moveFill(region, prefix) {
+    const [effect] = Sequencer.EffectManager.getEffects({name: persistName(prefix, region)});
+    if (!effect) return false;
+    const {x, y, width, height} = region.bounds;
+    await effect.update({source: {...effect.data.source, x: x + width / 2, y: y + height / 2}, size: {...effect.data.size, width, height}});
+    return true;
+}
+/**
  * Repeat a looping square asset at even spacing along a wall's whole path
  * @param {Sequence} sequence Sequence to add to.
  * @param {object} region Wall region the effects are tied to.

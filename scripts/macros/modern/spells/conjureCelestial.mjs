@@ -1,5 +1,5 @@
 import {automationUtils, regionUtils} from '../../../proxy.mjs';
-import {playAreaAnimation} from '../../generic/areaAnimation.mjs';
+import {playAreaAnimation} from '../../generic/spellAnimation.mjs';
 import {prepareMovableRegion} from '../../generic/moveRegion.mjs';
 import {moved} from '../../all/spells/moonbeam.mjs';
 async function created({document: region, workflow}) {

@@ -1,4 +1,4 @@
-import {actorUtils, animationUtils, automationUtils, crosshairUtils, dialogUtils, Logging, tokenUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, crosshairUtils, dialogUtils, Logging, tokenUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const token = workflow.token.document;
     const range = automationUtils.getConfigValue(document, 'range');
@@ -23,12 +23,12 @@ async function use({document, workflow}) {
         }
     });
     if (!destination || destination.cancelled) return;
-    const animation = animationUtils.getAnimation(automationUtils.getConfigValue(document, 'animation'));
-    await tokenUtils.teleportToken(token, {destination, animation, range});
+    const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
+    await tokenUtils.teleportToken(token, {destination, animation, options, range});
 }
 export const relentlessHex = {
     name: 'Eldritch Invocations: Relentless Hex',
-    version: '2.0.0',
+    version: '2.1.5',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50}

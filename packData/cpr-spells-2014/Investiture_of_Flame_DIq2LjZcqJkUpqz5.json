@@ -513,20 +513,24 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.5"
       },
       "macros": {
         "roll": [
           {
             "source": "chris-premades",
             "rules": "all",
-            "identifier": "areaAnimation"
+            "identifier": "spellAnimation"
           }
         ]
       },
       "genericConfig": {
         "chris-premades": {
-          "areaAnimation": {
+          "spellAnimation": {
+            "areaAnimation": {
+              "source": "chris-premades",
+              "identifier": "castArea"
+            },
             "areaOnly": true
           }
         }

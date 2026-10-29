@@ -1130,7 +1130,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.5"
       },
       "macros": {
         "roll": [
@@ -1142,14 +1142,14 @@
           {
             "source": "chris-premades",
             "rules": "all",
-            "identifier": "areaAnimation"
+            "identifier": "spellAnimation"
           }
         ]
       },
       "genericConfig": {
         "chris-premades": {
-          "areaAnimation": {
-            "animation": {
+          "spellAnimation": {
+            "areaAnimation": {
               "source": "chris-premades",
               "identifier": "castArea"
             }
@@ -1158,7 +1158,7 @@
       },
       "animationGenericConfig": {
         "chris-premades": {
-          "areaAnimation": {
+          "spellAnimation": {
             "chris-premades": {
               "castArea": {
                 "color": "yellow"

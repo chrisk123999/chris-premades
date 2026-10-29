@@ -31,7 +31,7 @@ const palettes = {
 };
 function getItemColor(activity) {
     if (!activity?.item) return;
-    const {animation, options} = automationUtils.getResolvedAnimation(activity.item, 'animation', {source: 'chris-premades', identifier: 'areaAnimation'});
+    const {animation, options} = automationUtils.getResolvedAnimation(activity.item, 'areaAnimation', {source: 'chris-premades', identifier: 'spellAnimation'});
     if (animation?.macros.create === create) return options.color;
 }
 async function play(sourceToken, region, {color = 'blue', cast = true, radius} = {}) {

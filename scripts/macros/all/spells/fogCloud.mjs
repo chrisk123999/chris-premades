@@ -1,6 +1,6 @@
 import cprConstants from '../../../constants.mjs';
 import {automationUtils, documentUtils, regionUtils} from '../../../proxy.mjs';
-import {playAreaAnimation} from '../../generic/areaAnimation.mjs';
+import {playAreaAnimation} from '../../generic/spellAnimation.mjs';
 import {createLight} from './darkness.mjs';
 async function created({document: region, workflow}) {
     const originItem = regionUtils.getActivity(region)?.item;
@@ -12,7 +12,7 @@ async function created({document: region, workflow}) {
 }
 export const fogCloud = {
     name: 'Fog Cloud',
-    version: '2.1.3',
+    version: '2.1.5',
     rules: 'all',
     region: [
         {pass: 'created', macro: created, priority: 50}

@@ -1,5 +1,6 @@
-import {animationUtils, documentUtils, genericUtils, itemUtils, Logging, summonUtils, tokenUtils} from '../../../proxy.mjs';
+import {animationUtils, automationUtils, documentUtils, genericUtils, itemUtils, Logging, summonUtils, tokenUtils} from '../../../proxy.mjs';
 import {pickFile} from '../../animations/generic/spellParts.mjs';
+import {getDamageType, getTargetResult} from '../../generic/spellAnimation.mjs';
 const attackIdentifier = 'dancing-attack';
 function getSword(item) {
     return summonUtils.getSummonsBySource(item).find(summon => summon.token)?.token;
@@ -30,14 +31,23 @@ async function fly({document, workflow}) {
     const side = (from, to, size) => from > to ? to + size * grid : from < to ? to - grid : to;
     await tokenUtils.displaceToken(sword, {destination: {x: side(sword.x, target.x, target.width), y: side(sword.y, target.y, target.height)}, action: 'fly'});
 }
+async function animate(document, workflow) {
+    const sword = getSword(document);
+    const targetToken = workflow.targets.first();
+    if (!sword || !targetToken) return;
+    const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
+    if (!animation?.macros?.play) return;
+    await animation.macros.play(sword, targetToken.document, {...options, damageType: getDamageType(workflow), ...getTargetResult(workflow, targetToken)});
+}
 async function returned({document, workflow}) {
     if (workflow.activity.identifier !== attackIdentifier) return;
+    await animate(document, workflow);
     if (itemUtils.getActivityByIdentifier(document.actor.items.get(document.id) ?? document, attackIdentifier)?.uses.value) return;
     await Promise.all(summonUtils.getSummonsBySource(document).map(summon => summonUtils.deleteSummon(summon)));
 }
 export const dancingSword = {
     name: 'Dancing Sword',
-    version: '2.1.3',
+    version: '2.1.5',
     rules: '2014',
     roll: [
         {pass: 'itemPreambleComplete', macro: fly, priority: 50},
@@ -46,5 +56,17 @@ export const dancingSword = {
     summon: [
         {pass: 'preCreate', macro: preCreate, priority: 50},
         {pass: 'create', macro: created, priority: 50}
-    ]
+    ],
+    config: {
+        animation: {
+            default: {
+                source: 'chris-premades',
+                identifier: 'spiritualWeapon'
+            },
+            type: 'selectAnimation',
+            inputs: ['sourceToken', 'targetToken', 'options'],
+            label: 'CHRISPREMADES.Config.Animation',
+            category: 'animations'
+        }
+    }
 };
