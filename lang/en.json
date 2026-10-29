@@ -1339,6 +1339,7 @@
                     "NoValid": "No valid weapons available!",
                     "Proficiency": "Require Proficiency"
                 },
+                "DemiurgicColossus": "This overrides the setting from the previous feature.",
                 "DestroyUndead": "Maximum CR",
                 "DivineSmite": {
                     "Ranged": "Allow Smites on Ranged Attacks",
@@ -1359,6 +1360,11 @@
                 },
                 "EldritchSmite": {
                     "Prone": "Knock the target prone?"
+                },
+                "ElementalCleaver": {
+                    "Damage": "Elemental Cleaver Damage Bonus",
+                    "DemurgicHint": "If you have the Demiurgic Colossus feature, it will override this value with its own.",
+                    "NoActive": "You have no active Elemental Cleaver!"
                 },
                 "ExpertDivination": {
                     "MaxSlotLevel": "Maximum Slot Level",
@@ -1392,6 +1398,10 @@
                     "Keen": "Tracking or Stalking Prey"
                 },
                 "Frenzy": "Make a bonus action attack with a melee weapon?",
+                "GiantsHavoc": {
+                    "PromptSingle": "Do you have room to grow to {size} size?",
+                    "PromptMany": "Choose a size for which you have room."
+                },
                 "GraspOfHadar": {
                     "Select": "Choose a creature to pull with {item}."
                 },
@@ -1511,6 +1521,9 @@
                     "TwinnedUpcastTargets": "Cannot upcast & twin this spell!",
                     "TwinnedWhich": "Spend the spell's level in Sorcery Points (minimum 1) and cast which spell?",
                     "Which": "Spend {cost} Sorcery Point{plural} and cast which spell?"
+                },
+                "MightyImpel": {
+                    "Size": "Mighty Impel Size Limit"
                 },
                 "NaturalAttunement": {
                     "Arctic": "Arctic Spells",

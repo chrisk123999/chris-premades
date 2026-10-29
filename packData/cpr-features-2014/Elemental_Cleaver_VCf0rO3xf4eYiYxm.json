@@ -1,0 +1,389 @@
+{
+  "name": "Elemental Cleaver",
+  "type": "feat",
+  "effects": [
+    {
+      "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+      "name": "Elemental Cleaver",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "value": "{}: Elemental Cleaver",
+            "type": "override",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "BOZvb1goULub3Uo7",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.properties",
+            "value": "thr",
+            "type": "add",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "Bq8GFMY6LXXOlWd1",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.range.value",
+            "value": 20,
+            "type": "upgrade",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "JZHAHE1dnMFe04nT",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.range.long",
+            "value": 60,
+            "type": "upgrade",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "BG4R11Zbxq86KqLO",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "ret",
+            "phase": "initial",
+            "_id": "aeXoF6PSG7HL9SeO",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
+          },
+          {
+            "key": "system.damage.base.types",
+            "type": "override",
+            "value": "acid",
+            "phase": "initial",
+            "_id": "EqquooHhcsj3YeYt",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
+          },
+          {
+            "key": "system.damage.types",
+            "type": "override",
+            "value": "acid",
+            "phase": "initial",
+            "_id": "3XNFsYLLjbVTjAMC",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
+          },
+          {
+            "key": "system.damage.parts",
+            "type": "add",
+            "value": {
+              "custom": {
+                "enabled": true,
+                "formula": "1d6"
+              }
+            },
+            "phase": "initial",
+            "_id": "zy8p16GJohT5zI3p",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneName",
+          "enableCondition": "",
+          "disableCondition": "",
+          "applicationMode": "default",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "cat": {
+          "genericConfig": {
+            "chris-premades": {
+              "unhideActivities": {
+                "activityIds": [
+                  "KCxrTvVCnh0XjdXX"
+                ],
+                "favorite": true
+              }
+            }
+          },
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "unhideActivities",
+                "rules": "all"
+              }
+            ]
+          }
+        }
+      },
+      "description": "",
+      "type": "enchantment",
+      "_id": "QHd31zcqWf6aN7ae",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!VCf0rO3xf4eYiYxm.QHd31zcqWf6aN7ae"
+    }
+  ],
+  "system": {
+    "activities": {
+      "KCxrTvVCnh0XjdXX": {
+        "type": "utility",
+        "name": "Change Type",
+        "_id": "KCxrTvVCnh0XjdXX",
+        "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+        "sort": 100000,
+        "activation": {
+          "type": "bonus",
+          "override": false,
+          "condition": ""
+        },
+        "behaviors": [],
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "value": "",
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "expiry": null,
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2024",
+                  "identifier": "travelAlongTheTreePreChecks"
+                },
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "elemental-cleaver"
+                }
+              ],
+              "called": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "elemental-cleaver"
+                }
+              ]
+            }
+          }
+        },
+        "range": {
+          "units": "self",
+          "override": false,
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "none",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "elemental-cleaver",
+    "source": {
+      "book": "GotG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 6,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      }
+    }
+  },
+  "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+  "folder": "TtmTsZPFjyQw0nlS",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "VCf0rO3xf4eYiYxm",
+  "_key": "!items!VCf0rO3xf4eYiYxm"
+}

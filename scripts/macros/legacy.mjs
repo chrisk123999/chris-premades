@@ -69,6 +69,12 @@ export { infectiousFury as 'infectious-fury', infectiousFuryAttack } from './leg
 export { frenzy, frenzyRageEnd } from './legacy/classFeatures/barbarian/berserker/frenzy.mjs';
 export { intimidatingPresence as 'intimidating-presence', extendIntimidatingPresence, immuneIntimidatingPresence } from './legacy/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
 
+/*           Giant            */
+export { demiurgicColossus as 'demiurgic-colossus' } from './legacy/classFeatures/barbarian/giant/demiurgicColossus.mjs';
+export { elementalCleaver as 'elemental-cleaver' } from './legacy/classFeatures/barbarian/giant/elementalCleaver.mjs';
+export { giantsHavoc as 'giants-havoc', giantRage } from './legacy/classFeatures/barbarian/giant/giantsHavoc.mjs';
+export { mightyImpel as 'mighty-impel' } from './legacy/classFeatures/barbarian/giant/mightyImpel.mjs';
+
 /*        Totem Warrior       */
 export { bearAspect as 'aspect-of-the-beast-bear' } from './legacy/classFeatures/barbarian/totem/bearAspect.mjs';
 export { bearAttunement as 'totemic-attunement-bear', bearAttack, eagleAttunement as 'totemic-attunement-eagle' } from './legacy/classFeatures/barbarian/totem/totemicAttunement.mjs';
