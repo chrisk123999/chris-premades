@@ -1,0 +1,242 @@
+{
+  "name": "Oil of Sharpness",
+  "type": "consumable",
+  "img": "icons/consumables/potions/vial-ornet-silver-black.webp",
+  "folder": "7oCfRMcgCyAkhSWB",
+  "_id": "nWJH5VK7R1nzGSqd",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "oil-of-sharpness",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "DMG 2024",
+      "rules": "2024",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 20000,
+      "denomination": "gp"
+    },
+    "rarity": "veryRare",
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "currency": {
+      "pp": 0,
+      "gp": 0,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "properties": [
+      "mgc"
+    ],
+    "capacity": {
+      "type": "weight",
+      "value": null
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true,
+      "max": "1"
+    },
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "activities": {
+      "oilOfSharpness01": {
+        "_id": "oilOfSharpness01",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "oil-of-sharpness",
+        "activation": {
+          "type": "minute",
+          "value": 1,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "touch"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "oil-of-sharpness"
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "oilSharpnessFx01",
+      "name": "Oil of Sharpness",
+      "img": "icons/consumables/potions/vial-ornet-silver-black.webp",
+      "type": "enchantment",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": null,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "oilOfSharpness"
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "type": "override",
+            "value": "{} (Oil of Sharpness)",
+            "phase": "initial",
+            "priority": 50
+          },
+          {
+            "key": "system.properties",
+            "type": "add",
+            "value": "mgc",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.magicalBonus",
+            "type": "upgrade",
+            "value": "3",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!nWJH5VK7R1nzGSqd.oilSharpnessFx01"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "oil-of-sharpness"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBuff"
+            },
+            "includeSelf": true
+          }
+        }
+      },
+      "animationGenericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "chris-premades": {
+              "castBuff": {
+                "color": "blue"
+              }
+            }
+          }
+        }
+      },
+      "config": {
+        "ammunition": 20,
+        "meleeOnly": true
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!nWJH5VK7R1nzGSqd"
+}

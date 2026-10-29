@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "XWsA61aQHstVOwv7",
+  "name": "Potion of Fire Breath",
+  "color": null,
+  "sorting": "a",
+  "_id": "xCZ3L5MC1xPrIajf",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!xCZ3L5MC1xPrIajf"
+}

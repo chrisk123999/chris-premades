@@ -1,0 +1,220 @@
+{
+  "name": "Potion of Maximum Power",
+  "type": "consumable",
+  "img": "icons/consumables/potions/bottle-round-corked-yellow.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "DcNv734CqM6gbVp3",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "EGtW",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "identifier": "potion-of-maximum-power",
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "rare",
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "properties": [],
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true,
+      "max": "1"
+    },
+    "activities": {
+      "potionMaxPower01": {
+        "_id": "potionMaxPower01",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "potion-of-maximum-power",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "maxPowerEffect01"
+          }
+        ],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "potion-of-maximum-power"
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "maxPowerEffect01",
+      "name": "Potion of Maximum Power",
+      "img": "icons/consumables/potions/bottle-round-corked-yellow.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": 60,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "potionOfMaximumPower",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "modifyNextDamage"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "modifyNextDamage": {
+                "itemTypes": [
+                  "spell"
+                ],
+                "maxSpellLevel": 4
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": []
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!DcNv734CqM6gbVp3.maxPowerEffect01"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBuff"
+            },
+            "includeSelf": true
+          }
+        }
+      },
+      "animationGenericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "chris-premades": {
+              "castBuff": {
+                "color": "purple"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!DcNv734CqM6gbVp3"
+}

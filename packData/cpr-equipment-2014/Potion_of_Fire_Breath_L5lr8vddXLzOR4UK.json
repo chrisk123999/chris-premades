@@ -1,0 +1,206 @@
+{
+  "name": "Potion of Fire Breath",
+  "type": "consumable",
+  "img": "icons/consumables/potions/bottle-round-corked-yellow.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "L5lr8vddXLzOR4UK",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "DMG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "identifier": "potion-of-fire-breath",
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "uncommon",
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "properties": [],
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true,
+      "max": "1"
+    },
+    "activities": {
+      "potionFireBreath": {
+        "_id": "potionFireBreath",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "potion-of-fire-breath",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "fireBreathEffect"
+          }
+        ],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "potion-of-fire-breath"
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "fireBreathEffect",
+      "name": "Potion of Fire Breath",
+      "img": "icons/consumables/potions/bottle-round-corked-yellow.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": 3600,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "potionOfFireBreath"
+        }
+      },
+      "system": {
+        "changes": []
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!L5lr8vddXLzOR4UK.fireBreathEffect"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "potion-of-fire-breath"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBuff"
+            },
+            "includeSelf": true
+          }
+        }
+      },
+      "animationGenericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "chris-premades": {
+              "castBuff": {
+                "color": "red"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!L5lr8vddXLzOR4UK"
+}

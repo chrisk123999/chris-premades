@@ -926,6 +926,25 @@
                         "West": "west",
                         "Northwest": "northwest"
                     }
+                },
+                "PotionOfFireBreath": {
+                    "Attack": "Potion of Fire Breath Attack",
+                    "Dice": "Fire Damage Dice (d6)",
+                    "Uses": "Exhalations"
+                },
+                "PotionOfPoison": {
+                    "Dice": "Poison Damage Dice (d6)",
+                    "DiceHint": "0 uses the potion's own dice."
+                },
+                "OilOfSharpness": {
+                    "NoWeapons": "No eligible weapon or ammunition to coat.",
+                    "Select": "Which weapon or ammunition to coat?",
+                    "Ammunition": "Ammunition Coated",
+                    "MeleeOnly": "Melee Weapons Only"
+                },
+                "Haste": {
+                    "Lethargic": "Haste: Lethargic",
+                    "NoActions": "You can't take actions while lethargic."
                 }
             },
             "Generic": {
@@ -1342,7 +1361,17 @@
                     "AreaAnimation": "Area Animation",
                     "AreaAnimationHint": "Plays on the area, or around the caster if there is none.",
                     "AreaOnly": "Area Activities Only",
-                    "AreaOnlyHint": "Skip the area animation for activities without an area."
+                    "AreaOnlyHint": "Skip the area animation for activities without an area.",
+                    "IncludeSelf": "Animate Self Utility"
+                },
+                "ModifyNextDamage": {
+                    "Mode": "Mode",
+                    "Maximize": "Maximize",
+                    "Double": "Double",
+                    "Consume": "Remove After Use"
+                },
+                "RolledDuration": {
+                    "Units": "Duration Units"
                 }
             },
             "Legacy": {
@@ -1742,6 +1771,14 @@
                     "Big": "The target is too large to grasp.",
                     "NoGrapple": "The hand is not grappling a creature.",
                     "HalfCover": "Half Cover (Bigby's Hand)"
+                },
+                "PotionOfAdvantage": {
+                    "Use": "Gain advantage on this roll?"
+                },
+                "PotionOfGiantSize": {
+                    "DiceMultiplier": "Weapon Damage Dice Multiplier",
+                    "Strength": "Strength Score",
+                    "Size": "Size"
                 }
             },
             "Modern": {

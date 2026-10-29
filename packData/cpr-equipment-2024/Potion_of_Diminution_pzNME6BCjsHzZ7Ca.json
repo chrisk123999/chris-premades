@@ -1,0 +1,241 @@
+{
+  "name": "Potion of Diminution",
+  "type": "consumable",
+  "img": "icons/consumables/potions/bottle-bulb-corked-glowing-red.webp",
+  "folder": "7oCfRMcgCyAkhSWB",
+  "_id": "pzNME6BCjsHzZ7Ca",
+  "system": {
+    "activities": {
+      "potionOfDiminut1": {
+        "_id": "potionOfDiminut1",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "potion-of-diminution",
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "potion-of-diminution"
+        }
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true,
+      "max": "1"
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "potion-of-diminution",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "DMG 2024",
+      "rules": "2024",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0.5,
+      "units": "lb"
+    },
+    "price": {
+      "value": 2000,
+      "denomination": "gp"
+    },
+    "rarity": "rare",
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "damage": {
+      "base": {
+        "number": null,
+        "denomination": null,
+        "types": [],
+        "custom": {
+          "enabled": false
+        },
+        "scaling": {
+          "number": 1
+        }
+      },
+      "replace": false
+    },
+    "magicalBonus": null,
+    "properties": [
+      "mgc"
+    ]
+  },
+  "effects": [
+    {
+      "_id": "diminutionEffct1",
+      "name": "Potion of Diminution",
+      "img": "icons/consumables/potions/bottle-bulb-corked-glowing-red.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": null,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "reduce",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "enlarge-reduce-effect"
+              },
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "rolledDuration"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "rolledDuration": {}
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "system.rolls.damage.mwak.bonus",
+            "type": "add",
+            "value": "-1d4",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.rolls.damage.rwak.bonus",
+            "type": "add",
+            "value": "-1d4",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.str.check.roll.mode",
+            "type": "add",
+            "value": "-1",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.str.save.roll.mode",
+            "type": "add",
+            "value": "-1",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!pzNME6BCjsHzZ7Ca.diminutionEffct1"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "potion-of-diminution"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!pzNME6BCjsHzZ7Ca"
+}

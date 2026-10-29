@@ -1,0 +1,228 @@
+{
+  "name": "Potion of Invisibility",
+  "type": "consumable",
+  "img": "icons/consumables/potions/bottle-bulb-empty-glass.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "9ZnUt225YCoTT5XJ",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "DMG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0.1,
+      "units": "lb"
+    },
+    "price": {
+      "value": 20000,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "veryRare",
+    "identified": true,
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true,
+      "max": "1"
+    },
+    "damage": {
+      "base": {
+        "number": null,
+        "denomination": null,
+        "types": [],
+        "custom": {
+          "enabled": false
+        },
+        "scaling": {
+          "number": 1
+        }
+      },
+      "replace": false
+    },
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "unidentified": {
+      "description": "",
+      "name": "Unidentified Potion"
+    },
+    "container": null,
+    "properties": [
+      "mgc"
+    ],
+    "magicalBonus": null,
+    "activities": {
+      "potionOfInvisib1": {
+        "_id": "potionOfInvisib1",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "potion-of-invisibility",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "invisibilityFx01"
+          }
+        ],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "potion-of-invisibility"
+        }
+      }
+    },
+    "attuned": false,
+    "identifier": "potion-of-invisibility"
+  },
+  "effects": [
+    {
+      "_id": "invisibilityFx01",
+      "name": "Potion of Invisibility",
+      "img": "icons/consumables/potions/bottle-bulb-empty-glass.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [
+        "invisible"
+      ],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": 3600,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "potionOfInvisibility"
+        },
+        "dae": {
+          "specialDuration": [
+            "1Attack",
+            "1Spell"
+          ]
+        }
+      },
+      "system": {
+        "changes": []
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!9ZnUt225YCoTT5XJ.invisibilityFx01"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBuff"
+            },
+            "includeSelf": true
+          }
+        }
+      },
+      "animationGenericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "chris-premades": {
+              "castBuff": {
+                "color": "purple"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!9ZnUt225YCoTT5XJ"
+}

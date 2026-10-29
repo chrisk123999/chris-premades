@@ -1,0 +1,162 @@
+{
+  "name": "Double Damage",
+  "type": "feat",
+  "img": "icons/skills/movement/ball-spinning-blue.webp",
+  "folder": "homebrewFolder24",
+  "_id": "ZSixx2Bgh6KOViQV",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "double-damage",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "Homebrew",
+      "rules": "2024",
+      "revision": 1
+    },
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "properties": [],
+    "activities": {
+      "doubleDamageUse1": {
+        "_id": "doubleDamageUse1",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "double-damage",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "doubleDamageFx01"
+          }
+        ],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "double-damage"
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "doubleDamageFx01",
+      "name": "Double Damage",
+      "img": "icons/skills/movement/ball-spinning-blue.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": null,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "doubleDamage",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "modifyNextDamage"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "modifyNextDamage": {
+                "mode": "double"
+              }
+            }
+          }
+        }
+      },
+      "system": {
+        "changes": []
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!ZSixx2Bgh6KOViQV.doubleDamageFx01"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!ZSixx2Bgh6KOViQV"
+}

@@ -19,7 +19,7 @@ async function pounce(token, positions) {
                 .atLocation(from)   
                 .opacity(1)
                 .duration(1000)
-                .anchor({ x: 0.5, y: 1 })
+                .anchor({x: 0.5, y: 1})
                 .loopProperty('sprite', 'position.y', {values: [50, 0, 50], duration: 500})
                 .moveTowards(positions[e], {rotate: false})
                 .zIndex(2)

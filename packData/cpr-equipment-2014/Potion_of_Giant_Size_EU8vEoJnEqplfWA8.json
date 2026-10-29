@@ -1,0 +1,247 @@
+{
+  "name": "Potion of Giant Size",
+  "type": "consumable",
+  "img": "icons/consumables/potions/bottle-bulb-corked-labeled-blue.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "EU8vEoJnEqplfWA8",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "SKT",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "identifier": "potion-of-giant-size",
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "legendary",
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "properties": [],
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true,
+      "max": "1"
+    },
+    "activities": {
+      "potionGiantSize1": {
+        "_id": "potionGiantSize1",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "potion-of-giant-size",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "potion-of-giant-size"
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "giantSizeEffect1",
+      "name": "Potion of Giant Size",
+      "img": "icons/consumables/potions/bottle-bulb-corked-labeled-blue.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": 86400,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "potionOfGiantSize",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "potion-of-giant-size-effect"
+              }
+            ],
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "potion-of-giant-size-effect"
+              }
+            ]
+          }
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "system.abilities.str.value",
+            "type": "upgrade",
+            "value": "25",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.size",
+            "type": "override",
+            "value": "huge",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.range.mwak",
+            "type": "add",
+            "value": "5",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.range.msak",
+            "type": "add",
+            "value": "5",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!EU8vEoJnEqplfWA8.giantSizeEffect1"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.5"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "potion-of-giant-size"
+          },
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "spellAnimation"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "animation": {
+              "source": "chris-premades",
+              "identifier": "castBuff"
+            },
+            "includeSelf": true
+          }
+        }
+      },
+      "animationGenericConfig": {
+        "chris-premades": {
+          "spellAnimation": {
+            "chris-premades": {
+              "castBuff": {
+                "color": "red"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!EU8vEoJnEqplfWA8"
+}
