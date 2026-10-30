@@ -74,21 +74,21 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "14.6.0"
+          "minimum": "14.6.5"
         }
       },
       {
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "14.6.0"
+          "minimum": "14.6.4"
         }
       },
       {
         "id": "cat",
         "type": "module",
         "compatibility": {
-          "minimum": "0.1.4"
+          "minimum": "0.1.6"
         }
       }
     ]

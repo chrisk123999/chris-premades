@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
 export const subtleComponents = ['vocal', 'somatic'];
 function getAvailablePoints(actor) {
     return actorUtils.getItemByIdentifier(actor, 'font-of-magic')?.system.uses.value ?? 0;
@@ -89,36 +89,7 @@ async function damageEmpowered({document, workflow}) {
     const selection = await dialogUtils.selectDie(workflow.damageRolls, document.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.Empowered', {cost, max}), {max});
     if (!selection?.length) return;
     await workflowUtils.completeActivityUse(activity, []);
-    const rollData = document.getRollData();
-    const rerolls = [];
-    for (const key of selection) {
-        const [rollIndex, termIndex, resultIndex] = key.split('-').map(Number);
-        const term = workflow.damageRolls[rollIndex]?.terms[termIndex];
-        const result = term?.results[resultIndex];
-        if (!result) continue;
-        rerolls.push({result, faces: term.faces, original: result.result});
-    }
-    if (!rerolls.length) return;
-    const groups = rerolls.reduce((accumulator, reroll) => {
-        const group = accumulator.get(reroll.faces) ?? [];
-        group.push(reroll);
-        return accumulator.set(reroll.faces, group);
-    }, new Map());
-    const rolls = Array.from(groups, ([faces, group]) => new Roll(group.length + 'd' + faces, rollData));
-    const resolved = await rollUtils.resolveManualRolls(rolls, workflow.actor, document.name, {rollClass: Roll});
-    if (resolved === rolls) await Promise.all(rolls.map(async roll => await roll.evaluate()));
-    Array.from(groups.values()).forEach((group, groupIndex) => {
-        const results = resolved[groupIndex].terms[0].results;
-        group.forEach((reroll, index) => reroll.result.result = results[index].result);
-    });
-    const messageData = {
-        speaker: ChatMessage.implementation.getSpeaker({actor: workflow.actor}),
-        flavor: _loc('CHRISPREMADES.Macros.Legacy.Metamagic.Rerolled', {dice: rerolls.map(reroll => 'd' + reroll.faces + ' (' + reroll.original + ')').join(', ')}),
-        rolls: resolved
-    };
-    ChatMessage.implementation.applyMode(messageData, CONFIG.Dice.BasicRoll.getMessageMode());
-    await ChatMessage.implementation.create(messageData);
-    await workflow.setDamageRolls(workflow.damageRolls);
+    await workflowUtils.rerollDamageDice(workflow, selection, document);
 }
 async function useExtended({document, workflow}) {
     const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => (effectUtils.durationToSeconds(spell.system.duration.getEffectData()) ?? 0) >= 60));
@@ -250,7 +221,7 @@ async function earlyTwinned({workflow}) {
 }
 export const carefulSpell = {
     name: 'Metamagic: Careful Spell',
-    version: '2.0.4',
+    version: '2.1.6',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: useCareful, priority: 50}

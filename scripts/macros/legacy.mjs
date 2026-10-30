@@ -15,34 +15,24 @@
 /******************************/
 export {infuseItem as 'infuse-item'} from './legacy/classFeatures/artificer/infuseItem.mjs';
 export {
-    infusionCollectArmors,
-    infusionCollectArmorShield,
-    infusionCollectArmorRobes,
-    infusionCollectFoci,
-    infusionCollectShield,
-    infusionCollectWeapons,
-    infusionCollectAmmoWeapons,
-    infusionCollectThrownWeapons,
     infusionArcanePropulsion as 'infusion-arcane-propulsion-armor',
-    infusionArmorOfMagicalStrength as 'infusion-armor-of-magical-strength',
-    infusionArmorOfMagicalStrengthProne,
-    infusionBootsOfTheWindingPath as 'infusion-boots-of-the-winding-path',
+    infusionArmorOfMagicalStrength as 'infusion-armor-of-magical-strength', infusionBootsOfTheWindingPath as 'infusion-boots-of-the-winding-path',
     infusionEnhancedArcaneFocus as 'infusion-enhanced-arcane-focus',
     infusionEnhancedDefense as 'infusion-enhanced-defense',
     infusionEnhancedWeapon as 'infusion-enhanced-weapon',
     infusionHelmOfAwareness as 'infusion-helm-of-awareness',
-    infusionHomunculusServant as 'infusion-homunculus-servant',
-    infusionHomunculusServantChannel,
-    infusionHomunculusServantChannelEarly,
-    infusionHomunculusServantCommand,
-    infusionHomunculusServantDeath,
-    infusionMindSharpener as 'infusion-mind-sharpener',
+    infusionHomunculusServant as 'infusion-homunculus-servant', infusionMindSharpener as 'infusion-mind-sharpener',
     infusionRadiantWeapon as 'infusion-radiant-weapon',
     infusionRepeatingShot as 'infusion-repeating-shot',
     infusionRepulsionShield as 'infusion-repulsion-shield',
     infusionResistantArmor as 'infusion-resistant-armor',
     infusionReturningWeapon as 'infusion-returning-weapon',
-    infusionSpellRefuelingRing as 'infusion-spell-refueling-ring'
+    infusionSpellRefuelingRing as 'infusion-spell-refueling-ring', infusionArmorOfMagicalStrengthProne, infusionCollectAmmoWeapons, infusionCollectArmorRobes, infusionCollectArmors,
+    infusionCollectArmorShield, infusionCollectFoci,
+    infusionCollectShield, infusionCollectThrownWeapons, infusionCollectWeapons, infusionHomunculusServantChannel,
+    infusionHomunculusServantChannelEarly,
+    infusionHomunculusServantCommand,
+    infusionHomunculusServantDeath
 } from './legacy/classFeatures/artificer/infusions.mjs';
 export {rightToolForTheJob as 'the-right-tool-for-the-job'} from './legacy/classFeatures/artificer/rightToolForTheJob.mjs';
 export {soulOfArtifice as 'soul-of-artifice'} from './legacy/classFeatures/artificer/soulOfArtifice.mjs';
@@ -67,18 +57,18 @@ export {infectiousFury as 'infectious-fury', infectiousFuryAttack} from './legac
 
 /*         Berserker          */
 export {frenzy, frenzyRageEnd} from './legacy/classFeatures/barbarian/berserker/frenzy.mjs';
-export {intimidatingPresence as 'intimidating-presence', extendIntimidatingPresence, immuneIntimidatingPresence} from './legacy/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
+export {extendIntimidatingPresence, immuneIntimidatingPresence, intimidatingPresence as 'intimidating-presence'} from './legacy/classFeatures/barbarian/berserker/intimidatingPresence.mjs';
 
 /*           Giant            */
 export {demiurgicColossus as 'demiurgic-colossus'} from './legacy/classFeatures/barbarian/giant/demiurgicColossus.mjs';
 export {elementalCleaver as 'elemental-cleaver'} from './legacy/classFeatures/barbarian/giant/elementalCleaver.mjs';
-export {giantsHavoc as 'giants-havoc', giantRage} from './legacy/classFeatures/barbarian/giant/giantsHavoc.mjs';
+export {giantRage, giantsHavoc as 'giants-havoc'} from './legacy/classFeatures/barbarian/giant/giantsHavoc.mjs';
 export {mightyImpel as 'mighty-impel'} from './legacy/classFeatures/barbarian/giant/mightyImpel.mjs';
 
 /*        Totem Warrior       */
 export {bearAspect as 'aspect-of-the-beast-bear'} from './legacy/classFeatures/barbarian/totem/bearAspect.mjs';
-export {bearAttunement as 'totemic-attunement-bear', bearAttack, eagleAttunement as 'totemic-attunement-eagle'} from './legacy/classFeatures/barbarian/totem/totemicAttunement.mjs';
-export {bearTotem as 'totem-spirit-bear', eagleTotem as 'totem-spirit-eagle', tigerTotem as 'totem-spirit-tiger', tigerJump} from './legacy/classFeatures/barbarian/totem/totemSpirit.mjs';
+export {bearAttack, bearAttunement as 'totemic-attunement-bear', eagleAttunement as 'totemic-attunement-eagle'} from './legacy/classFeatures/barbarian/totem/totemicAttunement.mjs';
+export {tigerJump, bearTotem as 'totem-spirit-bear', eagleTotem as 'totem-spirit-eagle', tigerTotem as 'totem-spirit-tiger'} from './legacy/classFeatures/barbarian/totem/totemSpirit.mjs';
 
 /*         Wild Magic        */
 export {bolsteringMagic as 'bolstering-magic'} from './legacy/classFeatures/barbarian/pathOfWildMagic/bolsteringMagic.mjs';
@@ -275,20 +265,22 @@ export {durableMagic as 'durable-magic'} from './legacy/classFeatures/wizard/war
 /*============================*/
 export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect'} from './legacy/equipment/amuletOfTheLycanthrope.mjs';
 export {
-    dancingSword as 'dancing-sword',
     dancingSword as 'dancing-greatsword',
     dancingSword as 'dancing-longsword',
     dancingSword as 'dancing-rapier',
     dancingSword as 'dancing-scimitar',
-    dancingSword as 'dancing-shortsword'
+    dancingSword as 'dancing-shortsword', dancingSword as 'dancing-sword'
 } from './legacy/equipment/dancingSword.mjs';
 export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/equipment/harkonsBite.mjs';
 export {potionOfAdvantageEffect as 'potion-of-advantage-effect'} from './legacy/equipment/potionOfAdvantage.mjs';
 export {potionOfGiantSize as 'potion-of-giant-size', potionOfGiantSizeEffect as 'potion-of-giant-size-effect'} from './legacy/equipment/potionOfGiantSize.mjs';
+export {bg3Brace as 'bg3-brace', bg3GapingWounds as 'bg3-gaping-wounds', bg3WeaponAction as 'bg3-weapon-action'} from './legacy/homebrew/bg3WeaponActions.mjs';
+export {dmgCleave as 'dmg-cleave'} from './legacy/homebrew/dmgCleave.mjs';
 
 /*============================*/
 /*           SPELLS           */
 /*============================*/
+export {teleport} from './all/spells/teleport.mjs';
 export {absorbElements as 'absorb-elements'} from './legacy/spells/absorbElements.mjs';
 export {animateObjects as 'animate-objects'} from './legacy/spells/animateObjects.mjs';
 export {antagonize} from './legacy/spells/antagonize.mjs';
@@ -314,5 +306,4 @@ export {spiritOfDeathHaunt as 'spirit-of-death-haunt', spiritOfDeathHaunted as '
 export {stormSphere as 'storm-sphere'} from './legacy/spells/stormSphere.mjs';
 export {tashasCausticBrew as 'tashas-caustic-brew'} from './legacy/spells/tashasCausticBrew.mjs';
 export {tashasOtherworldlyGuise as 'tashas-otherworldly-guise'} from './legacy/spells/tashasOtherworldlyGuise.mjs';
-export {teleport} from './all/spells/teleport.mjs';
 export {witherAndBloom as 'wither-and-bloom'} from './legacy/spells/witherAndBloom.mjs';

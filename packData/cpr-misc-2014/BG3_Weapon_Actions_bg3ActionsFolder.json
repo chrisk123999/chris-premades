@@ -1,0 +1,11 @@
+{
+  "type": "Item",
+  "folder": "homebrewFolder14",
+  "name": "BG3 Weapon Actions",
+  "color": null,
+  "sorting": "a",
+  "_id": "bg3ActionsFolder",
+  "description": "",
+  "flags": {},
+  "_key": "!folders!bg3ActionsFolder"
+}
