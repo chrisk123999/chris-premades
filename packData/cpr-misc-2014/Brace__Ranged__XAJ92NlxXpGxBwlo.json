@@ -1,0 +1,174 @@
+{
+  "name": "Brace (Ranged)",
+  "type": "feat",
+  "img": "modules/chris-premades/images/bg3/BraceRanged.webp",
+  "folder": "bg3ActionsFolder",
+  "_id": "XAJ92NlxXpGxBwlo",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "brace-ranged",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "Baldur's Gate 3",
+      "rules": "2014",
+      "revision": 1
+    },
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "uses": {
+      "spent": 0,
+      "max": "",
+      "recovery": []
+    },
+    "properties": [],
+    "activities": {
+      "utilitybracerang": {
+        "_id": "utilitybracerang",
+        "type": "utility",
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "identifier": "brace-ranged",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "fxbracerangedxxx"
+          }
+        ],
+        "range": {
+          "override": true,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "self",
+            "special": ""
+          },
+          "override": true,
+          "prompt": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "brace-ranged"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "bg3-weapon-action"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "fxbracerangedxxx",
+      "name": "Brace (Ranged)",
+      "img": "modules/chris-premades/images/bg3/BraceRanged.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": null,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "bg3Brace",
+          "specialDuration": [
+            "turnEnd"
+          ],
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "2014",
+                "identifier": "bg3-brace"
+              }
+            ]
+          }
+        },
+        "chris-premades": {
+          "brace": "ranged"
+        }
+      },
+      "system": {
+        "changes": []
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!XAJ92NlxXpGxBwlo.fxbracerangedxxx"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.6"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!XAJ92NlxXpGxBwlo"
+}

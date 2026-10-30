@@ -1,11 +1,11 @@
-import {automationUtils, constants, dataUtils, documentUtils, effectUtils, genericUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {automationUtils, combatUtils, constants, dataUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function combat({document: item, macroClass: {identifier, source}}) {
     const enchant = item.effects.find(e => e.type === 'enchantment');
     if (!enchant) return Logging.addMacroWarning(source, identifier, `Battering Roots exited early due to a missing enchantment. (item) ${item.uuid}`);
     const parent = item.effects.find(e => e.type === 'base');
     if (!parent) return Logging.addMacroWarning(source, identifier, `Battering Roots exited early due to a missing effect. (item) ${item.uuid}`);
     const config = automationUtils.getConfigValues(item, Object.keys(batteringRoots.config));
-    const weapons = item.actor.itemTypes.weapon.filter(w => 
+    const weapons = item.actor.itemTypes.weapon.filter(w =>
         ['simpleM', 'martialM'].includes(w.system.type.value) &&
         (!config.properties.length || config.properties.some(p => w.system.properties.has(p)))
     );
@@ -28,21 +28,20 @@ async function combat({document: item, macroClass: {identifier, source}}) {
         };
     }));
 }
-async function attack({document: item, macroClass: {identifier, source}, workflow}) {
-    if (workflow.item.type !== 'weapon' || !workflow.hitTargets.size) return;
-    if (!workflowUtils.isAttackType(workflow, 'meleeWeaponAttack'))
-        return Logging.addMacroWarning(source, identifier, `Battering Roots exited early, not a melee weapon attack. (type) ${workflow.item.system.type.value}`);
+async function mastery({document: item, macroClass: {identifier, source}, data: {workflow, masteries, hit}}) {
+    if (!hit.length || !workflowUtils.isAttackType(workflow, 'meleeWeaponAttack')) return;
     const config = automationUtils.getConfigValues(item, ['masteries', 'properties']);
-    if (config.properties.length && !config.properties.some(p => workflow.item.system.properties.has(p)))
-        return Logging.addMacroWarning(source, identifier, `Battering Roots exited early, no matching weapon properties. (props) ${Array.from(workflow.item.system.properties).join(', ')} (expected) ${config.properties.join(', ')}`);
-    const unused = config.masteries.filter(m => m !== workflow.attackRoll.options.mastery);
-    if (!unused.length) return Logging.addMacroWarning(source, identifier, `Battering Roots exited early without any mastery options. (used) ${workflow.attackRoll.options.mastery} (options) ${config.masteries.join(', ')}`);
-    console.log('BATTERING ROOTS OPTIONS', unused);
-    // TODO mastery system
+    if (config.properties.length && !config.properties.some(p => workflow.item.system.properties.has(p))) return;
+    const unused = config.masteries.filter(m => !masteries.includes(m));
+    if (!unused.length) return Logging.addMacroWarning(source, identifier, `Battering Roots exited early without any mastery options. (used) ${masteries.join(', ')} (options) ${config.masteries.join(', ')}`);
+    if (!combatUtils.isOwnTurn(workflow.token)) return;
+    const buttons = [...unused.map(mastery => [itemUtils.getMasteryLabel(mastery), mastery]), ['CHRISPREMADES.Config.None', false]];
+    const selected = await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Macros.Modern.BatteringRoots.Select', buttons);
+    if (selected) masteries.push(selected);
 }
 export const batteringRoots = {
     name: 'Battering Roots',
-    version: '2.1.3',
+    version: '2.1.6',
     rules: '2024',
     combat: [
         {
@@ -51,11 +50,11 @@ export const batteringRoots = {
             priority: 200
         }
     ],
-    roll: [
+    called: [
         {
-            pass: 'actorRollFinished',
-            macro: attack,
-            priority:250
+            pass: 'actorWeaponMastery',
+            macro: mastery,
+            priority: 250
         }
     ],
     config: {

@@ -1,7 +1,17 @@
-import {api, constants as catConstants} from './proxy.mjs';
 import constants from './constants.mjs';
-import * as animations from './macros/animations.mjs';
 import {all, generic, legacy, modern} from './macros.mjs';
+import * as animations from './macros/animations.mjs';
+import {bg3Hooks} from './macros/legacy/homebrew/bg3WeaponActions.mjs';
+import {dmgCleaveHooks} from './macros/legacy/homebrew/dmgCleave.mjs';
+import * as weaponMasteries from './macros/weaponMasteries.mjs';
+import {api, constants as catConstants} from './proxy.mjs';
+import {registerSettings} from './settings.mjs';
+Hooks.once('catInit', () => {
+    registerSettings();
+    Hooks.on(catConstants.workflowHookNames.rollFinished, dmgCleaveHooks.rollFinished);
+});
+Hooks.on('updateItem', bg3Hooks.equipped);
+Hooks.on('dnd5e.restCompleted', bg3Hooks.rest);
 Hooks.once('catReady', () => {
     const validKeys = [...catConstants.triggerTypes, 'rules', 'generic', 'genericConfig', 'documents'];
     const ignoredPackIds = [constants.packs.samples.embeddedMacros, constants.packs.misc.automationItems];
@@ -33,6 +43,7 @@ Hooks.once('catReady', () => {
             });
         }
     });
+    Object.entries(weaponMasteries).forEach(([mastery, value]) => api.registerMastery({...value, mastery}));
     api.registerSourceName('chris-premades', 'Cauldron of Plentiful Resources');
     api.registerAutomationModule('chris-premades', {ignoredPackIds, infoFetcherCallback});
     api.postWelcome('chris-premades', {title: 'CHRISPREMADES.Welcome.Title', content: 'CHRISPREMADES.Welcome.Content'});

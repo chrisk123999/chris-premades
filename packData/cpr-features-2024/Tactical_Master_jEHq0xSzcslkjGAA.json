@@ -1,0 +1,110 @@
+{
+  "name": "Tactical Master",
+  "type": "feat",
+  "img": "icons/sundries/documents/blueprint-axe.webp",
+  "folder": "8ax5XkSTWyxxPBH8",
+  "_id": "jEHq0xSzcslkjGAA",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": 9,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "Fighter",
+    "activities": {},
+    "enchant": {},
+    "identifier": "tactical-master"
+  },
+  "effects": [
+    {
+      "_id": "tacticalMasterFx",
+      "name": "Tactical Master",
+      "img": "icons/sundries/documents/blueprint-axe.webp",
+      "type": "base",
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": null,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": "tacticalMaster"
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.weaponProf.mastery.bonus",
+            "type": "add",
+            "value": "push",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.weaponProf.mastery.bonus",
+            "type": "add",
+            "value": "sap",
+            "phase": "initial",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.weaponProf.mastery.bonus",
+            "type": "add",
+            "value": "slow",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!jEHq0xSzcslkjGAA.tacticalMasterFx"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.6"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!jEHq0xSzcslkjGAA"
+}

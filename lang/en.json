@@ -1611,7 +1611,6 @@
                     "Empowered": "Spend {cost} Sorcery Point to reroll damage dice? (Max {max})",
                     "HeightenedWhich": "Which target gets disadvantage?",
                     "NoValid": "No applicable spells to cast!",
-                    "Rerolled": "Rerolling {dice}",
                     "TransmutedFirst": "Which damage type will you replace?",
                     "TransmutedSecond": "Which damage type would you like to use instead?",
                     "TwinnedUpcast": "Not enough Sorcery Points to twin this spell when upcast!",
@@ -1779,6 +1778,35 @@
                     "DiceMultiplier": "Weapon Damage Dice Multiplier",
                     "Strength": "Strength Score",
                     "Size": "Size"
+                },
+                "BG3WeaponActions": {
+                    "NoWeapon": "You need an equipped weapon this action works with.",
+                    "NoUses": "No weapon action uses left until you rest.",
+                    "Weapons": {
+                        "backbreaker": "Backbreaker",
+                        "brace-melee": "Brace (Melee)",
+                        "brace-ranged": "Brace (Ranged)",
+                        "cleave": "Cleave",
+                        "concussive-smash": "Concussive Smash",
+                        "disarming-strike": "Disarming Strike",
+                        "flourish": "Flourish",
+                        "hamstring-shot": "Hamstring Shot",
+                        "heartstopper": "Heartstopper",
+                        "lacerate": "Lacerate",
+                        "maiming-strike": "Maiming Strike",
+                        "mobile-shot": "Mobile Shot",
+                        "piercing-shot": "Piercing Shot",
+                        "piercing-strike": "Piercing Strike",
+                        "pommel-strike": "Pommel Strike",
+                        "prepare": "Prepare",
+                        "rush": "Rush",
+                        "tenacity": "Tenacity",
+                        "topple": "Topple",
+                        "weakening-strike": "Weakening Strike"
+                    }
+                },
+                "DmgCleave": {
+                    "Use": "Carry the leftover damage to another creature?"
                 }
             },
             "Modern": {
@@ -2158,7 +2186,37 @@
                     "MaxLevel": "Max Spell Level",
                     "Rest": "Did you spend the day only doing light activity?",
                     "StressDuration": "Stress Duration Formula"
+                },
+                "BatteringRoots": {
+                    "Select": "Also use a mastery property from Battering Roots?"
                 }
+            }
+        },
+        "Settings": {
+            "Homebrew": {
+                "Name": "Homebrew Options",
+                "Label": "Homebrew",
+                "Hint": "Optional and variant rules."
+            },
+            "DmgCleave": {
+                "Name": "DMG Cleave",
+                "Hint": "Leftover melee damage that drops a creature carries to another creature within reach. From the 2014 Dungeon Master's Guide.",
+                "Off": "Disabled",
+                "Any": "Enabled (Any Health)",
+                "Full": "Enabled (Full Health Only)"
+            },
+            "Bg3WeaponActions": {
+                "Name": "BG3 Weapon Actions",
+                "Hint": "Equipped weapons gain weapon actions from Baldur's Gate 3."
+            },
+            "Bg3WeaponActionUses": {
+                "Name": "BG3 Weapon Action Uses",
+                "Hint": "Weapon actions each creature can use between rests."
+            },
+            "Bg3Weapons": {
+                "Name": "BG3 Action Weapons",
+                "Label": "Configure",
+                "Hint": "Weapons that grant each weapon action."
             }
         },
         "Summons": {
@@ -2228,6 +2286,60 @@
                 "Claws": "Claws",
                 "Rend": "Rend",
                 "Slam": "Slam"
+            }
+        },
+        "WeaponMasteries": {
+            "Automatic": {
+                "Label": "Automatic",
+                "Prompt": "Make two attacks with Disadvantage instead of one?"
+            },
+            "Brutal": {
+                "Label": "Brutal"
+            },
+            "Defending": {
+                "Label": "Defending",
+                "Prompt": "Use your Reaction to parry with {weapon}?"
+            },
+            "Disarming": {
+                "Label": "Disarming",
+                "Prompt": "Use your Bonus Action to disarm {target}?",
+                "Which": "Which weapon falls from the target's grasp?",
+                "Catch": "Catch {weapon} in your free hand?"
+            },
+            "Entangling": {
+                "Label": "Entangling",
+                "Prompt": "Use your Bonus Action to entangle {target}?",
+                "Restricted": "You can't attack a different creature while it is entangled by this weapon."
+            },
+            "Explode": {
+                "Label": "Explode",
+                "Prompt": "Replace this attack with an explosion?"
+            },
+            "Pull": {
+                "Label": "Pull",
+                "Prompt": "Pull {target} 5 feet toward you?",
+                "StepBack": "Move back 5 feet?"
+            },
+            "ScatterGHPG": {
+                "Label": "Scatter (Grim Hollow)",
+                "Range": "Scatter Range"
+            },
+            "ScatterVSoS": {
+                "Label": "Scatter (Valda's Spire)"
+            },
+            "Set": {
+                "Label": "Set",
+                "Prompt": "Use your Reaction to attack {target} with {weapon}?"
+            },
+            "Sighted": {
+                "Label": "Sighted",
+                "Prompt": "Choose damage dice to reroll."
+            },
+            "StrongDraw": {
+                "Label": "Strong-Draw"
+            },
+            "Swift": {
+                "Label": "Swift"
             }
         },
         "Welcome": {

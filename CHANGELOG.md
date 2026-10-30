@@ -1,3 +1,19 @@
+# 2.1.6 Pre-Release:
+## Update Notes:
+- Requires CAT 0.1.6.
+- Weapon Mastery is applied by CAT. Battering Roots offers Push or Topple through it.
+## Automated Features:
+- 2024 Fighter: Tactical Master.
+## Homebrew Options:
+- New settings menu: Homebrew Options.
+  - DMG Cleave: the 2014 Dungeon Master's Guide cleaving rule. Leftover melee damage that drops a creature carries to another creature within reach. It applies at any hit points or only at full hit points.
+  - BG3 Weapon Actions: equipped weapons gain Baldur's Gate 3 weapon actions as activities, using the weapon's own attack and damage.
+## Weapon Masteries:
+- Valda's Gunslinger: Automatic, Explode, Scatter and Sighted.
+- Grim Hollow: Brutal, Defending, Disarming, Entangling, Scatter (Grim Hollow), Set, Strong Draw and Swift.
+- Northlands: Pull.
+## Bug Fixes:
+- Metamagic's rerolled damage dice update the roll's total.
 # 2.1.5 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.5.

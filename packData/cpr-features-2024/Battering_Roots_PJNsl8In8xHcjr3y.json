@@ -184,17 +184,17 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.6"
       },
       "macros": {
-        "roll": [
+        "combat": [
           {
             "source": "chris-premades",
             "rules": "2024",
             "identifier": "battering-roots"
           }
         ],
-        "combat": [
+        "called": [
           {
             "source": "chris-premades",
             "rules": "2024",
