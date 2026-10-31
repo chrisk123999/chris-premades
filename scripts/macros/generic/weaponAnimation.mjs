@@ -13,22 +13,26 @@ async function attack({document, workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'weaponAnimation'});
     const ammunition = workflow.ammunition ?? workflow.actor?.items.get(workflow.attackRoll?.options?.ammunition);
     const attackMode = workflow.attackMode ?? workflow.attackRoll?.options?.attackMode;
-    playTargetAnimations(workflow, {animation, options: {...options, item: workflow.item, activity: workflow.activity, ammunition, attackMode}});
+    playTargetAnimations(workflow, {animation, options: {...options, item: workflow.item, activity: workflow.activity, ammunition, attackMode, misfire: workflowUtils.getWorkflowProperty(workflow, 'firearmMisfire')}});
+}
+async function saveShot({document, workflow}) {
+    if (workflow.activity?.type !== 'save' || document.type !== 'weapon') return;
+    await attack({document, workflow});
 }
 /**
- * Plays an attack animation from the attacker to each target after the attack roll.
- * Bound on an item. Fires on `itemAttackRollComplete`.
+ * Plays an attack animation from the attacker to each target after the attack roll, or after the saves for a weapon's save activity such as a cone or burst of fire.
+ * Bound on an item. Fires on `itemAttackRollComplete` and `itemSavesComplete`.
  * Set the workflow property `skipWeaponAnimation` to turn off.
  *
  * Config:
  * - `activityId`: only animate when this activity is used. Empty animates every activity.
  * - `advanced`: play `advancedAnimation` instead of `animation`.
- * - `animation`: played from the attacker to each target. The default, Weapon Attack, picks a swing, throw or shot from the weapon.
+ * - `animation`: played from the attacker to each target. The default, Weapon Attack, picks a swing, throw or shot from the weapon, and plays a smoke puff when a firearm misfires.
  * - `advancedAnimation`: played from the attacker to all targets, using the attack's range as the switch distance. The default is Advanced Melee Attack.
  */
 export const weaponAnimation = {
     rules: 'all',
-    version: '2.1.5',
+    version: '2.1.7',
     category: 'animations',
     generic: true,
     documents: ['item'],
@@ -36,6 +40,11 @@ export const weaponAnimation = {
         {
             pass: 'itemAttackRollComplete',
             macro: attack,
+            priority: 50
+        },
+        {
+            pass: 'itemSavesComplete',
+            macro: saveShot,
             priority: 50
         }
     ],

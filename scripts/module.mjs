@@ -12,6 +12,18 @@ Hooks.once('catInit', () => {
 });
 Hooks.on('updateItem', bg3Hooks.equipped);
 Hooks.on('dnd5e.restCompleted', bg3Hooks.rest);
+Hooks.once('init', () => {
+    const firearmKey = 'CHRISPREMADES.Macros.Generic.Firearm.';
+    CONFIG.DND5E.weaponTypes.firearm = firearmKey + 'Type';
+    CONFIG.DND5E.weaponTypeMap.firearm = 'ranged';
+    CONFIG.DND5E.weaponProficiencies.firearm = firearmKey + 'Proficiency';
+    CONFIG.DND5E.weaponProficienciesMap.firearm = 'firearm';
+    for (const property of constants.firearmProperties) {
+        CONFIG.DND5E.itemProperties[property] = {label: firearmKey + 'Properties.' + property.capitalize()};
+        CONFIG.DND5E.validProperties.weapon.add(property);
+    }
+    for (const [baseItem, uuid] of Object.entries(constants.firearmBaseItems)) CONFIG.DND5E.weaponIds[baseItem] = 'Compendium.' + uuid;
+});
 Hooks.once('catReady', () => {
     const validKeys = [...catConstants.triggerTypes, 'rules', 'generic', 'genericConfig', 'documents'];
     const ignoredPackIds = [constants.packs.samples.embeddedMacros, constants.packs.misc.automationItems];

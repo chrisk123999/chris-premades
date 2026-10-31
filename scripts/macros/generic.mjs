@@ -74,6 +74,7 @@ export {actionDismissal} from './generic/actionDismissal.mjs';
 export {choiceRemoveCondition, turnEndChoiceRemoveCondition, turnStartChoiceRemoveCondition} from './generic/choiceRemoveCondition.mjs';
 export {contestedCheck} from './generic/contestedCheck.mjs';
 export {pullOnFail, pullOnHit, pushOnFail, pushOnHit} from './generic/forcedMovement.mjs';
+export {firearm} from './generic/firearm.mjs';
 export {grapple} from './generic/grapple.mjs';
 export {heroicInspiration} from './generic/heroicInspiration.mjs';
 export {itemRecovery} from './generic/itemRecovery.mjs';

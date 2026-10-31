@@ -47,8 +47,8 @@ async function returned({document, workflow}) {
 }
 export const dancingSword = {
     name: 'Dancing Sword',
-    version: '2.1.5',
-    rules: '2014',
+    version: '2.1.7',
+    rules: 'all',
     roll: [
         {pass: 'itemPreambleComplete', macro: fly, priority: 50},
         {pass: 'itemRollFinished', macro: returned, priority: 50}
