@@ -1,3 +1,20 @@
+# 2.1.7 Pre-Release:
+## Update Notes:
+- Requires CAT 0.1.7.
+- Firearms have their own weapon type and Firearms proficiency. New weapon properties: Barrel, Blackpowder, Blaring, Burst Fire, Cumbersome, Explosive, Loud, Magazine, Recoil, Spread Fire and Twinned Barrel.
+- CPR's firearms are base weapons, so characters can choose them for weapon masteries.
+## Automated Equipment:
+- 2014: Blackrazor, Blood Spear, Crystal Blades, Dragon's Wrath Weapon, Grovelthrash, Javelin of Lightning and Ruin's Wake.
+- 2014 Exandria firearms: Bad News, Blunderbuss, Hand Mortar, Musket, Palm Pistol, Pepperbox, Pistol, Firearm and Firearm (CR). Each has Reload and Repair activities, which replace the Reload Firearm and Repair Firearm features.
+- 2024: Blackrazor, Dancing Greatsword, Dancing Longsword, Dancing Rapier, Dancing Scimitar, Dancing Shortsword, Javelin of Lightning, Lucent Destroyer, Rifle (Automatic) and Thunderbuss.
+- Third-party: Dragon Rifle (Grim Hollow).
+- Third-party firearms: Barron's Blunderbuss, Blunderbuss (Steinhardt's), Blunderbuss of the Grinning Sinner, Double-Barrel Shotgun, Flame Bellows, Meat Hookshot and Silver Eagle Musket.
+## Generic Macros:
+- New generic macro: `firearm`. A natural roll at or below the misfire score misses and damages the firearm, and a damaged or broken firearm can't attack. Its Repair activity rolls a Tinker's Tools check, and a failure breaks the firearm. It also applies the Recoil, Blaring and Explosive properties.
+- `weaponAnimation` also animates a weapon's save activities, such as a cone or burst of fire.
+## Animations:
+- Weapon Attack fires a bullet for firearms and plays a smoke puff when a firearm misfires. Explosive firearms add an explosion on a hit.
+- Weapon Attack swings for a melee attack with a firearm, and melee animations follow the rolled damage type. New projectile: Flame Jet.
 # 2.1.6 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.6.

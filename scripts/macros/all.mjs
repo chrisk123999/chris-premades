@@ -101,6 +101,18 @@ export {oneWithShadows as 'one-with-shadows'} from './all/classFeatures/warlock/
 /*         EQUIPMENT          */
 /*============================*/
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
+export {blackrazor as 'blackrazor', blackrazorDevoured as 'blackrazor-devoured'} from './all/equipment/blackrazor.mjs';
+export {
+    dancingSword as 'dancing-sword',
+    dancingSword as 'dancing-greatsword',
+    dancingSword as 'dancing-longsword',
+    dancingSword as 'dancing-rapier',
+    dancingSword as 'dancing-scimitar',
+    dancingSword as 'dancing-shortsword'
+} from './all/equipment/dancingSword.mjs';
+export {grinningSinner as 'grinning-sinner'} from './all/equipment/grinningSinner.mjs';
+export {javelinOfLightning as 'javelin-of-lightning'} from './all/equipment/javelinOfLightning.mjs';
+export {meatHookshot as 'meat-hookshot'} from './all/equipment/meatHookshot.mjs';
 export {mindSharpener as 'mind-sharpener'} from './all/equipment/mindSharpener.mjs';
 export {oilOfSharpness as 'oil-of-sharpness'} from './all/equipment/oilOfSharpness.mjs';
 export {potionOfFireBreath as 'potion-of-fire-breath', potionOfFireBreathAttack as 'potion-of-fire-breath-attack'} from './all/equipment/potionOfFireBreath.mjs';
@@ -108,7 +120,9 @@ export {potionOfGrowth as 'potion-of-growth', potionOfDiminution as 'potion-of-d
 export {potionOfPoison as 'potion-of-poison', potionOfPoisonEffect as 'potion-of-poison-effect'} from './all/equipment/potionOfPoison.mjs';
 export {potionOfVitality as 'potion-of-vitality', potionOfVitalityEffect as 'potion-of-vitality-effect'} from './all/equipment/potionOfVitality.mjs';
 export {repulsionShield as 'repulsion-shield'} from './all/equipment/repulsionShield.mjs';
+export {silverEagleMusket as 'silver-eagle-musket'} from './all/equipment/silverEagleMusket.mjs';
 export {spellRefuelingRing as 'spell-refueling-ring'} from './all/equipment/spellRefuelingRing.mjs';
+export {thunderbuss as 'thunderbuss'} from './all/equipment/thunderbuss.mjs';
 
 /*============================*/
 /*           FEATS            */

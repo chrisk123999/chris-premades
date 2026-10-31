@@ -314,7 +314,8 @@
                 "ImpactHint": "Plays an impact on targets hit with non-physical damage.",
                 "SoundHint": "Plays with each attack.",
                 "Generic": "Generic Slash",
-                "Boulder": "Boulder"
+                "Boulder": "Boulder",
+                "FlameJet": "Flame Jet"
             }
         },
         "Config": {
@@ -579,6 +580,9 @@
         },
         "Macros": {
             "All": {
+                "GrinningSinner": {
+                    "Jinx": "Sinner's Jinx"
+                },
                 "Banishment": {
                     "Native": "Which banished creatures are native to a different plane?"
                 },
@@ -1372,6 +1376,33 @@
                 },
                 "RolledDuration": {
                     "Units": "Duration Units"
+                },
+                "Firearm": {
+                    "Misfire": "Misfire Score",
+                    "UnproficientPenalty": "Misfire Increase Without Proficiency",
+                    "Damaged": "Damaged",
+                    "Broken": "Broken",
+                    "Unusable": "{item} is {status} and can't attack.",
+                    "Misfired": "{item} misfired!",
+                    "NoTinkers": "You have no Tinker's Tools to make the repair with!",
+                    "Repaired": "{item} is successfully repaired!",
+                    "Broke": "{item} is now broken!",
+                    "Type": "Firearm",
+                    "Proficiency": "Firearms",
+                    "Recoil": "{item}'s recoil prevents attacks beyond its normal range until the end of the turn.",
+                    "Properties": {
+                        "Barrel": "Barrel",
+                        "Blackpowder": "Blackpowder",
+                        "Blaring": "Blaring",
+                        "BurstFire": "Burst Fire",
+                        "Cumbersome": "Cumbersome",
+                        "Explosive": "Explosive",
+                        "Loud": "Loud",
+                        "Magazine": "Magazine",
+                        "Recoil": "Recoil",
+                        "SpreadFire": "Spread Fire",
+                        "TwinnedBarrel": "Twinned Barrel"
+                    }
                 }
             },
             "Legacy": {
@@ -1807,6 +1838,9 @@
                 },
                 "DmgCleave": {
                     "Use": "Carry the leftover damage to another creature?"
+                },
+                "Grovelthrash": {
+                    "Damage": "Deal an extra 2d6 bludgeoning damage and take 1d6 psychic damage?"
                 }
             },
             "Modern": {

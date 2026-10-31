@@ -1,4 +1,5 @@
 import {itemUtils} from '../../../proxy.mjs';
+import constants from '../../../constants.mjs';
 import {addImpact, addShake, elementColors, partOption, pickFile} from './spellParts.mjs';
 const meleeFiles = {
     battleaxe: ['jb2a.handaxe.melee.standard.white'],
@@ -43,6 +44,7 @@ const projectileFiles = {
     arrow: ['jb2a.arrow.physical.white.01'],
     crossbowBolt: ['jb2a.bolt.physical.white', 'jb2a.bolt.physical.orange'],
     firearmBullet: ['jb2a.bullet.01.orange'],
+    flameJet: ['jb2a.breath_weapons.fire.line.orange', 'jb2a.fire_bolt.orange'],
     slingBullet: ['jb2a.slingshot', 'jb2a.bullet.02.orange'],
     blowgunNeedle: ['jb2a.dart.01.throw.physical.white', 'jb2a.dagger.throw.01.white'],
     dart: ['jb2a.dart.01.throw.physical.white', 'jb2a.dagger.throw.01.white'],
@@ -64,7 +66,8 @@ const baseItemAmmunition = {
     sling: 'slingBullet',
     blowgun: 'blowgunNeedle',
     musket: 'firearmBullet',
-    pistol: 'firearmBullet'
+    pistol: 'firearmBullet',
+    ...Object.fromEntries(Object.keys(constants.firearmBaseItems).map(key => [key, 'firearmBullet']))
 };
 const tints = {
     blue: '#5aa9ff',
@@ -91,16 +94,17 @@ function projectileOptions() {
         auto: {label: 'CHRISPREMADES.Animations.WeaponAttack.Styles.Auto'},
         ...Object.fromEntries(Object.entries(CONFIG.DND5E.consumableTypes.ammo.subtypes).map(([key, label]) => [key, {label}])),
         ...Object.fromEntries(thrown.map(key => [key, {label: itemUtils.getBaseWeaponLabel(key) ?? key}])),
-        boulder: {label: 'CHRISPREMADES.Animations.WeaponAttack.Boulder'}
+        boulder: {label: 'CHRISPREMADES.Animations.WeaponAttack.Boulder'},
+        flameJet: {label: 'CHRISPREMADES.Animations.WeaponAttack.FlameJet'}
     };
 }
 function getStyle(style, item, activity, attackMode) {
     if (style !== 'auto') return style;
-    if (item?.system.properties?.has('fir') || baseItemAmmunition[item?.system.type?.baseItem] === 'firearmBullet') return 'firearm';
+    if ((item?.system.properties?.has('fir') || baseItemAmmunition[item?.system.type?.baseItem] === 'firearmBullet') && activity?.attack?.type?.value !== 'melee') return 'firearm';
     if (attackMode?.startsWith('thrown')) return 'thrown';
     return activity?.attack?.type?.value === 'ranged' ? 'ranged' : 'melee';
 }
-function getMeleeFiles(weapon, item) {
+function getMeleeFiles(weapon, item, damageType = item?.system.damage?.base?.types?.first?.()) {
     const type = item?.system.type;
     let key = weapon;
     if (key === 'auto') {
@@ -108,13 +112,12 @@ function getMeleeFiles(weapon, item) {
         else if (type?.value === 'unarmed' || item?.system.identifier?.includes('unarmed')) key = 'unarmed';
         else key = type?.baseItem;
     }
-    const damageType = item?.system.damage?.base?.types?.first?.();
     return meleeFiles[key] ?? meleeFiles[meleeFallbacks[damageType]] ?? meleeFiles.generic;
 }
-function getProjectileFiles(projectile, item, ammunition) {
+function getProjectileFiles(projectile, item, ammunition, style) {
     const key = projectile !== 'auto' ? projectile : ammunition?.system.type?.subtype ?? baseItemAmmunition[item?.system.type?.baseItem] ?? item?.system.type?.baseItem;
     if (projectileFiles[key]) return projectileFiles[key];
-    return CONFIG.DND5E.consumableTypes.ammo.subtypes[key] ? projectileFiles.firearmBullet : projectileFiles.dagger;
+    return CONFIG.DND5E.consumableTypes.ammo.subtypes[key] || style === 'firearm' ? projectileFiles.firearmBullet : projectileFiles.dagger;
 }
 async function play(sourceToken, targetToken, {style = 'auto', weapon = 'auto', projectile = 'auto', tint = true, impact = true, shake = true, sound, item, activity, ammunition, attackMode, damageType, hit, misfire} = {}) {
     if (!sourceToken || !targetToken) return;
@@ -130,11 +133,12 @@ async function play(sourceToken, targetToken, {style = 'auto', weapon = 'auto', 
         return;
     }
     if (resolvedStyle === 'firearm') sequence.effect().file(pickFile('jb2a.muzzle_flash.single.01.yellow')).atLocation(sourceToken).rotateTowards(targetToken).scaleToObject(1).spriteOffset({x: 0.5}, {gridUnits: true}).zIndex(3);
-    const file = resolvedStyle === 'melee' ? pickFile(...getMeleeFiles(weapon, item), ...meleeFiles.generic) : pickFile(...getProjectileFiles(projectile, item, resolvedStyle === 'thrown' ? undefined : ammunition), ...projectileFiles.dagger);
+    const file = resolvedStyle === 'melee' ? pickFile(...getMeleeFiles(weapon, item, damageType), ...meleeFiles.generic) : pickFile(...getProjectileFiles(projectile, item, resolvedStyle === 'thrown' ? undefined : ammunition, resolvedStyle), ...projectileFiles.dagger);
     const section = sequence.effect().file(file).atLocation(sourceToken).stretchTo(targetToken).missed(!landed).zIndex(2);
     if (tintColor) section.tint(tintColor);
     section.waitUntilFinished(resolvedStyle === 'melee' ? -800 : -400);
     if (impact && color && !['bludgeoning', 'piercing', 'slashing'].includes(damageType)) addImpact(sequence, targetToken, color, {scale: 0.8, playIf: landed});
+    if (resolvedStyle === 'firearm' && item?.system.properties?.has('explosive')) sequence.effect().file(pickFile('jb2a.explosion.01.orange')).atLocation(targetToken).scaleToObject(2.5).zIndex(3).playIf(landed);
     addShake(sequence, targetToken, {duration: 500, playIf: shake && landed});
     await sequence.play();
 }

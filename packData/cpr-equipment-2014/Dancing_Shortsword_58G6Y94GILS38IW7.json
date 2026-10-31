@@ -683,7 +683,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.5"
+        "version": "2.1.7"
       },
       "macros": {
         "move": [
@@ -701,14 +701,14 @@
           },
           {
             "source": "chris-premades",
-            "rules": "2014",
+            "rules": "all",
             "identifier": "dancing-shortsword"
           }
         ],
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "2014",
+            "rules": "all",
             "identifier": "dancing-shortsword"
           },
           {
