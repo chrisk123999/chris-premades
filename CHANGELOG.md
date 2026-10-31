@@ -9,9 +9,14 @@
 - 2024: Blackrazor, Dancing Greatsword, Dancing Longsword, Dancing Rapier, Dancing Scimitar, Dancing Shortsword, Javelin of Lightning, Lucent Destroyer, Rifle (Automatic) and Thunderbuss.
 - Third-party: Dragon Rifle (Grim Hollow).
 - Third-party firearms: Barron's Blunderbuss, Blunderbuss (Steinhardt's), Blunderbuss of the Grinning Sinner, Double-Barrel Shotgun, Flame Bellows, Meat Hookshot and Silver Eagle Musket.
+- 2014: Armor of Safeguarding, Last Stand Armor, Pariah's Shield, Boots of Elvenkind, Danoth's Visor, Dragon-Touched Focus (Slumbering and Stirring / Chromatic), Eyes of Minute Seeing, Eyes of the Eagle, Jewel of Three Prayers (Dormant) and Wand of the War Mage.
+- 2024: Boots of Elvenkind, Eyes of Minute Seeing, Eyes of the Eagle, Harkon's Bite and Wand of the War Mage.
+- Third-party: Titanstone Knuckles.
 ## Generic Macros:
 - New generic macro: `firearm`. A natural roll at or below the misfire score misses and damages the firearm, and a damaged or broken firearm can't attack. Its Repair activity rolls a Tinker's Tools check, and a failure breaks the firearm. It also applies the Recoil, Blaring and Explosive properties.
 - `weaponAnimation` also animates a weapon's save activities, such as a cone or burst of fire.
+- New generic macro: `contextAdvantage`. Before a chosen skill or tool check, CAT asks whether to roll it with advantage.
+- `ignoreCover` and `damageBonusToOneRoll` skip items that aren't equipped, or aren't attuned when they need attunement.
 ## Animations:
 - Weapon Attack fires a bullet for firearms and plays a smoke puff when a firearm misfires. Explosive firearms add an explosion on a hit.
 - Weapon Attack swings for a melee attack with a firearm, and melee animations follow the rolled damage type. New projectile: Flame Jet.

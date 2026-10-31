@@ -1,6 +1,7 @@
 import {automationUtils, constants, documentUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function coverBonus({document, identifier, workflow}) {
     if (workflow.targets.size !== 1) return;
+    if (!itemUtils.getEquipmentState(document)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'ignoreCover', Object.keys(ignoreCover.genericConfig));
     if (!config.cover) return;
     if (config.attack && !workflowUtils.isAttackType(workflow, config.attack)) return;
@@ -17,6 +18,7 @@ async function coverBonus({document, identifier, workflow}) {
 }
 // Midi refuses a total cover target before the attack bonus pass, so the item is enchanted for the use.
 async function fullCover({document, activity}) {
+    if (!itemUtils.getEquipmentState(document)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'ignoreCover', Object.keys(ignoreCover.genericConfig));
     if (config.cover != 999) return;
     if (config.attack && !workflowUtils.isAttackType({activity}, config.attack)) return;
@@ -31,7 +33,7 @@ async function fullCover({document, activity}) {
 }
 export const ignoreCover = {
     rules: 'all',
-    version: '2.1.4',
+    version: '2.1.7',
     category: 'utility',
     generic: true,
     documents: ['activeeffect', 'item'],
