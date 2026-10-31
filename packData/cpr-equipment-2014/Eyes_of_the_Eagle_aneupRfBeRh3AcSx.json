@@ -1,0 +1,103 @@
+{
+  "name": "Eyes of the Eagle",
+  "type": "equipment",
+  "img": "icons/magic/perception/hand-eye-pink.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "aneupRfBeRh3AcSx",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "required",
+    "equipped": false,
+    "rarity": "uncommon",
+    "identified": true,
+    "cover": null,
+    "crewed": false,
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "armor": {
+      "value": 10,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 0,
+    "proficient": 1,
+    "unidentified": {
+      "description": ""
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "container": null,
+    "properties": [],
+    "attuned": false,
+    "activities": {},
+    "identifier": "eyes-of-the-eagle"
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.7"
+      },
+      "macros": {
+        "skill": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "contextAdvantage"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "contextAdvantage": {
+            "skill": [
+              "prc"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!aneupRfBeRh3AcSx"
+}

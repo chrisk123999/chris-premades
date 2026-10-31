@@ -1,0 +1,144 @@
+{
+  "name": "Wand of the War Mage, +1",
+  "type": "equipment",
+  "img": "icons/weapons/wands/wand-carved-fire.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "OKfsWry6MfRGkH4l",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "required",
+    "equipped": true,
+    "rarity": "uncommon",
+    "identified": true,
+    "cover": null,
+    "crewed": false,
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "armor": {
+      "value": 10,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 0,
+    "proficient": 0,
+    "unidentified": {
+      "description": ""
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "container": null,
+    "properties": [],
+    "attuned": true,
+    "activities": {},
+    "identifier": "wand-of-the-war-mage-1"
+  },
+  "effects": [
+    {
+      "_id": "iRBex8ZcsUTemMug",
+      "name": "Wand of the War Mage, +1",
+      "img": "icons/weapons/wands/wand-carved-fire.webp",
+      "type": "base",
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": null,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": ""
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "system.rolls.attack.spell.bonus",
+            "type": "add",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!OKfsWry6MfRGkH4l.iRBex8ZcsUTemMug"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.7"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "ignoreCover"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "ignoreCover": {
+            "attack": "spellAttack",
+            "cover": 2
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!OKfsWry6MfRGkH4l"
+}

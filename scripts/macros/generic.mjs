@@ -23,6 +23,14 @@ export {rerollCheckWithBonus, rerollSaveWithBonus, rerollSkillWithBonus, rerollT
 export {attackBonus, checkBonus, saveBonus, skillBonus, toolBonus} from './generic/rollBonus.mjs';
 
 /*============================*/
+/*         CONDITIONS         */
+/*============================*/
+export {choiceRemoveCondition, turnEndChoiceRemoveCondition, turnStartChoiceRemoveCondition} from './generic/choiceRemoveCondition.mjs';
+export {grapple} from './generic/grapple.mjs';
+export {proneOnFail} from './generic/proneOnFail.mjs';
+export {proneOnHit} from './generic/proneOnHit.mjs';
+
+/*============================*/
 /*           DAMAGE           */
 /*============================*/
 export {attackRider} from './generic/attackRider.mjs';
@@ -37,10 +45,12 @@ export {selectDamageType} from './generic/selectDamageType.mjs';
 /*============================*/
 export {banish} from './generic/banish.mjs';
 export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
+export {firearm} from './generic/firearm.mjs';
 export {hide} from './generic/hide.mjs';
 export {ignoreCover} from './generic/ignoreCover.mjs';
 export {packTactics} from './generic/packTactics.mjs';
 export {preventDeath} from './generic/preventDeath.mjs';
+export {proficiencyChoice} from './generic/proficiencyChoice.mjs';
 export {reduceMaxHP} from './generic/reduceMaxHP.mjs';
 export {rolledDuration} from './generic/rolledDuration.mjs';
 export {saveToEndWhenFar} from './generic/saveToEndWhenFar.mjs';
@@ -49,8 +59,17 @@ export {unhideActivities} from './generic/unhideActivities.mjs';
 /*============================*/
 /*          MOVEMENT          */
 /*============================*/
+export {pullOnFail, pullOnHit, pushOnFail, pushOnHit} from './generic/forcedMovement.mjs';
 export {movementAnimation} from './generic/movementAnimation.mjs';
 export {teleport} from './generic/teleport.mjs';
+
+/*============================*/
+/*           ROLLS            */
+/*============================*/
+export {contestedCheck} from './generic/contestedCheck.mjs';
+export {contextAdvantage} from './generic/contextAdvantage.mjs';
+export {heroicInspiration} from './generic/heroicInspiration.mjs';
+export {checkModifier, saveModifier, skillModifier, toolModifier} from './generic/rollModifier.mjs';
 
 /*============================*/
 /*          SUMMONS           */
@@ -68,22 +87,16 @@ export {redirectAttack} from './generic/redirectAttack.mjs';
 export {targetCreatureTypes} from './generic/targetCreatureTypes.mjs';
 
 /*============================*/
-/*          UTILITY           */
+/*            USES            */
 /*============================*/
-export {actionDismissal} from './generic/actionDismissal.mjs';
-export {choiceRemoveCondition, turnEndChoiceRemoveCondition, turnStartChoiceRemoveCondition} from './generic/choiceRemoveCondition.mjs';
-export {contestedCheck} from './generic/contestedCheck.mjs';
-export {pullOnFail, pullOnHit, pushOnFail, pushOnHit} from './generic/forcedMovement.mjs';
-export {firearm} from './generic/firearm.mjs';
-export {grapple} from './generic/grapple.mjs';
-export {heroicInspiration} from './generic/heroicInspiration.mjs';
 export {itemRecovery} from './generic/itemRecovery.mjs';
-export {proficiencyChoice} from './generic/proficiencyChoice.mjs';
-export {proneOnFail} from './generic/proneOnFail.mjs';
-export {proneOnHit} from './generic/proneOnHit.mjs';
-export {removeRegion} from './generic/removeRegion.mjs';
 export {restoreUses} from './generic/restoreUses.mjs';
-export {checkModifier, saveModifier, skillModifier, toolModifier} from './generic/rollModifier.mjs';
 export {specialItemUse} from './generic/specialItemUse.mjs';
 export {useOnDeath} from './generic/useOnDeath.mjs';
 export {useOnEvent} from './generic/useOnEvent.mjs';
+
+/*============================*/
+/*          UTILITY           */
+/*============================*/
+export {actionDismissal} from './generic/actionDismissal.mjs';
+export {removeRegion} from './generic/removeRegion.mjs';

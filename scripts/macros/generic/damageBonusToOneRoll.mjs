@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, effectUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
@@ -21,6 +21,7 @@ function getEffectRoll(effect, formula) {
 }
 async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
+    if (!itemUtils.getEquipmentState(document)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
     if (!config.bonus.length) return;
     const multiSingleTarget = workflow.workflowOptions['chris-premades']?.multiSingleTarget;
@@ -109,7 +110,7 @@ async function damage({document, workflow}) {
  */
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.1.3',
+    version: '2.1.7',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],

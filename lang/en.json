@@ -480,6 +480,7 @@
             "Items": "Items",
             "ItemTypes": "Item Types",
             "KeepTemplate": "Keep Template",
+            "Label": "Label",
             "LineColor": "Line Color",
             "Magical": "Magical",
             "Max": "Max",
@@ -1841,6 +1842,10 @@
                 },
                 "Grovelthrash": {
                     "Damage": "Deal an extra 2d6 bludgeoning damage and take 1d6 psychic damage?"
+                },
+                "PariahsShield": {
+                    "Protect": "Use your reaction and {item} to take the damage dealt to {name}?",
+                    "MaxBonus": "Maximum AC Bonus"
                 }
             },
             "Modern": {
