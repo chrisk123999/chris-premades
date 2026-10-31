@@ -1491,7 +1491,6 @@
                 },
                 "ElementalCleaver": {
                     "Damage": "Elemental Cleaver Damage Bonus",
-                    "DemurgicHint": "If you have the Demiurgic Colossus feature, it will override this value with its own.",
                     "NoActive": "You have no active Elemental Cleaver!"
                 },
                 "ExpertDivination": {
@@ -1875,6 +1874,7 @@
                     "Bounce": "Who should the spell bounce to?",
                     "TargetDamageSelection": "Select Damage Type For Each Target"
                 },
+                "DanceVirtuoso": "Does this check involve you dancing?",
                 "DeflectAttacks": "Redirect Attack?",
                 "ExtremeResilience": {
                     "Select": "Select a feature to recover a use of."
@@ -1910,6 +1910,7 @@
                     "NoTargets": "No valid targets within range!"
                 },
                 "ImprovedPotentSpellcasting": "Select an ally to give temporary hit points to:",
+                "InspiringMovement": "Ask an ally if they can spend their reaction to move up to half their speed.",
                 "MagicItemTinker": {
                     "ChargePrompt": "Choose a spell slot to spend and an item to recharge:",
                     "DeletePrompt": "Delete {item} to grant a {spellslot}?",
@@ -2016,6 +2017,11 @@
                     "Fuming": "Fuming",
                     "Mirthful": "Mirthful",
                     "Tricksy": "Tricksy"
+                },
+                "TandemFootWork": {
+                    "Change": "Initiative Changes",
+                    "Combatant": "Combatants Only",
+                    "CombatantHint": "This feature only applies to characters who have a combatant in the combat tracker."
                 },
                 "TinkersMagic": {
                     "CustomCompendium": "Custom Mundane Item Compendium",
