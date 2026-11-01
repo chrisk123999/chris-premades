@@ -48,6 +48,10 @@ export {zealousPresence as 'zealous-presence'} from './all/classFeatures/barbari
 /******************************/
 export {bardicInspiration as 'bardic-inspiration', bardicInspirationEffect} from './all/classFeatures/bard/bardicInspiration.mjs';
 
+/*           Glamour          */
+export {mantleOfInspiration as 'mantle-of-inspiration'} from './all/classFeatures/bard/glamour/mantleOfInspiration.mjs';
+export {mantleOfMajesty as 'mantle-of-majesty', mantleOfMajestyCommand, mantleOfMajestyRecover} from './all/classFeatures/bard/glamour/mantleOfMajesty.mjs';
+
 /******************************/
 /*           Druid            */
 /******************************/

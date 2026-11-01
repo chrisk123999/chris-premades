@@ -34,7 +34,7 @@ async function targets({document: activity, workflow}) {
         oldTargets,
         {type: 'multiple', skipDeadAndUnconscious: false, maxAmount, preselected}
     );
-    if (!choice) return true;
+    if (!choice) return workflow.aborted = true;
     await workflowUtils.updateTargets(workflow, choice?.result?.length ? choice.result : oldTargets.slice(0, maxAmount));
 }
 async function huntDamage({document: effect, macroClass: {identifier, source}, workflow}) {

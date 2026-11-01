@@ -71,6 +71,10 @@ export {inspiringMovement as 'inspiring-movement'} from './modern/classFeatures/
 export {leadingEvasion as 'leading-evasion'} from './modern/classFeatures/bard/dance/leadingEvasion.mjs';
 export {tandemFootwork as 'tandem-footwork'} from './modern/classFeatures/bard/dance/tandemFootwork.mjs';
 
+/*            Glamour            */
+export {beguilingMagic as 'beguiling-magic'} from './modern/classFeatures/bard/glamour/beguilingMagic.mjs';
+export {unbreakableMajesty as 'unbreakable-majesty'} from './modern/classFeatures/bard/glamour/unbreakableMajesty.mjs';
+
 /*********************************/
 /*            Cleric             */
 /*********************************/

@@ -686,6 +686,7 @@
                     "NoDisease": "The target is not diseased.",
                     "NoPoison": "The target is not poisoned."
                 },
+                "MantleOfInspiration": "Use your reaction to move up to your speed?",
                 "OneWithShadows": {
                     "Bright": "You can only use this in dim light or darkness."
                 },
@@ -1726,6 +1727,7 @@
                     "SelectASpell": "Select a spell:",
                     "Unattuned": "Not attuned"
                 },
+                "UnbreakableMajesty": "You must choose a new target or waste the attack.",
                 "WailsFromTheGrave": {
                     "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it.",
                     "Select": "Choose a second creature within 30 feet of the target for {item}.",
