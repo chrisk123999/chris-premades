@@ -12,10 +12,13 @@
 - 2014: Armor of Safeguarding, Last Stand Armor, Pariah's Shield, Boots of Elvenkind, Danoth's Visor, Dragon-Touched Focus (Slumbering and Stirring / Chromatic), Eyes of Minute Seeing, Eyes of the Eagle, Jewel of Three Prayers (Dormant) and Wand of the War Mage.
 - 2024: Boots of Elvenkind, Eyes of Minute Seeing, Eyes of the Eagle, Harkon's Bite and Wand of the War Mage.
 - Third-party: Titanstone Knuckles.
+- 2014: All-Purpose Tool, Charlatan's Die, Crown of Daffodils, Dragon Vessel, Dragon-Touched Focus (Stirring / Gem), Eldritch Claw Tattoo, Guardian Emblem, Insignia of Claws, Lantern of Revealing, Mystery Key, Ring of Spell Storing, Stormgirdle and Wraps of Dyamak.
+- 2024: Charlatan's Die, Lantern of Revealing, Mystery Key and Ring of Spell Storing.
+- Bigby's Beneficent Bracelet asks for the sculpture's size.
 ## Generic Macros:
 - New generic macro: `firearm`. A natural roll at or below the misfire score misses and damages the firearm, and a damaged or broken firearm can't attack. Its Repair activity rolls a Tinker's Tools check, and a failure breaks the firearm. It also applies the Recoil, Blaring and Explosive properties.
 - `weaponAnimation` also animates a weapon's save activities, such as a cone or burst of fire.
-- New generic macro: `contextAdvantage`. Before a chosen skill or tool check, CAT asks whether to roll it with advantage.
+- New generic macro: `contextAdvantage`. Before a chosen ability check, saving throw, skill or tool check, CAT asks whether to roll it with advantage. Chosen conditions stop the offer. Aspect of the Beast: Bear, Danger Sense (2014), Form of the Beast (Warlock), Unarguable Wizardry, Amulet of the Lycanthrope and Spirit Totem's Unicorn Spirit use it.
 - `ignoreCover` and `damageBonusToOneRoll` skip items that aren't equipped, or aren't attuned when they need attunement.
 ## Animations:
 - Weapon Attack fires a bullet for firearms and plays a smoke puff when a firearm misfires. Explosive firearms add an explosion on a hit.

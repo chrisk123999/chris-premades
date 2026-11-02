@@ -61,7 +61,7 @@ async function attack({workflow}) {
 }
 export const formOfTheBeastWarlock = {
     name: 'Form of the Beast',
-    version: '2.0.0',
+    version: '2.1.7',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50},
@@ -113,13 +113,6 @@ export const formOfTheBeastWarlock = {
         };
     }
 };
-async function supernaturallyKeen({skillId}) {
-    if (!['prc', 'ste', 'sur'].includes(skillId)) return;
-    return {
-        label: 'CHRISPREMADES.Macros.Legacy.FormOfTheBeast.Keen',
-        type: 'advantage'
-    };
-}
 async function removed({document: effect}) {
     const actor = effect.parent;
     const levels = actor.classes[automationUtils.getConfigValue(effect, 'classIdentifier')]?.system.levels ?? 0;
@@ -128,13 +121,10 @@ async function removed({document: effect}) {
 }
 export const formOfTheBeastWarlockEffect = {
     name: 'Form of the Beast: Transformed',
-    version: '2.0.0',
+    version: '2.1.7',
     rules: '2014',
     roll: [
         {pass: 'actorPreambleComplete', macro: naturalAttack, priority: 30}
-    ],
-    skill: [
-        {pass: 'actorContext', macro: supernaturallyKeen, priority: 50}
     ],
     effect: [
         {pass: 'deleted', macro: removed, priority: 50}

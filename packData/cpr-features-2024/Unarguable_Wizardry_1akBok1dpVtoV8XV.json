@@ -162,16 +162,26 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.7"
       },
       "macros": {
         "skill": [
           {
             "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "unarguable-wizardry"
+            "rules": "all",
+            "identifier": "contextAdvantage"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "contextAdvantage": {
+            "skill": [
+              "itm"
+            ],
+            "label": "CHRISPREMADES.Macros.Modern.UnarguableWizardry.Prompt"
+          }
+        }
       }
     }
   },

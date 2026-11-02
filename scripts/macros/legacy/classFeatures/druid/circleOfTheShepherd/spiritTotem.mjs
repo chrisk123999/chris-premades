@@ -31,26 +31,12 @@ async function unicorn({document, workflow}) {
     const targets = alliesNear(document, totem);
     if (targets.length) await workflowUtils.completeActivityUse(activity, targets, {consumeUsage: false, consumeResources: false, spellSlot: false});
 }
-function detect({document: effect}) {
-    return {type: 'advantage', label: _loc(translations + 'Detect', {name: effect.name})};
-}
 export const spiritTotem = {
     name: 'Spirit Totem',
-    version: '2.1.3',
+    version: '2.1.7',
     rules: '2014',
     roll: [
         {pass: 'sceneAttackRollConfig', macro: hawk, priority: 60},
         {pass: 'actorRollFinished', macro: unicorn, priority: 60}
-    ]
-};
-export const spiritTotemDetect = {
-    name: 'Spirit Totem: Unicorn Spirit',
-    version: spiritTotem.version,
-    rules: spiritTotem.rules,
-    check: [
-        {pass: 'actorContext', macro: detect, priority: 50}
-    ],
-    skill: [
-        {pass: 'actorContext', macro: detect, priority: 50}
     ]
 };
