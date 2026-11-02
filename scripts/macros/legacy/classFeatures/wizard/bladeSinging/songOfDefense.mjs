@@ -1,6 +1,6 @@
 import {actorUtils, automationUtils, dialogUtils, queryUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function damageApplication({targetToken, ditem}) {
-    if (!ditem.isHit) return;
+    if (!ditem.isHit || !ditem.totalDamage) return;
     if (!actorUtils.hasSpellSlots(targetToken.actor)) return;
     if (actorUtils.hasUsedReaction(targetToken.actor)) return;
     const originItem = actorUtils.getItemByIdentifier(targetToken.actor, 'song-of-defense');

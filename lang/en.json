@@ -635,6 +635,11 @@
                     "Select": "Which Condition?"
                 },
                 "ChannelDivinity": "Choose a channel divinity effect:",
+                "CuttingWords": {
+                    "Immune": "The target is immune to this feature!",
+                    "Prompt": "Use {item} to reduce the roll from {name}? (Total: {total})",
+                    "PromptLegacy": "Use {item} to reduce the roll from {name}?"
+                },
                 "Darkness": {
                     "SeeThroughIdentifiers": "See-Through Feature Identifiers",
                     "SeeThroughIdentifiersHint": "Casting this spell through one of these features lets the caster see through the darkness it creates.",
