@@ -1,0 +1,223 @@
+{
+  "name": "Dragon-Touched Focus (Stirring / Gem)",
+  "type": "equipment",
+  "img": "icons/commodities/flowers/lily-water-pink.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "aYRUhroRzfh5Ysjf",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "FToD",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "required",
+    "equipped": false,
+    "rarity": "uncommon",
+    "identified": true,
+    "cover": null,
+    "crewed": false,
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "armor": {
+      "value": 10,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 0,
+    "proficient": 0,
+    "unidentified": {
+      "description": ""
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "container": null,
+    "properties": [],
+    "attuned": false,
+    "activities": {
+      "gemTeleport00001": {
+        "_id": "gemTeleport00001",
+        "type": "utility",
+        "sort": 0,
+        "name": "Teleport",
+        "img": "",
+        "identifier": "gem-teleport",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "special": "",
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "midiProperties": {
+          "identifier": "gem-teleport"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "teleport"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "teleport": {
+                  "targets": "self",
+                  "range": "15",
+                  "requireSight": true,
+                  "animation": {
+                    "source": "chris-premades",
+                    "identifier": "mistyStep"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "identifier": "dragon-touched-focus-stirring-gem"
+  },
+  "effects": [
+    {
+      "_id": "eYwLvw8FLxKqhLzq",
+      "name": "Dragon-Touched Focus (Stirring / Gem)",
+      "img": "icons/commodities/flowers/lily-water-pink.webp",
+      "type": "base",
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "duration": {
+        "expiry": null,
+        "expired": false,
+        "value": null,
+        "units": "seconds"
+      },
+      "tint": "#ffffff",
+      "description": "",
+      "origin": null,
+      "sort": 0,
+      "flags": {
+        "cat": {
+          "identifier": ""
+        }
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.init.roll.mode",
+            "type": "upgrade",
+            "value": "1",
+            "phase": "initial",
+            "priority": 20
+          }
+        ]
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!aYRUhroRzfh5Ysjf.eYwLvw8FLxKqhLzq"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.7"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "dragon-touched-focus-stirring-gem"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!aYRUhroRzfh5Ysjf"
+}

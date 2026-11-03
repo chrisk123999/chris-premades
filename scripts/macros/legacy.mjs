@@ -41,7 +41,6 @@ export {soulOfArtifice as 'soul-of-artifice'} from './legacy/classFeatures/artif
 /*         Barbarian          */
 /******************************/
 export {brutalCritical as 'brutal-critical'} from './legacy/classFeatures/barbarian/brutalCritical.mjs';
-export {dangerSense as 'danger-sense'} from './legacy/classFeatures/barbarian/dangerSense.mjs';
 export {endRage, keepRage} from './legacy/classFeatures/barbarian/rage.mjs';
 
 /*     Ancestral Guardian     */
@@ -66,7 +65,6 @@ export {giantRage, giantsHavoc as 'giants-havoc'} from './legacy/classFeatures/b
 export {mightyImpel as 'mighty-impel'} from './legacy/classFeatures/barbarian/giant/mightyImpel.mjs';
 
 /*        Totem Warrior       */
-export {bearAspect as 'aspect-of-the-beast-bear'} from './legacy/classFeatures/barbarian/totem/bearAspect.mjs';
 export {bearAttack, bearAttunement as 'totemic-attunement-bear', eagleAttunement as 'totemic-attunement-eagle'} from './legacy/classFeatures/barbarian/totem/totemicAttunement.mjs';
 export {tigerJump, bearTotem as 'totem-spirit-bear', eagleTotem as 'totem-spirit-eagle', tigerTotem as 'totem-spirit-tiger'} from './legacy/classFeatures/barbarian/totem/totemSpirit.mjs';
 
@@ -92,7 +90,7 @@ export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatur
 /******************************/
 /*           Druid            */
 /******************************/
-export {spiritTotem as 'spirit-totem', spiritTotemDetect as 'spirit-totem-detect'} from './legacy/classFeatures/druid/circleOfTheShepherd/spiritTotem.mjs';
+export {spiritTotem as 'spirit-totem'} from './legacy/classFeatures/druid/circleOfTheShepherd/spiritTotem.mjs';
 export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures/druid/wildShape.mjs';
 
 /******************************/
@@ -263,10 +261,17 @@ export {durableMagic as 'durable-magic'} from './legacy/classFeatures/wizard/war
 /*============================*/
 /*         EQUIPMENT          */
 /*============================*/
-export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope', amuletOfTheLycanthropeEffect as 'amulet-of-the-lycanthrope-effect'} from './legacy/equipment/amuletOfTheLycanthrope.mjs';
+export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope'} from './legacy/equipment/amuletOfTheLycanthrope.mjs';
 export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/equipment/harkonsBite.mjs';
 export {bloodSpear as 'blood-spear', crystalBlade as 'crystal-greatsword', crystalBlade as 'crystal-longsword', crystalBlade as 'crystal-rapier', crystalBlade as 'crystal-scimitar', crystalBlade as 'crystal-shortsword', dragonsWrath as 'dragons-wrath-weapon-slumbering', dragonsWrath as 'dragons-wrath-weapon-stirring', dragonsWrath as 'dragons-wrath-weapon-wakened', dragonsWrath as 'dragons-wrath-weapon-ascendant', grovelthrash as 'grovelthrash-dormant', grovelthrash as 'grovelthrash-awakened', grovelthrash as 'grovelthrash-exalted', ruinsWake as 'ruins-wake-dormant', ruinsWake as 'ruins-wake-awakened', ruinsWake as 'ruins-wake-exalted'} from './legacy/equipment/magicWeapons.mjs';
 export {pariahsShield as 'pariahs-shield'} from './legacy/equipment/pariahsShield.mjs';
+export {crownOfDaffodils as 'crown-of-daffodils'} from './legacy/equipment/crownOfDaffodils.mjs';
+export {guardianEmblem as 'guardian-emblem'} from './legacy/equipment/guardianEmblem.mjs';
+export {allPurposeTool as 'all-purpose-tool-1', allPurposeTool as 'all-purpose-tool-2', allPurposeTool as 'all-purpose-tool-3'} from './legacy/equipment/allPurposeTool.mjs';
+export {dragonVessel as 'dragon-vessel-slumbering', dragonVessel as 'dragon-vessel-stirring', dragonVessel as 'dragon-vessel-wakened', dragonVessel as 'dragon-vessel-ascendant'} from './legacy/equipment/dragonVessel.mjs';
+export {dragonTouchedFocusGem as 'dragon-touched-focus-stirring-gem'} from './legacy/equipment/dragonTouchedFocusGem.mjs';
+export {stormgirdleAvatar as 'stormgirdle-avatar'} from './legacy/equipment/stormgirdle.mjs';
+export {eldritchClawTattoo as 'eldritch-claw-tattoo', insigniaOfClaws as 'insignia-of-claws', wrapsOfDyamak as 'wraps-of-dyamak-dormant', wrapsOfDyamak as 'wraps-of-dyamak-awakened', wrapsOfDyamak as 'wraps-of-dyamak-exalted'} from './legacy/equipment/unarmedItems.mjs';
 export {potionOfAdvantageEffect as 'potion-of-advantage-effect'} from './legacy/equipment/potionOfAdvantage.mjs';
 export {potionOfGiantSize as 'potion-of-giant-size', potionOfGiantSizeEffect as 'potion-of-giant-size-effect'} from './legacy/equipment/potionOfGiantSize.mjs';
 export {bg3Brace as 'bg3-brace', bg3GapingWounds as 'bg3-gaping-wounds', bg3WeaponAction as 'bg3-weapon-action'} from './legacy/homebrew/bg3WeaponActions.mjs';

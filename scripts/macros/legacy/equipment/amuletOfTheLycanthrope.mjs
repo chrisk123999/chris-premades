@@ -47,24 +47,9 @@ async function damage({document, workflow}) {
     const config = automationUtils.getConfigValues(document, ['formula', 'damageType']);
     await workflowUtils.bonusDamage(workflow, config.formula, {damageType: config.damageType});
 }
-async function keenHearingAndSmell({skillId}) {
-    if (skillId !== 'prc') return;
-    return {
-        label: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.Keen',
-        type: 'advantage'
-    };
-}
-export const amuletOfTheLycanthropeEffect = {
-    name: 'Amulet of the Lycanthrope: Bestial Form',
-    version: '2.0.0',
-    rules: '2014',
-    skill: [
-        {pass: 'actorContext', macro: keenHearingAndSmell, priority: 50}
-    ]
-};
 export const amuletOfTheLycanthrope = {
     name: 'Amulet of the Lycanthrope',
-    version: '2.0.0',
+    version: '2.1.7',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50},

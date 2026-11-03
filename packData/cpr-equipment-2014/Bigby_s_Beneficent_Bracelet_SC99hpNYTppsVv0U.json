@@ -227,6 +227,42 @@
             },
             "name": "",
             "types": []
+          },
+          {
+            "_id": "forceSculptureMx",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.F8cbnUlC3jM2jq9A",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": []
+          },
+          {
+            "_id": "forceSculptureSx",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.F8cbnUlC3jM2jq9A",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": []
+          },
+          {
+            "_id": "forceSculptureTx",
+            "uuid": "Compendium.chris-premades.CPRSummons2014.Actor.F8cbnUlC3jM2jq9A",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "",
+            "types": []
           }
         ],
         "summon": {
@@ -248,12 +284,7 @@
           "proficiency": false,
           "saves": false
         },
-        "creatureSizes": [
-          "tiny",
-          "sm",
-          "med",
-          "lg"
-        ],
+        "creatureSizes": [],
         "creatureTypes": [],
         "tempHP": ""
       },
@@ -603,7 +634,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.7"
       },
       "macros": {
         "move": [
@@ -633,9 +664,73 @@
                 "animation": {
                   "source": "chris-premades",
                   "identifier": "earthSummon"
-                }
+                },
+                "size": "lg",
+                "updates": [
+                  {
+                    "path": "system.traits.size",
+                    "value": "lg",
+                    "mode": "literal"
+                  }
+                ],
+                "label": "DND5E.SizeLarge"
+              },
+              {
+                "profile": "forceSculptureMx",
+                "name": "CHRISPREMADES.Summons.CreatureNames.ForceSculpture",
+                "initiative": "none",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "earthSummon"
+                },
+                "size": "med",
+                "updates": [
+                  {
+                    "path": "system.traits.size",
+                    "value": "med",
+                    "mode": "literal"
+                  }
+                ],
+                "label": "DND5E.SizeMedium"
+              },
+              {
+                "profile": "forceSculptureSx",
+                "name": "CHRISPREMADES.Summons.CreatureNames.ForceSculpture",
+                "initiative": "none",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "earthSummon"
+                },
+                "size": "sm",
+                "updates": [
+                  {
+                    "path": "system.traits.size",
+                    "value": "sm",
+                    "mode": "literal"
+                  }
+                ],
+                "label": "DND5E.SizeSmall"
+              },
+              {
+                "profile": "forceSculptureTx",
+                "name": "CHRISPREMADES.Summons.CreatureNames.ForceSculpture",
+                "initiative": "none",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "earthSummon"
+                },
+                "size": "tiny",
+                "updates": [
+                  {
+                    "path": "system.traits.size",
+                    "value": "tiny",
+                    "mode": "literal"
+                  }
+                ],
+                "label": "DND5E.SizeTiny"
               }
-            ]
+            ],
+            "pick": "one"
           }
         }
       }

@@ -57,15 +57,27 @@
             "skill": [
               {
                 "source": "chris-premades",
-                "rules": "2014",
-                "identifier": "form-of-the-beast-warlock-effect"
+                "rules": "all",
+                "identifier": "contextAdvantage"
               }
             ]
           },
           "automation": {
             "source": "chris-premades",
-            "version": "2.0.0",
+            "version": "2.1.7",
             "rules": "2014"
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "contextAdvantage": {
+                "skill": [
+                  "prc",
+                  "ste",
+                  "sur"
+                ],
+                "label": "CHRISPREMADES.Macros.Legacy.FormOfTheBeast.Keen"
+              }
+            }
           }
         }
       },
@@ -959,7 +971,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.7"
       },
       "macros": {
         "roll": [
