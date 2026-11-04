@@ -21,7 +21,8 @@ async function damage({document: activity, workflow}) {
         .withDefaultCosts()
         .withOnUse(async ({workflow}) => {
             if (playAnimation) animation.animation.macros.play(workflow);
-            await workflowUtils.syntheticActivityRoll(activity, []);
+            const combat = !!workflow.token.document.combatant;
+            await workflowUtils.syntheticActivityRoll(activity, [], {consumeResources: combat, consumeUsage: combat});
         });
 }
 export const divineStrike = {

@@ -10,6 +10,9 @@
         "lang",
         "symlinks/foundryLang",
         "symlinks/dndLang"
+        "../cat/lang",
+        "../cat/dnd5e/lang",
+        "../cat/foundry/lang"
     ],
     "i18n-ally.keystyle": "nested",
     "i18n-ally.indent": 4,

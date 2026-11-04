@@ -35,7 +35,8 @@ async function finished({document: activity, macroClass: {identifier}, workflow}
     const tokens = Array.from(workflow[targets]).filter(token => token.actor);
     if (!tokens.length) return;
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', identifier, configKeys);
-    const maximum = (await rollUtils.rollDice(config.distance, {document: activity}))?.total ?? 5;
+    const document = {actor: activity.actor, getRollData: () => ({...workflow.getSafeMacroData(), ...activity.getRollData()})};
+    const maximum = (await rollUtils.rollDice(config.distance, {document}))?.total ?? 5;
     const animation = automationUtils.getResolvedAnimation(activity, 'animation', {source: 'chris-premades', identifier});
     const damageType = workflowUtils.getDamageTypes(workflow.damageRolls ?? []).first();
     const move = token => moveTarget(activity, config, workflow.token.document, token.document, direction, maximum, animation, damageType);

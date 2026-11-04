@@ -647,6 +647,11 @@
                     "Select": "Which Condition?"
                 },
                 "ChannelDivinity": "Choose a channel divinity effect:",
+                "CuttingWords": {
+                    "Immune": "The target is immune to this feature!",
+                    "Prompt": "Use {item} to reduce the roll from {name}? (Total: {total})",
+                    "PromptLegacy": "Use {item} to reduce the roll from {name}?"
+                },
                 "Darkness": {
                     "SeeThroughIdentifiers": "See-Through Feature Identifiers",
                     "SeeThroughIdentifiersHint": "Casting this spell through one of these features lets the caster see through the darkness it creates.",
@@ -698,6 +703,7 @@
                     "NoDisease": "The target is not diseased.",
                     "NoPoison": "The target is not poisoned."
                 },
+                "MantleOfInspiration": "Use your reaction to move up to your speed?",
                 "OneWithShadows": {
                     "Bright": "You can only use this in dim light or darkness."
                 },
@@ -1442,6 +1448,11 @@
                     "OncePerTurn": "Once Per Turn",
                     "Select": "Change damage type?"
                 },
+                "BladeFlourish": {
+                    "Label": "Flourish",
+                    "Reaction": "Use your reaction to move up to the pushed target?",
+                    "Warning": "You have no remaining {resource}! {feature} is required to use {item}."
+                },
                 "Bladesong": {
                     "ArmorRestriction": "You can't use Bladesong while wearing medium or heavy armor or wielding a shield.",
                     "EnforceArmorRestriction": "Enforce Armor Restriction"
@@ -1503,7 +1514,6 @@
                 },
                 "ElementalCleaver": {
                     "Damage": "Elemental Cleaver Damage Bonus",
-                    "DemurgicHint": "If you have the Demiurgic Colossus feature, it will override this value with its own.",
                     "NoActive": "You have no active Elemental Cleaver!"
                 },
                 "ExpertDivination": {
@@ -1739,6 +1749,7 @@
                     "SelectASpell": "Select a spell:",
                     "Unattuned": "Not attuned"
                 },
+                "UnbreakableMajesty": "You must choose a new target or waste the attack.",
                 "WailsFromTheGrave": {
                     "MustSpend": "{feature} has no uses remaining. You must spend {name} to activate it.",
                     "Select": "Choose a second creature within 30 feet of the target for {item}.",
@@ -1911,6 +1922,7 @@
                     "Bounce": "Who should the spell bounce to?",
                     "TargetDamageSelection": "Select Damage Type For Each Target"
                 },
+                "DanceVirtuoso": "Does this check involve you dancing?",
                 "DeflectAttacks": "Redirect Attack?",
                 "ExtremeResilience": {
                     "Select": "Select a feature to recover a use of."
@@ -1946,6 +1958,7 @@
                     "NoTargets": "No valid targets within range!"
                 },
                 "ImprovedPotentSpellcasting": "Select an ally to give temporary hit points to:",
+                "InspiringMovement": "Ask an ally if they can spend their reaction to move up to half their speed.",
                 "MagicItemTinker": {
                     "ChargePrompt": "Choose a spell slot to spend and an item to recharge:",
                     "DeletePrompt": "Delete {item} to grant a {spellslot}?",
@@ -2052,6 +2065,11 @@
                     "Fuming": "Fuming",
                     "Mirthful": "Mirthful",
                     "Tricksy": "Tricksy"
+                },
+                "TandemFootWork": {
+                    "Change": "Initiative Changes",
+                    "Combatant": "Combatants Only",
+                    "CombatantHint": "This feature only applies to characters who have a combatant in the combat tracker."
                 },
                 "TinkersMagic": {
                     "CustomCompendium": "Custom Mundane Item Compendium",

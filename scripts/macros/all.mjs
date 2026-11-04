@@ -48,6 +48,17 @@ export {zealousPresence as 'zealous-presence'} from './all/classFeatures/barbari
 /******************************/
 export {bardicInspiration as 'bardic-inspiration', bardicInspirationEffect} from './all/classFeatures/bard/bardicInspiration.mjs';
 
+/*           Glamour          */
+export {mantleOfInspiration as 'mantle-of-inspiration'} from './all/classFeatures/bard/glamour/mantleOfInspiration.mjs';
+export {mantleOfMajesty as 'mantle-of-majesty', mantleOfMajestyCommand, mantleOfMajestyRecover} from './all/classFeatures/bard/glamour/mantleOfMajesty.mjs';
+
+/*            Lore            */
+export {cuttingWords as 'cutting-words'} from './all/classFeatures/bard/lore/cuttingWords.mjs';
+
+/*            Valor           */
+export {battleMagic as 'battle-magic'} from './all/classFeatures/bard/valor/battleMagic.mjs';
+export {combatInspiration as 'combat-inspiration', combatInspirationEffect} from './all/classFeatures/bard/valor/combatInspiration.mjs';
+
 /******************************/
 /*           Druid            */
 /******************************/

@@ -64,6 +64,16 @@ export {vitalityOfTheTree as 'vitality-of-the-tree', lifeGivingForce} from './mo
 export {countercharm} from './modern/classFeatures/bard/countercharm.mjs';
 export {fontOfInspiration as 'font-of-inspiration'} from './modern/classFeatures/bard/fontOfInspiration.mjs';
 
+/*            Dance             */
+export {dazzlingFootwork as 'dazzling-footwork'} from './modern/classFeatures/bard/dance/dazzlingFootwork.mjs';
+export {inspiringMovement as 'inspiring-movement'} from './modern/classFeatures/bard/dance/inspiringMovement.mjs';
+export {leadingEvasion as 'leading-evasion'} from './modern/classFeatures/bard/dance/leadingEvasion.mjs';
+export {tandemFootwork as 'tandem-footwork'} from './modern/classFeatures/bard/dance/tandemFootwork.mjs';
+
+/*            Glamour            */
+export {beguilingMagic as 'beguiling-magic'} from './modern/classFeatures/bard/glamour/beguilingMagic.mjs';
+export {unbreakableMajesty as 'unbreakable-majesty'} from './modern/classFeatures/bard/glamour/unbreakableMajesty.mjs';
+
 /*********************************/
 /*            Cleric             */
 /*********************************/

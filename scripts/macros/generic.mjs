@@ -48,6 +48,7 @@ export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
 export {firearm} from './generic/firearm.mjs';
 export {hide} from './generic/hide.mjs';
 export {ignoreCover} from './generic/ignoreCover.mjs';
+export {immuneAutoSucceed} from './generic/immuneAutoSucceed.mjs';
 export {packTactics} from './generic/packTactics.mjs';
 export {preventDeath} from './generic/preventDeath.mjs';
 export {proficiencyChoice} from './generic/proficiencyChoice.mjs';

@@ -3,6 +3,9 @@
 - Requires CAT 0.1.7.
 - Firearms have their own weapon type and Firearms proficiency. New weapon properties: Barrel, Blackpowder, Blaring, Burst Fire, Cumbersome, Explosive, Loud, Magazine, Recoil, Spread Fire and Twinned Barrel.
 - CPR's firearms are base weapons, so characters can choose them for weapon masteries.
+## Automated Class Features:
+- 2014 Bard Subclasses: College of Creation, College of Glamour, College of Lore, College of Swords, and College of Valor.
+- 2024 Bard Subclasses: College of Dance, College of Glamour, College of Lore, and College of Valor.
 ## Automated Equipment:
 - 2014: Blackrazor, Blood Spear, Crystal Blades, Dragon's Wrath Weapon, Grovelthrash, Javelin of Lightning and Ruin's Wake.
 - 2014 Exandria firearms: Bad News, Blunderbuss, Hand Mortar, Musket, Palm Pistol, Pepperbox, Pistol, Firearm and Firearm (CR). Each has Reload and Repair activities, which replace the Reload Firearm and Repair Firearm features.
@@ -17,12 +20,14 @@
 - Bigby's Beneficent Bracelet asks for the sculpture's size.
 ## Generic Macros:
 - New generic macro: `firearm`. A natural roll at or below the misfire score misses and damages the firearm, and a damaged or broken firearm can't attack. Its Repair activity rolls a Tinker's Tools check, and a failure breaks the firearm. It also applies the Recoil, Blaring and Explosive properties.
+- New generic macro: `immuneAutoSucceed`. Targets with immunity to any conditions the activity would apply will succeed their check, save, skill or tool roll.
 - `weaponAnimation` also animates a weapon's save activities, such as a cone or burst of fire.
 - New generic macro: `contextAdvantage`. Before a chosen ability check, saving throw, skill or tool check, CAT asks whether to roll it with advantage. Chosen conditions stop the offer. Aspect of the Beast: Bear, Danger Sense (2014), Form of the Beast (Warlock), Unarguable Wizardry, Amulet of the Lycanthrope and Spirit Totem's Unicorn Spirit use it.
 - `ignoreCover` and `damageBonusToOneRoll` skip items that aren't equipped, or aren't attuned when they need attunement.
 ## Animations:
 - Weapon Attack fires a bullet for firearms and plays a smoke puff when a firearm misfires. Explosive firearms add an explosion on a hit.
 - Weapon Attack swings for a melee attack with a firearm, and melee animations follow the rolled damage type. New projectile: Flame Jet.
+
 # 2.1.6 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.6.
@@ -39,6 +44,7 @@
 - Northlands: Pull.
 ## Bug Fixes:
 - Metamagic's rerolled damage dice update the roll's total.
+
 # 2.1.5 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.5.
@@ -65,6 +71,7 @@
 - Cloudkill's cloud uses JB2A's green ambient fog when JB2A Patreon is installed, and slides with the cloud's drift instead of fading out and back in.
 ## Bug Fixes:
 - Enlarge/Reduce effects still resize and animate after their item is gone.
+
 # 2.1.4 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.4.

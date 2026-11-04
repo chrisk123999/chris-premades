@@ -5,10 +5,10 @@ async function damage({document: item, workflow}) {
     const exception = config.exceptions.includes(documentUtils.getIdentifier(workflow.item));
     if (!exception && (
         workflow.attackMode === 'twoHanded' ||
-        workflow.item.system?.type.value === 'natural' ||
-        !workflowUtils.isAttackType(workflow, 'meleeWeaponAttack')
+        !workflowUtils.isAttackType(workflow, 'meleeWeaponAttack') ||
+        ['natural', 'unarmed'].includes(workflow.item.system?.type.value)
     )) return;
-    if (workflow.actor.items.filter(i => i.system.equipped && i.type === 'weapon' && i.system.type?.value !== 'natural').length > 1) return;
+    if (workflow.actor.itemTypes.weapon.filter(i => i.system.equipped && ['natural', 'unarmed'].includes(i.system.type?.value)).length > 1) return;
     return new DamageBonus(item, {formula: config.formula || '2', optional: false});
 }
 export const dueling = {

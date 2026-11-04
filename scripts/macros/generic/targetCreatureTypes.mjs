@@ -25,7 +25,7 @@ async function filterTargets({document: item, workflow}) {
 }
 /**
  * Removes targets that do not match the configured creature types.
- * Bound on an item. Fires on `itemPreambleComplete`.
+ * Bound on an item. Fires on `itemTargeting`.
  * Targets without an actor are always removed.
  *
  * Config:
@@ -46,7 +46,7 @@ export const targetCreatureTypes = {
     documents: ['item'],
     roll: [
         {
-            pass: 'itemPreambleComplete',
+            pass: 'itemTargeting',
             macro: filterTargets,
             priority: 50
         }

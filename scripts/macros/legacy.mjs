@@ -79,6 +79,18 @@ export {wildSurge as 'wild-surge', wildSurgeRetribution as 'wild-surge-retributi
 export {countercharm} from './legacy/classFeatures/bard/countercharm.mjs';
 export {magicalInspiration as 'magical-inspiration', magicalInspirationEffect} from './legacy/classFeatures/bard/magicalInspiration.mjs';
 
+/*          Creation          */
+export {moteOfPotential as 'mote-of-potential', moteOfPotentialEffect} from './legacy/classFeatures/bard/creation/moteOfPotential.mjs';
+
+/*           Glamour          */
+export {enthrallingPerformance as 'enthralling-performance'} from './legacy/classFeatures/bard/glamour/enthrallingPerformance.mjs';
+export {mantleOfInspiration as 'mantle-of-inspiration'} from './legacy/classFeatures/bard/glamour/mantleOfInspiration.mjs';
+export {unbreakableMajesty as 'unbreakable-majesty'} from './legacy/classFeatures/bard/glamour/unbreakableMajesty.mjs';
+
+/*            Swords          */
+export {bladeFlourish as 'blade-flourish'} from './legacy/classFeatures/bard/swords/bladeFlourish.mjs';
+export {mastersFlourish as 'masters-flourish'} from './legacy/classFeatures/bard/swords/mastersFlourish.mjs';
+
 /******************************/
 /*           Cleric           */
 /******************************/
