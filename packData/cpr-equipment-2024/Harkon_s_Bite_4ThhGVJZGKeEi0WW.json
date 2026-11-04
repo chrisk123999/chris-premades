@@ -1,0 +1,149 @@
+{
+  "name": "Harkon's Bite",
+  "type": "equipment",
+  "effects": [
+    {
+      "img": "icons/equipment/neck/pendant-simple-tooth.webp",
+      "name": "Harkon's Bite",
+      "statuses": [],
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        }
+      },
+      "description": "",
+      "_id": "Ox2HzLG8BzKzStks",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.rolls.ability.save.bonus",
+            "value": 1,
+            "priority": 20,
+            "type": "add",
+            "phase": "initial",
+            "_id": "u3BAqyQSXq0zJbOi",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.rolls.ability.check.bonus",
+            "value": 1,
+            "priority": 18,
+            "type": "add",
+            "phase": "initial",
+            "_id": "pNnp7uVDlz1YRdY8",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "magical": true
+      },
+      "origin": null,
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!4ThhGVJZGKeEi0WW.Ox2HzLG8BzKzStks"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": null,
+      "recovery": []
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "harkons-bite",
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "custom": "Ravenloft: The Horrors Within",
+      "rules": "2024",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "uncommon",
+    "attunement": "required",
+    "attuned": true,
+    "equipped": true,
+    "crewed": false,
+    "armor": {
+      "value": null,
+      "dex": null
+    },
+    "proficient": 1,
+    "properties": [
+      "mgc"
+    ],
+    "strength": 0,
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.7"
+      }
+    }
+  },
+  "img": "icons/equipment/neck/pendant-simple-tooth.webp",
+  "folder": "7oCfRMcgCyAkhSWB",
+  "_id": "4ThhGVJZGKeEi0WW",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!4ThhGVJZGKeEi0WW"
+}

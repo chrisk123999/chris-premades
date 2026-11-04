@@ -59,17 +59,32 @@
             "check": [
               {
                 "source": "chris-premades",
-                "rules": "2014",
-                "identifier": "spirit-totem-detect"
+                "rules": "all",
+                "identifier": "contextAdvantage"
               }
             ],
             "skill": [
               {
                 "source": "chris-premades",
-                "rules": "2014",
-                "identifier": "spirit-totem-detect"
+                "rules": "all",
+                "identifier": "contextAdvantage"
               }
             ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "contextAdvantage": {
+                "check": [
+                  "str",
+                  "dex",
+                  "con",
+                  "int",
+                  "wis",
+                  "cha"
+                ],
+                "label": "CHRISPREMADES.Macros.Legacy.SpiritTotem.Detect"
+              }
+            }
           }
         }
       },
@@ -101,7 +116,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.7"
       },
       "macros": {
         "aura": [

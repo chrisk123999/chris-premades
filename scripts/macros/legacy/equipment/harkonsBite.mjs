@@ -68,32 +68,21 @@ async function reequip({document: effect}) {
 }
 export const harkonsBiteEffect = {
     name: 'Harkon\'s Bite: Shapechanged',
-    version: '2.0.0',
+    version: '2.1.7',
     rules: '2014',
     effect: [
         {pass: 'deleted', macro: reequip, priority: 50}
     ]
 };
-async function keenHearingAndSmell({document, skillId}) {
-    if (skillId !== 'prc') return;
-    if (!itemUtils.getEquipmentState(document)) return;
-    return {
-        label: 'CHRISPREMADES.Macros.Legacy.HarkonsBite.Keen',
-        type: 'advantage'
-    };
-}
 export const harkonsBite = {
     name: 'Harkon\'s Bite',
-    version: '2.0.0',
+    version: '2.1.7',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: shapechange, priority: 50},
         {pass: 'itemRollFinished', macro: human, priority: 50},
         {pass: 'itemRollFinished', macro: bite, priority: 50},
         {pass: 'actorRollFinished', macro: otherBite, priority: 50}
-    ],
-    skill: [
-        {pass: 'actorContext', macro: keenHearingAndSmell, priority: 50}
     ],
     get config() {
         return {

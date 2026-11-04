@@ -41,16 +41,31 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2"
+        "version": "2.1.7"
       },
       "macros": {
         "save": [
           {
             "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "danger-sense"
+            "rules": "all",
+            "identifier": "contextAdvantage"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "contextAdvantage": {
+            "save": [
+              "dex"
+            ],
+            "statuses": [
+              "blinded",
+              "deafened",
+              "incapacitated"
+            ],
+            "label": "CHRISPREMADES.Macros.Legacy.DangerSense"
+          }
+        }
       }
     }
   },

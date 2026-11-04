@@ -1077,7 +1077,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.7"
       },
       "macros": {
         "roll": [
@@ -1090,10 +1090,20 @@
         "skill": [
           {
             "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "harkons-bite"
+            "rules": "all",
+            "identifier": "contextAdvantage"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "contextAdvantage": {
+            "skill": [
+              "prc"
+            ],
+            "label": "CHRISPREMADES.Macros.Legacy.HarkonsBite.Keen"
+          }
+        }
       }
     }
   },

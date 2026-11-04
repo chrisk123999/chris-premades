@@ -115,21 +115,31 @@
         "check": [
           {
             "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "aspect-of-the-beast-bear"
+            "rules": "all",
+            "identifier": "contextAdvantage"
           }
         ],
         "skill": [
           {
             "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "aspect-of-the-beast-bear"
+            "rules": "all",
+            "identifier": "contextAdvantage"
           }
         ]
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.7"
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "contextAdvantage": {
+            "check": [
+              "str"
+            ],
+            "label": "CHRISPREMADES.Macros.Legacy.AspectBeastBear"
+          }
+        }
       }
     }
   },

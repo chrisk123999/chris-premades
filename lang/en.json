@@ -351,6 +351,7 @@
             "Bonus": "Bonus",
             "CanCrit": "Can Crit",
             "Character": "Character",
+            "CheckAbilities": "Check Abilities",
             "CheckHit": "Check Hit",
             "CheckSave": "Check Save",
             "CheckSaves": "Check Saves",
@@ -480,6 +481,7 @@
             "Items": "Items",
             "ItemTypes": "Item Types",
             "KeepTemplate": "Keep Template",
+            "Label": "Label",
             "LineColor": "Line Color",
             "Magical": "Magical",
             "Max": "Max",
@@ -582,6 +584,16 @@
             "All": {
                 "GrinningSinner": {
                     "Jinx": "Sinner's Jinx"
+                },
+                "RingOfSpellStoring": {
+                    "Caster": "Who casts the spell into the ring?",
+                    "Full": "The ring has no room for another spell.",
+                    "NoSpells": "No one nearby has a spell that fits in the ring.",
+                    "SelectSpell": "Choose the spell to store.",
+                    "SelectSlot": "Choose the spell slot to cast it with."
+                },
+                "CharlatansDie": {
+                    "Use": "Choose the number rolled."
                 },
                 "Banishment": {
                     "Native": "Which banished creatures are native to a different plane?"
@@ -1852,6 +1864,30 @@
                 },
                 "Grovelthrash": {
                     "Damage": "Deal an extra 2d6 bludgeoning damage and take 1d6 psychic damage?"
+                },
+                "DragonVessel": {
+                    "Select": "What does the vessel fill with?",
+                    "Missing": "That potion isn't in any item compendium.",
+                    "PotionOfHealing": "Potion of Healing",
+                    "PotionOfClimbing": "Potion of Climbing",
+                    "PotionOfGreaterHealing": "Potion of Greater Healing",
+                    "PotionOfFireBreath": "Potion of Fire Breath",
+                    "PotionOfSuperiorHealing": "Potion of Superior Healing",
+                    "PotionOfFlying": "Potion of Flying",
+                    "PotionOfSupremeHealing": "Potion of Supreme Healing",
+                    "PotionOfDragonsMajesty": "Potion of Dragon's Majesty",
+                    "Ale": "Ale",
+                    "OliveOil": "Olive Oil",
+                    "Mead": "Mead",
+                    "Wine": "Wine",
+                    "Whiskey": "Whiskey"
+                },
+                "GuardianEmblem": {
+                    "Protect": "Use {item} to turn the critical hit on {name} into a normal hit?"
+                },
+                "PariahsShield": {
+                    "Protect": "Use your reaction and {item} to take the damage dealt to {name}?",
+                    "MaxBonus": "Maximum AC Bonus"
                 }
             },
             "Modern": {

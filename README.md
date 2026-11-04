@@ -4,7 +4,7 @@ A collection of automated items including spells, class features, monster featur
 
 Find detailed information in [our wiki](https://github.com/chrisk123999/chris-premades/wiki).
 
-![cpr-logo](https://raw.githubusercontent.com/chrisk123999/chris-premades/refs/heads/master/images/cpr-logo.png) 
+![cpr-logo](https://raw.githubusercontent.com/chrisk123999/chris-premades/refs/heads/main/images/cpr-logo.png) 
   
 ### Authors:
 [Chris](https://github.com/chrisk123999) <br> 
