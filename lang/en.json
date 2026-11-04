@@ -585,6 +585,25 @@
                 "GrinningSinner": {
                     "Jinx": "Sinner's Jinx"
                 },
+                "Stabilize": {
+                    "Check": "Requires a DC 10 Medicine Check",
+                    "WakeUp": "Hours Until 1 Hit Point"
+                },
+                "DeckOfIllusions": {
+                    "Cards": "Cards",
+                    "CardsHint": "Entries with the same name are one card.",
+                    "DrawerCards": "Card Drawer Cards",
+                    "Empty": "The deck has no cards left.",
+                    "Missing": "{name} has no linked creature. It stays in the deck.",
+                    "Drawer": "The Card Drawer ({index})"
+                },
+                "RobeOfUsefulItems": {
+                    "Gold": "Bag of 100 GP",
+                    "NoPatch": "The Patch item is missing from the CPR equipment compendium."
+                },
+                "WingsOfFlying": {
+                    "Recharging": "Recharging"
+                },
                 "RingOfSpellStoring": {
                     "Caster": "Who casts the spell into the ring?",
                     "Full": "The ring has no room for another spell.",
@@ -970,6 +989,9 @@
                 }
             },
             "Generic": {
+                "StoredItem": {
+                    "Missing": "The stored item could not be found."
+                },
                 "AdditionalTargets": {
                     "HostileTarget": "Hostile to Target",
                     "MatchTarget": "Match Target",
@@ -1285,6 +1307,9 @@
                     "MaxCRHint": "Remove targets above this challenge rating. -1 skips the check."
                 },
                 "Teleport": {
+                    "VisitedThisTurn": "Only Spaces Visited This Turn",
+                    "VisitedThisTurnHint": "On a self teleport, only allow spaces the user occupied earlier this turn.",
+                    "NoVisited": "You haven't occupied any other space this turn.",
                     "CompanionMaxSize": "Companions No Larger Than User",
                     "CompanionRange": "Companion Range",
                     "Companions": "Companions",
@@ -1865,6 +1890,41 @@
                 "Grovelthrash": {
                     "Damage": "Deal an extra 2d6 bludgeoning damage and take 1d6 psychic damage?"
                 },
+                "DeckOfMiscellany": {
+                    "NoCard": "The Miscellany Card item is missing from the CPR equipment compendium.",
+                    "Wooden": "Wooden",
+                    "Silk": "Silk",
+                    "Leather": "Leather",
+                    "Burlap": "Burlap"
+                },
+                "MastersAmulet": {
+                    "Guardian": "Linked Shield Guardian",
+                    "MissingBound": "That creature isn't bound to an amulet. Only a shield guardian with Bound can be linked.",
+                    "Unlinked": "This shield guardian's token isn't linked to its actor, so damage goes to its first token.",
+                    "Linked": "The amulet is linked to {name}."
+                },
+                "DeckOfWonder": {
+                    "Size": "Deck Size",
+                    "MysteryDrawn": "Mystery Drawn",
+                    "SelectCardConfig": "Choose Cards Instead of Drawing",
+                    "SelectCard": "Choose a card:",
+                    "NoItems": "No matching items were found in the item compendiums set in CAT.",
+                    "NoSpell": "No spell with the identifier {identifier} was found in the spell compendiums set in CAT.",
+                    "Knife": "Choose an uncommon magic weapon:",
+                    "Student": "Choose a saving throw proficiency:",
+                    "Justice": "Use your reaction to cancel advantage and disadvantage on {name}'s roll?",
+                    "Mischief": {
+                        "Choose": "Take an uncommon wondrous item or draw two more cards?",
+                        "Cards": "Draw Two Cards",
+                        "Item": "Wondrous Item",
+                        "Select": "Choose an uncommon wondrous item:"
+                    },
+                    "Vulture": {
+                        "Select": "Choose a nonmagical item that disappears:",
+                        "Lost": "{name} (Lost)",
+                        "Found": "Was {name} found with a DC 15 Wisdom (Perception) check?"
+                    }
+                },
                 "DragonVessel": {
                     "Select": "What does the vessel fill with?",
                     "Missing": "That potion isn't in any item compendium.",
@@ -1891,6 +1951,10 @@
                 }
             },
             "Modern": {
+                "Healer": {
+                    "SelectHitDie": "Choose a Hit Point Die to spend:",
+                    "Spells": "Reroll 1s on Healing Spells"
+                },
                 "AuraOfVitality": {
                     "Select": "Choose a creature in the aura to heal."
                 },

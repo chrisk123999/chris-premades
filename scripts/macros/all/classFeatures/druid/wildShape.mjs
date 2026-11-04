@@ -2,7 +2,7 @@ import {default as cpr} from '../../../../constants.mjs';
 import {actorUtils, applications, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, uiUtils, workflowUtils} from '../../../../proxy.mjs';
 async function getConfigs(item) {
     const identifier = documentUtils.getIdentifier(item);
-    const config = automationUtils.getConfigValues(item, Object.keys(wildShape.config));
+    const config = Object.fromEntries(Object.entries(wildShape.config).map(([key, {default: value}]) => [key, automationUtils.getConfigValue(item, key) ?? value]));
     const classItem = item.actor.classes[config.classIdentifier] ?? itemUtils.getAdvancementSourceItem(item);
     const forms = (await rollUtils.rollDice(config.forms, {document: item})).total;
     const cr = (await rollUtils.rollDice(config.cr, {document: item})).total;
@@ -52,7 +52,7 @@ async function learnForm({identifier, workflow}) {
 }
 async function preWildShape({actor, config, document: activity, token}) {
     if (config.midiOptions['chris-premades']?.wildShape) return;
-    if (!activity.item.system.uses.value) return;
+    if (activity.item.system.uses.max && !activity.item.system.uses.value) return;
     const options = await getConfigs(activity.item);
     if (!options) return;
     const rules = documentUtils.getRules(activity.item);
@@ -236,7 +236,7 @@ async function wildShapeExpire({document: effect, overflowDamage}) {
 }
 export const wildShape = {
     name: 'Wild Shape',
-    version: '2.0.4',
+    version: '2.1.7',
     rules: 'all',
     notes: 'Use the "actorWildShape" called event (async) to modify the wild shape active effect and worn items.\n\tData available: actor, newActor, keepItems, effectData, rules.\nUse the "actorWildShapeForms" called event (async) to provide additional actor documents as choices. Return {actor, source}, where source is the granting item and will be rolled if the actor is used.\n\tData available: activity, actor, canFly, canSwim, cr, creatureTypes, packs, rules.',
     revert: calledRevert,

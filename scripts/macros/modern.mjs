@@ -299,3 +299,7 @@ export {teleportModern as teleport} from './all/spells/teleport.mjs';
 export {timeStop as 'time-stop', timeStopEffect as 'time-stop-effect'} from './modern/spells/timeStop.mjs';
 export {wiltingSmite as 'wilting-smite'} from './modern/spells/wiltingSmite.mjs';
 export {wish, wishImmunity as 'wish-immunity', wishStress as 'wish-stress'} from './modern/spells/wish.mjs';
+export {deckOfIllusions2024 as 'deck-of-illusions'} from './all/equipment/deckOfIllusions.mjs';
+export {forceGauntlet as 'force-gauntlet'} from './modern/equipment/forceGauntlet.mjs';
+export {healer} from './modern/feats/healer.mjs';
+export {orbOfDamara as 'orb-of-damara', orbOfDamaraImmunity as 'orb-of-damara-immunity'} from './modern/equipment/orbOfDamara.mjs';

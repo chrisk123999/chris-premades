@@ -455,7 +455,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.2"
+        "version": "2.1.7"
       },
       "config": {
         "grantSwimSpeed": ""

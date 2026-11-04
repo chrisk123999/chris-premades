@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, dialogUtils, documentUtils, Logging, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, dialogUtils, documentUtils, genericUtils, Logging, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {resolveCastFormula} from './multiSingleTarget.mjs';
 async function pickCompanions({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'teleport', configKeys);
@@ -52,7 +52,10 @@ async function use({document, workflow}) {
     }
     if (config.targets !== 'failedSaves') {
         const followers = workflowUtils.getWorkflowProperty(workflow, 'chris-premades.teleportCompanions') ?? [];
-        await tokenUtils.teleportToken(workflow.token.document, {animation, options, range, requireSight: config.requireSight, followers});
+        const token = workflow.token.document;
+        const allowedPoints = config.visitedThisTurn ? token.movementHistory.map(point => token.getCenterPoint(point)) : undefined;
+        if (allowedPoints && !allowedPoints.length) return genericUtils.notify('CHRISPREMADES.Macros.Generic.Teleport.NoVisited', {type: 'warn'});
+        await tokenUtils.teleportToken(token, {animation, options, range, requireSight: config.requireSight, followers, allowedPoints});
         return;
     }
     for (const target of workflow.failedSaves) {
@@ -72,11 +75,12 @@ async function use({document, workflow}) {
  * - `companions`: how many allies within `companionRange` the user may bring along. They keep their position relative to the user and are dropped from the activity's targets.
  * - `companionMaxSize`: only offer companions no larger than the user.
  * - `excludeUser`: drop the user from the activity's targets on a self teleport, for areas centred on the space the user leaves.
+ * - `visitedThisTurn`: on a self teleport, only allow spaces the user occupied earlier this turn.
  * - `animation`: played during the teleport.
  */
 export const teleport = {
     rules: 'all',
-    version: '2.1.3',
+    version: '2.1.7',
     category: 'movement',
     generic: true,
     documents: ['activity'],
@@ -145,6 +149,13 @@ export const teleport = {
             type: 'checkbox',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionMaxSize'
+        },
+        visitedThisTurn: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.VisitedThisTurn',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.VisitedThisTurnHint'
         },
         excludeUser: {
             default: false,

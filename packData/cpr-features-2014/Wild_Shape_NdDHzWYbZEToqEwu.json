@@ -485,7 +485,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.7"
       },
       "config": {
         "forms": "99"

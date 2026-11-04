@@ -135,9 +135,11 @@ export {potionOfPoison as 'potion-of-poison', potionOfPoisonEffect as 'potion-of
 export {potionOfVitality as 'potion-of-vitality', potionOfVitalityEffect as 'potion-of-vitality-effect'} from './all/equipment/potionOfVitality.mjs';
 export {repulsionShield as 'repulsion-shield'} from './all/equipment/repulsionShield.mjs';
 export {ringOfSpellStoring as 'ring-of-spell-storing'} from './all/equipment/ringOfSpellStoring.mjs';
+export {robeOfUsefulItemsSetup as 'robe-of-useful-items-setup'} from './all/equipment/robeOfUsefulItems.mjs';
 export {silverEagleMusket as 'silver-eagle-musket'} from './all/equipment/silverEagleMusket.mjs';
 export {spellRefuelingRing as 'spell-refueling-ring'} from './all/equipment/spellRefuelingRing.mjs';
 export {thunderbuss as 'thunderbuss'} from './all/equipment/thunderbuss.mjs';
+export {wingsOfFlying as 'wings-of-flying', wingsOfFlyingRecharge as 'wings-of-flying-recharge'} from './all/equipment/wingsOfFlying.mjs';
 
 /*============================*/
 /*           FEATS            */
@@ -225,3 +227,4 @@ export {wallOfThorns as 'wall-of-thorns'} from './all/spells/wallOfThorns.mjs';
 export {wallOfWater as 'wall-of-water'} from './all/spells/wallOfWater.mjs';
 export {wardingBond as 'warding-bond', wardingBondSource as 'warding-bond-source', wardingBondTarget as 'warding-bond-target'} from './all/spells/wardingBond.mjs';
 export {windWall as 'wind-wall'} from './all/spells/windWall.mjs';
+export {stabilize, stabilized} from './all/actions/stabilize.mjs';
