@@ -40,7 +40,7 @@ export const immuneAutoSucceed = {
         {
             pass: 'activityPreambleComplete',
             macro: checkImmunities,
-            priority: 55 // after generic targetCreatureTypes
+            priority: 55
         }
     ]
 };

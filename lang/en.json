@@ -1436,6 +1436,11 @@
                     "OncePerTurn": "Once Per Turn",
                     "Select": "Change damage type?"
                 },
+                "BladeFlourish": {
+                    "Label": "Flourish",
+                    "Reaction": "Use your reaction to move up to the pushed target?",
+                    "Warning": "You have no remaining {resource}! {feature} is required to use {item}."
+                },
                 "Bladesong": {
                     "ArmorRestriction": "You can't use Bladesong while wearing medium or heavy armor or wielding a shield.",
                     "EnforceArmorRestriction": "Enforce Armor Restriction"
