@@ -1,0 +1,71 @@
+{
+  "name": "Deck of Miscellany",
+  "type": "container",
+  "img": "icons/sundries/gaming/rune-card.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "1QcPs96EHdGxq1tL",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "deck-of-miscellany",
+    "source": {
+      "book": "TBoMT",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "attunement": "",
+    "currency": {
+      "pp": 0,
+      "gp": 0,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "capacity": {
+      "volume": {
+        "units": "cubicFoot"
+      },
+      "weight": {
+        "units": "lb"
+      }
+    },
+    "properties": [],
+    "attuned": false,
+    "equipped": true
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.7"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!1QcPs96EHdGxq1tL"
+}

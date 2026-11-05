@@ -52,7 +52,8 @@ async function damage({document, workflow}) {
         if (!config.itemType.includes(workflow.item.type)) return;
     }
     if (config.spellLevel.length) {
-        if(!config.spellLevel.includes(String(workflowUtils.getCastLevel(workflow)))) return;
+        const castLevel = workflow.item.flags['chris-premades']?.bladeCantrip ? 0 : workflowUtils.getCastLevel(workflow);
+        if (!config.spellLevel.includes(String(castLevel))) return;
     }
     if (config.spellSchool.length) {
         if (!config.spellSchool.includes(workflow.item.system.school)) return;

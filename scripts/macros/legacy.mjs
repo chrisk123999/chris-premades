@@ -273,26 +273,31 @@ export {durableMagic as 'durable-magic'} from './legacy/classFeatures/wizard/war
 /*============================*/
 /*         EQUIPMENT          */
 /*============================*/
-export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope'} from './legacy/equipment/amuletOfTheLycanthrope.mjs';
-export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/equipment/harkonsBite.mjs';
-export {bloodSpear as 'blood-spear', crystalBlade as 'crystal-greatsword', crystalBlade as 'crystal-longsword', crystalBlade as 'crystal-rapier', crystalBlade as 'crystal-scimitar', crystalBlade as 'crystal-shortsword', dragonsWrath as 'dragons-wrath-weapon-slumbering', dragonsWrath as 'dragons-wrath-weapon-stirring', dragonsWrath as 'dragons-wrath-weapon-wakened', dragonsWrath as 'dragons-wrath-weapon-ascendant', grovelthrash as 'grovelthrash-dormant', grovelthrash as 'grovelthrash-awakened', grovelthrash as 'grovelthrash-exalted', ruinsWake as 'ruins-wake-dormant', ruinsWake as 'ruins-wake-awakened', ruinsWake as 'ruins-wake-exalted'} from './legacy/equipment/magicWeapons.mjs';
-export {pariahsShield as 'pariahs-shield'} from './legacy/equipment/pariahsShield.mjs';
-export {crownOfDaffodils as 'crown-of-daffodils'} from './legacy/equipment/crownOfDaffodils.mjs';
-export {guardianEmblem as 'guardian-emblem'} from './legacy/equipment/guardianEmblem.mjs';
 export {allPurposeTool as 'all-purpose-tool-1', allPurposeTool as 'all-purpose-tool-2', allPurposeTool as 'all-purpose-tool-3'} from './legacy/equipment/allPurposeTool.mjs';
-export {dragonVessel as 'dragon-vessel-slumbering', dragonVessel as 'dragon-vessel-stirring', dragonVessel as 'dragon-vessel-wakened', dragonVessel as 'dragon-vessel-ascendant'} from './legacy/equipment/dragonVessel.mjs';
+export {amuletOfTheLycanthrope as 'amulet-of-the-lycanthrope'} from './legacy/equipment/amuletOfTheLycanthrope.mjs';
+export {crownOfDaffodils as 'crown-of-daffodils'} from './legacy/equipment/crownOfDaffodils.mjs';
+export {deckOfMiscellanySetup as 'deck-of-miscellany-setup'} from './legacy/equipment/deckOfMiscellany.mjs';
+export {deckOfWonder as 'deck-of-wonder', deckOfWonderDestiny as 'deck-of-wonder-destiny', deckOfWonderIsolation as 'deck-of-wonder-isolation', deckOfWonderJustice as 'deck-of-wonder-justice', deckOfWonderVulture as 'deck-of-wonder-vulture'} from './legacy/equipment/deckOfWonder.mjs';
 export {dragonTouchedFocusGem as 'dragon-touched-focus-stirring-gem'} from './legacy/equipment/dragonTouchedFocusGem.mjs';
-export {stormgirdleAvatar as 'stormgirdle-avatar'} from './legacy/equipment/stormgirdle.mjs';
-export {eldritchClawTattoo as 'eldritch-claw-tattoo', insigniaOfClaws as 'insignia-of-claws', wrapsOfDyamak as 'wraps-of-dyamak-dormant', wrapsOfDyamak as 'wraps-of-dyamak-awakened', wrapsOfDyamak as 'wraps-of-dyamak-exalted'} from './legacy/equipment/unarmedItems.mjs';
+export {dragonVessel as 'dragon-vessel-ascendant', dragonVessel as 'dragon-vessel-slumbering', dragonVessel as 'dragon-vessel-stirring', dragonVessel as 'dragon-vessel-wakened'} from './legacy/equipment/dragonVessel.mjs';
+export {guardianEmblem as 'guardian-emblem'} from './legacy/equipment/guardianEmblem.mjs';
+export {harkonsBite as 'harkons-bite', harkonsBiteEffect as 'harkons-bite-effect'} from './legacy/equipment/harkonsBite.mjs';
+export {bloodSpear as 'blood-spear', crystalBlade as 'crystal-greatsword', crystalBlade as 'crystal-longsword', crystalBlade as 'crystal-rapier', crystalBlade as 'crystal-scimitar', crystalBlade as 'crystal-shortsword', dragonsWrath as 'dragons-wrath-weapon-ascendant', dragonsWrath as 'dragons-wrath-weapon-slumbering', dragonsWrath as 'dragons-wrath-weapon-stirring', dragonsWrath as 'dragons-wrath-weapon-wakened', grovelthrash as 'grovelthrash-awakened', grovelthrash as 'grovelthrash-dormant', grovelthrash as 'grovelthrash-exalted', ruinsWake as 'ruins-wake-awakened', ruinsWake as 'ruins-wake-dormant', ruinsWake as 'ruins-wake-exalted'} from './legacy/equipment/magicWeapons.mjs';
+export {pariahsShield as 'pariahs-shield'} from './legacy/equipment/pariahsShield.mjs';
 export {potionOfAdvantageEffect as 'potion-of-advantage-effect'} from './legacy/equipment/potionOfAdvantage.mjs';
 export {potionOfGiantSize as 'potion-of-giant-size', potionOfGiantSizeEffect as 'potion-of-giant-size-effect'} from './legacy/equipment/potionOfGiantSize.mjs';
+export {stormgirdleAvatar as 'stormgirdle-avatar'} from './legacy/equipment/stormgirdle.mjs';
+export {eldritchClawTattoo as 'eldritch-claw-tattoo', insigniaOfClaws as 'insignia-of-claws', wrapsOfDyamak as 'wraps-of-dyamak-awakened', wrapsOfDyamak as 'wraps-of-dyamak-dormant', wrapsOfDyamak as 'wraps-of-dyamak-exalted'} from './legacy/equipment/unarmedItems.mjs';
 export {bg3Brace as 'bg3-brace', bg3GapingWounds as 'bg3-gaping-wounds', bg3WeaponAction as 'bg3-weapon-action'} from './legacy/homebrew/bg3WeaponActions.mjs';
 export {dmgCleave as 'dmg-cleave'} from './legacy/homebrew/dmgCleave.mjs';
 
 /*============================*/
 /*           SPELLS           */
 /*============================*/
+export {deckOfIllusions2014 as 'deck-of-illusions'} from './all/equipment/deckOfIllusions.mjs';
 export {teleport} from './all/spells/teleport.mjs';
+export {mastersAmulet as 'masters-amulet'} from './legacy/equipment/mastersAmulet.mjs';
+export {shieldGuardianBound as 'bound|shield-guardian'} from './legacy/monsters/construct/shieldGuardian/bound.mjs';
 export {absorbElements as 'absorb-elements'} from './legacy/spells/absorbElements.mjs';
 export {animateObjects as 'animate-objects'} from './legacy/spells/animateObjects.mjs';
 export {antagonize} from './legacy/spells/antagonize.mjs';

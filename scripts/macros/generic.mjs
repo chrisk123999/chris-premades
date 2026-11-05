@@ -92,6 +92,7 @@ export {targetCreatureTypes} from './generic/targetCreatureTypes.mjs';
 /*============================*/
 export {itemRecovery} from './generic/itemRecovery.mjs';
 export {restoreUses} from './generic/restoreUses.mjs';
+export {storedItem} from './generic/storedItem.mjs';
 export {specialItemUse} from './generic/specialItemUse.mjs';
 export {useOnDeath} from './generic/useOnDeath.mjs';
 export {useOnEvent} from './generic/useOnEvent.mjs';

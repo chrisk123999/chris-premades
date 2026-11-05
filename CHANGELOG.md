@@ -3,30 +3,35 @@
 - Requires CAT 0.1.7.
 - Firearms have their own weapon type and Firearms proficiency. New weapon properties: Barrel, Blackpowder, Blaring, Burst Fire, Cumbersome, Explosive, Loud, Magazine, Recoil, Spread Fire and Twinned Barrel.
 - CPR's firearms are base weapons, so characters can choose them for weapon masteries.
+- The 2014 Exandria firearms have Reload and Repair activities, which replace the Reload Firearm and Repair Firearm features.
+- Attack riders from an item are only offered while the item is equipped, and attuned when it needs attunement.
+- Damage bonuses limited to cantrips also apply to the weapon attack of a blade cantrip such as True Strike.
 ## Automated Class Features:
-- 2014 Bard Subclasses: College of Creation, College of Glamour, College of Lore, College of Swords, and College of Valor.
-- 2024 Bard Subclasses: College of Dance, College of Glamour, College of Lore, and College of Valor.
+- 2014 Bard Subclasses: College of Creation, College of Glamour, College of Lore, College of Swords and College of Valor.
+- 2024 Bard Subclasses: College of Dance, College of Glamour, College of Lore and College of Valor.
+## Automated Feats:
+- 2024: Healer.
 ## Automated Equipment:
-- 2014: Blackrazor, Blood Spear, Crystal Blades, Dragon's Wrath Weapon, Grovelthrash, Javelin of Lightning and Ruin's Wake.
-- 2014 Exandria firearms: Bad News, Blunderbuss, Hand Mortar, Musket, Palm Pistol, Pepperbox, Pistol, Firearm and Firearm (CR). Each has Reload and Repair activities, which replace the Reload Firearm and Repair Firearm features.
-- 2024: Blackrazor, Dancing Greatsword, Dancing Longsword, Dancing Rapier, Dancing Scimitar, Dancing Shortsword, Javelin of Lightning, Lucent Destroyer, Rifle (Automatic) and Thunderbuss.
-- Third-party: Dragon Rifle (Grim Hollow).
-- Third-party firearms: Barron's Blunderbuss, Blunderbuss (Steinhardt's), Blunderbuss of the Grinning Sinner, Double-Barrel Shotgun, Flame Bellows, Meat Hookshot and Silver Eagle Musket.
-- 2014: Armor of Safeguarding, Last Stand Armor, Pariah's Shield, Boots of Elvenkind, Danoth's Visor, Dragon-Touched Focus (Slumbering and Stirring / Chromatic), Eyes of Minute Seeing, Eyes of the Eagle, Jewel of Three Prayers (Dormant) and Wand of the War Mage.
-- 2024: Boots of Elvenkind, Eyes of Minute Seeing, Eyes of the Eagle, Harkon's Bite and Wand of the War Mage.
-- Third-party: Titanstone Knuckles.
-- 2014: All-Purpose Tool, Charlatan's Die, Crown of Daffodils, Dragon Vessel, Dragon-Touched Focus (Stirring / Gem), Eldritch Claw Tattoo, Guardian Emblem, Insignia of Claws, Lantern of Revealing, Mystery Key, Ring of Spell Storing, Stormgirdle and Wraps of Dyamak.
-- 2024: Charlatan's Die, Lantern of Revealing, Mystery Key and Ring of Spell Storing.
-- Bigby's Beneficent Bracelet asks for the sculpture's size.
+- 2014: All-Purpose Tool, Armor of Safeguarding, Bad News, Blackrazor, Blood Spear, Blunderbuss, Boots of Elvenkind, Charlatan's Die, Crown of Daffodils, Crystal Blades, Danoth's Visor, Deck of Illusions, Deck of Miscellany, Deck of Wonder, Dragon Vessel, Dragon-Touched Focus (Slumbering and Stirring / Chromatic, Stirring / Gem), Dragon's Wrath Weapon, Eldritch Claw Tattoo, Eyes of Minute Seeing, Eyes of the Eagle, Firearm, Firearm (CR), Grovelthrash, Guardian Emblem, Hand Mortar, Healer's Kit, Insignia of Claws, Javelin of Lightning, Jewel of Three Prayers (Dormant), Lantern of Revealing, Last Stand Armor, Master's Amulet, Musket, Mystery Key, Palm Pistol, Pariah's Shield, Pepperbox, Pistol, Ring of Spell Storing, Robe of Useful Items, Ruin's Wake, Stormgirdle, Wand of the War Mage, Wings of Flying and Wraps of Dyamak.
+- 2024: Blackrazor, Boots of Elvenkind, Charlatan's Die, Dancing Greatsword, Dancing Longsword, Dancing Rapier, Dancing Scimitar, Dancing Shortsword, Deck of Illusions, Eyes of Minute Seeing, Eyes of the Eagle, Force Gauntlet, Fork of Eddy Summoning, Harkon's Bite, Healer's Kit, Javelin of Lightning, Lantern of Revealing, Lucent Destroyer, Mask of Monstrous Forms, Mystery Key, Orb of Damara, Rifle (Automatic), Ring of Spell Storing, Robe of Useful Items, Thunderbuss, Wand of the Precocious Apprentice, Wand of the War Mage and Wings of Flying.
+- Third-party: Barron's Blunderbuss, Blunderbuss (Steinhardt's), Blunderbuss of the Grinning Sinner, Double-Barrel Shotgun, Dragon Rifle (Grim Hollow), Flame Bellows, Meat Hookshot, Silver Eagle Musket and Titanstone Knuckles.
+## Automated Actions:
+- 2014 and 2024: Stabilize.
+## Automated Monster Features:
+- 2014 Shield Guardian: Bound.
+## Summons:
+- New summon: Eldritch Eddy, for the Fork of Eddy Summoning.
 ## Generic Macros:
 - New generic macro: `firearm`. A natural roll at or below the misfire score misses and damages the firearm, and a damaged or broken firearm can't attack. Its Repair activity rolls a Tinker's Tools check, and a failure breaks the firearm. It also applies the Recoil, Blaring and Explosive properties.
 - New generic macro: `immuneAutoSucceed`. Targets with immunity to any conditions the activity would apply will succeed their check, save, skill or tool roll.
-- `weaponAnimation` also animates a weapon's save activities, such as a cone or burst of fire.
 - New generic macro: `contextAdvantage`. Before a chosen ability check, saving throw, skill or tool check, CAT asks whether to roll it with advantage. Chosen conditions stop the offer. Aspect of the Beast: Bear, Danger Sense (2014), Form of the Beast (Warlock), Unarguable Wizardry, Amulet of the Lycanthrope and Spirit Totem's Unicorn Spirit use it.
+- `weaponAnimation` also animates a weapon's save activities, such as a cone or burst of fire.
 - `ignoreCover` and `damageBonusToOneRoll` skip items that aren't equipped, or aren't attuned when they need attunement.
 ## Animations:
 - Weapon Attack fires a bullet for firearms and plays a smoke puff when a firearm misfires. Explosive firearms add an explosion on a hit.
 - Weapon Attack swings for a melee attack with a firearm, and melee animations follow the rolled damage type. New projectile: Flame Jet.
+## Bug Fixes:
+- Spirit Guardians and Cacophonic Shield animations match the size of their area.
 
 # 2.1.6 Pre-Release:
 ## Update Notes:

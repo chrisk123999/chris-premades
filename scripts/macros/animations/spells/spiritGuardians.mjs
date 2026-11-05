@@ -1,4 +1,4 @@
-import {animationUtils, automationUtils, effectUtils} from '../../../proxy.mjs';
+import {animationUtils, effectUtils} from '../../../proxy.mjs';
 import {getCastDamageType} from '../../generic/selectDamageType.mjs';
 import {auraSize, colorOption, endPersist, persistName, pickFile} from '../generic/spellParts.mjs';
 const colorMap = {
@@ -17,8 +17,9 @@ const colorMap = {
 const damageColors = {radiant: 'blueyellow', necrotic: 'dark_purple'};
 // Guardian spirits circle the caster for the duration, colored by the damage type chosen at casting.
 async function create(effect, token, {color = 'auto'} = {}) {
-    if (color === 'auto') color = damageColors[getCastDamageType(effectUtils.getOriginActivitySync(effect)?.item)] ?? 'blueyellow';
-    const size = auraSize(token, Number(automationUtils.getGenericConfigValue(effect, 'cat', 'aura', 'radius')) || 15);
+    const activity = effectUtils.getOriginActivitySync(effect);
+    if (color === 'auto') color = damageColors[getCastDamageType(activity?.item)] ?? 'blueyellow';
+    const size = auraSize(token, activity?.target?.template?.size || 15);
     /* eslint-disable indent */
     await new Sequence()
         .effect()

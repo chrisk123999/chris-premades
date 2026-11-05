@@ -142,8 +142,10 @@ async function play(sourceToken, region, {color = 'auto', cast = true, impact = 
 }
 // Plays the area around the effect's actor and, with persist, keeps it there while the effect lasts. The radius comes from the effect's aura.
 async function create(effect, token, {color = 'auto', cast = true, impact = false, persist = false, radius} = {}) {
-    radius ??= Number(automationUtils.getGenericConfigValue(effect, 'cat', 'aura', 'radius')) || 0;
-    color = getColor(color, getCastDamageType(effectUtils.getOriginActivitySync(effect)?.item));
+    const activity = effectUtils.getOriginActivitySync(effect);
+    const auraRadius = effect.flags.cat?.genericConfig?.cat?.aura ? automationUtils.getGenericConfigValue(effect, 'cat', 'aura', 'radius') : activity?.target?.template?.size;
+    radius ??= Number(auraRadius) || 0;
+    color = getColor(color, getCastDamageType(activity?.item));
     await play(token, undefined, {color, cast, impact, radius});
     if (!persist) return;
     const file = getPalette(palettes.persist, color);

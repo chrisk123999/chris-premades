@@ -22,6 +22,7 @@ export function addRiders(workflow, uuids) {
 }
 function applies(activity, actor, workflow, config) {
     if (!workflow.hitTargets.size || workflow.activity?.uuid === activity.uuid) return false;
+    if (!itemUtils.getEquipmentState(activity.item)) return false;
     if (config.ownTurn && !combatUtils.isOwnTurn(workflow.token)) return false;
     if (activity.item.type === 'spell' && !itemUtils.canCast(activity.item)) return false;
     if (config.workflowProperty && !workflowUtils.getWorkflowProperty(workflow, config.workflowProperty)) return false;
@@ -110,7 +111,7 @@ async function rider({document: activity, actor, token, workflow}) {
  */
 export const attackRider = {
     rules: 'all',
-    version: '2.0.4',
+    version: '2.1.7',
     category: 'damage',
     generic: true,
     documents: ['activity'],

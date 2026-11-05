@@ -1,0 +1,73 @@
+{
+  "name": "Robe of Useful Items",
+  "type": "container",
+  "img": "icons/equipment/back/mantle-collared-black.webp",
+  "folder": "nvwKBMSV2OHzwAOe",
+  "_id": "zLTajMDmTyuvdNDP",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "robe-of-useful-items",
+    "source": {
+      "book": "DMG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "uncommon",
+    "attunement": "",
+    "currency": {
+      "pp": 0,
+      "gp": 1,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "capacity": {
+      "volume": {
+        "units": "cubicFoot"
+      },
+      "weight": {
+        "units": "lb"
+      }
+    },
+    "properties": [
+      "mgc"
+    ],
+    "attuned": false,
+    "equipped": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.7"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!zLTajMDmTyuvdNDP"
+}
