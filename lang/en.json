@@ -1951,6 +1951,11 @@
                 }
             },
             "Modern": {
+                "ShieldGuardian": {
+                    "Wearer": "Amulet Wearer",
+                    "Bound": "The shield guardian is bound to {name}.",
+                    "Protect": "Use {item} to give {name} +5 AC against this attack?"
+                },
                 "Healer": {
                     "SelectHitDie": "Choose a Hit Point Die to spend:",
                     "Spells": "Reroll 1s on Healing Spells"

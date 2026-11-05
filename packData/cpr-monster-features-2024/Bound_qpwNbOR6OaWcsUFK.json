@@ -29,19 +29,6 @@
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "shieldGuardianBoundBind"
-                }
-              ]
-            }
-          }
-        },
         "range": {
           "units": "any",
           "override": false,
@@ -116,7 +103,7 @@
           "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
+          "identifier": "bind",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -159,178 +146,8 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
-      },
-      "ZJUE7ro7hc1RCA1t": {
-        "type": "damage",
-        "_id": "ZJUE7ro7hc1RCA1t",
-        "img": "",
-        "sort": 100000,
-        "activation": {
-          "type": "special",
-          "override": false,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2024",
-                  "identifier": "shieldGuardianBoundDamage"
-                }
-              ]
-            }
-          }
-        },
-        "range": {
-          "units": "self",
-          "override": false,
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "stationary": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "type": "self",
-            "special": ""
-          },
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "visibility": {
-          "level": {
-            "min": null,
-            "max": null
-          },
-          "requireAttunement": false,
-          "requireIdentification": false,
-          "requireMagic": false,
-          "identifier": ""
-        },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": null,
-              "denomination": null,
-              "bonus": "",
-              "types": [
-                "none"
-              ],
-              "scaling": {
-                "number": 1
-              }
-            }
-          ]
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "triggeredActivityConsume": true,
-          "triggeredActivityConfigure": true,
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": true,
-          "otherActivityCompatible": false,
-          "otherActivityAsParentType": true,
-          "identifier": "",
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "rollAs": "target",
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "regionBehavior": {
-          "enabled": false,
-          "dispositionFilter": -1,
-          "excludeSource": true,
-          "oncePerTurn": true,
-          "wallRestriction": "none",
-          "regionVisibility": 2,
-          "attachToken": "default",
-          "rules": []
-        },
-        "regionLight": {
-          "enabled": false,
-          "dim": 0,
-          "bright": 0,
-          "color": null,
-          "alpha": 0.5,
-          "luminosity": 0.5,
-          "animationType": "",
-          "animationSpeed": 5,
-          "animationIntensity": 5
-        },
-        "name": ""
+        "name": "Bind",
+        "identifier": "bind"
       }
     },
     "uses": {
@@ -365,7 +182,17 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.8",
+        "sourceType": "shield-guardian"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "bound|shield-guardian"
+          }
+        ]
       }
     }
   },

@@ -1,64 +1,78 @@
-import {activityUtils, actorUtils, automationUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
-async function bind({document, workflow}) {
-    if (!workflow.targets.size) return;
-    await automationUtils.setConfigValue(document.item, 'target', workflow.targets.first().actor.uuid);
+import {actorUtils, automationUtils, dialogUtils, genericUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+export async function transferHalfDamage(ditem, wearerToken, guardianToken, maxDistance) {
+    if (tokenUtils.getDistance(wearerToken, guardianToken, {wallsBlock: false, checkCover: false}) > maxDistance) return;
+    const transfer = Math.ceil(ditem.totalDamage / 2);
+    workflowUtils.setDamageItemDamage(ditem, ditem.totalDamage - transfer);
+    await workflowUtils.applyDamage([guardianToken], transfer, 'none');
 }
-async function damaged({document, ditem, targetToken}) {
-    if (!ditem.isHit || ditem.damageDetail[0]?.type === 'none' || (ditem.oldHP <= ditem.newHP && ditem.newTempHP >= ditem.oldTempHP)) return;
-    const targetUuid = automationUtils.getConfigValue(document.item, 'target');
-    if (targetToken.actor.uuid !== targetUuid) return;
-    const guardianToken = actorUtils.getFirstToken(document.actor);
-    if (!guardianToken) return;
-    const distance = tokenUtils.getDistance(guardianToken, targetToken, {wallsBlock: false, checkCover: false});
-    const maxDistance = automationUtils.getConfigValue(document.item, 'distance');
-    if (distance > maxDistance) return;
-    const transferDamage = Math.ceil(ditem.totalDamage / 2);
-    const remainingDamage = ditem.totalDamage - transferDamage;
-    workflowUtils.setDamageItemDamage(ditem, remainingDamage);
-    const activityData = activityUtils.getDamageModifiedActivityData(document, String(transferDamage));
-    await workflowUtils.syntheticActivityDataRoll(activityData, document.item, [guardianToken]);
+async function bind({document: item, workflow}) {
+    if (workflow.activity.identifier !== 'bind') return;
+    const actor = workflow.targets.first()?.actor;
+    if (!actor) return;
+    await automationUtils.setConfigValue(item, 'target', actor.uuid);
+    genericUtils.notify('CHRISPREMADES.Macros.Modern.ShieldGuardian.Bound', {format: {name: actor.name}});
+}
+async function damaged({document: item, ditem, targetToken}) {
+    if (!ditem.isHit || ditem.totalDamage <= 0 || targetToken.actor?.uuid !== automationUtils.getConfigValue(item, 'target')) return;
+    const guardianToken = actorUtils.getFirstToken(item.actor);
+    if (guardianToken) await transferHalfDamage(ditem, targetToken, guardianToken, automationUtils.getConfigValue(item, 'distance'));
+}
+async function protect({document: item, workflow}) {
+    if (!workflow.attackRoll || workflow.attackRoll.isCritical || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    const bound = actorUtils.getItemByIdentifier(item.actor, 'bound');
+    const wearerUuid = bound && automationUtils.getConfigValue(bound, 'target');
+    const wearer = wearerUuid && [...workflow.targets].find(token => token.actor?.uuid === wearerUuid)?.document;
+    if (!wearer || workflow.attackTotal < wearer.actor.system.attributes.ac.value) return;
+    const token = actorUtils.getFirstToken(item.actor);
+    if (!token || (token.inCombat && actorUtils.hasUsedReaction(item.actor)) || tokenUtils.getDistance(token, wearer) > 5) return;
+    const userId = queryUtils.firstOwner(item.actor, true);
+    if (!await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.Modern.ShieldGuardian.Protect', {item: item.name, name: wearer.name}), {userId})) return;
+    await workflowUtils.syntheticItemRoll(item, [wearer], {userId});
+    if (token.inCombat) await actorUtils.setReactionUsed(item.actor);
+    workflowUtils.addTargetAC(workflow, wearer.actor, 5);
 }
 export const shieldGuardianBound = {
     name: 'Bound',
-    version: '2.0.3',
+    version: '2.1.8',
     rules: '2024',
     monsterIdentifier: 'shield-guardian',
-    config: {
-        distance: {
-            default: 60,
-            type: 'number',
-            label: 'CHRISPREMADES.Config.Distance',
-            hint: ''
-        },
-        target: {
-            default: '',
-            type: 'text',
-            label: 'CHRISPREMADES.Config.Target',
-            hint: ''
-        }
-    }
-};
-export const shieldGuardianBoundBind = {
-    name: 'Bound: Bind',
-    version: shieldGuardianBound.version,
-    rules: shieldGuardianBound.rules,
     roll: [
         {
-            pass: 'activityRollFinished',
+            pass: 'itemRollFinished',
             macro: bind,
             priority: 50
-        }
-    ]
-};
-export const shieldGuardianBoundDamage = {
-    name: 'Bound: Damage',
-    version: shieldGuardianBound.version,
-    rules: shieldGuardianBound.rules,
-    roll: [
+        },
         {
             pass: 'sceneDamageFlatReductions',
             macro: damaged,
             priority: 250
+        }
+    ],
+    config: {
+        target: {
+            default: '',
+            type: 'text',
+            label: 'CHRISPREMADES.Macros.Modern.ShieldGuardian.Wearer',
+            category: 'mechanics'
+        },
+        distance: {
+            default: 60,
+            type: 'number',
+            label: 'CHRISPREMADES.Config.Distance',
+            category: 'homebrew'
+        }
+    }
+};
+export const shieldGuardianProtection = {
+    name: 'Protection',
+    version: shieldGuardianBound.version,
+    rules: shieldGuardianBound.rules,
+    monsterIdentifier: shieldGuardianBound.monsterIdentifier,
+    roll: [
+        {
+            pass: 'sceneAttackRoll',
+            macro: protect,
+            priority: 100
         }
     ]
 };

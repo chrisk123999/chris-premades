@@ -1,3 +1,11 @@
+# 2.1.8 Pre-Release:
+## Update Notes:
+- Requires CAT 0.1.8.
+## Automated Monster Features:
+- 2024 Shield Guardian: Bound and Protection. Bound's Bind activity picks the amulet wearer.
+## Bug Fixes:
+- The 2014 Master's Amulet no longer transfers damage when an attack misses.
+
 # 2.1.7 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.7.

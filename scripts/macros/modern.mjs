@@ -234,7 +234,7 @@ export {unarmedStrike as 'unarmed-strike'} from './modern/misc/unarmedStrike.mjs
 /*===============================*/
 
 /*           Construct           */
-export {shieldGuardianBound as 'bound|shield-guardian', shieldGuardianBoundBind, shieldGuardianBoundDamage} from './modern/monsters/construct/shieldGuardian/bound.mjs';
+export {shieldGuardianBound as 'bound|shield-guardian', shieldGuardianProtection as 'protection|shield-guardian'} from './modern/monsters/construct/shieldGuardian/bound.mjs';
 
 /*===============================*/
 /*        OTHER FEATURES         */
