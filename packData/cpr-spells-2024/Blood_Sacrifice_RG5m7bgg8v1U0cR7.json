@@ -241,11 +241,21 @@
             "chris-premades": {
               "damageBonusToOneRoll": {
                 "bonus": "(1 + @scaling)d6",
-                "itemType": [
-                  "spell"
-                ],
+                "itemType": [],
                 "requireHit": true,
-                "maxTargets": 1
+                "maxTargets": 1,
+                "spellLevel": [
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8",
+                  "9"
+                ]
               }
             }
           },
@@ -296,7 +306,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.8"
       }
     }
   },
