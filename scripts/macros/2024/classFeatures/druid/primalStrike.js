@@ -54,6 +54,19 @@ export let elementalFuryPrimalStrike = {
             homebrew: true
         }
     ],
+    ddbi: {
+        correctedItems: {
+            'Elemental Fury: Primal Strike': {
+                system: {
+                    uses: {
+                        max: '1',
+                        spent: '',
+                        recovery: [{period: 'turnStart', type: 'recoverAll'}]
+                    }
+                }
+            }
+        }
+    },
     scales: [
         {
             classIdentifier: 'classIdentifier',
