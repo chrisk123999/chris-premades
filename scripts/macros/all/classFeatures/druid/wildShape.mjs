@@ -261,13 +261,13 @@ export const wildShape = {
         },
         forms: {
             default: '@scale.druid.known-forms',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.All.WildShape.KnownForms',
             category: 'behavior'
         },
         cr: {
             default: '@scale.druid.challenge-rating',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.All.WildShape.MaxCR',
             category: 'behavior'
         },

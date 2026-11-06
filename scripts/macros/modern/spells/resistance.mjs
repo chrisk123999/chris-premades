@@ -46,7 +46,7 @@ export const resistance = {
     config: {
         formula: {
             default: '1d4',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         },

@@ -16,7 +16,7 @@ export const dueling = {
     rules: 'all',
     version: '2.0.3',
     roll: [
-        {            
+        {
             pass: 'actorOptionalBonusDamage',
             phase: 'postResult',
             macro: damage,
@@ -26,7 +26,7 @@ export const dueling = {
     config: {
         formula: {
             default: '2',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.DamageBonus',
             category: 'behavior'
         },

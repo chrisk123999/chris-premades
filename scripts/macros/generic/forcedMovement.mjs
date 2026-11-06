@@ -47,7 +47,7 @@ function buildConfig(animationIdentifier) {
     return {
         distance: {
             default: '5',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Distance',
             hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.DistanceHint'

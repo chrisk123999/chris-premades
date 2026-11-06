@@ -125,7 +125,7 @@ export const bladeFlourish = {
     config: {
         formula: {
             default: '@scale.bard.inspiration',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Formula'
         },

@@ -54,7 +54,7 @@ export const bardicInspiration = {
     config: {
         bonus: {
             default: '@scale.bard.inspiration',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'behavior'
         },

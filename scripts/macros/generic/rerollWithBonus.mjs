@@ -34,7 +34,7 @@ async function reroll({actor, config, dialog, document: item, message, roll, mac
 const genericConfig = {
     bonus: {
         default: '',
-        type: 'text',
+        type: 'formula',
         category: 'behavior',
         label: 'CHRISPREMADES.Config.Formula',
         hint: 'CHRISPREMADES.Macros.Generic.RollBonus.BonusHint'

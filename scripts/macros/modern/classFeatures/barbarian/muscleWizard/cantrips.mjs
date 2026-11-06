@@ -29,13 +29,13 @@ export const cantrips = {
     config: {
         bonus: {
             default: '1d6',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Modern.Cantrips.TrueStrike'
         },
         rageBonus: {
             default: 'floor(@classes.barbarian.levels * 0.5)',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Modern.Cantrips.TrueStrikeRage'
         },

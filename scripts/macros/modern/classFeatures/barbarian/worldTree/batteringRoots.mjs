@@ -60,7 +60,7 @@ export const batteringRoots = {
     config: {
         range: {
             default: '10',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Range'
         },

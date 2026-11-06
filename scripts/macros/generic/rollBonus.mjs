@@ -58,7 +58,7 @@ async function onHit({document, macroClass: {identifier}, workflow}) {
 const genericConfig = {
     bonus: {
         default: '',
-        type: 'text',
+        type: 'formula',
         category: 'behavior',
         label: 'CHRISPREMADES.Config.Formula',
         hint: 'CHRISPREMADES.Macros.Generic.RollBonus.BonusHint'

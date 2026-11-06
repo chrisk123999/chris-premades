@@ -189,7 +189,7 @@ export const drakeCompanionInfuse = {
     config: {
         formula: {
             default: '1d6',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         },

@@ -1,4 +1,4 @@
-import {automationUtils, rollUtils, dialogUtils, actorUtils, activityUtils, documentUtils, workflowUtils, queryUtils, Logging} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, dialogUtils, documentUtils, Logging, queryUtils, rollUtils, workflowUtils} from '../../proxy.mjs';
 export function resolveCastFormula(formula, castData) {
     if (castData?.castLevel) formula = formula.replaceAll('@item.level', castData.castLevel);
     if (castData?.scaling) formula = formula.replaceAll('@scaling', castData.scaling);
@@ -59,7 +59,7 @@ async function use({document, workflow}) {
         let { result: selection, skip: currentSkip } = dialogResult;
         if (!selection || !selection.length) break;
         for (let s = 0; s < selection.length; s++) {
-            const targetDoc = selection[s].document; 
+            const targetDoc = selection[s].document;
             const attacks = selection[s].value;
             if (isNaN(attacks) || attacks === 0) continue;
             if (currentSkip && targetDoc.actor.system.attributes.hp.value <= 0) {
@@ -74,7 +74,7 @@ async function use({document, workflow}) {
             } else if (!actorUtils.hasUsedReaction(targetDoc.actor) && reactionItems.length) {
                 const selectedReactionItem = await dialogUtils.selectDocumentDialog(workflow.item.name, _loc('CHRISPREMADES.Macros.Generic.MultiSingleTarget.Reaction'), reactionItems, {addNoneDocument: true, userId: queryUtils.firstOwner(targetDoc, true)});
                 if (selectedReactionItem) {
-                    await workflowUtils.completeItemUse(selectedReactionItem, [targetDoc]); 
+                    await workflowUtils.completeItemUse(selectedReactionItem, [targetDoc]);
                     reactionEffect = reactionEffectIdentifiers.find(identifier => actorUtils.getEffectByIdentifier(targetDoc.actor, identifier));
                     if (reactionEffect) reacted = true;
                 }
@@ -94,7 +94,7 @@ async function use({document, workflow}) {
             for (let i = 0; i < attacks; i++) {
                 if (currentSkip && targetDoc.actor.system.attributes.hp.value <= 0) {
                     validTargets = validTargets.filter(t => t.id !== targetDoc.id);
-                    break; 
+                    break;
                 }
                 let workflow;
                 options.options.workflowOptions['chris-premades'].multiSingleTarget.remainingAttacks = remainingAttacks;
@@ -151,7 +151,7 @@ export const multiSingleTarget = {
         },
         formula: {
             default: '@item.level',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             hint: ''
         },

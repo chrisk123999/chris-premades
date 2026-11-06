@@ -26,13 +26,13 @@ export const harnessDivinePower = {
     config: {
         formula: {
             default: '1',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'behavior'
         },
         maxSlotLevel: {
             default: 'ceil(@prof / 2)',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.MaxSpellLevel',
             category: 'behavior'
         }

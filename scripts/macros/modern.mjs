@@ -7,6 +7,14 @@
 /****************************************************************************/
 
 /*===============================*/
+/*            ACTIONS            */
+/*===============================*/
+export {genericActionsModern as 'generic-actions'} from './all/actions/genericActions.mjs';
+export {underwaterModern as underwater} from './all/actions/underwater.mjs';
+export {influence} from './modern/actions/influence.mjs';
+export {holdBreathModern as 'hold-breath', suffocationOutOfAir} from './all/actions/holdBreath.mjs';
+
+/*===============================*/
 /*        CLASS FEATURES         */
 /*===============================*/
 
@@ -49,14 +57,14 @@ export {spells, spellsBurningHands, spellsMagicMissile, spellsShield, spellsShie
 
 /*          Wild Heart           */
 export {aspectOfTheWilds as 'aspect-of-the-wilds'} from './modern/classFeatures/barbarian/wildHeart/aspectOfTheWilds.mjs';
-export {powerOfTheWilds as 'power-of-the-wilds', lionAttack} from './modern/classFeatures/barbarian/wildHeart/powerOfTheWilds.mjs';
+export {lionAttack, powerOfTheWilds as 'power-of-the-wilds'} from './modern/classFeatures/barbarian/wildHeart/powerOfTheWilds.mjs';
 export {rageOfTheWilds as 'rage-of-the-wilds', rageOfTheWildsPreCheck, rageOfTheWildsUnfavorite} from './modern/classFeatures/barbarian/wildHeart/rageOfTheWilds.mjs';
 
 /*          World Tree           */
 export {batteringRoots as 'battering-roots'} from './modern/classFeatures/barbarian/worldTree/batteringRoots.mjs';
 export {branchesOfTheTree as 'branches-of-the-tree'} from './modern/classFeatures/barbarian/worldTree/branchesOfTheTree.mjs';
 export {travelAlongTheTree as 'travel-along-the-tree', travelAlongTheTreePreChecks} from './modern/classFeatures/barbarian/worldTree/travelAlongTheTree.mjs';
-export {vitalityOfTheTree as 'vitality-of-the-tree', lifeGivingForce} from './modern/classFeatures/barbarian/worldTree/vitalityOfTheTree.mjs';
+export {lifeGivingForce, vitalityOfTheTree as 'vitality-of-the-tree'} from './modern/classFeatures/barbarian/worldTree/vitalityOfTheTree.mjs';
 
 /*********************************/
 /*             Bard              */
@@ -139,6 +147,13 @@ export {elementalStrike as 'elemental-strike'} from './modern/classFeatures/pala
 export {nobleScion as 'noble-scion'} from './modern/classFeatures/paladin/nobleGenies/nobleScion.mjs';
 
 /*********************************/
+/*            Pugilist           */
+/*********************************/
+
+/*        Squared Circle         */
+export {heavyweight} from './modern/classFeatures/pugilist/squaredCircle/heavyweight.mjs';
+
+/*********************************/
 /*            Ranger             */
 /*********************************/
 export {favoredEnemy as 'favored-enemy'} from './modern/classFeatures/ranger/favoredEnemy.mjs';
@@ -182,6 +197,9 @@ export {stolenPower as 'stolen-power'} from './modern/classFeatures/rogue/sangui
 
 /*           Soulknife           */
 export {psionicPower as 'psionic-power'} from './modern/classFeatures/rogue/soulknife/psionicPower.mjs';
+
+/*             Thief             */
+export {supremeSneak as 'supreme-sneak'} from './modern/classFeatures/rogue/thief/supremeSneak.mjs';
 
 /*********************************/
 /*            Warlock            */
@@ -269,10 +287,15 @@ export {packHunter as 'pack-hunter'} from './modern/speciesFeatures/wulven/packH
 /*===============================*/
 /*            SPELLS             */
 /*===============================*/
+export {deckOfIllusions2024 as 'deck-of-illusions'} from './all/equipment/deckOfIllusions.mjs';
+export {teleportModern as teleport} from './all/spells/teleport.mjs';
+export {forceGauntlet as 'force-gauntlet'} from './modern/equipment/forceGauntlet.mjs';
+export {orbOfDamara as 'orb-of-damara', orbOfDamaraImmunity as 'orb-of-damara-immunity'} from './modern/equipment/orbOfDamara.mjs';
+export {healer} from './modern/feats/healer.mjs';
 export {alterSelf as 'alter-self'} from './modern/spells/alterSelf.mjs';
+export {antilifeShell as 'antilife-shell'} from './modern/spells/antilifeShell.mjs';
 export {arcaneVigor as 'arcane-vigor'} from './modern/spells/arcaneVigor.mjs';
 export {auraOfVitality as 'aura-of-vitality', auraOfVitalityTurn} from './modern/spells/auraOfVitality.mjs';
-export {antilifeShell as 'antilife-shell'} from './modern/spells/antilifeShell.mjs';
 export {banishingSmite as 'banishing-smite'} from './modern/spells/banishingSmite.mjs';
 export {bladeWard as 'blade-ward'} from './modern/spells/bladeWard.mjs';
 export {chromaticOrb as 'chromatic-orb'} from './modern/spells/chromaticOrb.mjs';
@@ -295,11 +318,6 @@ export {shockingGrasp as 'shocking-grasp'} from './modern/spells/shockingGrasp.m
 export {spellfireFlare as 'spellfire-flare'} from './modern/spells/spellfireFlare.mjs';
 export {sproutFoliage as 'sprout-foliage'} from './modern/spells/sproutFoliage.mjs';
 export {summerWinds as 'summer-winds'} from './modern/spells/summerWinds.mjs';
-export {teleportModern as teleport} from './all/spells/teleport.mjs';
 export {timeStop as 'time-stop', timeStopEffect as 'time-stop-effect'} from './modern/spells/timeStop.mjs';
 export {wiltingSmite as 'wilting-smite'} from './modern/spells/wiltingSmite.mjs';
 export {wish, wishImmunity as 'wish-immunity', wishStress as 'wish-stress'} from './modern/spells/wish.mjs';
-export {deckOfIllusions2024 as 'deck-of-illusions'} from './all/equipment/deckOfIllusions.mjs';
-export {forceGauntlet as 'force-gauntlet'} from './modern/equipment/forceGauntlet.mjs';
-export {healer} from './modern/feats/healer.mjs';
-export {orbOfDamara as 'orb-of-damara', orbOfDamaraImmunity as 'orb-of-damara-immunity'} from './modern/equipment/orbOfDamara.mjs';

@@ -46,7 +46,7 @@ export const mantleOfInspiration = {
     config: {
         targets: {
             default: 'max(1, @abilities.cha.mod)',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargets'
         }

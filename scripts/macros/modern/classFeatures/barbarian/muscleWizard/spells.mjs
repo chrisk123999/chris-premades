@@ -130,7 +130,7 @@ export const spells = {
     config: {
         damage: {
             default: '1d8 + @mod',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.Modern.Spells.BurningHandsDamage',
             category: 'behavior'
         },

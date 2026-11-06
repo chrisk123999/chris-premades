@@ -95,7 +95,7 @@ export const elementalCleaver = {
     config: {
         bonus: {
             default: '1d6',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Legacy.ElementalCleaver.Damage'
         },

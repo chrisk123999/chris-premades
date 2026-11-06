@@ -17,7 +17,7 @@ export const favoredByTheGods = {
     config: {
         formula: {
             default: '2d4',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'behavior'
         }

@@ -85,7 +85,7 @@ export const cuttingWords = {
     config: {
         range: {
             default: '60',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Range'
         },

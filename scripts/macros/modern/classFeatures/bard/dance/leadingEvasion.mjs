@@ -35,7 +35,7 @@ export const leadingEvasion = {
     config: {
         range: {
             default: '5',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Range'
         }

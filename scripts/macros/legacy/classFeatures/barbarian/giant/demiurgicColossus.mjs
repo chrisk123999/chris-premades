@@ -23,7 +23,7 @@ export const demiurgicColossus = {
     config: {
         giantReach: {
             default: '10',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'DND5E.ITEM.Property.Reach',
             hint: 'CHRISPREMADES.Macros.Legacy.DemiurgicColossus'
@@ -37,7 +37,7 @@ export const demiurgicColossus = {
         },
         elementalCleaver: {
             default: '2d6',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Legacy.ElementalCleaver.Damage',
             hint: 'CHRISPREMADES.Macros.Legacy.DemiurgicColossus'

@@ -5,7 +5,7 @@ export const mastersFlourish = {
     config: {
         formula: {
             default: '1d6',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Formula'
         }

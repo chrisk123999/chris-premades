@@ -77,13 +77,13 @@ export const callTheHunt = {
     config: {
         bonus: {
             default: '1d6',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageBonus'
         },
         targets: {
             default: 'max(1, @abilities.con.mod)',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargets'
         }

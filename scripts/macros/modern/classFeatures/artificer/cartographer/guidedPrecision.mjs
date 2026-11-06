@@ -47,7 +47,7 @@ export const guidedPrecision = {
         },
         formula: {
             default: '@abilities.int.mod',
-            type: 'text',
+            type: 'formula',
             category: 'homebrew',
             label: 'CHRISPREMADES.Config.DamageBonus'
         },

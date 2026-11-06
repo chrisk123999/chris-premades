@@ -140,7 +140,7 @@ export const attackRider = {
         },
         bonus: {
             default: '',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageBonus',
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.BonusHint'
@@ -155,7 +155,7 @@ export const attackRider = {
         },
         creatureTypeBonus: {
             default: '',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.AttackRider.CreatureTypeBonus',
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.CreatureTypeBonusHint'
@@ -177,7 +177,7 @@ export const attackRider = {
         },
         limit: {
             default: '1',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.AttackRider.Limit',
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.LimitHint'

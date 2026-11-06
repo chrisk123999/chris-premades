@@ -62,7 +62,7 @@ export const amuletOfTheLycanthrope = {
             ...effectUtils.getImageConfig(),
             formula: {
                 default: '1d8',
-                type: 'text',
+                type: 'formula',
                 label: 'CHRISPREMADES.Config.Formula',
                 category: 'homebrew'
             },

@@ -162,7 +162,7 @@ export const bladeSpell = {
         },
         bonusDamageDieFormula: {
             default: '',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageDieFormula',
             hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageDieFormulaHint'

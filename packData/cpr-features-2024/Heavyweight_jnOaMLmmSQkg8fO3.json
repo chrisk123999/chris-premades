@@ -1,0 +1,65 @@
+{
+  "name": "Heavyweight",
+  "type": "feat",
+  "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "heavyweight",
+    "source": {
+      "book": "TPC",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 11,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "Squared Circle",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [],
+  "folder": "JGcYTvnOCmm9pcrX",
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.8"
+      },
+      "macros": {
+        "grapple": [
+          {
+            "source": "chris-premades",
+            "rules": "2024",
+            "identifier": "heavyweight"
+          }
+        ]
+      }
+    }
+  },
+  "_id": "jnOaMLmmSQkg8fO3",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!jnOaMLmmSQkg8fO3"
+}

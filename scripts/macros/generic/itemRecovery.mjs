@@ -57,7 +57,7 @@ export const itemRecovery = {
         },
         formula: {
             default: '',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Formula',
             hint: 'CHRISPREMADES.Macros.Generic.ItemRecovery.FormulaHint'

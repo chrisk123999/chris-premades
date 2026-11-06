@@ -1,6 +1,6 @@
 import cprConstants from '../../../../../constants.mjs';
-import utils from '../../../../../utils.mjs';
 import {automationUtils, combatUtils, compendiumUtils, constants, DamageBonus, documentUtils, effectUtils, genericUtils, itemUtils, Logging, tokenUtils} from '../../../../../proxy.mjs';
+import utils from '../../../../../utils.mjs';
 function getPoppetData(item) {
     return item.flags['chris-premades']?.soulboundPoppet ?? {};
 }
@@ -67,7 +67,7 @@ export const soulboundPoppet = {
     config: {
         formula: {
             default: '2d10',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         },

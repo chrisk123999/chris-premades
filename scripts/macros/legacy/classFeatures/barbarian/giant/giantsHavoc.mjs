@@ -96,13 +96,13 @@ export const giantsHavoc = {
     config: {
         giantBonus: {
             default: '@scale.barbarian.rage-damage',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageBonus'
         },
         giantReach: {
             default: '5',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'DND5E.ITEM.Property.Reach'
         },

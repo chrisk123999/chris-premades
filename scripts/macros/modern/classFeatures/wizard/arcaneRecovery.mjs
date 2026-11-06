@@ -29,7 +29,7 @@ export const arcaneRecovery = {
     config: {
         formula: {
             default: 'ceil(@classes.wizard.levels / 2)',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         },

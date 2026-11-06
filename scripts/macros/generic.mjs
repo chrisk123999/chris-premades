@@ -44,7 +44,9 @@ export {selectDamageType} from './generic/selectDamageType.mjs';
 /*         MECHANICS          */
 /*============================*/
 export {banish} from './generic/banish.mjs';
+export {breathing} from './generic/breathing.mjs';
 export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
+export {environment, environmentEffect} from './generic/environment.mjs';
 export {firearm} from './generic/firearm.mjs';
 export {hide} from './generic/hide.mjs';
 export {ignoreCover} from './generic/ignoreCover.mjs';

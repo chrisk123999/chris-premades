@@ -41,7 +41,7 @@ export const destroyUndead = {
         },
         scaleFormula: {
             default: '@scale.cleric.destroy-undead',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.Legacy.DestroyUndead',
             category: 'behavior'
         },

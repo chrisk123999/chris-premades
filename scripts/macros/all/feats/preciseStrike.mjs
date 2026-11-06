@@ -40,7 +40,7 @@ export const preciseStrike = {
     config: {
         formula: {
             default: '1d8',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         },

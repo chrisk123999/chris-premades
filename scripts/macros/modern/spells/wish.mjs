@@ -131,14 +131,14 @@ export const wish = {
     config: {
         stressDurationFormula: {
             default: '2d4',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.Modern.Wish.StressDuration',
             category: 'homebrew',
             homebrew: true
         },
         chanceFormula: {
             default: '1d100',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.Modern.Wish.ChanceFormula',
             category: 'homebrew',
             homebrew: true

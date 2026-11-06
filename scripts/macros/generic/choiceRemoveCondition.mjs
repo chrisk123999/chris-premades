@@ -136,7 +136,7 @@ export const choiceRemoveCondition = {
         },
         count: {
             default: '1',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Count',
             hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.CountHint'

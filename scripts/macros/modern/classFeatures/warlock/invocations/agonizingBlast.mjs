@@ -38,7 +38,7 @@ export const agonizingBlast = {
         },
         formula: {
             default: '@abilities.cha.mod',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         }

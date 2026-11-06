@@ -1,4 +1,4 @@
-import {actorUtils, constants, documentUtils, effectUtils, rollUtils, automationUtils, genericUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, documentUtils, effectUtils, genericUtils, rollUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     if (!workflow.hitTargets.size) return;
     let rollDamage = 0;
@@ -115,7 +115,7 @@ export const reduceMaxHP = {
     genericConfig: {
         reduceByRoll: {
             default: '',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.ReduceByRoll'
         },

@@ -264,13 +264,13 @@ export const swapArtificerPlan = {
     config: {
         known: {
             default: '',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.All.ArtificerPlans.Known',
             category: 'behavior'
         },
         limit: {
             default: '',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.All.ArtificerPlans.Limit',
             category: 'behavior'
         },

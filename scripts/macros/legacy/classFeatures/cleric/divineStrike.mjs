@@ -49,7 +49,7 @@ export const divineStrike = {
         },
         formula: {
             default: '@scale.cleric.divine-strike',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.DamageBonus',
             category: 'behavior'
         },

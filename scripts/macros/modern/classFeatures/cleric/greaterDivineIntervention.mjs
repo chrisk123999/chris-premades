@@ -42,7 +42,7 @@ export const greaterDivineIntervention = {
     config: {
         restFormula: {
             default: '2d4',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.Modern.GreaterDivineIntervention.RestFormula',
             category: 'homebrew'
         }

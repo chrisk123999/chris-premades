@@ -59,7 +59,7 @@ export const grapple = {
         },
         dc: {
             default: '',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.FlatDC',
             hint: 'CHRISPREMADES.Macros.Generic.Grapple.FlatDCHint'
