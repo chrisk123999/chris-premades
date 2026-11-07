@@ -29,7 +29,7 @@ async function use({document: activity, workflow}) {
 }
 export const mantleOfInspiration = {
     name: 'Mantle of Inspiration',
-    version: '2.1.7',
+    version: '2.1.8',
     rules: 'all',
     roll: [
         {

@@ -1,11 +1,11 @@
-import {automationUtils, constants, D20Bonus, dialogUtils, documentUtils, workflowUtils} from '../../proxy.mjs';
+import {automationUtils, constants, D20Bonus, dataUtils, dialogUtils, documentUtils, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig, identifiersConfig} from './damageBonusToOneRoll.mjs';
 const keyOf = (identifier, document) => identifier + '.' + document.id;
-function createBonus(document, settings, holder, identifier) {
+function createBonus(document, settings, holder, identifier, roll) {
     const bonus = new D20Bonus(document, {
-        formula: settings.bonus,
         phase: settings.phase === 'all' ? Object.values(constants.bonusPhases) : settings.phase,
-        optional: settings.optional
+        optional: settings.optional,
+        roll
     });
     if (settings.rollItem || settings.rollActivity) bonus.withOnUse(async ({bonus}) => {
         settings.storedOptionalBonus = bonus;
@@ -28,7 +28,8 @@ function roll({document, config, macroClass: {identifier}, message, actor, skill
         const trait = skillId ? actor.system.skills[skillId] : actor.system.tools?.[toolId];
         if (!(trait?.value >= 1)) return;
     }
-    return createBonus(document, settings, message, identifier);
+    const roll = new D20Bonus.rollClass(settings.bonus, dataUtils.getFormulaData({document, workflow: config.midiOptions?.workflow}));
+    return createBonus(document, settings, message, identifier, roll);
 }
 async function onSuccess({document, macroClass: {identifier}, message, roll}) {
     const settings = workflowUtils.getWorkflowProperty(message, keyOf(identifier, document));
@@ -45,7 +46,8 @@ function attack({document, macroClass: {identifier}, workflow}) {
     if (settings.ability?.length && !settings.ability.includes(workflow.activity.ability)) return;
     if (settings.identifiers?.length && !settings.identifiers.includes(documentUtils.getIdentifier(workflow.item))) return;
     if (settings.attackType && !workflowUtils.isAttackType(workflow, settings.attackType)) return;
-    return createBonus(document, settings, workflow, identifier);
+    const roll = new D20Bonus.rollClass(settings.bonus, dataUtils.getFormulaData({document, workflow}));
+    return createBonus(document, settings, workflow, identifier, roll);
 }
 async function onHit({document, macroClass: {identifier}, workflow}) {
     const key = keyOf(identifier, document);

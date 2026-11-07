@@ -772,7 +772,7 @@
             "genericConfig": {
               "chris-premades": {
                 "pushOnFail": {
-                  "distance": "@utilityRoll.total",
+                  "distance": "@workflow.utilityRoll.total",
                   "choose": true,
                   "stopAdjacent": false,
                   "maxSize": "",
@@ -1126,7 +1126,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.8"
       }
     }
   },

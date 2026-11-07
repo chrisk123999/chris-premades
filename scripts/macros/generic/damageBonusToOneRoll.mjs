@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, dataUtils, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
@@ -14,11 +14,6 @@ export const attackTypeConfig = {
     hint: 'CHRISPREMADES.Macros.Generic.Common.AttackTypeHint',
     get options() { return constants.attackTypeOptions; }
 };
-function getEffectRoll(effect, formula) {
-    const {castLevel, baseLevel} = documentUtils.getSavedCastData(effect);
-    const scaling = effect.flags.dnd5e?.scaling ?? Math.max(0, castLevel - baseLevel);
-    return new CONFIG.Dice.DamageRoll(formula, {...effectUtils.getActor(effect)?.getRollData(), scaling});
-}
 async function damage({document, workflow}) {
     if (!workflow.targets.size || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
     if (!itemUtils.getEquipmentState(document)) return;
@@ -58,6 +53,7 @@ async function damage({document, workflow}) {
     if (config.spellSchool.length) {
         if (!config.spellSchool.includes(workflow.item.system.school)) return;
     }
+    if (config.firstCastOnly && workflowUtils.isSustainedRoll(workflow)) return;
     if (config.targetWounded) {
         const actor = (workflow.hitTargets.first() ?? workflow.targets.first())?.actor;
         if (!actor || !actorUtils.isWounded(actor)) return;
@@ -68,12 +64,16 @@ async function damage({document, workflow}) {
     const narrowed = config.requireHit || config.targetEffects.length || config.targetCreatureTypes.length || config.attackerRange;
     const targets = narrowed ? workflow.hitTargets.filter(token => token.actor && hasEffect(token.actor) && hasType(token.actor) && inRange(token)) : undefined;
     if (targets && !targets.size) return;
-    const roll = document.documentName === 'ActiveEffect' ? getEffectRoll(document, config.bonus) : undefined;
-    const bonus = new DamageBonus(document, {roll, formula: config.bonus, optional, type: config.bonusDamageType, maxTargets: config.maxTargets || undefined, allowCritical: config.allowCritical})
-        .withOnUse(async ({bonus}) => {
-            if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
-            await workflowUtils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
-        });
+    const bonus = new DamageBonus(document, {
+        roll: new CONFIG.Dice.DamageRoll(config.bonus, dataUtils.getFormulaData({document, workflow})),
+        maxTargets: config.maxTargets || undefined,
+        allowCritical: config.allowCritical,
+        type: config.bonusDamageType,
+        optional
+    }).withOnUse(async ({bonus}) => {
+        if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
+        await workflowUtils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
+    });
     if (targets) bonus.targets = targets.map(token => token.document);
     if (config.useActivityCosts) {
         if (!workflow.hitTargets.size) return;
@@ -186,6 +186,13 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Config.SpellSchool',
             hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchoolHint',
             get options() { return constants.spellSchoolOptions; }
+        },
+        firstCastOnly: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.FirstCast',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.FirstCastHint'
         },
         rollActivity: {
             default: '',

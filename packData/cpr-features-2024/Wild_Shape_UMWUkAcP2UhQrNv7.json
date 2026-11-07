@@ -18,7 +18,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": "updateWorldTime",
+        "expiry": null,
         "expired": false
       },
       "description": "",
@@ -47,7 +47,8 @@
           "enableCondition": "",
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false
+          "dontApply": false,
+          "applicationMode": "default"
         },
         "core": {
           "overlay": false
@@ -455,7 +456,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.8"
       },
       "config": {
         "grantSwimSpeed": ""

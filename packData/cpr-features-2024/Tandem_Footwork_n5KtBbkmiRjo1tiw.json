@@ -95,7 +95,7 @@
             {
               "type": "itemUses",
               "value": "1",
-              "target": "dTFUeJF2347RPCZ8",
+              "target": "feat:bardic-inspiration",
               "scaling": {}
             }
           ],
@@ -121,7 +121,10 @@
           {
             "_id": "nKfAD34Pebg2uSGM",
             "uuid": null,
-            "level": {}
+            "level": {
+              "min": null,
+              "max": null
+            }
           }
         ],
         "flags": {
@@ -315,7 +318,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.8"
       }
     }
   },

@@ -240,7 +240,7 @@
           "genericConfig": {
             "chris-premades": {
               "damageBonusToOneRoll": {
-                "bonus": "(1 + @scaling)d6",
+                "bonus": "(@effect.castData.scaling)d6",
                 "itemType": [],
                 "requireHit": true,
                 "maxTargets": 1,

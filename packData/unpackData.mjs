@@ -18,9 +18,14 @@ let actorPacks = [
     'cpr-summons-2014',
     'cpr-summons-2024'
 ];
+let warnings = [];
+function transform(entry, pack) {
+    warnings.push(...cleanEntry(entry, pack));
+}
 for (let i of itemPacks) {
-    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Item', transformEntry: cleanEntry});
+    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Item', transformEntry: entry => transform(entry, i)});
 }
 for (let i of actorPacks) {
-    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Actor', transformEntry: cleanEntry});
+    await extractPack('packs/' + i, 'packData/' + i, {log: true, documentType: 'Actor', transformEntry: entry => transform(entry, i)});
 }
+for (let warn of warnings) warn();

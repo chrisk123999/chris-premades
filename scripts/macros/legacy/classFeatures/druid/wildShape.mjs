@@ -7,7 +7,7 @@ async function damaged({document: effect, workflow}) {
 }
 export const wildShape = {
     name: wildShapeAll.name,
-    version: wildShapeAll.version,
+    version: '2.1.8',
     rules: '2014',
     notes: 'For convenience in combat, this automation does not work exactly rules as written. Forms must be prepared in direct link profiles on the transform activity, or by rolling the "Learn Form" activity.\n\n' + wildShapeAll.notes,
     scales: [

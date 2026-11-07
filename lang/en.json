@@ -1118,6 +1118,8 @@
                     "CriticalHint": "Critical hit rules can be applied to this bonus.",
                     "EveryRoll": "Apply to Every Roll",
                     "EveryRollHint": "Add this bonus to each roll of a multi-attack rather than one of them.",
+                    "FirstCast": "First Spell Cast Only",
+                    "FirstCastHint": "Bonus applies only on the initial cast for a spell.",
                     "OncePerTurn": "Once Per Turn",
                     "OncePerTurnHint": "Limit this bonus to one use per turn.",
                     "TargetCreatureTypes": "Target Creature Types",

@@ -48,7 +48,7 @@ async function initBonus({document: activity, macroClass: {identifier, source}, 
 }
 export const tandemFootwork = {
     name: 'Tandem Footwork',
-    version: '2.1.7',
+    version: '2.1.8',
     rules: '2024',
     combat: [
         {

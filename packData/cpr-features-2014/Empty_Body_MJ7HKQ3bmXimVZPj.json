@@ -202,7 +202,7 @@
             {
               "type": "itemUses",
               "value": "4",
-              "target": "i1vj0qNcLmwXexU2",
+              "target": "feat:ki",
               "scaling": {}
             }
           ],
@@ -375,7 +375,7 @@
             {
               "type": "itemUses",
               "value": "8",
-              "target": "i1vj0qNcLmwXexU2",
+              "target": "feat:ki",
               "scaling": {}
             }
           ]
@@ -441,7 +441,8 @@
             "override": false
           },
           "uuid": "Compendium.dnd5e.spells.TIoadMIsUKD4edXi",
-          "ability": ""
+          "ability": "",
+          "level": 9
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -563,7 +564,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.8"
       }
     }
   },

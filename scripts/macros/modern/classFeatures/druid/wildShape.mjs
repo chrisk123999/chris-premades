@@ -1,7 +1,7 @@
 import {'wild-shape' as wildShapeAll} from '../../../all.mjs';
 export const wildShape = {
     name: wildShapeAll.name,
-    version: wildShapeAll.version,
+    version: '2.1.8',
     rules: '2024',
     scales: [
         ...wildShapeAll.scales,

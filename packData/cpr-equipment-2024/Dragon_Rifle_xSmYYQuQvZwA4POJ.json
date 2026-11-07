@@ -314,6 +314,10 @@
             "identifier": "weaponAnimation"
           }
         ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.7"
       }
     }
   },

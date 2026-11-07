@@ -1,7 +1,7 @@
 import {'mantle-of-inspiration' as mantleAll} from '../../../../all.mjs';
 export const mantleOfInspiration = {
     name: 'MantleOfInspiration',
-    version: '2.1.7',
+    version: '2.1.8',
     rules: '2014',
     config: {
         ...mantleAll.config,

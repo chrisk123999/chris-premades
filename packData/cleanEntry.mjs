@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 const foreignFlags = [
     'autoanimations',
     'ddbimporter',
@@ -33,12 +34,47 @@ function cleanFlags(document) {
         if (contents && typeof contents === 'object' && !Object.keys(contents).length) delete document.flags[scope];
     });
 }
+function makeWarning(...rows) {
+    return () => console.log(chalk.yellow('WARNING'), rows.join('\n  '));
+}
+function verifyConsumption(activity, item, pack) {
+    const warnings = [];
+    if (!activity.consumption.targets.length) return warnings;
+    for (const consumption of activity.consumption.targets) {
+        if (!consumption.target || consumption.type !== 'itemUses') continue;
+        if (['consumable', 'equipment', 'feat'].some(t => consumption.target.startsWith(t))) continue;
+        warnings.push(makeWarning(
+            'Broken item consumption!',
+            `${item.name} > ${activity.name || activity.type}`,
+            `Pack: ${pack} | Item: ${item._id} | Activity: ${activity._id}`
+        ));
+    }
+    return warnings;
+}
+function verifyAutomationInfo(item, pack) {
+    const missing = [];
+    item.flags.cat ??= {};
+    item.flags.cat.automation ??= {};
+    if (!item.flags.cat.automation.source) {
+        item.flags.cat.automation.source = 'chris-premades';
+        missing.push('Source (Auto Fix)');
+    }
+    if (!item.flags.cat.automation.version || item.flags.cat.automation.version === '0')
+        missing.push('Version');
+    if (!missing.length) return;
+    return makeWarning(
+        'Missing automation info!',
+        `${item.name} > ${missing.join(', ')}`,
+        `Pack: ${pack} | Item: ${item._id}`
+    );
+}
 /**
  * Strip world state and foreign module data that should not ship in a compendium.
  * @param {object} entry A document's source data, mutated in place.
  * @returns {void}
  */
-export function cleanEntry(entry) {
+export function cleanEntry(entry, pack) {
+    const warnings = [];
     cleanStats(entry);
     delete entry.sort;
     delete entry.ownership;
@@ -52,7 +88,10 @@ export function cleanEntry(entry) {
     if (entry.system?.sourceClass === '') delete entry.system.sourceClass;
     if (entry.system?.preparation && entry.system.method !== undefined) delete entry.system.preparation;
     if (entry.system?.materials?.value) entry.system.materials.value = '';
-    Object.values(entry.system?.activities ?? {}).forEach(activity => cleanFlags(activity));
+    Object.values(entry.system?.activities ?? {}).forEach(activity => {
+        warnings.push(...verifyConsumption(activity, entry, pack));
+        cleanFlags(activity);
+    });
     (entry.effects ?? []).forEach(effect => {
         cleanStats(effect);
         cleanFlags(effect);
@@ -66,4 +105,9 @@ export function cleanEntry(entry) {
         volatileDuration.forEach(key => delete effect.duration?.[key]);
     });
     (entry.items ?? []).forEach(item => cleanEntry(item));
+    if (pack !== 'cpr-automation-items' && entry.system?.activities) {
+        const missingInfo = verifyAutomationInfo(entry, pack);
+        if (missingInfo) warnings.push(missingInfo);
+    }
+    return warnings;
 }

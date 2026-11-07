@@ -108,7 +108,7 @@ function withMasterConsumption(activity, bardic) {
 }
 export const bladeFlourish = {
     name: 'Blade Flourish',
-    version: '2.1.7',
+    version: '2.1.8',
     rules: '2014',
     roll: [
         {

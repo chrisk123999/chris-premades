@@ -25,7 +25,7 @@
             {
               "type": "itemUses",
               "value": "-@scale.barbarian.rages",
-              "target": "rage",
+              "target": "feat:rage",
               "scaling": {}
             }
           ],
@@ -135,7 +135,8 @@
               ]
             }
           }
-        }
+        },
+        "otherActivityId": ""
       }
     },
     "uses": {
@@ -180,7 +181,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.2"
+        "version": "2.1.8"
       }
     }
   },
