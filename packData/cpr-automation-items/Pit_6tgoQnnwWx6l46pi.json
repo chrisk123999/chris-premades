@@ -1,14 +1,14 @@
 {
-  "name": "Patch",
+  "name": "Pit",
   "type": "consumable",
-  "img": "icons/sundries/documents/blueprint-anchor.webp",
-  "folder": "7oCfRMcgCyAkhSWB",
-  "_id": "Xx2uOPcRD175YNUq",
+  "img": "icons/environment/wilderness/terrain-rocky-ground.webp",
+  "folder": "r1GxEl4q63ydnx3x",
+  "_id": "6tgoQnnwWx6l46pi",
   "system": {
     "activities": {
-      "YSx0hwuqScQvdl9P": {
+      "dMLe2ebnmTnHT9UC": {
         "type": "utility",
-        "_id": "YSx0hwuqScQvdl9P",
+        "_id": "dMLe2ebnmTnHT9UC",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -49,8 +49,7 @@
           },
           "affects": {
             "choice": false,
-            "type": "self",
-            "special": ""
+            "type": ""
           },
           "override": false,
           "prompt": true
@@ -96,7 +95,7 @@
           "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "use",
+          "identifier": "",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -116,23 +115,23 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "Remove Patch",
+        "name": "",
         "img": "",
         "appliedEffects": [],
-        "identifier": "use"
+        "identifier": ""
       }
     },
     "uses": {
       "spent": 0,
+      "max": "1",
       "recovery": [],
-      "autoDestroy": true,
-      "max": "1"
+      "autoDestroy": true
     },
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "robe-of-useful-items-patch",
+    "identifier": "pit",
     "source": {
       "book": "",
       "page": "",
@@ -183,20 +182,6 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.1.7"
-      },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "rules": "all",
-            "identifier": "storedItem"
-          }
-        ]
-      },
-      "genericConfig": {
-        "chris-premades": {
-          "storedItem": {}
-        }
       }
     }
   },
@@ -205,5 +190,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!Xx2uOPcRD175YNUq"
+  "_key": "!items!6tgoQnnwWx6l46pi"
 }

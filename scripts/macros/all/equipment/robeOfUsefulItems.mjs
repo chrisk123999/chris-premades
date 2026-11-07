@@ -1,3 +1,4 @@
+import cprConstants from '../../../constants.mjs';
 import {compendiumUtils, documentUtils, genericUtils, itemUtils, rollUtils} from '../../../proxy.mjs';
 const gear = {
     lantern: {2014: 'bullseye-lantern', 2024: 'lantern-bullseye'},
@@ -23,13 +24,17 @@ const creatures = {
 };
 const table = [[8, 'gold'], [15, 'silverCoffer'], [22, 'ironDoor'], [30, 'gems'], [44, 'ladder'], [51, 'horse'], [59, 'pit'], [68, 'potion'], [75, 'rowboat'], [83, 'spellScroll'], [90, 'mastiffs'], [96, 'window'], [100, 'ram']];
 const quantities = {potion: 4};
+export async function getAutomationItemUuid(identifier, rules) {
+    const index = await game.packs.get(cprConstants.packs.misc.automationItems).getIndex({fields: ['system.identifier', 'system.source']});
+    return index.find(i => i.system.identifier === identifier && (i.system.source?.rules || '2014') === rules)?.uuid;
+}
 export async function findItem(identifier, rules) {
-    const packIds = [...compendiumUtils.getEnabledCompendiumIds('itemCompendiums'), 'chris-premades.CPREquipment' + rules, rules === '2024' ? 'dnd5e.equipment24' : 'dnd5e.items'];
-    for (const packId of packIds) {
+    for (const packId of [...compendiumUtils.getEnabledCompendiumIds('itemCompendiums'), 'chris-premades.CPREquipment' + rules]) {
         if (!game.packs.get(packId)) continue;
         const uuid = await compendiumUtils.getDocumentUuidByIdentifier(packId, identifier);
         if (uuid) return uuid;
     }
+    return await getAutomationItemUuid(identifier, rules) ?? await compendiumUtils.getDocumentUuidByIdentifier(rules === '2024' ? 'dnd5e.equipment24' : 'dnd5e.items', identifier);
 }
 async function patchData(template, key, rules) {
     let stored;
@@ -50,7 +55,8 @@ async function patchData(template, key, rules) {
 }
 async function setup({document: item, workflow}) {
     const rules = documentUtils.getRules(item);
-    const template = itemUtils.getActivityByIdentifier(item, 'setup') && (await compendiumUtils.getDocumentByIdentifier('chris-premades.CPREquipment' + rules, 'robe-of-useful-items-patch', {object: true}));
+    const templateUuid = itemUtils.getActivityByIdentifier(item, 'setup') && (await getAutomationItemUuid('robe-of-useful-items-patch', rules));
+    const template = templateUuid && (await fromUuid(templateUuid)).toObject();
     if (!template) return genericUtils.notify('CHRISPREMADES.Macros.All.RobeOfUsefulItems.NoPatch', {type: 'warn'});
     const keys = ['lantern', 'dagger', 'mirror', 'pole', 'rope', 'sack'].flatMap(key => [key, key]);
     const extra = workflow.utilityRolls?.[0]?.total ?? 0;

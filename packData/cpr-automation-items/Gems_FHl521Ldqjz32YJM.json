@@ -1,15 +1,15 @@
 {
-  "name": "Rowboat",
+  "name": "Gems",
   "type": "loot",
-  "img": "icons/tools/nautical/steering-wheel.webp",
-  "folder": "nvwKBMSV2OHzwAOe",
-  "_id": "M1O2IfhzLZhdzkcp",
+  "img": "icons/commodities/gems/gem-faceted-octagon-yellow.webp",
+  "folder": "vRMdSbOvVMbbABOY",
+  "_id": "FHl521Ldqjz32YJM",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "rowboat",
+    "identifier": "gems",
     "source": {
       "book": "DMG",
       "page": "",
@@ -29,7 +29,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 0,
+      "value": 1000,
       "denomination": "gp"
     },
     "rarity": "",
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!M1O2IfhzLZhdzkcp"
+  "_key": "!items!FHl521Ldqjz32YJM"
 }

@@ -1,14 +1,14 @@
 {
-  "name": "Miscellany Card",
+  "name": "Patch",
   "type": "consumable",
-  "img": "icons/sundries/gaming/playing-cards.webp",
-  "folder": "nvwKBMSV2OHzwAOe",
-  "_id": "13rU1ZC6Pqo6qJXC",
+  "img": "icons/sundries/documents/blueprint-anchor.webp",
+  "folder": "vRMdSbOvVMbbABOY",
+  "_id": "3tef0DgjruNPIKQQ",
   "system": {
     "activities": {
-      "NoCuoxIfIwWz0Sgh": {
+      "YSx0hwuqScQvdl9P": {
         "type": "utility",
-        "_id": "NoCuoxIfIwWz0Sgh",
+        "_id": "YSx0hwuqScQvdl9P",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -23,8 +23,7 @@
           "targets": [
             {
               "type": "itemUses",
-              "value": "1",
-              "scaling": {}
+              "value": "1"
             }
           ]
         },
@@ -64,8 +63,8 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "formula": "",
-          "name": ""
+          "name": "",
+          "formula": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -117,7 +116,9 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "Draw",
+        "name": "Remove Patch",
+        "img": "",
+        "appliedEffects": [],
         "identifier": "use"
       }
     },
@@ -131,9 +132,9 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "miscellany-card",
+    "identifier": "robe-of-useful-items-patch",
     "source": {
-      "book": "TBoMT",
+      "book": "DMG",
       "page": "",
       "license": "",
       "custom": "",
@@ -204,5 +205,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!13rU1ZC6Pqo6qJXC"
+  "_key": "!items!3tef0DgjruNPIKQQ"
 }

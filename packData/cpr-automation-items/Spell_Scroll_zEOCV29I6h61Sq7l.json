@@ -1,21 +1,21 @@
 {
-  "name": "Gems",
+  "name": "Spell Scroll",
   "type": "loot",
-  "img": "icons/commodities/gems/gem-faceted-octagon-yellow.webp",
-  "folder": "nvwKBMSV2OHzwAOe",
-  "_id": "FHl521Ldqjz32YJM",
+  "img": "icons/sundries/scrolls/scroll-symbol-eye-brown.webp",
+  "folder": "r1GxEl4q63ydnx3x",
+  "_id": "zEOCV29I6h61Sq7l",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "gems",
+    "identifier": "spell-scroll",
     "source": {
-      "book": "DMG",
+      "book": "",
       "page": "",
       "license": "",
-      "custom": "",
-      "rules": "2014",
+      "custom": "DMG 2024",
+      "rules": "2024",
       "revision": 1
     },
     "identified": true,
@@ -29,7 +29,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 1000,
+      "value": 0,
       "denomination": "gp"
     },
     "rarity": "",
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!FHl521Ldqjz32YJM"
+  "_key": "!items!zEOCV29I6h61Sq7l"
 }

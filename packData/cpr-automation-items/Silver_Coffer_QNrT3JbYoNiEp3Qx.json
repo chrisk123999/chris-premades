@@ -1,21 +1,21 @@
 {
-  "name": "Rowboat",
+  "name": "Silver Coffer",
   "type": "loot",
-  "img": "icons/tools/nautical/steering-wheel.webp",
-  "folder": "7oCfRMcgCyAkhSWB",
-  "_id": "BMPVLCjYQZKGurIr",
+  "img": "icons/containers/chest/chest-simple-box-blue.webp",
+  "folder": "vRMdSbOvVMbbABOY",
+  "_id": "QNrT3JbYoNiEp3Qx",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "rowboat",
+    "identifier": "silver-coffer",
     "source": {
-      "book": "",
+      "book": "DMG",
       "page": "",
       "license": "",
-      "custom": "DMG 2024",
-      "rules": "2024",
+      "custom": "",
+      "rules": "2014",
       "revision": 1
     },
     "identified": true,
@@ -29,7 +29,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 0,
+      "value": 500,
       "denomination": "gp"
     },
     "rarity": "",
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!BMPVLCjYQZKGurIr"
+  "_key": "!items!QNrT3JbYoNiEp3Qx"
 }

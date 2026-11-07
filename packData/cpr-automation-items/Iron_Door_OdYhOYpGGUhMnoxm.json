@@ -1,14 +1,14 @@
 {
-  "name": "Pit",
+  "name": "Iron Door",
   "type": "consumable",
-  "img": "icons/environment/wilderness/terrain-rocky-ground.webp",
-  "folder": "7oCfRMcgCyAkhSWB",
-  "_id": "6tgoQnnwWx6l46pi",
+  "img": "icons/environment/traps/grate-chainlink.webp",
+  "folder": "vRMdSbOvVMbbABOY",
+  "_id": "OdYhOYpGGUhMnoxm",
   "system": {
     "activities": {
-      "dMLe2ebnmTnHT9UC": {
+      "LhewhsfX8CY9d3Bd": {
         "type": "utility",
-        "_id": "dMLe2ebnmTnHT9UC",
+        "_id": "LhewhsfX8CY9d3Bd",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -49,7 +49,8 @@
           },
           "affects": {
             "choice": false,
-            "type": ""
+            "type": "self",
+            "special": ""
           },
           "override": false,
           "prompt": true
@@ -131,13 +132,13 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "pit",
+    "identifier": "iron-door",
     "source": {
-      "book": "",
+      "book": "DMG",
       "page": "",
       "license": "",
-      "custom": "DMG 2024",
-      "rules": "2024",
+      "custom": "",
+      "rules": "2014",
       "revision": 1
     },
     "identified": true,
@@ -190,5 +191,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!6tgoQnnwWx6l46pi"
+  "_key": "!items!OdYhOYpGGUhMnoxm"
 }

@@ -1,15 +1,15 @@
 {
-  "name": "Spell Scroll",
+  "name": "Gemstone",
   "type": "loot",
-  "img": "icons/sundries/scrolls/scroll-symbol-eye-brown.webp",
-  "folder": "nvwKBMSV2OHzwAOe",
-  "_id": "8z32VSkTXmVI8Ryo",
+  "img": "icons/commodities/gems/gem-faceted-octagon-yellow.webp",
+  "folder": "vRMdSbOvVMbbABOY",
+  "_id": "UGyGFkte315wlHTU",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "spell-scroll",
+    "identifier": "gemstone",
     "source": {
       "book": "DMG",
       "page": "",
@@ -29,7 +29,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 0,
+      "value": 50,
       "denomination": "gp"
     },
     "rarity": "",
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!8z32VSkTXmVI8Ryo"
+  "_key": "!items!UGyGFkte315wlHTU"
 }

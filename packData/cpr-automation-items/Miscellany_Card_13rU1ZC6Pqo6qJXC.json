@@ -1,14 +1,14 @@
 {
-  "name": "Iron Door",
+  "name": "Miscellany Card",
   "type": "consumable",
-  "img": "icons/environment/traps/grate-chainlink.webp",
-  "folder": "nvwKBMSV2OHzwAOe",
-  "_id": "OdYhOYpGGUhMnoxm",
+  "img": "icons/sundries/gaming/playing-cards.webp",
+  "folder": "vRMdSbOvVMbbABOY",
+  "_id": "13rU1ZC6Pqo6qJXC",
   "system": {
     "activities": {
-      "LhewhsfX8CY9d3Bd": {
+      "NoCuoxIfIwWz0Sgh": {
         "type": "utility",
-        "_id": "LhewhsfX8CY9d3Bd",
+        "_id": "NoCuoxIfIwWz0Sgh",
         "sort": 0,
         "activation": {
           "type": "action",
@@ -23,7 +23,8 @@
           "targets": [
             {
               "type": "itemUses",
-              "value": "1"
+              "value": "1",
+              "scaling": {}
             }
           ]
         },
@@ -63,8 +64,8 @@
         "roll": {
           "prompt": false,
           "visible": false,
-          "name": "",
-          "formula": ""
+          "formula": "",
+          "name": ""
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -96,7 +97,7 @@
           "automationOnly": false,
           "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
-          "identifier": "",
+          "identifier": "use",
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
@@ -116,25 +117,23 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "",
-        "img": "",
-        "appliedEffects": [],
-        "identifier": ""
+        "name": "Draw",
+        "identifier": "use"
       }
     },
     "uses": {
       "spent": 0,
-      "max": "1",
       "recovery": [],
-      "autoDestroy": true
+      "autoDestroy": true,
+      "max": "1"
     },
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "iron-door",
+    "identifier": "miscellany-card",
     "source": {
-      "book": "DMG",
+      "book": "TBoMT",
       "page": "",
       "license": "",
       "custom": "",
@@ -183,6 +182,20 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.1.7"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "storedItem"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "storedItem": {}
+        }
       }
     }
   },
@@ -191,5 +204,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!OdYhOYpGGUhMnoxm"
+  "_key": "!items!13rU1ZC6Pqo6qJXC"
 }

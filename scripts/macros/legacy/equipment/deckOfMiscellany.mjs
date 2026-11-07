@@ -1,3 +1,4 @@
+import cprConstants from '../../../constants.mjs';
 import {compendiumUtils, documentUtils, genericUtils, itemUtils} from '../../../proxy.mjs';
 import {findItem} from '../../all/equipment/robeOfUsefulItems.mjs';
 const cards = [
@@ -8,7 +9,7 @@ const cards = [
     ['pole'], ['sack', {prefix: 'Burlap'}], ['light-hammer'], ['arrow', {quantity: 10}]
 ];
 async function setup({document: item, workflow}) {
-    const template = await compendiumUtils.getDocumentByIdentifier('chris-premades.CPREquipment2014', 'miscellany-card', {object: true});
+    const template = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'miscellany-card', {object: true});
     if (!template) return genericUtils.notify('CHRISPREMADES.Macros.Legacy.DeckOfMiscellany.NoCard', {type: 'warn'});
     const deck = workflow.actor.items.find(other => other.type === 'container' && documentUtils.getIdentifier(other) === 'deck-of-miscellany');
     const created = [];

@@ -1,21 +1,21 @@
 {
-  "name": "Spell Scroll",
+  "name": "Wooden Ladder",
   "type": "loot",
-  "img": "icons/sundries/scrolls/scroll-symbol-eye-brown.webp",
-  "folder": "7oCfRMcgCyAkhSWB",
-  "_id": "zEOCV29I6h61Sq7l",
+  "img": "icons/sundries/misc/ladder-improvised.webp",
+  "folder": "vRMdSbOvVMbbABOY",
+  "_id": "i1ApF66ZxRhUPXFz",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "spell-scroll",
+    "identifier": "wooden-ladder",
     "source": {
-      "book": "",
+      "book": "DMG",
       "page": "",
       "license": "",
-      "custom": "DMG 2024",
-      "rules": "2024",
+      "custom": "",
+      "rules": "2014",
       "revision": 1
     },
     "identified": true,
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!zEOCV29I6h61Sq7l"
+  "_key": "!items!i1ApF66ZxRhUPXFz"
 }

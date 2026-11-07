@@ -1,15 +1,15 @@
 {
-  "name": "Jewelry",
+  "name": "Silver Coffer",
   "type": "loot",
-  "img": "icons/commodities/treasure/brooch-gold-ruby.webp",
-  "folder": "7oCfRMcgCyAkhSWB",
-  "_id": "ncYUdS7spsWwANc2",
+  "img": "icons/containers/chest/chest-simple-box-blue.webp",
+  "folder": "r1GxEl4q63ydnx3x",
+  "_id": "fEDtoNGR8DhiRyPB",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "jewelry",
+    "identifier": "silver-coffer",
     "source": {
       "book": "",
       "page": "",
@@ -29,7 +29,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 100,
+      "value": 500,
       "denomination": "gp"
     },
     "rarity": "",
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!ncYUdS7spsWwANc2"
+  "_key": "!items!fEDtoNGR8DhiRyPB"
 }

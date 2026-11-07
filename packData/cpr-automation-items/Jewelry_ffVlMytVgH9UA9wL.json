@@ -1,21 +1,21 @@
 {
-  "name": "Wooden Ladder",
+  "name": "Jewelry",
   "type": "loot",
-  "img": "icons/sundries/misc/ladder-improvised.webp",
-  "folder": "7oCfRMcgCyAkhSWB",
-  "_id": "jMkIO9IqRzUy03tf",
+  "img": "icons/commodities/treasure/brooch-gold-ruby.webp",
+  "folder": "vRMdSbOvVMbbABOY",
+  "_id": "ffVlMytVgH9UA9wL",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "wooden-ladder",
+    "identifier": "jewelry",
     "source": {
-      "book": "",
+      "book": "DMG",
       "page": "",
       "license": "",
-      "custom": "DMG 2024",
-      "rules": "2024",
+      "custom": "",
+      "rules": "2014",
       "revision": 1
     },
     "identified": true,
@@ -29,7 +29,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 0,
+      "value": 100,
       "denomination": "gp"
     },
     "rarity": "",
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!jMkIO9IqRzUy03tf"
+  "_key": "!items!ffVlMytVgH9UA9wL"
 }

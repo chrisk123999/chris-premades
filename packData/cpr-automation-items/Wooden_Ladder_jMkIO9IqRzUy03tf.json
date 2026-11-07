@@ -1,21 +1,21 @@
 {
-  "name": "Gemstone",
+  "name": "Wooden Ladder",
   "type": "loot",
-  "img": "icons/commodities/gems/gem-faceted-octagon-yellow.webp",
-  "folder": "nvwKBMSV2OHzwAOe",
-  "_id": "UGyGFkte315wlHTU",
+  "img": "icons/sundries/misc/ladder-improvised.webp",
+  "folder": "r1GxEl4q63ydnx3x",
+  "_id": "jMkIO9IqRzUy03tf",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "gemstone",
+    "identifier": "wooden-ladder",
     "source": {
-      "book": "DMG",
+      "book": "",
       "page": "",
       "license": "",
-      "custom": "",
-      "rules": "2014",
+      "custom": "DMG 2024",
+      "rules": "2024",
       "revision": 1
     },
     "identified": true,
@@ -29,7 +29,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 50,
+      "value": 0,
       "denomination": "gp"
     },
     "rarity": "",
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!UGyGFkte315wlHTU"
+  "_key": "!items!jMkIO9IqRzUy03tf"
 }

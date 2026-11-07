@@ -1,21 +1,21 @@
 {
-  "name": "Jewelry",
+  "name": "Rowboat",
   "type": "loot",
-  "img": "icons/commodities/treasure/brooch-gold-ruby.webp",
-  "folder": "nvwKBMSV2OHzwAOe",
-  "_id": "ffVlMytVgH9UA9wL",
+  "img": "icons/tools/nautical/steering-wheel.webp",
+  "folder": "r1GxEl4q63ydnx3x",
+  "_id": "BMPVLCjYQZKGurIr",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "jewelry",
+    "identifier": "rowboat",
     "source": {
-      "book": "DMG",
+      "book": "",
       "page": "",
       "license": "",
-      "custom": "",
-      "rules": "2014",
+      "custom": "DMG 2024",
+      "rules": "2024",
       "revision": 1
     },
     "identified": true,
@@ -29,7 +29,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 100,
+      "value": 0,
       "denomination": "gp"
     },
     "rarity": "",
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!ffVlMytVgH9UA9wL"
+  "_key": "!items!BMPVLCjYQZKGurIr"
 }

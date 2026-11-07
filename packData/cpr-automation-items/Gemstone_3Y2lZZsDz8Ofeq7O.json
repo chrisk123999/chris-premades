@@ -1,15 +1,15 @@
 {
-  "name": "Gems",
+  "name": "Gemstone",
   "type": "loot",
   "img": "icons/commodities/gems/gem-faceted-octagon-yellow.webp",
-  "folder": "7oCfRMcgCyAkhSWB",
-  "_id": "BP7gnZgIkbr31YlC",
+  "folder": "r1GxEl4q63ydnx3x",
+  "_id": "3Y2lZZsDz8Ofeq7O",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "identifier": "gems",
+    "identifier": "gemstone",
     "source": {
       "book": "",
       "page": "",
@@ -29,7 +29,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 1000,
+      "value": 50,
       "denomination": "gp"
     },
     "rarity": "",
@@ -53,5 +53,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!items!BP7gnZgIkbr31YlC"
+  "_key": "!items!3Y2lZZsDz8Ofeq7O"
 }
