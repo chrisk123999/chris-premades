@@ -15,7 +15,7 @@ async function use({document, workflow}) {
 }
 function damage({document, workflow}) {
     if (!workflow.hitTargets.size) return;
-    const name = workflow.item.type === 'spell' ? workflow.item.name : workflow.item.flags['chris-premades']?.bladeCantrip;
+    const name = workflow.item.type === 'spell' ? workflow.item.name : workflow.item.flags['chris-premades']?.bladeCantrip?.name;
     if (!name) return;
     const spellNames = document.flags['chris-premades']?.agonizingBlast?.spells;
     if (!spellNames?.includes(name)) return;

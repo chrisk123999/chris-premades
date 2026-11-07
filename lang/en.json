@@ -1112,6 +1112,8 @@
                     "SourceSkillsHint": "Skills the user contests with. The highest total is rolled. The activity's own check is the target's side."
                 },
                 "DamageBonusToOneRoll": {
+                    "ApplyTo": "Apply To",
+                    "ApplyToHint": "This bonus applies to damage, healing, or both.",
                     "BonusDamageType": "Bonus Damage Type",
                     "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
                     "Critical": "Allow Critical",

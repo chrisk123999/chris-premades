@@ -31,7 +31,7 @@ async function use({document, workflow}) {
     const ability = config.ability === 'spellcasting' ? document.system.availableAbilities?.first() : config.ability;
     const diceNumber = config.bonusDamageDieFormula ? (await rollUtils.rollDice(config.bonusDamageDieFormula, {document})).total : (document.system.scalingIncrease ?? 0);
     const itemData = weapon.toObject();
-    genericUtils.setProperty(itemData, 'flags.chris-premades.bladeCantrip', document.name);
+    genericUtils.setProperty(itemData, 'flags.chris-premades.bladeCantrip', {name: document.name, school: workflow.item.system.school});
     if (damageType) itemData.system.damage.base.types = [damageType];
     const attacks = weapon.system.activities.getByType('attack');
     itemData.system.activities = Object.fromEntries(Object.entries(itemData.system.activities).filter(([id]) => attacks.some(activity => activity.id === id)));

@@ -1,18 +1,18 @@
 import {activityUtils, actorUtils, applications, automationUtils, combatUtils, DamageBonus, documentUtils, Logging, tokenUtils, uiUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function movementBonus({document: activity, macroClass: {identifier, source}, token, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
-    if (token && !combatUtils.isOwnTurn(token)) 
+    if (token && !combatUtils.isOwnTurn(token))
         return Logging.addMacroWarning(source, identifier, `Blade Flourish exited early. Not this character's turn in combat. (token) ${token.uuid}`);
-    if (workflow.item.flags[source]?.bladeCantrip) 
-        return Logging.addMacroWarning(source, identifier, `Blade Flourish exited early on a blade cantrip. (rolled item) ${workflow.item.uuid} (cantrip) ${workflow.item.flags[source].bladeCantrip}`);
-    if (token?.combatant && activity.uses.value) 
+    if (workflow.item.flags[source]?.bladeCantrip)
+        return Logging.addMacroWarning(source, identifier, `Blade Flourish exited early on a blade cantrip. (rolled item) ${workflow.item.uuid} (cantrip) ${workflow.item.flags[source].bladeCantrip.name}`);
+    if (token?.combatant && activity.uses.value)
         await workflowUtils.syntheticActivityRoll(activity);
     workflowUtils.setWorkflowProperty(workflow, identifier, true);
 }
 async function flourish({document: activity, macroClass: {identifier, source}, workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, identifier)) return;
     if (!workflow.hitTargets.size) return;
-    if (!activity.item.system.uses.value) 
+    if (!activity.item.system.uses.value)
         return Logging.addMacroWarning(source, identifier, `Blade Flourish exited early without item uses. (item) ${activity.item.uuid}`);
     const flourishes = activity.item.system.activities.filter(a => a.id !== activity.id && !(a.flags.cat?.hidden || a.midiProperties.automationOnly));
     const formula = Roll.replaceFormulaData(automationUtils.getConfigValue(activity.item, 'formula'), activity.getRollData());
@@ -21,7 +21,7 @@ async function flourish({document: activity, macroClass: {identifier, source}, w
     const masterDie = master ? automationUtils.getConfigValue(master, 'formula') : '';
     const prev = activity.item.flags[source]?.[identifier] ?? flourishes[0].id;
     let masterActive = bardic && !bardic.system.uses.value;
-    if (masterActive && !master) 
+    if (masterActive && !master)
         return Logging.addMacroWarning(source, identifier, `Blade Flourish exited early with no remaining bardic inspiration. (item) ${activity.item.uuid}`);
     let masterToggled = false;
     let originalTags;
@@ -40,7 +40,7 @@ async function flourish({document: activity, macroClass: {identifier, source}, w
                 bonus.updateScaling(0, workflow);
                 const bonusContext = getInputById(input.id.split(applications.DialogApp.SUBINPUT_SEPARATOR)[0]);
                 originalTags ??= bonusContext.tags;
-                bonusContext.tags = masterActive ? 
+                bonusContext.tags = masterActive ?
                     bonusContext.tags.filter(t => t.id === 'formula' || bonus.scalingHints.some(h => h.id === t.id)) :
                     originalTags;
                 return true;
@@ -74,7 +74,7 @@ async function flourish({document: activity, macroClass: {identifier, source}, w
                 }
                 activityData = activityUtils.getDamageModifiedActivityData(flourish, bonus.roll.total, {types: [workflow.defaultDamageType]});
             }
-            activityData ??= flourish.toObject();                 
+            activityData ??= flourish.toObject();
             if (!combat) withNoCombatConsumption(activityData);
             if (inputs.master) withMasterConsumption(activityData, bardic);
             await workflowUtils.syntheticActivityDataRoll(activityData, activity.item, targets, options);
@@ -118,7 +118,7 @@ export const bladeFlourish = {
         },
         {
             pass: 'actorOptionalBonusDamage',
-            macro: flourish, 
+            macro: flourish,
             priority: 200
         }
     ],

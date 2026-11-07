@@ -19,12 +19,15 @@ async function damage({document, workflow}) {
     if (!itemUtils.getEquipmentState(document)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
     if (!config.bonus.length) return;
+    const bladeCantrip = workflow.item.flags['chris-premades']?.bladeCantrip;
     const multiSingleTarget = workflow.workflowOptions['chris-premades']?.multiSingleTarget;
     const trackLastUse = !config.everyRoll && multiSingleTarget;
     if (trackLastUse && document.flags['chris-premades']?.lastUse === multiSingleTarget.rollID) return;
     const needsHit = config.everyRoll || config.useActivityCosts || multiSingleTarget?.remainingAttacks > 1;
     const optional = !config.everyRoll && needsHit;
     if (needsHit && workflow.activity.hasAttack && !workflow.hitTargets.size) return;
+    if (config.applyTo === 'damage' && !workflow.activity.hasDamage) return;
+    if (config.applyTo === 'healing' && !workflow.activity.hasHealing) return;
     if (config.attackType.length) {
         if (!workflowUtils.isAttackType(workflow, config.attackType)) return;
     }
@@ -44,14 +47,19 @@ async function damage({document, workflow}) {
         if (!config.properties.some(p => workflow.item.system.properties?.has(p))) return;
     }
     if (config.itemType.length) {
-        if (!config.itemType.includes(workflow.item.type)) return;
+        if (bladeCantrip) {
+            if (!['spell', 'weapon'].some(t => config.itemType.includes(t))) return;
+        } else if (!config.itemType.includes(workflow.item.type)) return;
     }
-    if (config.spellLevel.length) {
-        const castLevel = workflow.item.flags['chris-premades']?.bladeCantrip ? 0 : workflowUtils.getCastLevel(workflow);
-        if (!config.spellLevel.includes(String(castLevel))) return;
-    }
-    if (config.spellSchool.length) {
-        if (!config.spellSchool.includes(workflow.item.system.school)) return;
+    if (workflow.item.type === 'spell' || bladeCantrip) {
+        if (config.spellLevel.length) {
+            const castLevel = bladeCantrip ? 0 : workflowUtils.getCastLevel(workflow);
+            if (!config.spellLevel.includes(String(castLevel))) return;
+        }
+        if (config.spellSchool.length) {
+            const school = bladeCantrip?.school ?? workflow.item.system.school;
+            if (!config.spellSchool.includes(school)) return;
+        }
     }
     if (config.firstCastOnly && workflowUtils.isSustainedRoll(workflow)) return;
     if (config.targetWounded) {
@@ -89,14 +97,15 @@ async function damage({document, workflow}) {
  * Config:
  * - `bonus`: damage bonus formula. On an effect, `@scaling` is the number of levels the spell that created it was upcast.
  * - `bonusDamageType`: damage types offered as choices for this bonus.
+ * - `applyTo`: add the bonus to damage, healing, or both.
  * - `attackType`: only trigger for this attack type.
  * - `damageType`: only trigger when the roll deals one of these damage types.
  * - `healingType`: only trigger when the activity heals one of these healing types.
  * - `identifiers`: only trigger for items with one of these identifiers.
  * - `properties`: only trigger for items with one of these properties.
  * - `itemType`: only trigger for these item types.
- * - `spellLevel`: only trigger for spells cast at one of these levels.
- * - `spellSchool`: only trigger for spells of these schools.
+ * - `spellLevel`: only trigger for spells cast at one of these levels. This setting is checked against spell items only.
+ * - `spellSchool`: only trigger for spells of these schools. This setting is checked against spell items only.
  * - `rollActivity`: activity rolled when the bonus is used.
  * - `rollItem`: roll this item when the bonus is used.
  * - `maxTargets`: limit the bonus to this many targets. 0 applies it to every target.
@@ -136,6 +145,18 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageTypeHint',
             get options() { return constants.damageTypeOptions; }
+        },
+        applyTo: {
+            default: 'damage',
+            type: 'select',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ApplyTo',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ApplyToHint',
+            options: [
+                {label: 'DND5E.HEAL.Type.HealingShort', value: 'healing'},
+                {label: 'DND5E.Damage', value: 'damage'},
+                {label: 'DND5E.DistAny', value: 'any'}
+            ]
         },
         attackType: attackTypeConfig,
         damageType: {

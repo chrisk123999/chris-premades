@@ -42,19 +42,13 @@
       "genericConfig": {
         "chris-premades": {
           "damageBonusToOneRoll": {
-            "attackType": "",
             "bonus": "@abilities.wis.mod",
-            "bonusDamageType": "",
-            "damageType": [],
-            "healingType": [],
-            "identifiers": [],
-            "itemType": [],
-            "rollActivity": "",
-            "rollItem": false,
+            "itemType": [
+              "spell"
+            ],
             "spellLevel": [
               "0"
             ],
-            "spellSchool": [],
             "useActivityCosts": false
           }
         }
@@ -70,7 +64,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.8"
       }
     }
   },

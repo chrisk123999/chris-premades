@@ -235,7 +235,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.8"
       },
       "macros": {
         "roll": [
@@ -260,7 +260,8 @@
             "maxTargets": 1,
             "allowCritical": false,
             "useActivityCosts": true,
-            "rollActivity": "RtrlmosmRpf3oQHr"
+            "rollActivity": "RtrlmosmRpf3oQHr",
+            "firstCastOnly": true
           }
         }
       }

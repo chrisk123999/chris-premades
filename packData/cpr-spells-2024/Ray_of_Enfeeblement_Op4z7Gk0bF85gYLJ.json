@@ -230,7 +230,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.8"
       },
       "macros": {
         "roll": [
@@ -290,28 +290,28 @@
         "changes": [
           {
             "key": "system.abilities.str.check.roll.mode",
-            "value": "-1",
+            "value": -1,
             "priority": 20,
             "type": "add",
             "phase": "initial"
           },
           {
             "key": "system.abilities.str.save.roll.mode",
-            "value": "-1",
+            "value": -1,
             "priority": 20,
             "type": "add",
             "phase": "initial"
           },
           {
             "key": "flags.midi-qol.disadvantage.attack.str",
-            "value": "true",
+            "value": true,
             "priority": 20,
             "type": "custom",
             "phase": "initial"
           },
           {
             "key": "flags.midi-qol.OverTime",
-            "value": "turn=end,label=Ray of Enfeeblement (End of Turn),rollType=save,saveAbility=con,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,saveMagic=true,rollMode=public",
+            "value": "turn=end,label=@item.name,rollType=save,saveAbility=con,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,saveMagic=true,rollMode=public",
             "priority": 20,
             "type": "custom",
             "phase": "initial"
@@ -369,21 +369,6 @@
             "chris-premades": {
               "damageBonusToOneRoll": {
                 "bonus": "-1d8",
-                "damageType": [
-                  "acid",
-                  "bludgeoning",
-                  "cold",
-                  "fire",
-                  "force",
-                  "lightning",
-                  "necrotic",
-                  "piercing",
-                  "poison",
-                  "psychic",
-                  "radiant",
-                  "slashing",
-                  "thunder"
-                ],
                 "everyRoll": true,
                 "allowCritical": false
               }
@@ -396,6 +381,8 @@
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
       },
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!Op4z7Gk0bF85gYLJ.YDG0380FmTsLZ5no"
     },
     {

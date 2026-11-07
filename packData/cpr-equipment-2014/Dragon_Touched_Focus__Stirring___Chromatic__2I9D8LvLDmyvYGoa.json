@@ -96,7 +96,7 @@
           {
             "key": "system.attributes.init.roll.mode",
             "type": "upgrade",
-            "value": "1",
+            "value": 1,
             "phase": "initial",
             "priority": 20
           }
@@ -107,6 +107,8 @@
         "systemId": "dnd5e",
         "systemVersion": "6.0.6"
       },
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!2I9D8LvLDmyvYGoa.bi8tfO1Rn7Z0cnrH"
     }
   ],
@@ -114,7 +116,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.8"
       },
       "macros": {
         "roll": [
@@ -129,13 +131,6 @@
         "chris-premades": {
           "damageBonusToOneRoll": {
             "bonus": "1d6",
-            "bonusDamageType": [
-              "acid",
-              "cold",
-              "fire",
-              "lightning",
-              "poison"
-            ],
             "damageType": [
               "acid",
               "cold",
@@ -156,7 +151,8 @@
               "7",
               "8",
               "9"
-            ]
+            ],
+            "firstCastOnly": true
           }
         }
       }

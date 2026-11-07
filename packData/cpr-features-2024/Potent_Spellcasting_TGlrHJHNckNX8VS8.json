@@ -44,7 +44,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.8"
       },
       "macros": {
         "roll": [
@@ -58,19 +58,14 @@
       "genericConfig": {
         "chris-premades": {
           "damageBonusToOneRoll": {
-            "attackType": "",
             "bonus": "@abilities.wis.mod",
-            "bonusDamageType": [],
-            "damageType": [],
-            "healingType": [],
-            "identifiers": [],
-            "itemType": [],
-            "rollActivity": "",
+            "itemType": [
+              "spell"
+            ],
             "rollItem": false,
             "spellLevel": [
               "0"
             ],
-            "spellSchool": [],
             "useActivityCosts": false,
             "allowCritical": true
           }
