@@ -109,7 +109,7 @@ export const rage = {
         },
         bonus: {
             default: '@scale.barbarian.rage-damage',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.DamageBonus',
             category: 'behavior'
         },

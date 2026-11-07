@@ -7,6 +7,13 @@
 /****************************************************************************/
 
 /*============================*/
+/*          ACTIONS           */
+/*============================*/
+export {genericActionsLegacy as 'generic-actions'} from './all/actions/genericActions.mjs';
+export {holdBreathLegacy as 'hold-breath', suffocationOutOfAirLegacy as suffocationOutOfAir} from './all/actions/holdBreath.mjs';
+export {underwaterLegacy as underwater} from './all/actions/underwater.mjs';
+
+/*============================*/
 /*       CLASS FEATURES       */
 /*============================*/
 
@@ -168,6 +175,9 @@ export {psionicEnergy as 'psionic-energy'} from './legacy/classFeatures/rogue/so
 
 /*        Swashbuckler        */
 export {rakishAudacity as 'rakish-audacity'} from './legacy/classFeatures/rogue/swashbuckler/rakishAudacity.mjs';
+
+/*           Thief            */
+export {supremeSneakLegacy as 'supreme-sneak'} from './legacy/classFeatures/rogue/thief/supremeSneak.mjs';
 
 /******************************/
 /*          Sorcerer          */

@@ -1,31 +1,29 @@
-import {actorUtils, automationUtils, documentUtils, effectUtils, Logging} from '../../proxy.mjs';
+import {actorUtils, automationUtils, documentUtils, effectUtils, genericUtils, rollUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     if (workflow.failedSaves.size) return;
-    const sourceEffectId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'hide', 'effect');
-    if (!sourceEffectId) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'No hide effect configured.', {notify: 'warn'});
-    const effectData = documentUtils.getEffectData(document, sourceEffectId);
-    const macros = [];
-    const supremeSneak = actorUtils.getItemByIdentifier(workflow.actor, 'supremeSneak');
-    if (supremeSneak) {
-        macros.push({
-            type: 'combat',
-            macros: [{source: 'chris-premades', identifier: 'supremeSneakEffect', rules: 'modern'}]
-        });
-    }
+    const total = workflow.saveResults?.[0]?.total;
+    const dc = automationUtils.getGenericConfigValue(document, 'chris-premades', 'hide', 'dc');
+    if (dc && total < rollUtils.rollDiceSync(String(dc), {document}).total) return;
+    const existing = actorUtils.getEffectByStatusID(workflow.actor, 'hiding');
+    if (existing) await documentUtils.deleteDocument(existing);
+    const effectData = (await ActiveEffect.implementation.fromStatusEffect('hiding')).toObject();
+    genericUtils.setProperty(effectData, 'flags.midi-qol.hidden.dc', total);
+    genericUtils.setProperty(effectData, 'flags.dae.specialDuration', ['1Attack']);
     const {animation} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'hide', rules: 'all'});
-    await effectUtils.createEffects(workflow.actor, [effectData], {macros, createAnimation: animation, deleteAnimation: animation});
+    await effectUtils.createEffects(workflow.actor, [effectData], {createAnimation: animation, deleteAnimation: animation, effectOptions: {keepId: true}});
 }
 /**
- * Applies a hide effect to the user once the roll finishes, unless any target failed its save.
+ * Gives the user the system's Hiding condition once the roll finishes, unless the check failed.
+ * The check total is the DC to find them, and attacking ends it.
  * Bound on an activity. Fires on `activityRollFinished`.
  *
  * Config:
- * - `effect`: effect applied to the user.
- * - `animation`: played when the effect is created and deleted.
+ * - `dc`: formula the check total must reach. Leave blank for no DC.
+ * - `animation`: played when the condition is created and deleted.
  */
 export const hide = {
     rules: 'all',
-    version: '2.0.3',
+    version: '2.1.8',
     category: 'mechanics',
     generic: true,
     documents: ['activity'],
@@ -37,11 +35,13 @@ export const hide = {
         }
     ],
     genericConfig: {
-        effect: {
+        dc: {
             default: '',
-            type: 'selectEffect',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Config.Effect'
+            type: 'formula',
+            deterministic: true,
+            category: 'homebrew',
+            label: 'CHRISPREMADES.Config.DC',
+            hint: 'CHRISPREMADES.Macros.Generic.Hide.DCHint'
         },
         animation: {
             default: {

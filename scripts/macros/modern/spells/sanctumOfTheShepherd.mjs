@@ -62,7 +62,7 @@ export const sanctumOfTheShepherd = {
     config: {
         creatures: {
             default: 'max(@mod, 1)',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             hint: 'CHRISPREMADES.Macros.Modern.SanctumOfTheShepherd.CreaturesHint',
             category: 'homebrew'

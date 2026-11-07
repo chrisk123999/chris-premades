@@ -6,7 +6,7 @@ export const foeSlayer = {
     config: {
         formula: {
             default: '1d10',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         },

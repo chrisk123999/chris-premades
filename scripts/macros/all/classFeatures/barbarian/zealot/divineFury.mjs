@@ -35,13 +35,13 @@ export const divineFury = {
     config: {
         baseFormula: {
             default: '1d6',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageBonus'
         },
         extraFormula: {
             default: 'floor(@classes.barbarian.levels * 0.5)',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Formula',
             hint: 'CHRISPREMADES.Macros.All.DivineFury.FormulaHint'

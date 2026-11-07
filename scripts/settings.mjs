@@ -2,6 +2,7 @@ import {actions} from './macros/legacy/homebrew/bg3WeaponActions.mjs';
 import {applications, constants} from './proxy.mjs';
 const settings = {
     dmgCleave: {
+        menu: 'mechanics',
         type: String,
         default: 'off',
         choices: {
@@ -10,6 +11,21 @@ const settings = {
             full: 'CHRISPREMADES.Settings.DmgCleave.Full'
         }
     },
+    addActions: {
+        menu: 'mechanics',
+        type: String,
+        default: 'off',
+        choices: {
+            off: 'CHRISPREMADES.Settings.AddActions.Off',
+            all: 'CHRISPREMADES.Settings.AddActions.All',
+            character: 'CHRISPREMADES.Settings.AddActions.Character',
+            linked: 'CHRISPREMADES.Settings.AddActions.Linked',
+            playerLinked: 'CHRISPREMADES.Settings.AddActions.PlayerLinked',
+            player: 'CHRISPREMADES.Settings.AddActions.Player'
+        }
+    },
+    genericActionsItem: {menu: 'mechanics', type: Boolean, default: true},
+    healingSurge: {menu: 'mechanics', type: Boolean, default: false},
     bg3WeaponActions: {type: Boolean, default: false},
     bg3WeaponActionUses: {type: Number, default: 1},
     ...Object.fromEntries(Object.entries(actions).map(([key, action]) => ['bg3-' + key, {
@@ -30,6 +46,18 @@ export function registerSettings() {
         hint: 'CHRISPREMADES.Settings.' + key.capitalize() + '.Hint',
         ...options
     }));
+    game.settings.registerMenu('chris-premades', 'mechanics', {
+        name: 'CHRISPREMADES.Settings.Mechanics.Name',
+        label: 'CHRISPREMADES.Settings.Mechanics.Label',
+        hint: 'CHRISPREMADES.Settings.Mechanics.Hint',
+        icon: 'fas fa-dice',
+        restricted: true,
+        type: class extends applications.SettingsMenuBase {
+            constructor() {
+                super('mechanics', {namespace: 'chris-premades', langPrefix: 'CHRISPREMADES'});
+            }
+        }
+    });
     game.settings.registerMenu('chris-premades', 'homebrew', {
         name: 'CHRISPREMADES.Settings.Homebrew.Name',
         label: 'CHRISPREMADES.Settings.Homebrew.Label',

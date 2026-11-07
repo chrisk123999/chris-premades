@@ -6,7 +6,7 @@ export const stalkersFlurry = {
     config: {
         formula: {
             default: '2d8',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         },

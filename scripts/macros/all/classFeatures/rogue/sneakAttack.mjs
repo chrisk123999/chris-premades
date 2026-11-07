@@ -124,7 +124,7 @@ export const sneakAttack = {
         },
         formula: {
             default: '@scale.rogue.sneak-attack',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'behavior',
             hint: ''

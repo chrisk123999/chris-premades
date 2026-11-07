@@ -97,7 +97,7 @@ export const nextHitRider = {
         },
         bonus: {
             default: '',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageBonus',
             hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.BonusHint'

@@ -134,7 +134,7 @@ export const damageBonusToOneRoll = {
     genericConfig: {
         bonus: {
             default: '',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.DamageBonus',
             category: 'behavior'
         },

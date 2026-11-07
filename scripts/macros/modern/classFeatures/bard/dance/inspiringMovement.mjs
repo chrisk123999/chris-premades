@@ -32,7 +32,7 @@ export const inspiringMovement = {
     config: {
         range: {
             default: '30',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Range'
         }

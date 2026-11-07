@@ -1,6 +1,6 @@
 import cprConstants from '../../../../../constants.mjs';
-import utils from '../../../../../utils.mjs';
 import {automationUtils, compendiumUtils, constants, documentUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
+import utils from '../../../../../utils.mjs';
 async function weave({document, workflow}) {
     if (workflow.activity.identifier !== 'weave-wicker-tokens') return;
     await utils.deleteCharms(workflow.actor, 'wickerToken');
@@ -47,7 +47,7 @@ export const wickerToken = {
     config: {
         quantity: {
             default: '@prof',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.Modern.WickerToken.Quantity',
             category: 'homebrew'
         }

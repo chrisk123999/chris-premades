@@ -36,7 +36,7 @@ export const frenzy = {
     config: {
         number: {
             default: '@scale.barbarian.rage-damage',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CAT.MEDKIT.Summons.DamageNumber'
         },

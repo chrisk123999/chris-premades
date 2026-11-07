@@ -417,7 +417,7 @@
             "genericConfig": {
               "chris-premades": {
                 "hide": {
-                  "effect": "qcM2hg18rQEZDsMP"
+                  "dc": "15"
                 }
               }
             },
@@ -472,7 +472,7 @@
           ],
           "dc": {
             "calculation": "",
-            "formula": "15"
+            "formula": ""
           },
           "ability": ""
         },
@@ -569,59 +569,6 @@
   },
   "effects": [
     {
-      "name": "Hidden",
-      "img": "icons/containers/barrels/barrel-open-brown-red.webp",
-      "origin": null,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "disabled": false,
-      "type": "base",
-      "_id": "qcM2hg18rQEZDsMP",
-      "system": {
-        "changes": []
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [],
-      "showIcon": 2,
-      "folder": null,
-      "sort": 0,
-      "flags": {
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        },
-        "dae": {
-          "disableCondition": "",
-          "stackable": "noneName",
-          "expiryMode": "default",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "disableIncapacitated": false,
-          "specialDuration": [],
-          "enableCondition": "",
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false
-        },
-        "core": {
-          "overlay": false
-        }
-      },
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "dnd5e",
-        "systemVersion": "6.0.6"
-      },
-      "_key": "!items.effects!um4BlVaGmkY2B5UQ.qcM2hg18rQEZDsMP"
-    },
-    {
       "name": "Disengage",
       "img": "icons/skills/movement/feet-winged-boots-blue.webp",
       "origin": null,
@@ -690,7 +637,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.8"
       }
     }
   },

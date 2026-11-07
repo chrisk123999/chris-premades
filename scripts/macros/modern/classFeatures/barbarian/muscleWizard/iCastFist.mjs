@@ -1,5 +1,5 @@
-import {actorUtils, automationUtils, compendiumUtils, constants, documentUtils, itemUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
 import {default as cpr} from '../../../../../constants.mjs';
+import {actorUtils, automationUtils, compendiumUtils, constants, documentUtils, itemUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
 function log(source, identifier, msg, notify) {
     Logging.addMacroWarning(source, identifier, msg, {notify});
     return true;
@@ -32,8 +32,8 @@ async function fist({document: activity, macroClass: {identifier, source}, token
     item.system.activities[castFist._id] = castFist;
     const roll = await workflowUtils.syntheticItemDataRoll(item, activity.actor, [], {options: {activityIdentifier: castFist.midiProperties.identifier, advantage: true}});
     if (!roll?.hitTargets.size) return log(source, identifier, 'I Cast Fist exited early with no hit targets.');
-    await Promise.all(roll.hitTargets.map(t => 
-        actorUtils.getSize(t.actor) <= CONFIG.DND5E.actorSizes[config.size]?.numerical ? 
+    await Promise.all(roll.hitTargets.map(t =>
+        actorUtils.getSize(t.actor) <= CONFIG.DND5E.actorSizes[config.size]?.numerical ?
             actorUtils.applyConditions(t.actor, ['prone']) : undefined
     ));
 }
@@ -63,7 +63,7 @@ export const iCastFist = {
     config: {
         damage: {
             default: '6d6 + @mod',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'behavior'
         },

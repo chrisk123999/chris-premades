@@ -582,12 +582,58 @@
         },
         "Macros": {
             "All": {
+                "GenericActions": {
+                    "Actions": "Offered Actions",
+                    "HideDC": "Hide: DC",
+                    "InfluenceMinimumDC": "Influence: Minimum DC",
+                    "KnockOutAttackTypes": "Knock Out: Attack Types",
+                    "InfluenceSkills": "Influence: Skills",
+                    "KnockOutPromptOnZero": "Knock Out: Prompt on Every Attack",
+                    "ReadySpellActivationTypes": "Ready: Spell Activation Types",
+                    "ReadySpellTurnStart": "Ready: Spell Turn Start",
+                    "SuffocationBreathFormula": "Hold Breath: Breath Duration",
+                    "SuffocationStartsOutOfAir": "Hold Breath: Starts Out of Air",
+                    "SuffocationSurvivalFormula": "Hold Breath: Rounds Out of Air",
+                    "UnderwaterMeleeDamageTypes": "Underwater: Melee Damage Types",
+                    "UnderwaterMeleeWeapons": "Underwater: Melee Weapons",
+                    "UnderwaterRangedWeapons": "Underwater: Ranged Weapons",
+                    "ActionsHint": "Actions the picker offers. Leave empty to offer every action.",
+                    "HealingSurgeUsed": "Healing Surge has already been used since the last rest.",
+                    "Select": "Which action?"
+                },
                 "GrinningSinner": {
                     "Jinx": "Sinner's Jinx"
+                },
+                "ReadySpell": {
+                    "ActivationTypes": "Activation Types",
+                    "ActivationTypesHint": "Spells with one of these casting times can be readied.",
+                    "Lost": "{actor}'s readied {spell} is lost.",
+                    "NoSpells": "No spell can be readied.",
+                    "NotReadied": "No spell is readied.",
+                    "ReleaseNow": "Release the readied {spell} now? If not, it is lost.",
+                    "SelectSlot": "Which spell slot?",
+                    "TurnStart": "Turn Start",
+                    "TurnStartHint": "What happens to an unreleased spell at the start of the creature's next turn.",
+                    "TurnStartLose": "Lose the spell",
+                    "TurnStartPrompt": "Ask to release it",
+                    "SelectSpell": "Which spell?"
                 },
                 "Stabilize": {
                     "Check": "Requires a DC 10 Medicine Check",
                     "WakeUp": "Hours Until 1 Hit Point"
+                },
+                "CheckCover": {
+                    "TargetCover": "Cover each creature has from you:",
+                    "YourCover": "Cover you have from each creature:"
+                },
+                "Underwater": {
+                    "MeleeDamageTypes": "Melee Damage Types",
+                    "MeleeDamageTypesHint": "Melee weapons that deal one of these damage types attack without disadvantage.",
+                    "MeleeWeapons": "Melee Weapons",
+                    "MeleeWeaponsHint": "Melee attacks with these weapons have no disadvantage.",
+                    "RangedWeapons": "Ranged Weapons",
+                    "RangedWeaponsHint": "Ranged attacks with these weapons have no disadvantage within normal range.",
+                    "TooFar": "Underwater, a ranged weapon attack beyond its normal range automatically misses."
                 },
                 "DeckOfIllusions": {
                     "Cards": "Cards",
@@ -717,6 +763,13 @@
                 "Jump": {
                     "DifficultTerrain": "Landing in difficult terrain?",
                     "LowObstacle": "Is there a low obstacle?"
+                },
+                "KnockOut": {
+                    "AttackTypes": "Attack Types",
+                    "AttackTypesHint": "Attacks of these types can knock a creature out. The Knock Out action only offers weapons with these attack types.",
+                    "Prompt": "Knock out {name} instead?",
+                    "PromptOnZero": "Prompt on Every Attack",
+                    "PromptOnZeroHint": "Ask whether to knock out a creature whenever an attack of the chosen types drops it to 0 hit points."
                 },
                 "LayOnHands": {
                     "NoDisease": "The target is not diseased.",
@@ -989,6 +1042,43 @@
                 }
             },
             "Generic": {
+                "Breathing": {
+                    "Mode": "Breathes",
+                    "ModeHint": "Environment areas don't make the creature hold its breath where it can breathe.",
+                    "None": "Doesn't need to breathe",
+                    "Water": "Water and air"
+                },
+                "Environment": {
+                    "Always": "Always",
+                    "BreathableAir": "Breathable Air",
+                    "ColdDC": "Extreme Cold: DC",
+                    "ColdDCHint": "DC of the Extreme Cold save.",
+                    "ColdIdentifiers": "Cold Save Exemptions",
+                    "ColdIdentifiersHint": "Identifiers of equipped items or effects that make the creature succeed on Extreme Cold saves.",
+                    "Combat": "Combat",
+                    "Environments": "Environments",
+                    "Exhaustion": "Exhaustion on a Failed Save",
+                    "ExhaustionHint": "Exhaustion levels a failed Extreme Cold or Extreme Heat save gives.",
+                    "ExtremeCold": "Extreme Cold",
+                    "ExtremeHeat": "Extreme Heat",
+                    "HeatArmorTypes": "Extreme Heat: Disadvantage Armor",
+                    "HeatArmorTypesHint": "Creatures wearing armor of these types have disadvantage on the Extreme Heat save.",
+                    "HeatDC": "Extreme Heat: First DC",
+                    "HeatDCHint": "DC of the first Extreme Heat save.",
+                    "HeatDCIncrease": "Extreme Heat: DC Increase",
+                    "HeatDCIncreaseHint": "Added to the Extreme Heat DC for each save after the first.",
+                    "HeatDisadvantageIdentifiers": "Heat Save Disadvantage",
+                    "HeatDisadvantageIdentifiersHint": "Identifiers of equipped items or effects that give disadvantage on Extreme Heat saves, such as heavy clothing.",
+                    "HeatIdentifiers": "Heat Save Exemptions",
+                    "HeatIdentifiersHint": "Identifiers of equipped items or effects that make the creature succeed on Extreme Heat saves.",
+                    "HighAltitude": "High Altitude",
+                    "NoAir": "No Air",
+                    "SaveInterval": "Save Interval",
+                    "SaveIntervalHint": "Seconds of world time between Extreme Cold or Extreme Heat saves. A combat round is 6 seconds.",
+                    "Timing": "Timing",
+                    "TimingHint": "When tokens in this area are affected.",
+                    "Underwater": "Underwater"
+                },
                 "StoredItem": {
                     "Missing": "The stored item could not be found."
                 },
@@ -1390,6 +1480,9 @@
                     "Zone": "Within 20 Feet",
                     "FrigidAir": "Frigid Air",
                     "Designate": "Choose creatures that can pass through and stay near the wall without harm. You are always one."
+                },
+                "Hide": {
+                    "DCHint": "Formula the Stealth check must reach to hide. Leave blank for no DC."
                 },
                 "HeroicInspiration": {
                     "Affects": "Recipients",
@@ -1955,6 +2048,31 @@
                 }
             },
             "Modern": {
+                "SupremeSneak": {
+                    "TurnEnd": "Are you behind Three-Quarters Cover or Total Cover? If not, you stop hiding."
+                },
+                "Influence": {
+                    "Attitude": "What is the creature's attitude?",
+                    "Friendly": "Friendly",
+                    "Hesitant": "Hesitant",
+                    "Hostile": "Hostile",
+                    "HowWilling": "How willing is the creature?",
+                    "Indifferent": "Indifferent",
+                    "MinimumDC": "Minimum DC",
+                    "MinimumDCHint": "The check's DC is this or the creature's Intelligence score, whichever is higher.",
+                    "SkillsHint": "Skills offered for the check. With one skill, it is used without a prompt.",
+                    "Skill": "Which skill?",
+                    "Unwilling": "Unwilling",
+                    "Willing": "Willing"
+                },
+                "Suffocation": {
+                    "BreathFormula": "Breath Duration",
+                    "BreathFormulaHint": "Seconds the creature can hold its breath.",
+                    "StartsOutOfAir": "Starts Out of Air",
+                    "StartsOutOfAirHint": "Skip holding breath and start running out of air, for choking or arriving with no air.",
+                    "SurvivalFormula": "Rounds Out of Air",
+                    "SurvivalFormulaHint": "Rounds the creature survives out of air. At the start of its next turn, it drops to 0 Hit Points."
+                },
                 "ShieldGuardian": {
                     "Wearer": "Amulet Wearer",
                     "Bound": "The shield guardian is bound to {name}.",
@@ -2018,6 +2136,9 @@
                         "never": "Never",
                         "prompt": "Prompt"
                     }
+                },
+                "Heavyweight": {
+                    "SizeBonus": "Size Bonus"
                 },
                 "HeightenedFocus": {
                     "Prompt": "Bring an ally with you?",
@@ -2354,6 +2475,29 @@
             }
         },
         "Settings": {
+            "AddActions": {
+                "Name": "Add Actions to Tokens",
+                "Hint": "Which creatures get actions when their token is placed.",
+                "Off": "None - No Actions",
+                "All": "All - Any Creature",
+                "Character": "All Characters Only",
+                "Linked": "All Linked Only",
+                "PlayerLinked": "Player Owned Linked Only",
+                "Player": "All Player Owned and Controlled"
+            },
+            "GenericActionsItem": {
+                "Name": "Add as One Generic Actions Item",
+                "Hint": "Add one Generic Actions item that picks an action. When off, every action is added as its own item."
+            },
+            "HealingSurge": {
+                "Name": "Healing Surge",
+                "Hint": "Include Healing Surge with the added actions. From the 2014 Dungeon Master's Guide."
+            },
+            "Mechanics": {
+                "Name": "Game Mechanic Options",
+                "Label": "Game Mechanics",
+                "Hint": "Settings for game mechanics."
+            },
             "Homebrew": {
                 "Name": "Homebrew Options",
                 "Label": "Homebrew",

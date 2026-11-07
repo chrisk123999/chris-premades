@@ -546,7 +546,7 @@ export const infusionHomunculusServant = {
         },
         hp: {
             default: '1 + @abilities.int.mod + @classes.artificer.levels',
-            type: 'text',
+            type: 'formula',
             category: 'summons',
             label: 'CHRISPREMADES.Config.HitPoints'
         },

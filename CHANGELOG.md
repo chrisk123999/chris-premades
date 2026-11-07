@@ -1,9 +1,30 @@
 # 2.1.8 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.8.
+- New Game Mechanic Options settings menu. DMG Cleave moved here.
+- New Game Mechanic Options settings add actions to creatures when their tokens are placed.
+- Configuration options that take a formula use CAT's formula field. The medkit refuses a formula that does not parse.
+## Automated Actions:
+- 2014: Check Cover, Generic Actions, Grapple, Healing Surge, Hide, Hold Breath, Knock Out, Ready, Search, Shove, Squeeze and Underwater.
+- 2024: Check Cover, Generic Actions, Hide, Influence, Knock Out, Ready, Search, Squeeze, Study, Hold Breath and Underwater.
+- 2014 Ready Action and Ready Spell are one Ready item, like 2024. Ready spends the spell slot when readied and holds the spell with concentration. A Release reaction casts it.
+## Automated Class Features:
+- 2014 Thief: Supreme Sneak. Stealth checks have advantage unless the rogue moved more than half its speed this turn.
+- 2024 Thief: Supreme Sneak. Its Stealth Attack Cunning Strike keeps the Hiding condition through the attack, then asks at the end of the turn whether the rogue is behind cover.
+- Third-party Pugilist (Squared Circle): Heavyweight.
+## Automated Items:
+- 2014 and 2024: Cap of Water Breathing and Potion of Water Breathing.
 ## Automated Monster Features:
 - 2024 Shield Guardian: Bound and Protection. Bound's Bind activity picks the amulet wearer.
+## Automated Spells:
+- 2014 and 2024: Water Breathing.
+## Generic Macros:
+- New `environment` generic for scenes, levels and regions: Underwater, No Air, Breathable Air, Extreme Cold, Extreme Heat and High Altitude.
+- New `breathing` generic for items and effects: the creature breathes water, or doesn't need to breathe.
+- `specialItemUse` follows an `attackTypes` config on its item, offering only attack activities of those attack types.
+- `hide` gives the system's Hiding condition, with the Stealth total as the DC to find the creature. Attacking ends it. It no longer takes an effect or looks for a Supreme Sneak item, and gains `dc`, a formula the Stealth check must reach.
 ## Bug Fixes:
+- 2024 Cunning Action's Hide ends when the rogue attacks, like the Hide action.
 - The 2014 Master's Amulet no longer transfers damage when an attack misses.
 
 # 2.1.7 Pre-Release:

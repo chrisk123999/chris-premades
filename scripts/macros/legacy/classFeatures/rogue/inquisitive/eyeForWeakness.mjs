@@ -19,7 +19,7 @@ export const eyeForWeakness = {
     config: {
         formula: {
             default: '3d6',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'behavior',
             hint: ''

@@ -6,7 +6,7 @@ export const lunarForm = {
     config: {
         formula: {
             default: '2d10',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         },

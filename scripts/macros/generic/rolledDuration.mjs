@@ -29,7 +29,7 @@ export const rolledDuration = {
     genericConfig: {
         formula: {
             default: '1d4',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Formula'
         },

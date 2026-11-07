@@ -1,0 +1,66 @@
+{
+  "_id": "QgI7O95wkxOH2vTJ",
+  "name": "Supreme Sneak",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "book": "",
+      "page": "",
+      "license": "CC-BY-4.0",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "Thief 9",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "identifier": "supreme-sneak",
+    "advancement": {},
+    "crewed": false
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.8"
+      },
+      "macros": {
+        "skill": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "supreme-sneak"
+          }
+        ]
+      }
+    }
+  },
+  "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+  "effects": [],
+  "folder": "UGubU4CHP9hh2IMX",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!QgI7O95wkxOH2vTJ"
+}

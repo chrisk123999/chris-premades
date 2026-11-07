@@ -66,7 +66,7 @@ export const favoredFoe = {
         },
         formula: {
             default: '@scale.ranger.favored-foe',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'homebrew'
         }

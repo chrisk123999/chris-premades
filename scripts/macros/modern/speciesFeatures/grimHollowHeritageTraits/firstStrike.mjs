@@ -23,7 +23,7 @@ export const firstStrike = {
     config: {
         formula: {
             default: '2d6',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
             category: 'behavior',
             hint: ''

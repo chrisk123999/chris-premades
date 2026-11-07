@@ -119,7 +119,7 @@ export const spellStoringItem = {
     config: {
         uses: {
             default: 'max(2 * @abilities.int.mod, 2)',
-            type: 'text',
+            type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Formula'
         },

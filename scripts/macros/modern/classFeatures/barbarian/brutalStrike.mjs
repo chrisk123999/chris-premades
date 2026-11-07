@@ -78,19 +78,19 @@ export const brutalStrike = {
         },
         count: {
             default: '@scale.barbarian.brutal-strike-count',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Macros.Modern.BrutalStrike.Choice',
             category: 'behavior'
         },
         damage: {
             default: '@scale.barbarian.brutal-strike',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.DamageBonus',
             category: 'behavior'
         },
         push: {
             default: '15',
-            type: 'text',
+            type: 'formula',
             label: 'CHRISPREMADES.Config.Distance',
             category: 'behavior'
         }

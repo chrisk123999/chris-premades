@@ -10,9 +10,16 @@
 /*============================*/
 /*          ACTIONS           */
 /*============================*/
+export {checkCover as 'check-cover'} from './all/actions/checkCover.mjs';
 export {fall} from './all/actions/fall.mjs';
+export {genericActions as 'generic-actions'} from './all/actions/genericActions.mjs';
 export {help, helpAlly} from './all/actions/help.mjs';
+export {suffocationHoldingBreath} from './all/actions/holdBreath.mjs';
 export {jump, longJump} from './all/actions/jump.mjs';
+export {knockOut as 'knock-out', knockOutPrompt as 'knock-out-prompt', knockOutEffect} from './all/actions/knockOut.mjs';
+export {readyItem as ready, readySpell as 'ready-spell', readySpellHeld as 'ready-spell-held', readySpellRelease as 'ready-spell-release'} from './all/actions/readySpell.mjs';
+export {stabilize, stabilized} from './all/actions/stabilize.mjs';
+export {underwater} from './all/actions/underwater.mjs';
 
 /*============================*/
 /*       CLASS FEATURES       */
@@ -113,15 +120,16 @@ export {oneWithShadows as 'one-with-shadows'} from './all/classFeatures/warlock/
 /*============================*/
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
 export {blackrazor as 'blackrazor', blackrazorDevoured as 'blackrazor-devoured'} from './all/equipment/blackrazor.mjs';
+export {capOfWaterBreathing as 'cap-of-water-breathing'} from './all/equipment/capOfWaterBreathing.mjs';
+export {charlatansDie as 'charlatans-die'} from './all/equipment/charlatansDie.mjs';
 export {
-    dancingSword as 'dancing-sword',
     dancingSword as 'dancing-greatsword',
     dancingSword as 'dancing-longsword',
     dancingSword as 'dancing-rapier',
     dancingSword as 'dancing-scimitar',
-    dancingSword as 'dancing-shortsword'
+    dancingSword as 'dancing-shortsword',
+    dancingSword as 'dancing-sword'
 } from './all/equipment/dancingSword.mjs';
-export {charlatansDie as 'charlatans-die'} from './all/equipment/charlatansDie.mjs';
 export {grinningSinner as 'grinning-sinner'} from './all/equipment/grinningSinner.mjs';
 export {javelinOfLightning as 'javelin-of-lightning'} from './all/equipment/javelinOfLightning.mjs';
 export {lanternOfRevealing as 'lantern-of-revealing'} from './all/equipment/lanternOfRevealing.mjs';
@@ -130,7 +138,7 @@ export {mindSharpener as 'mind-sharpener'} from './all/equipment/mindSharpener.m
 export {mysteryKey as 'mystery-key'} from './all/equipment/mysteryKey.mjs';
 export {oilOfSharpness as 'oil-of-sharpness'} from './all/equipment/oilOfSharpness.mjs';
 export {potionOfFireBreath as 'potion-of-fire-breath', potionOfFireBreathAttack as 'potion-of-fire-breath-attack'} from './all/equipment/potionOfFireBreath.mjs';
-export {potionOfGrowth as 'potion-of-growth', potionOfDiminution as 'potion-of-diminution'} from './all/equipment/potionOfGrowth.mjs';
+export {potionOfDiminution as 'potion-of-diminution', potionOfGrowth as 'potion-of-growth'} from './all/equipment/potionOfGrowth.mjs';
 export {potionOfPoison as 'potion-of-poison', potionOfPoisonEffect as 'potion-of-poison-effect'} from './all/equipment/potionOfPoison.mjs';
 export {potionOfVitality as 'potion-of-vitality', potionOfVitalityEffect as 'potion-of-vitality-effect'} from './all/equipment/potionOfVitality.mjs';
 export {repulsionShield as 'repulsion-shield'} from './all/equipment/repulsionShield.mjs';
@@ -227,4 +235,3 @@ export {wallOfThorns as 'wall-of-thorns'} from './all/spells/wallOfThorns.mjs';
 export {wallOfWater as 'wall-of-water'} from './all/spells/wallOfWater.mjs';
 export {wardingBond as 'warding-bond', wardingBondSource as 'warding-bond-source', wardingBondTarget as 'warding-bond-target'} from './all/spells/wardingBond.mjs';
 export {windWall as 'wind-wall'} from './all/spells/windWall.mjs';
-export {stabilize, stabilized} from './all/actions/stabilize.mjs';

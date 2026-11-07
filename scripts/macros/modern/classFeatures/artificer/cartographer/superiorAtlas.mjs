@@ -52,7 +52,7 @@ export const superiorAtlas = {
     config: {
         hitPoints: {
             default: '2 * @classes.artificer.levels',
-            type: 'text',
+            type: 'formula',
             category: 'homebrew',
             label: 'CHRISPREMADES.Macros.Modern.SuperiorAtlas.HitPoints'
         },
