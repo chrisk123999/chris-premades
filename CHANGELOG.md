@@ -27,6 +27,7 @@
 - 2024 Cunning Action's Hide ends when the rogue attacks, like the Hide action.
 - The 2014 Master's Amulet no longer transfers damage when an attack misses.
 - Mass apply and the medkit no longer match items named Gems, Gemstone, Jewelry, Rowboat, Silver Coffer, Spell Scroll, Wooden Ladder, Window, Pit, Iron Door or Patch. These items only supply Robe of Useful Items and the Decks of Miscellany and Wonder.
+- Select Damage Type skips the system's damage dialog when a damage part has several types, so the damage type is only asked once.
 
 # 2.1.7 Pre-Release:
 ## Update Notes:

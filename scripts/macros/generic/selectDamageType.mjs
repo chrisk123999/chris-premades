@@ -29,10 +29,19 @@ async function damageType({document: item, workflow}) {
     const options = config.rememberChoice ? rememberCombat(workflow.token, item) : {};
     await applyDamageType(workflow, await dialogUtils.selectDamageType(types, workflow.item.name, 'CHRISPREMADES.Generic.SelectDamageType', options) || types[0]);
 }
+function preRollDamage(config, dialog) {
+    const activity = config.subject;
+    if (!activity?.item?.flags.cat?.macros?.roll?.some(macro => macro.source === 'chris-premades' && macro.identifier === 'selectDamageType')) return;
+    if (!activity.damage?.parts?.some(part => part.types.size > 1)) return;
+    dialog.configure = false;
+    config.isCritical ||= config.midiOptions?.isCritical;
+}
+export const selectDamageTypeHooks = {preRollDamage};
 /**
  * Prompts for a damage type and applies it to every damage roll. With `atCast`, the choice is made once when the spell is cast.
  * Bound on an item. Fires on `itemPreambleComplete` and `itemDamageRoll`.
  * No prompt is shown when fewer than two types are available.
+ * When a damage part has several types, the system's damage dialog is skipped so only this prompt asks.
  *
  * Config:
  * - `damageType`: damage types offered. Leave empty to use the types of the activity's first damage part.

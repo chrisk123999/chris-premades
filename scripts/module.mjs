@@ -3,6 +3,7 @@ import {all, generic, legacy, modern} from './macros.mjs';
 import {genericActionsHooks} from './macros/all/actions/genericActions.mjs';
 import * as animations from './macros/animations.mjs';
 import {environmentHooks} from './macros/generic/environment.mjs';
+import {selectDamageTypeHooks} from './macros/generic/selectDamageType.mjs';
 import {bg3Hooks} from './macros/legacy/homebrew/bg3WeaponActions.mjs';
 import {dmgCleaveHooks} from './macros/legacy/homebrew/dmgCleave.mjs';
 import * as weaponMasteries from './macros/weaponMasteries.mjs';
@@ -15,6 +16,7 @@ Hooks.once('catInit', () => {
 Hooks.on('createToken', genericActionsHooks.createToken);
 Hooks.on('createActiveEffect', genericActionsHooks.createActiveEffect);
 Hooks.on('createToken', environmentHooks.createToken);
+Hooks.on('dnd5e.preRollDamageV2', selectDamageTypeHooks.preRollDamage);
 Hooks.on('updateItem', bg3Hooks.equipped);
 Hooks.on('dnd5e.restCompleted', bg3Hooks.rest);
 Hooks.once('init', () => {
