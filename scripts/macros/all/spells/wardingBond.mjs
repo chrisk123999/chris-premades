@@ -45,7 +45,7 @@ async function moved({document: effect, token}) {
     const {tokens, maxDistance} = getBondData(effect);
     if (!maxDistance) return;
     const partners = tokens.map(uuid => fromUuidSync(uuid, {strict: false})).filter(partner => partner?.parent === token.parent);
-    if (!partners.some(partner => tokenUtils.getDistance(token, partner) > maxDistance)) return;
+    if (!partners.some(partner => !tokenUtils.isWithinDistance(token, partner, maxDistance))) return;
     const selection = await dialogUtils.confirm(effect.name, _loc('CHRISPREMADES.Macros.All.WardingBond.Distance'), {userId: queryUtils.gmID()});
     if (!selection) return;
     await documentUtils.deleteDocument(effect);

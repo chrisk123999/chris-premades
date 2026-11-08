@@ -1,16 +1,7 @@
-import {automationUtils, documentUtils, itemUtils, Logging, regionUtils} from '../../proxy.mjs';
+import {automationUtils, distanceUtils, documentUtils, itemUtils, Logging, regionUtils} from '../../proxy.mjs';
 function getRegionCenter(region) {
     const {x, y} = regionUtils.getArea(region);
     return {x: Math.round(x), y: Math.round(y)};
-}
-export async function createRegionLight(region, config = {}) {
-    const [light] = await documentUtils.createEmbeddedDocuments(region.parent, 'AmbientLight', [{
-        ...getRegionCenter(region),
-        config: {dim: Math.max(regionUtils.getArea(region).radius, 0) / region.parent.dimensions.distancePixels, ...config}
-    }]);
-    if (!light) return;
-    await documentUtils.makeDependent(region, [light]);
-    return light;
 }
 /**
  * Name a placed region after its spell and show the spell's move activity until the region is gone.
@@ -52,8 +43,8 @@ async function use({document, workflow}) {
     if (config.maxRange) {
         const oldArea = regionUtils.getArea(region);
         const newArea = regionUtils.getArea(newRegion);
-        const distance = Math.hypot(newArea.x - oldArea.x, newArea.y - oldArea.y) / region.parent.dimensions.distancePixels;
-        if (distance > config.maxRange) {
+        const distance = distanceUtils.measureDistance(region.parent, [oldArea, newArea]);
+        if (!distanceUtils.isWithinRange(region.parent, distance, config.maxRange)) {
             await documentUtils.deleteDocument(newRegion);
             return Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.Generic.MoveRegion.TooFar', {notify: true, format: {maxRange: config.maxRange}});
         }
@@ -70,7 +61,7 @@ async function use({document, workflow}) {
  *
  * Config:
  * - `sourceActivityId`: activity that placed the region being moved.
- * - `maxRange`: furthest the region's centre can move, in scene units. 0 ignores distance.
+ * - `maxRange`: furthest the region's centre can move, in feet. 0 ignores distance.
  */
 export const moveRegion = {
     rules: 'all',

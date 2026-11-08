@@ -28,7 +28,7 @@ async function escape({document: item, workflow}) {
         if (failed.has(token) || actorUtils.hasUsedReaction(token.actor)) continue;
         const userId = queryUtils.firstOwner(token.actor, true);
         if (!await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.All.WallOfStone.Escape', {name: token.name}), {userId})) continue;
-        await tokenUtils.teleportToken(token, {range: token.actor.system.attributes.movement.walk ?? 30, requireSight: false, ignoreWalls: true, userId});
+        await tokenUtils.teleportToken(token, {range: actorUtils.getSpeed(token.actor) || 30, requireSight: false, ignoreWalls: true, userId});
         await actorUtils.setReactionUsed(token.actor);
     }
 }

@@ -1,6 +1,5 @@
 import cprConstants from '../../constants.mjs';
-import {automationUtils, compendiumUtils, crosshairUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, regionUtils, workflowUtils} from '../../proxy.mjs';
-import {createRegionLight} from './moveRegion.mjs';
+import {activityUtils, automationUtils, compendiumUtils, crosshairUtils, dialogUtils, distanceUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, regionUtils, workflowUtils} from '../../proxy.mjs';
 /**
  * Actor that destructible wall panels are copied from.
  * @returns {Promise<object|undefined>}
@@ -42,17 +41,17 @@ function tokensInWall(scene, path, shapes) {
  * @param {object} workflow Workflow of the cast.
  * @param {object} options Wall options.
  * @param {object} options.shape Drawing options for `crosshairUtils.drawPath`, such as `maxLength`, `straight`, `ring` or `panels`.
- * @param {number} options.thickness Wall thickness in scene units.
- * @param {number} [options.height] Wall height in scene units, used for the region elevation.
+ * @param {number} options.thickness Wall thickness in feet.
+ * @param {number} [options.height] Wall height in feet, used for the region elevation.
  * @param {string|object} [options.walls] Wall preset or data for the Wall documents. Omit for none.
- * @param {number} [options.sectionLength] Split the Wall documents into sections of at most this length.
+ * @param {number} [options.sectionLength] Split the Wall documents into sections of at most this many feet.
  * @param {boolean} [options.push] Push creatures out of the wall's area to the side their centre is on. They stay targeted.
  * @param {string} [options.color] Region colour.
  * @param {object[]} [options.behaviors] Region behavior data, such as movement cost.
  * @param {object} [options.side] `{identifier, depth, color, name}`: a region on the chosen side, bound to the activity with that identifier.
  * @param {object} [options.panels] Panel actor updates from {@link wallPanel}: give each Wall document a destructible panel token.
- * @param {object} [options.light] Ambient light config placed at the wall's centre, removed with the wall.
- * @param {object} [options.aura] `{identifier, distance, color, name}`: a region covering the wall and reaching this many scene units out from both faces, bound to the activity with that identifier.
+ * @param {object} [options.light] Ambient light config placed at the wall's centre, removed with the wall. `bright` and `dim` are in feet.
+ * @param {object} [options.aura] `{identifier, distance, color, name}`: a region covering the wall and reaching this many feet out from both faces, bound to the activity with that identifier.
  * @param {number} [options.timer] Rounds the wall lasts when the spell has no concentration.
  * @param {boolean} [options.permanent] The wall stays when concentration lasts its full duration, and goes when concentration ends early.
  * @param {boolean} [options.designate] The caster picks creatures the wall's effects leave alone; the caster is always one.
@@ -71,20 +70,20 @@ export async function castWall(item, workflow, {shape, thickness, height, walls,
         sides: !!side,
         sideDepth: side?.depth,
         token: workflow.token?.document,
-        maxRange: Number(workflow.activity.range.value) || undefined
+        maxRange: activityUtils.getRange(workflow.activity)
     });
     if (!path) {
         await effectUtils.endConcentration(workflow.actor, item);
         workflow.aborted = true;
         return {aborted: true};
     }
-    const targets = tokensInWall(scene, path, regionUtils.pathBand(path, thickness * scene.dimensions.distancePixels));
-    const bottom = workflow.token?.document.elevation ?? 0;
-    const elevation = height ? {bottom, top: bottom + height} : undefined;
+    const targets = tokensInWall(scene, path, regionUtils.pathBand(path, distanceUtils.toPixels(scene, thickness)));
+    const elevation = height ? {bottom: workflow.token?.document.elevation ?? 0} : undefined;
     const dnd5e = {item: item.uuid, origin: workflow.token?.document.uuid, spellLevel: workflowUtils.getCastLevel(workflow)};
     const sideActivity = side && itemUtils.getActivityByIdentifier(item, side.identifier);
     const {region, side: sideRegion, flats = []} = await regionUtils.createPathRegions(scene, path, {
         thickness,
+        height,
         push,
         walls,
         sectionLength,
@@ -103,8 +102,8 @@ export async function castWall(item, workflow, {shape, thickness, height, walls,
     if (designate) await designateCreatures(item, workflow, region);
     const auraActivity = aura && itemUtils.getActivityByIdentifier(item, aura.identifier);
     await Promise.all([
-        auraActivity && createAura(region, path, {name: `${item.name}: ${aura.name ?? ''}`, color: aura.color, elevation, width: thickness + aura.distance * 2, flags: {dnd5e: {...dnd5e, activity: auraActivity.uuid}}}),
-        light && createRegionLight(region, light),
+        auraActivity && createAura(region, path, {name: `${item.name}: ${aura.name ?? ''}`, color: aura.color, elevation: elevation && region.toObject().elevation, width: thickness + aura.distance * 2, flags: {dnd5e: {...dnd5e, activity: auraActivity.uuid}}}),
+        light && regionUtils.createRegionLight(region, light),
         panels && getWallPanelActor().then(sourceActor => sourceActor && regionUtils.addWallPanels(region, {owner: workflow.actor, sourceActor, updates: panels, parent: region, sourceDocument: workflow.activity}))
     ]);
     await workflowUtils.updateTargets(workflow, targets);
@@ -113,7 +112,7 @@ export async function castWall(item, workflow, {shape, thickness, height, walls,
     return {path, region, side: sideRegion, flats};
 }
 async function createAura(region, path, {width, ...data}) {
-    const [auraRegion] = await documentUtils.createEmbeddedDocuments(region.parent, 'Region', [{...data, shapes: regionUtils.pathBand(path, width * region.parent.dimensions.distancePixels)}], {cat: {pathRegion: true}}) ?? [];
+    const [auraRegion] = await documentUtils.createEmbeddedDocuments(region.parent, 'Region', [{...data, shapes: regionUtils.pathBand(path, distanceUtils.toPixels(region.parent, width))}], {cat: {pathRegion: true}}) ?? [];
     if (auraRegion) await documentUtils.makeDependent(region, [auraRegion]);
 }
 /**
@@ -138,7 +137,7 @@ export function wallMacro({roll = [], config = {}, ...data}, {animation, shapes,
         if (result.aborted) return true;
     }
     return {
-        version: '2.1.3',
+        version: '2.1.8',
         rules: 'all',
         ...data,
         roll: [{pass: 'itemPreambleComplete', macro: draw, priority: 50}, ...roll],

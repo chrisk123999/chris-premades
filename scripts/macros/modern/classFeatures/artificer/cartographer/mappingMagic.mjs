@@ -5,7 +5,7 @@ async function portalJump({workflow}) {
     if (!['portal-jump', 'portal-jump-map-holder'].includes(identifier)) return;
     const token = workflow.token?.document;
     if (!token) return;
-    const speed = workflow.actor.system.attributes.movement.max ?? 0;
+    const speed = actorUtils.getSpeed(workflow.actor, 'max');
     const warn = message => {
         Logging.addMacroWarning('CPR', 'mapping-magic', message, {notify: 'warn'});
         return true;

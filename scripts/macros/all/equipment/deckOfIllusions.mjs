@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, documentUtils, genericUtils, itemUtils, rollUtils, summonUtils} from '../../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, documentUtils, genericUtils, itemUtils, rollUtils, summonUtils} from '../../../proxy.mjs';
 const srdPacks = {2014: 'Compendium.dnd5e.monsters.Actor.', 2024: 'Compendium.dnd5e.actors24.Actor.'};
 const defaultCards = {
     2014: [
@@ -134,7 +134,7 @@ async function draw({document: item, macroClass: {identifier, source}, workflow}
     if (!summons.length) return;
     await documentUtils.setFlag(item, source, identifier, {drawn: [...drawn, card]});
     await itemUtils.unhideActivities(item, ['move'], {favorite: true});
-    if (token) await summonUtils.placeSummons(summons.filter(Boolean), workflow.activity.range.value || 30, {token});
+    if (token) await summonUtils.placeSummons(summons.filter(Boolean), (activityUtils.getRange(workflow.activity) || 30), {token});
 }
 async function move({document: item, workflow}) {
     if (workflow.activity.identifier !== 'move') return;
@@ -147,7 +147,7 @@ async function dispelled({document: item, summon}) {
 function deck(rules) {
     return {
         name: 'Deck of Illusions',
-        version: '2.1.7',
+        version: '2.1.8',
         rules,
         roll: [
             {

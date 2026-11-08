@@ -1,4 +1,4 @@
-import {automationUtils, documentUtils, effectUtils, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {activityUtils, automationUtils, documentUtils, effectUtils, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function created({document, summon}) {
     const activity = document.system.activities.find(activity => activity.type === 'summon');
     const effectData = documentUtils.getBaseEffectData(activity, {
@@ -30,7 +30,7 @@ async function lifeBond({document: effect, workflow, ditem, targetToken}) {
     const item = effectUtils.getOriginActivitySync(effect)?.item;
     if (!item) return;
     const range = automationUtils.getConfigValue(item, 'lifeBondRange');
-    const steedTokens = summonUtils.getSummonsBySource(item).map(steed => steed.token).filter(token => token?.parent === targetToken.parent && tokenUtils.getDistance(targetToken, token) <= range);
+    const steedTokens = summonUtils.getSummonsBySource(item).map(steed => steed.token).filter(token => token?.parent === targetToken.parent && tokenUtils.isWithinDistance(targetToken, token, range));
     if (!steedTokens.length) return;
     await workflowUtils.applyDamage(steedTokens, healed, 'healing');
 }
@@ -39,7 +39,7 @@ async function feyStep({document, workflow}) {
     if (!steedToken) return;
     const riders = steedToken.parent.tokens.filter(token => token.id !== steedToken.id && token.object && steedToken.object?.bounds.contains(token.object.center.x, token.object.center.y));
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
-    await tokenUtils.teleportToken(steedToken, {range: workflow.activity.range.value, animation, options, requireSight: false, followers: riders});
+    await tokenUtils.teleportToken(steedToken, {range: activityUtils.getRange(workflow.activity), animation, options, requireSight: false, followers: riders});
 }
 export const findSteed = {
     name: 'Find Steed',

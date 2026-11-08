@@ -1,10 +1,11 @@
-import {automationUtils, dialogUtils, actorUtils, documentUtils, workflowUtils, tokenUtils, Logging} from '../../proxy.mjs';
+import {automationUtils, dialogUtils, actorUtils, documentUtils, itemUtils, workflowUtils, tokenUtils, Logging} from '../../proxy.mjs';
 async function use({document: activity, workflow, macroClass: {source, identifier}}) {
     const config = automationUtils.getGenericConfigValues(activity, source, identifier, Object.keys(extraAttack.genericConfig));
     if (!config.prompt) return;
     const strike = actorUtils.getItemByIdentifier(workflow.actor, config.identifier);
     if (!strike) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Attack item not found on actor.', {notify: 'warn'});
-    const range = strike.system.range.value || strike.system.range.reach;
+    const {value, reach} = itemUtils.getRange(strike);
+    const range = value || reach;
     const bonuses = await automationUtils.calledEvent('extraAttack', workflow.actor, {multiResult: true, canOverlap: true, data: {workflow, baseCount: config.attacks, macroActivity: activity}}) ?? [];
     let totalAttacks = config.attacks;
     if (bonuses && bonuses.length) {

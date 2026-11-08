@@ -66,7 +66,7 @@ async function turnEnd({document: effect, token}) {
     const [summon] = item ? summonUtils.getSummonsBySource(item) : [];
     const mindToken = summon?.token;
     if (!mindToken) return await documentUtils.deleteDocument(effect);
-    if (tokenUtils.getDistance(token, mindToken) > 300) {
+    if (!tokenUtils.isWithinDistance(token, mindToken, 300)) {
         const selection = await dialogUtils.confirm(effect.name, _loc('CHRISPREMADES.Macros.Legacy.ManifestMind.Far', {actorName: token.actor.name}), {userId: queryUtils.gmID()});
         if (!selection) return;
         await documentUtils.deleteDocument(effect);

@@ -1,6 +1,6 @@
 import {actorUtils, automationUtils, dialogUtils, genericUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 export async function transferHalfDamage(ditem, wearerToken, guardianToken, maxDistance) {
-    if (tokenUtils.getDistance(wearerToken, guardianToken, {wallsBlock: false, checkCover: false}) > maxDistance) return;
+    if (!tokenUtils.isWithinDistance(wearerToken, guardianToken, maxDistance, {wallsBlock: false, checkCover: false})) return;
     const transfer = Math.ceil(ditem.totalDamage / 2);
     workflowUtils.setDamageItemDamage(ditem, ditem.totalDamage - transfer);
     await workflowUtils.applyDamage([guardianToken], transfer, 'none');
@@ -24,7 +24,7 @@ async function protect({document: item, workflow}) {
     const wearer = wearerUuid && [...workflow.targets].find(token => token.actor?.uuid === wearerUuid)?.document;
     if (!wearer || workflow.attackTotal < wearer.actor.system.attributes.ac.value) return;
     const token = actorUtils.getFirstToken(item.actor);
-    if (!token || (token.inCombat && actorUtils.hasUsedReaction(item.actor)) || tokenUtils.getDistance(token, wearer) > 5) return;
+    if (!token || (token.inCombat && actorUtils.hasUsedReaction(item.actor)) || !tokenUtils.isWithinDistance(token, wearer, 5)) return;
     const userId = queryUtils.firstOwner(item.actor, true);
     if (!await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.Modern.ShieldGuardian.Protect', {item: item.name, name: wearer.name}), {userId})) return;
     await workflowUtils.syntheticItemRoll(item, [wearer], {userId});

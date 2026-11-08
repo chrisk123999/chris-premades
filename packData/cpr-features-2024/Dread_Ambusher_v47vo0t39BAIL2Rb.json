@@ -339,7 +339,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.8"
       },
       "macros": {
         "roll": [
@@ -420,9 +420,9 @@
       "name": "Dread Ambusher: First Turn Movement",
       "origin": null,
       "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
+        "value": 0,
+        "units": "rounds",
+        "expiry": "turnEnd",
         "expired": false
       },
       "disabled": false,
@@ -442,10 +442,7 @@
           "overlay": false
         },
         "cat": {
-          "identifier": "dreadAmbusherMovement",
-          "specialDuration": [
-            "turnEnd"
-          ]
+          "identifier": "dreadAmbusherMovement"
         }
       },
       "img": "icons/skills/melee/blade-tips-triple-bent-white.webp",

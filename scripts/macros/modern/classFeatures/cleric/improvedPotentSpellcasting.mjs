@@ -1,4 +1,4 @@
-import {automationUtils, dialogUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {activityUtils, automationUtils, dialogUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
 async function giveTempHP({document: activity, workflow}) {
     if (workflow.item?.type !== 'spell') return;
     if (workflowUtils.getCastLevel(workflow) !== 0) return;
@@ -6,7 +6,7 @@ async function giveTempHP({document: activity, workflow}) {
     if (itemUtils.getAdvancementSourceItem(workflow.item)?.identifier !== classIdentifier) return;
     if (workflowUtils.isSustainedRoll(workflow)) return;
     if (!workflow.damageList.some(d => d.totalDamage > 0)) return;
-    const near = tokenUtils.findNearby(workflow.token.document, activity.range.value ?? 60, {disposition: 'ally', includeToken: true});
+    const near = tokenUtils.findNearby(workflow.token.document, activityUtils.getRange(activity) ?? 60, {disposition: 'ally', includeToken: true});
     if (near.length === 1) return await workflowUtils.syntheticActivityRoll(activity, near);
     const selected = await dialogUtils.selectTargetDialog(activity.item.name, 'CHRISPREMADES.Macros.Modern.ImprovedPotentSpellcasting', near, {skipDeadAndUnconscious: false});
     if (!selected || !selected.result) return;

@@ -1,10 +1,10 @@
-import {automationUtils, constants, documentUtils, effectUtils, genericUtils, itemUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {automationUtils, constants, distanceUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 import {getDamageType} from '../../generic/spellAnimation.mjs';
 function getNearbyShrubs(item, targetToken) {
     return summonUtils.getSummonsBySource(item)
         .filter(summon => summon.token)
         .map(summon => ({token: summon.token, distance: tokenUtils.getDistance(summon.token, targetToken)}))
-        .filter(shrub => shrub.distance <= automationUtils.getConfigValue(item, 'shrubRange'))
+        .filter(shrub => distanceUtils.isWithinRange(targetToken.parent, shrub.distance, automationUtils.getConfigValue(item, 'shrubRange')))
         .sort((a, b) => a.distance - b.distance)
         .map(shrub => shrub.token);
 }

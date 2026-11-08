@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, DamageBonus, documentUtils, Logging, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, DamageBonus, documentUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
 import {addRiders, getTaggedRiders} from '../../../generic/attackRider.mjs';
 async function bonus({workflow, document}) {
     if (!workflow.item || !workflow.activity) return;
@@ -68,7 +68,8 @@ async function use({workflow, bonus}) {
     const {animation} = automationUtils.getResolvedAnimation(bonus.document, 'animation');
     const targetToken = workflow.targets.first().document;
     if (animation) {
-        const attackType = workflow.rangeDetails.range > 5 ? 'ranged' : workflow.defaultDamageType;
+        const ranged = workflowUtils.isAttackType(workflow, 'rangedAttack') || !tokenUtils.isWithinDistance(workflow.token.document, targetToken, itemUtils.getRange(workflow.item).reach || 5);
+        const attackType = ranged ? 'ranged' : workflow.defaultDamageType;
         await animation.macros.attack(workflow.token.document, targetToken, attackType);
     }
     await automationUtils.calledEvent('sneakAttackUsed', workflow.actor, {data: {workflow, targetToken}});

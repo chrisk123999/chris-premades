@@ -1,4 +1,4 @@
-import {automationUtils, regionUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, automationUtils, regionUtils, workflowUtils} from '../../proxy.mjs';
 export function getDamageType(workflow) {
     const [rolled] = workflowUtils.getDamageTypes(workflow.damageRolls ?? []);
     return rolled ?? workflow.activity?.damage?.parts?.[0]?.types?.first();
@@ -22,7 +22,7 @@ export function playTargetAnimations(workflow, {animation, options}, {includeSel
         animation.macros.play(self ? undefined : workflow.token.document, token.document, {...options, damageType, ...getTargetResult(workflow, token)});
     }
 }
-export function playAreaAnimation(workflow, {animation, options}, {region = workflow.template, radius = Number(workflow.activity?.target?.template?.size) || 0} = {}) {
+export function playAreaAnimation(workflow, {animation, options}, {region = workflow.template, radius = (workflow.activity && activityUtils.getTemplateSize(workflow.activity)) || 0} = {}) {
     if (!workflow.token || !animation?.macros?.play) return;
     const targets = getTargetResults(workflow);
     return animation.macros.play(workflow.token.document, region, {...options, damageType: getDamageType(workflow), targets, radius});

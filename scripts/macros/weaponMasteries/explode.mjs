@@ -1,4 +1,4 @@
-import {combatUtils, crosshairUtils, dialogUtils, documentUtils, itemUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {combatUtils, crosshairUtils, dialogUtils, distanceUtils, documentUtils, itemUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 function inSphere(point, token, radius) {
     const {x, y, width, height} = token.object.bounds;
     const dx = point.x - Math.clamp(point.x, x, x + width);
@@ -13,10 +13,10 @@ async function preItemRoll({document: item, workflow}) {
     if (combatUtils.isStampedThisTurn(stamps, token.id, combatData)) return;
     const label = itemUtils.getMasteryLabel('explode');
     if (!await dialogUtils.confirm(label, _loc('CHRISPREMADES.WeaponMasteries.Explode.Prompt'))) return;
-    const point = await crosshairUtils.aimCrosshair({token, maxRange: item.system.range.value, crosshairsConfig: {icon: item.img, size: 2}, checkOverlap: false});
+    const point = await crosshairUtils.aimCrosshair({token, maxRange: itemUtils.getRange(item).value, crosshairsConfig: {icon: item.img, size: 5, anchorTopLeft: false}, checkOverlap: false});
     if (!point || point.cancelled) return true;
     if (combatData.inCombat) await documentUtils.setFlag(workflow.actor, 'chris-premades', 'explode', combatUtils.addTurnStamp(stamps, token.id, combatData));
-    const radius = 5 / canvas.grid.distance * canvas.grid.size;
+    const radius = distanceUtils.toPixels(token.parent, 5);
     const targets = token.parent.tokens.filter(target => target.actor && target.object && inSphere(point, target, radius));
     const abilities = workflow.actor.system.abilities;
     const dc = Math.max(abilities.str.dc, abilities.dex.dc);

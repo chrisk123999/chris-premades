@@ -117,10 +117,10 @@
       "disabled": false,
       "statuses": [],
       "duration": {
-        "expiry": null,
+        "expiry": "turnEnd",
         "expired": false,
-        "value": null,
-        "units": "seconds"
+        "value": 0,
+        "units": "rounds"
       },
       "tint": "#ffffff",
       "description": "",
@@ -129,9 +129,6 @@
       "flags": {
         "cat": {
           "identifier": "bg3Brace",
-          "specialDuration": [
-            "turnEnd"
-          ],
           "macros": {
             "roll": [
               {
@@ -161,7 +158,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.6"
+        "version": "2.1.8"
       }
     }
   },

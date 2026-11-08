@@ -5,7 +5,7 @@ async function protect({document: item, workflow}) {
     const token = actorUtils.getFirstToken(item.actor);
     const target = workflow.targets.first().document;
     if (!token || (token.inCombat && actorUtils.hasUsedReaction(item.actor))) return;
-    if (token !== target && (tokenUtils.getDistance(token, target) > 30 || !tokenUtils.canSee(token, target))) return;
+    if (token !== target && (!tokenUtils.isWithinDistance(token, target, 30) || !tokenUtils.canSee(token, target))) return;
     const userId = queryUtils.firstOwner(item.actor, true);
     if (!await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.Legacy.GuardianEmblem.Protect', {item: item.name, name: target.name}), {userId})) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'protect');

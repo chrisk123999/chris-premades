@@ -4,7 +4,7 @@ async function early({document: item, workflow, token}) {
     if (!workflow.targets.some(target => target.document.uuid === token.uuid)) return;
     const companionToken = summonUtils.getSummonsByIdentifier('primalCompanion', {actor: workflow.actor})[0]?.token;
     if (!companionToken) return;
-    if (tokenUtils.getDistance(token, companionToken) > automationUtils.getConfigValue(item, 'range')) return;
+    if (!tokenUtils.isWithinDistance(token, companionToken, automationUtils.getConfigValue(item, 'range'))) return;
     if (!await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.Modern.ShareSpells.Confirm', {spell: workflow.item.name, name: companionToken.name}))) return;
     await workflowUtils.updateTargets(workflow, [...Array.from(workflow.targets, target => target.document), companionToken]);
 }

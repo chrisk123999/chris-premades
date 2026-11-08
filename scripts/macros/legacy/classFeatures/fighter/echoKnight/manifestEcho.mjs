@@ -65,7 +65,7 @@ async function use({workflow}) {
 }
 async function turnEnd({document, token}) {
     const range = actorUtils.getEffectByIdentifier(document.actor, 'echoAvatar') ? 1000 : 30;
-    const far = summonUtils.getSummonsBySource(document).filter(echo => echo.token && tokenUtils.getDistance(token, echo.token) > range);
+    const far = summonUtils.getSummonsBySource(document).filter(echo => echo.token && !tokenUtils.isWithinDistance(token, echo.token, range));
     for (const echo of far) {
         if (await dialogUtils.confirm(document.name, _loc(translations + 'Far', {actorName: token.name}), {userId: queryUtils.gmID()})) await summonUtils.deleteSummon(echo);
     }

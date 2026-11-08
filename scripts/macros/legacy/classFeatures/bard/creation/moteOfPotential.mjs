@@ -1,4 +1,4 @@
-import {actorUtils, D20Bonus, dataUtils, documentUtils, genericUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {activityUtils, actorUtils, D20Bonus, dataUtils, documentUtils, genericUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 import {bardicInspiration} from '../../../../all/classFeatures/bard/bardicInspiration.mjs';
 function log(msg, notify) {
     Logging.addMacroWarning('chris-premades', 'mote-of-potential', msg, {notify});
@@ -45,7 +45,7 @@ async function attackSave({data, document: effect}) {
             if (!target) return log(`Mote of Potential: Attack exited early with no target token. (attacking token) ${token.uuid}`);
             const self = actorUtils.getFirstToken(data.sourceActor);
             if (!self) return log(`Mote of Potential: Attack exited early with no active token. (actor) ${data.sourceActor.uuid}`);
-            const targets = tokenUtils.findNearby(target, activity.target.template.size || 5, {disposition: 'ally', includeToken: true})
+            const targets = tokenUtils.findNearby(target, activityUtils.getTemplateSize(activity) || 5, {disposition: 'ally', includeToken: true})
                 .filter(t => tokenUtils.canSee(self, t));
             const activityData = activity.toObject();
             activityData.target.template.type = '';

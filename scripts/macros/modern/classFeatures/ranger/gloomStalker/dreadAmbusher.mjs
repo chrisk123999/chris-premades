@@ -40,7 +40,7 @@ async function late({workflow}) {
 async function suddenStrike(workflow, stalkersFlurry) {
     const targetToken = workflow.hitTargets.first().document;
     const nearTarget = tokenUtils.findNearby(targetToken, automationUtils.getConfigValue(stalkersFlurry, 'suddenStrikeRange'), {disposition: 'ally'});
-    const candidates = tokenUtils.findNearby(workflow.token.document, workflow.rangeDetails.range, {disposition: 'enemy'})
+    const candidates = tokenUtils.findNearby(workflow.token.document, workflowUtils.getRange(workflow), {disposition: 'enemy'})
         .filter(candidate => candidate !== targetToken && nearTarget.includes(candidate));
     if (!candidates.length) return Logging.addMacroWarning('CPR', 'dread-ambusher', 'CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {notify: 'info'});
     const selection = await dialogUtils.selectTargetDialog(_loc('CHRISPREMADES.Macros.Modern.StalkersFlurry.SuddenStrike'), _loc('DND5E.Target'), candidates, {buttons: 'yesNo'});
@@ -59,7 +59,7 @@ async function massFear(workflow, stalkersFlurry) {
 }
 export const dreadAmbusher = {
     name: 'Dread Ambusher',
-    version: '2.0.0',
+    version: '2.1.8',
     rules: '2024',
     roll: [
         {

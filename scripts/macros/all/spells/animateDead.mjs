@@ -87,7 +87,7 @@ async function use({document, workflow, castData}) {
     if (!summons.length) return;
     const otherActivities = ['animate-dead-place', 'animate-dead-recall', 'animate-dead-command', 'animate-dead-reassert'];
     await itemUtils.unhideActivities(document.item, otherActivities);
-    if (workflow.token) await summonUtils.placeSummons(summons, document.range.value, {token: workflow.token.document});
+    if (workflow.token) await summonUtils.placeSummons(summons, activityUtils.getRange(document), {token: workflow.token.document});
     let effect = documentUtils.getEffectByIdentifier(document.actor, 'animate-dead-summoner');
     if (effect) return;
     let effectData = documentUtils.getEffectByIdentifier(document.item, 'animate-dead-summoner').toObject();
@@ -126,7 +126,7 @@ async function reassert({document}) {
     }));
 }
 async function place({document, workflow}) {
-    await summonUtils.placeAllSourceSummons(document, workflow.activity.range.value, {token: workflow.token.document});
+    await summonUtils.placeAllSourceSummons(document, activityUtils.getRange(workflow.activity), {token: workflow.token.document});
 }
 async function recall({document, workflow}) {
     await summonUtils.recallAllSourceSummons(document);

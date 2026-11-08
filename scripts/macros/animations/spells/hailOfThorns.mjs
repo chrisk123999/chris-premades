@@ -1,4 +1,4 @@
-import {animationUtils} from '../../../proxy.mjs';
+import {animationUtils, distanceUtils} from '../../../proxy.mjs';
 import {addCast, addImpact, addShake, casts, getPalette, partOption} from '../generic/spellParts.mjs';
 const spikes = {
     patreon: 'jb2a.ice_spikes.radial.burst.grey',
@@ -6,7 +6,7 @@ const spikes = {
 };
 async function play(sourceToken, targetToken, {cast = true, shake = true, targets = [], radius = 5} = {}) {
     const scene = targetToken.parent;
-    const size = targetToken.width + (radius * 2 / scene.grid.distance);
+    const size = targetToken.width + (distanceUtils.toGridSpaces(scene, radius) * 2);
     const sequence = new Sequence();
     if (cast && sourceToken) addCast(sequence, sourceToken, targetToken, {file: getPalette(casts, 'green'), wait: -750});
     /* eslint-disable indent */

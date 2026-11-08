@@ -42,7 +42,7 @@ async function sourceRoll({document: effect, workflow}) {
 async function turnEnd({document: effect, token}) {
     const targetTokens = getDuelData(effect).targets.map(uuid => fromUuidSync(uuid, {strict: false})).filter(target => target?.parent === token.parent);
     const maxDistance = automationUtils.getOriginConfigValue(effect, 'maxDistance');
-    if (!targetTokens.some(target => tokenUtils.getDistance(token, target) > maxDistance)) return;
+    if (!targetTokens.some(target => !tokenUtils.isWithinDistance(token, target, maxDistance))) return;
     const selection = await dialogUtils.confirm(effect.name, _loc('CHRISPREMADES.Macros.All.CompelledDuel.EndEffect', {distance: maxDistance}), {userId: queryUtils.gmID()});
     if (!selection) return;
     await endSpell(effect);
@@ -59,7 +59,7 @@ async function moved({document: effect, token, action, teleport}) {
     const duelData = getDuelData(effect);
     const sourceToken = fromUuidSync(duelData.sourceUuid, {strict: false});
     if (!sourceToken || sourceToken.parent !== token.parent) return;
-    if (tokenUtils.getDistance(sourceToken, token) <= automationUtils.getOriginConfigValue(effect, 'maxDistance') || measure(sourceToken, token, origin) >= measure(sourceToken, token)) return;
+    if (tokenUtils.isWithinDistance(sourceToken, token, automationUtils.getOriginConfigValue(effect, 'maxDistance')) || measure(sourceToken, token, origin) >= measure(sourceToken, token)) return;
     const item = effectUtils.getOriginActivitySync(effect)?.item;
     if (!item) return;
     if (documentUtils.getRules(item) === '2014') {

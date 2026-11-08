@@ -1,20 +1,17 @@
-import {actorUtils, automationUtils, constants, dialogUtils, genericUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
 const seasons = ['spring', 'summer', 'autumn', 'winter'];
 function getSeason(item) {
     const actor = item.actor;
     if (actor.type === 'character' && actor.system.details.level < automationUtils.getConfigValue(item, 'seasonLevel')) return;
     return automationUtils.getConfigValue(item, 'season');
 }
-function heightAboveFloor(token) {
-    return token.elevation - tokenUtils.floorBelow(token).elevation;
-}
-function getLimits(item, scene) {
+function getLimits(item) {
     const {maxSize, springHeight} = automationUtils.getConfigValues(item, ['maxSize', 'springHeight']);
-    return {maxSize: CONFIG.DND5E.actorSizes[maxSize]?.numerical ?? Infinity, springHeight: genericUtils.convertDistance(scene, springHeight)};
+    return {maxSize: CONFIG.DND5E.actorSizes[maxSize]?.numerical ?? Infinity, springHeight};
 }
 function canTarget(limits, token, season) {
     if (actorUtils.getSize(token.actor) > limits.maxSize) return 'CHRISPREMADES.Macros.Modern.EntanglingVines.TooLarge';
-    const height = heightAboveFloor(token);
+    const height = tokenUtils.heightAboveFloor(token);
     if (height <= 0) return;
     if (season !== 'spring' || height > limits.springHeight) return 'CHRISPREMADES.Macros.Modern.EntanglingVines.Airborne';
 }
@@ -22,7 +19,7 @@ async function early({document: item, workflow}) {
     if (workflow.activity.identifier !== 'entangling-vines') return;
     const target = workflow.targets.first()?.document;
     if (!target?.actor) return;
-    const reason = canTarget(getLimits(item, target.parent), target, getSeason(item));
+    const reason = canTarget(getLimits(item), target, getSeason(item));
     if (!reason) return;
     Logging.addMacroWarning('CPR', 'entangling-vines', reason, {notify: 'info', format: {name: target.name}});
     return true;
@@ -31,8 +28,8 @@ async function targeting({document: item, workflow}) {
     if (workflow.activity.identifier !== 'entangling-vines' || getSeason(item) !== 'autumn') return;
     const first = workflow.targets.first();
     if (!first?.actor) return;
-    const range = genericUtils.convertDistance(first.document.parent, automationUtils.getConfigValue(item, 'autumnRange'));
-    const limits = getLimits(item, first.document.parent);
+    const range = automationUtils.getConfigValue(item, 'autumnRange');
+    const limits = getLimits(item);
     const nearby = tokenUtils.findNearby(first.document, range).filter(token => token.actor && token !== workflow.token.document && !canTarget(limits, token, 'autumn'));
     if (!nearby.length) return;
     const selection = await dialogUtils.selectTargetDialog(item.name, 'CHRISPREMADES.Macros.Modern.EntanglingVines.SecondTarget', nearby, {skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(item.actor, true)});
@@ -52,7 +49,7 @@ async function finished({document: item, workflow}) {
             return tokenUtils.displaceToken(token, {sourceToken: workflow.token.document, destination: {x: token.x, y: token.y}, elevation: floor.elevation, level: floor.level});
         }));
     } else if (season === 'summer') {
-        const range = genericUtils.convertDistance(workflow.token.document.parent, automationUtils.getConfigValue(item, 'summerDistance'));
+        const range = automationUtils.getConfigValue(item, 'summerDistance');
         for (const token of targets) await tokenUtils.displaceToken(token, {sourceToken: workflow.token.document, range});
     } else if (season === 'winter') {
         const activity = itemUtils.getActivityByIdentifier(item, 'winter');

@@ -11,7 +11,7 @@ async function preChecks({document: activity, macroClass: {identifier, source}})
 }
 export const branchesOfTheTree = {
     name: 'Branches of the Tree',
-    version: '2.1.3',
+    version: '2.1.8',
     rules: '2024',
     roll: [
         {

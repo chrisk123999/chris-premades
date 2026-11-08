@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, genericUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 const variants = {
     pullOnFail: {direction: -1, targets: 'failedSaves'},
     pullOnHit: {direction: -1, targets: 'hitTargets'},
@@ -11,11 +11,9 @@ async function getDistance(activity, config, sourceToken, targetToken, direction
     if (direction < 0 && config.stopAdjacent) limit = Math.min(limit, Math.floor((tokenUtils.getDistance(sourceToken, targetToken) - 4) / 5) * 5);
     if (limit <= 0) return 0;
     if (!config.choose) return limit;
-    const scene = sourceToken.parent;
     const steps = Array.from({length: Math.floor(limit / 5)}, (_, index) => (index + 1) * 5);
     if (!steps.length) return 0;
-    const buttons = [[_loc('CHRISPREMADES.Config.None'), 0], ...steps.map(distance => [dnd5e.utils.formatLength(genericUtils.convertDistance(scene, distance), scene.grid.units), distance])];
-    return Number(await dialogUtils.buttonDialog(activity.item.name, _loc('CHRISPREMADES.Macros.Generic.PushOnFail.Prompt', {target: targetToken.name}), buttons));
+    return await dialogUtils.distanceDialog(activity.item.name, _loc('CHRISPREMADES.Macros.Generic.PushOnFail.Prompt', {target: targetToken.name}), steps, {none: _loc('CHRISPREMADES.Config.None'), scene: sourceToken.parent});
 }
 async function moveTarget(activity, config, sourceToken, targetToken, direction, maximum, {animation, options}, damageType) {
     const distance = await getDistance(activity, config, sourceToken, targetToken, direction, maximum);
@@ -23,7 +21,7 @@ async function moveTarget(activity, config, sourceToken, targetToken, direction,
     const move = distance ? async () => {
         if (moved) return;
         moved = true;
-        await tokenUtils.slideToken(targetToken, {sourceToken, distance: direction * genericUtils.convertDistance(sourceToken.parent, distance)});
+        await tokenUtils.slideToken(targetToken, {sourceToken, distance: direction * distance});
     } : undefined;
     if (animation?.macros?.play) await animation.macros.play(sourceToken, targetToken, {...options, damageType, move});
     if (move) await move();

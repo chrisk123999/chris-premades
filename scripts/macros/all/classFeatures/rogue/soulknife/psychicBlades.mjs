@@ -6,7 +6,7 @@ async function additionalIdentifiers({document}) {
 }
 async function range({document, actor, token, activity, workflow}) {
     if (!rangedAttacks.includes(activity.identifier) || workflow.targets.size !== 1 || !token) return;
-    if (tokenUtils.getDistance(token, workflow.targets.first().document) <= 60) return;
+    if (tokenUtils.isWithinDistance(token, workflow.targets.first().document, 60)) return;
     if (actorUtils.getItemByIdentifier(actor, 'sharpshooter')) return;
     workflow.tracker.disadvantage.add('psychic-blades', document.name);
 }

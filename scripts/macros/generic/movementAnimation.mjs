@@ -1,6 +1,6 @@
-import {automationUtils, documentUtils, effectUtils, Logging, tokenUtils} from '../../proxy.mjs';
+import {activityUtils, automationUtils, documentUtils, effectUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
-    const bonus = workflow.activity.range.value || workflow.rangeDetails.range;
+    const bonus = activityUtils.getRange(workflow.activity) || workflowUtils.getRange(workflow);
     const range = bonus || tokenUtils.movementSpent(workflow.token.document, true);
     if (!range) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Generic.MovementAnimation.NoMovement', {notify: 'warn'});
     const {animation: selectLocationsAnimation, options: selectLocationsOptions} = automationUtils.getResolvedAnimation(document, 'selectLocationsAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});

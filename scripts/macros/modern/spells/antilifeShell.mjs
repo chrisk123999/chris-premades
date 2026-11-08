@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, effectUtils, tokenUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, distanceUtils, effectUtils, tokenUtils} from '../../../proxy.mjs';
 function isAffected(ignored, token) {
     if (!token.actor || ['dead', 'unconscious'].some(status => token.actor.statuses.has(status))) return false;
     return !ignored.includes(actorUtils.typeOrRace(token.actor));
@@ -16,7 +16,7 @@ async function nearbyMoved({document: effect, token, action}) {
     const casterToken = actorUtils.getFirstToken(effect.parent);
     if (action === 'catForce' || !casterToken || token === casterToken) return;
     const distance = tokenUtils.getDistance(casterToken, token);
-    if (distance <= 10 && isAffected(ignoredTypes(effect), token)) await tokenUtils.slideToken(token, {sourceToken: casterToken, distance: 15 - distance});
+    if (distanceUtils.isWithinRange(token.parent, distance, 10) && isAffected(ignoredTypes(effect), token)) await tokenUtils.slideToken(token, {sourceToken: casterToken, distance: 15 - distance});
 }
 export const antilifeShell = {
     name: 'Antilife Shell',

@@ -212,6 +212,12 @@
             "SpiritualWeapon": "Spiritual Weapon",
             "SprayOfCards": "Spray of Cards",
             "SprayOfCardsColorHint": "Colour of the card projectiles. Without JB2A Patreon, a blue cone plays instead.",
+            "SteelWindStrike": {
+                "Name": "Steel Wind Strike",
+                "CameraZoom": "Camera Zoom",
+                "CameraZoomHint": "Pan and zoom the camera in on the caster as they vanish.",
+                "SoundHint": "Played on each strike."
+            },
             "VortexWarp": "Vortex Warp",
             "WardingBond": "Warding Bond",
             "WardingBondTetherHint": "Show a persistent tether between the caster and the warded creature while the bond lasts.",

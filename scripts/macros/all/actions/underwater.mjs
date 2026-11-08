@@ -1,4 +1,4 @@
-import {automationUtils, constants, genericUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {activityUtils, automationUtils, constants, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function getConfig(effect, key) {
     return effect.flags.cat?.config?.[key] ?? automationUtils.getOriginConfigValue(effect, key) ?? [];
 }
@@ -20,10 +20,9 @@ async function attack({document: effect, workflow}) {
 }
 async function range({workflow}) {
     if (!workflow.token || workflow.targets.size !== 1 || workflowUtils.getActionType(workflow) !== 'rwak') return;
-    const {value, units} = workflow.item.type === 'weapon' ? workflow.item.system.range : workflow.activity.range;
-    if (!value || !(units in CONFIG.DND5E.movementUnits)) return;
-    const distance = tokenUtils.getDistance(workflow.token.document, workflow.targets.first().document);
-    if (distance <= dnd5e.utils.convertLength(value, units, 'ft', {strict: false})) return;
+    const range = workflow.item.type === 'weapon' ? itemUtils.getRange(workflow.item).value : activityUtils.getRange(workflow.activity);
+    if (!range) return;
+    if (tokenUtils.isWithinDistance(workflow.token.document, workflow.targets.first().document, range)) return;
     genericUtils.notify('CHRISPREMADES.Macros.All.Underwater.TooFar', {type: 'warn'});
     return true;
 }

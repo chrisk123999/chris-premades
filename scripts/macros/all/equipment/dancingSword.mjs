@@ -21,12 +21,11 @@ async function fly({document, workflow}) {
     const sword = getSword(document);
     const target = workflow.targets.first()?.document;
     if (!sword || !target) return;
-    const distance = tokenUtils.getDistance(sword, target);
-    if (distance > 35) {
+    if (!tokenUtils.isWithinDistance(sword, target, 35)) {
         Logging.addMacroWarning('CPR', 'dancing-sword', 'CHRISPREMADES.Macros.Legacy.DancingSword.TooFar', {notify: 'info'});
         return true;
     }
-    if (distance <= 5) return;
+    if (tokenUtils.isWithinDistance(sword, target, 5)) return;
     const grid = sword.parent.grid.size;
     const side = (from, to, size) => from > to ? to + size * grid : from < to ? to - grid : to;
     await tokenUtils.displaceToken(sword, {destination: {x: side(sword.x, target.x, target.width), y: side(sword.y, target.y, target.height)}, action: 'fly'});

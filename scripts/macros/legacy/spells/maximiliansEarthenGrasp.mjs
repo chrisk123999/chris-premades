@@ -15,7 +15,7 @@ async function reach({document, workflow}) {
     const hand = getHand(document);
     if (!hand) return;
     const range = automationUtils.getGenericConfigValue(document, 'cat', 'summon', 'followUpRange') || 5;
-    const outOfReach = Array.from(workflow.targets).filter(token => tokenUtils.getDistance(hand, token.document) > range);
+    const outOfReach = Array.from(workflow.targets).filter(token => !tokenUtils.isWithinDistance(hand, token.document, range));
     if (!outOfReach.length) return;
     await workflowUtils.removeTargets(workflow, outOfReach);
     Logging.addMacroWarning('CPR', 'maximilians-earthen-grasp', 'CHRISPREMADES.Macros.Legacy.MaximiliansEarthenGrasp.OutOfReach', {notify: true});

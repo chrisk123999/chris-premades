@@ -4,7 +4,7 @@ async function turnEnd({document: effect, token}) {
     const originActivity = effectUtils.getOriginActivitySync(effect);
     if (!originActivity) return;
     const originToken = actorUtils.getFirstToken(originActivity.actor);
-    if (!originToken || tokenUtils.getDistance(originToken, token) <= Number(config.distance)) return;
+    if (!originToken || tokenUtils.isWithinDistance(originToken, token, Number(config.distance))) return;
     const activity = originActivity.item.system.activities.get(config.rollActivity);
     if (!activity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(effect), 'Save activity not found.', {notify: 'warn'});
     const workflow = await workflowUtils.syntheticActivityRoll(activity, [token]);

@@ -52,7 +52,7 @@ async function reactionAttack({macroClass: {identifier, source}, workflow}) {
         );
         if (!weapon) return Logging.addMacroWarning(source, identifier, `Infectious Fury: Reaction Attack exited early due to a declined weapon choice prompt. (target) ${cursedAttacker.uuid} (user) ${userId}`);
     }
-    const near = tokenUtils.findNearby(cursedAttacker, weapon.system.range.reach, {disposition: 'ally'}).filter(t => tokenUtils.canSee(workflow.token.document, t));
+    const near = tokenUtils.findNearby(cursedAttacker, itemUtils.getRange(weapon).reach ?? 5, {disposition: 'ally'}).filter(t => tokenUtils.canSee(workflow.token.document, t));
     if (!near.length) return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Modern.HuntersMark.NoTargets', {notify: true});
     let target = near[0];
     if (near.length > 1) {

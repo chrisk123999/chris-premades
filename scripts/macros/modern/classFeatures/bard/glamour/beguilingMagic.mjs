@@ -1,4 +1,4 @@
-import {actorUtils, applications, automationUtils, constants, dialogUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {activityUtils, actorUtils, applications, automationUtils, constants, dialogUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document: activity, macroClass: {identifier, source}, workflow}) {
     if (!workflow.item.system.level) return;
     if (workflowUtils.isSustainedRoll(workflow)) return;
@@ -10,7 +10,7 @@ async function use({document: activity, macroClass: {identifier, source}, workfl
             return Logging.addMacroWarning(source, identifier, `Beguiling Magic exited early with no item uses. (item) ${activity.item.uuid}`);
     if (!workflow.token?.document) 
         return Logging.addMacroWarning(source, identifier, `Beguiling Magic exited early without an active token. (item) ${activity.item.uuid}`);
-    const near = tokenUtils.findNearby(workflow.token.document, activity.range.value || 60, {disposition: 'enemy'})
+    const near = tokenUtils.findNearby(workflow.token.document, activityUtils.getRange(activity) || 60, {disposition: 'enemy'})
         .filter(t => tokenUtils.canSee(workflow.token.document, t));
     if (!near.length) 
         return Logging.addMacroWarning(source, identifier, `Beguiling Magic exited early with no nearby targets. (item) ${activity.item.uuid}`);

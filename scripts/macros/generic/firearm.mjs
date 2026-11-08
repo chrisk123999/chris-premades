@@ -31,8 +31,8 @@ function recoil({document: item, workflow}) {
     if (!item.system.properties.has('recoil') || workflow.activity.type !== 'attack' || !workflow.token) return;
     const token = workflow.token.document;
     if (!combatUtils.isStampedThisTurn(recoilStamps(workflow.actor), token.id, tokenUtils.getCombatData(token))) return;
-    const range = item.system.range.value ?? 0;
-    if (!workflow.targets.some(target => tokenUtils.getDistance(token, target.document) > range)) return;
+    const range = itemUtils.getRange(item).value ?? 0;
+    if (!workflow.targets.some(target => !tokenUtils.isWithinDistance(token, target.document, range))) return;
     genericUtils.notify('CHRISPREMADES.Macros.Generic.Firearm.Recoil', {type: 'warn', format: {item: item.name}});
     workflow.aborted = true;
     return true;

@@ -4,6 +4,11 @@
 - New Game Mechanic Options settings menu. DMG Cleave moved here.
 - New Game Mechanic Options settings add actions to creatures when their tokens are placed.
 - Configuration options that take a formula use CAT's formula field. The medkit refuses a formula that does not parse.
+- Pushes, pulls, teleports, summon placement, walls, auras and area animations use the scene's grid units.
+- Pushes and pulls round to whole grid spaces.
+- On gridded scenes, range checks count whole grid spaces, so an adjacent creature is within 5 feet on any grid size.
+- Automations read item, activity and actor distances in their own units. Midi's range check still needs the item and scene in the same units.
+- On worlds using metric length units, applying an automation or dropping an automated item converts its ranges, reach, areas, and speed and sense bonuses to meters.
 ## Automated Actions:
 - 2014: Check Cover, Generic Actions, Grapple, Healing Surge, Hide, Hold Breath, Knock Out, Ready, Search, Shove, Squeeze and Underwater.
 - 2024: Check Cover, Generic Actions, Hide, Influence, Knock Out, Ready, Search, Squeeze, Study, Hold Breath and Underwater.
@@ -28,6 +33,16 @@
 - The 2014 Master's Amulet no longer transfers damage when an attack misses.
 - Mass apply and the medkit no longer match items named Gems, Gemstone, Jewelry, Rowboat, Silver Coffer, Spell Scroll, Wooden Ladder, Window, Pit, Iron Door or Patch. These items only supply Robe of Useful Items and the Decks of Miscellany and Wonder.
 - Select Damage Type skips the system's damage dialog when a damage part has several types, so the damage type is only asked once.
+- Boots of the Winding Path highlights the spaces the wearer occupied this turn and no longer offers the wearer's current space.
+- Fire Storm cubes can be placed side by side on grids where a 10-foot cube is not a whole number of spaces.
+- The Explode weapon mastery's 5-foot sphere is centered on the chosen point.
+- These effects end at the end of the current turn instead of the next one: 2014 and 2024 Disengage, 2014 Brace (Melee) and Brace (Ranged), 2014 Aura of Alacrity, 2014 and 2024 Dread Ambusher, 2024 Rage of the Wilds (Eagle) and 2024 Branches of the Tree.
+- 2014 Distant Spell offers spells whose range is in meters or miles.
+- Sneak Attack plays its ranged animation for ranged attacks and targets out of reach, and its melee animation otherwise.
+- 2014 Animate Objects summons its objects again.
+- 2014 Giant's Havoc and 2024 Battering Roots add their reach bonus once instead of twice.
+- 2024 Steel Wind Strike spends a spell slot, rolls a separate attack and damage for each target, and plays its animation again.
+- The `teleport` generic's near a target option measures from the target's edge, so spaces next to Large and bigger creatures can be chosen.
 
 # 2.1.7 Pre-Release:
 ## Update Notes:

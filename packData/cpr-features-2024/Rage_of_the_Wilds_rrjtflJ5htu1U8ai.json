@@ -92,8 +92,8 @@
       "name": "Disengage",
       "origin": null,
       "duration": {
-        "value": 1,
-        "units": "turns",
+        "value": 0,
+        "units": "rounds",
         "expiry": "turnEnd",
         "expired": false
       },
@@ -117,10 +117,7 @@
           "overlay": false
         },
         "cat": {
-          "identifier": "disengage",
-          "specialDuration": [
-            "turnEnd"
-          ]
+          "identifier": "disengage"
         }
       },
       "img": "icons/skills/movement/feet-spurred-boots-brown.webp",
@@ -721,7 +718,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.8"
       },
       "macros": {
         "called": [

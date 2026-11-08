@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, documentUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, distanceUtils, documentUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 import {playTargetAnimations} from '../../generic/spellAnimation.mjs';
 function launch({document: item, workflow}) {
     if (workflow.activity.identifier !== 'hookshot') return;
@@ -32,7 +32,7 @@ async function used({document: item, workflow}) {
     const target = workflow.hitTargets.first();
     if (!target?.actor) return;
     const token = workflow.token.document;
-    const distance = tokenUtils.getDistance(token, target.document) - token.parent.grid.distance;
+    const distance = tokenUtils.getDistance(token, target.document) - distanceUtils.fromGridSpaces(token.parent, 1);
     if (distance <= 0) return;
     if (actorUtils.getSize(target.actor) > actorUtils.getSize(workflow.actor)) {
         await tokenUtils.slideToken(token, {sourceToken: target.document, distance: -distance});

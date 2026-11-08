@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, itemUtils, Logging, summonUtils, tokenUtils} from '../../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, itemUtils, Logging, summonUtils, tokenUtils} from '../../../proxy.mjs';
 export const srdFamiliars = ['bat', 'cat', 'crab', 'frog', 'hawk', 'lizard', 'octopus', 'owl', 'poisonous-snake', 'quipper', 'rat', 'raven', 'sea-horse', 'spider', 'weasel'];
 async function preventRecast({document: activity}) {
     if (!summonUtils.getSummonsBySource(activity.item).length) return;
@@ -31,7 +31,7 @@ async function summon({workflow}) {
     if (!summon) return;
     const effect = await itemUtils.unhideActivities(workflow.item, ['find-familiar-pocket-dimension', 'find-familiar-touch', 'find-familiar-place'], {favorite: true});
     await documentUtils.makeDependent(summon.actor, [effect]);
-    await summon.place(workflow.activity.range.value, {token: workflow.token.document});
+    await summon.place(activityUtils.getRange(workflow.activity), {token: workflow.token.document});
 }
 async function pocket({workflow}) {
     const summons = summonUtils.getSummonsBySource(workflow.item);
@@ -39,7 +39,7 @@ async function pocket({workflow}) {
     if (summons.find(i => i.token)) {
         await summonUtils.recallAllSourceSummons(workflow.item);
     } else {
-        await summonUtils.placeAllSourceSummons(workflow.item, workflow.activity.range.value, {token: workflow.token.document});
+        await summonUtils.placeAllSourceSummons(workflow.item, activityUtils.getRange(workflow.activity), {token: workflow.token.document});
     }
 }
 async function touch({document, workflow}) {
@@ -85,7 +85,7 @@ async function early({document, workflow, token}) {
     const originActivity = await effectUtils.getOriginActivity(document);
     const familiarTokens = summonUtils.getSummonsBySource(originActivity?.item).map(summon => summon.token).filter(Boolean);
     const range = familiarTokens.length ? automationUtils.getConfigValue(originActivity.item, 'touchRange') : 0;
-    const inRange = familiarTokens.filter(familiarToken => tokenUtils.getDistance(token, familiarToken) <= range);
+    const inRange = familiarTokens.filter(familiarToken => tokenUtils.isWithinDistance(token, familiarToken, range));
     if (!inRange.length) {
         Logging.addMacroWarning('CPR', 'find-familiar-touch-effect', 'CHRISPREMADES.Macros.All.FindFamiliar.TooFar', {notify: 'info'});
         return true;

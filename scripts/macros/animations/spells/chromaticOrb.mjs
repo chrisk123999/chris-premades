@@ -1,4 +1,4 @@
-import {animationUtils, tokenUtils} from '../../../proxy.mjs';
+import {animationUtils} from '../../../proxy.mjs';
 import {getPalette, partOption} from '../generic/spellParts.mjs';
 const orbit = 'jb2a.aura_themed.01.orbit.complete.metal.01.grey';
 const bases = {
@@ -35,7 +35,7 @@ async function play(sourceToken, targetToken, {damageType, hit, cast = true} = {
     const files = getPalette(elements, damageType);
     if (!base || !files) return;
     const landed = hit !== false;
-    const travel = 800 + 100 * tokenUtils.getDistance(sourceToken, targetToken, {convertToFt: false}) / sourceToken.parent.grid.distance;
+    const travel = 800 + 100 * Math.hypot(targetToken.x - sourceToken.x, targetToken.y - sourceToken.y) / sourceToken.parent.grid.size;
     const sequence = new Sequence();
     /* eslint-disable indent */
     if (cast) {

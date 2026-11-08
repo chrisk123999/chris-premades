@@ -110,7 +110,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.8"
       },
       "macros": {
         "aura": [
@@ -214,9 +214,9 @@
       },
       "disabled": false,
       "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
+        "value": 0,
+        "units": "rounds",
+        "expiry": "turnEnd",
         "expired": false
       },
       "description": "",
@@ -235,10 +235,7 @@
           "overlay": false
         },
         "cat": {
-          "identifier": "auraOfAlacritySpeed",
-          "specialDuration": [
-            "turnEnd"
-          ]
+          "identifier": "auraOfAlacritySpeed"
         }
       },
       "_stats": {

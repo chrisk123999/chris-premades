@@ -1,4 +1,4 @@
-import {automationUtils, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {activityUtils, automationUtils, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function markedEffectData(activity, document, seconds) {
     const animation = automationUtils.getConfigValue(document, 'animation');
     return documentUtils.getBaseEffectData(activity, {
@@ -67,7 +67,7 @@ async function move({document, workflow}) {
         if (markedEffect) await documentUtils.deleteDocument(markedEffect);
     }
     let newTarget = workflow.targets.size === 1 ? workflow.targets.first().document : undefined;
-    if (!isValidTarget(newTarget, markData.targets)) newTarget = await selectNewTarget(document, workflow.token.document, workflow.activity.range.value, markData.targets, 'CHRISPREMADES.Macros.Legacy.HuntersMark');
+    if (!isValidTarget(newTarget, markData.targets)) newTarget = await selectNewTarget(document, workflow.token.document, activityUtils.getRange(workflow.activity), markData.targets, 'CHRISPREMADES.Macros.Legacy.HuntersMark');
     if (!newTarget) return;
     const targets = markData.targets.filter(uuid => uuid !== previous?.uuid);
     targets.push(newTarget.uuid);
@@ -86,7 +86,7 @@ async function promptMove({document, token}) {
     if (!activity) return;
     const userId = queryUtils.firstOwner(document.actor, true);
     if (!await dialogUtils.confirm(document.name, _loc('CHRISPREMADES.Macros.Legacy.HuntersMark.MovePrompt'), {userId})) return;
-    const newTarget = await selectNewTarget(document, token, activity.range.value, markedUuids, 'CHRISPREMADES.Macros.Legacy.HuntersMark', {userId});
+    const newTarget = await selectNewTarget(document, token, activityUtils.getRange(activity), markedUuids, 'CHRISPREMADES.Macros.Legacy.HuntersMark', {userId});
     if (!newTarget) return;
     await workflowUtils.completeActivityUse(activity, [newTarget]);
 }

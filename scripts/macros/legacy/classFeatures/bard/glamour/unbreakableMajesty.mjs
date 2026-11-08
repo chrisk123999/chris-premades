@@ -9,7 +9,7 @@ async function retarget({document: effect, macroClass: {identifier, source}, sou
     const result = await workflowUtils.syntheticActivityRoll(save, [workflow.token.document]);
     if (!result.failedSaves.size) return;
     await workflowUtils.removeTargets(workflow, [sourceToken.object]);
-    const near = tokenUtils.findNearby(workflow.token.document, workflow.rangeDetails.range, {disposition: 'enemy'}).filter(t => t.id !== sourceToken.id);
+    const near = tokenUtils.findNearby(workflow.token.document, workflowUtils.getRange(workflow), {disposition: 'enemy'}).filter(t => t.id !== sourceToken.id);
     if (!near.length) return;
     const newTarget = await dialogUtils.selectTargetDialog(effect.name, 'CHRISPREMADES.Macros.Legacy.UnbreakableMajesty', near, {skipDeadAndUnconscious: false});
     if (newTarget?.result) workflowUtils.updateTargets(workflow, workflow.targets.add(newTarget.result));

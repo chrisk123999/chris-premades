@@ -1,6 +1,6 @@
 import cprConstants from '../../../constants.mjs';
 import {actorUtils, automationUtils, documentUtils, effectUtils, genericUtils, regionUtils, summonUtils} from '../../../proxy.mjs';
-import {createRegionLight, syncRegionLights} from '../../generic/moveRegion.mjs';
+import {syncRegionLights} from '../../generic/moveRegion.mjs';
 function getOriginItem(region) {
     return regionUtils.getActivity(region)?.item;
 }
@@ -16,7 +16,7 @@ async function darkenToken(token, region, activity, animationType) {
     if (effect) await documentUtils.makeDependent(region, [effect]);
 }
 export async function createLight(region, animationType) {
-    const light = await createRegionLight(region, {negative: true, animation: {type: animationType}});
+    const light = await regionUtils.createRegionLight(region, {negative: true, animation: {type: animationType}});
     if (light) return {darknessLight: light.id};
 }
 function getSeeingTokens(region, workflow) {

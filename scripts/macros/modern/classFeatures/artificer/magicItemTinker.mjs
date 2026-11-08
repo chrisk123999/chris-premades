@@ -21,7 +21,7 @@ async function fetchItems(token, actor) {
         if (!token) return false;
         const holder = actorUtils.getFirstToken(i.actor);
         if (!holder) return false;
-        return tokenUtils.getDistance(token, holder) <= 5;
+        return tokenUtils.isWithinDistance(token, holder, 5);
     });
     return items;
 }
@@ -58,7 +58,7 @@ async function chargePreCheck({document: activity, config, dialog, macroClass: {
     );
     if (!choices?.buttons || !choices?.slot) return log(source, identifier, 'Magic Item Tinker: Charge exited early due to a declined prompt.');
     workflowUtils.setWorkflowProperty(config.workflow, 'magicItemTinkerCharge', items.find(i => i.uuid === choices.buttons));
-    config.scaling = activity.actor.system.spells[choices.slot]?.level - 1 ?? 0;
+    config.scaling = (activity.actor.system.spells[choices.slot]?.level ?? 1) - 1;
     dialog.configure = false;
 }
 async function charge({workflow}) {

@@ -16,7 +16,7 @@ async function hurlTargeting({document: activity, macroClass: {identifier, sourc
     const reach = 5 + config.giantReach;
     const sizeLimit = CONFIG.DND5E.actorSizes[config.impelSize]?.numerical ?? 2;
     const isSmallEnough = t => t.actor && actorUtils.getSize(t.actor) <= sizeLimit;
-    if (workflow.targets.every(t => isSmallEnough(t) && tokenUtils.getDistance(t.document, workflow.token.document) <= reach)) return;
+    if (workflow.targets.every(t => isSmallEnough(t) && tokenUtils.isWithinDistance(t.document, workflow.token.document, reach))) return;
     const targets = tokenUtils.findNearby(workflow.token.document, reach, {disposition: 'all'}).filter(isSmallEnough);
     if (!targets.length) return exit(workflow, source, identifier, 'CHRISPREMADES.Macros.Modern.HuntersMark.NoTargets', true);
     const choice = await dialogUtils.selectTargetDialog(activity.item.name, 'CHRISPREMADES.Generic.SelectTarget', targets, {skipDeadAndUnconscious: false});

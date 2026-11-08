@@ -39,7 +39,7 @@ async function grovelthrashDamage({document: item, workflow}) {
 }
 async function grovelthrashReaction({document: item, targetToken: token, workflow, ditem}) {
     if (!item.system.uses.value || actorUtils.hasUsedReaction(item.actor) || !ditem.newHP || !workflow.token) return;
-    if (tokenUtils.getDistance(token, workflow.token.document) > 30 || !tokenUtils.canSee(token, workflow.token.document)) return;
+    if (!tokenUtils.isWithinDistance(token, workflow.token.document, 30) || !tokenUtils.canSee(token, workflow.token.document)) return;
     const dealt = ditem.damageDetail.reduce((total, detail) => total + detail.value, 0);
     const reaction = itemUtils.getActivityByIdentifier(item, 'grovelthrash-reaction');
     if (!dealt || !reaction || !await dialogUtils.confirmUseItem(item, {userId: queryUtils.firstOwner(item.actor, true)})) return;

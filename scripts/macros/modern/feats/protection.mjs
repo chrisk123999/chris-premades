@@ -3,7 +3,7 @@ async function moved({document: effect, token}) {
     const other = await fromUuid(effect.flags['chris-premades']?.protection?.protector) ??
                   await fromUuid(effect.flags['chris-premades']?.protection?.protected);
     if (!other) return;
-    if (tokenUtils.getDistance(token, other, {wallsBlock: true}) > 5)
+    if (!tokenUtils.isWithinDistance(token, other, 5, {wallsBlock: true}))
         await documentUtils.deleteDocument(effect);
 }
 export const protectionMoved = {

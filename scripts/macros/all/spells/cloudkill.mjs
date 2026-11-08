@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, regionUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, distanceUtils, regionUtils} from '../../../proxy.mjs';
 async function created({document: region}) {
     await regionUtils.spreadAroundCorners(region);
 }
@@ -7,7 +7,7 @@ async function drift({document: item}) {
     if (!token) return;
     const regions = regionUtils.getPlacedRegions(token.parent, item);
     const center = token.object?.center ?? token.getCenterPoint();
-    const step = 10 * token.parent.dimensions.distancePixels;
+    const step = distanceUtils.toPixels(token.parent, 10);
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'areaAnimation', {source: 'chris-premades', identifier: 'spellAnimation'});
     await Promise.all(regions.map(async region => {
         const {x, y, radius} = regionUtils.getArea(region);

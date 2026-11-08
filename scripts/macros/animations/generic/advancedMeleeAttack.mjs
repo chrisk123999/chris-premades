@@ -1,4 +1,4 @@
-import {animationUtils, itemUtils} from '../../../proxy.mjs';
+import {animationUtils, distanceUtils, itemUtils} from '../../../proxy.mjs';
 import {pickFile} from './spellParts.mjs';
 const groupedWeapons = {
     'melee_attack.01': ['butterflysword', 'chakram', 'magic_sword', 'shortsword', 'sickle'],
@@ -339,7 +339,8 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
         let randMelee = dbPath + '.' + rand;
         const randTrail = enableTrail ? 'jb2a.' + weaponGroup + '.trail.' + calculatedTrail + '.' + calculatedTrailColor + '.' + rand : 'jb2a.antilife_shell.blue_no_circle';
         const isMirrored = Math.random() < 0.5;
-        const targetBounds = targetToken.object.bounds.pad(gridSize * (switchDistance / 5 - 1 + 0.5), gridSize * (switchDistance / 5 - 1 + 0.5));
+        const switchCells = Math.max(1, Math.round(distanceUtils.toGridSpaces(targetToken.parent, switchDistance))) - 0.5;
+        const targetBounds = targetToken.object.bounds.pad(gridSize * switchCells, gridSize * switchCells);
         const sourceBounds = sourceToken.object.bounds;
         const withinSwitchDistance = targetBounds.intersects(sourceBounds);
         if (withinSwitchDistance || !enableSwitchDistance) {

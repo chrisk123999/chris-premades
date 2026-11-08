@@ -75,7 +75,7 @@ async function earlyCareful({document: effect, workflow}) {
     selection.result.forEach(target => workflowUtils.grantRollModifier(workflow, 'succeed', target.id, 'careful-spell', effect.name));
 }
 async function useDistant({document, workflow}) {
-    const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => ['touch', 'ft'].includes(spell.system.range.units) && spell.system.target.affects.type && spell.system.target.affects.type !== 'self'));
+    const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => (spell.system.range.units === 'touch' || spell.system.range.units in CONFIG.DND5E.movementUnits) && spell.system.target.affects.type && spell.system.target.affects.type !== 'self'));
     if (!selection) return;
     const updates = selection.system.range.units === 'touch' ? {'system.range': {units: 'ft', value: '30'}} : {'system.range.value': String(selection.system.range.value * 2)};
     await recast(selection, workflow, updates);

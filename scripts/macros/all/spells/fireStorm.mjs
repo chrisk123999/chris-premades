@@ -1,32 +1,33 @@
-import {actorUtils, automationUtils, crosshairUtils, documentUtils, genericUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, automationUtils, crosshairUtils, distanceUtils, documentUtils, genericUtils, itemUtils, workflowUtils} from '../../../proxy.mjs';
 const maxCubes = 10;
-function isValidCube(cubes, cube) {
+function isValidCube(cubes, cube, slack) {
     if (!cubes.length) return true;
     let touching = false;
     for (const other of cubes) {
         const dx = Math.abs(cube.x - other.x);
         const dy = Math.abs(cube.y - other.y);
-        if (dx < cube.width && dy < cube.width) return false;
-        if ((dx === cube.width && dy < cube.width) || (dy === cube.width && dx < cube.width)) touching = true;
+        if (dx < cube.width - slack && dy < cube.width - slack) return false;
+        if ((Math.abs(dx - cube.width) <= slack && dy < cube.width) || (Math.abs(dy - cube.width) <= slack && dx < cube.width)) touching = true;
     }
     return touching;
 }
 async function placeCubes(workflow) {
     const token = workflow.token.document;
     const scene = token.parent;
-    const size = 10 * scene.dimensions.distancePixels;
-    const cells = 10 / scene.grid.distance;
+    const size = distanceUtils.toPixels(scene, 10);
+    const cells = distanceUtils.toGridSpaces(scene, 10);
+    const slack = Number.isInteger(cells) ? 0 : scene.grid.size / 2;
     const toCube = (x, y) => new PIXI.Rectangle(x - size / 2, y - size / 2, size, size);
     const cubes = [];
     genericUtils.notify('CHRISPREMADES.Macros.All.FireStorm.Place');
     for (let i = 0; i < maxCubes; i++) {
         const result = await crosshairUtils.aimCrosshair({
             token,
-            maxRange: Number(workflow.item.system.range.value) || 150,
+            maxRange: itemUtils.getRange(workflow.item).value || 150,
             checkOverlap: false,
             ignoreWalls: true,
             crosshairsConfig: {size: 5, resolution: cells % 2 ? 1 : -1, anchorTopLeft: false, icon: workflow.item.img, label: `${i + 1}/${maxCubes}`},
-            validityFunctions: [(_crosshairs, {x, y}) => isValidCube(cubes, toCube(x, y))]
+            validityFunctions: [(_crosshairs, {x, y}) => isValidCube(cubes, toCube(x, y), slack)]
         });
         if (result.cancelled) break;
         cubes.push(toCube(result.x, result.y));

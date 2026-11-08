@@ -26,7 +26,7 @@ async function use({document, workflow}) {
         initiative
     });
     if (!summon) return;
-    await summonUtils.placeSummons([summon], workflow.activity.range.value, {token: workflow.token.document});
+    await summonUtils.placeSummons([summon], activityUtils.getRange(workflow.activity), {token: workflow.token.document});
 }
 async function disadvantage({document, workflow}) {
     if (workflow.item.type !== 'spell' || !workflow.targets.size) return;
@@ -35,8 +35,7 @@ async function disadvantage({document, workflow}) {
     const distance = automationUtils.getConfigValue(document, 'distance');
     const marked = Array.from(workflow.targets, target => target.document ?? target).filter(targetToken => {
         if (!documentUtils.getEffectByIdentifier(targetToken.actor, 'houndOfIllOmenTarget')) return false;
-        const range = tokenUtils.getDistance(houndToken, targetToken);
-        return range >= 0 && range <= distance;
+        return tokenUtils.isWithinDistance(houndToken, targetToken, distance);
     });
     if (!marked.length) return;
     marked.forEach(targetToken => workflowUtils.grantRollModifier(workflow, 'dis', targetToken.id, 'hound-of-ill-omen', _loc('CHRISPREMADES.Macros.Legacy.HoundOfIllOmen.Disadvantage')));

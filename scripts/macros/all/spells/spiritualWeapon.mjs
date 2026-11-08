@@ -62,7 +62,7 @@ function validate({document, workflow}) {
     const targetToken = workflow.targets.first();
     if (!targetToken) return;
     const reach = automationUtils.getConfigValue(document, 'reach');
-    if (getWeaponTokens(document).some(token => tokenUtils.getDistance(token, targetToken.document) <= reach)) return;
+    if (getWeaponTokens(document).some(token => tokenUtils.isWithinDistance(token, targetToken.document, reach))) return;
     Logging.addMacroWarning('CPR', 'spiritual-weapon', 'CHRISPREMADES.Macros.All.SpiritualWeapon.OutOfReach', {notify: 'info'});
     return true;
 }

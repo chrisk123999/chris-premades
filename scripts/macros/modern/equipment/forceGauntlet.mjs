@@ -1,4 +1,4 @@
-import {actorUtils, genericUtils, tokenUtils} from '../../../proxy.mjs';
+import {actorUtils, tokenUtils} from '../../../proxy.mjs';
 async function push({workflow}) {
     const source = workflow.token?.document;
     if (!source) return;
@@ -6,9 +6,8 @@ async function push({workflow}) {
     for (const target of workflow.targets) {
         if (!target.actor) continue;
         const saved = !workflow.failedSaves.has(target) || actorUtils.getSize(target.actor) - 2 >= sourceSize;
-        const distance = genericUtils.convertDistance(source.parent, 10);
-        if (saved) await tokenUtils.slideToken(source, {sourceToken: target.document, distance});
-        else await tokenUtils.slideToken(target.document, {sourceToken: source, distance});
+        if (saved) await tokenUtils.slideToken(source, {sourceToken: target.document, distance: 10});
+        else await tokenUtils.slideToken(target.document, {sourceToken: source, distance: 10});
     }
 }
 export const forceGauntlet = {

@@ -1,4 +1,4 @@
-import {animationUtils, effectUtils, regionUtils} from '../../../proxy.mjs';
+import {animationUtils, distanceUtils, effectUtils, regionUtils} from '../../../proxy.mjs';
 import {addImpact, partOption, persistName} from '../generic/spellParts.mjs';
 function addStorm(sequence, sourceToken, center, concentration, {cast, size}) {
     const isPatreon = animationUtils.jb2aCheck() === 'patreon';
@@ -67,7 +67,7 @@ async function play(sourceToken, region, {cast = true, impact = true, targets = 
     const center = {x: area.x, y: area.y};
     const concentration = effectUtils.getConcentrationEffect(activity.actor, activity.item);
     const sequence = new Sequence();
-    if (concentration && !Sequencer.EffectManager.getEffects({name: persistName('callLightning', concentration)}).length) addStorm(sequence, sourceToken, center, concentration, {cast, size: 120 * region.parent.dimensions.distancePixels});
+    if (concentration && !Sequencer.EffectManager.getEffects({name: persistName('callLightning', concentration)}).length) addStorm(sequence, sourceToken, center, concentration, {cast, size: distanceUtils.toPixels(region.parent, 120)});
     addBolt(sequence, center, region.parent.grid.size, {impact, targets});
     await sequence.play();
 }
