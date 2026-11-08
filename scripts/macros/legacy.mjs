@@ -90,7 +90,6 @@ export {magicalInspiration as 'magical-inspiration', magicalInspirationEffect} f
 export {moteOfPotential as 'mote-of-potential', moteOfPotentialEffect} from './legacy/classFeatures/bard/creation/moteOfPotential.mjs';
 
 /*           Glamour          */
-export {enthrallingPerformance as 'enthralling-performance'} from './legacy/classFeatures/bard/glamour/enthrallingPerformance.mjs';
 export {mantleOfInspiration as 'mantle-of-inspiration'} from './legacy/classFeatures/bard/glamour/mantleOfInspiration.mjs';
 export {unbreakableMajesty as 'unbreakable-majesty'} from './legacy/classFeatures/bard/glamour/unbreakableMajesty.mjs';
 

@@ -303,8 +303,8 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "rules": "2014",
-                  "identifier": "call-the-hunt"
+                  "identifier": "targetCreatureTypes",
+                  "rules": "all"
                 }
               ],
               "called": [
@@ -314,6 +314,23 @@
                   "identifier": "call-the-hunt"
                 }
               ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "targetCreatureTypes": {
+                  "creatureTypes": [],
+                  "invert": false,
+                  "aliveOnly": false,
+                  "maxSize": "",
+                  "maxCR": -1,
+                  "chooseTargets": false,
+                  "excludeSelf": true,
+                  "limit": "max(1, @abilities.con.mod)",
+                  "canSee": true,
+                  "minIntelligence": 0,
+                  "excludeSummoner": false
+                }
+              }
             }
           }
         },
@@ -482,7 +499,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.8"
       }
     }
   },

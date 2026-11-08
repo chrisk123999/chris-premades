@@ -26,7 +26,8 @@
       "affects": {
         "choice": false,
         "count": "",
-        "type": ""
+        "type": "ally",
+        "special": ""
       },
       "template": {
         "units": "ft",
@@ -78,7 +79,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "[3d8 - healing] Unaffected: undead, constructs",
+          "chatFlavor": "",
           "value": ""
         },
         "duration": {
@@ -97,7 +98,8 @@
           "template": {
             "contiguous": false,
             "units": "ft",
-            "stationary": false
+            "stationary": false,
+            "type": ""
           },
           "affects": {
             "choice": true,
@@ -105,7 +107,7 @@
             "type": "ally",
             "special": ""
           },
-          "override": true
+          "override": false
         },
         "uses": {
           "spent": 0,
@@ -153,7 +155,7 @@
           "triggeredActivityConditionText": "",
           "triggeredActivityTargets": "targets",
           "triggeredActivityRollAs": "self",
-          "forceDamageDialog": "false",
+          "forceDamageDialog": "",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -188,12 +190,15 @@
         "behaviors": [],
         "flags": {},
         "visibility": {
-          "level": {},
+          "level": {
+            "min": null,
+            "max": null
+          },
           "requireAttunement": false,
           "requireIdentification": false,
           "requireMagic": false
         },
-        "otherActivityId": null,
+        "otherActivityId": "",
         "regionBehavior": {
           "enabled": false,
           "dispositionFilter": -1,
@@ -258,16 +263,10 @@
       "idv": false,
       "ida": false
     },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.8"
       },
       "macros": {
         "roll": [
@@ -290,7 +289,9 @@
               "construct",
               "undead"
             ],
-            "invert": true
+            "invert": true,
+            "limit": "6",
+            "excludeSelf": false
           },
           "spellAnimation": {
             "animation": {

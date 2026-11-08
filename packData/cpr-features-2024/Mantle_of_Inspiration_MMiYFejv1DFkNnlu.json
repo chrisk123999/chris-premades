@@ -124,8 +124,30 @@
                   "source": "chris-premades",
                   "rules": "all",
                   "identifier": "mantle-of-inspiration"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "targetCreatureTypes",
+                  "rules": "all"
                 }
               ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "targetCreatureTypes": {
+                  "creatureTypes": [],
+                  "invert": false,
+                  "aliveOnly": false,
+                  "maxSize": "",
+                  "maxCR": -1,
+                  "chooseTargets": false,
+                  "excludeSelf": true,
+                  "limit": "max(1, @abilities.cha.mod)",
+                  "canSee": false,
+                  "minIntelligence": 0,
+                  "excludeSummoner": false
+                }
+              }
             }
           }
         },

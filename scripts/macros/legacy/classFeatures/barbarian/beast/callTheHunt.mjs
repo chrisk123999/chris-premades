@@ -1,4 +1,4 @@
-import {automationUtils, combatUtils, DamageBonus, dataUtils, dialogUtils, documentUtils, genericUtils, itemUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {automationUtils, combatUtils, DamageBonus, dataUtils, dialogUtils, documentUtils, genericUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function callHunt({data, document: activity, macroClass: {identifier, source}}) {
     if (!activity.item.system.uses.value) return Logging.addMacroWarning(source, identifier, `Call of the Hunt exited early without item uses. (item) ${activity.item.uuid}`);
     const effectData = activity.item.effects.contents[0]?.toObject();
@@ -19,23 +19,6 @@ async function callHunt({data, document: activity, macroClass: {identifier, sour
     if (!updates.length) return Logging.addMacroWarning(source, identifier, `Call of the Hunt exited early with no valid targets. (activity) ${activity.uuid}`);
     await workflowUtils.syntheticActivityRoll(tempHP, [], {config: {scaling: updates.length - 1}});
     await documentUtils.modifyBatch(updates);
-}
-async function targets({document: activity, workflow}) {
-    const maxTargets = automationUtils.getConfigValue(activity.item, 'targets');
-    const maxAmount = (await rollUtils.rollDice(maxTargets, {document: activity}))?.total ?? 1;
-    if (workflow.targets.size <= maxAmount) return;
-    const oldTargets = Array.from(workflow.targets).map(t => t.document).filter(t => tokenUtils.canSee(workflow.token.document, t));
-    const preselected = oldTargets.reduce((obj, t) => 
-        (obj[t.id] = workflow.token.document.disposition * t.disposition >= 0 && obj.count++ < maxAmount, obj),
-    {count: 0});
-    const choice = await dialogUtils.selectTargetDialog(
-        activity.item.name,
-        _loc('CHRISPREMADES.Generic.SelectTargets', {maxAmount}),
-        oldTargets,
-        {type: 'multiple', skipDeadAndUnconscious: false, maxAmount, preselected}
-    );
-    if (!choice) return workflow.aborted = true;
-    await workflowUtils.updateTargets(workflow, choice?.result?.length ? choice.result : oldTargets.slice(0, maxAmount));
 }
 async function huntDamage({document: effect, macroClass: {identifier, source}, workflow}) {
     if (!workflow.hitTargets.size) return;
@@ -58,7 +41,7 @@ async function huntDamage({document: effect, macroClass: {identifier, source}, w
 }
 export const callTheHunt = {
     name: 'Call the Hunt',
-    version: '2.1.4',
+    version: '2.1.8',
     rules: '2014',
     called: [
         {
@@ -67,25 +50,12 @@ export const callTheHunt = {
             priority: 260
         }
     ],
-    roll: [
-        {
-            pass: 'activityTargeting',
-            macro: targets,
-            priority: 50
-        }
-    ],
     config: {
         bonus: {
             default: '1d6',
             type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageBonus'
-        },
-        targets: {
-            default: 'max(1, @abilities.con.mod)',
-            type: 'formula',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargets'
         }
     }
 };

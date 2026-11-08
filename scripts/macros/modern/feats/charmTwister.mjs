@@ -1,9 +1,8 @@
-import cprConstants from '../../../constants.mjs';
 import utils from '../../../utils.mjs';
-import {actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, genericUtils, Logging, rollUtils, workflowUtils} from '../../../proxy.mjs';
-function getSaveDC(actor) {
-    const oldBlessing = actorUtils.getItemByIdentifier(actor, 'old-blessing');
-    const castActivity = oldBlessing?.system.activities.getByType('cast')[0];
+import cprConstants from '../../../constants.mjs';
+import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, genericUtils, Logging, rollUtils, workflowUtils} from '../../../proxy.mjs';
+function getSaveDC(actor, item) {
+    const castActivity = item.system.activities.getByType('cast')[0];
     const ability = castActivity?.spell.ability || actor.system.attributes.spellcasting || 'int';
     return actor.system.abilities[ability]?.dc;
 }
@@ -22,7 +21,7 @@ async function weave({document: activity, workflow}) {
     const itemData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'twisted-hex-charm', {object: true, translate: 'CHRISPREMADES.Macros.Modern.TwistedHex.Charm'});
     if (!itemData) return Logging.addMacroWarning('CPR', 'twisted-hex', 'Twisted Hex charm missing from the automation items compendium.', {notify: 'warn'});
     itemData.effects.forEach(effect => effect.system.changes.forEach(change => change.key = change.key.replaceAll('{ability}', ability)));
-    genericUtils.setProperty(itemData, 'flags.chris-premades.twistedHex', {ability, dc: getSaveDC(workflow.actor)});
+    genericUtils.setProperty(itemData, 'flags.chris-premades.twistedHex', {ability, dc: getSaveDC(workflow.actor, activity.item)});
     await utils.deleteCharms(workflow.actor, 'twistedHex');
     await utils.createCharms(targetToken.actor, [itemData], {key: 'twistedHex', source: workflow.actor});
 }
@@ -48,9 +47,18 @@ async function attackFinished({document, actor, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'attack') || !workflow.targets.size || workflow.hitTargets.size) return;
     await resist(document, actor, workflow.activity.ability);
 }
-export const twistedHex = {
-    name: 'Twisted Hex',
-    version: '2.1.4',
+async function filterTargets({document: activity, workflow}) {
+    if (!workflow.targets.size) return;
+    const charms = automationUtils.getConfigValue(activity.item, 'charms');
+    const invalid = Array.from(workflow.targets).filter(target => !utils.carriesCharm(target.actor, workflow.actor, charms));
+    if (!invalid.length) return;
+    genericUtils.notify('CHRISPREMADES.Macros.Modern.OldBlessing.NoCharm', {type: 'warn', format: {names: invalid.map(target => target.name).join(', ')}});
+    await workflowUtils.removeTargets(workflow, invalid);
+    if (!workflow.targets.size) return true;
+}
+export const charmTwister = {
+    name: 'Charm Twister',
+    version: '2.1.8',
     rules: '2024',
     roll: [
         {
@@ -66,8 +74,30 @@ export const twistedHex = {
             label: 'CHRISPREMADES.Config.Ability',
             category: 'homebrew',
             get options() { return [{value: '', label: 'CHRISPREMADES.Macros.Modern.TwistedHex.Ask'}, ...constants.abilityOptions]; }
+        },
+        charms: {
+            default: ['wickerToken', 'twistedHex', 'soulboundPoppet'],
+            type: 'select-many',
+            label: 'CHRISPREMADES.Macros.Modern.OldBlessing.Charms',
+            category: 'homebrew',
+            options: [
+                {value: 'wickerToken', label: 'CHRISPREMADES.Macros.Modern.WickerToken.Token'},
+                {value: 'twistedHex', label: 'CHRISPREMADES.Macros.Modern.TwistedHex.Charm'},
+                {value: 'soulboundPoppet', label: 'CHRISPREMADES.Macros.Modern.OldBlessing.Poppet'}
+            ]
         }
     }
+};
+export const oldBlessing = {
+    version: charmTwister.version,
+    rules: charmTwister.rules,
+    roll: [
+        {
+            pass: 'castEnchantmentTargeting',
+            macro: filterTargets,
+            priority: 40
+        }
+    ]
 };
 export const twistedHexCharm = {
     name: 'Twisted Hex Charm',

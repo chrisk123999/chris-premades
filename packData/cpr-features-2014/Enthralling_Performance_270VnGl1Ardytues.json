@@ -135,11 +135,6 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "rules": "2014",
-                  "identifier": "enthralling-performance"
-                },
-                {
-                  "source": "chris-premades",
                   "identifier": "immuneAutoSucceed",
                   "rules": "all"
                 }
@@ -241,7 +236,7 @@
           "forceDamageDialog": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "displayActivityName": false,
           "rollMode": "default",
@@ -339,7 +334,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.8"
       },
       "genericConfig": {
         "chris-premades": {
@@ -353,7 +348,8 @@
             "maxCR": -1,
             "chooseTargets": false,
             "minIntelligence": 0,
-            "excludeSummoner": false
+            "excludeSummoner": false,
+            "limit": "max(1, @abilities.cha.mod)"
           }
         }
       },

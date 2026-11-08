@@ -10,16 +10,16 @@ async function validTarget(activity, target, rules, type, total) {
         return log(`Cutting Words exited early on a target who cannot hear. (activity) ${activity.uuid} (target) ${target.uuid}`);
     if (!automationUtils.getConfigValue(activity.item, type))
         return log(`Cutting Words is disabled for this roll type! (activity) ${activity.uuid} (roll) ${type}`);
-    if (!actorUtils.getItemByIdentifier(activity.actor, 'bardic-inspiration', {type: 'feat'})?.system.uses.value) 
+    if (!actorUtils.getItemByIdentifier(activity.actor, 'bardic-inspiration', {type: 'feat'})?.system.uses.value)
         return log(`Cutting Words exited early without bardic inspiration uses. (activity) ${activity.uuid}`);
-    if (!tokenUtils.canSee(self, target)) 
+    if (!tokenUtils.canSee(self, target))
         return log(`Cutting Words exited early on an unseen target. (activity) ${activity.uuid} (target) ${target.uuid}`);
     const key = 'CHRISPREMADES.Macros.All.CuttingWords.' + (rules === '2024' ? 'Prompt' : 'PromptLegacy');
-    const prompt = `<div style='text-align: left;'><b>${_loc(cuttingWords.config[type]?.label ?? type)}</b></div>${_loc(key, {
+    const prompt = `<div style='text-align: left;'><b>${_loc(cuttingWords.config[type]?.label ?? type)}</b><p>${_loc(key, {
         total: dnd5e.utils.formatNumber(total),
         name: dialogUtils.getTokenName(target),
         item: activity.item.name
-    })}`;
+    })}</p></div>`;
     const choice = await dialogUtils.confirm(activity.item.name, prompt, {userId: queryUtils.firstOwner(activity.actor, true)});
     if (!choice) return log(`Cutting Words exited early due to a declined prompt. (activity) ${activity.uuid}`);
     if (rules === '2014' && actorUtils.checkTrait(target.actor, 'ci', 'charmed'))

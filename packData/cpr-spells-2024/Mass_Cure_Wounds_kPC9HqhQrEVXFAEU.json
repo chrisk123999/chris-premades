@@ -28,7 +28,7 @@
       "affects": {
         "choice": false,
         "count": "",
-        "type": ""
+        "type": "ally"
       },
       "template": {
         "units": "ft",
@@ -99,7 +99,8 @@
           "template": {
             "contiguous": false,
             "units": "ft",
-            "stationary": false
+            "stationary": false,
+            "type": ""
           },
           "affects": {
             "choice": true,
@@ -107,7 +108,7 @@
             "type": "ally",
             "special": ""
           },
-          "override": true
+          "override": false
         },
         "uses": {
           "spent": 0,
@@ -163,7 +164,7 @@
           "displayActivityName": false,
           "rollMode": "default",
           "chooseEffects": false,
-          "forceDamageDialog": "false",
+          "forceDamageDialog": "",
           "otherActivityAsParentType": true,
           "toggleEffect": false,
           "ignoreFullCover": false,
@@ -186,16 +187,19 @@
           "postRemoveConditionText": "",
           "rollAs": "target"
         },
-        "img": null,
+        "img": "",
         "behaviors": [],
         "flags": {},
         "visibility": {
-          "level": {},
+          "level": {
+            "min": null,
+            "max": null
+          },
           "requireAttunement": false,
           "requireIdentification": false,
           "requireMagic": false
         },
-        "otherActivityId": null,
+        "otherActivityId": "",
         "regionBehavior": {
           "enabled": false,
           "dispositionFilter": -1,
@@ -260,23 +264,22 @@
       "idv": false,
       "ida": false
     },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.8"
       },
       "macros": {
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "all",
-            "identifier": "spellAnimation"
+            "identifier": "spellAnimation",
+            "rules": "all"
+          },
+          {
+            "source": "chris-premades",
+            "identifier": "targetCreatureTypes",
+            "rules": "all"
           }
         ]
       },
@@ -287,6 +290,19 @@
               "source": "chris-premades",
               "identifier": "castBurst"
             }
+          },
+          "targetCreatureTypes": {
+            "creatureTypes": [],
+            "invert": false,
+            "aliveOnly": false,
+            "maxSize": "",
+            "maxCR": -1,
+            "chooseTargets": false,
+            "excludeSelf": false,
+            "limit": "6",
+            "canSee": false,
+            "minIntelligence": 0,
+            "excludeSummoner": false
           }
         }
       },

@@ -234,13 +234,12 @@ export {fullBlooded as 'full-blooded'} from './modern/classFeatures/wizard/sangr
 /*===============================*/
 /*             FEATS             */
 /*===============================*/
+export {charmTwister as 'charm-twister', oldBlessing, twistedHexCharm as 'twisted-hex-charm'} from './modern/feats/charmTwister.mjs';
 export {exploitOpening as 'exploit-opening'} from './modern/feats/exploitOpening.mjs';
 export {familyFirst as 'family-first'} from './modern/feats/familyFirst.mjs';
-export {oldBlessing as 'old-blessing'} from './modern/feats/oldBlessing.mjs';
 export {protectionMoved} from './modern/feats/protection.mjs';
 export {sangromanticInitiate as 'sangromantic-initiate'} from './modern/feats/sangromanticInitiate.mjs';
 export {tirelessReveler as 'tireless-reveler'} from './modern/feats/tirelessReveler.mjs';
-export {twistedHex as 'twisted-hex', twistedHexCharm as 'twisted-hex-charm'} from './modern/feats/twistedHex.mjs';
 
 /*===============================*/
 /*         MISCELLANEOUS         */
