@@ -318,6 +318,7 @@ export {shockingGrasp as 'shocking-grasp'} from './modern/spells/shockingGrasp.m
 export {spellfireFlare as 'spellfire-flare'} from './modern/spells/spellfireFlare.mjs';
 export {sproutFoliage as 'sprout-foliage'} from './modern/spells/sproutFoliage.mjs';
 export {summerWinds as 'summer-winds'} from './modern/spells/summerWinds.mjs';
+export {steelWindStrike as 'steel-wind-strike'} from './modern/spells/steelWindStrike.mjs';
 export {timeStop as 'time-stop', timeStopEffect as 'time-stop-effect'} from './modern/spells/timeStop.mjs';
 export {wiltingSmite as 'wilting-smite'} from './modern/spells/wiltingSmite.mjs';
 export {wish, wishImmunity as 'wish-immunity', wishStress as 'wish-stress'} from './modern/spells/wish.mjs';

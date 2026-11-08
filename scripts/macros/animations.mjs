@@ -111,6 +111,7 @@ export {spellfireFlare} from './animations/spells/spellfireFlare.mjs';
 export {spikeGrowth} from './animations/spells/spikeGrowth.mjs';
 export {spiritGuardians} from './animations/spells/spiritGuardians.mjs';
 export {spiritualWeapon} from './animations/spells/spiritualWeapon.mjs';
+export {steelWindStrike} from './animations/spells/steelWindStrike.mjs';
 export {sprayOfCards} from './animations/spells/sprayOfCards.mjs';
 export {summerWinds} from './animations/spells/summerWinds.mjs';
 export {tashasCausticBrew} from './animations/spells/tashasCausticBrew.mjs';

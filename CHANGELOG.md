@@ -41,6 +41,8 @@
 - Sneak Attack plays its ranged animation for ranged attacks and targets out of reach, and its melee animation otherwise.
 - 2014 Animate Objects summons its objects again.
 - 2014 Giant's Havoc and 2024 Battering Roots add their reach bonus once instead of twice.
+- 2024 Steel Wind Strike spends a spell slot, rolls a separate attack and damage for each target, and plays its animation again.
+- The `teleport` generic's near a target option measures from the target's edge, so spaces next to Large and bigger creatures can be chosen.
 
 # 2.1.7 Pre-Release:
 ## Update Notes:

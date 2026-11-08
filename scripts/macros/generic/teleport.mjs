@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, automationUtils, dialogUtils, documentUtils, genericUtils, Logging, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, dialogUtils, distanceUtils, documentUtils, genericUtils, Logging, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {resolveCastFormula} from './multiSingleTarget.mjs';
 async function pickCompanions({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'teleport', configKeys);
@@ -31,7 +31,24 @@ async function pickCompanions({document, workflow}) {
     workflowUtils.setWorkflowProperty(workflow, 'chris-premades.teleportCompanions', companions);
     await workflowUtils.removeTargets(workflow, companions.map(token => token.object));
 }
+function getSpacesNear(token, target, range) {
+    const {size} = token.parent.grid;
+    const width = token.width * size;
+    const height = token.height * size;
+    const reach = (Math.max(1, Math.round(distanceUtils.toGridSpaces(token.parent, range))) - 1) * size;
+    const bounds = target.object.bounds;
+    const occupied = canvas.tokens.placeables.filter(other => other.document !== token).map(other => other.bounds);
+    const points = [];
+    for (let x = bounds.left - width - reach; x <= bounds.right + reach; x += size) {
+        for (let y = bounds.top - height - reach; y <= bounds.bottom + reach; y += size) {
+            const area = new PIXI.Rectangle(x + 1, y + 1, width - 2, height - 2);
+            if (!occupied.some(other => other.intersects(area))) points.push(token.getCenterPoint({x, y}));
+        }
+    }
+    return points;
+}
 async function use({document, workflow}) {
+    if (workflow.workflowOptions?.rollAttackPerTarget) return;
     if (!workflow.token) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'No token on the scene.');
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'teleport', configKeys);
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'teleport'});
@@ -42,7 +59,7 @@ async function use({document, workflow}) {
         const targets = Array.from(workflow.targets, token => token.document).filter(token => token !== workflow.token.document);
         const selection = targets.length > 1 ? await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Generic.Teleport.SelectNear', targets, {skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(workflow.actor, true)}) : {result: targets[0]};
         const target = selection?.result;
-        if (target) await tokenUtils.teleportToken(workflow.token.document, {animation, options, range, requireSight: config.requireSight, centerpoint: target.object.center});
+        if (target) await tokenUtils.teleportToken(workflow.token.document, {animation, options, range: range + distanceUtils.fromGridSpaces(workflow.token.scene, (target.width + workflow.token.document.width) / 2), requireSight: config.requireSight, centerpoint: target.object.center, allowedPoints: getSpacesNear(workflow.token.document, target, range)});
         return;
     }
     if (config.targets === 'swap') {
