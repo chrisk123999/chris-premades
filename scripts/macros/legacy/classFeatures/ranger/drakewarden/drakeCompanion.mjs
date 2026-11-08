@@ -86,7 +86,7 @@ async function resistance({document, workflow}) {
     const hitOwner = workflow.hitTargets.has(ownerToken.object);
     const hitSummon = workflow.hitTargets.has(summonToken.object);
     if (!hitOwner && !hitSummon) return;
-    if (tokenUtils.getDistance(ownerToken, summonToken) > automationUtils.getConfigValue(sourceItem, 'reactionRange')) return;
+    if (!tokenUtils.isWithinDistance(ownerToken, summonToken, automationUtils.getConfigValue(sourceItem, 'reactionRange'))) return;
     const userId = queryUtils.firstOwner(actor, true);
     let selection;
     if (hitOwner && hitSummon) {
@@ -121,7 +121,7 @@ async function infuse({document, workflow}) {
     if (actorUtils.hasUsedReaction(actor)) return;
     const summonToken = actorUtils.getFirstToken(actor);
     if (!summonToken || tokenUtils.isEnemy(summonToken, workflow.token.document)) return;
-    if (tokenUtils.getDistance(summonToken, workflow.token.document) > automationUtils.getConfigValue(document, 'range')) return;
+    if (!tokenUtils.isWithinDistance(summonToken, workflow.token.document, automationUtils.getConfigValue(document, 'range'))) return;
     if (!tokenUtils.canSee(summonToken, workflow.token.document)) return;
     const bonus = new DamageBonus(document, {formula: automationUtils.getConfigValue(document, 'formula'), type: damageType, actor, action: 'reaction'})
         .withDefaultCosts()

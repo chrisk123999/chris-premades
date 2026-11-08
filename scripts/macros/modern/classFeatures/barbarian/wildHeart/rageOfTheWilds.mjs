@@ -132,7 +132,7 @@ async function unfavorite({document: effect, macroClass: {source}}) {
 }
 export const rageOfTheWilds = {
     name: 'Rage of the Wilds',
-    version: '2.1.4',
+    version: '2.1.8',
     rules: '2024',
     called: [
         {

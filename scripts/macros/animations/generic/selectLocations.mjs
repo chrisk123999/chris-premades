@@ -1,4 +1,4 @@
-import {animationUtils, crosshairUtils, genericUtils} from '../../../proxy.mjs';
+import {animationUtils, crosshairUtils, genericUtils, tokenUtils} from '../../../proxy.mjs';
 async function select(token, range, {dark = false, displayHint = true, spendMovement = true} = {}) {
     if (displayHint) genericUtils.notify('CHRISPREMADES.Animations.SelectLocations.Message');
     const positions = [];
@@ -10,9 +10,8 @@ async function select(token, range, {dark = false, displayHint = true, spendMove
         if (!point || point.cancelled) break;
         positions.push(point);
         if (spendMovement) {
-            const moved = token.measureMovementPath([{x: centerpoint.x - offset.x, y: centerpoint.y - offset.y}, point]);
+            range -= tokenUtils.measureMovement(token, [{x: centerpoint.x - offset.x, y: centerpoint.y - offset.y}, point]);
             centerpoint = token.getCenterPoint(point);
-            range -= moved?.cost ?? 0;
         }
         /* eslint-disable indent */
         new Sequence()

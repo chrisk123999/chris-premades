@@ -1,4 +1,4 @@
-import {automationUtils, effectUtils, regionUtils} from '../../../proxy.mjs';
+import {activityUtils, automationUtils, distanceUtils, effectUtils, regionUtils} from '../../../proxy.mjs';
 import {getCastDamageType} from '../../generic/selectDamageType.mjs';
 import {addCast, addImpact, casts, colorOption, endPersist, getColor, getPalette, partOption, persistName} from './spellParts.mjs';
 const colorMap = {
@@ -101,7 +101,7 @@ export function getAreaGeometry(sourceToken, region, {radius = 0} = {}) {
     }
     const scene = sourceToken.parent;
     const center = sourceToken.getCenterPoint();
-    const size = (radius * scene.grid.size / scene.grid.distance * 2) + (sourceToken.width * scene.grid.size);
+    const size = (distanceUtils.toPixels(scene, radius) * 2) + (sourceToken.width * scene.grid.size);
     return {type: 'circle', origin: center, center, size, rotation: 0};
 }
 function addArea(sequence, geometry, file) {
@@ -143,7 +143,7 @@ async function play(sourceToken, region, {color = 'auto', cast = true, impact = 
 // Plays the area around the effect's actor and, with persist, keeps it there while the effect lasts. The radius comes from the effect's aura.
 async function create(effect, token, {color = 'auto', cast = true, impact = false, persist = false, radius} = {}) {
     const activity = effectUtils.getOriginActivitySync(effect);
-    const auraRadius = effect.flags.cat?.genericConfig?.cat?.aura ? automationUtils.getGenericConfigValue(effect, 'cat', 'aura', 'radius') : activity?.target?.template?.size;
+    const auraRadius = effect.flags.cat?.genericConfig?.cat?.aura ? automationUtils.getGenericConfigValue(effect, 'cat', 'aura', 'radius') : activity && activityUtils.getTemplateSize(activity);
     radius ??= Number(auraRadius) || 0;
     color = getColor(color, getCastDamageType(activity?.item));
     await play(token, undefined, {color, cast, impact, radius});

@@ -1,4 +1,4 @@
-import {animationUtils} from '../../../proxy.mjs';
+import {animationUtils, distanceUtils} from '../../../proxy.mjs';
 /**
  * The first Sequencer database entry that exists, so Patreon-only assets fall back to free ones.
  * @param {...string} files Database paths, best first.
@@ -123,11 +123,11 @@ export function playOnEffect(play) {
 /**
  * Diameter in grid units of an aura of this radius around a token.
  * @param {object} token Token the aura surrounds.
- * @param {number} radius Aura radius in scene units.
+ * @param {number} radius Aura radius in feet.
  * @returns {number}
  */
 export function auraSize(token, radius) {
-    return radius * 2 / token.parent.grid.distance + token.width;
+    return distanceUtils.toGridSpaces(token.parent, radius) * 2 + token.width;
 }
 export function persistName(prefix, effect) {
     return prefix + ' ' + effect.uuid;

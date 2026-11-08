@@ -125,7 +125,7 @@ async function playLightning(sourceToken, targetToken, files, {move, cast, shake
         addTravel(travel, targetToken, files).attachTo(targetToken);
         await travel.play();
     }
-    if (!sourceToken || tokenUtils.getDistance(sourceToken, targetToken) > 5) return;
+    if (!sourceToken || !tokenUtils.isWithinDistance(sourceToken, targetToken, 5)) return;
     const impact = new Sequence();
     /* eslint-disable indent */
     impact

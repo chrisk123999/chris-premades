@@ -1,4 +1,4 @@
-import {animationUtils} from '../../../proxy.mjs';
+import {animationUtils, distanceUtils} from '../../../proxy.mjs';
 import {addCast, addShake, partOption} from '../generic/spellParts.mjs';
 const palettes = {
     patreon: {
@@ -17,7 +17,7 @@ async function play(sourceToken, targetToken, {cast = true, shake = true, hit} =
     const files = palettes[animationUtils.jb2aCheck()];
     if (!files) return;
     const landed = hit !== false;
-    const burstSize = targetToken.width + (5 * 2 / targetToken.parent.grid.distance);
+    const burstSize = targetToken.width + (distanceUtils.toGridSpaces(targetToken.parent, 5) * 2);
     const sequence = new Sequence();
     if (cast) addCast(sequence, sourceToken, targetToken, {file: files.cast});
     /* eslint-disable indent */

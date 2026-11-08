@@ -11,7 +11,7 @@ async function turn({document: effect, macroClass: {identifier, source}, token})
     if (!activity) return Logging.addMacroWarning(source, identifier, `Intimidating Presence failed to find origin activity! (effect) ${effect.uuid}`);
     const sourceToken = actorUtils.getFirstToken(activity.actor);
     if (!sourceToken) return Logging.addMacroWarning(source, identifier, `Intimidating Presence failed to find origin token! (effect) ${effect.uuid} (actor) ${activity.actor.uuid}`);
-    if (tokenUtils.getDistance(token, sourceToken) > automationUtils.getConfigValue(activity.item, 'range'))
+    if (!tokenUtils.isWithinDistance(token, sourceToken, automationUtils.getConfigValue(activity.item, 'range')))
         return await endEffect(effect, sourceToken, token, 'Range');
     if (!tokenUtils.canSee(token, sourceToken))
         return await endEffect(effect, sourceToken, token, 'Sight');

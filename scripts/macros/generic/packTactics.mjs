@@ -16,7 +16,7 @@ async function attack({document, macroClass: {identifier, source}, workflow}) {
         if (
             self &&
             tokenUtils.isEnemy(self, target) &&
-            tokenUtils.getDistance(self, target) <= config.range
+            tokenUtils.isWithinDistance(self, target, config.range)
         ) return true;
     };
     switch(config.benefit) {

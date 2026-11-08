@@ -14,7 +14,7 @@ async function hawk({document, workflow}) {
     if (!totem || !target || actorUtils.hasUsedReaction(document.actor)) return;
     const owner = actorUtils.getFirstToken(document.actor);
     if (workflow.token.document.disposition !== owner?.disposition) return;
-    if (tokenUtils.getDistance(totem.token, target) > 30) return;
+    if (!tokenUtils.isWithinDistance(totem.token, target, 30)) return;
     const activity = itemUtils.getActivityByIdentifier(document, 'hawk-spirit');
     if (!activity) return;
     if (!await dialogUtils.confirm(document.name, _loc(translations + 'HawkAttack', {name: workflow.token.name}), {userId: queryUtils.firstOwner(document.actor, true)})) return;

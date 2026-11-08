@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, dataUtils, dialogUtils, documentUtils, genericUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, dataUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function editRage({data, document: item, macroClass: {source}}) {
     const config = automationUtils.getConfigValues(item, Object.keys(giantsHavoc.config));
     config.giantBonus = (await rollUtils.rollDice(config.giantBonus, {document: item}))?.total;
@@ -54,18 +54,13 @@ async function increaseSizeReach({data, document: item, macroClass: {identifier,
         name: item.name,
         img: item.img,
         flags: {dnd5e: {dependentOn: data.effect.uuid}},
-        system: {changes: [{key: 'system.range.reach', type: 'add', value: config.giantReach}]}
+        system: {changes: [{key: 'system.range.reach', type: 'override', value: config.giantReach}]}
     };
     dataUtils.setOrigin(enchant, item);
-    await documentUtils.modifyBatch(weapons.map(w => {
+    await Promise.all(weapons.map(w => {
         const enchantData = genericUtils.duplicate(enchant);
-        genericUtils.setProperty(enchantData, 'system.changes.0.value', (w.system.range.reach || 5) + config.giantReach);
-        return {
-            documentName: 'ActiveEffect',
-            action: 'create',
-            data: [enchantData],
-            parent: w
-        };
+        genericUtils.setProperty(enchantData, 'system.changes.0.value', (itemUtils.getRange(w).reach ?? 5) + config.giantReach);
+        return effectUtils.createEffects(w, [enchantData]);
     }));
 }
 async function giantDamage({document: effect, macroClass: {identifier, source}, workflow}) {

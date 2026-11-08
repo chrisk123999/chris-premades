@@ -1,8 +1,8 @@
-import {automationUtils, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {automationUtils, dialogUtils, distanceUtils, documentUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function late({document, workflow}) {
     if (documentUtils.getIdentifier(workflow.activity) !== automationUtils.getConfigValue(document, 'activityIdentifier')) return;
     if (!workflow.hitTargets.size) return;
-    const validTargets = Array.from(workflow.hitTargets, token => token.document).filter(token => tokenUtils.getDistance(workflow.token.document, token) > 5);
+    const validTargets = Array.from(workflow.hitTargets, token => token.document).filter(token => !tokenUtils.isWithinDistance(workflow.token.document, token, 5));
     if (!validTargets.length) return;
     const selection = await dialogUtils.confirmUseItem(document);
     if (!selection) return;
@@ -14,7 +14,7 @@ async function late({document, workflow}) {
     if (!target) return;
     const distance = tokenUtils.getDistance(workflow.token.document, target);
     await workflowUtils.completeItemUse(document, [target]);
-    await tokenUtils.slideToken(target, {sourceToken: workflow.token.document, distance: distance <= 10 ? -5 : -10});
+    await tokenUtils.slideToken(target, {sourceToken: workflow.token.document, distance: distanceUtils.isWithinRange(target.parent, distance, 10) ? -5 : -10});
 }
 export const graspOfHadar = {
     name: 'Eldritch Invocations: Grasp of Hadar',

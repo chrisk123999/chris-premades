@@ -1,4 +1,4 @@
-import {activityUtils, automationUtils, dialogUtils, documentUtils, itemUtils, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {activityUtils, automationUtils, dialogUtils, distanceUtils, documentUtils, itemUtils, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 const familiarities = {
     2014: ['PermanentCircle', 'AssociatedObject', 'VeryFamiliar', 'SeenCasually', 'ViewedOnce', 'Description', 'FalseDestination'],
     2024: ['PermanentCircle', 'LinkedObject', 'VeryFamiliar', 'SeenCasually', 'ViewedOnceDescribed', 'FalseDestination']
@@ -71,7 +71,7 @@ async function use({workflow}) {
     if (mishaps && damage) await workflowUtils.syntheticActivityDataRoll(activityUtils.getDamageModifiedActivityData(damage, (mishaps * 3) + 'd10', {types: ['force']}), item, [token, ...followers]);
     if (outcome === 'OffTarget') await offTarget(item, rules, speaker, userId);
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
-    const range = canvas.dimensions.distance * Math.ceil(Math.max(canvas.dimensions.width, canvas.dimensions.height) / canvas.dimensions.size);
+    const range = distanceUtils.fromGridSpaces(canvas.scene, Math.ceil(Math.max(canvas.dimensions.width, canvas.dimensions.height) / canvas.dimensions.size));
     await tokenUtils.teleportToken(token, {animation, options, range, followers, followerRange: range, requireSight: false, ignoreWalls: true, userId});
 }
 export const teleport = {

@@ -1,4 +1,4 @@
-import {actorUtils, documentUtils, effectUtils, genericUtils, Logging, rollUtils, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, documentUtils, effectUtils, Logging, rollUtils, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function contest(workflow, target, targetAbilities) {
     return await rollUtils.contestedRoll({sourceToken: workflow.token.document, targetToken: target.document, sourceRollType: 'skill', targetRollType: 'skill', sourceAbilities: ['ath'], targetAbilities, message: true, flavor: workflow.item.name});
 }
@@ -7,7 +7,7 @@ async function forceful({workflow}) {
     if (!target || !workflow.token || await contest(workflow, target, ['ath']) <= 0) return;
     const summoner = summonUtils.getSummonData(workflow.actor)?.ownerToken ?? workflow.token.document;
     const mod = actorUtils.getSavedCastData(workflow.actor)?.mod ?? 0;
-    const distance = genericUtils.convertDistance(target.document.parent, 5 + 5 * mod);
+    const distance = 5 + 5 * mod;
     const from = summoner.getCenterPoint();
     const to = target.document.getCenterPoint();
     const ray = {angle: Math.atan2(to.y - from.y, to.x - from.x)};

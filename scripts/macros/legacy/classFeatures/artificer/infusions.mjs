@@ -342,7 +342,7 @@ async function homunculusChannelEarly({activity, document: effect, macroClass: {
     if (!homunculus) return notify('TooFar');
     const infusion = await fromUuid(effect.flags[source]?.infusion);
     const range = infusion ? automationUtils.getConfigValue(infusion, 'touchRange') : 120;
-    if (tokenUtils.getDistance(token, homunculus) > range) return notify('TooFar');
+    if (!tokenUtils.isWithinDistance(token, homunculus, range)) return notify('TooFar');
     if (actorUtils.hasUsedReaction(homunculus.actor)) return notify('ReactionUsed');
     await actorUtils.setReactionUsed(homunculus.actor);
 }

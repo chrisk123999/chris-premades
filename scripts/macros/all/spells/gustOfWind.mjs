@@ -1,4 +1,4 @@
-import {automationUtils, effectUtils, genericUtils, itemUtils, Logging, regionUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {automationUtils, effectUtils, itemUtils, Logging, regionUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function getRegion(item, scene) {
     const activity = itemUtils.getActivityByIdentifier(item, 'gust-of-wind');
     if (!activity || !scene) return;
@@ -20,7 +20,7 @@ async function push(item, workflow, region) {
     const shape = region?.shapes[0];
     if (!shape) return Logging.addMacroWarning('CPR', 'gust-of-wind', 'CHRISPREMADES.Macros.All.GustOfWind.NoRegion');
     const ray = foundry.canvas.geometry.Ray.fromAngle(0, 0, Math.toRadians(shape.rotation), 1);
-    const distance = genericUtils.convertDistance(region.parent, Number(automationUtils.getConfigValue(item, 'distance')));
+    const distance = Number(automationUtils.getConfigValue(item, 'distance'));
     if (!distance) return;
     await Promise.all(tokens.map(token => tokenUtils.slideToken(token.document, {ray, distance})));
 }

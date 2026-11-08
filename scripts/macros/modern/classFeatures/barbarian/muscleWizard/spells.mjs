@@ -1,4 +1,4 @@
-import {actorUtils, applications, automationUtils, compendiumUtils, constants, documentUtils, effectUtils, genericUtils, itemUtils, Logging, tokenUtils, uiUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {activityUtils, actorUtils, applications, automationUtils, compendiumUtils, constants, documentUtils, effectUtils, genericUtils, itemUtils, Logging, tokenUtils, uiUtils, workflowUtils} from '../../../../../proxy.mjs';
 import {default as cpr} from '../../../../../constants.mjs';
 function log(source, identifier, msg, notify) {
     Logging.addMacroWarning(source, identifier, msg, {notify});
@@ -19,7 +19,7 @@ async function burningHands({document: activity, macroClass: {identifier, source
     if (!strike) return log(source, identifier, `"Spells" Burning Hands exited early without locating an unarmed strike item. (actor) ${activity.actor.uuid}`);
     const attack = itemUtils.getActivityByIdentifier(strike, 'unarmed-strike');
     if (!attack) return log(source, identifier, `"Spells" Burning Hands exited early without locating the unarmed strike attack activity. (item) ${strike.uuid} (identifier) unarmed-strike`);
-    const near = tokenUtils.findNearby(token, attack.range.value || 5);
+    const near = tokenUtils.findNearby(token, activityUtils.getRange(attack) || 5);
     if (!near.length) return log(source, identifier, 'CHRISPREMADES.Macros.Legacy.HuntersMark.NoTargets', true);
     const config = automationUtils.getConfigValues(activity.item, ['damage', 'damageType']);
     const burning = attack.toObject();

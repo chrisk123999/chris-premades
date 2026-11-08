@@ -28,8 +28,8 @@ async function rollFinished(workflow) {
     if (mode === 'full' && entry.oldHP !== target.actor.system.attributes.hp.max) return;
     const damage = leftoverDamage(entry.damageDetail ?? [], entry.oldHP);
     if (!Object.values(damage).some(value => value > 0)) return;
-    const range = workflow.rangeDetails?.range ?? 5;
-    const nearby = tokenUtils.findNearby(target.document, 5, {disposition: 'ally'}).filter(token => token.actor && tokenUtils.getDistance(workflow.token.document, token) <= range);
+    const range = workflowUtils.getRange(workflow) || 5;
+    const nearby = tokenUtils.findNearby(target.document, 5, {disposition: 'ally'}).filter(token => token.actor && tokenUtils.isWithinDistance(workflow.token.document, token, range));
     if (!nearby.length) return;
     const selection = await dialogUtils.selectTargetDialog(_loc('CHRISPREMADES.Settings.DmgCleave.Name'), _loc('CHRISPREMADES.Macros.Legacy.DmgCleave.Use'), nearby, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
     const next = selection?.result;

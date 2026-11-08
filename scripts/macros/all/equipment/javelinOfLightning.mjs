@@ -1,7 +1,7 @@
-import {automationUtils, documentUtils, itemUtils, workflowUtils} from '../../../proxy.mjs';
+import {automationUtils, distanceUtils, documentUtils, itemUtils, workflowUtils} from '../../../proxy.mjs';
 function lineTokens(sourceToken, targetToken) {
     const scene = sourceToken.parent;
-    const halfWidth = 2.5 * scene.grid.size / scene.grid.distance;
+    const halfWidth = distanceUtils.toPixels(scene, 2.5);
     const start = sourceToken.object.center;
     const end = targetToken.object.center;
     const length = Math.hypot(end.x - start.x, end.y - start.y);

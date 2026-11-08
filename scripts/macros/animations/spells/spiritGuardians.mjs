@@ -1,4 +1,4 @@
-import {animationUtils, effectUtils} from '../../../proxy.mjs';
+import {activityUtils, animationUtils, effectUtils} from '../../../proxy.mjs';
 import {getCastDamageType} from '../../generic/selectDamageType.mjs';
 import {auraSize, colorOption, endPersist, persistName, pickFile} from '../generic/spellParts.mjs';
 const colorMap = {
@@ -19,7 +19,7 @@ const damageColors = {radiant: 'blueyellow', necrotic: 'dark_purple'};
 async function create(effect, token, {color = 'auto'} = {}) {
     const activity = effectUtils.getOriginActivitySync(effect);
     if (color === 'auto') color = damageColors[getCastDamageType(activity?.item)] ?? 'blueyellow';
-    const size = auraSize(token, activity?.target?.template?.size || 15);
+    const size = auraSize(token, (activity && activityUtils.getTemplateSize(activity)) || 15);
     /* eslint-disable indent */
     await new Sequence()
         .effect()

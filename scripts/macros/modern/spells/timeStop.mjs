@@ -1,4 +1,4 @@
-import {dialogUtils, documentUtils, effectUtils, genericUtils, queryUtils, rollUtils} from '../../../proxy.mjs';
+import {dialogUtils, distanceUtils, documentUtils, effectUtils, genericUtils, queryUtils, rollUtils} from '../../../proxy.mjs';
 async function use({document: item, workflow}) {
     const tokenDocument = workflow.token?.document;
     const combat = game.combat;
@@ -32,7 +32,7 @@ async function affectOther({document: effect, workflow}) {
 async function moved({document: effect, token}) {
     const origin = effect.flags['chris-premades']?.timeStop?.origin;
     if (!origin || !token.object) return;
-    if (canvas.grid.measurePath([origin, token.object.center]).distance > 1000) await documentUtils.deleteDocument(effect);
+    if (distanceUtils.measureDistance(canvas.scene, [origin, token.object.center]) > 1000) await documentUtils.deleteDocument(effect);
 }
 async function turnEnd({document: effect}) {
     const tokenId = effect.flags['chris-premades']?.timeStop?.tokenId;

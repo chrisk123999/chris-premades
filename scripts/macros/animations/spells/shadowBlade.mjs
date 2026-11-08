@@ -33,7 +33,7 @@ async function play(sourceToken, targetToken, {color = 'purple', impact = true, 
     if (hit === undefined) return;
     const files = getPalette(palettes, color);
     if (!files) return;
-    const thrown = files.throw && tokenUtils.getDistance(sourceToken, targetToken) > 5;
+    const thrown = files.throw && !tokenUtils.isWithinDistance(sourceToken, targetToken, 5);
     /* eslint-disable indent */
     await new Sequence()
         .effect()

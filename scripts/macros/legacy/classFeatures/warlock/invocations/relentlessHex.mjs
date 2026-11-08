@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, crosshairUtils, dialogUtils, Logging, tokenUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, crosshairUtils, dialogUtils, distanceUtils, Logging, tokenUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     const token = workflow.token.document;
     const range = automationUtils.getConfigValue(document, 'range');
@@ -15,12 +15,7 @@ async function use({document, workflow}) {
         token,
         maxRange: range,
         centerpoint: targetToken.object.center,
-        fudgeDistance: targetToken.width * canvas.dimensions.distance / 2,
-        crosshairsConfig: {
-            size: canvas.grid.distance * token.width / 2,
-            icon: token.texture.src,
-            resolution: (token.width % 2) ? 1 : -1
-        }
+        fudgeDistance: distanceUtils.fromGridSpaces(canvas.scene, targetToken.width / 2)
     });
     if (!destination || destination.cancelled) return;
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');

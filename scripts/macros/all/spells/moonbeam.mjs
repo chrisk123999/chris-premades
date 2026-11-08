@@ -1,13 +1,13 @@
 import {actorUtils, automationUtils, regionUtils, workflowUtils} from '../../../proxy.mjs';
 import {playAreaAnimation} from '../../generic/spellAnimation.mjs';
-import {createRegionLight, prepareMovableRegion} from '../../generic/moveRegion.mjs';
+import {prepareMovableRegion} from '../../generic/moveRegion.mjs';
 async function created({document: region, workflow}) {
     const originItem = regionUtils.getActivity(region)?.item;
     if (!originItem) return;
     await prepareMovableRegion(region, originItem, 'moonbeamMove');
     const color = automationUtils.getConfigValue(originItem, 'lightColor');
     const animationType = automationUtils.getConfigValue(originItem, 'lightAnimation');
-    await createRegionLight(region, {color: color || null, animation: {type: animationType || null}});
+    await regionUtils.createRegionLight(region, {color: color || null, animation: {type: animationType || null}});
     playAreaAnimation(workflow, automationUtils.getResolvedAnimation(originItem, 'animation'), {region});
 }
 export async function moved({document: region}) {

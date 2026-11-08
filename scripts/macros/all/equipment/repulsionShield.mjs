@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, constants, dialogUtils, documentUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function push({document: activity, sourceToken, workflow}) {
     if (!activity.item.system.uses.value) return;
     if (actorUtils.hasUsedReaction(activity.actor)) return;
@@ -12,9 +12,8 @@ async function push({document: activity, sourceToken, workflow}) {
         const limit = CONFIG.DND5E.actorSizes[config.sizeLimit]?.numerical ?? 0;
         if (actorUtils.getSize(workflow.actor) > limit) return;
     }
-    if (activity.range.value) {
-        if (tokenUtils.getDistance(sourceToken, workflow.token.document) > activity.range.value) return;
-    }
+    const range = activityUtils.getRange(activity);
+    if (range && !tokenUtils.isWithinDistance(sourceToken, workflow.token.document, range)) return;
     if (!await dialogUtils.confirmUseItem(activity.item, {userId: queryUtils.firstOwner(activity.actor, true)})) return;
     await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document]);
 }

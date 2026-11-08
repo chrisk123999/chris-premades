@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, dialogUtils, documentUtils, genericUtils, Logging, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, dialogUtils, documentUtils, genericUtils, Logging, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {resolveCastFormula} from './multiSingleTarget.mjs';
 async function pickCompanions({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'teleport', configKeys);
@@ -37,7 +37,7 @@ async function use({document, workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'teleport'});
     const rolledRange = config.rangeFromRoll ? workflow.utilityRolls?.[0]?.total : undefined;
     const configRange = config.range ? rollUtils.rollDiceSync(resolveCastFormula(String(config.range), workflow.castData), {document: workflow.activity}).total : undefined;
-    const range = rolledRange || configRange || workflow.activity.range.value;
+    const range = rolledRange || configRange || activityUtils.getRange(workflow.activity);
     if (config.targets === 'nearTarget') {
         const targets = Array.from(workflow.targets, token => token.document).filter(token => token !== workflow.token.document);
         const selection = targets.length > 1 ? await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Generic.Teleport.SelectNear', targets, {skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(workflow.actor, true)}) : {result: targets[0]};
@@ -53,7 +53,8 @@ async function use({document, workflow}) {
     if (config.targets !== 'failedSaves') {
         const followers = workflowUtils.getWorkflowProperty(workflow, 'chris-premades.teleportCompanions') ?? [];
         const token = workflow.token.document;
-        const allowedPoints = config.visitedThisTurn ? token.movementHistory.map(point => token.getCenterPoint(point)) : undefined;
+        const current = token.getCenterPoint();
+        const allowedPoints = config.visitedThisTurn ? token.movementHistory.map(point => token.getCenterPoint(point)).filter(point => point.x !== current.x || point.y !== current.y) : undefined;
         if (allowedPoints && !allowedPoints.length) return genericUtils.notify('CHRISPREMADES.Macros.Generic.Teleport.NoVisited', {type: 'warn'});
         await tokenUtils.teleportToken(token, {animation, options, range, requireSight: config.requireSight, followers, allowedPoints});
         return;

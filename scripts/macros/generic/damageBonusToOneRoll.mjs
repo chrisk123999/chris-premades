@@ -68,7 +68,7 @@ async function damage({document, workflow}) {
     }
     const hasEffect = actor => !config.targetEffects.length || config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(actor, identifier, {multiple: true, sourceActor: workflow.actor}).length);
     const hasType = actor => !config.targetCreatureTypes.length || config.targetCreatureTypes.includes(actorUtils.typeOrRace(actor));
-    const inRange = token => !config.attackerRange || (workflow.token && tokenUtils.getDistance(workflow.token.document, token.document) <= config.attackerRange);
+    const inRange = token => !config.attackerRange || (workflow.token && tokenUtils.isWithinDistance(workflow.token.document, token.document, config.attackerRange));
     const narrowed = config.requireHit || config.targetEffects.length || config.targetCreatureTypes.length || config.attackerRange;
     const targets = narrowed ? workflow.hitTargets.filter(token => token.actor && hasEffect(token.actor) && hasType(token.actor) && inRange(token)) : undefined;
     if (targets && !targets.size) return;

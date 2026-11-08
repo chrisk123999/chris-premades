@@ -1,4 +1,4 @@
-import {effectUtils, regionUtils} from '../../../proxy.mjs';
+import {distanceUtils, effectUtils, regionUtils} from '../../../proxy.mjs';
 import {playWallReshape, wallMacro, wallSummary} from '../../generic/wallSpell.mjs';
 async function beam({document: item, workflow}) {
     if (workflow.activity.identifier !== 'wall-of-light-beam') return;
@@ -6,7 +6,7 @@ async function beam({document: item, workflow}) {
     const region = regionUtils.getPlacedRegions(scene, item).find(placed => placed.flags.cat?.path);
     if (!region) return;
     const path = region.flags.cat.path;
-    const points = regionUtils.trimPath(path.points, 10 * scene.dimensions.distancePixels);
+    const points = regionUtils.trimPath(path.points, distanceUtils.toPixels(scene, 10));
     if (points.length < 2) {
         await effectUtils.endConcentration(workflow.actor, item);
         return;

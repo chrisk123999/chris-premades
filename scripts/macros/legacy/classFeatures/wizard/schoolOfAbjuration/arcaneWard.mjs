@@ -10,7 +10,7 @@ export async function arcaneWardHelper({document: item, ditem, projectedWard, to
     const remainingDamage = hpDamage - absorbed;
     if (projectedWard) {
         if (targetToken.disposition !== token.disposition) return;
-        if (tokenUtils.getDistance(token, targetToken) > automationUtils.getConfigValue(projectedWard, 'range')) return;
+        if (!tokenUtils.isWithinDistance(token, targetToken, automationUtils.getConfigValue(projectedWard, 'range'))) return;
         const selection = await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.Legacy.ArcaneWard.Protect', {tokenName: targetToken.name}), {userId: queryUtils.firstOwner(token.actor, true)});
         if (!selection) return;
         await workflowUtils.completeItemUse(projectedWard);

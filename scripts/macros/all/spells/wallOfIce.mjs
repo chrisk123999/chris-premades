@@ -1,4 +1,4 @@
-import {documentUtils, itemUtils, regionUtils} from '../../../proxy.mjs';
+import {distanceUtils, documentUtils, itemUtils, regionUtils} from '../../../proxy.mjs';
 import {wallMacro, wallPanel, wallSummary} from '../../generic/wallSpell.mjs';
 async function broken({document: region, options}) {
     const item = regionUtils.getActivity(region)?.item;
@@ -7,7 +7,7 @@ async function broken({document: region, options}) {
     const scene = region.parent;
     const flat = options?.flat;
     let shapes;
-    if (options?.segment) shapes = regionUtils.pathBand({segments: [options.segment]}, 2 * scene.dimensions.distancePixels);
+    if (options?.segment) shapes = regionUtils.pathBand({segments: [options.segment]}, distanceUtils.toPixels(scene, 2));
     else if (flat) shapes = [{type: 'rectangle', x: flat.x, y: flat.y, width: flat.size, height: flat.size}];
     else return;
     const [air] = await documentUtils.createEmbeddedDocuments(scene, 'Region', [{

@@ -7,7 +7,7 @@ async function attack({document, workflow}) {
     if (config.advanced) {
         const {animation, options} = automationUtils.getResolvedAnimation(document, 'advancedAnimation', {source: 'chris-premades', identifier: 'weaponAnimation'});
         if (!animation?.macros?.attack) return;
-        await animation.macros.attack(workflow.token.document, workflow.targets.map(token => token.document), {...options, switchDistance: workflow.rangeDetails.range});
+        await animation.macros.attack(workflow.token.document, workflow.targets.map(token => token.document), {...options, switchDistance: workflowUtils.getRange(workflow)});
         return;
     }
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'weaponAnimation'});

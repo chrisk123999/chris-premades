@@ -1,4 +1,4 @@
-import {automationUtils, combatUtils, constants, dataUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {automationUtils, combatUtils, constants, dataUtils, dialogUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function combat({document: item, macroClass: {identifier, source}}) {
     const enchant = item.effects.find(e => e.type === 'enchantment');
     if (!enchant) return Logging.addMacroWarning(source, identifier, `Battering Roots exited early due to a missing enchantment. (item) ${item.uuid}`);
@@ -13,19 +13,15 @@ async function combat({document: item, macroClass: {identifier, source}}) {
     const createdParent = (await effectUtils.createEffects(item.actor, [parent.toObject()]))?.[0];
     if (!createdParent) return Logging.addMacroWarning(`Battering Roots failed to create a parent effect. (actor) ${item.actor.uuid} (effect) ${parent.uuid}`);
     const range = (await rollUtils.rollDice(config.range, {document: item}))?.total;
-    await documentUtils.modifyBatch(weapons.map(w => {
+    await Promise.all(weapons.map(w => {
         const data = enchant.toObject();
         delete data._id;
         data.transfer = true;
         dataUtils.setOrigin(data, item.uuid);
         genericUtils.setProperty(data, 'flags.dnd5e.dependentOn', createdParent.uuid);
-        genericUtils.setProperty(data, 'changes.0.value', (w.system.range.reach || 5) + range);
-        return {
-            documentName: 'ActiveEffect',
-            action: 'create',
-            data: [data],
-            parent: w
-        };
+        genericUtils.setProperty(data, 'system.changes.0.type', 'override');
+        genericUtils.setProperty(data, 'system.changes.0.value', (itemUtils.getRange(w).reach ?? 5) + range);
+        return effectUtils.createEffects(w, [data]);
     }));
 }
 async function mastery({document: item, macroClass: {identifier, source}, data: {workflow, masteries, hit}}) {

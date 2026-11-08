@@ -1,8 +1,8 @@
 import cprConstants from '../../../constants.mjs';
-import {actorUtils, automationUtils, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function feyStep({document, workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
-    await tokenUtils.teleportToken(workflow.token.document, {range: workflow.activity.range.value, animation, options});
+    await tokenUtils.teleportToken(workflow.token.document, {range: activityUtils.getRange(workflow.activity), animation, options});
     const moodItem = actorUtils.getItemByIdentifiers(workflow.actor, ['summon-fey-fuming', 'summon-fey-mirthful', 'summon-fey-tricksy-legacy', 'summon-fey-tricksy-modern']);
     if (!moodItem) return;
     const identifier = documentUtils.getIdentifier(moodItem);

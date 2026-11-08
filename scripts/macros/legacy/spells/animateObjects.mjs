@@ -1,4 +1,5 @@
 import {automationUtils, compendiumUtils, summonUtils, activityUtils, effectUtils, itemUtils, dialogUtils, genericUtils, actorUtils} from '../../../proxy.mjs';
+import cprConstants from '../../../constants.mjs';
 async function use({document, workflow, castData}) {
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const exit = () => effectUtils.endConcentration(workflow.actor, workflow.item);
@@ -9,7 +10,7 @@ async function use({document, workflow, castData}) {
     if (!sourceActor) return await exit();
     const description = automationUtils.getConfigValue(workflow.item, 'slamDescription');
     const translate = 'CHRISPREMADES.Summons.Features.Slam';
-    const attackData = await compendiumUtils.getDocumentByIdentifier('chris-premades.AutomationItems', 'animate-objects-slam', {object: true, description, translate});
+    const attackData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'animate-objects-slam', {object: true, description, translate});
     if (!attackData) return await exit();
     const weights = {};
     const documents = [];
@@ -79,7 +80,7 @@ async function use({document, workflow, castData}) {
     if (!summons.length) return;
     const otherActivities = ['animate-objects-command'];
     await itemUtils.unhideActivities(document.item, otherActivities);
-    if (workflow.token) await summonUtils.placeSummons(summons, document.range.value, {token: workflow.token.document});
+    if (workflow.token) await summonUtils.placeSummons(summons, activityUtils.getRange(document), {token: workflow.token.document});
 }
 async function summonDelete({document, summon}) {
     const summons = summonUtils.getSummonsBySource(document).filter(i => i !== summon);

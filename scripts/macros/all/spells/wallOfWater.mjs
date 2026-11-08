@@ -1,17 +1,16 @@
-import {documentUtils, regionUtils} from '../../../proxy.mjs';
+import {distanceUtils, documentUtils, regionUtils} from '../../../proxy.mjs';
 import {difficultTerrain, getWallPanelActor, wallMacro, wallPanel, wallSummary} from '../../generic/wallSpell.mjs';
 async function freeze({document: region, workflow, options}) {
     const path = region.flags.cat?.path;
     if (!path || !options?.types?.includes('cold') || workflow?.item?.type !== 'spell') return;
     const scene = region.parent;
-    const pixels = scene.dimensions.distancePixels;
     const frozen = scene.regions.filter(other => other.flags['chris-premades']?.frozenOf === region.uuid);
     let sourceActor;
     for (const [a, b] of regionUtils.pathSegments(path)) {
         const hit = foundry.utils.lineSegmentIntersection(options.origin, options.target, a, b);
         if (!hit || frozen.some(section => section.testPoint({x: hit.x, y: hit.y, elevation: region.elevation.bottom}))) continue;
         const length = Math.hypot(b.x - a.x, b.y - a.y);
-        const half = Math.min(2.5 * pixels, length / 2);
+        const half = Math.min(distanceUtils.toPixels(scene, 2.5), length / 2);
         const along = Math.clamp(Math.hypot(hit.x - a.x, hit.y - a.y), half, length - half);
         const unit = {x: (b.x - a.x) / length, y: (b.y - a.y) / length};
         const start = {x: a.x + unit.x * (along - half), y: a.y + unit.y * (along - half)};

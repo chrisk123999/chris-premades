@@ -67,7 +67,7 @@ async function sootheCheck({workflow}) {
         return true;
     }
     const target = workflow.targets.first()?.document;
-    if (!target || tokenUtils.getDistance(summon.token, target) <= getRadius(summon)) return;
+    if (!target || tokenUtils.isWithinDistance(summon.token, target, getRadius(summon))) return;
     genericUtils.notify(translations + 'OutsideAura', {type: 'warn'});
     return true;
 }

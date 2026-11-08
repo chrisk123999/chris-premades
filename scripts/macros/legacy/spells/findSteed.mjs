@@ -1,4 +1,4 @@
-import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {activityUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 const srdSteeds = {
     'find-steed': ['warhorse', 'pony', 'camel', 'elk', 'mastiff'],
     'find-greater-steed': ['griffon', 'pegasus', 'dire-wolf', 'rhinoceros', 'saber-toothed-tiger']
@@ -60,7 +60,7 @@ async function summon({workflow}) {
     });
     const [effect] = await effectUtils.createEffects(workflow.actor, [effectData]);
     if (effect) await documentUtils.makeDependent(steed.actor, [effect]);
-    await steed.place(workflow.activity.range.value, {token: workflow.token.document});
+    await steed.place(activityUtils.getRange(workflow.activity), {token: workflow.token.document});
 }
 async function dismiss({workflow}) {
     await Promise.all(summonUtils.getSummonsBySource(workflow.item).map(steed => summonUtils.deleteSummon(steed)));
@@ -72,7 +72,7 @@ async function shareSpell({document, workflow}) {
     if (!originActivity) return;
     const steedToken = summonUtils.getSummonsBySource(originActivity.item).find(steed => steed.token)?.token;
     if (!steedToken) return;
-    if (tokenUtils.getDistance(workflow.token.document, steedToken) > 5) return;
+    if (!tokenUtils.isWithinDistance(workflow.token.document, steedToken, 5)) return;
     const selection = await dialogUtils.confirm(originActivity.item.name, 'CHRISPREMADES.Macros.Legacy.FindSteed.Target');
     if (selection) await workflowUtils.updateTargets(workflow, [workflow.token, steedToken.object]);
 }

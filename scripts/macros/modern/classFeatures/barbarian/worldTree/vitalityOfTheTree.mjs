@@ -1,4 +1,4 @@
-import {dialogUtils, genericUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {activityUtils, dialogUtils, genericUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function worldTreeRage({document: activity, data, macroClass: {identifier, source}}) {
     const tempHPActivity = itemUtils.getActivityByIdentifier(activity.item, 'life-giving-force');
     if (!tempHPActivity) return Logging.addMacroWarning(source, identifier, `Vitality of the Tree could not fetch its Life-Giving Force activity by identifier. (uuid) ${activity.item.uuid} (identifier) life-giving-force`);
@@ -15,8 +15,9 @@ async function vitalitySurge({document: activity, token}) {
 async function tempHP({document: effect, macroClass: {identifier, source}, token}) {
     const activity = await fromUuid(effect.flags[source]?.lifeGivingForce);
     if (!activity) return Logging.addMacroWarning(source, identifier, `Life-Giving Force could not fetch its heal activity. (uuid) ${effect.flags[source]?.liveGivingForce}`);
-    const near = tokenUtils.findNearby(token, activity.range.value || 10, {disposition: 'ally'});
-    if (!near.length) return Logging.addMacroWarning(source, identifier, `Vitality of the Tree exited early with no available targets. (range) ${activity.range.value || 10}`);
+    const range = activityUtils.getRange(activity) || 10;
+    const near = tokenUtils.findNearby(token, range, {disposition: 'ally'});
+    if (!near.length) return Logging.addMacroWarning(source, identifier, `Vitality of the Tree exited early with no available targets. (range) ${range}`);
     let target;
     const userId = queryUtils.firstOwner(token.actor, true);
     if (near.length === 1) target = near[0];

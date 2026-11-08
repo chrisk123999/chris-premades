@@ -77,6 +77,8 @@ export const automationUtils = createProxy(['utils', 'automationUtils']);
 export const combatUtils = createProxy(['utils', 'combatUtils']);
 /** @type {typeof import('cat/scripts/utilities/crosshairUtils.mjs').default} */
 export const crosshairUtils = createProxy(['utils', 'crosshairUtils']);
+/** @type {typeof import('cat/scripts/utilities/distanceUtils.mjs').default} */
+export const distanceUtils = createProxy(['utils', 'distanceUtils']);
 /** @type {typeof import('cat/scripts/utilities/documentUtils.mjs').default} */
 export const documentUtils = createProxy(['utils', 'documentUtils']);
 /** @type {typeof import('cat/scripts/utilities/effectUtils.mjs').default} */
