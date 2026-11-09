@@ -23,7 +23,7 @@ async function fetchItems(actor, token, tools, rules) {
         const group = items.get(a.uuid) ?? [];
         group.push(...a.itemTypes.weapon.filter(w => !has(group, w.uuid) && ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(w.system.type.value)));
         group.push(...a.itemTypes.tool.filter(t => !has(group, t.uuid) && tools.has(t.system.type.baseItem) && actor.system.tools[t.system.type.baseItem]?.value >= 1));
-        items.set(a.uuid, group);
+        if (group.length) items.set(a.uuid, group);
     }
     return items;
 }
@@ -107,7 +107,7 @@ async function store({macroClass: {identifier, source}, workflow}) {
 }
 export const spellStoringItem = {
     name: 'Spell-Storing Item',
-    version: '2.1.3',
+    version: '2.1.8',
     rules: 'all',
     roll: [
         {

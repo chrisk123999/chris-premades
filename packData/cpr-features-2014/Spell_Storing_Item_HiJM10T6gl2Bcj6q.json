@@ -241,8 +241,6 @@
             "override": false
           },
           "properties": [
-            "vocal",
-            "somatic",
             "material"
           ],
           "spellbook": true,
@@ -369,7 +367,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.8"
       },
       "config": {
         "maxLevel": "2"
