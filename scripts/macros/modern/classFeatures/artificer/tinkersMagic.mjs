@@ -16,13 +16,16 @@ const itemIDs = new Set([
     'tinderbox', 'torch', 
     'vial'
 ]);
+async function requireTools({workflow}) {
+    const requiredTools = automationUtils.getConfigValue(workflow.item, 'requireTools');
+    if (!requiredTools?.length || actorUtils.hasTools(workflow.actor, requiredTools)) return;
+    const tools = constants.toolOptions.filter(o => requiredTools.includes(o.value)).map(t => t.label).join(', ');
+    genericUtils.notify('CHRISPREMADES.Macros.Modern.TinkersMagic.NeedTools', {type: 'warn', format: {feature: workflow.item.name, tools}});
+    workflow.aborted = true;
+    return true;
+}
 async function use({workflow}) {
     const config = automationUtils.getConfigValues(workflow.item, Object.keys(tinkersMagic.config));
-    if (config.requireTools?.length && !workflow.actor.itemTypes.tool.some(t => t.system.equipped && config.requireTools.includes(t.system.type?.baseItem))) {
-        const tools = constants.toolOptions.filter(o => config.requireTools.includes(o.value)).map(t => t.label).join(', ');
-        genericUtils.notify('CHRISPREMADES.Macros.Modern.TinkersMagic.NeedTools', {type: 'warn', format: {feature: workflow.item.name, tools}});
-        return;
-    }
     const options = {
         maxAmount: 1,
         icon: workflow.item.img,
@@ -64,6 +67,11 @@ export const tinkersMagic = {
     rules: '2024',
     notes: 'Target a willing creature to create an item in their inventory. The item is otherwise made on this character.',
     roll: [
+        {
+            pass: 'activityPreItemRoll',
+            macro: requireTools,
+            priority: 50
+        },
         {
             pass: 'activityRollFinished',
             macro: use,

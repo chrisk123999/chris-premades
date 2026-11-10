@@ -1,4 +1,4 @@
-import {automationUtils, dialogUtils, documentUtils, effectUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, dialogUtils, documentUtils, effectUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 export function getMap(actor, atlas) {
     if (!actor || !atlas) return;
     return actor.effects.find(effect => documentUtils.getIdentifier(effect) === 'adventurersAtlas' && effect.origin?.startsWith(atlas.uuid));
@@ -8,8 +8,9 @@ export function getMapHolders(atlas, scene) {
 }
 async function requireTools({document: activity, workflow}) {
     if (!automationUtils.getConfigValue(activity.item, 'requireTools')) return;
-    if (workflow.actor.items.some(item => item.type === 'tool' && item.system.type?.baseItem === 'cartographer')) return;
+    if (actorUtils.hasTools(workflow.actor, ['cartographer'], {equipped: false})) return;
     Logging.addMacroWarning('CPR', 'adventurers-atlas', 'CHRISPREMADES.Macros.Modern.AdventurersAtlas.NeedTools', {notify: 'warn', format: {itemName: activity.item.name}});
+    workflow.aborted = true;
     return true;
 }
 async function chooseTargets({document: activity, workflow}) {

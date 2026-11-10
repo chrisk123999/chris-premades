@@ -289,7 +289,9 @@ export {packHunter as 'pack-hunter'} from './modern/speciesFeatures/wulven/packH
 export {deckOfIllusions2024 as 'deck-of-illusions'} from './all/equipment/deckOfIllusions.mjs';
 export {teleportModern as teleport} from './all/spells/teleport.mjs';
 export {forceGauntlet as 'force-gauntlet'} from './modern/equipment/forceGauntlet.mjs';
+export {manifoldTool as 'manifold-tool'} from './modern/equipment/manifoldTool.mjs';
 export {orbOfDamara as 'orb-of-damara', orbOfDamaraImmunity as 'orb-of-damara-immunity'} from './modern/equipment/orbOfDamara.mjs';
+export {wrapsOfUnarmedPower as 'wraps-of-unarmed-power-1', wrapsOfUnarmedPower as 'wraps-of-unarmed-power-2', wrapsOfUnarmedPower as 'wraps-of-unarmed-power-3'} from './modern/equipment/wrapsOfUnarmedPower.mjs';
 export {healer} from './modern/feats/healer.mjs';
 export {alterSelf as 'alter-self'} from './modern/spells/alterSelf.mjs';
 export {antilifeShell as 'antilife-shell'} from './modern/spells/antilifeShell.mjs';

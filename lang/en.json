@@ -2441,7 +2441,13 @@
                     "RemoveCondition": "Spend {cost} of your effigy's Hit Points to remove a condition from {name}?",
                     "SelectDamageType": "Choose the damage type your effigy wards against."
                 },
+                "ManifoldTool": {
+                    "Select": "Transform into which Artisan's Tools?"
+                },
                 "WickerToken": {
+                    "Give": "Give a Wicker Token to up to {quantity} creatures. Unassigned tokens stay with you.",
+                    "PartyMembers": "Offer Party Members",
+                    "PartyMembersHint": "The long rest prompt also lists members of the primary party who are not on the scene.",
                     "Quantity": "Token Quantity",
                     "Token": "Wicker Token"
                 },

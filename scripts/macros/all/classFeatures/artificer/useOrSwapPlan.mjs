@@ -93,7 +93,7 @@ async function swapPlan({macroClass: {identifier, source}, workflow}) {
 async function usePlan({macroClass: {identifier, source}, workflow}) {
     const config = await getConfig(workflow, source, identifier);
     if (!config) return;
-    if (config.requireTools?.length && !workflow.actor.itemTypes.tool.some(t => t.system.equipped && config.requireTools.includes(t.system.type?.baseItem))) {
+    if (config.requireTools?.length && !actorUtils.hasTools(workflow.actor, config.requireTools)) {
         const tools = constants.toolOptions.filter(o => config.requireTools.includes(o.value)).map(t => t.label).join(', ');
         return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Modern.TinkersMagic.NeedTools', {notify: 'warn', format: {feature: workflow.item.name, tools}});
     }

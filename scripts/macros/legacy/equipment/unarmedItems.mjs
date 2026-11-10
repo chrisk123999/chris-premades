@@ -1,5 +1,5 @@
 import {actorUtils, dialogUtils, documentUtils, itemUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
-function isUnarmed(workflow, {natural = false} = {}) {
+export function isUnarmed(workflow, {natural = false} = {}) {
     if (!workflowUtils.isAttackType(workflow, 'meleeAttack')) return false;
     if (workflow.activity.attack?.type?.classification === 'unarmed') return true;
     return natural && workflow.item.system.type?.value === 'natural';
@@ -7,10 +7,10 @@ function isUnarmed(workflow, {natural = false} = {}) {
 function wrapsBonus(item) {
     return {'wraps-of-dyamak-dormant': 1, 'wraps-of-dyamak-awakened': 2, 'wraps-of-dyamak-exalted': 3}[documentUtils.getIdentifier(item)] ?? 0;
 }
-async function attackBonus(workflow, bonus) {
+export async function attackBonus(workflow, bonus) {
     await workflowUtils.bonusAttack(workflow, String(bonus));
 }
-async function damageBonus(workflow, bonus) {
+export async function damageBonus(workflow, bonus) {
     await workflowUtils.bonusDamage(workflow, String(bonus), {damageType: workflow.defaultDamageType});
     for (const roll of workflow.damageRolls) roll.options.properties = Array.from(new Set([...(roll.options.properties ?? []), 'mgc']));
 }

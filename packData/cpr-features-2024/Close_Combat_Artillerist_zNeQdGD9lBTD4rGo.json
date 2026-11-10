@@ -1,0 +1,141 @@
+{
+  "name": "Close Combat Artillerist",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Firing in Melee",
+      "img": "icons/weapons/crossbows/crossbow-simple-brown.webp",
+      "origin": null,
+      "type": "base",
+      "_id": "g2jxrHl25Yl6pTaj",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.ignoreNearbyFoes",
+            "type": "custom",
+            "value": "item.type?.value?.endsWith(\"R\")",
+            "phase": "initial",
+            "priority": null,
+            "_id": "cPwypx03gUen3hAT",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.zNeQdGD9lBTD4rGo"
+        }
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "expiryMode": "default",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!zNeQdGD9lBTD4rGo.g2jxrHl25Yl6pTaj"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "max": "",
+      "recovery": []
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "close-combat-artillerist",
+    "source": {
+      "book": "GHPG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 4,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "feat",
+      "subtype": "general"
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.8"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "damageBonusToOneRoll"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "bonus": "2",
+            "attackType": "rangedAttack",
+            "requireHit": true,
+            "attackerRange": 5,
+            "everyRoll": true
+          }
+        }
+      }
+    }
+  },
+  "img": "icons/weapons/crossbows/crossbow-simple-brown.webp",
+  "folder": "s7z0r867v16lvTC0",
+  "_id": "zNeQdGD9lBTD4rGo",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!zNeQdGD9lBTD4rGo"
+}

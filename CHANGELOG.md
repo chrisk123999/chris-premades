@@ -19,6 +19,10 @@
 - Third-party Pugilist (Squared Circle): Heavyweight.
 ## Automated Items:
 - 2014 and 2024: Cap of Water Breathing and Potion of Water Breathing.
+- 2024: Manifold Tool. Transform turns it into any Artisan's Tools and sets its Tool Check activity to that tool.
+- 2024: Wraps of Unarmed Power +1, +2 and +3.
+## Automated Feats:
+- Third-party Close Combat Artillerist (Grim Hollow).
 ## Automated Monster Features:
 - 2024 Shield Guardian: Bound and Protection. Bound's Bind activity picks the amulet wearer.
 ## Automated Spells:
@@ -32,6 +36,9 @@
 - 2024 Cunning Action's Hide ends when the rogue attacks, like the Hide action.
 - The 2014 Master's Amulet no longer transfers damage when an attack misses.
 - Mass apply and the medkit no longer match items named Gems, Gemstone, Jewelry, Rowboat, Silver Coffer, Spell Scroll, Wooden Ladder, Window, Pit, Iron Door or Patch. These items only supply Robe of Useful Items and the Decks of Miscellany and Wonder.
+- Artificer tool requirements accept any equipped item with a Tool Check activity for the required tool.
+- Tinker's Magic and Adventurer's Atlas cancel without spending uses when the required tools are missing.
+- 2024 Wicker Token prompts for recipients after a long rest, optionally including off-scene party members, and touch spells now reach token carriers.
 - Select Damage Type skips the system's damage dialog when a damage part has several types, so the damage type is only asked once.
 - Boots of the Winding Path highlights the spaces the wearer occupied this turn and no longer offers the wearer's current space.
 - Fire Storm cubes can be placed side by side on grids where a 10-foot cube is not a whole number of spaces.
