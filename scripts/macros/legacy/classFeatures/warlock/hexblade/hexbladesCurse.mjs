@@ -2,12 +2,12 @@ import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effe
 function getCursedToken(effect, workflow) {
     const targetId = effect.flags['chris-premades']?.hexbladesCurse?.target;
     if (!targetId) return;
-    return workflow.targets.find(token => token.document.id === targetId)?.document;
+    return workflow.targets.documents.find(token => token.id === targetId);
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'hexblades-curse') return;
-    if (workflow.targets.size !== 1) return Logging.addMacroWarning('CPR', 'hexblades-curse', 'Select exactly one target.');
-    const targetToken = workflow.targets.first().document;
+    if (workflow.targets.count !== 1) return Logging.addMacroWarning('CPR', 'hexblades-curse', 'Select exactly one target.');
+    const targetToken = workflow.targets.documents[0];
     const sourceEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
         img: document.img,
@@ -32,7 +32,7 @@ async function use({document, workflow}) {
     await effectUtils.createEffects(targetToken.actor, [targetEffectData], {parentEntity: sourceEffect});
 }
 async function early({document, workflow}) {
-    if (workflow.targets.size !== 1 || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (workflow.targets.count !== 1 || !workflowUtils.isAttackType(workflow, 'attack')) return;
     const targetToken = getCursedToken(document, workflow);
     if (!targetToken) return;
     const originItem = (await effectUtils.getOriginActivity(document)).item;
@@ -54,9 +54,9 @@ async function early({document, workflow}) {
     await effectUtils.createEffects(targetToken.actor, [effectData]);
 }
 function damage({document, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     const targetId = document.flags['chris-premades']?.hexbladesCurse?.target;
-    const targetToken = workflow.hitTargets.find(token => token.document.id === targetId)?.document;
+    const targetToken = workflow.hitTargets.documents.find(token => token.id === targetId);
     if (!targetToken) return;
     const bonus = new DamageBonus(document, {formula: '@prof', optional: false, maxTargets: 1, type: workflow.defaultDamageType});
     bonus.targets = [targetToken];

@@ -1,15 +1,16 @@
 import {actorUtils, dialogUtils, documentUtils, effectUtils, genericUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function attacked({workflow}) {
-    if (workflow.targets.size !== 1) return;
+    if (workflow.targets.count !== 1) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.tokens[0]?.document;
+    if (!target) return;
     if (workflowUtils.getWorkflowProperty(workflow, 'protection.protected')) return;
     if (actorUtils.getEffectByIdentifier(target.actor, 'protectionProtected')) return;
     const near = tokenUtils.findNearby(target, 5, {disposition: 'ally'}).filter(t => {
         if (workflow.token.document.disposition === t.disposition) return;
         if (!t.actor.system.attributes.ac.equippedShield) return;
         if (actorUtils.hasUsedReaction(t.actor)) return;
-        if (workflow.targets.has(t.object)) return;
+        if (workflow.targets.has(t)) return;
         if (!tokenUtils.canSee(t, workflow.token.document)) return;
         const protection = actorUtils.getItemByIdentifier(t.actor, 'protection') ?? actorUtils.getItemByIdentifier(t.actor, 'fighting-style-protection');
         if (!protection) return;

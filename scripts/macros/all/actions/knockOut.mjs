@@ -4,8 +4,8 @@ function isKnockOutHit(ditem, workflow, attackTypes) {
 }
 function knockOutTarget(ditem, workflow, rules) {
     if (rules !== '2014') workflowUtils.preventZeroHP(ditem);
-    const targets = workflowUtils.getWorkflowProperty(workflow, 'knockOut') ?? [];
-    workflowUtils.setWorkflowProperty(workflow, 'knockOut', [...targets, {actorUuid: ditem.actorUuid, rules}]);
+    const targets = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'knockOut') ?? []);
+    workflowUtils.setWorkflowProperty(workflow, 'knockOut', Object.entries({...targets, [ditem.actorUuid]: rules}));
 }
 async function early({document: activity, workflow}) {
     const sourceEffect = activity.item.effects.find(effect => effect.flags.cat?.identifier === 'knockOutEffect');
@@ -36,7 +36,7 @@ async function done({workflow}) {
     const targets = workflowUtils.getWorkflowProperty(workflow, 'knockOut');
     if (!targets?.length) return;
     workflowUtils.setWorkflowProperty(workflow, 'knockOut', []);
-    for (const {actorUuid, rules} of targets) {
+    for (const [actorUuid, rules] of targets) {
         const actor = await fromUuid(actorUuid);
         if (!actor) continue;
         if (rules === '2014') {

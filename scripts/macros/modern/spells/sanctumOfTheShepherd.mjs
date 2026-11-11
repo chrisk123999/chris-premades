@@ -16,7 +16,7 @@ async function use({document: item, workflow}) {
     if (!region) return;
     const markerEffect = documentUtils.getEffectByIdentifier(item, 'sanctumOfTheShepherd');
     if (!markerEffect) return Logging.addMacroWarning('CPR', 'sanctum-of-the-shepherd', 'CHRISPREMADES.Macros.Modern.SanctumOfTheShepherd.MissingEffect', {notify: 'warn'});
-    const candidates = Array.from(workflow.targets).filter(token => token.actor && token !== workflow.token).map(token => token.document);
+    const candidates = workflow.targets.documents.filter(token => token.actor && token !== workflow.tokenDocument);
     let chosen = [];
     if (candidates.length) {
         const max = Math.max(1, rollUtils.rollDiceSync(String(automationUtils.getConfigValue(item, 'creatures')), {document: workflow.activity}).total);

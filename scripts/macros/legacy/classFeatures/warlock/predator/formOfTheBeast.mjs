@@ -15,8 +15,7 @@ async function naturalAttack({document, workflow}) {
         const part = itemData.system.activities[workflow.activity.id].damage.parts[0];
         part.denomination = Math.min(part.denomination + config.diceSteps, config.maxDenomination);
     }
-    workflow.item = itemUtils.syntheticItem(itemData, workflow.actor);
-    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
+    await workflowUtils.setItem(workflow, itemUtils.syntheticItem(itemData, workflow.actor));
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'transform') return;
@@ -57,7 +56,7 @@ async function attack({workflow}) {
     if (bestAbility === defaultAbility) return;
     const activityData = workflow.activity.toObject();
     activityData.attack.ability = bestAbility;
-    workflowUtils.setActivity(workflow, activityData);
+    await workflowUtils.setActivity(workflow, activityData);
 }
 export const formOfTheBeastWarlock = {
     name: 'Form of the Beast',

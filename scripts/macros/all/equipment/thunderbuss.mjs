@@ -1,7 +1,7 @@
 import {actorUtils} from '../../../proxy.mjs';
 async function rune({workflow}) {
     if (workflow.activity.identifier !== 'thunderbuss-rune') return;
-    await Promise.all(Array.from(workflow.failedSaves, token => actorUtils.setReactionUsed(token.actor)));
+    await Promise.all(workflow.failedSaves.documents.map(token => actorUtils.setReactionUsed(token.actor)));
 }
 export const thunderbuss = {
     name: 'Thunderbuss',

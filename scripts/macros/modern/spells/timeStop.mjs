@@ -25,7 +25,7 @@ async function deleted({document: effect}) {
     if (ids.length) await documentUtils.deleteEmbeddedDocuments(game.combat, 'Combatant', ids);
 }
 async function affectOther({document: effect, workflow}) {
-    if (!workflow.targets.size || !Array.from(workflow.targets).some(token => token !== workflow.token)) return;
+    if (!workflow.targets.count || !workflow.targets.documents.some(token => token !== workflow.tokenDocument)) return;
     if (!await dialogUtils.confirm(effect.name, 'CHRISPREMADES.Macros.Modern.TimeStop.Affect', {userId: queryUtils.gmID()})) return;
     await documentUtils.deleteDocument(effect);
 }

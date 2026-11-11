@@ -1,7 +1,7 @@
 import cprConstants from '../../../constants.mjs';
 import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../proxy.mjs';
 async function use({document, workflow}) {
-    if (!workflow.targets.size) {
+    if (!workflow.targets.count) {
         Logging.addMacroWarning('CPR', 'dragons-breath', 'No target selected.');
         await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
@@ -18,7 +18,7 @@ async function use({document, workflow}) {
     part.number = workflowUtils.getCastLevel(workflow) + automationUtils.getConfigValue(document, 'bonusDice');
     part.denomination = Number(automationUtils.getConfigValue(document, 'dieSize').slice(1));
     part.types = [damageType];
-    for (const target of workflow.targets) {
+    for (const target of workflow.targets.documents) {
         const effect = documentUtils.getEffectByIdentifier(target.actor, 'dragonsBreath', {sourceActor: workflow.actor});
         if (!effect) {
             Logging.addMacroWarning('CPR', 'dragons-breath', 'Dragon\'s Breath effect missing from ' + target.name + '.', {notify: 'warn'});

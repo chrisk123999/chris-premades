@@ -6,7 +6,7 @@ export function resolveCastFormula(formula, castData) {
 }
 async function use({document, workflow}) {
     const activityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'activityId');
-    if (activityId != workflow.activity.id || !workflow.targets.size) return;
+    if (activityId != workflow.activity.id || !workflow.targets.count) return;
     const formula = resolveCastFormula(automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'formula'), workflow.castData);
     const totalTargets = (await rollUtils.rollDice(formula, {document: workflow.activity})).total;
     if (!totalTargets) return;
@@ -20,7 +20,7 @@ async function use({document, workflow}) {
     const reactionItemIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionItemIdentifiers');
     const reactionEffectIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionEffectIdentifiers');
     let remainingAttacks = totalTargets;
-    let validTargets = workflow.targets.map(token => token.document);
+    let validTargets = new Set(workflow.targets.documents);
     const utilityRollAsDamage = workflow.utilityRolls ? automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'utilityRollAsDamage') : false;
     if (utilityRollAsDamage) {
         let total = rollUtils.getRollsTotal(workflow.utilityRolls);
@@ -85,7 +85,7 @@ async function use({document, workflow}) {
                 const activityData = activityUtils.getDamageModifiedActivityData(attackActivity, {number: attacks, denomination: part?.denomination, bonus: part?.bonus});
                 const attackWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, workflow.item, [targetDoc], options);
                 for (let i = 0; i < attacks; i++) {
-                    if (animation?.macros?.attack) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted || !attackWorkflow?.hitTargets.size, ...animationOptions});
+                    if (animation?.macros?.attack && targetDoc.object) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted || !attackWorkflow?.hitTargets.count, ...animationOptions});
                 }
                 remainingAttacks -= attacks;
                 if (currentSkip && targetDoc.actor.system.attributes.hp.value <= 0) validTargets = validTargets.filter(t => t.id !== targetDoc.id);
@@ -103,7 +103,7 @@ async function use({document, workflow}) {
                 } else {
                     workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true, fast: true, ...options});
                 }
-                if (animation && animation.macros?.attack) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted || !workflow.hitTargets.size, ...animationOptions});
+                if (animation && animation.macros?.attack && targetDoc.object) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted || !workflow.hitTargets.count, ...animationOptions});
                 remainingAttacks--;
                 if (currentSkip && targetDoc.actor.system.attributes.hp.value <= 0) {
                     validTargets = validTargets.filter(t => t.id !== targetDoc.id);

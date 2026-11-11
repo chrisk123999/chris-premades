@@ -1,6 +1,7 @@
 import {animationUtils, workflowUtils} from '../../../proxy.mjs';
 function play(workflow) {
-    let target = workflow.targets.first();
+    let target = workflow.targets.tokens[0];
+    if (!target) return;
     if (workflowUtils.isAttackType(workflow, 'rangedAttack')) {
         let distance = {
             x: (workflow.token.center.x - target.center.x),

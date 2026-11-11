@@ -2,7 +2,7 @@ async function sendExtraRageEffects({document: item}) {
     return Array.from(item.system.activities);
 }
 async function attack({document: effect, macroClass: {identifier, source}, workflow}) {
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.documents[0];
     if (!target || target.actor.uuid === effect.actor.uuid) return;
     if (target.actor.flags[source]?.wildHeart?.['rage-lion']) return;
     workflow.tracker.disadvantage.add(identifier, effect.flags[source]?.lion?.name ?? effect.name);

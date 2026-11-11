@@ -15,7 +15,7 @@ async function reach({document, workflow}) {
     const hand = getHand(document);
     if (!hand) return;
     const range = automationUtils.getGenericConfigValue(document, 'cat', 'summon', 'followUpRange') || 5;
-    const outOfReach = Array.from(workflow.targets).filter(token => !tokenUtils.isWithinDistance(hand, token.document, range));
+    const outOfReach = workflow.targets.documents.filter(token => !token.object || !tokenUtils.isWithinDistance(hand, token, range));
     if (!outOfReach.length) return;
     await workflowUtils.removeTargets(workflow, outOfReach);
     Logging.addMacroWarning('CPR', 'maximilians-earthen-grasp', 'CHRISPREMADES.Macros.Legacy.MaximiliansEarthenGrasp.OutOfReach', {notify: true});
@@ -24,12 +24,12 @@ async function aim({workflow}) {
     if (workflow.activity.identifier !== 'maximilians-earthen-grasp-crush') return;
     const targetUuid = getGraspingEffect(workflow.actor)?.flags['chris-premades']?.maximiliansEarthenGrasp?.targetUuid;
     const target = targetUuid ? fromUuidSync(targetUuid) : undefined;
-    if (!target?.object) return Logging.addMacroWarning('CPR', 'maximilians-earthen-grasp', 'CHRISPREMADES.Macros.Legacy.MaximiliansEarthenGrasp.NoTarget', {notify: true});
-    await workflowUtils.updateTargets(workflow, [target.object]);
+    if (!target) return Logging.addMacroWarning('CPR', 'maximilians-earthen-grasp', 'CHRISPREMADES.Macros.Legacy.MaximiliansEarthenGrasp.NoTarget', {notify: true});
+    await workflowUtils.updateTargets(workflow, [target]);
 }
 async function grasp({document, workflow}) {
     if (workflow.activity.identifier !== 'maximilians-earthen-grasp-grasp') return;
-    const target = workflow.failedSaves.first();
+    const target = workflow.failedSaves.documents[0];
     if (!target) return;
     const targetEffect = documentUtils.getEffectByIdentifier(target.actor, 'maximiliansEarthenGraspRestrained', {multiple: true}).at(-1);
     if (!targetEffect) return Logging.addMacroWarning('CPR', 'maximilians-earthen-grasp', 'Restrained effect was not applied to the target.');
@@ -43,7 +43,7 @@ async function grasp({document, workflow}) {
         unhideActivities: ['maximilians-earthen-grasp-crush'],
         favoriteActivities: true
     });
-    genericUtils.setProperty(casterEffectData, 'flags.chris-premades.maximiliansEarthenGrasp.targetUuid', target.document.uuid);
+    genericUtils.setProperty(casterEffectData, 'flags.chris-premades.maximiliansEarthenGrasp.targetUuid', target.uuid);
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [casterEffectData], {parentEntity: concentrationEffect});
     if (!casterEffect) return;
@@ -54,7 +54,7 @@ async function animate({document, workflow}) {
     const crush = workflow.activity.identifier === 'maximilians-earthen-grasp-crush';
     if (!crush && workflow.activity.identifier !== 'maximilians-earthen-grasp-grasp') return;
     const hand = getHand(document);
-    const target = workflow.targets.first();
+    const target = workflow.targets.tokens[0];
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     if (!hand || !target || !animation?.macros?.play) return;
     await animation.macros.play(hand, target.document, {...options, crush, saved: !workflow.failedSaves.has(target)});

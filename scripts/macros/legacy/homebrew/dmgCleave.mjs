@@ -21,15 +21,15 @@ function leftoverDamage(details, hp) {
 }
 async function rollFinished(workflow) {
     const mode = game.settings.get('chris-premades', 'dmgCleave');
-    if (mode === 'off' || workflowUtils.getWorkflowProperty(workflow, 'dmgCleave') || !workflow.token || workflow.hitTargets.size !== 1 || !workflowUtils.isAttackType(workflow, 'meleeWeaponAttack')) return;
+    if (mode === 'off' || workflowUtils.getWorkflowProperty(workflow, 'dmgCleave') || !workflow.token || workflow.hitTargets.count !== 1 || !workflowUtils.isAttackType(workflow, 'meleeWeaponAttack')) return;
     const [entry] = workflow.damageList ?? [];
-    const target = workflow.hitTargets.first();
-    if (!entry || entry.newHP !== 0 || !(entry.oldHP > 0) || !target.actor) return;
+    const target = workflow.hitTargets.documents[0];
+    if (!entry || entry.newHP !== 0 || !(entry.oldHP > 0) || !target.actor || !target.object) return;
     if (mode === 'full' && entry.oldHP !== target.actor.system.attributes.hp.max) return;
     const damage = leftoverDamage(entry.damageDetail ?? [], entry.oldHP);
     if (!Object.values(damage).some(value => value > 0)) return;
     const range = workflowUtils.getRange(workflow) || 5;
-    const nearby = tokenUtils.findNearby(target.document, 5, {disposition: 'ally'}).filter(token => token.actor && tokenUtils.isWithinDistance(workflow.token.document, token, range));
+    const nearby = tokenUtils.findNearby(target, 5, {disposition: 'ally'}).filter(token => token.actor && tokenUtils.isWithinDistance(workflow.token.document, token, range));
     if (!nearby.length) return;
     const selection = await dialogUtils.selectTargetDialog(_loc('CHRISPREMADES.Settings.DmgCleave.Name'), _loc('CHRISPREMADES.Macros.Legacy.DmgCleave.Use'), nearby, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
     const next = selection?.result;

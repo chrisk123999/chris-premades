@@ -1,9 +1,9 @@
 import {actorUtils, automationUtils, documentUtils, Logging, workflowUtils} from '../../proxy.mjs';
 async function skipProne({document: activity, workflow}) {
     if (!automationUtils.getGenericConfigValue(activity, 'chris-premades', 'proneOnFail', 'skipProne')) return;
-    const proneTargets = Array.from(workflow.targets).filter(token => !token.actor || token.actor.statuses.has('prone') || actorUtils.checkTrait(token.actor, 'ci', 'prone'));
+    const proneTargets = workflow.targets.documents.filter(token => !token.actor || token.actor.statuses.has('prone') || actorUtils.checkTrait(token.actor, 'ci', 'prone'));
     if (!proneTargets.length) return;
-    if (proneTargets.length === workflow.targets.size) {
+    if (proneTargets.length === workflow.targets.count) {
         Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'All targets are already prone or immune to prone.');
         return true;
     }
@@ -13,7 +13,7 @@ async function macroConditions({workflow}) {
     workflowUtils.addMacroConditions(workflow, 'prone');
 }
 async function fail({workflow}) {
-    await Promise.all(workflow.failedSaves.map(async token => {
+    await Promise.all(workflow.failedSaves.documents.map(async token => {
         if (!token.actor) return;
         await actorUtils.applyConditions(token.actor, ['prone']);
     }));

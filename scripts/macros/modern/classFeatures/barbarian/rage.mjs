@@ -10,8 +10,8 @@ async function rageContinue({workflow}) {
 async function attackSave({document: rageEffect, workflow}) {
     const combatData = tokenUtils.getCombatData(workflow.token);
     if (!combatData.inCombat) return;
-    if (!workflow.targets.size || (workflow.activity.actionType !== 'save' && !workflowUtils.isAttackType(workflow, 'attack'))) return;
-    if (!workflow.targets.some(t => t.document.disposition !== workflow.token.document.disposition)) return;
+    if (!workflow.targets.count || (workflow.activity.actionType !== 'save' && !workflowUtils.isAttackType(workflow, 'attack'))) return;
+    if (!workflow.targets.documents.some(t => t.disposition !== workflow.tokenDocument.disposition)) return;
     await keepRageLegacy.utils.setTurn(combatData, rageEffect);
 }
 export const extendRage = {

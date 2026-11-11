@@ -8,7 +8,7 @@ async function turnEnd({document: effect, token}) {
     const activity = originActivity.item.system.activities.get(config.rollActivity);
     if (!activity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(effect), 'Save activity not found.', {notify: 'warn'});
     const workflow = await workflowUtils.syntheticActivityRoll(activity, [token]);
-    if (!workflow || workflow.failedSaves.size) return;
+    if (!workflow || workflow.failedSaves.count) return;
     await documentUtils.deleteDocument(effect);
 }
 /**

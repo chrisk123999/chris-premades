@@ -1,6 +1,6 @@
 import {actorUtils, automationUtils, constants, documentUtils, effectUtils, genericUtils, rollUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     let rollDamage = 0;
     const reduceByRoll = automationUtils.getGenericConfigValue(document, 'chris-premades', 'reduceMaxHP', 'reduceByRoll');
     const halfDamage = automationUtils.getGenericConfigValue(document, 'chris-premades', 'reduceMaxHP', 'halfDamage');
@@ -16,7 +16,7 @@ async function use({document, workflow}) {
     const checkSaves = automationUtils.getGenericConfigValue(document, 'chris-premades', 'reduceMaxHP', 'checkSaves');
     const removeOnSave = automationUtils.getGenericConfigValue(document, 'chris-premades', 'reduceMaxHP', 'removeOnSave');
     const damageTypes = automationUtils.getGenericConfigValue(document, 'chris-premades', 'reduceMaxHP', 'damageTypes');
-    await Promise.all(workflow.targets.map(async token => {
+    await Promise.all(workflow.targets.documents.map(async token => {
         let targetDamage = rollDamage;
         const effect = documentUtils.getEffectByIdentifier(token.actor, 'reduceMaxHP', {multiple: true}).find(effect => effect.origin === document.uuid);
         if (checkSaves && !workflow.failedSaves.has(token)) {

@@ -1,7 +1,7 @@
 import {workflowUtils} from '../../../../proxy.mjs';
 async function missed({document: activity, workflow}) {
-    if (!workflow.targets.size || workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'attack')) return;
-    await workflowUtils.syntheticActivityRoll(activity, [workflow.targets.first().document]);
+    if (!workflow.targets.count || workflow.hitTargets.count || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    await workflowUtils.syntheticActivityRoll(activity, [workflow.targets.documents[0]]);
 }
 export const studiedAttacks = {
     name: 'Studied Attacks',

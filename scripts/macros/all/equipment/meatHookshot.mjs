@@ -29,7 +29,7 @@ async function used({document: item, workflow}) {
         return;
     }
     if (identifier !== 'hookshot' || !workflow.token) return;
-    const target = workflow.hitTargets.first();
+    const target = workflow.hitTargets.tokens[0];
     if (!target?.actor) return;
     const token = workflow.token.document;
     const distance = tokenUtils.getDistance(token, target.document) - distanceUtils.fromGridSpaces(token.parent, 1);

@@ -2,10 +2,10 @@ import {automationUtils} from '../../../proxy.mjs';
 import {getTargetResults} from '../../generic/spellAnimation.mjs';
 function late({workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(workflow.item, 'animation');
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.tokens[0]?.document;
     if (!workflow.token || !targetToken || !animation?.macros?.play) return;
     const targets = getTargetResults(workflow);
-    animation.macros.play(workflow.token.document, targetToken.document, {...options, targets});
+    animation.macros.play(workflow.token.document, targetToken, {...options, targets});
 }
 export const hailOfThorns = {
     name: 'Hail of Thorns',

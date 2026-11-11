@@ -3,7 +3,8 @@ async function preChecks({workflow}) {
     const identifier = documentUtils.getIdentifier(workflow.activity);
     if (identifier === 'unarmed-strike') return;
     if (!['grapple', 'shove-prone', 'shove-push'].includes(identifier)) return;
-    if (await tokenUtils.grappleShoveSizeCheck(workflow.token.document, workflow.targets.first()?.document, identifier)) return;
+    const target = workflow.targets.documents[0];
+    if (!target || await tokenUtils.grappleShoveSizeCheck(workflow.token.document, target, identifier)) return;
     workflow.aborted = true;
     return true;
 }

@@ -1,9 +1,9 @@
 import {actorUtils, dialogUtils, documentUtils, effectUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function provoke({workflow}) {
-    for (const token of workflow.failedSaves) {
+    for (const token of workflow.failedSaves.documents) {
         const actor = token.actor;
         if (!actor || actor.statuses.has('incapacitated')) continue;
-        const victims = tokenUtils.findNearby(token.document, 5, {disposition: 'all'}).filter(other => other.disposition === token.document.disposition && other.actor !== actor);
+        const victims = token.object ? tokenUtils.findNearby(token, 5, {disposition: 'all'}).filter(other => other.disposition === token.disposition && other.actor !== actor) : [];
         const weapons = actor.items.filter(item => item.type === 'weapon' && item.system.activities.some(activity => activity.type === 'attack'));
         if (!actorUtils.hasUsedReaction(actor) && victims.length && weapons.length) {
             const userId = queryUtils.firstOwner(workflow.actor, true);

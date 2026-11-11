@@ -6,7 +6,7 @@ async function spare({document: item, workflow}) {
 }
 async function drain({workflow}) {
     if (workflow.activity.identifier !== 'wall-of-gloom-drain') return;
-    await Promise.all(Array.from(workflow.failedSaves, token => token.actor && actorUtils.addExhaustion(token.actor)));
+    await Promise.all(workflow.failedSaves.documents.map(token => token.actor && actorUtils.addExhaustion(token.actor)));
 }
 export const wallOfGloom = wallMacro({
     name: 'Wall of Gloom',

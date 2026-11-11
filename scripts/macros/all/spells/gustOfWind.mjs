@@ -6,16 +6,15 @@ function getRegion(item, scene) {
 }
 async function early({workflow}) {
     if (workflow.activity.identifier !== 'gust-of-wind-push' || !workflow.token) return;
-    const self = Array.from(workflow.targets).filter(token => token === workflow.token);
-    if (!self.length) return;
-    if (self.length === workflow.targets.size) {
+    if (!workflow.targets.has(workflow.token)) return;
+    if (workflow.targets.count === 1) {
         Logging.addMacroWarning('CPR', 'gust-of-wind', 'CHRISPREMADES.Macros.All.GustOfWind.SkipCaster');
         return true;
     }
-    await workflowUtils.removeTargets(workflow, self);
+    await workflowUtils.removeTargets(workflow, [workflow.tokenDocument]);
 }
 async function push(item, workflow, region) {
-    const tokens = Array.from(workflow.failedSaves).filter(token => token !== workflow.token && token.actor);
+    const tokens = workflow.failedSaves.tokens.filter(token => token !== workflow.token && token.actor);
     if (!tokens.length) return;
     const shape = region?.shapes[0];
     if (!shape) return Logging.addMacroWarning('CPR', 'gust-of-wind', 'CHRISPREMADES.Macros.All.GustOfWind.NoRegion');
@@ -39,7 +38,7 @@ async function use({document, workflow}) {
         return;
     }
     if (identifier !== 'gust-of-wind-push') return;
-    await push(document, workflow, getRegion(document, workflow.targets.first()?.document.parent));
+    await push(document, workflow, getRegion(document, workflow.targets.documents[0]?.parent));
 }
 export const gustOfWind = {
     name: 'Gust of Wind',

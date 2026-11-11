@@ -3,10 +3,10 @@ async function shockingGrasp({document: activity, macroClass: {identifier, sourc
     const effect = (activity.effects[0].effect ?? activity.item.effects.contents[0])?.toObject();
     if (!effect) return Logging.addMacroWarning(source, identifier, `"Cantrips" Shocking Grasp exited early due to a missing effect. (activity) ${activity.uuid}`);
     if (activity.actor.flags[source]?.raging) effect.duration.expiry = 'sourceStart';
-    await Promise.all(workflow.targets.map(t => effectUtils.createEffects(t.actor, [effect])));
+    await Promise.all(workflow.targets.documents.map(t => effectUtils.createEffects(t.actor, [effect])));
 }
 async function trueStrike({document: activity, macroClass: {identifier, source}, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (!activity.item.system.uses.value) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!combatUtils.isOwnTurn(workflow.token.document)) return;

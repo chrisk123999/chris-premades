@@ -12,8 +12,8 @@ async function saveCheckSkill({document: item, roll}) {
 async function attack({document: item, workflow}) {
     if (!workflow.attackRoll || !item.system.uses.value) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
-    if (workflow.targets.size !== 1) return;
-    const targetActor = workflow.targets.first().actor;
+    if (workflow.targets.count !== 1) return;
+    const targetActor = workflow.targets.documents[0].actor;
     if ((targetActor?.system.attributes.ac.value ?? Infinity) <= workflow.attackRoll.total) return;
     const selection = await dialogUtils.confirmUseForRollTotal(item, workflow.item.name, workflow.attackRoll.total);
     if (!selection) return;

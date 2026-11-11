@@ -3,7 +3,7 @@ async function use({document: item, workflow}) {
     if (!workflow.token) return;
     const token = workflow.token.document;
     const reverseCover = workflow.targets.has(workflow.token);
-    const selected = Array.from(workflow.targets).map(target => target.document).filter(target => target !== token);
+    const selected = workflow.targets.tokens.map(target => target.document).filter(target => target !== token);
     const targets = selected.length ? selected : token.parent.tokens.filter(target => target !== token && target.actor && tokenUtils.canSense(token, target));
     if (!targets.length) return;
     const content = reverseCover ? 'CHRISPREMADES.Macros.All.CheckCover.YourCover' : 'CHRISPREMADES.Macros.All.CheckCover.TargetCover';

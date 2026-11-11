@@ -7,10 +7,10 @@ function hasNotActed(combat, token) {
     return index > combat.turn;
 }
 async function attack({document: item, workflow}) {
-    if (!workflow.targets.size || !workflow.token || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (!workflow.targets.count || !workflow.token || !workflowUtils.isAttackType(workflow, 'attack')) return;
     const combat = workflow.token.document.combatant?.combat;
     if (!combat || combat.round !== 1) return;
-    const targetToken = workflow.targets.first().document;
+    const targetToken = workflow.targets.documents[0];
     if (!hasNotActed(combat, targetToken)) return;
     workflow.tracker.advantage.add('assassinate', item.name);
 }

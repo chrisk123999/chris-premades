@@ -7,7 +7,7 @@ async function turnStart({document: item, round}) {
 }
 async function damage({document: item, workflow, token}) {
     if (!item.system.uses.value) return;
-    if (workflow.hitTargets.size !== 1) return;
+    if (workflow.hitTargets.count !== 1) return;
     if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'dread-ambusher-strike');
     if (!activity?.uses.value) return;
@@ -17,7 +17,7 @@ async function damage({document: item, workflow, token}) {
             await workflowUtils.completeActivityUse(activity, [], {fast: true});
             workflowUtils.setWorkflowProperty(workflow, 'dreadAmbusher.used', true);
         });
-    bonus.targets = [workflow.hitTargets.first().document];
+    bonus.targets = [workflow.hitTargets.documents[0]];
     return bonus;
 }
 async function late({workflow}) {
@@ -38,7 +38,8 @@ async function late({workflow}) {
     else if (selection === 'massFear') await massFear(workflow, stalkersFlurry);
 }
 async function suddenStrike(workflow, stalkersFlurry) {
-    const targetToken = workflow.hitTargets.first().document;
+    const targetToken = workflow.hitTargets.tokens[0]?.document;
+    if (!targetToken) return;
     const nearTarget = tokenUtils.findNearby(targetToken, automationUtils.getConfigValue(stalkersFlurry, 'suddenStrikeRange'), {disposition: 'ally'});
     const candidates = tokenUtils.findNearby(workflow.token.document, workflowUtils.getRange(workflow), {disposition: 'enemy'})
         .filter(candidate => candidate !== targetToken && nearTarget.includes(candidate));
@@ -52,7 +53,9 @@ async function massFear(workflow, stalkersFlurry) {
     if (!activity) return;
     const range = automationUtils.getConfigValue(stalkersFlurry, 'range');
     const includeSelf = automationUtils.getConfigValue(stalkersFlurry, 'includeSelf');
-    const targets = tokenUtils.findNearby(workflow.hitTargets.first().document, range, {includeToken: true})
+    const targetToken = workflow.hitTargets.tokens[0]?.document;
+    if (!targetToken) return;
+    const targets = tokenUtils.findNearby(targetToken, range, {includeToken: true})
         .filter(target => includeSelf || target.actor !== workflow.actor);
     if (!targets.length) return Logging.addMacroWarning('CPR', 'dread-ambusher', 'CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {notify: 'info'});
     await workflowUtils.completeActivityUse(activity, targets);

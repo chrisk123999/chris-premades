@@ -13,7 +13,7 @@ async function endSpell(sourceEffect) {
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'compelled-duel') return;
     playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation'));
-    if (!workflow.failedSaves.size) {
+    if (!workflow.failedSaves.count) {
         await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }
@@ -22,20 +22,20 @@ async function use({document, workflow}) {
     const targetEffect = documentUtils.getEffectByIdentifier(document, 'compelledDuelTarget');
     if (!sourceEffect || !targetEffect) return Logging.addMacroWarning('CPR', 'compelled-duel', 'Compelled Duel effects missing from item.', {notify: 'warn'});
     const sourceEffectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {parentEntity: concentrationEffect, activityUuid: workflow.activity.uuid});
-    genericUtils.setProperty(sourceEffectData, 'flags.chris-premades.compelledDuel.targets', Array.from(workflow.failedSaves, token => token.document.uuid));
+    genericUtils.setProperty(sourceEffectData, 'flags.chris-premades.compelledDuel.targets', workflow.failedSaves.uuids);
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [sourceEffectData]);
     if (!casterEffect) return;
     const targetEffectData = documentUtils.getEffectData(workflow.activity, targetEffect.id, {parentEntity: casterEffect, activityUuid: workflow.activity.uuid});
     genericUtils.setProperty(targetEffectData, 'flags.chris-premades.compelledDuel.sourceUuid', workflow.token?.document.uuid);
-    await Promise.all(Array.from(workflow.failedSaves, token => effectUtils.createEffects(token.actor, [targetEffectData])));
+    await Promise.all(workflow.failedSaves.documents.map(token => effectUtils.createEffects(token.actor, [targetEffectData])));
 }
 async function sourceRoll({document: effect, workflow}) {
-    if (!workflow.token || !workflow.targets.size) return;
+    if (!workflow.token || !workflow.targets.count) return;
     const isAttack = workflowUtils.isAttackType(workflow, 'attack');
     if (!isAttack && workflow.item?.type !== 'spell') return;
     const targetUuids = getDuelData(effect).targets;
-    const others = Array.from(workflow.targets).filter(token => !targetUuids.includes(token.document.uuid));
-    const broken = isAttack ? others.length : others.some(token => tokenUtils.isEnemy(workflow.token.document, token.document));
+    const others = workflow.targets.documents.filter(token => !targetUuids.includes(token.uuid));
+    const broken = isAttack ? others.length : others.some(token => tokenUtils.isEnemy(workflow.token.document, token));
     if (!broken) return;
     await endSpell(effect);
 }
@@ -48,9 +48,9 @@ async function turnEnd({document: effect, token}) {
     await endSpell(effect);
 }
 function attack({document: effect, workflow}) {
-    if (workflow.targets.size !== 1) return;
+    if (workflow.targets.count !== 1) return;
     const sourceUuid = getDuelData(effect).sourceUuid;
-    if (!sourceUuid || workflow.targets.first().document.uuid === sourceUuid) return;
+    if (!sourceUuid || workflow.targets.uuids[0] === sourceUuid) return;
     workflow.tracker.disadvantage.add('compelled-duel', effect.name);
 }
 async function moved({document: effect, token, action, teleport}) {
@@ -70,7 +70,7 @@ async function moved({document: effect, token, action, teleport}) {
         if (!activity) return Logging.addMacroWarning('CPR', 'compelled-duel', 'Moved activity missing from item.', {notify: 'warn'});
         const saveWorkflow = await workflowUtils.syntheticActivityRoll(activity, [token], {spellSlot: false});
         if (!saveWorkflow) return;
-        if (!saveWorkflow.failedSaves.size) {
+        if (!saveWorkflow.failedSaves.count) {
             if (combatData.inCombat) await documentUtils.setFlag(effect, 'chris-premades', 'compelledDuel.stamps', combatUtils.addTurnStamp(stamps, token.id, combatData));
             return;
         }

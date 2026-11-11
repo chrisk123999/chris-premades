@@ -32,7 +32,7 @@ function recoil({document: item, workflow}) {
     const token = workflow.token.document;
     if (!combatUtils.isStampedThisTurn(recoilStamps(workflow.actor), token.id, tokenUtils.getCombatData(token))) return;
     const range = itemUtils.getRange(item).value ?? 0;
-    if (!workflow.targets.some(target => !tokenUtils.isWithinDistance(token, target.document, range))) return;
+    if (!workflow.targets.tokens.some(target => !tokenUtils.isWithinDistance(token, target.document, range))) return;
     genericUtils.notify('CHRISPREMADES.Macros.Generic.Firearm.Recoil', {type: 'warn', format: {item: item.name}});
     workflow.aborted = true;
     return true;
@@ -57,8 +57,8 @@ async function fired({document: item, workflow}) {
     await Promise.all([stamp, effectUtils.createEffects(workflow.actor, [effectData])]);
 }
 async function explosive({document: item, workflow}) {
-    if (!item.system.properties.has('explosive') || workflow.activity.type !== 'attack' || !workflow.hitTargets.size || workflowUtils.getWorkflowProperty(workflow, 'firearmMisfire')) return;
-    const targets = new Set(Array.from(workflow.hitTargets).flatMap(token => tokenUtils.findNearby(token.document, 5, {disposition: 'all', includeIncapacitated: true})).filter(nearby => nearby.actor && !workflow.hitTargets.has(nearby.object)));
+    if (!item.system.properties.has('explosive') || workflow.activity.type !== 'attack' || !workflow.hitTargets.count || workflowUtils.getWorkflowProperty(workflow, 'firearmMisfire')) return;
+    const targets = new Set(workflow.hitTargets.tokens.flatMap(token => tokenUtils.findNearby(token.document, 5, {disposition: 'all', includeIncapacitated: true})).filter(nearby => nearby.actor && !workflow.hitTargets.has(nearby)));
     if (!targets.size) return;
     const itemData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'firearm-explosive', {object: true, translate: 'CHRISPREMADES.Macros.Generic.Firearm.Properties.Explosive'});
     await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, Array.from(targets));

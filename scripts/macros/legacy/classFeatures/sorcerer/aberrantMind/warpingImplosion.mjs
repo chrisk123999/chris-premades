@@ -21,7 +21,7 @@ async function early({document, config, dialog}) {
 async function use({document, workflow}) {
     if (!workflow.token) return;
     const sourceToken = workflow.token.document;
-    const pulled = Array.from(workflow.failedSaves, target => target.document ?? target)
+    const pulled = workflow.failedSaves.tokens.map(target => target.document)
         .map(targetToken => ({targetToken, distance: tokenUtils.getDistance(sourceToken, targetToken)}))
         .sort((a, b) => a.distance - b.distance);
     for (const {targetToken, distance} of pulled) {

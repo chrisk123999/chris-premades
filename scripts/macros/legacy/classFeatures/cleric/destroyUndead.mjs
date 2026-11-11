@@ -2,16 +2,16 @@ import {actorUtils, animationUtils, automationUtils, rollUtils, workflowUtils} f
 // TODO selectAnimation config input shows up in the catkit, but choices are saved as if on a generic feature
 //      this prevents fetching animation settings with helpers
 async function checkCR({workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const config = automationUtils.getConfigValues(workflow.item, ['animation', 'scaleFormula']);
     // const animation = automationUtils.getResolvedAnimation(workflow.item, 'animation', config.animation);
     // const playAnimation = animation && animationUtils.sequencerCheck() && animationUtils.jb2aCheck();
     const cr = (await rollUtils.rollDice(config.scaleFormula || '0', {document: workflow.activity}))?.total ?? 0;
     const targets = [];
-    for (const t of workflow.targets) {
+    for (const t of workflow.targets.documents) {
         if (!t.actor) continue;
         if (actorUtils.getCR(t.actor) > cr) continue;
-        targets.push(t.document);
+        targets.push(t);
         // if (playAnimation) animation.macros.play(t.document/*, {color}*/);
     }
     if (!targets.length) return true;

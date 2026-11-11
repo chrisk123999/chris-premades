@@ -1,6 +1,6 @@
 import {automationUtils, documentUtils, effectUtils, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function applies(workflow) {
-    return workflow.targets.size === 1 && workflow.item.type === 'weapon' && workflowUtils.isAttackType(workflow, 'rangedAttack');
+    return workflow.targets.count === 1 && workflow.item.type === 'weapon' && workflowUtils.isAttackType(workflow, 'rangedAttack');
 }
 function prime({workflow}) {
     if (applies(workflow)) genericUtils.setProperty(workflow, 'workflowOptions.autoRollDamage', 'always');
@@ -13,14 +13,14 @@ async function replace({document: effect, workflow}) {
 }
 async function burst({document: effect, workflow}) {
     if (!applies(workflow)) return;
-    const target = workflow.targets.first();
-    if (!workflow.hitTargets.size) await workflowUtils.applyDamage([target.document], Math.floor((workflow.damageRolls?.[0]?.total ?? 0) / 2), 'lightning');
+    const target = workflow.targets.documents[0];
+    if (!workflow.hitTargets.count) await workflowUtils.applyDamage([target], Math.floor((workflow.damageRolls?.[0]?.total ?? 0) / 2), 'lightning');
     const item = effectUtils.getOriginActivitySync(effect)?.item;
     const activity = item ? itemUtils.getActivityByIdentifier(item, 'lightning-arrow-burst') : undefined;
-    const nearby = tokenUtils.findNearby(target.document, 10);
-    if (item) {
+    const nearby = target.object ? tokenUtils.findNearby(target, 10) : [];
+    if (item && target.object) {
         const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
-        animation?.macros?.play?.(workflow.token?.document, target.document, options);
+        animation?.macros?.play?.(workflow.token?.document, target, options);
     }
     await documentUtils.deleteDocument(effect);
     if (activity && nearby.length) await workflowUtils.syntheticActivityRoll(activity, nearby, {atLevel: documentUtils.getSavedCastData(effect).castLevel || undefined, consumeUsage: false, consumeResources: false, spellSlot: false});

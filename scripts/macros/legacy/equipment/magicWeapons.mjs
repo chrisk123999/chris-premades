@@ -1,7 +1,7 @@
 import {actorUtils, activityUtils, dialogUtils, documentUtils, itemUtils, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function slewTarget(workflow) {
     const [entry] = workflow.damageList ?? [];
-    return workflow.hitTargets.size === 1 && entry && !entry.newHP && entry.oldHP ? entry : undefined;
+    return workflow.hitTargets.count === 1 && entry && !entry.newHP && entry.oldHP ? entry : undefined;
 }
 async function bloodSpearKill({workflow}) {
     if (!slewTarget(workflow)) return;
@@ -9,7 +9,7 @@ async function bloodSpearKill({workflow}) {
     await workflowUtils.applyDamage([workflow.token.document], roll.total, 'temphp');
 }
 async function crystalHeal({document: item, workflow}) {
-    if (workflow.activity.type !== 'attack' || workflow.hitTargets.size !== 1 || !item.system.uses.value) return;
+    if (workflow.activity.type !== 'attack' || workflow.hitTargets.count !== 1 || !item.system.uses.value) return;
     const radiant = workflow.damageList?.[0]?.damageDetail?.filter(detail => detail.type === 'radiant').reduce((total, detail) => total + detail.value, 0);
     const heal = itemUtils.getActivityByIdentifier(item, 'crystal-blade-heal');
     if (!radiant || !heal || !await dialogUtils.confirmUseItem(heal)) return;
@@ -24,13 +24,15 @@ async function crystalLight({document: item, activity}) {
     if (current.flags.cat.identifier === lights[activity.identifier]) return true;
 }
 async function dragonsWrathBurst({document: item, workflow}) {
-    if (workflow.activity.type !== 'attack' || workflow.hitTargets.size !== 1 || workflow.d20AttackRoll !== 20) return;
+    if (workflow.activity.type !== 'attack' || workflow.hitTargets.count !== 1 || workflow.d20AttackRoll !== 20) return;
     const burst = itemUtils.getActivityByIdentifier(item, 'dragons-wrath-critical');
-    const nearby = tokenUtils.findNearby(workflow.hitTargets.first().document, 5, {disposition: 'ally'}).filter(token => token.actor);
+    const target = workflow.hitTargets.documents[0];
+    if (!target.object) return;
+    const nearby = tokenUtils.findNearby(target, 5, {disposition: 'ally'}).filter(token => token.actor);
     if (burst && nearby.length) await workflowUtils.syntheticActivityRoll(burst, nearby, {consumeUsage: false, consumeResources: false});
 }
 async function grovelthrashDamage({document: item, workflow}) {
-    if (workflow.activity.type !== 'attack' || workflow.hitTargets.size !== 1) return;
+    if (workflow.activity.type !== 'attack' || workflow.hitTargets.count !== 1) return;
     if (documentUtils.getIdentifier(item) === 'grovelthrash-exalted' && actorUtils.isBloodied(workflow.actor)) await workflowUtils.bonusDamage(workflow, '2d6', {damageType: 'bludgeoning'});
     if (!await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.Legacy.Grovelthrash.Damage'))) return;
     await workflowUtils.bonusDamage(workflow, '2d6', {damageType: 'bludgeoning'});
@@ -38,7 +40,7 @@ async function grovelthrashDamage({document: item, workflow}) {
     await workflowUtils.applyDamage([workflow.token.document], roll.total, 'psychic');
 }
 async function grovelthrashReaction({document: item, targetToken: token, workflow, ditem}) {
-    if (!item.system.uses.value || actorUtils.hasUsedReaction(item.actor) || !ditem.newHP || !workflow.token) return;
+    if (!item.system.uses.value || actorUtils.hasUsedReaction(item.actor) || !ditem.newHP || !workflow.token || !token.object) return;
     if (!tokenUtils.isWithinDistance(token, workflow.token.document, 30) || !tokenUtils.canSee(token, workflow.token.document)) return;
     const dealt = ditem.damageDetail.reduce((total, detail) => total + detail.value, 0);
     const reaction = itemUtils.getActivityByIdentifier(item, 'grovelthrash-reaction');

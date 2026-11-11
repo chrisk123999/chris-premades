@@ -3,7 +3,7 @@ async function contest(workflow, target, targetAbilities) {
     return await rollUtils.contestedRoll({sourceToken: workflow.token.document, targetToken: target.document, sourceRollType: 'skill', targetRollType: 'skill', sourceAbilities: ['ath'], targetAbilities, message: true, flavor: workflow.item.name});
 }
 async function forceful({workflow}) {
-    const target = workflow.targets.first();
+    const target = workflow.targets.tokens[0];
     if (!target || !workflow.token || await contest(workflow, target, ['ath']) <= 0) return;
     const summoner = summonUtils.getSummonData(workflow.actor)?.ownerToken ?? workflow.token.document;
     const mod = actorUtils.getSavedCastData(workflow.actor)?.mod ?? 0;
@@ -14,14 +14,14 @@ async function forceful({workflow}) {
     await Promise.all([target.document, workflow.token.document].map(token => tokenUtils.slideToken(token, {ray, distance})));
 }
 async function grasp({workflow}) {
-    const target = workflow.targets.first();
+    const target = workflow.targets.tokens[0];
     if (!target?.actor || !workflow.token) return;
     if (actorUtils.getSize(target.actor) > CONFIG.DND5E.actorSizes.huge.numerical) return Logging.addMacroWarning('CPR', 'bigbys-hand', 'CHRISPREMADES.Macros.Legacy.BigbysHand.Big', {notify: 'info'});
     if (await contest(workflow, target, ['ath', 'acr']) <= 0) return;
     await tokenUtils.grapple(workflow.token.document, target.document, {contest: false, checkSize: false});
 }
 async function interpose({workflow}) {
-    const target = workflow.targets.first();
+    const target = workflow.targets.documents[0];
     if (!target?.actor) return;
     const previous = effectUtils.getSceneEffects(canvas.scene, 'bigbysHandInterposed', {origin: workflow.actor});
     await Promise.all(previous.map(effect => documentUtils.deleteDocument(effect)));
@@ -44,8 +44,8 @@ async function use({workflow}) {
 async function crush({workflow}) {
     if (workflow.activity.identifier !== 'grasping-hand-crush' || !workflow.token) return;
     const target = tokenUtils.getGrappled(workflow.token.document)[0];
-    if (target?.object) {
-        await workflowUtils.updateTargets(workflow, [target.object]);
+    if (target) {
+        await workflowUtils.updateTargets(workflow, [target]);
         return;
     }
     Logging.addMacroWarning('CPR', 'bigbys-hand', 'CHRISPREMADES.Macros.Legacy.BigbysHand.NoGrapple', {notify: 'info'});
@@ -56,7 +56,7 @@ function getSummoner(effect) {
     return hand ? summonUtils.getSummonData(hand)?.owner : undefined;
 }
 async function cover({document: effect, workflow}) {
-    const target = workflow.targets.first()?.actor;
+    const target = workflow.targets.documents[0]?.actor;
     if (!target || target !== getSummoner(effect)) return;
     const effectData = documentUtils.getBaseEffectData(null, {
         name: _loc('CHRISPREMADES.Macros.Legacy.BigbysHand.HalfCover'),
@@ -69,7 +69,7 @@ async function cover({document: effect, workflow}) {
     await effectUtils.createEffects(target, [effectData]);
 }
 async function uncover({document: effect, workflow}) {
-    const target = workflow.targets.first()?.actor;
+    const target = workflow.targets.documents[0]?.actor;
     const cover = target ? documentUtils.getEffectByIdentifier(target, 'bigbysHandCover') : undefined;
     if (cover?.origin === effect.uuid) await documentUtils.deleteDocument(cover);
 }

@@ -1,6 +1,6 @@
 import {automationUtils, constants, documentUtils, effectUtils, rollUtils} from '../../../proxy.mjs';
 async function drink({workflow}) {
-    const actor = (workflow.targets.first() ?? workflow.token)?.actor ?? workflow.actor;
+    const actor = (workflow.targets.documents[0] ?? workflow.tokenDocument)?.actor ?? workflow.actor;
     const config = automationUtils.getConfigValues(workflow.item, configKeys);
     await effectUtils.createItemEffect(actor, workflow.item, 'giantSizeEffect1', {config, changeValues: {'system.abilities.str.value': String(config.strength), 'system.traits.size': config.size}});
 }

@@ -17,7 +17,7 @@ async function preChecks({activity, config, macroClass: {identifier}}) {
     }
     const prefetched = workflowUtils.getWorkflowProperty(config.workflow, 'choiceRemoveCondition');
     if (prefetched?.length) {
-        const refetched = prefetched.map(e => activity.actor.effects.get(e._id)).filter(e => e instanceof ActiveEffect.implementation);
+        const refetched = prefetched.filter(uuid => fromUuidSync(uuid, {strict: false}) instanceof ActiveEffect.implementation);
         workflowUtils.setWorkflowProperty(config.workflow, 'choiceRemoveCondition', refetched);
         return;
     }
@@ -26,7 +26,7 @@ async function preChecks({activity, config, macroClass: {identifier}}) {
         Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No removable conditions on actor.');
         return true;
     }
-    workflowUtils.setWorkflowProperty(config.workflow, 'choiceRemoveCondition', effects);
+    workflowUtils.setWorkflowProperty(config.workflow, 'choiceRemoveCondition', effects?.map(effect => effect.uuid));
 }
 async function removeEffects(actor, selected) {
     const exhaustionId = CONFIG.ActiveEffect.documentClass.ID.EXHAUSTION;
@@ -65,9 +65,9 @@ async function reactionRemove(item, actor, reactionConditions) {
 }
 async function remove({workflow, macroClass: {identifier}}) {
     const config = automationUtils.getGenericConfigValues(workflow.activity, 'chris-premades', identifier, configKeys);
-    const actor = config.affects === 'target' ? workflow.targets.first()?.actor : workflow.actor;
+    const actor = config.affects === 'target' ? workflow.targets.documents[0]?.actor : workflow.actor;
     if (!actor) return;
-    const conditions = config.affects === 'target' ? getConditions(workflow.activity, identifier, actor) : workflowUtils.getWorkflowProperty(workflow, 'choiceRemoveCondition');
+    const conditions = config.affects === 'target' ? getConditions(workflow.activity, identifier, actor) : workflowUtils.getWorkflowProperty(workflow, 'choiceRemoveCondition')?.map(uuid => fromUuidSync(uuid, {strict: false})).filter(Boolean);
     if (conditions?.length) await chooseConditions(workflow, actor, conditions, config);
     await reactionRemove(workflow.item, actor, config.reactionConditions);
 }
@@ -75,7 +75,7 @@ async function rollFeature({document: activity, macroClass: {identifier}}) {
     const conditions = getConditions(activity, identifier);
     if (!conditions?.length) return;
     const options = {};
-    workflowUtils.setWorkflowProperty(options, 'choiceRemoveCondition', conditions);
+    workflowUtils.setWorkflowProperty(options, 'choiceRemoveCondition', conditions.map(effect => effect.uuid));
     await workflowUtils.syntheticActivityRoll(activity, [], {options, userId: queryUtils.firstOwner(activity.actor, true)});
 }
 /**

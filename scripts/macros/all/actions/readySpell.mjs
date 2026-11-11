@@ -64,7 +64,7 @@ async function release({document: activity, workflow}) {
         genericUtils.notify('CHRISPREMADES.Macros.All.ReadySpell.NotReadied', {type: 'warn'});
         return;
     }
-    await cast(workflow.actor, effect, Array.from(workflow.targets).map(token => token.document ?? token), game.user.id);
+    await cast(workflow.actor, effect, workflow.targets.documents, game.user.id);
 }
 async function turnStart({document: effect}) {
     const readied = effect.flags['chris-premades']?.readySpell;

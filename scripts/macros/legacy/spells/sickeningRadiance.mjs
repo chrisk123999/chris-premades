@@ -2,7 +2,7 @@ import {actorUtils, documentUtils, effectUtils, genericUtils} from '../../../pro
 async function damaged({workflow}) {
     if (workflow.activity.identifier !== 'sickening-radiance-damage') return;
     const concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    await Promise.all(Array.from(workflow.failedSaves, async token => {
+    await Promise.all(workflow.failedSaves.documents.map(async token => {
         const actor = token.actor;
         if (!actor) return;
         const exhaustion = actor.system.attributes.exhaustion ?? 0;

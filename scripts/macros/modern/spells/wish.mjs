@@ -28,7 +28,7 @@ function hasReduction(effect) {
 }
 async function instantHealth({document, workflow}) {
     const conditions = automationUtils.getConfigValue(document, 'instantHealthConditions');
-    const tokens = workflow.targets.size ? Array.from(workflow.targets) : [workflow.token];
+    const tokens = workflow.targets.count ? workflow.targets.documents : [workflow.tokenDocument];
     await Promise.all(tokens.map(async token => {
         const actor = token.actor;
         const effects = new Set(actorUtils.getStatusSources(actor, conditions.filter(condition => condition !== 'exhaustion')) ?? []);
@@ -40,24 +40,24 @@ async function instantHealth({document, workflow}) {
     }));
 }
 async function resistance({document, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const types = Object.keys(CONFIG.DND5E.damageTypes).filter(type => !['midi-none', 'none'].includes(type));
     const damageType = await dialogUtils.selectDamageType(types, document.name, 'CHRISPREMADES.Generic.SelectDamageType');
     if (!damageType) return;
     const effectData = documentUtils.getEffectData(document, documentUtils.getEffectByIdentifier(document, 'wishResistance')?.id);
     if (!effectData) return Logging.addMacroWarning('CPR', 'wish', 'Wish: Resistance effect missing from item.', {notify: 'warn'});
     effectData.system.changes[0].value = damageType;
-    await Promise.all(Array.from(workflow.targets, token => effectUtils.createEffects(token.actor, [genericUtils.duplicate(effectData)])));
+    await Promise.all(workflow.targets.documents.map(token => effectUtils.createEffects(token.actor, [genericUtils.duplicate(effectData)])));
 }
 async function spellImmunity({document, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const spell = await selectSpell();
     if (!spell) return;
     const effectData = documentUtils.getEffectData(workflow.activity, documentUtils.getEffectByIdentifier(document, 'wishImmunity')?.id);
     if (!effectData) return Logging.addMacroWarning('CPR', 'wish', 'Wish: Spell Immunity effect missing from item.', {notify: 'warn'});
     effectData.name += ' (' + spell.name + ')';
     genericUtils.setProperty(effectData, 'flags.chris-premades.wish', {spellName: spell.name, spellIdentifier: spell.system.identifier});
-    await Promise.all(Array.from(workflow.targets, token => effectUtils.createEffects(token.actor, [genericUtils.duplicate(effectData)])));
+    await Promise.all(workflow.targets.documents.map(token => effectUtils.createEffects(token.actor, [genericUtils.duplicate(effectData)])));
 }
 async function stress({document, workflow}) {
     if (['wish-duplicate-spell', 'wish-stress'].includes(workflow.activity.identifier)) return;
@@ -95,8 +95,7 @@ async function targeted({document: effect, workflow, sourceToken}) {
     if (workflow.item?.type !== 'spell') return;
     const {spellName, spellIdentifier} = effect.flags['chris-premades']?.wish ?? {};
     if (!spellName || (workflow.item.system.identifier !== spellIdentifier && workflow.item.name !== spellName)) return;
-    const target = Array.from(workflow.targets).find(token => token.document === sourceToken);
-    if (target) await workflowUtils.removeTargets(workflow, [target]);
+    if (workflow.targets.has(sourceToken)) await workflowUtils.removeTargets(workflow, [sourceToken]);
 }
 const activities = {
     'wish-duplicate-spell': duplicateSpell,

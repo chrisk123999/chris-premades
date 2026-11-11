@@ -1,6 +1,6 @@
 import {automationUtils, constants, dialogUtils, itemUtils, queryUtils, workflowUtils} from '../../../proxy.mjs';
 async function use({document: activity, workflow}) {
-    const target = workflow.targets.first();
+    const target = workflow.targets.documents[0];
     if (!workflow.token || !target?.actor) return;
     const item = activity.item;
     const userId = queryUtils.gmID();

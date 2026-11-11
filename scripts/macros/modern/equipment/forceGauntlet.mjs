@@ -3,7 +3,7 @@ async function push({workflow}) {
     const source = workflow.token?.document;
     if (!source) return;
     const sourceSize = actorUtils.getSize(workflow.actor);
-    for (const target of workflow.targets) {
+    for (const target of workflow.targets.tokens) {
         if (!target.actor) continue;
         const saved = !workflow.failedSaves.has(target) || actorUtils.getSize(target.actor) - 2 >= sourceSize;
         if (saved) await tokenUtils.slideToken(source, {sourceToken: target.document, distance: 10});

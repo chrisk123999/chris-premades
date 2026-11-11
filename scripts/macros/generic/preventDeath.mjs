@@ -1,9 +1,9 @@
 import {activityUtils, automationUtils, constants, dialogUtils, documentUtils, Logging, queryUtils, workflowUtils} from '../../proxy.mjs';
-async function damage({document, ditem, actor, targetToken, workflow}) {
+async function damage({document, ditem, targetToken, workflow}) {
     if (!ditem.isHit) return;
     const resultingHP = ditem.oldHP + (ditem.oldTempHP ?? 0) - ditem.totalDamage;
     if (resultingHP > 0) return;
-    const maxHP = actor.system.attributes.hp.effectiveMax;
+    const maxHP = document.actor.system.attributes.hp.effectiveMax;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'preventDeath', Object.keys(preventDeath.genericConfig));
     if (!config.killedOutright && resultingHP <= -maxHP) return;
     if (config.deathOnly && resultingHP > -maxHP) return;
@@ -18,7 +18,7 @@ async function damage({document, ditem, actor, targetToken, workflow}) {
             ? activityUtils.getSaveDCModifiedActivityData(saveActivity, (saveActivity.save.dc.value ?? 0) + ditem.totalDamage)
             : saveActivity.toObject();
         const saveWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, document, [targetToken]);
-        if (saveWorkflow?.failedSaves.size) return;
+        if (saveWorkflow?.failedSaves.count) return;
     }
     workflowUtils.preventZeroHP(ditem);
     if (config.display && !saveActivity) await workflowUtils.completeItemUse(document, [targetToken]);

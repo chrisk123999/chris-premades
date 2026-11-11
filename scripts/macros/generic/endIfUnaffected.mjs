@@ -1,8 +1,8 @@
 import {automationUtils, effectUtils} from '../../proxy.mjs';
 const unaffected = {
-    failedSave: workflow => !workflow.failedSaves.size,
-    noTargets: workflow => !workflow.targets.size,
-    noHits: workflow => !workflow.hitTargets.size
+    failedSave: workflow => !workflow.failedSaves.count,
+    noTargets: workflow => !workflow.targets.count,
+    noHits: workflow => !workflow.hitTargets.count
 };
 async function rollFinished({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'endIfUnaffected', configKeys);

@@ -10,7 +10,7 @@ async function formula({workflow}) {
     if (data.formula === workflow.activity.roll.formula) return;
     const activityData = workflow.activity.toObject();
     activityData.roll.formula = data.formula;
-    workflowUtils.setActivity(workflow, activityData);
+    await workflowUtils.setActivity(workflow, activityData);
 }
 async function doLongJump({workflow}) {
     workflow.rangeDetails.range = workflow.utilityRoll.total; // used in movementAnimation generic
@@ -25,7 +25,7 @@ async function doLongJump({workflow}) {
         const activity = itemUtils.getActivityByIdentifier(workflow.item, 'lowObstacle');
         if (!activity) return;
         const lowObstacle = await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document]);
-        if (lowObstacle.failedSaves.size) return workflow.aborted = true;
+        if (lowObstacle.failedSaves.count) return workflow.aborted = true;
     }
     if (selection.difficultTerrain) {
         const activity = itemUtils.getActivityByIdentifier(workflow.item, 'difficultTerrain');
@@ -33,7 +33,7 @@ async function doLongJump({workflow}) {
         const options = {};
         workflowUtils.addMacroConditions(options, 'prone');
         const difficultTerrain = await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {options});
-        if (difficultTerrain.failedSaves.size) await actorUtils.applyConditions(workflow.actor, ['prone']);
+        if (difficultTerrain.failedSaves.count) await actorUtils.applyConditions(workflow.actor, ['prone']);
     }
 }
 export const jump = {

@@ -1,8 +1,8 @@
 import {automationUtils, dialogUtils, distanceUtils, documentUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function late({document, workflow}) {
     if (documentUtils.getIdentifier(workflow.activity) !== automationUtils.getConfigValue(document, 'activityIdentifier')) return;
-    if (!workflow.hitTargets.size) return;
-    const validTargets = Array.from(workflow.hitTargets, token => token.document).filter(token => !tokenUtils.isWithinDistance(workflow.token.document, token, 5));
+    if (!workflow.hitTargets.count) return;
+    const validTargets = workflow.hitTargets.tokens.map(token => token.document).filter(token => !tokenUtils.isWithinDistance(workflow.token.document, token, 5));
     if (!validTargets.length) return;
     const selection = await dialogUtils.confirmUseItem(document);
     if (!selection) return;

@@ -3,7 +3,7 @@ async function push({document: activity, sourceToken, workflow}) {
     if (!activity.item.system.uses.value) return;
     if (actorUtils.hasUsedReaction(activity.actor)) return;
     if (!itemUtils.getEquipmentState(activity.item)) return;
-    if (!workflow.hitTargets.some(t => t.actor.uuid === activity.actor.uuid)) return;
+    if (!workflow.hitTargets.documents.some(t => t.actor?.uuid === activity.actor.uuid)) return;
     const config = automationUtils.getConfigValues(activity.item, Object.keys(repulsionShield.config));
     if (documentUtils.getIdentifier(activity.item) !== 'repulsion-shield') // is infusion, can't fetch config
         config.attackType ??= 'meleeAttack';
@@ -13,7 +13,7 @@ async function push({document: activity, sourceToken, workflow}) {
         if (actorUtils.getSize(workflow.actor) > limit) return;
     }
     const range = activityUtils.getRange(activity);
-    if (range && !tokenUtils.isWithinDistance(sourceToken, workflow.token.document, range)) return;
+    if (range && (!sourceToken.object || !tokenUtils.isWithinDistance(sourceToken, workflow.token.document, range))) return;
     if (!await dialogUtils.confirmUseItem(activity.item, {userId: queryUtils.firstOwner(activity.actor, true)})) return;
     await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document]);
 }

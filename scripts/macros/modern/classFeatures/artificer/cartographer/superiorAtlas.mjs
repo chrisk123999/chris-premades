@@ -19,21 +19,21 @@ async function safeHaven({document: effect, ditem, targetToken}) {
     const config = automationUtils.getConfigValues(feature, ['hitPoints', 'range']);
     const hitPoints = rollUtils.rollDiceSync(config.hitPoints, {document: feature}).total;
     if (!(hitPoints > 0)) return Logging.addMacroWarning('CPR', 'superior-atlas', `Safe Haven exited early, the hit point formula resolved to 0. (formula) ${config.hitPoints} (actor) ${creator.uuid}`);
-    const token = targetToken.document ?? targetToken;
+    const token = targetToken;
     const creatorToken = token.parent.tokens.find(sceneToken => sceneToken.actor === creator);
     const candidates = [...new Set([creatorToken, ...getMapHolders(atlas, token.parent)])].filter(candidate => candidate && candidate.actor !== holder);
     const userId = queryUtils.firstOwner(holder, true);
     let destination;
-    if (candidates.length) {
+    if (candidates.length && token.object) {
         const selection = await dialogUtils.selectTargetDialog(feature.name, _loc('CHRISPREMADES.Macros.Modern.SuperiorAtlas.Prompt', {hitPoints}), candidates, {skipDeadAndUnconscious: false, userId});
         destination = selection?.result;
-        if (!destination) return;
+        if (!destination?.object) return;
     } else if (!await dialogUtils.confirm(feature.name, _loc('CHRISPREMADES.Macros.Modern.SuperiorAtlas.Confirm', {hitPoints}), {userId})) return;
     workflowUtils.preventZeroHP(ditem, {targetHP: hitPoints});
     await documentUtils.deleteDocument(effect);
     const activity = itemUtils.getActivityByIdentifier(feature, 'safe-haven');
     if (activity) await workflowUtils.completeActivityUse(activity, [token], {consumeUsage: false, consumeResources: false});
-    if (!destination) return;
+    if (!destination?.object) return;
     const {animation, options} = automationUtils.getResolvedAnimation(feature, 'animation');
     await tokenUtils.teleportToken(token, {animation, options, range: config.range, centerpoint: destination.object.center, userId});
 }

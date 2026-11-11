@@ -32,12 +32,12 @@ async function onCast({document: item, workflow}) {
     if (selection === 'attack') {
         const activityData = activity.toObject();
         activityData.attack.bonus = activityData.attack.bonus ? activityData.attack.bonus + ' + ' + attackBonus : String(attackBonus);
-        workflowUtils.setActivity(workflow, activityData);
+        await workflowUtils.setActivity(workflow, activityData);
     } else if (selection === 'dc') {
         const activityData = activity.toObject();
         activityData.save.dc.calculation = '';
         activityData.save.dc.formula = String(activity.save.dc.value + dcBonus);
-        workflowUtils.setActivity(workflow, activityData);
+        await workflowUtils.setActivity(workflow, activityData);
     }
 }
 async function concentration({workflow}) {

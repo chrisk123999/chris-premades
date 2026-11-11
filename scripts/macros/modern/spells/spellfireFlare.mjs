@@ -1,6 +1,6 @@
 import {tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function attack({workflow}) {
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.tokens[0];
     if (!targetToken) return;
     const cover = tokenUtils.checkCover(workflow.token.document, targetToken.document, {activity: workflow.activity});
     if (![2, 5].includes(cover)) return;

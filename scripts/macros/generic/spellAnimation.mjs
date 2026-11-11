@@ -11,12 +11,12 @@ export function getTargetResult(workflow, token) {
     };
 }
 export function getTargetResults(workflow) {
-    return Array.from(workflow.targets, token => ({token: token.document, ...getTargetResult(workflow, token)}));
+    return workflow.targets.tokens.map(token => ({token: token.document, ...getTargetResult(workflow, token)}));
 }
 export function playTargetAnimations(workflow, {animation, options}, {includeSelf} = {}) {
-    if (!workflow.token || !workflow.targets.size || !animation?.macros?.play) return;
+    if (!workflow.token || !workflow.targets.count || !animation?.macros?.play) return;
     const damageType = getDamageType(workflow);
-    for (const token of workflow.targets) {
+    for (const token of workflow.targets.tokens) {
         const self = token.document === workflow.token.document;
         if (self && workflow.activity?.type === 'utility' && !includeSelf) continue;
         animation.macros.play(self ? undefined : workflow.token.document, token.document, {...options, damageType, ...getTargetResult(workflow, token)});

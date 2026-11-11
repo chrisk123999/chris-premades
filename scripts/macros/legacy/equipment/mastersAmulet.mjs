@@ -1,7 +1,7 @@
 import {actorUtils, automationUtils, genericUtils, itemUtils} from '../../../proxy.mjs';
 import {transferHalfDamage} from '../../modern/monsters/construct/shieldGuardian/bound.mjs';
 async function link({document: item, workflow}) {
-    const actor = workflow.targets.first()?.actor;
+    const actor = workflow.targets.documents[0]?.actor;
     if (!actor) return;
     if (!actorUtils.getItemByIdentifier(actor, 'bound')) return genericUtils.notify('CHRISPREMADES.Macros.Legacy.MastersAmulet.MissingBound', {type: 'warn'});
     if (!actor.prototypeToken.actorLink) genericUtils.notify('CHRISPREMADES.Macros.Legacy.MastersAmulet.Unlinked', {type: 'warn'});

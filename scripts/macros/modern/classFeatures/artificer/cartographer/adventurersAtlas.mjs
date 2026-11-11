@@ -15,17 +15,17 @@ async function requireTools({document: activity, workflow}) {
 }
 async function chooseTargets({document: activity, workflow}) {
     const max = Math.max(Number(activity.target.affects.count) || 2, 2);
-    const count = Array.from(workflow.targets).filter(token => token.actor).length;
+    const count = workflow.targets.documents.filter(token => token.actor).length;
     if (count >= 2 && count <= max) return;
     if (!workflow.token) return;
     const range = automationUtils.getConfigValue(activity.item, 'range');
     const nearby = tokenUtils.findNearby(workflow.token.document, range, {disposition: 'ally', includeToken: true}).filter(token => token.actor);
     const selection = await dialogUtils.selectTargetDialog(activity.item.name, _loc('CHRISPREMADES.Macros.Modern.AdventurersAtlas.Select', {maxAmount: max}), nearby, {type: 'multiple', maxAmount: max, skipDeadAndUnconscious: false});
     if (!selection) return true;
-    await workflowUtils.updateTargets(workflow, selection.result.map(token => token.object));
+    await workflowUtils.updateTargets(workflow, selection.result);
 }
 async function makeMaps({document: activity, workflow}) {
-    const targets = Array.from(workflow.targets).filter(token => token.actor);
+    const targets = workflow.targets.documents.filter(token => token.actor);
     if (targets.length < 2) return Logging.addMacroWarning('CPR', 'adventurers-atlas', 'CHRISPREMADES.Macros.Modern.AdventurersAtlas.TooFew', {notify: 'warn'});
     const item = activity.item;
     const oldSource = documentUtils.getEffectByIdentifier(workflow.actor, 'adventurersAtlasSource');

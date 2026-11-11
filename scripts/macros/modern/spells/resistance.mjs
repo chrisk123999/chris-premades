@@ -2,7 +2,7 @@ import {automationUtils, combatUtils, constants, dialogUtils, documentUtils, eff
 async function use({document, workflow}) {
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const cancel = () => effectUtils.endConcentration(workflow.actor, workflow.item);
-    if (!workflow.targets.size) return await cancel();
+    if (!workflow.targets.count) return await cancel();
     const damageTypes = automationUtils.getConfigValue(document, 'damageTypes');
     const damageType = await dialogUtils.selectDamageType(damageTypes, document.name, 'CHRISPREMADES.Generic.SelectDamageType');
     if (!damageType) return await cancel();
@@ -14,7 +14,7 @@ async function use({document, workflow}) {
         damageType,
         formula: automationUtils.getConfigValue(document, 'formula')
     });
-    await Promise.all(Array.from(workflow.targets, target => effectUtils.createEffects(target.actor, [effectData])));
+    await Promise.all(workflow.targets.documents.map(target => effectUtils.createEffects(target.actor, [effectData])));
 }
 async function reduce({document, ditem, targetToken, workflow}) {
     if (!ditem.isHit || ditem.totalDamage <= 0 || !workflow.damageRolls?.length) return;

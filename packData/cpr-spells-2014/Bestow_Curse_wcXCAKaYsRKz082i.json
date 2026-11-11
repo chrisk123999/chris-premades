@@ -685,7 +685,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
@@ -858,7 +858,7 @@
           {
             "key": "flags.midi-qol.OverTime",
             "type": "custom",
-            "value": "turn=start,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveMagic=true,saveRemove=false,rollMode=public,label=Bestow Curse: Waste Turn",
+            "value": "turn=start,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveMagic=true,saveCount=0+,rollMode=public,label=Bestow Curse: Waste Turn",
             "priority": 20
           }
         ]

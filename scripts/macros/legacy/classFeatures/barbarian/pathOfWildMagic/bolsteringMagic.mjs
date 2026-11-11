@@ -1,13 +1,13 @@
 import {actorUtils, dialogUtils, Logging, queryUtils} from '../../../../../proxy.mjs';
 async function oncePerRest({macroClass: {identifier, source}, workflow}) {
-    if (workflow.targets.some(t => !t.actor || t.actor.flags[source]?.bolsteringMagic)) {
+    if (workflow.targets.documents.some(t => !t.actor || t.actor.flags[source]?.bolsteringMagic)) {
         Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.BolsteringMagic', {notify: true});
         return workflow.aborted = true;
     }
 }
 async function regainSlot({macroClass: {source, identifier}, workflow}) {
     const maxLevel = workflow.utilityRoll.total;
-    for (const t of workflow.targets) {
+    for (const t of workflow.targets.documents) {
         const choice = (await dialogUtils.selectSpellSlots(
             t.actor,
             workflow.item.name,

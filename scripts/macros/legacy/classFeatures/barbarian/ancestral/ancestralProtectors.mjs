@@ -8,7 +8,7 @@ async function rage({data, document: activity, macroClass: {source}}) {
         genericUtils.setProperty(data.effectData, 'flags.cat.macros.roll', [macro]);
 }
 async function attack({document: effect, macroClass: {identifier, source}, workflow}) {
-    const target = workflow.hitTargets.first()?.document;
+    const target = workflow.hitTargets.documents[0];
     if (!target) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     const activity = await fromUuid(effect.flags[source]?.ancestral?.activity);
@@ -22,7 +22,7 @@ async function attack({document: effect, macroClass: {identifier, source}, workf
     await effectUtils.createEffects(target.actor, [effectData], {parentEntity: effect});
 }
 async function hinder({document: effect, macroClass: {source}, workflow}) {
-    const target = workflow.hitTargets.first()?.actor;
+    const target = workflow.hitTargets.documents[0]?.actor;
     if (!target || target.uuid === effect.flags[source]?.ancestral?.source) return;
     await effectUtils.createEffects(target, [{
         name: `${effect.name}: ${_loc('DND5E.TRAIT.Damage.Resistance.one')}`,

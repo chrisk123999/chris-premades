@@ -1,6 +1,6 @@
 import {actorUtils, automationUtils, documentUtils, effectUtils, genericUtils, rollUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
-    if (workflow.failedSaves.size) return;
+    if (workflow.failedSaves.count) return;
     const total = workflow.saveResults?.[0]?.total;
     const dc = automationUtils.getGenericConfigValue(document, 'chris-premades', 'hide', 'dc');
     if (dc && total < rollUtils.rollDiceSync(String(dc), {document}).total) return;

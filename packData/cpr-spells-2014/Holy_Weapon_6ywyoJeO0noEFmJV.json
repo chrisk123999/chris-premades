@@ -593,7 +593,7 @@
           {
             "key": "flags.midi-qol.OverTime",
             "type": "override",
-            "value": "turn=end,saveAbility=con,saveDC=$activity.dc,saveMagic=true,saveRemove=true,label=Holy Weapon: Burst",
+            "value": "turn=end,saveAbility=con,saveDC=$activity.dc,saveMagic=true,saveCount=1,label=Holy Weapon: Burst",
             "priority": 20
           }
         ],
@@ -802,7 +802,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

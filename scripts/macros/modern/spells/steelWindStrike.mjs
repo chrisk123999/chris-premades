@@ -1,7 +1,7 @@
 import {automationUtils, workflowUtils} from '../../../proxy.mjs';
 async function vanish({document: item, workflow}) {
     if (!workflow.token || workflow.workflowOptions?.rollAttackPerTarget) return;
-    const targets = Array.from(workflow.targets, target => target.document).filter(target => target !== workflow.token.document);
+    const targets = workflow.targets.tokens.map(target => target.document).filter(target => target !== workflow.token.document);
     if (!targets.length) return;
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
     if (!animation) return;

@@ -1,11 +1,13 @@
 import {automationUtils, constants, documentUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function coverBonus({document, identifier, workflow}) {
-    if (workflow.targets.size !== 1) return;
+    if (workflow.targets.count !== 1) return;
     if (!itemUtils.getEquipmentState(document)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'ignoreCover', Object.keys(ignoreCover.genericConfig));
     if (!config.cover) return;
     if (config.attack && !workflowUtils.isAttackType(workflow, config.attack)) return;
-    const cover = tokenUtils.checkCover(workflow.token.document, workflow.targets.first().document, {activity: workflow.activity});
+    const target = workflow.targets.tokens[0];
+    if (!target) return;
+    const cover = tokenUtils.checkCover(workflow.token.document, target.document, {activity: workflow.activity});
     if (!cover) return;
     if (cover === 999 && config.cover == 999) {
         workflow.tracker.attribution.NOCOVER = {[identifier]: document.name};

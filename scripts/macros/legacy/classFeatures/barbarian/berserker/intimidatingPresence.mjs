@@ -31,7 +31,7 @@ async function extend({document: activity, macroClass: {identifier, source}}) {
     await effectUtils.resetDuration(effect);
 }
 async function immune({document: activity, workflow}) {
-    if (!workflow.saves.size) return;
+    if (!workflow.saves.count) return;
     const data = {
         name: `${activity.item.name}: ${_loc('CHRISPREMADES.Macros.Legacy.IntimidatingPresence.Immune')}`,
         duration: {value: automationUtils.getConfigValue(activity.item, 'duration'), units: 'seconds'},
@@ -39,7 +39,7 @@ async function immune({document: activity, workflow}) {
         img: activity.item.img
     };
     dataUtils.setOrigin(data, activity);
-    await Promise.all(workflow.saves.map(t => {
+    await Promise.all(workflow.saves.documents.map(t => {
         if (t.actor.flags.cat?.FI?.[activity.identifier]) return;
         return effectUtils.createEffects(t.actor, [data]);
     }));

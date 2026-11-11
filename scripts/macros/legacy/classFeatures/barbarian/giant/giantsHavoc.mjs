@@ -64,7 +64,7 @@ async function increaseSizeReach({data, document: item, macroClass: {identifier,
     }));
 }
 async function giantDamage({document: effect, macroClass: {identifier, source}, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (workflow.activity.ability !== 'str') return;
     if (!workflow.item.system.properties.has('thr')) return;
     if (!workflowUtils.isAttackType(workflow, 'rangedWeaponAttack')) return; 

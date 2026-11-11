@@ -5,14 +5,14 @@ function getD8s(workflow) {
     return workflow.damageRolls[0].dice[0].results.filter(result => result.active).slice(0, 2).map(result => result.result);
 }
 async function damage({document, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     const damageTypes = automationUtils.getConfigValue(document, 'damageTypes').split(',').map(type => type.trim());
     const options = Array.from(new Set(getD8s(workflow).map(value => damageTypes[value - 1]).filter(Boolean)));
     if (!options.length) return;
     await applyDamageType(workflow, options.length > 1 ? await dialogUtils.selectDamageType(options, document.name, 'CHRISPREMADES.Generic.SelectDamageType') || options[0] : options[0]);
 }
 async function use({document, workflow, castData}) {
-    const target = workflow.targets.first();
+    const target = workflow.targets.tokens[0];
     if (!workflow.token || !target) return;
     const state = workflow.workflowOptions?.['chris-premades']?.chaosBolt;
     await playBolt(document, workflow, target, state);

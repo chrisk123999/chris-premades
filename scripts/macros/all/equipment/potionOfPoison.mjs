@@ -5,7 +5,7 @@ async function disguise({workflow}) {
 }
 async function drink({workflow}) {
     if (workflow.activity.identifier !== 'potion-of-poison') return;
-    const token = workflow.targets.first() ?? workflow.token;
+    const token = workflow.targets.documents[0] ?? workflow.tokenDocument;
     const poison = itemUtils.getActivityByIdentifier(workflow.item, 'potion-of-poison-damage');
     if (!token || !poison) return;
     const config = automationUtils.getConfigValues(workflow.item, configKeys);
@@ -19,7 +19,7 @@ async function drink({workflow}) {
     if (effectData) genericUtils.setProperty(effectData, 'flags.chris-premades.potionOfPoison', {dice, saveDC: config.saveDC});
     itemData.system.activities = {[poison.id]: poisonData};
     itemData.flags.cat.macros.roll = itemData.flags.cat.macros.roll.filter(macro => macro.identifier !== 'spellAnimation');
-    await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [token.document ?? token], {consumeUsage: false, consumeResources: false});
+    await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [token], {consumeUsage: false, consumeResources: false});
 }
 async function turnStart({document: effect, token}) {
     const dice = effect.flags['chris-premades']?.potionOfPoison?.dice;

@@ -1,6 +1,6 @@
 import {automationUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../proxy.mjs';
 async function targeted({document, sourceToken, workflow}) {
-    if (workflow.targets.size !== 1 || !workflow.token || !workflow.activity) return;
+    if (workflow.targets.count !== 1 || !workflow.token || !workflow.activity) return;
     if (workflow.activity.target?.template?.type || workflowUtils.isSustainedRoll(workflow)) return;
     if (workflow.token.document.disposition === sourceToken.disposition) return;
     const item = effectUtils.getOriginActivitySync(document)?.item;
@@ -10,9 +10,9 @@ async function targeted({document, sourceToken, workflow}) {
     const saveActivity = itemUtils.getActivityByIdentifier(item, 'sanctuarySave');
     if (!saveActivity) return Logging.addMacroWarning('CPR', 'sanctuary', 'Save activity missing from item.', {notify: 'warn'});
     const saveWorkflow = await workflowUtils.syntheticActivityRoll(saveActivity, [workflow.token.document], {spellSlot: false});
-    if (!saveWorkflow?.failedSaves?.size) return;
+    if (!saveWorkflow?.failedSaves?.count) return;
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
-    animation?.macros.play?.(workflow.token.document, sourceToken, options);
+    if (sourceToken.object) animation?.macros.play?.(workflow.token.document, sourceToken, options);
     await ChatMessage.implementation.create({
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token.document}),
         content: _loc('CHRISPREMADES.Macros.All.Sanctuary.Failed')
@@ -23,8 +23,8 @@ async function targeted({document, sourceToken, workflow}) {
 async function cast({document, workflow}) {
     if (workflow.item?.type !== 'spell' || workflow.activity?.identifier === 'sanctuarySave') return;
     const originActivity = effectUtils.getOriginActivitySync(document);
-    if (originActivity && workflow.activity?.uuid === originActivity.uuid && workflow.targets.some(token => token.actor === workflow.actor)) return;
-    if (documentUtils.getRules(originActivity?.item ?? workflow.item) === '2014' && !workflow.targets.some(token => token.document.disposition !== workflow.token?.document.disposition)) return;
+    if (originActivity && workflow.activity?.uuid === originActivity.uuid && workflow.targets.documents.some(token => token.actor === workflow.actor)) return;
+    if (documentUtils.getRules(originActivity?.item ?? workflow.item) === '2014' && !workflow.targets.documents.some(token => token.disposition !== workflow.tokenDocument?.disposition)) return;
     await documentUtils.deleteDocument(document);
 }
 export const sanctuary = {

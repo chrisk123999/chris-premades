@@ -73,9 +73,9 @@ async function selfAttack({document: item, workflow}) {
 }
 async function thirdPartyAttack({document: item, workflow}) {
     if (!workflow.attackRoll) return;
-    if (!workflow.targets.size || !automationUtils.getConfigValue(item, 'enable3rdPartyReaction')) return;
+    if (!workflow.targets.count || !automationUtils.getConfigValue(item, 'enable3rdPartyReaction')) return;
     const token = workflow.token.document;
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.documents[0];
     const targetAC = targetToken.actor.system.attributes.ac.value;
     let isSuccess;
     if (workflow.isCritical) isSuccess = true;
