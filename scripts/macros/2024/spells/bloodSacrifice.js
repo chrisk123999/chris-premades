@@ -1,11 +1,11 @@
-import {dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
+import {actorUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 import {constants, effectUtils} from '../../../utils.js';
 async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size || !workflow.damageRolls) return;
     if (
         workflow.item.type != 'spell' &&
-        !workflow.item.flags['chris-premades']?.trueStrike && 
-        !workflowUtils.isAttackType(workflow, 'spellAttack')
+        !workflowUtils.isAttackType(workflow, 'spellAttack') &&
+        !(workflow.item.flags['chris-premades']?.bladeCantrip && Math.floor((actorUtils.getLevelOrCR(workflow.actor) + 1) / 6) > 0)
     ) return;
     if (genericUtils.getProperty(workflow, 'workflowOptions.chris-premades.multiWorkflowAttack') > 0) return;
     let item = await effectUtils.getOriginItem(effect);
