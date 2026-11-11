@@ -9,6 +9,7 @@ async function allyBonus({trigger: {entity: item, roll, sourceActor}}) {
         if (actorUtils.hasUsedReaction(t.actor)) return;
         let feature = itemUtils.getItemByIdentifier(t.actor, 'flashOfGenius');
         if (!feature?.system.uses.value) return;
+        if (!tokenUtils.canSee(t, source)) return;
         genericUtils.setProperty(t, 'chris-premades.flashOfGenius', feature);
         return true;
     });

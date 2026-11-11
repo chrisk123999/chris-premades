@@ -92,7 +92,7 @@ async function damage({trigger: {entity: item}, workflow}) {
             bonusDamageFormula += ' + ' + workflow.actor.classes[classIdentifier].system.levels;
         }
     }
-    if (bonusDamageFormula) await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.defaultDamageType});
+    if (bonusDamageFormula) await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType: workflow.damageRolls[0]?.options.type ?? workflow.defaultDamageType});
     await workflowUtils.syntheticItemRoll(item, Array.from(workflow.targets), {consumeResources: combatUtils.inCombat(), consumeUsage: combatUtils.inCombat()});
     let rendMind = itemUtils.getItemByIdentifier(workflow.actor, 'rendMind');
     if (rendMind && identifier === 'psychicBlades') {
@@ -256,6 +256,5 @@ export let sneakAttack = {
                 icon: null
             }
         }
-        
     ]
 };
