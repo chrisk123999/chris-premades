@@ -1,7 +1,7 @@
 import {actorUtils, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 import {constants, effectUtils} from '../../../utils.js';
 async function damage({trigger: {entity: effect}, workflow}) {
-    if (!workflow.hitTargets.size || !workflow.damageRolls) return;
+    if (!workflow.hitTargets.size || !workflow.damageRolls || workflowUtils.isSustainedRoll(workflow)) return;
     if (
         workflow.item.type != 'spell' &&
         !workflowUtils.isAttackType(workflow, 'spellAttack') &&
