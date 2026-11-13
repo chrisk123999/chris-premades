@@ -1,6 +1,6 @@
 import {actorUtils, documentUtils} from '../../../proxy.mjs';
 async function use({workflow}) {
-    const actor = (workflow.targets.first() ?? workflow.token)?.actor ?? workflow.actor;
+    const actor = (workflow.targets.documents[0] ?? workflow.tokenDocument)?.actor ?? workflow.actor;
     const poisoned = actorUtils.getStatusSources(actor, ['poisoned']) ?? [];
     await Promise.all(poisoned.map(effect => documentUtils.deleteDocument(effect)));
     if (actor.system.attributes.exhaustion) await documentUtils.update(actor, {'system.attributes.exhaustion': 0});

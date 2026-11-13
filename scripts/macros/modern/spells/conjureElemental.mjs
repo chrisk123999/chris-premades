@@ -13,7 +13,7 @@ async function element({workflow}) {
         return;
     }
     if (workflow.activity.identifier !== 'restrained') return;
-    const saved = new Set(Array.from(workflow.saves, token => token.actor));
+    const saved = new Set(workflow.saves.documents.map(token => token.actor));
     await Promise.all(effects.filter(effect => saved.has(effect.parent)).map(effect => documentUtils.deleteDocument(effect)));
 }
 export const conjureElementalElement = {

@@ -4,7 +4,7 @@ async function offer(item, token, message) {
     const activity = itemUtils.getActivityByIdentifier(item, 'pack-hunter');
     if (!activity) return Logging.addMacroWarning('CPR', 'pack-hunter', 'Pack Hunter activity is missing.', {notify: 'warn'});
     if (!await dialogUtils.confirm(item.name, _loc(message, {name: token.name}), {userId: queryUtils.firstOwner(item.actor, true)})) return;
-    await workflowUtils.syntheticActivityRoll(activity, [token.document ?? token]);
+    await workflowUtils.syntheticActivityRoll(activity, [token]);
     return true;
 }
 async function attack({document: item, actor, token, workflow}) {

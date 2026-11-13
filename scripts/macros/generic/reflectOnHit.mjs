@@ -10,11 +10,11 @@ function isStrongest(effect, actor) {
 }
 async function attacked({document: effect, sourceToken, workflow, castData}) {
     if (!workflow.token || workflow.token.document === sourceToken) return;
-    if (!workflow.hitTargets.some(token => token.document === sourceToken)) return;
+    if (!workflow.hitTargets.has(sourceToken)) return;
     const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'reflectOnHit', configKeys);
     if (!workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
     if (config.requireTempHP && !sourceToken.actor.system.attributes.hp.temp) return;
-    if (config.range && !tokenUtils.isWithinDistance(sourceToken, workflow.token.document, config.range)) return;
+    if (config.range && (!sourceToken.object || !tokenUtils.isWithinDistance(sourceToken, workflow.token.document, config.range))) return;
     if (!isStrongest(effect, sourceToken.actor)) return;
     const item = effect.transfer && effect.parent?.documentName === 'Item' ? effect.parent : effectUtils.getOriginActivitySync(effect)?.item;
     const activity = item?.system.activities.get(config.rollActivity);

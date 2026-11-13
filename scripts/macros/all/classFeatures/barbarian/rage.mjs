@@ -53,7 +53,7 @@ async function spellcasting({document: effect, workflow}) {
     if (!effect.flags['chris-premades']?.rage?.allowSpellcasting) return exit('Spellcasting');
 }
 async function rageDamage({document: effect, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (workflow.activity.ability !== 'str') return;
     const allowedAttack = documentUtils.getRules(effect) === '2024' ? 'attack' : 'meleeWeaponAttack';
     if (!workflowUtils.isAttackType(workflow, allowedAttack)) return;

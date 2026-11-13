@@ -1,6 +1,6 @@
 import {dialogUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function mace({document, workflow}) {
-    if (workflow.activity.identifier === 'temp-hp' || !workflow.hitTargets.size || !workflow.token) return;
+    if (workflow.activity.identifier === 'temp-hp' || !workflow.hitTargets.count || !workflow.token) return;
     const activity = itemUtils.getActivityByIdentifier(document, 'temp-hp');
     if (!activity) return;
     const nearby = [workflow.token.document, ...tokenUtils.findNearby(workflow.token.document, 10, {disposition: 'ally'})];

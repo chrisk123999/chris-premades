@@ -7,7 +7,7 @@ async function reckless({document: activity, effect, macroClass: {rules, source}
     effect.updateSource({'flags.cat.macros.roll': macros, [`flags.${source}.frenzy`]: activity.uuid});
 }
 async function damageBonus({document: effect, macroClass: {identifier, source}, token, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (!combatUtils.isOwnTurn(token)) return;
     if (!token.actor.flags[source]?.raging) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;

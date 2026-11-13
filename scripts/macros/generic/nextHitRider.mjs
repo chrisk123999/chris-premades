@@ -8,13 +8,12 @@ function getSpell(effect) {
     return {item, concentration, scaling: concentration?.flags.dnd5e?.scaling ?? effect.flags.dnd5e?.scaling ?? 0};
 }
 function getHitTargetUuids(effect, workflow, config) {
-    if (config.bonus) return workflowUtils.getWorkflowProperty(workflow, 'nextHitRider')?.[effect.uuid];
-    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
-    const token = workflow.hitTargets.first();
-    return [(token.document ?? token).uuid];
+    if (config.bonus) return Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'nextHitRider') ?? [])[effect.uuid];
+    if (!workflow.hitTargets.count || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
+    return [workflow.hitTargets.uuids[0]];
 }
 async function damage({document: effect, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'nextHitRider', configKeys);
     if (!config.bonus || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
     const {item, scaling} = getSpell(effect);
@@ -22,10 +21,10 @@ async function damage({document: effect, workflow}) {
     const roll = new CONFIG.Dice.DamageRoll(config.bonus, {...item.getRollData(), scaling});
     const bonus = new DamageBonus(effect, {roll, optional: false, maxTargets: 1, maxScaling: 0, type: config.bonusDamageType})
         .withOnUse(({workflow, bonus}) => {
-            const riders = workflowUtils.getWorkflowProperty(workflow, 'nextHitRider') ?? {};
-            workflowUtils.setWorkflowProperty(workflow, 'nextHitRider', {...riders, [effect.uuid]: Array.from(bonus.targets, token => token.uuid)});
+            const riders = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'nextHitRider') ?? []);
+            workflowUtils.setWorkflowProperty(workflow, 'nextHitRider', Object.entries({...riders, [effect.uuid]: Array.from(bonus.targets, token => token.uuid)}));
         });
-    bonus.targets = Array.from(workflow.hitTargets, token => token.document ?? token);
+    bonus.targets = workflow.hitTargets.documents;
     return bonus;
 }
 async function rider({document: effect, workflow}) {
@@ -44,7 +43,7 @@ async function rider({document: effect, workflow}) {
         riderWorkflow = await workflowUtils.syntheticActivityRoll(activity, targets, {config: {scaling, concentration: {begin: false}}, consumeUsage: false, consumeResources: false, spellSlot: false});
     }
     if (endFirst) return;
-    if (config.endSpell === 'onSave' && !riderWorkflow?.failedSaves?.size) {
+    if (config.endSpell === 'onSave' && !riderWorkflow?.failedSaves?.count) {
         await documentUtils.deleteDocument(concentration ?? effect);
         return;
     }

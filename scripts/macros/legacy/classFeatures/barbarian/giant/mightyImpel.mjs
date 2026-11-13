@@ -16,7 +16,7 @@ async function hurlTargeting({document: activity, macroClass: {identifier, sourc
     const reach = 5 + config.giantReach;
     const sizeLimit = CONFIG.DND5E.actorSizes[config.impelSize]?.numerical ?? 2;
     const isSmallEnough = t => t.actor && actorUtils.getSize(t.actor) <= sizeLimit;
-    if (workflow.targets.every(t => isSmallEnough(t) && tokenUtils.isWithinDistance(t.document, workflow.token.document, reach))) return;
+    if (workflow.targets.documents.every(t => isSmallEnough(t) && t.object && tokenUtils.isWithinDistance(t, workflow.token.document, reach))) return;
     const targets = tokenUtils.findNearby(workflow.token.document, reach, {disposition: 'all'}).filter(isSmallEnough);
     if (!targets.length) return exit(workflow, source, identifier, 'CHRISPREMADES.Macros.Modern.HuntersMark.NoTargets', true);
     const choice = await dialogUtils.selectTargetDialog(activity.item.name, 'CHRISPREMADES.Generic.SelectTarget', targets, {skipDeadAndUnconscious: false});
@@ -24,9 +24,9 @@ async function hurlTargeting({document: activity, macroClass: {identifier, sourc
     await workflowUtils.updateTargets(workflow, [choice.result]);
 }
 async function hurl({document: activity, workflow}) {
-    if (!workflow.failedSaves.size) return;
+    if (!workflow.failedSaves.count) return;
     const range = automationUtils.getConfigValue(activity.item, 'range');
-    for (const target of workflow.failedSaves)
+    for (const target of workflow.failedSaves.tokens)
         await tokenUtils.displaceToken(target.document, {range, sourceToken: workflow.token.document});
 }
 export const mightyImpel = {

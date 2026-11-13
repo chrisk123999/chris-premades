@@ -27,19 +27,19 @@ async function destroyDuplicate(effect, item, workflow, sourceToken, remaining) 
 }
 async function attacked({document: effect, sourceToken, workflow}) {
     if (!workflow.token || workflow.token.document === sourceToken || workflow.isFumble) return;
-    if (!tokenUtils.canSee(workflow.token.document, sourceToken)) return;
+    if (!sourceToken.object || !tokenUtils.canSee(workflow.token.document, sourceToken)) return;
     if (tokenUtils.canSense(workflow.token.document, sourceToken, ['blindsight', 'seeAll'])) return;
     const item = effectUtils.getOriginActivitySync(effect)?.item;
     if (!item) return Logging.addMacroWarning('CPR', 'mirror-image', 'Origin item missing.', {notify: 'warn'});
     const remaining = getRemaining(effect);
     if (!remaining) return;
     if (documentUtils.getRules(item) === '2014') {
-        if (workflow.targets.size !== 1) return;
+        if (workflow.targets.count !== 1) return;
         const thresholds = String(getConfig(effect, 'thresholds')).split(',').map(value => Number(value.trim()));
         const needed = thresholds[Math.min(remaining, thresholds.length) - 1];
         const total = await rollDuplicates(effect, sourceToken, '1d20');
         if (total < needed) return;
-        workflow.hitTargets.delete(sourceToken.object);
+        workflow.hitTargets.delete(sourceToken);
         const duplicateAC = Number(getConfig(effect, 'duplicateBaseAC')) + sourceToken.actor.system.abilities.dex.mod;
         if (workflow.attackRoll.total < duplicateAC) {
             playAnimation(item, workflow, sourceToken, effect, remaining - 1, true);
@@ -47,10 +47,10 @@ async function attacked({document: effect, sourceToken, workflow}) {
             return;
         }
     } else {
-        if (workflow.hitTargets.size !== 1 || !workflow.hitTargets.has(sourceToken.object)) return;
+        if (workflow.hitTargets.count !== 1 || !workflow.hitTargets.has(sourceToken)) return;
         const formula = remaining + getConfig(effect, 'dieSize') + 'cs>=' + getConfig(effect, 'threshold');
         if (!await rollDuplicates(effect, sourceToken, formula)) return;
-        workflow.hitTargets.delete(sourceToken.object);
+        workflow.hitTargets.delete(sourceToken);
     }
     await report(workflow, 'Hit');
     await destroyDuplicate(effect, item, workflow, sourceToken, remaining);

@@ -1,7 +1,7 @@
 import {tokenUtils} from '../../../../../proxy.mjs';
 async function doSneak({data: {workflow}}) {
     if ((workflow.disadvantage && !workflow.advantage) || !workflow.token) return;
-    const targetToken = workflow.targets.first()?.document;
+    const targetToken = workflow.targets.tokens[0]?.document;
     if (!targetToken) return;
     if (!tokenUtils.isWithinDistance(workflow.token.document, targetToken, 5)) return;
     const nearby = tokenUtils.findNearby(workflow.token.document, 5).filter(token => token.id !== targetToken.id);

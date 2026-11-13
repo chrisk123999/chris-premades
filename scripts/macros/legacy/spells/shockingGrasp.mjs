@@ -1,7 +1,7 @@
 import {actorUtils, automationUtils} from '../../../proxy.mjs';
 import {playTargetAnimations} from '../../generic/spellAnimation.mjs';
 async function attack({document, workflow}) {
-    const armor = workflow.targets.first()?.actor?.system.attributes.ac.equippedArmor;
+    const armor = workflow.targets.documents[0]?.actor?.system.attributes.ac.equippedArmor;
     if (!automationUtils.getConfigValue(document, 'metalArmor').includes(armor?.system.type.baseItem)) return;
     workflow.tracker.advantage.add('shocking-grasp', document.name);
 }
@@ -9,7 +9,7 @@ function playAnimation({document, workflow}) {
     playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation'));
 }
 async function late({document, workflow}) {
-    await Promise.all(Array.from(workflow.hitTargets, token => actorUtils.setReactionUsed(token.actor)));
+    await Promise.all(workflow.hitTargets.documents.map(token => actorUtils.setReactionUsed(token.actor)));
     playAnimation({document, workflow});
 }
 export const shockingGrasp = {

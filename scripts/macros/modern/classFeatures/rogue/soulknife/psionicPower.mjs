@@ -8,9 +8,9 @@ async function psychicWhispers({workflow}) {
     const sourceEffect = workflow.item.effects.contents?.[0];
     if (!sourceEffect) return;
     const effectData = documentUtils.getEffectData(workflow.item, sourceEffect.id, {duration: {value: workflow.utilityRolls[0].total, units: 'hours'}});
-    const targets = new Set(workflow.targets);
+    const targets = new MidiQOL.TokenDocumentSet(workflow.targets);
     targets.add(workflow.token);
-    await Promise.all(Array.from(targets).filter(token => token.actor).map(token => effectUtils.createEffects(token.actor, [effectData])));
+    await Promise.all(targets.documents.filter(token => token.actor).map(token => effectUtils.createEffects(token.actor, [effectData])));
 }
 export const psionicPower = {
     name: 'Psionic Power',

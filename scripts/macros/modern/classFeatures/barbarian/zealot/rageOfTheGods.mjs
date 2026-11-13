@@ -6,6 +6,7 @@ async function activate({document: activity}) {
 }
 async function revivification({document: effect, ditem, macroClass: {identifier, source}, targetToken}) {
     if (!ditem.isHit || ditem.newHP !== 0 || ditem.oldHP === 0) return;
+    if (!targetToken.object) return;
     const near = tokenUtils.findNearby(targetToken, 30, {disposition: 'ally', includeToken: true});
     for (const ally of near) {
         if (actorUtils.hasUsedReaction(ally.actor)) continue;

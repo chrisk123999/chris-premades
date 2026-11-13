@@ -7,8 +7,8 @@ function getWall(item, scene) {
 async function spare({document: item, workflow}) {
     if (!['prismatic-wall-pass', 'prismatic-wall-glare'].includes(workflow.activity.identifier)) return;
     if (workflow.activity.identifier === 'prismatic-wall-glare') {
-        const blinded = Array.from(workflow.targets).filter(token => documentUtils.getEffectByIdentifier(token.actor, 'prismaticGlare'));
-        if (blinded.length === workflow.targets.size) {
+        const blinded = workflow.targets.documents.filter(token => documentUtils.getEffectByIdentifier(token.actor, 'prismaticGlare'));
+        if (blinded.length === workflow.targets.count) {
             workflow.aborted = true;
             return true;
         }
@@ -51,12 +51,12 @@ async function violet({document: effect, token, combatant}) {
 }
 async function passThrough({document: item, workflow}) {
     if (workflow.activity.identifier !== 'prismatic-wall-pass') return;
-    const target = workflow.targets.first();
-    const wall = getWall(item, target?.document.parent);
+    const target = workflow.targets.documents[0];
+    const wall = getWall(item, target?.parent);
     if (!target || !wall) return;
     for (const layer of wall.flags['chris-premades'].prismaticLayers) {
         const activity = itemUtils.getActivityByIdentifier(item, `prismatic-wall-${layer}`);
-        if (activity) await workflowUtils.syntheticActivityRoll(activity, [target.document], {atLevel: wall.flags.dnd5e?.spellLevel, consumeUsage: false, consumeResources: false, spellSlot: false});
+        if (activity) await workflowUtils.syntheticActivityRoll(activity, [target], {atLevel: wall.flags.dnd5e?.spellLevel, consumeUsage: false, consumeResources: false, spellSlot: false});
     }
 }
 async function destroyLayer({document: item, workflow}) {

@@ -7,7 +7,7 @@ function lineTokens(sourceToken, targetToken) {
     const length = Math.hypot(end.x - start.x, end.y - start.y);
     if (!length) return [];
     return scene.tokens.filter(token => {
-        if (!token.actor || token === sourceToken || token === targetToken || token.hidden) return false;
+        if (!token.object || !token.actor || token === sourceToken || token === targetToken || token.hidden) return false;
         const center = token.object.center;
         const along = ((center.x - start.x) * (end.x - start.x) + (center.y - start.y) * (end.y - start.y)) / length;
         if (along <= 0 || along > length) return false;
@@ -16,8 +16,9 @@ function lineTokens(sourceToken, targetToken) {
     });
 }
 async function bolt({document: item, workflow}) {
-    if (workflow.activity.identifier !== 'javelin-of-lightning-bolt' || !workflow.token || workflow.targets.size !== 1) return;
-    const target = workflow.targets.first().document;
+    if (workflow.activity.identifier !== 'javelin-of-lightning-bolt' || !workflow.token || workflow.targets.count !== 1) return;
+    const target = workflow.targets.tokens[0]?.document;
+    if (!target) return;
     const save = itemUtils.getActivityByIdentifier(item, 'javelin-of-lightning-save');
     const tokens = lineTokens(workflow.token.document, target);
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
@@ -27,7 +28,7 @@ async function bolt({document: item, workflow}) {
     if (save && tokens.length) await workflowUtils.syntheticActivityRoll(save, tokens, {consumeUsage: false, consumeResources: false});
 }
 async function damage({workflow}) {
-    if (!workflowUtils.getWorkflowProperty(workflow, 'javelinOfLightning') || !workflow.hitTargets.size) return;
+    if (!workflowUtils.getWorkflowProperty(workflow, 'javelinOfLightning') || !workflow.hitTargets.count) return;
     await workflowUtils.bonusDamage(workflow, '4d6', {damageType: 'lightning'});
 }
 export const javelinOfLightning = {

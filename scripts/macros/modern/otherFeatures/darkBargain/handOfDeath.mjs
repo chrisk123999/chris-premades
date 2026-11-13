@@ -17,8 +17,9 @@ async function turnStart({document, token, actor}) {
     await documentUtils.update(actor, {'system.attributes.hp.value': Math.floor(actor.system.attributes.hp.max / 2)});
     await workflowUtils.completeActivityUse(document, [token]);
 }
-async function damage({document, ditem, actor, targetToken}) {
+async function damage({document, ditem, targetToken}) {
     if (!document.item.system.uses.value) return;
+    const actor = document.actor;
     const maxHP = actor.system.attributes.hp.max;
     const hpDamage = ditem.oldHP + ditem.oldTempHP - ditem.totalDamage;
     if (!ditem.isHit || ditem.newHP !== 0 || hpDamage > -maxHP) return;

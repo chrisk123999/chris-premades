@@ -3,7 +3,7 @@ async function concentration({workflow}) {
     if (workflow.activity.identifier !== 'sleet-storm-prone') return;
     const rules = documentUtils.getRules(workflow.item);
     const dc = workflow.activity.save.dc.value;
-    for (const token of workflow.targets) {
+    for (const token of workflow.targets.documents) {
         const actor = token.actor;
         if (!actor?.concentration?.effects.size) continue;
         if (rules === '2024') {

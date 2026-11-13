@@ -1,12 +1,12 @@
 import {actorUtils, automationUtils, constants, itemUtils, Logging, workflowUtils} from '../../../proxy.mjs';
 async function early({document, workflow}) {
-    if (workflow.activity.identifier !== 'summer-winds' || !workflow.targets.size) return;
+    if (workflow.activity.identifier !== 'summer-winds' || !workflow.targets.count) return;
     const disposition = workflow.token?.document.disposition;
-    const allies = Array.from(workflow.targets).filter(token => token.document.disposition === disposition);
+    const allies = workflow.targets.documents.filter(token => token.disposition === disposition);
     const creatureTypes = automationUtils.getConfigValue(document, 'affectedCreatureTypes');
-    const undead = Array.from(workflow.targets).filter(token => token.document.disposition !== disposition && token.actor && creatureTypes.includes(actorUtils.typeOrRace(token.actor)));
-    workflowUtils.setWorkflowProperty(workflow, 'summerWinds', undead.map(token => token.document.uuid));
-    if (allies.length !== workflow.targets.size) await workflowUtils.updateTargets(workflow, allies);
+    const undead = workflow.targets.documents.filter(token => token.disposition !== disposition && token.actor && creatureTypes.includes(actorUtils.typeOrRace(token.actor)));
+    workflowUtils.setWorkflowProperty(workflow, 'summerWinds', undead.map(token => token.uuid));
+    if (allies.length !== workflow.targets.count) await workflowUtils.updateTargets(workflow, allies);
 }
 async function late({document, workflow, castData}) {
     if (workflow.activity.identifier !== 'summer-winds') return;
@@ -15,7 +15,7 @@ async function late({document, workflow, castData}) {
     if (workflow.token && animation?.macros?.play) {
         animation.macros.play(workflow.token.document, workflow.template, {
             ...options,
-            allies: Array.from(workflow.targets, token => token.document),
+            allies: workflow.targets.tokens.map(token => token.document),
             undead
         });
     }

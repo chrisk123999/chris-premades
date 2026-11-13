@@ -4,7 +4,7 @@ function attack({workflow}) {
     workflowUtils.removeAttackDisadvantage(workflow, 'range');
 }
 async function damage({document: item, workflow}) {
-    if (!workflow.longRangeAttack || !workflow.hitTargets.size || !workflow.damageRolls?.length) return;
+    if (!workflow.longRangeAttack || !workflow.hitTargets.count || !workflow.damageRolls?.length) return;
     const max = workflow.damageRolls.reduce((total, roll) => total + roll.dice.reduce((count, die) => count + die.results.length, 0), 0);
     const selection = await dialogUtils.selectDie(workflow.damageRolls, itemUtils.getMasteryLabel('sighted'), _loc('CHRISPREMADES.WeaponMasteries.Sighted.Prompt'), {max});
     if (selection?.length) await workflowUtils.rerollDamageDice(workflow, selection, item);

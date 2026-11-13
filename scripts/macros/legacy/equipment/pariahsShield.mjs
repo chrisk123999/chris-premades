@@ -12,7 +12,7 @@ async function protect({document: item, targetToken, ditem}) {
     const token = actorUtils.getFirstToken(item.actor);
     if (!token || token === targetToken || token.disposition !== targetToken.disposition) return;
     if (token.inCombat && actorUtils.hasUsedReaction(item.actor)) return;
-    if (!tokenUtils.isWithinDistance(token, targetToken, 5) || !tokenUtils.canSee(token, targetToken)) return;
+    if (!targetToken.object || !tokenUtils.isWithinDistance(token, targetToken, 5) || !tokenUtils.canSee(token, targetToken)) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'pariahs-shield-protect');
     if (!activity) return;
     const userId = queryUtils.firstOwner(item.actor, true);

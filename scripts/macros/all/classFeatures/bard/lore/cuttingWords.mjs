@@ -27,12 +27,12 @@ async function validTarget(activity, target, rules, type, total) {
     return true;
 }
 async function attack({document: activity, token, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     const rules = documentUtils.getRules(activity.item);
     if (rules === '2024') {
         if (workflow.isFumble || workflow.isCritical) return;
-        if (workflow.targets.first().actor.system.attributes.ac.value > workflow.attackTotal)
+        if (workflow.targets.documents[0].actor.system.attributes.ac.value > workflow.attackTotal)
             return log(`Cutting Words exited early on a failed roll. (activity) ${activity.uuid} (target) ${token.uuid}`);
     }
     if (!await validTarget(activity, token, rules, 'attack', workflow.attackTotal)) return;
@@ -40,7 +40,7 @@ async function attack({document: activity, token, workflow}) {
     await workflowUtils.bonusAttack(workflow, -result.utilityRoll.total);
 }
 async function damage({document: activity, token, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     const types = workflowUtils.getDamageTypes(workflow.damageRolls);
     if (Object.keys(CONFIG.DND5E.healingTypes).some(t => types.has(t))) return;
     const rules = documentUtils.getRules(activity.item);

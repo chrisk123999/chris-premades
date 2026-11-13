@@ -10,28 +10,28 @@ async function collectChannelDivinities({workflow}) {
         await workflow.refundConsumption();
         return;
     }
-    await workflowUtils.syntheticActivityRoll(choice, workflow.targets.map(t => t.document));
+    await workflowUtils.syntheticActivityRoll(choice, workflow.targets.documents);
 }
 async function promptTurnUndead({data, document: activity}) {
     return itemUtils.getActivityByIdentifier(activity.item, 'turn-undead');
 }
 async function preTurnUndead({workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const validCreatures = automationUtils.getConfigValue(workflow.item, 'creatureTypes') ?? [];
-    const targets = workflow.targets.filter(t => 
+    const targets = workflow.targets.documents.filter(t => 
         t.actor?.system.attributes.hp.value > 0 &&
         validCreatures.includes(actorUtils.typeOrRace(t.actor))
     );
-    if (targets.size !== workflow.targets.size) await workflowUtils.updateTargets(workflow, targets);
+    if (targets.length !== workflow.targets.count) await workflowUtils.updateTargets(workflow, targets);
 }
 async function postTurnUndead({workflow}) {
-    if (!workflow.failedSaves.size) return;
+    if (!workflow.failedSaves.count) return;
     const turnedEffect = (await workflow.activity.effects[0]?.getEffect()) ?? workflow.item.effects.contents[0];
     if (!turnedEffect) return;
     const destroyUndead = actorUtils.getItemByIdentifier(workflow.actor, 'destroy-undead');
-    if (destroyUndead) await workflowUtils.syntheticItemRoll(destroyUndead, workflow.failedSaves.map(t => t.document));
+    if (destroyUndead) await workflowUtils.syntheticItemRoll(destroyUndead, workflow.failedSaves.documents);
     const turnData = documentUtils.getEffectData(workflow.activity, turnedEffect.id);
-    await Promise.all(Array.from(workflow.failedSaves).map(t => {
+    await Promise.all(workflow.failedSaves.documents.map(t => {
         if (t.actor?.system.attributes.hp.value === 0) return;
         return effectUtils.createEffects(t.actor, [turnData]);
     }));

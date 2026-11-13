@@ -9,7 +9,7 @@ function getForceCreations(item, scene) {
     return scene.regions.filter(region => identifiers.includes(fromUuidSync(region.flags.dnd5e?.item ?? '', {strict: false})?.identifier));
 }
 async function destroy({document: item, workflow}) {
-    if (workflow.targets.size) return;
+    if (workflow.targets.count) return;
     const scene = workflow.token?.document.parent;
     if (!scene) return;
     const regions = getForceCreations(item, scene);

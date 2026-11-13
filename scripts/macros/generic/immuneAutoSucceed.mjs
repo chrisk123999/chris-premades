@@ -1,12 +1,12 @@
 import {activityUtils, actorUtils, Logging, workflowUtils} from '../../proxy.mjs';
 function checkImmunities({document: activity, macroClass: {identifier, source}, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     if (!['check', 'save'].includes(workflow.activity.type))
         return Logging.addMacroWarning(source, identifier, `${identifier} is attached to an activity with no check or save! (activity) ${activity.uuid}`);
     const conditions = activityUtils.getConditions(workflow.activity);
     if (!conditions.size)
         return Logging.addMacroWarning(source, identifier, `${identifier} is attached to an activity that does not apply any conditions! (activity) ${activity.uuid}`);
-    for (const target of workflow.targets) {
+    for (const target of workflow.targets.documents) {
         if (!target.actor) continue;
         const immunities = conditions.filter(c => actorUtils.checkTrait(target.actor, 'ci', c));
         if (!immunities.size) continue;

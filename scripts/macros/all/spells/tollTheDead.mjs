@@ -1,13 +1,13 @@
 import {activityUtils, actorUtils, automationUtils, constants, workflowUtils} from '../../../proxy.mjs';
 import {playTargetAnimations} from '../../generic/spellAnimation.mjs';
-function preambleComplete({document, workflow}) {
-    if (!workflow.targets.some(target => actorUtils.isWounded(target.actor))) return;
+async function preambleComplete({document, workflow}) {
+    if (!workflow.targets.documents.some(target => actorUtils.isWounded(target.actor))) return;
     const part = workflow.activity.damage.parts[0];
     if (!part) return;
     const denomination = Number(automationUtils.getConfigValue(document, 'dieSize').slice(1));
     if (part.denomination === denomination) return;
     const activityData = activityUtils.getDamageModifiedActivityData(workflow.activity, {number: part.number, denomination, bonus: part.bonus});
-    workflowUtils.setActivity(workflow, activityData);
+    await workflowUtils.setActivity(workflow, activityData);
 }
 function late({document, workflow}) {
     playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation'));

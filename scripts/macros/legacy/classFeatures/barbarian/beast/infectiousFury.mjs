@@ -1,13 +1,13 @@
 import {actorUtils, automationUtils, DamageBonus, dialogUtils, documentUtils, itemUtils, Logging, queryUtils, tokenUtils, uiUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function attackRiders({document: item, macroClass: {identifier, source}, workflow}) {
-    const target = workflow.hitTargets.first()?.actor;
+    const target = workflow.hitTargets.documents[0]?.actor;
     if (!target) return;
     if (!item.system.uses.value) return;
     if (!automationUtils.getConfigValue(item, 'identifiers').includes(documentUtils.getIdentifier(workflow.item))) return;
     const reaction = actorUtils.hasUsedReaction(target);
     const damageActivity = itemUtils.getActivityByIdentifier(item, 'if-damage');
     if (reaction) item.name = `${item._source.name}: ${damageActivity.name}`;
-    const bonus = new DamageBonus(item, {targets: workflow.targets.map(t => t.document)})
+    const bonus = new DamageBonus(item, {targets: workflow.targets.documents})
         .withDefaultCosts({activity: damageActivity})
         .withOnUse(use);
     if (!reaction) bonus.withInputs(await buildInputs(Array.from(item.system.activities)));
@@ -37,8 +37,8 @@ async function use({bonus}) {
     await workflowUtils.syntheticActivityRoll(activity ?? bonus.activity, bonus.targets);
 }
 async function reactionAttack({macroClass: {identifier, source}, workflow}) {
-    const cursedAttacker = workflow.failedSaves.first()?.document;
-    if (!cursedAttacker?.actor) return;
+    const cursedAttacker = workflow.failedSaves.documents[0];
+    if (!cursedAttacker?.actor || !cursedAttacker.object) return;
     const weapons = cursedAttacker.actor.itemTypes.weapon.filter(w => w.system.attackType === 'melee');
     if (!weapons.length) return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.DedicatedWeapon.NoValid', {notify: true});
     let weapon = weapons[0];

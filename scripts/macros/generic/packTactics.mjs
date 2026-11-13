@@ -1,6 +1,6 @@
 import {actorUtils, automationUtils, constants, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function attack({document, macroClass: {identifier, source}, workflow}) {
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.tokens[0]?.document;
     if (!target) return;
     const config = automationUtils.getGenericConfigValues(document, source, identifier, Object.keys(packTactics.genericConfig));
     if (config.attackType && !workflowUtils.isAttackType(workflow, config.attackType)) return;

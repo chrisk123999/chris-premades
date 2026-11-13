@@ -1,7 +1,7 @@
 import {automationUtils, combatUtils, constants, DamageBonus, dialogUtils, documentUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function attack({document: item, workflow}) {
-    if (!item.system.uses.value || workflow.targets.size !== 1 || !workflow.token) return;
-    if (!workflow.targets.first().actor) return;
+    if (!item.system.uses.value || workflow.targets.count !== 1 || !workflow.token) return;
+    if (!workflow.targets.documents[0].actor) return;
     const attackType = automationUtils.getConfigValue(item, 'attackType');
     if (attackType && !workflowUtils.isAttackType(workflow, attackType)) return;
     const combatData = tokenUtils.getCombatData(workflow.token.document);
@@ -13,7 +13,7 @@ async function attack({document: item, workflow}) {
     if (combatData.inCombat) await documentUtils.setFlag(item, 'chris-premades', 'preciseStrike.stamps', combatUtils.addTurnStamp(stamps, workflow.token.id, combatData));
 }
 async function damage({document: item, workflow}) {
-    if (!workflowUtils.getWorkflowProperty(workflow, 'preciseStrike') || !workflow.hitTargets.size) return;
+    if (!workflowUtils.getWorkflowProperty(workflow, 'preciseStrike') || !workflow.hitTargets.count) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'precise-strike');
     if (!activity) return Logging.addMacroWarning('CPR', 'precise-strike', 'Missing the precise-strike activity.', {notify: 'warn'});
     const formula = automationUtils.getConfigValue(item, 'formula');

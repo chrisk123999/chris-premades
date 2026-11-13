@@ -15,8 +15,8 @@ async function early({activity}) {
 async function cure({workflow}) {
     const status = statuses[workflow.activity?.identifier]?.status;
     if (!status) return;
-    if (!workflow.targets.size) return Logging.addMacroWarning('CPR', 'lay-on-hands', 'No target selected.');
-    const effect = actorUtils.getEffectByStatusID(workflow.targets.first().actor, status);
+    if (!workflow.targets.count) return Logging.addMacroWarning('CPR', 'lay-on-hands', 'No target selected.');
+    const effect = actorUtils.getEffectByStatusID(workflow.targets.documents[0].actor, status);
     if (effect) await documentUtils.deleteDocument(effect);
 }
 export const layOnHands = {

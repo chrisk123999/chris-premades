@@ -1,6 +1,6 @@
 import {automationUtils, effectUtils} from '../../../proxy.mjs';
 async function drink({workflow}) {
-    const actor = (workflow.targets.first() ?? workflow.token)?.actor ?? workflow.actor;
+    const actor = (workflow.targets.documents[0] ?? workflow.tokenDocument)?.actor ?? workflow.actor;
     const effect = workflow.item.effects.find(effect => !effect.transfer);
     if (effect) await effectUtils.createItemEffect(actor, workflow.item, effect.id, {config: automationUtils.getConfigValues(workflow.item, configKeys)});
 }

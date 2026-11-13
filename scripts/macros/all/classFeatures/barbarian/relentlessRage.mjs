@@ -6,7 +6,7 @@ async function damaged({document: activity, ditem, targetToken}) {
     const userId = queryUtils.firstOwner(activity.actor, true);
     if (!await dialogUtils.confirmUseItem(activity.item, {userId})) return;
     const save = await workflowUtils.completeActivityUse(activity, [targetToken]);
-    if (save.failedSaveUuids?.length || save.failedSaves?.size) return;
+    if (save.failedSaveUuids?.length || save.failedSaves?.count) return;
     const heal = itemUtils.getActivityByIdentifier(activity.item, 'heal');
     if (!heal) return Logging.addMacroWarning('CPR', 'relentless-rage', 'Heal activity not found!', {notify: 'warn'});
     const hp = (await rollUtils.rollDice(heal.healing.formula, {document: activity})).total;

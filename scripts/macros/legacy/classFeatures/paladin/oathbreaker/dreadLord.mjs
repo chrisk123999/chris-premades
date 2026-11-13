@@ -12,7 +12,7 @@ async function use({document, workflow}) {
     await effectUtils.createEffects(workflow.actor, [fearEffectData], {parentEntity: effect});
 }
 async function attacked({document, sourceToken, workflow}) {
-    if (!sourceToken || !workflow.token || workflow.targets.size !== 1) return;
+    if (!sourceToken || !workflow.token || workflow.targets.count !== 1) return;
     if (tokenUtils.canSense(workflow.token.document, sourceToken, tokenUtils.getNonSightModes())) return;
     workflow.tracker.disadvantage.add('dread-lord', document.name);
 }

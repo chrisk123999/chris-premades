@@ -1,12 +1,12 @@
 import {actorUtils, automationUtils, constants, dialogUtils, genericUtils, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function intercept({ditem, targetToken, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count || !targetToken.object) return;
     if (ditem.totalDamage <= 0) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     const near = tokenUtils.findNearby(targetToken, 5, {disposition: 'ally'}).filter(t => {
         if (workflow.token.document.disposition === t.disposition) return;
         if (actorUtils.hasUsedReaction(t.actor)) return;
-        if (workflow.targets.has(t.object)) return;
+        if (workflow.targets.has(t)) return;
         if (!tokenUtils.canSee(t, workflow.token.document)) return;
         const feature = actorUtils.getItemByIdentifier(t.actor, 'interception') ?? actorUtils.getItemByIdentifier(t.actor, 'fighting-style-interception');
         if (!feature) return;

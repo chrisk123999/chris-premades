@@ -235,7 +235,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.5"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
@@ -335,7 +335,7 @@
           {
             "key": "flags.midi-qol.OverTime",
             "type": "override",
-            "value": "turn=end,saveAbility=wis,saveDC=$activity.dc,saveMagic=true,saveRemove=true,label=Slow",
+            "value": "turn=end,saveAbility=wis,saveDC=$activity.dc,saveMagic=true,saveCount=1,label=Slow",
             "priority": 20
           }
         ],

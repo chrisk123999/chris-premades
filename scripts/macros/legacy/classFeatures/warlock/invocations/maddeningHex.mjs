@@ -1,8 +1,8 @@
 import {automationUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
-    if (workflow.targets.size !== 1 || !workflow.damageTotal) return;
+    if (workflow.targets.count !== 1 || !workflow.damageTotal || !workflow.targets.tokens.length) return;
     const range = automationUtils.getConfigValue(document, 'range');
-    const targets = tokenUtils.findNearby(workflow.targets.first().document, range, {disposition: 'ally'});
+    const targets = tokenUtils.findNearby(workflow.targets.tokens[0].document, range, {disposition: 'ally'});
     if (!targets.length) return;
     await workflowUtils.applyDamage(targets, workflow.damageTotal, workflow.defaultDamageType);
 }

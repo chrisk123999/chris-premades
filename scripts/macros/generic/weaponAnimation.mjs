@@ -1,13 +1,13 @@
 import {automationUtils, workflowUtils} from '../../proxy.mjs';
 import {playTargetAnimations} from './spellAnimation.mjs';
 async function attack({document, workflow}) {
-    if (!workflow.token || !workflow.targets.size || workflowUtils.getWorkflowProperty(workflow, 'skipWeaponAnimation')) return;
+    if (!workflow.token || !workflow.targets.count || workflowUtils.getWorkflowProperty(workflow, 'skipWeaponAnimation')) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'weaponAnimation', ['activityId', 'advanced']);
     if (config.activityId && config.activityId !== workflow.activity?.id) return;
     if (config.advanced) {
         const {animation, options} = automationUtils.getResolvedAnimation(document, 'advancedAnimation', {source: 'chris-premades', identifier: 'weaponAnimation'});
         if (!animation?.macros?.attack) return;
-        await animation.macros.attack(workflow.token.document, workflow.targets.map(token => token.document), {...options, switchDistance: workflowUtils.getRange(workflow)});
+        await animation.macros.attack(workflow.token.document, workflow.targets.tokens.map(token => token.document), {...options, switchDistance: workflowUtils.getRange(workflow)});
         return;
     }
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'weaponAnimation'});

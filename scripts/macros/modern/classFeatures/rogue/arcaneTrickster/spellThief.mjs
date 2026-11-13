@@ -10,9 +10,8 @@ async function react({document: item, workflow, sourceToken}) {
     const activityData = activity.toObject();
     activityData.save.ability = [workflow.item.system.ability || workflow.actor.system.attributes.spellcasting || 'int'];
     const reactionWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, item, [workflow.token.document], {userId});
-    if (!reactionWorkflow?.failedSaves.size) return;
-    const removedTarget = Array.from(workflow.targets).find(target => (target.document ?? target) === sourceToken);
-    if (removedTarget) await workflowUtils.removeTargets(workflow, [removedTarget]);
+    if (!reactionWorkflow?.failedSaves.count) return;
+    if (workflow.targets.has(sourceToken)) await workflowUtils.removeTargets(workflow, [sourceToken]);
     if (!workflow.item.system.level) return;
     if (!actorUtils.hasSpellSlots(sourceToken.actor, workflow.item.system.level)) return Logging.addMacroWarning('CPR', 'spell-thief', 'No spell slot of that level to steal.');
     const sourceEffect = item.effects.contents[0];

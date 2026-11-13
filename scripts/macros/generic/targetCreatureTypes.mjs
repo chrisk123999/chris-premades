@@ -1,24 +1,24 @@
 import {actorUtils, automationUtils, constants, dialogUtils, rollUtils, summonUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function filterTargets({document, workflow}) {
     if (document.item && workflow.activity.uuid !== document.uuid) return;
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'targetCreatureTypes', configKeys);
     const summoner = config.excludeSummoner ? summonUtils.getSummonData(workflow.actor)?.owner : undefined;
     const maxSize = config.maxSize ? CONFIG.DND5E.actorSizes[config.maxSize]?.numerical : undefined;
-    const invalid = Array.from(workflow.targets).filter(target => {
+    const invalid = workflow.targets.documents.filter(target => {
         if (!target.actor) return true;
-        if (config.excludeSelf && target === workflow.token) return true;
+        if (config.excludeSelf && target.id === workflow.token?.id) return true;
         if (summoner && target.actor === summoner) return true;
         if (config.aliveOnly && target.actor.system.attributes.hp.value <= 0) return true;
         if (maxSize !== undefined && actorUtils.getSize(target.actor) > maxSize) return true;
         if (config.maxCR >= 0 && actorUtils.getLevelOrCR(target.actor) > config.maxCR) return true;
         if (config.minIntelligence && (target.actor.system.abilities.int?.value ?? 0) < config.minIntelligence) return true;
-        if (config.canSee && !tokenUtils.canSee(workflow.token.document, target.document)) return true;
+        if (config.canSee && target.object && !tokenUtils.canSee(workflow.token.document, target)) return true;
         if (!config.creatureTypes.length) return false;
         return config.creatureTypes.includes(actorUtils.typeOrRace(target.actor)) === config.invert;
     });
     if (invalid.length) await workflowUtils.removeTargets(workflow, invalid);
-    const candidates = Array.from(workflow.targets).map(t => t.document);
+    const candidates = workflow.targets.documents;
     if (!candidates.length) return;
     if (config.limit) config.limit = (await rollUtils.rollDice(config.limit, {workflow}))?.total;
     if ((!config.chooseTargets || !workflow.activity.target?.template?.type) && (!config.limit || candidates.length <= config.limit)) return;

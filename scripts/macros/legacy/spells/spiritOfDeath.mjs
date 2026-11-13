@@ -8,7 +8,7 @@ function isHaunted(sourceActor, targetActor) {
 }
 async function haunt({workflow}) {
     if (workflow.activity.identifier !== 'haunt') return;
-    const targets = new Set(Array.from(workflow.targets, token => token.actor));
+    const targets = new Set(workflow.targets.documents.map(token => token.actor));
     const effects = hauntedEffects(workflow.actor);
     await Promise.all(effects.filter(effect => !targets.has(effect.parent)).map(effect => documentUtils.deleteDocument(effect)));
     await summonUtils.makeDependentOnParent(workflow.actor, effects.filter(effect => targets.has(effect.parent)));
@@ -17,7 +17,7 @@ function hauntedFilter({source, target}) {
     return isHaunted(source, target);
 }
 function scytheTarget({workflow}) {
-    if (isHaunted(workflow.actor, workflow.targets.first()?.actor)) return;
+    if (isHaunted(workflow.actor, workflow.targets.documents[0]?.actor)) return;
     Logging.addMacroWarning('CPR', 'spirit-of-death-scythe', 'CHRISPREMADES.Macros.Legacy.SpiritOfDeath.InvalidTarget', {notify: 'info'});
     return true;
 }

@@ -31,8 +31,8 @@ async function fist({document: activity, macroClass: {identifier, source}, token
     const item = strike.toObject();
     item.system.activities[castFist._id] = castFist;
     const roll = await workflowUtils.syntheticItemDataRoll(item, activity.actor, [], {options: {activityIdentifier: castFist.midiProperties.identifier, advantage: true}});
-    if (!roll?.hitTargets.size) return log(source, identifier, 'I Cast Fist exited early with no hit targets.');
-    await Promise.all(roll.hitTargets.map(t =>
+    if (!roll?.hitTargets.count) return log(source, identifier, 'I Cast Fist exited early with no hit targets.');
+    await Promise.all(roll.hitTargets.documents.map(t =>
         actorUtils.getSize(t.actor) <= CONFIG.DND5E.actorSizes[config.size]?.numerical ?
             actorUtils.applyConditions(t.actor, ['prone']) : undefined
     ));

@@ -1,10 +1,10 @@
 import {activityUtils, automationUtils, documentUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
-    if (!workflow.targets.size) return Logging.addMacroWarning('CPR', 'hound-of-ill-omen', 'No target selected.');
+    if (!workflow.targets.count) return Logging.addMacroWarning('CPR', 'hound-of-ill-omen', 'No target selected.');
     const [summonData] = automationUtils.getConfigValue(document, 'summons') ?? [];
     const sourceActor = summonData?.sourceActorUuid ? await fromUuid(summonData.sourceActorUuid) : undefined;
     if (!sourceActor) return Logging.addMacroWarning('CPR', 'hound-of-ill-omen', 'Hound summon actor not configured.', {notify: 'warn'});
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.documents[0];
     const markerEffect = documentUtils.getEffectByIdentifier(targetToken.actor, 'houndOfIllOmenTarget');
     await Promise.all(summonUtils.getSummonsBySource(document).map(async summon => await summonUtils.deleteSummon(summon)));
     const {name, avatarImg, tokenImg, animation, sounds, items, initiative} = summonData;
@@ -29,11 +29,11 @@ async function use({document, workflow}) {
     await summonUtils.placeSummons([summon], activityUtils.getRange(workflow.activity), {token: workflow.token.document});
 }
 async function disadvantage({document, workflow}) {
-    if (workflow.item.type !== 'spell' || !workflow.targets.size) return;
+    if (workflow.item.type !== 'spell' || !workflow.targets.count) return;
     const houndToken = summonUtils.getSummonsBySource(document)[0]?.token;
     if (!houndToken) return;
     const distance = automationUtils.getConfigValue(document, 'distance');
-    const marked = Array.from(workflow.targets, target => target.document ?? target).filter(targetToken => {
+    const marked = workflow.targets.tokens.map(target => target.document).filter(targetToken => {
         if (!documentUtils.getEffectByIdentifier(targetToken.actor, 'houndOfIllOmenTarget')) return false;
         return tokenUtils.isWithinDistance(houndToken, targetToken, distance);
     });

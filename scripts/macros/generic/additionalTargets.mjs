@@ -1,6 +1,6 @@
 import {automationUtils, constants, dialogUtils, documentUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function extraTarget({document: item, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const config = automationUtils.getGenericConfigValues(item, 'chris-premades', 'additionalTargets', Object.keys(additionalTargets.genericConfig));
     if (config.damageType.length) {
         const damage = workflow.activity.damage ?? workflow.activity.otherActivity?.damage;
@@ -21,7 +21,7 @@ async function extraTarget({document: item, workflow}) {
     const nearby = new Set();
     const options = {disposition: config.disposition, includeIncapacitated: true};
     if (config.rangeFrom === 'target') {
-        for (const token of workflow.targets) {
+        for (const token of workflow.targets.tokens) {
             tokenUtils.findNearby(token.document, config.range, options).forEach(t => nearby.add(t));
         }
     } else {
@@ -39,7 +39,7 @@ async function extraTarget({document: item, workflow}) {
         }
     ))?.result;
     if (!selection) return;
-    const targets = Array.from(workflow.targets);
+    const targets = workflow.targets.documents;
     if (Array.isArray(selection)) targets.push(...selection);
     else targets.push(selection);
     await workflowUtils.updateTargets(workflow, targets);

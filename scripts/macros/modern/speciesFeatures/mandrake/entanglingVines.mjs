@@ -17,7 +17,7 @@ function canTarget(limits, token, season) {
 }
 async function early({document: item, workflow}) {
     if (workflow.activity.identifier !== 'entangling-vines') return;
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.documents[0];
     if (!target?.actor) return;
     const reason = canTarget(getLimits(item), target, getSeason(item));
     if (!reason) return;
@@ -26,7 +26,7 @@ async function early({document: item, workflow}) {
 }
 async function targeting({document: item, workflow}) {
     if (workflow.activity.identifier !== 'entangling-vines' || getSeason(item) !== 'autumn') return;
-    const first = workflow.targets.first();
+    const first = workflow.targets.tokens[0];
     if (!first?.actor) return;
     const range = automationUtils.getConfigValue(item, 'autumnRange');
     const limits = getLimits(item);
@@ -35,12 +35,12 @@ async function targeting({document: item, workflow}) {
     const selection = await dialogUtils.selectTargetDialog(item.name, 'CHRISPREMADES.Macros.Modern.EntanglingVines.SecondTarget', nearby, {skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(item.actor, true)});
     const second = selection?.result;
     if (!second) return;
-    await workflowUtils.updateTargets(workflow, [first, second.object ?? second]);
+    await workflowUtils.updateTargets(workflow, [first.document, second]);
 }
 async function finished({document: item, workflow}) {
     if (workflow.activity.identifier !== 'entangling-vines' || !workflow.token) return;
     const season = getSeason(item);
-    const targets = Array.from(workflow.targets).map(token => token.document).filter(token => token.actor);
+    const targets = workflow.targets.documents.filter(token => token.actor);
     if (!season || !targets.length) return;
     if (season === 'spring') {
         await Promise.all(targets.map(token => {
@@ -50,7 +50,7 @@ async function finished({document: item, workflow}) {
         }));
     } else if (season === 'summer') {
         const range = automationUtils.getConfigValue(item, 'summerDistance');
-        for (const token of targets) await tokenUtils.displaceToken(token, {sourceToken: workflow.token.document, range});
+        for (const token of targets) if (token.object) await tokenUtils.displaceToken(token, {sourceToken: workflow.token.document, range});
     } else if (season === 'winter') {
         const activity = itemUtils.getActivityByIdentifier(item, 'winter');
         if (!activity) return Logging.addMacroWarning('CPR', 'entangling-vines', 'Winter activity missing from item.', {notify: 'warn'});

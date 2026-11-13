@@ -4,7 +4,7 @@ async function banish({document, actor, workflow}) {
     const activity = itemUtils.getActivityByIdentifier(document, 'banish');
     if (!activity) return;
     const maxHp = automationUtils.getConfigValue(document, 'hp');
-    const targets = Array.from(workflow.targets, token => token.document ?? token).filter(token => token.actor && token.actor.system.attributes.hp.value <= maxHp);
+    const targets = workflow.targets.documents.filter(token => token.actor && token.actor.system.attributes.hp.value <= maxHp);
     const endSpell = () => effectUtils.endConcentration(actor, document);
     if (!targets.length) return await endSpell();
     await workflowUtils.syntheticActivityRoll(activity, targets, {consumeUsage: false, consumeResources: false, spellSlot: false, config: {concentration: {begin: false}}});

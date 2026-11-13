@@ -1,7 +1,7 @@
 import {actorUtils, automationUtils, combatUtils, constants, dialogUtils, documentUtils, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 import {rememberCombat} from '../../../../generic/selectDamageType.mjs';
 async function damage({document: item, workflow, token}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const oncePerTurn = automationUtils.getConfigValue(item, 'oncePerTurn');
     const combatData = oncePerTurn ? tokenUtils.getCombatData(token) : undefined;
     const stamps = genericUtils.getProperty(item, 'flags.cat.awakenedSpellbook.stamps') ?? [];

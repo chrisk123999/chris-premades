@@ -1,6 +1,6 @@
 import {automationUtils, effectUtils, genericUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function save({document: item, macroClass: {identifier, source}, sourceToken, workflow}) {
-    if (!workflow.targets.size || !workflow.activity.hasSave || !workflow.activity.hasDamage) return;
+    if (!workflow.targets.count || !workflow.activity.hasSave || !workflow.activity.hasDamage) return;
     if (!workflow.activity.save.ability.has('dex')) return;
     if (item.actor.statuses.has('incapacitated')) return;
     if (!sourceToken) return Logging.addMacroWarning(source, identifier, `Leading Evasion exited early with no active token. (item) ${item.uuid}`);
@@ -9,7 +9,7 @@ async function save({document: item, macroClass: {identifier, source}, sourceTok
     const rangeFormula = automationUtils.getConfigValue(item, 'range');
     const range = (await rollUtils.rollDice(rangeFormula, {document: item}))?.total;
     if (!range) return Logging.addMacroWarning(source, identifier, `Leading Evasion exited early due to a failed formula parse. (activity) ${item.uuid} (range) ${rangeFormula}`);
-    const near = tokenUtils.findNearby(sourceToken, range, {disposition: 'ally'}).filter(t => workflow.targets.some(tgt => tgt.id === t.id));
+    const near = tokenUtils.findNearby(sourceToken, range, {disposition: 'ally'}).filter(t => workflow.targets.has(t));
     if (!near.length) Logging.addMacroWarning(source, identifier, `Leading Evasion exited early with no nearby allies. (item) ${item.uuid}`);
     genericUtils.setProperty(effect, 'flags.cat.noAnimation', true);
     effect.duration.units = 'seconds';

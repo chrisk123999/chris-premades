@@ -1,6 +1,6 @@
 import {rollUtils, workflowUtils} from '../../../proxy.mjs';
 async function damage({workflow}) {
-    if (!workflow.hitTargets.size || !workflow.damageRolls?.length) return;
+    if (!workflow.hitTargets.count || !workflow.damageRolls?.length) return;
     const roll = workflow.damageRolls[0];
     const term = roll.dice.find(die => die.faces === 6);
     if (!term) return;

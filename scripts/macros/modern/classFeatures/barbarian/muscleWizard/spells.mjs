@@ -34,8 +34,8 @@ async function burningHands({document: activity, macroClass: {identifier, source
     const item = strike.toObject();
     item.system.activities[burning._id] = burning;
     const roll = await workflowUtils.syntheticItemDataRoll(item, activity.actor, near, {options: {activityIdentifier: burning.midiProperties.identifier}});
-    if (!roll?.hitTargets.size) return log(source, identifier, '"Spells" Burning Hands exited early with no hit targets.');
-    await Promise.all(roll.hitTargets.map(t => effectUtils.createEffects(t.actor, [effect])));
+    if (!roll?.hitTargets.count) return log(source, identifier, '"Spells" Burning Hands exited early with no hit targets.');
+    await Promise.all(roll.hitTargets.documents.map(t => effectUtils.createEffects(t.actor, [effect])));
 }
 async function magicMissile({document: activity, macroClass: {identifier, source}, workflow}) {
     const config = automationUtils.getConfigValues(activity.item, Object.keys(spells.config));

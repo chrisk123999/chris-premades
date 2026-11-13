@@ -15,7 +15,7 @@ async function prompt({document: activity, workflow}) {
     `);
     if (!choice) return;
     const options = {};
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.documents[0];
     workflowUtils.setWorkflowProperty(options, 'battleMagicPreselected', choice.uuid);
     await workflowUtils.syntheticActivityRoll(activity, target ? [target]: [], {options});
 }

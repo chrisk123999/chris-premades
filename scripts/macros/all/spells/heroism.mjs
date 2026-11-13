@@ -1,6 +1,6 @@
 import {documentUtils, effectUtils} from '../../../proxy.mjs';
 async function use({workflow}) {
-    if (workflow.targets.size || workflow.activity.identifier === 'heroism-temp-hp') return;
+    if (workflow.targets.count || workflow.activity.identifier === 'heroism-temp-hp') return;
     await effectUtils.endConcentration(workflow.actor, workflow.item);
 }
 async function deleted({document}) {

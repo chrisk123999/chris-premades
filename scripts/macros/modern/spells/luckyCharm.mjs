@@ -13,7 +13,7 @@ async function use({document: item, workflow}) {
     const [sourceEffect] = await effectUtils.createEffects(workflow.actor, [effectData]) ?? [];
     if (!sourceEffect) return;
     await utils.deleteCharms(workflow.actor, 'luckyCharm');
-    const carrier = workflow.targets.first()?.actor ?? workflow.actor;
+    const carrier = workflow.targets.documents[0]?.actor ?? workflow.actor;
     await utils.createCharms(carrier, [charmData], {key: 'luckyCharm', source: workflow.actor});
 }
 async function track(item, added) {

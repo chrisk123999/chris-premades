@@ -2,7 +2,7 @@ import {actorUtils, automationUtils, constants} from '../../proxy.mjs';
 async function late({document: activity, workflow}) {
     const maxSize = automationUtils.getGenericConfigValue(activity, 'chris-premades', 'proneOnHit', 'maxSize');
     const limit = maxSize ? CONFIG.DND5E.actorSizes[maxSize]?.numerical : undefined;
-    await Promise.all(workflow.hitTargets.map(async token => {
+    await Promise.all(workflow.hitTargets.documents.map(async token => {
         if (!token.actor) return;
         if (limit !== undefined && actorUtils.getSize(token.actor) > limit) return;
         await actorUtils.applyConditions(token.actor, ['prone']);

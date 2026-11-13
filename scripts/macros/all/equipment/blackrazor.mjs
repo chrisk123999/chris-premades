@@ -1,15 +1,15 @@
 import {actorUtils, documentUtils, effectUtils, itemUtils, rollUtils, workflowUtils} from '../../../proxy.mjs';
 async function undead({document: item, workflow}) {
-    if (workflow.activity.identifier !== 'blackrazor' || workflow.hitTargets.size !== 1) return;
-    if (actorUtils.typeOrRace(workflow.hitTargets.first().actor) !== 'undead') return;
+    if (workflow.activity.identifier !== 'blackrazor' || workflow.hitTargets.count !== 1) return;
+    if (actorUtils.typeOrRace(workflow.hitTargets.documents[0].actor) !== 'undead') return;
     await workflow.setDamageRolls([await rollUtils.damageRoll('1d10', workflow.activity, {type: 'healing'})]);
     const backlash = itemUtils.getActivityByIdentifier(item, 'blackrazor-backlash');
     if (backlash) await workflowUtils.syntheticActivityRoll(backlash, [workflow.token.document], {consumeUsage: false, consumeResources: false});
 }
 async function devour({document: item, workflow}) {
-    if (workflow.activity.identifier !== 'blackrazor' || workflow.hitTargets.size !== 1) return;
+    if (workflow.activity.identifier !== 'blackrazor' || workflow.hitTargets.count !== 1) return;
     const [entry] = workflow.damageList ?? [];
-    const target = workflow.hitTargets.first().actor;
+    const target = workflow.hitTargets.documents[0].actor;
     if (!entry || entry.newHP || !entry.oldHP || ['construct', 'undead'].includes(actorUtils.typeOrRace(target))) return;
     const maxHP = target.system.attributes.hp.max;
     await workflowUtils.applyDamage([workflow.token.document], maxHP, 'temphp');

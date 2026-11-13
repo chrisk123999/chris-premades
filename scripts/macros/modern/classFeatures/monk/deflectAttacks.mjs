@@ -18,6 +18,7 @@ async function deflect({document: activity, ditem, targetToken, workflow}) {
     const monksFocus = actorUtils.getItemByIdentifier(activity.actor, 'monks-focus', {type: 'feat'});
     if (!monksFocus?.system.uses.value) return;
     const range = workflowUtils.isAttackType(workflow, 'meleeAttack') ? 5 : 60;
+    if (!targetToken.object) return;
     const nearby = tokenUtils.findNearby(targetToken, range);
     if (!nearby.length) return;
     const selection = await dialogUtils.selectTargetDialog(activity.item.name, 'CHRISPREMADES.Macros.Modern.DeflectAttacks', nearby, {skipDeadAndUnconscious: false, userId, buttons: 'yesNo'});

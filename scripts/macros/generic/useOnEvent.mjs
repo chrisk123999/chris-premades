@@ -13,7 +13,7 @@ async function use(activity, token, event) {
         const selection = pools.length ? await dialogUtils.confirmRecoverUses(activity.item, pools[0], {userId}) : await dialogUtils.confirmUseItem(activity.item, {userId});
         if (!selection) return;
     }
-    await workflowUtils.completeActivityUse(activity, token ? [token.document ?? token] : []);
+    await workflowUtils.completeActivityUse(activity, token ? [token] : []);
 }
 async function short({document, token}) {
     await use(document, token, 'short');

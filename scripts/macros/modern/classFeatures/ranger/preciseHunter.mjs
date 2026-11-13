@@ -1,7 +1,7 @@
 import {documentUtils} from '../../../../proxy.mjs';
 async function attack({document: item, workflow}) {
-    if (workflow.targets.size !== 1) return;
-    const targetActor = workflow.targets.first().actor;
+    if (workflow.targets.count !== 1) return;
+    const targetActor = workflow.targets.documents[0].actor;
     if (!targetActor) return;
     const marked = documentUtils.getEffectByIdentifier(targetActor, 'huntersMarkMarked');
     if (!marked) return;

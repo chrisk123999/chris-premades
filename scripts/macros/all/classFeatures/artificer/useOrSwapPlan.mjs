@@ -111,7 +111,7 @@ async function usePlan({macroClass: {identifier, source}, workflow}) {
         selected = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.ArtificerPlans.Create', plans, {displayTooltips: true});
     }
     if (!selected) return;
-    const itemHolder = await fromUuid(workflowUtils.getWorkflowProperty(workflow, keys.itemHolder)) ?? workflow.targets.first()?.document ?? workflow.token?.document;
+    const itemHolder = await fromUuid(workflowUtils.getWorkflowProperty(workflow, keys.itemHolder)) ?? workflow.targets.documents[0] ?? workflow.token?.document;
     if (!itemHolder) Logging.addMacroWarning(source, identifier, 'Feature was used without a token on a scene.');
     if (documentUtils.getIdentifier(selected).startsWith(keys.infusionIdentifier)) {
         const infusionActivity = itemUtils.getActivityByIdentifier(selected, keys.createActivity);
@@ -156,12 +156,12 @@ async function fromPlanCreatePlan({actor, document: activity, macroClass: {sourc
 }
 async function preInfusion({workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, keys.prechecksComplete)) {
-        rollFeature(workflow.actor, keys.createActivity, workflow.item, workflow.targets.map(t => t.document));
+        rollFeature(workflow.actor, keys.createActivity, workflow.item, workflow.targets.documents);
         workflow.aborted = true;
         return true;
     }
     const infusionIdentifier = documentUtils.getIdentifier(workflow.item);
-    const targetActor = workflow.targets.first()?.actor ?? workflow.actor;
+    const targetActor = workflow.targets.documents[0]?.actor ?? workflow.actor;
     const items = (await automationUtils.calledEvent(keys.calledEventInfusionItems, workflow.actor, {
         canOverlap: true,
         multiResult: true,
@@ -169,7 +169,7 @@ async function preInfusion({workflow}) {
     }))?.flat().filter(i => i instanceof Item.implementation);
     if (!items?.length) return;
     const uniqueItems = [...new Map(items.map(item => [item.id, item])).values()];
-    workflowUtils.setWorkflowProperty(workflow, keys.infusionOptionsMarker, uniqueItems);
+    workflowUtils.setWorkflowProperty(workflow, keys.infusionOptionsMarker, uniqueItems.map(item => item.uuid));
 }
 // helpers
 async function getConfig(workflow, source, identifier) {

@@ -67,14 +67,14 @@ async function dismiss({workflow}) {
 }
 async function shareSpell({document, workflow}) {
     if (workflow.item.type !== 'spell') return;
-    if (workflow.targets.size !== 1 || workflow.targets.first().id !== workflow.token?.id) return;
+    if (workflow.targets.count !== 1 || workflow.targets.documents[0].id !== workflow.token?.id) return;
     const originActivity = await effectUtils.getOriginActivity(document);
     if (!originActivity) return;
     const steedToken = summonUtils.getSummonsBySource(originActivity.item).find(steed => steed.token)?.token;
     if (!steedToken) return;
     if (!tokenUtils.isWithinDistance(workflow.token.document, steedToken, 5)) return;
     const selection = await dialogUtils.confirm(originActivity.item.name, 'CHRISPREMADES.Macros.Legacy.FindSteed.Target');
-    if (selection) await workflowUtils.updateTargets(workflow, [workflow.token, steedToken.object]);
+    if (selection) await workflowUtils.updateTargets(workflow, [workflow.tokenDocument, steedToken]);
 }
 const config = {
     name: {

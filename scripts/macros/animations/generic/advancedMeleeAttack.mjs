@@ -334,6 +334,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
         /* eslint-enable indent */
     }
     for (let targetToken of targetTokens) {
+        if (!targetToken.object) continue;
         const targetScale = {x: targetToken.texture.scaleX, y: targetToken.texture.scaleY};
         const rand = Math.floor(Math.random() * entriesLength);
         let randMelee = dbPath + '.' + rand;

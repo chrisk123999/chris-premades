@@ -1,6 +1,6 @@
 import {actorUtils, documentUtils, effectUtils, itemUtils, workflowUtils} from '../../proxy.mjs';
 function getEffect(item, workflow) {
-    const targets = Array.from(workflow.targets, token => token.document.uuid);
+    const targets = workflow.targets.uuids;
     return actorUtils.getEffects(workflow.actor).find(effect => effect.flags['chris-premades']?.swift?.weapon === item.uuid && targets.includes(effect.flags['chris-premades'].swift.target));
 }
 async function missed({workflow, missed}) {
@@ -10,7 +10,7 @@ async function missed({workflow, missed}) {
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {value: null, units: 'seconds', expiry: 'sourceEnd'},
-        flags: {'chris-premades': {swift: {weapon: workflow.item.uuid, target: token.document.uuid}}}
+        flags: {'chris-premades': {swift: {weapon: workflow.item.uuid, target: token.uuid}}}
     }));
     if (datas.length) await effectUtils.createEffects(workflow.actor, datas);
 }
@@ -25,7 +25,7 @@ async function attackComplete({workflow}) {
     if (uuid) await documentUtils.deleteDocument(await fromUuid(uuid));
 }
 async function damage({document: item, workflow}) {
-    if (!workflowUtils.getWorkflowProperty(workflow, 'swift') || !workflow.hitTargets.size || !workflow.damageRolls?.length) return;
+    if (!workflowUtils.getWorkflowProperty(workflow, 'swift') || !workflow.hitTargets.count || !workflow.damageRolls?.length) return;
     await workflowUtils.bonusDamage(workflow, '1d4', {damageType: item.system.damage.base.types.first()});
 }
 export const swiftMastery = {

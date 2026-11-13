@@ -1,7 +1,7 @@
 import {combatUtils, documentUtils, effectUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function jinx({document: item, workflow}) {
     if (workflow.activity.type !== 'attack' || item.system.magicalBonus < 2 || !workflow.token) return;
-    const target = workflow.hitTargets.first();
+    const target = workflow.hitTargets.documents[0];
     if (!target?.actor || !workflowUtils.getDamageDealt(workflow, target)) return;
     const token = workflow.token.document;
     const combatData = tokenUtils.getCombatData(token);

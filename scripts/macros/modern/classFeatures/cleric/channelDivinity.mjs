@@ -8,7 +8,7 @@ async function promptChannelDivinities({data: {workflow}}) {
     const turn = itemUtils.getActivityByIdentifier(workflow.item, 'turn-undead');
     if (!turn) notFound('turn');
     else choices.push(turn);
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.documents[0];
     if (target) {
         const disposition = workflow.token.document.disposition || 1;
         const id = target.disposition === disposition ? 'heal' : 'damage';
@@ -19,7 +19,7 @@ async function promptChannelDivinities({data: {workflow}}) {
     return choices;
 }
 async function applyTurnUndead({workflow}) {
-    if (!workflow.failedSaves.size) return;
+    if (!workflow.failedSaves.count) return;
     const turnedEffect = (await workflow.activity.effects[0]?.getEffect()) ?? workflow.item.effects.contents[0];
     if (!turnedEffect) return;
     const casterEffect = workflow.item.effects.contents.find(e => e.id !== turnedEffect.id);
@@ -28,9 +28,9 @@ async function applyTurnUndead({workflow}) {
     const sourceEffect = (await effectUtils.createEffects(workflow.actor, [sourceData]))?.[0];
     if (!sourceEffect) return;
     const searUndead = actorUtils.getItemByIdentifier(workflow.actor, 'sear-undead');
-    if (searUndead) await workflowUtils.syntheticItemRoll(searUndead, workflow.failedSaves.map(t => t.document));
+    if (searUndead) await workflowUtils.syntheticItemRoll(searUndead, workflow.failedSaves.documents);
     const turnData = documentUtils.getEffectData(workflow.activity, turnedEffect.id, {parentEntity: sourceEffect});
-    await Promise.all(Array.from(workflow.failedSaves).map(t => {
+    await Promise.all(workflow.failedSaves.documents.map(t => {
         if (t.actor?.system.attributes.hp.value === 0) return;
         return effectUtils.createEffects(t.actor, [turnData]);
     }));

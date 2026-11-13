@@ -8,7 +8,7 @@ async function rage({data, document: activity, macroClass: {source}}) {
         genericUtils.setProperty(data.effectData, 'flags.cat.macros.roll', [macro]);
 }
 async function damage({ditem, macroClass: {identifier, source}, targetToken, token: attacker}) {
-    if (!ditem.isHit || !ditem.totalDamage) return;
+    if (!ditem.isHit || !ditem.totalDamage || !targetToken.object) return;
     const near = tokenUtils.findNearby(targetToken, 30, {disposition: 'ally'});
     for (const ally of near) {
         if (!ditem.totalDamage) return;

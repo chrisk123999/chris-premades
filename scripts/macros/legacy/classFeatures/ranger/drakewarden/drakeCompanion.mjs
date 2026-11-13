@@ -74,7 +74,7 @@ async function use({document, workflow}) {
     await summonUtils.placeSummons([summon], automationUtils.getConfigValue(document, 'range'), {token: workflow.token.document});
 }
 async function resistance({document, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     const actor = effectUtils.getActor(document);
     if (!actor || actorUtils.hasUsedReaction(actor)) return;
     const sourceItem = actorUtils.getItemByIdentifier(actor, 'drake-companion-summon');
@@ -83,8 +83,8 @@ async function resistance({document, workflow}) {
     const ownerToken = actorUtils.getFirstToken(actor);
     const summonToken = summonUtils.getSummonsByIdentifier('drakeCompanion', {actor})[0]?.token;
     if (!ownerToken || !summonToken) return;
-    const hitOwner = workflow.hitTargets.has(ownerToken.object);
-    const hitSummon = workflow.hitTargets.has(summonToken.object);
+    const hitOwner = workflow.hitTargets.has(ownerToken);
+    const hitSummon = workflow.hitTargets.has(summonToken);
     if (!hitOwner && !hitSummon) return;
     if (!tokenUtils.isWithinDistance(ownerToken, summonToken, automationUtils.getConfigValue(sourceItem, 'reactionRange'))) return;
     const userId = queryUtils.firstOwner(actor, true);
@@ -113,7 +113,7 @@ async function resistance({document, workflow}) {
     await documentUtils.update(activity, {'uses.spent': activity.uses.spent + 1});
 }
 async function infuse({document, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     const damageType = automationUtils.getConfigValue(document, 'damageType');
     if (!damageType) return;
@@ -128,7 +128,7 @@ async function infuse({document, workflow}) {
         .withDefaultRequest()
         .withValidation(() => !actorUtils.hasUsedReaction(actor))
         .withOnUse(async () => actorUtils.setReactionUsed(actor));
-    bonus.targets = Array.from(workflow.hitTargets, token => token.document);
+    bonus.targets = workflow.hitTargets.documents;
     return bonus;
 }
 const imageConfig = damageType => ({

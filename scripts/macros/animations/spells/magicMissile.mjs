@@ -32,6 +32,7 @@ function getArcOffset(sourceToken, targetToken) {
     return {x: Math.cos(angle) * radius, y: Math.sin(angle) * radius};
 }
 async function attack(sourceToken, targetToken, {missed, sound, color = 'purple'} = {}) {
+    if (!targetToken.object) return;
     if (animationUtils.jb2aCheck() !== 'patreon') {
         color = 'purple';
     } else if (color === 'random') {

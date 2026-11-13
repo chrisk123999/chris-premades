@@ -17,10 +17,10 @@ export async function moved({document: region}) {
     if (animation?.macros?.move) await animation.macros.move(region, options);
 }
 async function pulse({document, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const {animation, options} = automationUtils.getResolvedAnimation(document.item, 'animation');
     if (!animation?.macros?.pulse) return;
-    workflow.targets.forEach(token => animation.macros.pulse(token.document, options));
+    workflow.targets.tokens.forEach(token => animation.macros.pulse(token.document, options));
 }
 function isShapechanger(actor, identifiers) {
     if (!actor) return false;
@@ -30,7 +30,7 @@ function isShapechanger(actor, identifiers) {
 }
 async function shapechanger({document, workflow}) {
     const identifiers = automationUtils.getConfigValue(document.item, 'shapechangerIdentifiers') ?? [];
-    workflow.targets.forEach(token => {
+    workflow.targets.documents.forEach(token => {
         if (isShapechanger(token.actor, identifiers)) workflowUtils.grantRollModifier(workflow, 'dis', token.id, 'moonbeam-shapechanger', _loc('CHRISPREMADES.Macros.All.Moonbeam.ShapechangerDisadvantage'));
     });
 }

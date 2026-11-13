@@ -9,8 +9,8 @@ async function selectNearby(document, targets, count) {
 async function use({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'bladeSpell', configKeys);
     if (config.activityId && config.activityId !== workflow.activity.id) return;
-    if (workflow.targets.size !== 1) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Select exactly one target.');
-    const targetToken = workflow.targets.first().document;
+    if (workflow.targets.count !== 1) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Select exactly one target.');
+    const targetToken = workflow.targets.documents[0];
     const weapons = actorUtils.getEquippedWeapons(workflow.actor).filter(weapon =>
         weapon.system.activities.getByType('attack').length &&
         (!config.meleeOnly || CONFIG.DND5E.weaponTypeMap[weapon.system.type.value] === 'melee') &&
@@ -47,9 +47,9 @@ async function use({document, workflow}) {
     });
     const attackWorkflow = await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [targetToken], {fast: false, options: {workflowOptions: {autoRollAttack: true, fastForwardDamage: true}}});
     if (!attackWorkflow) return;
-    const hitTarget = attackWorkflow.hitTargets.first()?.document;
+    const hitTarget = attackWorkflow.hitTargets.documents[0];
     const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'bladeSpell'});
-    if (animation?.macros.attack) await animation.macros.attack(workflow.token.document, targetToken, {...animationOptions, missed: !hitTarget});
+    if (animation?.macros.attack && targetToken.object) await animation.macros.attack(workflow.token.document, targetToken, {...animationOptions, missed: !hitTarget});
     if (!hitTarget) return;
     if (config.onHitEffect) {
         const effectData = documentUtils.getEffectData(document, config.onHitEffect);
@@ -61,13 +61,13 @@ async function use({document, workflow}) {
     }
     if (config.effectNearby) {
         const effectData = documentUtils.getEffectData(document, config.effectNearby);
-        const targets = effectData ? await selectNearby(document, tokenUtils.findNearby(hitTarget, config.effectNearbyRange).filter(token => token.id !== workflow.token.id), config.effectNearbyTargets) : [];
+        const targets = effectData && hitTarget.object ? await selectNearby(document, tokenUtils.findNearby(hitTarget, config.effectNearbyRange).filter(token => token.id !== workflow.token.id), config.effectNearbyTargets) : [];
         await Promise.all(targets.filter(token => token.actor).map(token => effectUtils.createEffects(token.actor, [genericUtils.deepClone(effectData)])));
     }
     if (config.activityNearby) {
         const activity = document.system.activities.get(config.activityNearby);
         if (!activity) return;
-        const targets = await selectNearby(document, tokenUtils.findNearby(hitTarget, config.activityNearbyRange).filter(token => token.id !== workflow.token.id), Number(activity.target.affects.count) || 1);
+        const targets = hitTarget.object ? await selectNearby(document, tokenUtils.findNearby(hitTarget, config.activityNearbyRange).filter(token => token.id !== workflow.token.id), Number(activity.target.affects.count) || 1) : [];
         if (!targets.length) return;
         if (animation?.macros.leap) await Promise.all(targets.map(token => animation.macros.leap(hitTarget, token, animationOptions)));
         await workflowUtils.completeActivityUse(activity, targets, {spellSlot: false});

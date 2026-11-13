@@ -14,7 +14,7 @@ async function use({document, workflow}) {
     await documentUtils.setFlag(document, 'chris-premades', 'agonizingBlast.spells', chosen.map(spell => spell.name));
 }
 function damage({document, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     const name = workflow.item.type === 'spell' ? workflow.item.name : workflow.item.flags['chris-premades']?.bladeCantrip?.name;
     if (!name) return;
     const spellNames = document.flags['chris-premades']?.agonizingBlast?.spells;

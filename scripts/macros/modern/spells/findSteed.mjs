@@ -26,7 +26,7 @@ async function created({document, summon}) {
 async function lifeBond({document: effect, workflow, ditem, targetToken}) {
     if (workflow.item?.type !== 'spell' || !(workflowUtils.getCastLevel(workflow) > 0)) return;
     const healed = ditem.newHP - ditem.oldHP;
-    if (!(healed > 0)) return;
+    if (!(healed > 0) || !targetToken.object) return;
     const item = effectUtils.getOriginActivitySync(effect)?.item;
     if (!item) return;
     const range = automationUtils.getConfigValue(item, 'lifeBondRange');

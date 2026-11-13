@@ -6,7 +6,7 @@ function getPoppetData(item) {
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'soulbound-poppet') return;
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.documents[0];
     if (!targetToken?.actor) return;
     const effect = documentUtils.getEffectByIdentifier(document, 'soulboundPoppet');
     if (!effect) return Logging.addMacroWarning('CPR', 'soulbound-poppet', 'Soulbound Poppet effect missing from item.', {notify: 'warn'});
@@ -34,7 +34,7 @@ function damage({document: item, workflow}) {
     const poppetData = getPoppetData(item);
     if (!poppetData.target || !workflow.damageRolls?.length) return;
     const pool = workflow.activity?.hasAttack ? workflow.hitTargets : workflow.targets;
-    const targets = Array.from(pool, token => token.document ?? token).filter(token => token.actor?.uuid === poppetData.target);
+    const targets = pool.documents.filter(token => token.actor?.uuid === poppetData.target);
     if (!targets.length) return;
     const combatData = tokenUtils.getCombatData(targets[0]);
     const stamps = poppetData.stamps ?? [];

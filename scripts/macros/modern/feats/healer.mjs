@@ -1,11 +1,11 @@
 import {activityUtils, actorUtils, automationUtils, dialogUtils, queryUtils, rollUtils, workflowUtils} from '../../../proxy.mjs';
 async function battleMedic({workflow}) {
     if (workflow.activity.identifier !== 'battle-medic') return;
-    const actor = workflow.targets.first()?.actor;
+    const actor = workflow.targets.documents[0]?.actor;
     const selection = actor && await dialogUtils.selectHitDie(actor, workflow.item.name, 'CHRISPREMADES.Macros.Modern.Healer.SelectHitDie', {userId: queryUtils.firstOwner(actor, true), max: 1});
     const {formula} = selection?.length ? await actorUtils.spendHitDice(actor, selection, {roll: false}) : {};
     if (!formula) return workflow.aborted = true;
-    workflowUtils.setActivity(workflow, activityUtils.getDamageModifiedActivityData(workflow.activity, formula + ' + ' + workflow.actor.system.attributes.prof));
+    await workflowUtils.setActivity(workflow, activityUtils.getDamageModifiedActivityData(workflow.activity, formula + ' + ' + workflow.actor.system.attributes.prof));
 }
 async function rerolls({document: item, workflow}) {
     if (workflow.activity?.type !== 'heal' || !workflow.damageRolls?.length) return;

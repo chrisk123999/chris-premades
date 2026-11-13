@@ -1,7 +1,7 @@
 import {documentUtils, effectUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
     if (workflow.workflowOptions?.['chris-premades']?.giftOfTheProtectors) return;
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const sourceEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
         img: document.img,
@@ -19,7 +19,7 @@ async function use({document, workflow}) {
         activityUuid: workflow.activity.uuid,
         macros: [{type: 'roll', macros: [{source: 'chris-premades', rules: '2014', identifier: 'gift-of-the-protectors-protected'}]}]
     });
-    for (const target of workflow.targets) {
+    for (const target of workflow.targets.documents) {
         await effectUtils.createEffects(target.actor, [targetEffectData], {parentEntity: sourceEffect});
     }
 }

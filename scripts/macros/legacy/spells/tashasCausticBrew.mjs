@@ -4,7 +4,7 @@ async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'tashasCausticBrew') return;
     const region = workflow.template;
     playAreaAnimation(workflow, automationUtils.getResolvedAnimation(document, 'animation'));
-    const concentrationEffect = !workflow.failedSaves.size && effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    const concentrationEffect = !workflow.failedSaves.count && effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (concentrationEffect) await documentUtils.deleteDocument(concentrationEffect);
     else if (region) await documentUtils.deleteDocument(region);
 }

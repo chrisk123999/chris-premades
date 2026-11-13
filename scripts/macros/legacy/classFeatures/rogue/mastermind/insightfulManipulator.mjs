@@ -16,7 +16,7 @@ function compare(type, actor, targetActor) {
     return _loc('CHRISPREMADES.Macros.Legacy.InsightfulManipulator.Equal', {ability});
 }
 async function use({document, actor, workflow}) {
-    if (!workflow.targets.size) return Logging.addMacroWarning('CPR', 'insightful-manipulator', 'No target selected.');
+    if (!workflow.targets.count) return Logging.addMacroWarning('CPR', 'insightful-manipulator', 'No target selected.');
     const options = [
         ['CHRISPREMADES.Macros.Legacy.InsightfulManipulator.IntScore', 'int'],
         ['CHRISPREMADES.Macros.Legacy.InsightfulManipulator.WisScore', 'wis'],
@@ -28,7 +28,7 @@ async function use({document, actor, workflow}) {
     if (!first) return;
     const second = await dialogUtils.buttonDialog(document.name, 'CHRISPREMADES.Macros.Legacy.InsightfulManipulator.Select', options.filter(option => option[1] !== first), {userId});
     if (!second) return;
-    const targetActor = workflow.targets.first().actor;
+    const targetActor = workflow.targets.documents[0].actor;
     const content = [compare(first, actor, targetActor), compare(second, actor, targetActor)].join('<br>');
     const gmIds = game.users.filter(user => user.isGM).map(user => user.id);
     await ChatMessage.implementation.create({

@@ -5,7 +5,7 @@ async function turnEnd({document, token}) {
     const activityData = activity.toObject();
     activityData.effects = [];
     const workflow = await workflowUtils.syntheticActivityDataRoll(activityData, activity.item, [token], {consumeUsage: false, consumeResources: false});
-    if (workflow?.failedSaves.size) return;
+    if (workflow?.failedSaves.count) return;
     await documentUtils.deleteDocument(document);
 }
 export const envenomWeapons = {

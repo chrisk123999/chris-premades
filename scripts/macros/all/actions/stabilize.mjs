@@ -1,7 +1,7 @@
 import {automationUtils, documentUtils, effectUtils, rollUtils} from '../../../proxy.mjs';
 async function use({document: item, workflow}) {
     if (workflow.activity.identifier !== 'stabilize') return;
-    const actor = workflow.targets.first()?.actor;
+    const actor = workflow.targets.documents[0]?.actor;
     if (!actor || actor.system.attributes.hp.value > 0 || actor.statuses.has('dead') || actor.statuses.has('stable')) return;
     if (automationUtils.getConfigValue(item, 'check') !== false) {
         const [roll] = await workflow.actor.rollSkill({skill: 'med', target: 10}) ?? [];

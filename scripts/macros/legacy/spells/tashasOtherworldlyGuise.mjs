@@ -1,4 +1,4 @@
-import {actorUtils} from '../../../proxy.mjs';
+import {actorUtils, workflowUtils} from '../../../proxy.mjs';
 async function attack({workflow}) {
     if (workflow.item.type !== 'weapon' || workflow.activity.type !== 'attack') return;
     const spellcasting = workflow.actor.system.attributes.spellcasting;
@@ -6,11 +6,10 @@ async function attack({workflow}) {
     const ability = spellcasting ? actorUtils.getBestAbility(workflow.actor, [weaponAbility, spellcasting]) : weaponAbility;
     const activityData = workflow.activity.toObject();
     activityData.attack.ability = ability;
-    workflow.item = workflow.item.clone({
+    await workflowUtils.setItem(workflow, workflow.item.clone({
         'system.properties': [...workflow.item.system.properties, 'mgc'],
         ['system.activities.' + workflow.activity.id]: activityData
-    }, {keepId: true});
-    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
+    }, {keepId: true}));
 }
 export const tashasOtherworldlyGuise = {
     name: 'Tasha\'s Otherworldly Guise',

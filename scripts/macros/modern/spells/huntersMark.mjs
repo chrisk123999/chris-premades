@@ -19,7 +19,7 @@ function markedEffectData(activity, document, seconds) {
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'hunters-mark') return;
-    if (!workflow.targets.size) {
+    if (!workflow.targets.count) {
         await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }
@@ -37,12 +37,12 @@ async function use({document, workflow}) {
         macros: [{type: 'roll', macros: [{source: 'chris-premades', rules: '2024', identifier: 'hunters-mark-attack'}]}]
     });
     genericUtils.setProperty(casterEffectData, 'flags.chris-premades.huntersMark', {
-        targets: Array.from(workflow.targets, token => token.document.uuid),
+        targets: workflow.targets.uuids,
         ...getDamageConfig(workflow.actor, document)
     });
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [casterEffectData], {parentEntity: concentrationEffect});
     if (!casterEffect) return;
-    for (const target of workflow.targets) {
+    for (const target of workflow.targets.documents) {
         await effectUtils.createEffects(target.actor, [markedEffectData(workflow.activity, document, seconds)], {parentEntity: casterEffect});
     }
     if (concentrationEffect) await documentUtils.update(concentrationEffect, {'duration.value': seconds, 'duration.units': 'seconds'});
@@ -71,7 +71,7 @@ async function move({document, workflow}) {
         const markedEffect = documentUtils.getEffectByIdentifier(previous.actor, 'huntersMarkMarked');
         if (markedEffect) await documentUtils.deleteDocument(markedEffect);
     }
-    let newTarget = workflow.targets.size === 1 ? workflow.targets.first().document : undefined;
+    let newTarget = workflow.targets.count === 1 ? workflow.targets.documents[0] : undefined;
     if (!isValidTarget(newTarget, markData.targets)) newTarget = await selectNewTarget(document, workflow.token.document, activityUtils.getRange(workflow.activity), markData.targets, 'CHRISPREMADES.Macros.Modern.HuntersMark');
     if (!newTarget) return;
     const targets = markData.targets.filter(uuid => uuid !== previous?.uuid);
@@ -96,10 +96,10 @@ async function promptMove({document, token}) {
     await workflowUtils.completeActivityUse(activity, [newTarget]);
 }
 async function damage({document, workflow}) {
-    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (!workflow.hitTargets.count || !workflowUtils.isAttackType(workflow, 'attack')) return;
     const markData = document.flags['chris-premades']?.huntersMark;
     if (!markData) return;
-    const targets = Array.from(workflow.hitTargets, token => token.document).filter(token => markData.targets.includes(token.uuid));
+    const targets = workflow.hitTargets.documents.filter(token => markData.targets.includes(token.uuid));
     if (!targets.length) return;
     const bonus = new DamageBonus(document, {formula: markData.formula, optional: false, maxTargets: 1, type: markData.damageType});
     bonus.targets = targets;

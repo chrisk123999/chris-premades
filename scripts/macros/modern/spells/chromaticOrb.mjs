@@ -2,7 +2,7 @@ import {automationUtils, constants, dialogUtils, documentUtils, itemUtils, Loggi
 import {applyDamageType} from '../../generic/selectDamageType.mjs';
 import {getDamageType} from '../../generic/spellAnimation.mjs';
 async function damage({document, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     const damageTypes = automationUtils.getConfigValue(document, 'damageTypes');
     if (!damageTypes.length) return;
     await applyDamageType(workflow, workflow.workflowOptions?.['chris-premades']?.chromaticOrb?.damageType ?? (await dialogUtils.selectDamageType(damageTypes, document.name, 'CHRISPREMADES.Generic.SelectDamageType') || damageTypes[0]));
@@ -29,7 +29,7 @@ export async function bounce(document, target, {state, stateKey, activityIdentif
     });
 }
 async function use({document, workflow, castData}) {
-    const target = workflow.targets.first();
+    const target = workflow.targets.tokens[0];
     if (!workflow.token || !target) return;
     const state = workflow.workflowOptions?.['chris-premades']?.chromaticOrb;
     await playBolt(document, workflow, target, state);

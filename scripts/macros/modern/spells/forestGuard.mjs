@@ -23,20 +23,22 @@ async function deleted({document, summon}) {
 }
 function early({document, workflow}) {
     if (workflow.activity.identifier !== 'forest-guard-attack') return;
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.tokens[0];
     if (!targetToken || getNearbyShrubs(document, targetToken.document).length) return;
     Logging.addMacroWarning('CPR', 'forest-guard', 'CHRISPREMADES.Macros.Modern.ForestGuard.NoShrub', {notify: 'info', format: {distance: automationUtils.getConfigValue(document, 'shrubRange')}});
     return true;
 }
 async function damage({document, workflow}) {
-    if (workflow.activity.identifier !== 'forest-guard-attack' || !workflow.hitTargets.size) return;
-    const shrubCount = getNearbyShrubs(document, workflow.hitTargets.first().document).length;
+    if (workflow.activity.identifier !== 'forest-guard-attack' || !workflow.hitTargets.count) return;
+    const hitToken = workflow.hitTargets.tokens[0];
+    if (!hitToken) return;
+    const shrubCount = getNearbyShrubs(document, hitToken.document).length;
     if (shrubCount <= 1) return;
     await workflowUtils.bonusDamage(workflow, (shrubCount - 1) + automationUtils.getConfigValue(document, 'bonusDie'));
 }
 function late({document, workflow}) {
     if (!['forest-guard-attack', 'forest-guard-lash'].includes(workflow.activity.identifier)) return;
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.tokens[0];
     if (!targetToken) return;
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     if (!animation?.macros?.play) return;

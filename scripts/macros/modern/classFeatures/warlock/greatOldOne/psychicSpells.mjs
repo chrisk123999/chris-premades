@@ -1,4 +1,4 @@
-import {automationUtils, constants, dialogUtils, itemUtils} from '../../../../../proxy.mjs';
+import {automationUtils, constants, dialogUtils, itemUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function getActivityData({document, workflow}) {
     const activityData = workflow.activity.toObject();
     const mode = automationUtils.getConfigValue(document, 'changeDamage');
@@ -20,8 +20,7 @@ async function early({document, workflow}) {
     itemData.system.activities[workflow.activity.id] = await getActivityData({document, workflow});
     const schools = automationUtils.getConfigValue(document, 'spellSchools');
     if (schools.includes(workflow.item.system.school)) itemData.system.properties = itemData.system.properties.filter(property => !['vocal', 'somatic'].includes(property));
-    workflow.item = itemUtils.syntheticItem(itemData, workflow.actor);
-    workflow.activity = workflow.item.system.activities.get(workflow.activity.id);
+    await workflowUtils.setItem(workflow, itemUtils.syntheticItem(itemData, workflow.actor));
 }
 export const psychicSpells = {
     name: 'Psychic Spells',

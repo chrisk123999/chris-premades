@@ -1,9 +1,9 @@
 import {automationUtils, combatUtils, dialogUtils, documentUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function late({document, workflow}) {
-    if (!workflow.hitTargets.size || !document.system.uses.value || !workflow.token) return;
+    if (!workflow.hitTargets.count || !document.system.uses.value || !workflow.token) return;
     if (documentUtils.getIdentifier(workflow.activity) !== automationUtils.getConfigValue(document, 'activityIdentifier')) return;
     if (!combatUtils.isOwnTurn(workflow.token.document)) return;
-    const targetToken = workflow.hitTargets.first().document;
+    const targetToken = workflow.hitTargets.documents[0];
     const selection = await dialogUtils.confirmUseItem(document);
     if (!selection) return;
     await workflowUtils.completeItemUse(document, [targetToken]);

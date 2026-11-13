@@ -54,7 +54,7 @@ async function onHit({document, macroClass: {identifier}, workflow}) {
     const settings = workflowUtils.getWorkflowProperty(workflow, key);
     if (!settings?.consumeSuccessOnly) return;
     workflowUtils.setWorkflowProperty(workflow, key, undefined);
-    settings.consume = workflow.hitTargets.size > 0;
+    settings.consume = workflow.hitTargets.count > 0;
     await workflowUtils.rollConfiguredSource(settings.storedOptionalBonus, settings);
 }
 const genericConfig = {

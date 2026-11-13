@@ -30,7 +30,7 @@ async function moveTarget(activity, config, sourceToken, targetToken, direction,
 async function finished({document: activity, macroClass: {identifier}, workflow}) {
     if (!workflow.token) return;
     const {direction, targets} = variants[identifier];
-    const tokens = Array.from(workflow[targets]).filter(token => token.actor);
+    const tokens = workflow[targets].tokens.filter(token => token.actor);
     if (!tokens.length) return;
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', identifier, configKeys);
     const maximum = (await rollUtils.rollDice(config.distance, {workflow}))?.total ?? 5;

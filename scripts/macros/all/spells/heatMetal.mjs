@@ -8,7 +8,7 @@ function getActivities(document) {
 }
 function playAnimation(document, workflow, targetToken, cast) {
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
-    if (!workflow.token || !animation?.macros?.play) return;
+    if (!workflow.token || !targetToken.object || !animation?.macros?.play) return;
     animation.macros.play(workflow.token.document, targetToken, {...options, cast: cast && options.cast});
 }
 async function heldCheck(document, targetToken, casterEffect, held) {
@@ -24,7 +24,7 @@ async function heldCheck(document, targetToken, casterEffect, held) {
     }
     if (choice !== 'unable') {
         const heldWorkflow = await workflowUtils.syntheticActivityRoll(held, [targetToken], {spellSlot: false});
-        if (heldWorkflow?.failedSaves.size) {
+        if (heldWorkflow?.failedSaves.count) {
             await ChatMessage.implementation.create({
                 speaker: ChatMessage.implementation.getSpeaker({token: targetToken}),
                 content: _loc('CHRISPREMADES.Macros.All.HeatMetal.MustDrop')
@@ -39,7 +39,7 @@ async function heldCheck(document, targetToken, casterEffect, held) {
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'heat-metal') return;
-    const target = workflow.targets.first();
+    const target = workflow.targets.documents[0];
     if (!target) {
         Logging.addMacroWarning('CPR', 'heat-metal', 'No target selected.');
         await effectUtils.endConcentration(workflow.actor, workflow.item);
@@ -62,12 +62,12 @@ async function use({document, workflow}) {
         favoriteActivities: true,
         vae: [{type: 'use', name: pulse.name, itemIdentifier: documentUtils.getIdentifier(document), activityIdentifier: 'heat-metal-pulse'}]
     });
-    genericUtils.setProperty(casterEffectData, 'flags.chris-premades.heatMetal', {targetUuid: target.document.uuid, unable: false});
+    genericUtils.setProperty(casterEffectData, 'flags.chris-premades.heatMetal', {targetUuid: target.uuid, unable: false});
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [casterEffectData], {parentEntity: concentrationEffect});
     if (!casterEffect) return;
-    playAnimation(document, workflow, target.document, true);
-    await workflowUtils.syntheticActivityRoll(damage, [target.document], {spellSlot: false, atLevel: workflowUtils.getCastLevel(workflow)});
-    await heldCheck(document, target.document, casterEffect, held);
+    playAnimation(document, workflow, target, true);
+    await workflowUtils.syntheticActivityRoll(damage, [target], {spellSlot: false, atLevel: workflowUtils.getCastLevel(workflow)});
+    await heldCheck(document, target, casterEffect, held);
 }
 async function pulse({document, workflow}) {
     if (workflow.activity.identifier !== 'heat-metal-pulse') return;

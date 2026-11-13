@@ -29,7 +29,7 @@ async function make({macroClass: {identifier, source}, workflow}) {
         }
     }]))?.[0];
     if (!parentEntity) return Logging.addMacroWarning(source, identifier, `The Right Tool For The Job failed to create the parent active effect!. (parent actor) ${workflow.actor.uuid}}`);
-    const target = workflow.targets.first()?.actor ?? workflow.actor;
+    const target = workflow.targets.documents[0]?.actor ?? workflow.actor;
     await itemUtils.createItems(target, [item.toObject()], {parentEntity});
 }
 export const rightToolForTheJob = {

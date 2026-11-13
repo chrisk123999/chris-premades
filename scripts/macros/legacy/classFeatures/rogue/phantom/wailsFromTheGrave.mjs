@@ -2,7 +2,7 @@ import {actorUtils, automationUtils, combatUtils, dialogUtils, itemUtils, Loggin
 async function used({actor, data: {workflow, targetToken}}) {
     const item = actorUtils.getItemByIdentifier(actor, 'wails-from-the-grave');
     const activity = item ? itemUtils.getActivityByIdentifier(item, 'damage') : undefined;
-    if (!combatUtils.isOwnTurn(workflow.token)) return;
+    if (!combatUtils.isOwnTurn(workflow.token) || !targetToken?.object) return;
     if (!activity) return Logging.addMacroWarning('CPR', 'wails-from-the-grave', 'Damage activity missing from item.', {notify: 'warn'});
     const tokensOfTheDeparted = actorUtils.getItemByIdentifier(actor, 'tokens-of-the-departed');
     const tokenActivity = tokensOfTheDeparted?.system.uses.value ? itemUtils.getActivityByIdentifier(tokensOfTheDeparted, 'use-wail') : undefined;

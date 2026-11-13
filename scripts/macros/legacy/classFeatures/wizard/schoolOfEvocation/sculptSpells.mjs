@@ -1,12 +1,12 @@
 import {automationUtils, dialogUtils, effectUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function early({document: item, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     if (workflow.item.type !== 'spell') return;
     if (workflow.item.system.school !== 'evo') return;
     if (!workflow.hasSave) return;
     const max = 1 + workflowUtils.getCastLevel(workflow);
     const allowEnemies = automationUtils.getConfigValue(item, 'allowEnemies');
-    const targets = Array.from(workflow.targets).map(i => i.document);
+    const targets = workflow.targets.documents;
     let selection = allowEnemies ? targets : targets.filter(i => i.disposition === workflow.token.document.disposition);
     if (selection.length > max || allowEnemies) {
         const dialogSelection = await dialogUtils.selectTargetDialog(item.name, _loc('CHRISPREMADES.Macros.Legacy.SculptSpells.Select', {max}), selection, {

@@ -42,19 +42,19 @@ async function human({workflow}) {
     if (effect) await documentUtils.deleteDocument(effect);
 }
 async function curse(document, workflow) {
-    const target = workflow.hitTargets.first();
+    const target = workflow.hitTargets.documents[0];
     if (actorUtils.typeOrRace(target.actor) !== 'humanoid') return;
     if (documentUtils.getEffectByIdentifier(target.actor, 'curseOfLycanthropy')) return;
     const activity = itemUtils.getActivityByIdentifier(document, 'humanoid');
     if (!activity) return;
-    await workflowUtils.completeActivityUse(activity, Array.from(workflow.hitTargets, token => token.document ?? token));
+    await workflowUtils.completeActivityUse(activity, workflow.hitTargets.documents);
 }
 async function bite({document, workflow}) {
-    if (workflow.activity.identifier !== 'bite' || !workflow.hitTargets.size) return;
+    if (workflow.activity.identifier !== 'bite' || !workflow.hitTargets.count) return;
     await curse(document, workflow);
 }
 async function otherBite({document, workflow}) {
-    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (!workflow.hitTargets.count || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (workflow.item.system.type?.value !== 'natural') return;
     const biteActivity = itemUtils.getActivityByIdentifier(document, 'bite');
     if (biteActivity?.name !== workflow.activity.name) return;

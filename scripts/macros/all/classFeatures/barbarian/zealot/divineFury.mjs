@@ -8,7 +8,7 @@ async function rageBegin({data, document: activity, macroClass: {source}}) {
         genericUtils.setProperty(data.effectData, 'flags.cat.macros.roll', [macro]);
 }
 async function damageBonus({document: effect, macroClass: {identifier, source}, token, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (!combatUtils.isOwnTurn(token)) return;
     if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     const activity = await fromUuid(effect.flags[source]?.divineFury);

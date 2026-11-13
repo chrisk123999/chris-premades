@@ -7,7 +7,7 @@ function getSaveDC(actor, item) {
     return actor.system.abilities[ability]?.dc;
 }
 async function weave({document: activity, workflow}) {
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.documents[0];
     if (!targetToken?.actor || targetToken.actor === workflow.actor) {
         genericUtils.notify('CHRISPREMADES.Macros.Modern.TwistedHex.Target', {type: 'warn'});
         return;
@@ -44,17 +44,17 @@ async function toolPost({document, actor, roll, config, toolId}) {
     await resist(document, actor, config.ability ?? actor.system.tools?.[toolId]?.ability ?? CONFIG.DND5E.tools[toolId]?.ability);
 }
 async function attackFinished({document, actor, workflow}) {
-    if (!workflowUtils.isAttackType(workflow, 'attack') || !workflow.targets.size || workflow.hitTargets.size) return;
+    if (!workflowUtils.isAttackType(workflow, 'attack') || !workflow.targets.count || workflow.hitTargets.count) return;
     await resist(document, actor, workflow.activity.ability);
 }
 async function filterTargets({document: activity, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.count) return;
     const charms = automationUtils.getConfigValue(activity.item, 'charms');
-    const invalid = Array.from(workflow.targets).filter(target => !utils.carriesCharm(target.actor, workflow.actor, charms));
+    const invalid = workflow.targets.documents.filter(target => !utils.carriesCharm(target.actor, workflow.actor, charms));
     if (!invalid.length) return;
     genericUtils.notify('CHRISPREMADES.Macros.Modern.OldBlessing.NoCharm', {type: 'warn', format: {names: invalid.map(target => target.name).join(', ')}});
     await workflowUtils.removeTargets(workflow, invalid);
-    if (!workflow.targets.size) return true;
+    if (!workflow.targets.count) return true;
 }
 export const charmTwister = {
     name: 'Charm Twister',

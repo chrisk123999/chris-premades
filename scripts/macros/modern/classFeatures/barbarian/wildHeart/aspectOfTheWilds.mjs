@@ -1,6 +1,6 @@
 import {workflowUtils} from '../../../../../proxy.mjs';
 async function long({document, token}) {
-    await workflowUtils.completeItemUse(document, token ? [token.document ?? token] : []);
+    await workflowUtils.completeItemUse(document, token ? [token] : []);
 }
 export const aspectOfTheWilds = {
     name: 'Aspect of the Wilds',

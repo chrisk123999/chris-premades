@@ -1,18 +1,18 @@
 import {automationUtils, crosshairUtils, dialogUtils, distanceUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function cast({document: item, workflow}) {
-    if (!workflow.targets.size || !(workflow.item.type === 'spell' || workflow.item.system.type?.value === 'spellFeature')) return;
+    if (!workflow.targets.count || !(workflow.item.type === 'spell' || workflow.item.system.type?.value === 'spellFeature')) return;
     const moveDistance = automationUtils.getConfigValue(item, 'moveDistance') ?? 5;
     const allowAllTargets = automationUtils.getConfigValue(item, 'allowAllTargets');
     const validTargets = [];
     if (workflowUtils.isAttackType(workflow, 'spellAttack')) {
-        if (!workflow.hitTargets.size) return;
-        validTargets.push(...workflow.hitTargets);
+        if (!workflow.hitTargets.count) return;
+        validTargets.push(...workflow.hitTargets.tokens);
     } else if (workflow.activity?.hasSave) {
-        validTargets.push(...workflow.failedSaves);
+        validTargets.push(...workflow.failedSaves.tokens);
     } else if (allowAllTargets) {
-        validTargets.push(...workflow.targets);
+        validTargets.push(...workflow.targets.tokens);
     } else {
-        validTargets.push(...workflow.targets.filter(token => token.document.disposition === workflow.token.document.disposition));
+        validTargets.push(...workflow.targets.tokens.filter(token => token.document.disposition === workflow.tokenDocument.disposition));
     }
     if (!validTargets.length) return;
     let token;

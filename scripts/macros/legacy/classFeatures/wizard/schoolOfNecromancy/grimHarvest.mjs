@@ -1,6 +1,6 @@
 import {activityUtils, actorUtils, automationUtils, combatUtils, constants, documentUtils, genericUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function late({document: item, workflow, token}) {
-    if (!workflow.hitTargets.size || !workflow.damageList) return;
+    if (!workflow.hitTargets.count || !workflow.damageList) return;
     const combatData = tokenUtils.getCombatData(token);
     const stamps = genericUtils.getProperty(item, 'flags.cat.grimHarvest.stamps') ?? [];
     if (combatUtils.isStampedThisTurn(stamps, token.id, combatData)) return;
