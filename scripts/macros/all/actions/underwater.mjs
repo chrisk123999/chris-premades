@@ -19,10 +19,11 @@ async function attack({document: effect, workflow}) {
     workflow.tracker.disadvantage.add('underwater', effect.name);
 }
 async function range({workflow}) {
-    if (!workflow.token || workflow.targets.size !== 1 || workflowUtils.getActionType(workflow) !== 'rwak') return;
+    if (!workflow.token || workflow.targets.count !== 1 || workflowUtils.getActionType(workflow) !== 'rwak') return;
     const range = workflow.item.type === 'weapon' ? itemUtils.getRange(workflow.item).value : activityUtils.getRange(workflow.activity);
     if (!range) return;
-    if (tokenUtils.isWithinDistance(workflow.token.document, workflow.targets.first().document, range)) return;
+    const target = workflow.targets.tokens[0]?.document;
+    if (!target || tokenUtils.isWithinDistance(workflow.token.document, target, range)) return;
     genericUtils.notify('CHRISPREMADES.Macros.All.Underwater.TooFar', {type: 'warn'});
     return true;
 }

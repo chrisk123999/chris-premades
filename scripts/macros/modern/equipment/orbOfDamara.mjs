@@ -13,7 +13,7 @@ async function fear({document: item, workflow}) {
     delete immunity._id;
     immunity.origin = item.uuid;
     immunity.duration = {value: 86400, units: 'seconds'};
-    for (const target of workflow.targets) {
+    for (const target of workflow.targets.documents) {
         if (!target.actor || workflow.failedSaves.has(target)) continue;
         await effectUtils.createEffects(target.actor, [immunity]);
     }

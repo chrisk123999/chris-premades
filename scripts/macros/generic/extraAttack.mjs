@@ -15,7 +15,7 @@ async function use({document: activity, workflow, macroClass: {source, identifie
         }, totalAttacks);
     }
     if (totalAttacks === 0) return;
-    const preselected = workflow.targets.map(t => t.document).filter(t => t.disposition !== workflow.token.document.disposition);
+    const preselected = workflow.targets.documents.filter(t => t.disposition !== workflow.token.document.disposition);
     let targetData = await getTargets(workflow, range, totalAttacks, config.skip, Array.from(preselected));
     if (!targetData) return;
     const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(workflow.item, 'animation', {source, identifier});
@@ -29,7 +29,7 @@ async function use({document: activity, workflow, macroClass: {source, identifie
             for (let i = 0; i < attacks; i++) {
                 if (targetData.skip && target.actor.system.attributes.hp.value <= 0) break;
                 const workflow = await workflowUtils.syntheticItemRoll(strike, [target], {options: ownAnimation ? {cat: {skipWeaponAnimation: true}} : {}});
-                if (ownAnimation) await ownAnimation(workflow.token.document, [target], {missed: !workflow.hitTargets.size, ...animationOptions});
+                if (ownAnimation && target.object) await ownAnimation(workflow.token.document, [target], {missed: !workflow.hitTargets.count, ...animationOptions});
                 totalAttacks--;
                 if (targetData.skip && target.actor.system.attributes.hp.value <= 0) break;
             }

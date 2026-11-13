@@ -32,13 +32,13 @@ async function wrapsAttack({document: item, workflow}) {
 }
 async function wrapsCritical({document: item, workflow}) {
     if (!itemUtils.getEquipmentState(item) || !isUnarmed(workflow) || !workflow.isCritical) return;
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.documents[0];
     if (!target || !tokenUtils.isEnemy(workflow.token.document, target)) return;
     const spent = ['crimson-mist', 'ravenous-strike'].map(identifier => itemUtils.getActivityByIdentifier(item, identifier)).filter(activity => activity?.uses.spent);
     for (const activity of spent) await documentUtils.update(activity, {'uses.spent': 0});
 }
 async function wrapsDamage({document: item, workflow}) {
-    if (!itemUtils.getEquipmentState(item) || !isUnarmed(workflow) || !workflow.hitTargets.size) return;
+    if (!itemUtils.getEquipmentState(item) || !isUnarmed(workflow) || !workflow.hitTargets.count) return;
     const ravenous = itemUtils.getActivityByIdentifier(item, 'ravenous-strike');
     if (ravenous?.uses.value && await dialogUtils.confirmUseItem(ravenous)) {
         await workflowUtils.bonusDamage(workflow, '6d6', {damageType: 'necrotic'});

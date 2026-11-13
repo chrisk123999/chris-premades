@@ -1,9 +1,9 @@
 import {automationUtils, D20Bonus, documentUtils, effectUtils, genericUtils, Logging} from '../../../../proxy.mjs';
 async function grantInspiration({workflow}) {
-    if (workflow.targets.size !== 1) return Logging.addMacroWarning('CPR', 'bardic-inspiration', 'Select exactly one target.');
+    if (workflow.targets.count !== 1) return Logging.addMacroWarning('CPR', 'bardic-inspiration', 'Select exactly one target.');
     const sourceEffect = workflow.item.effects.contents[0];
     if (!sourceEffect) return Logging.addMacroWarning('CPR', 'bardic-inspiration', 'Inspiration effect missing from item.', {notify: 'warn'});
-    const target = workflow.targets.first().document;
+    const target = workflow.targets.documents[0];
     const rules = documentUtils.getRules(workflow.item);
     const formula = Roll.replaceFormulaData(automationUtils.getConfigValue(workflow.item, 'bonus'), workflow.activity.getRollData());
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {rules});

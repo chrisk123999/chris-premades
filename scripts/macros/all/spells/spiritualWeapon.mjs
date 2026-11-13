@@ -59,22 +59,22 @@ function early({document, activity, config, dialog}) {
 }
 function validate({document, workflow}) {
     if (workflow.activity.identifier !== attackActivity) return;
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.tokens[0]?.document;
     if (!targetToken) return;
     const reach = automationUtils.getConfigValue(document, 'reach');
-    if (getWeaponTokens(document).some(token => tokenUtils.isWithinDistance(token, targetToken.document, reach))) return;
+    if (getWeaponTokens(document).some(token => tokenUtils.isWithinDistance(token, targetToken, reach))) return;
     Logging.addMacroWarning('CPR', 'spiritual-weapon', 'CHRISPREMADES.Macros.All.SpiritualWeapon.OutOfReach', {notify: 'info'});
     return true;
 }
 async function late({document, workflow}) {
     if (workflow.activity.identifier !== attackActivity) return;
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.tokens[0]?.document;
     if (!targetToken) return;
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     if (!animation?.macros?.play) return;
-    const [weaponToken] = getWeaponTokens(document).sort((a, b) => tokenUtils.getDistance(a, targetToken.document) - tokenUtils.getDistance(b, targetToken.document));
+    const [weaponToken] = getWeaponTokens(document).sort((a, b) => tokenUtils.getDistance(a, targetToken) - tokenUtils.getDistance(b, targetToken));
     if (!weaponToken) return;
-    await animation.macros.play(weaponToken, targetToken.document, {...options, damageType: getDamageType(workflow), hit: workflow.hitTargets.has(targetToken)});
+    await animation.macros.play(weaponToken, targetToken, {...options, damageType: getDamageType(workflow), hit: workflow.hitTargets.has(targetToken)});
 }
 export const spiritualWeapon = {
     name: 'Spiritual Weapon',

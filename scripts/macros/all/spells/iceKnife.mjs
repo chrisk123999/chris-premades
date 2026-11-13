@@ -1,7 +1,7 @@
 import {automationUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function explode({document, workflow, castData}) {
     if (workflow.activity.identifier === 'explosion') return;
-    const target = workflow.targets.first();
+    const target = workflow.targets.tokens[0];
     if (!target) return;
     const activity = itemUtils.getActivityByIdentifier(document, 'explosion');
     if (!activity) return Logging.addMacroWarning('CPR', 'ice-knife', 'Explosion activity missing from item.', {notify: 'warn'});

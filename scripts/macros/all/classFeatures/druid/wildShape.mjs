@@ -54,7 +54,7 @@ async function preWildShape({actor, config, document: activity, token}) {
     if (config.midiOptions['chris-premades']?.wildShape) return;
     if (activity.item.system.uses.max && !activity.item.system.uses.value) return;
     const options = await getConfigs(activity.item);
-    if (!options) return;
+    if (!options) return true;
     const rules = documentUtils.getRules(activity.item);
     const forms = (await Promise.all(activity.profiles.map(async p => ({actor: await fromUuid(p.uuid), id: p._id})))).filter(Boolean);
     const additional = await automationUtils.calledEvent('wildShapeForms', actor, {canOverlap: true, multiResult: true, data: {
@@ -137,7 +137,7 @@ async function preWildShape({actor, config, document: activity, token}) {
     const usedAdditional = additionalMap.get(choices.shape);
     const rollOptions = {
         config: {transform: {profile: choices.shape}},
-        options: {'chris-premades': {wildShape: true, wildShapeItems: keepItems}}
+        options: {'chris-premades': {wildShape: true, wildShapeItems: keepItems.map(item => item.uuid)}}
     };
     if (usedAdditional) {
         for (const source of usedAdditional) {
@@ -161,7 +161,7 @@ async function postWildShape({identifier, workflow}) {
     const effectID = workflow.item.effects.contents[0]?.id;
     if (!effectID) return Logging.addMacroWarning('CPR', identifier, 'Wild Shape effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, effectID);
-    const keepItems = workflow.workflowOptions['chris-premades']?.wildShapeItems ?? [];
+    const keepItems = (workflow.workflowOptions['chris-premades']?.wildShapeItems ?? []).map(uuid => fromUuidSync(uuid, {strict: false})).filter(Boolean);
     const revertFeature = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'wild-shape-revert', {
         translate: 'CHRISPREMADES.Macros.All.WildShape.Revert',
         object: true

@@ -1,6 +1,6 @@
 import {actorUtils, workflowUtils} from '../../../proxy.mjs';
 async function rottingClaw({workflow}) {
-    const target = workflow.hitTargets.first();
+    const target = workflow.hitTargets.documents[0];
     if (!target?.actor?.statuses.has('poisoned')) return;
     const paralyze = actorUtils.getItemByIdentifier(workflow.actor, 'summon-undead-rotting-claw-paralyze');
     if (paralyze) await workflowUtils.syntheticItemRoll(paralyze, [target]);

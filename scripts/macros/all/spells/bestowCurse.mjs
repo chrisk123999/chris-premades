@@ -11,7 +11,7 @@ const curseEffects = {
 async function use({document: item, workflow}) {
     const effectId = curseEffects[workflow.activity.identifier];
     if (!effectId) return;
-    if (!workflow.failedSaves.size) return;
+    if (!workflow.failedSaves.count) return;
     const castLevel = workflowUtils.getCastLevel(workflow);
     const duration = {value: durations[castLevel] ?? null, units: 'seconds'};
     let concentration = effectUtils.getConcentrationEffect(workflow.actor, item);
@@ -30,15 +30,15 @@ async function use({document: item, workflow}) {
         const sourceData = documentUtils.getEffectData(workflow.activity, 'bestowCurseSrcE1', {duration, parentEntity: concentration, activityUuid: workflow.activity.uuid});
         if (sourceData) await effectUtils.createEffects(workflow.actor, [sourceData]);
     }
-    await Promise.all(Array.from(workflow.failedSaves, token => effectUtils.createEffects(token.actor, [genericUtils.deepClone(effectData)])));
+    await Promise.all(workflow.failedSaves.documents.map(token => effectUtils.createEffects(token.actor, [genericUtils.deepClone(effectData)])));
 }
 function attack({document: effect, workflow}) {
     const sourceActor = effectUtils.getOriginActivitySync(effect)?.actor;
-    if (sourceActor && workflow.targets.some(token => token.actor === sourceActor)) workflow.tracker.disadvantage.add('bestow-curse', effect.name);
+    if (sourceActor && workflow.targets.documents.some(token => token.actor === sourceActor)) workflow.tracker.disadvantage.add('bestow-curse', effect.name);
 }
 export const bestowCurse = {
     name: 'Bestow Curse',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50}

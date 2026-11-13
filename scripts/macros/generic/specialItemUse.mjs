@@ -15,7 +15,7 @@ async function use({document, workflow}) {
     const activities = item.system.activities.filter(validActivity);
     const activity = activities.length === 1 ? activities[0] : await dialogUtils.selectDocumentDialog(document.item.name, 'CHRISPREMADES.Macros.Generic.SpecialItemUse.SelectActivity', activities);
     if (!activity) return;
-    const targets = Array.from(workflow.targets).map(token => token.document ?? token);
+    const targets = workflow.targets.documents;
     await workflowUtils.specialItemUse(item, targets, document.item, {activity, consumeUsage: config.consumeUsage, consumeResources: config.consumeResources});
 }
 /**

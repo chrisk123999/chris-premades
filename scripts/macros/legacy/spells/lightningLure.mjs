@@ -1,9 +1,9 @@
 import {automationUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function damage({document, workflow, targetToken, ditem}) {
-    if (!workflow.token) return;
+    if (!workflow.token || !targetToken.object) return;
     const sourceToken = workflow.token.document;
     const gap = tokenUtils.getDistance(sourceToken, targetToken);
-    const distance = workflow.failedSaves.has(targetToken.object) ? Math.min(10, Math.floor((gap - 4) / 5) * 5) : 0;
+    const distance = workflow.failedSaves.has(targetToken) ? Math.min(10, Math.floor((gap - 4) / 5) * 5) : 0;
     const move = distance > 0 ? () => tokenUtils.slideToken(targetToken, {sourceToken, distance: -distance}) : undefined;
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     if (animation?.macros?.play) await animation.macros.play(sourceToken, targetToken, {...options, move});

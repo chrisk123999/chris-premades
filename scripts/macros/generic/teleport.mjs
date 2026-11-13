@@ -3,7 +3,7 @@ import {resolveCastFormula} from './multiSingleTarget.mjs';
 async function pickCompanions({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'teleport', configKeys);
     if (!workflow.token || config.targets !== 'self') return;
-    if (config.excludeUser && workflow.targets.has(workflow.token)) await workflowUtils.removeTargets(workflow, [workflow.token]);
+    if (config.excludeUser && workflow.targets.has(workflow.token)) await workflowUtils.removeTargets(workflow, [workflow.tokenDocument]);
     const max = Number(config.companions) || 0;
     if (!max) return;
     let companions = workflowUtils.getWorkflowProperty(workflow, 'chris-premades.teleportCompanions')?.map(t => {
@@ -28,8 +28,8 @@ async function pickCompanions({document, workflow}) {
         companions = selection?.result ?? [];
     }
     if (!companions.length) return;
-    workflowUtils.setWorkflowProperty(workflow, 'chris-premades.teleportCompanions', companions);
-    await workflowUtils.removeTargets(workflow, companions.map(token => token.object));
+    workflowUtils.setWorkflowProperty(workflow, 'chris-premades.teleportCompanions', companions.map(token => token.id));
+    await workflowUtils.removeTargets(workflow, companions);
 }
 function getSpacesNear(token, target, range) {
     const {size} = token.parent.grid;
@@ -56,19 +56,19 @@ async function use({document, workflow}) {
     const configRange = config.range ? rollUtils.rollDiceSync(resolveCastFormula(String(config.range), workflow.castData), {document: workflow.activity}).total : undefined;
     const range = rolledRange || configRange || activityUtils.getRange(workflow.activity);
     if (config.targets === 'nearTarget') {
-        const targets = Array.from(workflow.targets, token => token.document).filter(token => token !== workflow.token.document);
+        const targets = workflow.targets.tokens.map(token => token.document).filter(token => token !== workflow.token.document);
         const selection = targets.length > 1 ? await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Generic.Teleport.SelectNear', targets, {skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(workflow.actor, true)}) : {result: targets[0]};
         const target = selection?.result;
         if (target) await tokenUtils.teleportToken(workflow.token.document, {animation, options, range: range + distanceUtils.fromGridSpaces(workflow.token.scene, (target.width + workflow.token.document.width) / 2), requireSight: config.requireSight, centerpoint: target.object.center, allowedPoints: getSpacesNear(workflow.token.document, target, range)});
         return;
     }
     if (config.targets === 'swap') {
-        const target = workflow.failedSaves.first()?.document;
+        const target = workflow.failedSaves.tokens[0]?.document;
         if (target) await tokenUtils.swapTokens(workflow.token.document, target, {animation, options});
         return;
     }
     if (config.targets !== 'failedSaves') {
-        const followers = workflowUtils.getWorkflowProperty(workflow, 'chris-premades.teleportCompanions') ?? [];
+        const followers = workflowUtils.getWorkflowProperty(workflow, 'chris-premades.teleportCompanions')?.map(t => typeof t === 'string' ? workflow.token.scene.tokens.get(t) : t).filter(Boolean) ?? [];
         const token = workflow.token.document;
         const current = token.getCenterPoint();
         const allowedPoints = config.visitedThisTurn ? token.movementHistory.map(point => token.getCenterPoint(point)).filter(point => point.x !== current.x || point.y !== current.y) : undefined;
@@ -76,7 +76,7 @@ async function use({document, workflow}) {
         await tokenUtils.teleportToken(token, {animation, options, range, requireSight: config.requireSight, followers, allowedPoints});
         return;
     }
-    for (const target of workflow.failedSaves) {
+    for (const target of workflow.failedSaves.tokens) {
         await tokenUtils.teleportToken(target.document, {animation, options, range, requireSight: config.requireSight, centerpoint: workflow.token.center});
     }
 }

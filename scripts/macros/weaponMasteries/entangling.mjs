@@ -7,15 +7,15 @@ async function hit({workflow, hit}) {
     const roll = await rollUtils.requestRoll(target.actor, 'save', 'dex', {rollDC: dc});
     if (!roll || roll.total >= dc) return;
     const token = workflow.token.document;
-    await tokenUtils.grapple(token, target.document, {flatDC: dc, rules: '2024', contest: false, checkSize: false});
-    const effect = actorUtils.getEffectByIdentifier(workflow.actor, 'grappleSource', {multiple: true}).find(effect => effect.flags.cat?.grapple?.tokenId === target.document.id);
+    await tokenUtils.grapple(token, target, {flatDC: dc, rules: '2024', contest: false, checkSize: false});
+    const effect = actorUtils.getEffectByIdentifier(workflow.actor, 'grappleSource', {multiple: true}).find(effect => effect.flags.cat?.grapple?.tokenId === target.id);
     if (effect) await documentUtils.setFlag(effect, 'chris-premades', 'entangling', workflow.item.uuid);
 }
 function preItemRoll({document: item, workflow}) {
     const effect = actorUtils.getEffectByIdentifier(workflow.actor, 'grappleSource', {multiple: true}).find(effect => effect.flags['chris-premades']?.entangling === item.uuid);
     if (!effect) return;
     const grappled = effect.flags.cat?.grapple?.tokenId;
-    if (Array.from(workflow.targets).every(token => token.document.id === grappled)) return;
+    if (workflow.targets.documents.every(token => token.id === grappled)) return;
     genericUtils.notify('CHRISPREMADES.WeaponMasteries.Entangling.Restricted', {type: 'warn'});
     return true;
 }

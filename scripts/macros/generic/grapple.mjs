@@ -9,7 +9,7 @@ async function doGrapple({document: activity, token, workflow}) {
     };
     if (config.useActivityInfo) data.activity = activity;
     if (config.dc) data.flatDC = (await rollUtils.rollDice(config.dc, {document: activity}))?.total;
-    for (const {document: target} of workflow.targets) {
+    for (const target of workflow.targets.documents) {
         if (target.actor) await tokenUtils.grapple(token, target, data);
     }
     if (config.replaceActivity) {

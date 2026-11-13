@@ -19,9 +19,9 @@ async function d20Test({document: item, roll, token}) {
     return succeed(roll, roll.options.target);
 }
 async function attack({document: item, workflow}) {
-    if (!workflow.attackRoll || !workflow.token || workflow.targets.size !== 1) return;
+    if (!workflow.attackRoll || !workflow.token || workflow.targets.count !== 1) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
-    const armorClass = workflow.targets.first().actor?.system.attributes.ac.value;
+    const armorClass = workflow.targets.documents[0].actor?.system.attributes.ac.value;
     if (armorClass === undefined) return;
     if (workflow.attackRoll.total >= armorClass && !workflow.attackRoll.isFumble) return;
     if (!await useWish(item, workflow.token.document, workflow.item.name, workflow.attackRoll.total)) return;

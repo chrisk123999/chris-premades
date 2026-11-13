@@ -1,6 +1,6 @@
 import {actorUtils, automationUtils, dialogUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function attacked({document: item, workflow, sourceToken}) {
-    if (!sourceToken || !workflow.targets.size) return;
+    if (!sourceToken || !workflow.targets.count) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     const actor = sourceToken.actor;
     if (!actor || actorUtils.hasUsedReaction(actor)) return;

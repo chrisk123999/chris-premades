@@ -58,7 +58,7 @@ async function use({workflow}) {
         }
     }]))?.[0];
     if (!parentEntity) return;
-    const target = workflow.targets.first()?.actor ?? workflow.actor;
+    const target = workflow.targets.documents[0]?.actor ?? workflow.actor;
     await itemUtils.createItems(target, [item.toObject()], {parentEntity});
 }
 export const tinkersMagic = {

@@ -40,7 +40,7 @@ async function saveBonus({document, workflow}) {
     const activityData = workflow.activity.toObject();
     activityData.save.dc.calculation = '';
     activityData.save.dc.formula = String(workflow.activity.save.dc.value + bonus);
-    workflowUtils.setActivity(workflow, activityData);
+    await workflowUtils.setActivity(workflow, activityData);
 }
 async function damage({document, workflow}) {
     if (!isHarkonsActivity(document, workflow, ['bite', 'claws'])) return;

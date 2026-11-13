@@ -24,7 +24,7 @@ async function familiar({document, summon, updates}) {
     await itemUtils.unhideActivities(document, [sourceIdentifier + '-command']);
 }
 async function hit({document, workflow, sourceToken}) {
-    if (!sourceToken || !workflow.hitTargets.has(sourceToken.object)) return;
+    if (!sourceToken || !workflow.hitTargets.has(sourceToken)) return;
     const sourceActor = summonUtils.getSummonData(sourceToken.actor)?.owner;
     if (!sourceActor || actorUtils.hasUsedReaction(sourceActor)) return;
     const selection = await dialogUtils.confirmUseItem(document, {userId: queryUtils.firstOwner(sourceActor, true)});

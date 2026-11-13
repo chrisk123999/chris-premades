@@ -1,7 +1,7 @@
 import {automationUtils, DamageBonus, documentUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../../proxy.mjs';
 async function use({document: item, workflow}) {
-    if (workflow.targets.size !== 1) return;
-    const targetToken = workflow.targets.first().document;
+    if (workflow.targets.count !== 1) return;
+    const targetToken = workflow.targets.documents[0];
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const sourceEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: item.name,
@@ -25,9 +25,9 @@ async function use({document: item, workflow}) {
     await effectUtils.createEffects(targetToken.actor, [targetEffectData], {parentEntity: sourceEffect});
 }
 async function damage({document: item, workflow}) {
-    if (workflow.hitTargets.size !== 1) return;
+    if (workflow.hitTargets.count !== 1) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
-    const targetToken = workflow.hitTargets.first().document;
+    const targetToken = workflow.hitTargets.documents[0];
     const effect = documentUtils.getEffectByIdentifier(workflow.actor, 'favoredFoe');
     if (effect && effect.flags['chris-premades']?.favoredFoe?.target !== targetToken.id) return;
     if (!effect && !item.system.uses.value) return;

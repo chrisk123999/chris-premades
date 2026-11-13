@@ -3,15 +3,15 @@ function isPactWeapon(item) {
     return documentUtils.getIdentifier(item) === 'pact-weapon' || !!documentUtils.getEffectByIdentifier(item, 'pactWeapon');
 }
 async function use({bonus, workflow}) {
-    await workflowUtils.completeItemUse(bonus.document, workflow.hitTargets);
-    const targetActor = workflow.hitTargets.first().actor;
+    await workflowUtils.completeItemUse(bonus.document, workflow.hitTargets.documents);
+    const targetActor = workflow.hitTargets.documents[0].actor;
     if (actorUtils.getSize(targetActor) > 4 || actorUtils.getEffectByStatusID(targetActor, 'prone')) return;
     const selection = await dialogUtils.confirm(bonus.document.name, _loc('CHRISPREMADES.Macros.Legacy.EldritchSmite.Prone'));
     if (!selection) return;
     await actorUtils.applyConditions(targetActor, ['prone']);
 }
 function damage({document, workflow}) {
-    if (workflow.hitTargets.size !== 1 || !workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
+    if (workflow.hitTargets.count !== 1 || !workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (!isPactWeapon(workflow.item)) return;
     const pact = workflow.actor.system.spells.pact;
     if (!pact?.value) return;

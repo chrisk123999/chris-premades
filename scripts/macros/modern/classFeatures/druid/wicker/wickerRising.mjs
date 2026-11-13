@@ -11,7 +11,7 @@ async function ward({document: item, data: {itemData}}) {
     return {changes: [{key: 'system.traits.dr.value', type: 'add', value: damageType, priority: 20}]};
 }
 async function soothe({document: item, data: {workflow, summon}}) {
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.documents[0];
     if (!targetToken?.actor || !summon.actor) return;
     const {conditions, hitPointCost} = automationUtils.getConfigValues(item, ['conditions', 'hitPointCost']);
     const hp = summon.actor.system.attributes.hp.value;

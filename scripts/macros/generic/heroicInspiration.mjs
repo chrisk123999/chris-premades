@@ -8,7 +8,7 @@ async function preTargeting({activity, config}) {
     if (!getRecipients(activity, activity.actor, targetActors).size) return true;
 }
 async function rollFinished({document, workflow}) {
-    const recipients = getRecipients(document, workflow.actor, Array.from(workflow.targets, token => token.actor));
+    const recipients = getRecipients(document, workflow.actor, workflow.targets.documents.map(token => token.actor));
     await Promise.all(Array.from(recipients, actor => documentUtils.update(actor, {'system.attributes.inspiration': true})));
 }
 /**

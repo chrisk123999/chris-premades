@@ -1,6 +1,6 @@
 import {automationUtils, workflowUtils} from '../../../proxy.mjs';
 async function drain({workflow}) {
-    if (workflow.activity.identifier !== 'vampiric-touch-attack' || !workflow.hitTargets.size || !workflow.token) return;
+    if (workflow.activity.identifier !== 'vampiric-touch-attack' || !workflow.hitTargets.count || !workflow.token) return;
     const dealt = workflowUtils.getDamageDealt(workflow);
     const healing = Math.floor(dealt * Number(automationUtils.getConfigValue(workflow.item, 'healingModifier') ?? 0.5));
     if (healing > 0) await workflowUtils.applyDamage([workflow.token.document], healing, 'healing');

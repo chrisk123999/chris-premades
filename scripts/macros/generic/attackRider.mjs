@@ -9,19 +9,19 @@ export const riderNearbyRangeConfig = {
 };
 export function withNearby(tokens, range) {
     if (!range) return tokens;
-    return Array.from(new Set([...tokens, ...tokens.flatMap(token => tokenUtils.findNearby(token, range)).filter(token => token.actor)]));
+    return Array.from(new Set([...tokens, ...tokens.filter(token => token.object).flatMap(token => tokenUtils.findNearby(token, range)).filter(token => token.actor)]));
 }
 // Plays the configured rider animation on each hit target.
 export function playRiderAnimation(document, identifier, targets, sourceToken) {
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier});
-    if (animation?.macros?.play) targets.forEach(target => animation.macros.play(target.document ?? target, options, {sourceToken}));
+    if (animation?.macros?.play) targets.filter(target => target.object).forEach(target => animation.macros.play(target, options, {sourceToken}));
 }
 export function addRiders(workflow, uuids) {
     const riders = workflowUtils.getWorkflowProperty(workflow, 'attackRiders') ?? [];
     workflowUtils.setWorkflowProperty(workflow, 'attackRiders', [...riders, ...uuids]);
 }
 function applies(activity, actor, workflow, config) {
-    if (!workflow.hitTargets.size || workflow.activity?.uuid === activity.uuid) return false;
+    if (!workflow.hitTargets.count || workflow.activity?.uuid === activity.uuid) return false;
     if (!itemUtils.getEquipmentState(activity.item)) return false;
     if (config.ownTurn && !combatUtils.isOwnTurn(workflow.token)) return false;
     if (activity.item.type === 'spell' && !itemUtils.canCast(activity.item)) return false;
@@ -31,7 +31,7 @@ function applies(activity, actor, workflow, config) {
     if (config.attackAbility.length && !config.attackAbility.includes(workflow.activity.ability)) return false;
     if (config.maxSize) {
         const maxSize = CONFIG.DND5E.actorSizes[config.maxSize]?.numerical;
-        if (workflow.hitTargets.some(token => actorUtils.getSize(token.actor) > maxSize)) return false;
+        if (workflow.hitTargets.documents.some(token => actorUtils.getSize(token.actor) > maxSize)) return false;
     }
     if (config.requiredItems.length && !actorUtils.getItemByIdentifiers(actor, config.requiredItems)) return false;
     if (config.suppressedBy.length && actorUtils.getItemByIdentifiers(actor, config.suppressedBy)) return false;
@@ -51,13 +51,13 @@ export async function getTaggedRiders(actor, workflow, tag) {
 async function damage({document: activity, actor, workflow}) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'attackRider', configKeys);
     if (config.tag || !applies(activity, actor, workflow, config)) return;
-    const typeMatch = config.creatureTypeBonus && config.targetCreatureTypes.length && workflow.hitTargets.every(token => token.actor && config.targetCreatureTypes.includes(actorUtils.typeOrRace(token.actor)));
+    const typeMatch = config.creatureTypeBonus && config.targetCreatureTypes.length && workflow.hitTargets.documents.every(token => token.actor && config.targetCreatureTypes.includes(actorUtils.typeOrRace(token.actor)));
     const formula = typeMatch ? config.bonus + ' + ' + config.creatureTypeBonus : config.bonus;
     const bonus = new DamageBonus(activity, {formula, type: config.bonusDamageType})
         .withOnUse(({workflow, bonus}) => {
             addRiders(workflow, [bonus.document.uuid]);
-            const scaling = workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling') ?? {};
-            workflowUtils.setWorkflowProperty(workflow, 'attackRiderScaling', {...scaling, [bonus.document.uuid]: bonus.scalingIncrease});
+            const scaling = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling') ?? []);
+            workflowUtils.setWorkflowProperty(workflow, 'attackRiderScaling', Object.entries({...scaling, [bonus.document.uuid]: bonus.scalingIncrease}));
         });
     if (config.useActivityCosts) {
         bonus.withDefaultCosts();
@@ -71,9 +71,9 @@ async function damage({document: activity, actor, workflow}) {
 async function rider({document: activity, actor, token, workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, 'attackRiders')?.includes(activity.uuid)) return;
     const selfOnly = activity.range.units === 'self' && !automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'selfAsTouch');
-    const hitTargets = Array.from(workflow.hitTargets, target => target.document ?? target);
-    const targets = selfOnly ? (token ? [token.document ?? token] : []) : withNearby(hitTargets, automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'riderNearbyRange'));
-    const scaling = workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling')?.[activity.uuid] ?? 0;
+    const hitTargets = workflow.hitTargets.documents;
+    const targets = selfOnly ? (token ? [token] : []) : withNearby(hitTargets, automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'riderNearbyRange'));
+    const scaling = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling') ?? [])[activity.uuid] ?? 0;
     const options = {consumeUsage: false, config: {scaling}};
     if (activity.item.system.linkedActivity) options.config.cause = {activity: activity.item.getFlag('dnd5e', 'cachedFor'), resources: true};
     else if (scaling && activity.isSpell) options.atLevel = activity.item.system.level + scaling;

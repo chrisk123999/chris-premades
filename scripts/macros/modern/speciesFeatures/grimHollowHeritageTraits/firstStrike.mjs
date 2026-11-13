@@ -1,9 +1,9 @@
 import {automationUtils, DamageBonus, workflowUtils} from '../../../../proxy.mjs';
 async function bonus({workflow, document}) {
-    if (workflow.hitTargets.size != 1 || !workflow.item || !workflow.activity || !document.system.uses.value) return;
+    if (workflow.hitTargets.count !== 1 || !workflow.item || !workflow.activity || !document.system.uses.value) return;
     if (!workflowUtils.isAttackType(workflow, 'attack') || !workflow.token.document.inCombat) return;
     const sourceCombatant = workflow.token.document.combatant;
-    const targetCombatant = workflow.hitTargets.first().document.combatant;
+    const targetCombatant = workflow.hitTargets.documents[0].combatant;
     if (!targetCombatant || sourceCombatant.combat.round != 1) return;
     if (sourceCombatant.combat.turns.indexOf(sourceCombatant) >= sourceCombatant.combat.turns.indexOf(targetCombatant)) return;
     const formula = automationUtils.getConfigValue(document, 'formula');

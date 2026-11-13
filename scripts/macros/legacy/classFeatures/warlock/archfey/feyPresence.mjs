@@ -1,6 +1,6 @@
 import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
-    if (!workflow.failedSaves.size) return;
+    if (!workflow.failedSaves.count) return;
     const conditions = automationUtils.getConfigValue(document, 'conditions');
     const options = constants.statusOptions.filter(option => conditions.includes(option.value));
     if (!options.length) return;
@@ -16,7 +16,7 @@ async function use({document, workflow}) {
         duration: {value: 1, units: 'rounds', expiry: 'sourceEnd'}
     });
     effectData.statuses = [selection];
-    for (const target of workflow.failedSaves) {
+    for (const target of workflow.failedSaves.documents) {
         if (actorUtils.checkTrait(target.actor, 'ci', selection)) continue;
         await effectUtils.createEffects(target.actor, [effectData]);
     }

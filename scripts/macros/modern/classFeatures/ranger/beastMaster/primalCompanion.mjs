@@ -80,11 +80,11 @@ async function deleted({document, summon}) {
     await itemUtils.rehideActivities(document, [commandActivity], {favorite: true});
 }
 async function fury({document: item, workflow}) {
-    if (workflow.hitTargets.size !== 1 || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (workflow.hitTargets.count !== 1 || !workflowUtils.isAttackType(workflow, 'attack')) return;
     const owner = summonUtils.getSummonData(workflow.actor)?.owner;
     if (!owner || !actorUtils.getItemByIdentifier(owner, 'bestial-fury')) return;
     const markData = documentUtils.getEffectByIdentifier(owner, 'huntersMark')?.flags['chris-premades']?.huntersMark;
-    const target = workflow.hitTargets.first().document;
+    const target = workflow.hitTargets.documents[0];
     if (!markData?.targets.includes(target.uuid)) return;
     if (!item.system.uses.value) return;
     const bonus = new DamageBonus(item, {formula: markData.formula, optional: false, maxTargets: 1, type: markData.damageType})

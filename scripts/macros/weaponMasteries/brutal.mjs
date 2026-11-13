@@ -3,7 +3,7 @@ function attack({workflow}) {
     workflowUtils.expandAttackCriticalRange(workflow);
 }
 async function damage({document: item, workflow}) {
-    if (!workflow.isCritical || !workflow.hitTargets.size || !workflow.damageRolls?.length) return;
+    if (!workflow.isCritical || !workflow.hitTargets.count || !workflow.damageRolls?.length) return;
     const denomination = item.system.damage.base.denomination;
     if (denomination) await workflowUtils.bonusDamage(workflow, '1d' + denomination, {ignoreCrit: true});
 }

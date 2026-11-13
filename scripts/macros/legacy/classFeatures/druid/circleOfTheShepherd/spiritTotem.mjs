@@ -10,7 +10,7 @@ function alliesNear(item, totem) {
 async function hawk({document, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     const totem = getTotem(document, 'spirit-totem-hawk');
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.tokens[0]?.document;
     if (!totem || !target || actorUtils.hasUsedReaction(document.actor)) return;
     const owner = actorUtils.getFirstToken(document.actor);
     if (workflow.token.document.disposition !== owner?.disposition) return;

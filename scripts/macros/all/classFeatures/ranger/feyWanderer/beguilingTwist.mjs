@@ -4,7 +4,7 @@ const conditions = [
     ['DND5E.ConFrightened', 'beguilingTwistFrightened']
 ];
 async function use({document: item, workflow}) {
-    if (workflow.targets.size !== 1 || !workflow.failedSaves.size) return;
+    if (workflow.targets.count !== 1 || !workflow.failedSaves.count) return;
     const available = conditions.filter(([, identifier]) => documentUtils.getEffectByIdentifier(item, identifier));
     if (!available.length) return Logging.addMacroWarning('CPR', 'beguiling-twist', 'Charmed/Frightened effects missing from item.', {notify: 'warn'});
     const selection = available.length === 1
@@ -15,7 +15,7 @@ async function use({document: item, workflow}) {
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {activityUuid: workflow.activity.uuid});
     if (!effectData) return;
     effectData.name = item.name;
-    await effectUtils.createEffects(workflow.failedSaves.first().actor, [effectData]);
+    await effectUtils.createEffects(workflow.failedSaves.documents[0].actor, [effectData]);
 }
 export const beguilingTwist = {
     name: 'Beguiling Twist',

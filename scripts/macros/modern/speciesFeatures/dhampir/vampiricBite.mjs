@@ -2,11 +2,11 @@ import {actorUtils, activityUtils, automationUtils, constants, dialogUtils, docu
 async function empower({document: item, workflow}) {
     if (workflow.activity.identifier !== 'bite') return;
     if (!item.system.uses.value || !workflow.token) return;
-    const target = workflow.hitTargets.first();
+    const target = workflow.hitTargets.documents[0];
     if (!target?.actor) return;
     if (automationUtils.getConfigValue(item, 'ignoredCreatureTypes').includes(actorUtils.typeOrRace(target.actor))) return;
     const damageTypes = new Set(workflow.activity.damage.parts.flatMap(part => Array.from(part.types)));
-    const entry = workflow.damageList?.find(ditem => ditem.targetUuid === target.document.uuid);
+    const entry = workflow.damageList?.find(ditem => ditem.targetUuid === target.uuid);
     const dealt = Math.floor(entry?.damageDetail?.reduce((total, damage) => total + (damageTypes.has(damage.type) ? damage.value : 0), 0) ?? 0);
     if (dealt <= 0) return;
     const buttons = [

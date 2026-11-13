@@ -14,12 +14,12 @@ async function modifyInspiration({data, document: item, macroClass: {identifier,
     // midi needs to check ac bonuses at other reaction phases, currently only uses `reactionattacked`
     const flag = `flags.midi-qol.optional.${identifier}.`;
     data.effectData.system.changes.push(
-        {key: flag + 'ac',    type: 'custom', value: formula},
+        {key: flag + 'acOnAttack', type: 'custom', value: formula},
         {key: flag + 'label', type: 'custom', value: item.name}
     );
 }
 async function damage({document: effect, macroClass: {identifier, source}, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     const formula = effect.flags[source]?.bardicInspiration;
     if (!formula) return Logging.addMacroWarning(source, identifier, `Combat Inspiration could not find a formula on the bardic inspiration effect! (effect) ${effect.uuid}`);

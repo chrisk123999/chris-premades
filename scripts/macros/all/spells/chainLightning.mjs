@@ -1,20 +1,20 @@
 import {activityUtils, automationUtils, dialogUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function leap({document: item, workflow, castData}) {
     if (workflow.activity.identifier !== 'chain-lightning') return;
-    const primary = workflow.targets.first();
+    const primary = workflow.targets.tokens[0]?.document;
     if (!primary) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'chain-lightning-leap');
     if (!activity) return Logging.addMacroWarning('CPR', 'chain-lightning', 'Leap activity missing from item.', {notify: 'warn'});
     const maxTargets = Math.max(castData.castLevel - 3, 0);
-    const excluded = new Set([workflow.token?.document.id, ...Array.from(workflow.targets, token => token.document.id)]);
+    const excluded = new Set([workflow.token?.document.id, ...workflow.targets.documents.map(token => token.id)]);
     const anyCreature = automationUtils.getConfigValue(item, 'anyCreature');
-    let leaps = tokenUtils.findNearby(primary.document, automationUtils.getConfigValue(item, 'leapRange')).filter(token => !excluded.has(token.id) && (anyCreature || token.disposition === primary.document.disposition));
+    let leaps = tokenUtils.findNearby(primary, automationUtils.getConfigValue(item, 'leapRange')).filter(token => !excluded.has(token.id) && (anyCreature || token.disposition === primary.disposition));
     if (leaps.length > maxTargets) {
         const selection = await dialogUtils.selectTargetDialog(item.name, _loc('CHRISPREMADES.Macros.All.ChainLightning.Select', {maxTargets}), leaps, {type: 'multiple', maxAmount: maxTargets});
         leaps = selection?.result ?? [];
     }
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
-    if (workflow.token && animation?.macros?.play) animation.macros.play(workflow.token.document, primary.document, {...options, leaps, damageType: activity.damage.parts[0]?.types.first()});
+    if (workflow.token && animation?.macros?.play) animation.macros.play(workflow.token.document, primary, {...options, leaps, damageType: activity.damage.parts[0]?.types.first()});
     if (!leaps.length) return;
     const activityData = activityUtils.getDamageModifiedActivityData(activity, String(workflow.damageTotal));
     await workflowUtils.syntheticActivityDataRoll(activityData, item, leaps, {atLevel: castData.castLevel, consumeUsage: false, consumeResources: false, spellSlot: false});

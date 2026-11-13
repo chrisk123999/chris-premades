@@ -1,6 +1,6 @@
 import {combatUtils, dialogUtils, documentUtils, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function damage({document, workflow}) {
-    if (!workflow.hitTargets.size || !document.system.uses.value) return;
+    if (!workflow.hitTargets.count || !document.system.uses.value) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!combatUtils.isOwnTurn(workflow.token.document)) return;
     const selection = await dialogUtils.confirmUseItem(document);

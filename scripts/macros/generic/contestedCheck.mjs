@@ -3,13 +3,13 @@ async function targeting({document: activity, token, workflow}) {
     const sizeCheck = automationUtils.getGenericConfigValue(activity, 'chris-premades', 'contestedCheck', 'sizeCheck');
     if (!sizeCheck || !token) return;
     const invalid = [];
-    for (const target of workflow.targets) {
-        if (target.actor && !await tokenUtils.grappleShoveSizeCheck(token, target.document, sizeCheck, false)) invalid.push(target);
+    for (const target of workflow.targets.documents) {
+        if (target.actor && !await tokenUtils.grappleShoveSizeCheck(token, target, sizeCheck, false)) invalid.push(target);
     }
     if (invalid.length) await workflowUtils.removeTargets(workflow, invalid);
 }
 async function contest({document: activity, actor, workflow}) {
-    const targets = Array.from(workflow.targets).filter(target => target.actor);
+    const targets = workflow.targets.documents.filter(target => target.actor);
     if (!targets.length) return;
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'contestedCheck', configKeys);
     const request = config.sourceSkills.length ? 'skill' : 'check';
@@ -22,7 +22,7 @@ async function contest({document: activity, actor, workflow}) {
         workflow.aborted = true;
         return true;
     }
-    workflowUtils.setActivity(workflow, activityUtils.getCheckDCModifiedActivityData(workflow.activity, roll.total));
+    await workflowUtils.setActivity(workflow, activityUtils.getCheckDCModifiedActivityData(workflow.activity, roll.total));
 }
 /**
  * Rolls a check for the user and sets the activity's check DC to the result.

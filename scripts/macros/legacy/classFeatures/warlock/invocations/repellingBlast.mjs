@@ -1,12 +1,12 @@
 import {automationUtils, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function late({document, workflow}) {
     if (documentUtils.getIdentifier(workflow.activity) !== automationUtils.getConfigValue(document, 'activityIdentifier')) return;
-    if (!workflow.hitTargets.size) return;
-    const targetToken = workflow.hitTargets.first().document;
+    if (!workflow.hitTargets.count) return;
+    const targetToken = workflow.hitTargets.documents[0];
     const selection = await dialogUtils.confirmUseItem(document);
     if (!selection) return;
     await workflowUtils.completeItemUse(document, [targetToken]);
-    await tokenUtils.slideToken(targetToken, {sourceToken: workflow.token.document, distance: automationUtils.getConfigValue(document, 'distance')});
+    if (targetToken.object) await tokenUtils.slideToken(targetToken, {sourceToken: workflow.token.document, distance: automationUtils.getConfigValue(document, 'distance')});
 }
 export const repellingBlast = {
     name: 'Eldritch Invocations: Repelling Blast',

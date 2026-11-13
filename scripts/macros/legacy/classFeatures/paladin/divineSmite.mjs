@@ -3,7 +3,7 @@ function getFormula(slot, extraDie) {
     return (Math.min(slot.level + 1, 5) + (extraDie ? 1 : 0)) + 'd8';
 }
 function damage({document, workflow}) {
-    if (workflow.hitTargets.size !== 1) return;
+    if (workflow.hitTargets.count !== 1) return;
     const meleeHit = workflowUtils.isAttackType(workflow, 'meleeWeaponAttack');
     const rangedHit = automationUtils.getConfigValue(document, 'allowRanged') && workflowUtils.isAttackType(workflow, 'rangedWeaponAttack');
     if (!meleeHit && !rangedHit) return;
@@ -11,13 +11,13 @@ function damage({document, workflow}) {
     if (unarmed && !automationUtils.getConfigValue(document, 'allowUnarmed')) return;
     const slots = dialogUtils.getSpellSlotOptions(workflow.actor);
     if (!slots.length) return Logging.addMacroWarning('CPR', 'divine-smite', 'No spell slots remaining.');
-    const targetActor = workflow.hitTargets.first().actor;
+    const targetActor = workflow.hitTargets.documents[0].actor;
     const extraDie = !!targetActor && automationUtils.getConfigValue(document, 'creatureTypes').includes(actorUtils.typeOrRace(targetActor));
     let selected = slots[0];
     const bonus = new DamageBonus(document, {formula: getFormula(selected, extraDie), type: automationUtils.getConfigValue(document, 'damageType')})
         .withOnUse(async ({workflow}) => {
             await actorUtils.spendSpellSlots(workflow.actor, selected.value);
-            await workflowUtils.completeItemUse(document, Array.from(workflow.hitTargets, token => token.document ?? token), {consumeUsage: false, consumeResources: false});
+            await workflowUtils.completeItemUse(document, workflow.hitTargets.documents, {consumeUsage: false, consumeResources: false});
         });
     if (slots.length === 1) return bonus;
     return bonus.withInputs([['combobox', [{

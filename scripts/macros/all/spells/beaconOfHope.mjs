@@ -1,5 +1,6 @@
 import {rollUtils, workflowUtils} from '../../../proxy.mjs';
-async function maximize({workflow, ditem, actor}) {
+async function maximize({workflow, ditem, targetToken}) {
+    const actor = targetToken?.actor;
     if (!workflow.activity.healing || !actor || ditem.hpDamage >= 0) return;
     const rolls = (workflow.damageRolls ?? []).filter(roll => roll.options.type === 'healing');
     if (!rolls.length) return;

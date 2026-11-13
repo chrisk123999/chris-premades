@@ -3,7 +3,7 @@ import {playTargetAnimations} from '../../generic/spellAnimation.mjs';
 async function use({document, workflow}) {
     playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation'));
     const creatureTypes = automationUtils.getConfigValue(document, 'creatureTypes');
-    const affectedTargets = Array.from(workflow.hitTargets).filter(token => token.actor && creatureTypes.includes(actorUtils.typeOrRace(token.actor)));
+    const affectedTargets = workflow.hitTargets.documents.filter(token => token.actor && creatureTypes.includes(actorUtils.typeOrRace(token.actor)));
     if (!affectedTargets.length) return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'chillTouchUndead');
     if (!sourceEffect) return Logging.addMacroWarning('CPR', 'chill-touch', 'Undead effect missing from item.', {notify: 'warn'});
@@ -12,9 +12,9 @@ async function use({document, workflow}) {
     await Promise.all(affectedTargets.map(token => effectUtils.createEffects(token.actor, [effectData])));
 }
 function attack({document, workflow}) {
-    if (workflow.targets.size !== 1) return;
+    if (workflow.targets.count !== 1) return;
     const sourceActor = effectUtils.getOriginActivitySync(document)?.actor;
-    if (!sourceActor || workflow.targets.first().actor !== sourceActor) return;
+    if (!sourceActor || workflow.targets.documents[0].actor !== sourceActor) return;
     workflow.tracker.disadvantage.add('chill-touch', document.name);
 }
 export const chillTouch = {

@@ -56,7 +56,7 @@ function addThrallBonuses(summonData, actor, sourceActor) {
     }));
 }
 async function hexBonus({document, workflow, token}) {
-    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (!workflow.hitTargets.count || !workflowUtils.isAttackType(workflow, 'attack')) return;
     const combatData = tokenUtils.getCombatData(token);
     const stamps = genericUtils.getProperty(document, 'flags.cat.thrallBonus.stamps') ?? [];
     if (combatUtils.isStampedThisTurn(stamps, token.id, combatData)) return;
@@ -65,7 +65,7 @@ async function hexBonus({document, workflow, token}) {
     const hex = documentUtils.getEffectByIdentifier(summoner, 'hex');
     const hexData = hex?.flags['chris-premades']?.hex;
     if (!hexData) return;
-    const targets = Array.from(workflow.hitTargets, target => target.document).filter(target => hexData.targets.includes(target.uuid));
+    const targets = workflow.hitTargets.documents.filter(target => hexData.targets.includes(target.uuid));
     if (!targets.length) return;
     const damageType = workflow.actor.flags['chris-premades']?.hexBonusDamageType ?? 'psychic';
     await documentUtils.update(document, {'flags.cat.thrallBonus.stamps': combatUtils.addTurnStamp(stamps, token.id, combatData)});

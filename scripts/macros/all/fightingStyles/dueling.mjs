@@ -1,6 +1,6 @@
 import {automationUtils, DamageBonus, documentUtils, workflowUtils} from '../../../proxy.mjs';
 async function damage({document: item, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     const config = automationUtils.getConfigValues(item, Object.keys(dueling.config));
     const exception = config.exceptions.includes(documentUtils.getIdentifier(workflow.item));
     if (!exception && (

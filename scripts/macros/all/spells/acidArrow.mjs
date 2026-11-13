@@ -5,7 +5,7 @@ async function early({workflow}) {
 async function attack({document, workflow}) {
     let playAnimation = automationUtils.getConfigValue(document.item, 'playAnimation');
     let jb2a = animationUtils.jb2aCheck();
-    if (!playAnimation || !workflow.token || !workflow.targets.size || !jb2a) return;
+    if (!playAnimation || !workflow.token || !workflow.targets.tokens.length || !jb2a) return;
     let animation = 'jb2a.arrow.poison.';
     let color = jb2a === 'patreon' ? automationUtils.getConfigValue(document.item, 'color') : 'green';
     if (color === 'random') {
@@ -13,15 +13,15 @@ async function attack({document, workflow}) {
         color = colors[Math.floor((Math.random() * colors.length))];
     }
     let sound = automationUtils.getConfigValue(document.item, 'sound');
-    workflow.targets.forEach(i => {
+    workflow.targets.tokens.forEach(i => {
         animationUtils.simpleAttack(workflow.token, i, animation + color, {sound: sound, missed: !workflow.hitTargets.has(i)});
     });
 }
 async function damage({workflow}) {
-    let missedTargets = workflow.targets.filter(i => !workflow.hitTargets.has(i)).map(i => i.document);
-    if (!missedTargets.size) return;
+    let missedTargets = workflow.targets.documents.filter(i => !workflow.hitTargets.has(i));
+    if (!missedTargets.length || !workflow.damageRoll) return;
     let damageRoll = await rollUtils.damageRoll(String(Math.floor(workflow.damageRoll.total / 2)), workflow.item);
-    workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, workflow.defaultDamageType, missedTargets, {flavor: _loc('CHRISPREMADES.Macros.Legacy.AcidArrow.HalfDamage'), sourceItem: workflow.item});
+    await workflowUtils.applyWorkflowDamage(workflow.tokenDocument, damageRoll, workflow.defaultDamageType, missedTargets, {flavor: _loc('CHRISPREMADES.Macros.Legacy.AcidArrow.HalfDamage'), sourceItem: workflow.item});
 }
 export const acidArrow = {
     version: '2.0.2',
@@ -38,7 +38,7 @@ export const acidArrow = {
             priority: 50
         },
         {
-            pass: 'activityDamageComplete',
+            pass: 'activityRollFinished',
             macro: damage,
             priority: 50
         }

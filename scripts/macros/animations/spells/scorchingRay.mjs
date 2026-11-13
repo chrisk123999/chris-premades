@@ -57,6 +57,7 @@ async function start(sourceToken, {type = 'complex'} = {}) {
         /* eslint-enable indent */
 }
 async function attack(sourceToken, targetToken, {missed, sound, color = 'orange', type = 'complex'} = {}) {
+    if (!targetToken.object) return;
     await animationUtils.preloadAnimations('jb2a.scorching_ray');
     if (color === 'random') {
         color = dynamicColors[Math.floor(Math.random() * dynamicColors.length)];

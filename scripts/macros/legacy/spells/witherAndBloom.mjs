@@ -9,7 +9,7 @@ async function late({document, workflow}) {
     if (!workflow.token || workflow.activity.identifier === 'bloom') return;
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     playAreaAnimation(workflow, {animation, options});
-    const allies = Array.from(workflow.targets).filter(token => token.document.disposition === workflow.token.document.disposition && token.actor?.type === 'character').map(token => token.document);
+    const allies = workflow.targets.documents.filter(token => token.disposition === workflow.token.document.disposition && token.actor?.type === 'character');
     if (!allies.length) return Logging.addMacroWarning('CPR', 'wither-and-bloom', 'No allied character in the area to heal.');
     let target = allies[0];
     if (allies.length > 1) {

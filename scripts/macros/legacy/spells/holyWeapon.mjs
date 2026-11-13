@@ -13,7 +13,7 @@ async function use({workflow}) {
 }
 export const holyWeapon = {
     name: 'Holy Weapon',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50}

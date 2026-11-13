@@ -9,7 +9,7 @@ async function bear({data, document: item, macroClass: {source}}) {
         genericUtils.setProperty(data.effectData, 'flags.cat.macros.roll', [macro]);
 }
 async function attack({document: effect, macroClass: {identifier, source}, workflow}) {
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.documents[0];
     if (workflow.actor.statuses.has('deafened')) return;
     if (!target || target.actor.uuid === effect.actor.uuid) return;
     if (workflow.actor.system.traits.ci.value.has('frightened')) return;

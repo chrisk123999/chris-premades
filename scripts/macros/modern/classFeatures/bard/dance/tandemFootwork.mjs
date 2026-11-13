@@ -14,8 +14,8 @@ async function initBonus({document: activity, macroClass: {identifier, source}, 
     const combatOnly = automationUtils.getConfigValue(activity.item, 'combatantsOnly');
     genericUtils.setProperty(effect, 'system.changes.0.value', bonus);
     const updates = [], message = [];
-    for (const t of workflow.targets) {
-        if (t.id !== self.id && t.actor.statuses.has('deafened') && !tokenUtils.canSee(t, self)) continue;
+    for (const t of workflow.targets.documents) {
+        if (t.id !== self.id && t.actor.statuses.has('deafened') && t.object && !tokenUtils.canSee(t, self)) continue;
         if (!t.combatant && combatOnly) continue;
         if (!t.combatant || t.combatant.initiative === null) updates.push({
             documentName: 'ActiveEffect',

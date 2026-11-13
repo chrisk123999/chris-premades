@@ -1,13 +1,13 @@
 import {automationUtils, constants, dialogUtils, itemUtils, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
 import {rememberCombat} from '../../../../generic/selectDamageType.mjs';
 async function early({document, workflow}) {
-    if (!workflow.targets.size || workflow.item.type !== 'spell' || !workflow.item.system.level) return;
+    if (!workflow.targets.count || workflow.item.type !== 'spell' || !workflow.item.system.level) return;
     const damageTypes = automationUtils.getConfigValue(document, 'damageTypes');
     if (!damageTypes.length || !itemUtils.getItemDamageTypes(workflow.item).intersects(new Set(damageTypes))) return;
     await workflowUtils.completeItemUse(document);
 }
 async function damage({document, workflow}) {
-    if (!workflow.targets.size || !workflow.damageRolls?.length) return;
+    if (!workflow.targets.count || !workflow.damageRolls?.length) return;
     const damageTypes = automationUtils.getConfigValue(document, 'damageTypes');
     if (!damageTypes.length) return;
     const damageType = await dialogUtils.selectDamageType(damageTypes, workflow.item.name, 'CHRISPREMADES.Generic.SelectDamageType', rememberCombat(workflow.token, document)) || damageTypes[0];

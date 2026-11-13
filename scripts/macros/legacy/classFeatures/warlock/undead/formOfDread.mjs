@@ -13,7 +13,7 @@ async function use({document, workflow}) {
     await animation.macros.transform(workflow.token.document, {...options, callback: createEffect});
 }
 async function late({workflow}) {
-    if (workflow.hitTargets.size !== 1 || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (workflow.hitTargets.count !== 1 || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!combatUtils.isOwnTurn(workflow.token.document)) return;
     const originItem = actorUtils.getItemByIdentifier(workflow.actor, 'form-of-dread');
     const activity = itemUtils.getActivityByIdentifier(originItem, 'form-of-dread-fear');
@@ -21,7 +21,7 @@ async function late({workflow}) {
     if (!activity.uses.value) return Logging.addMacroWarning('CPR', 'form-of-dread', 'Fear already used this turn.');
     const selection = await dialogUtils.confirm(activity.name, _loc('CHRISPREMADES.Macros.Legacy.FormOfDread.Use'));
     if (!selection) return;
-    await workflowUtils.completeActivityUse(activity, workflow.hitTargets);
+    await workflowUtils.completeActivityUse(activity, workflow.hitTargets.documents);
 }
 export const formOfDread = {
     name: 'Form of Dread',

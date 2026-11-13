@@ -1,15 +1,15 @@
 import {actorUtils, automationUtils, dialogUtils, documentUtils, effectUtils, genericUtils, workflowUtils} from '../../../../proxy.mjs';
 async function stun({document: activity, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (!activity.item.system.uses.value) return;
     if (workflow.item.uuid === activity.item.uuid) return;
     if (!workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
-    const valid = workflow.hitTargets.filter(t => {
+    const valid = workflow.hitTargets.documents.filter(t => {
         if (t.actor.system.attributes.hp.value <= 0) return;
         if (actorUtils.getEffectByIdentifier(t.actor, 'stunning-strike')) return;
         return true;
     });
-    if (!valid.size) return;
+    if (!valid.length) return;
     const focus = actorUtils.getItemByIdentifier(activity.actor, 'monks-focus', {type: 'feat'});
     if (!focus?.system.uses.value) return;
     if (automationUtils.getConfigValue(activity.item, 'validate') && !workflow.item.flags['chris-premades']?.dedicatedWeapon) {
@@ -19,8 +19,8 @@ async function stun({document: activity, workflow}) {
         if (['martialM', 'martialR'].includes(type) && !workflow.item.system.properties.has('lgt')) return;
     }
     if (!await dialogUtils.confirmUseItem(activity.item)) return;
-    const stunWorkflow = await workflowUtils.syntheticActivityRoll(activity, valid.map(t => t.document));
-    if (!stunWorkflow.saves.size) return;
+    const stunWorkflow = await workflowUtils.syntheticActivityRoll(activity, valid);
+    if (!stunWorkflow.saves.count) return;
     const effectData = [];
     for (const e of activity.item.effects) {
         if (activity.effects.some(ef => ef._id === e.id)) continue;
@@ -34,7 +34,7 @@ async function stun({document: activity, workflow}) {
         };
         effectData.push(data);
     }
-    if (effectData.length) await Promise.all(stunWorkflow.saves.map(t => t.actor ? effectUtils.createEffects(t.actor, effectData) : undefined));
+    if (effectData.length) await Promise.all(stunWorkflow.saves.documents.map(t => t.actor ? effectUtils.createEffects(t.actor, effectData) : undefined));
 }
 export const stunningStrike = {
     name: 'Stunning Strike',

@@ -22,6 +22,7 @@ function hexedEffectData(activity, document, seconds, ability) {
 }
 // Plays the Hex animation from the caster onto a newly cursed target.
 function playHex(item, sourceToken, targetToken) {
+    if (!targetToken.object) return;
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
     animation?.macros?.play?.(sourceToken, targetToken, options);
 }
@@ -29,7 +30,7 @@ async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'hex') return;
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const cancel = () => effectUtils.endConcentration(workflow.actor, workflow.item);
-    if (!workflow.targets.size) {
+    if (!workflow.targets.count) {
         Logging.addMacroWarning('CPR', 'hex', 'No target selected.');
         return await cancel();
     }
@@ -47,21 +48,21 @@ async function use({document, workflow}) {
         macros: [{type: 'roll', macros: [{source: 'chris-premades', rules: 'all', identifier: 'hex-attack'}]}]
     });
     genericUtils.setProperty(casterEffectData, 'flags.chris-premades.hex', {
-        targets: Array.from(workflow.targets, token => token.document.uuid),
+        targets: workflow.targets.uuids,
         damageType: automationUtils.getConfigValue(document, 'damageType'),
         formula: automationUtils.getConfigValue(document, 'formula'),
         ability
     });
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [casterEffectData], {parentEntity: concentrationEffect});
     if (!casterEffect) return;
-    for (const target of workflow.targets) {
-        playHex(document, workflow.token?.document, target.document);
+    for (const target of workflow.targets.documents) {
+        playHex(document, workflow.token?.document, target);
         await effectUtils.createEffects(target.actor, [hexedEffectData(workflow.activity, document, seconds, ability)], {parentEntity: casterEffect});
     }
     if (concentrationEffect) await documentUtils.update(concentrationEffect, {'duration.value': seconds, 'duration.units': 'seconds'});
 }
 async function move({document, workflow}) {
-    if (workflow.activity.identifier !== 'hex-move' || workflow.targets.size !== 1) return;
+    if (workflow.activity.identifier !== 'hex-move' || workflow.targets.count !== 1) return;
     const casterEffect = documentUtils.getEffectByIdentifier(workflow.actor, 'hex');
     if (!casterEffect) return Logging.addMacroWarning('CPR', 'hex', 'No active Hex to move.');
     const hexData = casterEffect.flags['chris-premades'].hex;
@@ -75,7 +76,7 @@ async function move({document, workflow}) {
         const hexedEffect = documentUtils.getEffectByIdentifier(previous.actor, 'hexed');
         if (hexedEffect) await documentUtils.deleteDocument(hexedEffect);
     }
-    const newTarget = workflow.targets.first().document;
+    const newTarget = workflow.targets.documents[0];
     playHex(document, workflow.token?.document, newTarget);
     const targets = hexData.targets.filter(uuid => uuid !== previous?.uuid);
     targets.push(newTarget.uuid);
@@ -84,23 +85,23 @@ async function move({document, workflow}) {
     await effectUtils.createEffects(newTarget.actor, [effectData], {parentEntity: casterEffect});
 }
 async function damage({document, workflow}) {
-    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (!workflow.hitTargets.count || !workflowUtils.isAttackType(workflow, 'attack')) return;
     const hexData = document.flags['chris-premades']?.hex;
     if (!hexData) return;
-    const targets = Array.from(workflow.hitTargets, token => token.document).filter(token => hexData.targets.includes(token.uuid));
+    const targets = workflow.hitTargets.documents.filter(token => hexData.targets.includes(token.uuid));
     if (!targets.length) return;
     const bonus = new DamageBonus(document, {formula: hexData.formula, optional: false, type: hexData.damageType})
         .withOnUse(({bonus}) => {
             const item = fromUuidSync(document.origin, {strict: false});
             const {animation, options} = item ? automationUtils.getResolvedAnimation(item, 'animation') : {};
-            if (animation?.macros?.damage) bonus.targets.forEach(token => animation.macros.damage(token.document ?? token, options));
+            if (animation?.macros?.damage) Array.from(bonus.targets).filter(token => token.object).forEach(token => animation.macros.damage(token, options));
         });
     bonus.targets = targets;
     return bonus;
 }
 export const hex = {
     name: 'Hex',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50},

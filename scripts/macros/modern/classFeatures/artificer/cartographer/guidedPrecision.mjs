@@ -1,25 +1,25 @@
 import {automationUtils, DamageBonus, documentUtils, itemUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
 async function damage({document: item, workflow}) {
-    if (!item.system.uses.value || !workflow.activity?.hasDamage || !workflow.targets.size) return;
+    if (!item.system.uses.value || !workflow.activity?.hasDamage || !workflow.targets.count) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'guided-precision');
     if (!activity) return Logging.addMacroWarning('CPR', 'guided-precision', 'Guided Precision activity not found.');
     const config = automationUtils.getConfigValues(item, configKeys);
     const listSpell = workflow.item.type === 'spell' && config.spells.includes(documentUtils.getIdentifier(workflow.item));
     const marked = workflow.activity.hasAttack
-        ? workflow.hitTargets.filter(token => token.actor && config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(token.actor, identifier, {sourceActor: workflow.actor})))
-        : new Set();
-    if (!listSpell && !marked.size) return;
+        ? workflow.hitTargets.documents.filter(token => token.actor && config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(token.actor, identifier, {sourceActor: workflow.actor})))
+        : [];
+    if (!listSpell && !marked.length) return;
     const bonus = new DamageBonus(activity, {formula: config.formula, optional: !config.autoApply})
         .withDefaultCosts()
         .withOnUse(() => workflowUtils.completeActivityUse(activity, []));
-    if (!listSpell) bonus.targets = marked.map(token => token.document);
+    if (!listSpell) bonus.targets = marked;
     return bonus;
 }
 async function concentration({document: item, workflow}) {
     const actor = item.actor;
     const spells = automationUtils.getConfigValue(item, 'concentrationSpells');
     if (!Array.from(actor.concentration?.items ?? []).some(spell => spells.includes(documentUtils.getIdentifier(spell)))) return;
-    if (Array.from(workflow.targets).some(token => token.actor && token.actor !== actor && token.actor.concentration?.effects.size)) return Logging.addMacroWarning('CPR', 'guided-precision', `Guided Precision did not skip the concentration check, another target is concentrating. (actor) ${actor.uuid}`);
+    if (workflow.targets.documents.some(token => token.actor && token.actor !== actor && token.actor.concentration?.effects.size)) return Logging.addMacroWarning('CPR', 'guided-precision', `Guided Precision did not skip the concentration check, another target is concentrating. (actor) ${actor.uuid}`);
     workflow.workflowOptions.noConcentrationCheck = true;
 }
 export const guidedPrecision = {

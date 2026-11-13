@@ -18,7 +18,7 @@ async function use({document: effect, macroClass: {identifier, source}}) {
     await itemUtils.createItems(effect.actor, [spell], {favorite: true, parentEntity: effect});
 }
 async function command({workflow}) {
-    for (const target of workflow.targets) {
+    for (const target of workflow.targets.documents) {
         if (!target.actor) continue;
         if (!actorUtils.hasStatusFromActor(target.actor, ['charmed'], workflow.actor)) continue;
         workflowUtils.grantRollModifier(workflow, 'fail', target.id, workflow.item.name);

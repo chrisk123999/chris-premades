@@ -100,7 +100,7 @@ async function explode({document}) {
 async function retribution({document: effect, workflow}) {
     if (!workflowUtils.isAttackType(workflow, 'attack') || !workflow.token) return;
     const actor = effect.parent;
-    if (!Array.from(workflow.hitTargets).some(token => token.actor === actor)) return;
+    if (!workflow.hitTargets.documents.some(token => token.actor === actor)) return;
     const item = actorUtils.getItemByIdentifier(actor, 'wild-surge');
     const activity = item ? itemUtils.getActivityByIdentifier(item, 'retribution') : undefined;
     if (activity) await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {consumeUsage: false, consumeResources: false, spellSlot: false});

@@ -5,8 +5,8 @@ async function additionalIdentifiers({document}) {
     return documentUtils.getIdentifier(document);
 }
 async function range({document, actor, token, activity, workflow}) {
-    if (!rangedAttacks.includes(activity.identifier) || workflow.targets.size !== 1 || !token) return;
-    if (tokenUtils.isWithinDistance(token, workflow.targets.first().document, 60)) return;
+    if (!rangedAttacks.includes(activity.identifier) || workflow.targets.count !== 1 || !token) return;
+    if (!workflow.targets.tokens[0] || tokenUtils.isWithinDistance(token, workflow.targets.tokens[0].document, 60)) return;
     if (actorUtils.getItemByIdentifier(actor, 'sharpshooter')) return;
     workflow.tracker.disadvantage.add('psychic-blades', document.name);
 }
@@ -21,10 +21,10 @@ async function late({document, actor, activity, token}) {
     await effectUtils.createEffects(actor, [documentUtils.getEffectData(document, sourceEffect.id, {activityUuid: activity.uuid})]);
 }
 async function vex({document, workflow}) {
-    if (!workflow.hitTargets.size || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (!workflow.hitTargets.count || !workflowUtils.isAttackType(workflow, 'attack')) return;
     const vexActivity = itemUtils.getActivityByIdentifier(document, 'vex');
     if (!vexActivity) return Logging.addMacroWarning('CPR', 'psychic-blades', 'Vex activity missing from item.', {notify: 'warn'});
-    await workflowUtils.syntheticActivityRoll(vexActivity, [workflow.hitTargets.first().document]);
+    await workflowUtils.syntheticActivityRoll(vexActivity, [workflow.hitTargets.documents[0]]);
 }
 export const psychicBlades = {
     name: 'Psychic Blades',

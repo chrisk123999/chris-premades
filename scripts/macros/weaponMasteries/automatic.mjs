@@ -12,7 +12,7 @@ async function finished({workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, 'automatic')) return;
     const options = {};
     workflowUtils.setWorkflowProperty(options, 'automaticSecond', true);
-    await workflowUtils.syntheticActivityRoll(workflow.activity, Array.from(workflow.targets, token => token.document), {options, consumeUsage: false});
+    await workflowUtils.syntheticActivityRoll(workflow.activity, workflow.targets.documents, {options, consumeUsage: false});
 }
 export const automaticMastery = {
     label: 'CHRISPREMADES.WeaponMasteries.Automatic.Label',

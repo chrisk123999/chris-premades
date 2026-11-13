@@ -1,7 +1,7 @@
 import cprConstants from '../../../constants.mjs';
 import {actorUtils, automationUtils, compendiumUtils, documentUtils, itemUtils, Logging} from '../../../proxy.mjs';
 async function use({workflow}) {
-    const actor = (workflow.targets.first() ?? workflow.token)?.actor ?? workflow.actor;
+    const actor = (workflow.targets.documents[0] ?? workflow.tokenDocument)?.actor ?? workflow.actor;
     const effect = actorUtils.getEffectByIdentifier(actor, 'potionOfFireBreath');
     if (!effect) return;
     const featureData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'potion-of-fire-breath-attack', {object: true, translate: 'CHRISPREMADES.Macros.All.PotionOfFireBreath.Attack'});

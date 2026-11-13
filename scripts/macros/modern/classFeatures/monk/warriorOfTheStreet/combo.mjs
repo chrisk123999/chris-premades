@@ -12,7 +12,7 @@ async function setBonus(effect, bonus) {
 }
 function playAnimation(item, workflow, bonus) {
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
-    const targetToken = workflow.hitTargets.first()?.document;
+    const targetToken = workflow.hitTargets.tokens[0]?.document;
     if (!animation?.macros?.play || !workflow.token || !targetToken) return;
     animation.macros.play(workflow.token.document, targetToken, {...options, bonus});
 }
@@ -31,7 +31,7 @@ async function guardBreaker(workflow) {
     const item = actorUtils.getItemByIdentifier(workflow.actor, 'special-moves-guard-breaker');
     const activity = item ? itemUtils.getActivityByIdentifier(item, 'guard-breaker') : undefined;
     if (!activity || !activityUtils.checkCosts(activity)) return false;
-    const targets = Array.from(workflow.targets, token => token.document ?? token).filter(token => token.actor);
+    const targets = workflow.targets.documents.filter(token => token.actor);
     if (!targets.length) return false;
     if (!await dialogUtils.confirmUseItem(item)) return false;
     const damageType = workflow.activity.damage?.parts?.[0]?.types?.first() ?? workflow.item.system.damage?.base?.types?.first();
@@ -39,11 +39,11 @@ async function guardBreaker(workflow) {
     return !!await workflowUtils.syntheticActivityDataRoll(activityData, item, targets);
 }
 async function rollFinished({document: item, workflow}) {
-    if (!workflow.activity || !workflow.attackRoll || !workflow.targets.size) return;
+    if (!workflow.activity || !workflow.attackRoll || !workflow.targets.count) return;
     const config = automationUtils.getConfigValues(item, configKeys);
     const unarmed = isUnarmedStrike(workflow.item);
     const effect = actorUtils.getEffectByIdentifier(workflow.actor, 'combo');
-    if (!workflow.hitTargets.size) {
+    if (!workflow.hitTargets.count) {
         if (unarmed && await guardBreaker(workflow)) return;
         if (effect) await setBonus(effect, config.startBonus);
         return;

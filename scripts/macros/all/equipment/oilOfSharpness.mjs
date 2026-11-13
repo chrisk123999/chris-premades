@@ -10,7 +10,7 @@ function isCandidate(item, meleeOnly) {
     return item.type === 'consumable' && item.system.type?.value === 'ammo' && item.system.quantity && isSharp(item);
 }
 async function use({document: item, workflow}) {
-    const actor = (workflow.targets.first() ?? workflow.token)?.actor ?? workflow.actor;
+    const actor = (workflow.targets.documents[0] ?? workflow.tokenDocument)?.actor ?? workflow.actor;
     const config = automationUtils.getConfigValues(item, configKeys);
     const candidates = actor.items.filter(candidate => isCandidate(candidate, config.meleeOnly));
     if (!candidates.length) {

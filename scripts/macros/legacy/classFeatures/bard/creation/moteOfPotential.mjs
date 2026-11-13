@@ -41,7 +41,7 @@ async function attackSave({data, document: effect}) {
     const options = {config: {scaling: data.bonus.roll.total - 1}};
     switch(data.bonus.type) {
         case 'attack': {
-            const target = data.workflow?.targets.first()?.document;
+            const target = data.workflow?.targets.tokens[0]?.document;
             if (!target) return log(`Mote of Potential: Attack exited early with no target token. (attacking token) ${token.uuid}`);
             const self = actorUtils.getFirstToken(data.sourceActor);
             if (!self) return log(`Mote of Potential: Attack exited early with no active token. (actor) ${data.sourceActor.uuid}`);

@@ -94,16 +94,16 @@ async function riders({document: activity, workflow}) {
     if (activity.type !== 'save') {
         await documentUtils.setFlag(workflow.actor, 'chris-premades', 'bg3WeaponActions', (workflow.actor.getFlag('chris-premades', 'bg3WeaponActions') ?? 0) + 1);
         const save = itemUtils.getActivityByIdentifier(activity.item, key + '-save');
-        if (save && workflow.hitTargets.size) await workflowUtils.syntheticActivityRoll(save, Array.from(workflow.hitTargets, token => token.document), {consumeUsage: false, consumeResources: false});
+        if (save && workflow.hitTargets.count) await workflowUtils.syntheticActivityRoll(save, workflow.hitTargets.documents, {consumeUsage: false, consumeResources: false});
         return;
     }
-    if (!workflow.failedSaves.size) return;
+    if (!workflow.failedSaves.count) return;
     const source = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.misc, key);
     const sourceEffect = documentUtils.getEffectByIdentifier(source, key + '-rider');
     if (!sourceEffect) return;
     const effectData = documentUtils.getEffectData(source, sourceEffect.id);
     const skip = unaffected[key];
-    await Promise.all(Array.from(workflow.failedSaves).filter(token => token.actor && !skip?.(token.actor)).map(token => effectUtils.createEffects(token.actor, [effectData])));
+    await Promise.all(workflow.failedSaves.documents.filter(token => token.actor && !skip?.(token.actor)).map(token => effectUtils.createEffects(token.actor, [effectData])));
 }
 async function brace({document: effect, workflow}) {
     const ranged = effect.flags['chris-premades']?.brace === 'ranged';

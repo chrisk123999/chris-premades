@@ -28,7 +28,7 @@ async function early({document, activity, config}) {
     await workflowUtils.completeActivityUse(restoreActivity);
     const freshActivity = document.actor.items.get(document.id)?.system.activities.get(activity.id);
     if (!freshActivity) return true;
-    const targets = Array.from(config.midiOptions?.targetsToUse ?? [], token => token.document ?? token);
+    const targets = Array.from(config.midiOptions?.targetsToUse ?? [], token => token instanceof TokenDocument ? token : token.document ?? token);
     await workflowUtils.completeActivityUse(freshActivity, targets, {consumeUsage: config.consumeUsage !== false, consumeResources: config.consume?.resources !== false});
     return true;
 }

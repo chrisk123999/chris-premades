@@ -10,7 +10,7 @@ async function callHunt({data, document: activity, macroClass: {identifier, sour
     dataUtils.setOrigin(effectData, activity);
     genericUtils.setProperty(effectData, 'flags.dnd5e.dependentOn', data.effect.uuid);
     genericUtils.setProperty(effectData, `flags.${source}.callHunt.formula`, automationUtils.getConfigValue(activity.item, 'bonus'));
-    const updates = Array.from(targetRoll.targets).map(t => t.actor ? {
+    const updates = targetRoll.targets.documents.map(t => t.actor ? {
         documentName: 'ActiveEffect',
         data: [effectData],
         action: 'create',
@@ -21,7 +21,7 @@ async function callHunt({data, document: activity, macroClass: {identifier, sour
     await documentUtils.modifyBatch(updates);
 }
 async function huntDamage({document: effect, macroClass: {identifier, source}, workflow}) {
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (!workflowUtils.isAttackType(workflow, 'attack')) return;
     const combat = tokenUtils.getCombatData(workflow.token.document);
     if (combatUtils.isStampedThisTurn(effect.flags[source]?.callHunt?.stamps, workflow.token.id, combat))

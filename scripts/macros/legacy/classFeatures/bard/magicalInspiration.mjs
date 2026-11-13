@@ -14,7 +14,7 @@ async function modifyInspiration({data}) {
 }
 async function damageHealing({document: effect, workflow}) {
     if (!workflow.activity.hasDamage && !workflow.activity.hasHealing) return;
-    if (!workflow.hitTargets.size || workflow.item.type !== 'spell') return;
+    if (!workflow.hitTargets.count || workflow.item.type !== 'spell') return;
     const formula = effect.flags['chris-premades']?.bardicInspiration;
     if (!formula) return;
     return new DamageBonus(effect, {action: 'special', actor: effect.parent, formula, maxTargets: 1, allowCritical: false})

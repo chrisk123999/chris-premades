@@ -11,7 +11,7 @@ async function movementBonus({document: activity, macroClass: {identifier, sourc
 }
 async function flourish({document: activity, macroClass: {identifier, source}, workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, identifier)) return;
-    if (!workflow.hitTargets.size) return;
+    if (!workflow.hitTargets.count) return;
     if (!activity.item.system.uses.value)
         return Logging.addMacroWarning(source, identifier, `Blade Flourish exited early without item uses. (item) ${activity.item.uuid}`);
     const flourishes = activity.item.system.activities.filter(a => a.id !== activity.id && !(a.flags.cat?.hidden || a.midiProperties.automationOnly));
@@ -62,7 +62,7 @@ async function flourish({document: activity, macroClass: {identifier, source}, w
         .withOnUse(async ({bonus, inputs, workflow}) => {
             const flourish = activity.item.system.activities.get(inputs.flourish);
             await documentUtils.setFlag(activity.item, source, identifier, inputs.flourish);
-            const target = workflow.hitTargets.first().document;
+            const target = workflow.hitTargets.documents[0];
             const combat = !!workflow.token.document.combatant;
             const options = {config: {scaling: bonus.roll.total - 1}};
             let activityData, targets = [target];

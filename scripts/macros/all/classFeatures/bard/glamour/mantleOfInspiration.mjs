@@ -1,6 +1,6 @@
 import {actorUtils, dialogUtils, queryUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document: activity, workflow}) {
-    await Promise.all(workflow.targets.map(async t => {
+    await Promise.all(workflow.targets.documents.map(async t => {
         if (!t.actor) return;
         if (actorUtils.hasUsedReaction(t.actor)) return;
         if (t.actor.system.attributes.movement.max <= 0) return;

@@ -16,7 +16,7 @@ function getChoices(actor, traits, proficiency, options) {
 async function use({document: activity, workflow}) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'proficiencyChoice', configKeys);
     if (!config.effect) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No proficiency effect configured.', {notify: 'warn'});
-    const actors = workflow.targets.size ? Array.from(workflow.targets, token => token.actor).filter(Boolean) : [workflow.actor];
+    const actors = workflow.targets.count ? workflow.targets.documents.map(token => token.actor).filter(Boolean) : [workflow.actor];
     const parentEntity = effectUtils.getConcentrationEffect(workflow.actor, activity.item);
     const options = {skills: constants.skillOptions, tools: constants.toolOptions};
     for (const actor of actors) {

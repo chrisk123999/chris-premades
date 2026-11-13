@@ -95,7 +95,7 @@ async function early({document, workflow, token}) {
         Logging.addMacroWarning('CPR', 'find-familiar-touch-effect', 'CHRISPREMADES.Macros.All.FindFamiliar.ReactionUsed', {notify: 'info'});
         return true;
     }
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.tokens[0]?.document;
     const [familiarToken] = target ? available.sort((a, b) => tokenUtils.getDistance(target, a) - tokenUtils.getDistance(target, b)) : available;
     await actorUtils.setReactionUsed(familiarToken.actor);
 }

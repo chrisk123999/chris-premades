@@ -72,7 +72,7 @@ async function collectThrownWeapons({document: activity, data, macroClass: {iden
 // helpers
 /** @returns {Promise<undefined|{effect: foundry.documents.ActiveEffect, enchant: foundry.documents.ActiveEffect, item: foundry.documents.Item}>} */
 async function defaultGetDocuments(workflow, {effect, enchant = true, source, identifier, label} = {}) {
-    const items = workflowUtils.getWorkflowProperty(workflow, artificer.keys.infusionOptionsMarker);
+    const items = (workflowUtils.getWorkflowProperty(workflow, artificer.keys.infusionOptionsMarker) ?? []).map(uuid => fromUuidSync(uuid, {strict: false})).filter(Boolean);
     if (!items?.length) return;
     let fetchedEffect, fetchedEnchant;
     if (effect) {
@@ -145,7 +145,7 @@ async function simpleCreateItem(workflow, identifier, translate, {favorite, sour
     const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.equipment, identifier, {translate, object: true});
     if (!itemData) return Logging.addMacroWarning(source, macro, `${label} infusion failed due to a missing pack item! (pack) ${cpr.packs.legacy.equipment} (identifier) ${identifier}`);
     genericUtils.setProperty(itemData, `flags.${source}.${artificer.keys.createdItemFlag}`, workflow.item.uuid);
-    const target = workflow.targets.first()?.actor ?? workflow.actor;
+    const target = workflow.targets.documents[0]?.actor ?? workflow.actor;
     const item = (await itemUtils.createItems(target, [itemData], {favorite}))?.[0];
     if (!item) return Logging.addMacroWarning(source, macro, `${label} infusion failed to create item. (self uuid) ${workflow.actor.uuid} (target uuid) ${target.uuid}`);
     const parent = await getParentEffect(workflow.item, item);
@@ -183,10 +183,10 @@ async function magicalStrengthCheckProne({actor, config}) {
         genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.NotProne');
         return true;
     }
-    workflowUtils.setWorkflowProperty(config.workflow, 'magicalStrengthProne', prone[0]);
+    workflowUtils.setWorkflowProperty(config.workflow, 'magicalStrengthProne', prone[0].uuid);
 }
 async function magicalStrengthRemoveProne({workflow}) {
-    await documentUtils.deleteDocument(workflowUtils.getWorkflowProperty(workflow, 'magicalStrengthProne'));
+    await documentUtils.deleteDocument(fromUuidSync(workflowUtils.getWorkflowProperty(workflow, 'magicalStrengthProne'), {strict: false}));
 }
 async function bootsWinding({macroClass: {source, identifier}, workflow}) {
     await simpleCreateItem(
@@ -265,7 +265,7 @@ async function homunculus({macroClass: {source, identifier}, workflow}) {
     const heart = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'heart-of-homunculus-servant', {translate: 'CHRISPREMADES.Macros.Legacy.InfuseItem.HomunculusHeart', object: true});
     if (!heart) return Logging.addMacroWarning(source, identifier, `${label} infusion failed due to a missing pack item! (pack) ${cpr.packs.misc.automationItems} (identifier) heart-of-homunculus-servant`);
     genericUtils.setProperty(heart, `flags.${source}.${artificer.keys.createdItemFlag}`, workflow.item.uuid);
-    const target = workflow.targets.first().document ?? workflow.token.document;
+    const target = workflow.targets.documents[0] ?? workflow.tokenDocument;
     const sourceDocument = (await itemUtils.createItems(target.actor, [heart], {favorite: true}))?.[0];
     if (!sourceDocument) return Logging.addMacroWarning(source, identifier, `${label} infusion failed to create item. (self uuid) ${workflow.actor.uuid} (target uuid) ${target.actor.uuid}`);
     const parent = await getParentEffect(workflow.item, sourceDocument);
@@ -421,7 +421,7 @@ async function repulsionShield({macroClass: {source, identifier}, workflow}) {
 }
 async function resistantArmor({macroClass: {source, identifier}, workflow}) {
     const label = 'Resistant Armor';
-    const items = workflowUtils.getWorkflowProperty(workflow, artificer.keys.infusionOptionsMarker);
+    const items = (workflowUtils.getWorkflowProperty(workflow, artificer.keys.infusionOptionsMarker) ?? []).map(uuid => fromUuidSync(uuid, {strict: false})).filter(Boolean);
     if (!items?.length) return;
     const effect = workflow.item.effects.find(e => e.type === 'base')?.toObject();
     const enchant = workflow.item.effects.find(e => e.type === 'enchantment')?.toObject();

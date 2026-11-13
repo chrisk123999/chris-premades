@@ -4,7 +4,7 @@ async function useSave({document: item, data: {workflow, targetToken}}) {
     const activity = itemUtils.getActivityByIdentifier(item, 'death-strike');
     if (!activity) return Logging.addMacroWarning('CPR', 'death-strike', 'Death Strike activity missing from item.', {notify: 'warn'});
     const saveWorkflow = await workflowUtils.syntheticActivityRoll(activity, [targetToken]);
-    if (!saveWorkflow?.failedSaves.size) return;
+    if (!saveWorkflow?.failedSaves.count) return;
     workflowUtils.setWorkflowProperty(workflow, 'deathStrike', true);
 }
 async function double({document: item, workflow}) {

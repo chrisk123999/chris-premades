@@ -19,7 +19,7 @@ async function created({document}) {
 async function fly({document, workflow}) {
     if (workflow.activity.identifier !== attackIdentifier) return;
     const sword = getSword(document);
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.tokens[0]?.document;
     if (!sword || !target) return;
     if (!tokenUtils.isWithinDistance(sword, target, 35)) {
         Logging.addMacroWarning('CPR', 'dancing-sword', 'CHRISPREMADES.Macros.Legacy.DancingSword.TooFar', {notify: 'info'});
@@ -32,7 +32,7 @@ async function fly({document, workflow}) {
 }
 async function animate(document, workflow) {
     const sword = getSword(document);
-    const targetToken = workflow.targets.first();
+    const targetToken = workflow.targets.tokens[0];
     if (!sword || !targetToken) return;
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     if (!animation?.macros?.play) return;

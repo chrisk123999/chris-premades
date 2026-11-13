@@ -272,12 +272,12 @@ export async function designateCreatures(item, workflow, document, prompt = 'CHR
  * @returns {Promise<true|undefined>} True when the workflow was aborted, ending the pass.
  */
 export async function spareDesignated(item, workflow) {
-    const scene = workflow.targets.first()?.document.parent ?? canvas.scene;
+    const scene = workflow.targets.documents[0]?.parent ?? canvas.scene;
     const designated = new Set(regionUtils.getPlacedRegions(scene, item).flatMap(region => region.flags['chris-premades']?.designated ?? []));
     if (!designated.size) return;
-    const spared = Array.from(workflow.targets).filter(token => designated.has(token.actor?.uuid));
+    const spared = workflow.targets.documents.filter(token => designated.has(token.actor?.uuid));
     if (!spared.length) return;
-    if (spared.length === workflow.targets.size) {
+    if (spared.length === workflow.targets.count) {
         workflow.aborted = true;
         return true;
     }

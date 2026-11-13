@@ -66,14 +66,14 @@ async function sootheCheck({workflow}) {
         genericUtils.notify(translations + 'WrongAura', {type: 'warn'});
         return true;
     }
-    const target = workflow.targets.first()?.document;
+    const target = workflow.targets.documents[0];
     if (!target || tokenUtils.isWithinDistance(summon.token, target, getRadius(summon))) return;
     genericUtils.notify(translations + 'OutsideAura', {type: 'warn'});
     return true;
 }
 async function soothe({workflow}) {
     const summon = getEffigy(workflow.item);
-    if (!summon || !workflow.targets.size) return;
+    if (!summon || !workflow.targets.count) return;
     await automationUtils.calledEvent('bewitchedEffigySoothe', workflow.actor, {canOverlap: true, data: {workflow, summon}});
 }
 async function sacrifice({document: effect, ditem, targetToken, workflow}) {
@@ -86,7 +86,7 @@ async function sacrifice({document: effect, ditem, targetToken, workflow}) {
     if (druid.statuses.has('incapacitated') || actorUtils.hasUsedReaction(druid)) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'sacrifice');
     if (!activity) return;
-    const target = targetToken.document ?? targetToken;
+    const target = targetToken;
     const selection = await dialogUtils.confirm(item.name, _loc(translations + 'Sacrifice', {name: target.name}), {userId: queryUtils.firstOwner(druid, true)});
     if (!selection) return;
     await workflowUtils.completeActivityUse(activity, [target]);
