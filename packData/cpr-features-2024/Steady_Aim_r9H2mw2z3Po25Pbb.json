@@ -59,10 +59,10 @@
       "system": {
         "changes": [
           {
-            "key": "system.rolls.attack.mode",
+            "key": "flags.midi-qol.advantage.attack.all",
             "value": 1,
             "priority": 20,
-            "type": "add",
+            "type": "override",
             "phase": "initial",
             "_id": "PSd4RA1hPZjiabVi",
             "conditions": "{}",
@@ -347,7 +347,7 @@
     },
     "cat": {
       "automation": {
-        "version": "2.1.4",
+        "version": "2.1.9",
         "source": "chris-premades"
       },
       "macros": {

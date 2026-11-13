@@ -8,14 +8,18 @@ async function bonus({workflow, document}) {
     const identifier = documentUtils.getIdentifier(workflow.item);
     if (!(workflowUtils.getActionType(workflow) === 'rwak' || workflow.item.system.properties.has('fin') || additionalIdentifiers.includes(identifier))) return Logging.addMacroWarning('CPR', 'sneak-attack', 'Weapon must be finesse or ranged.');
     if (!document.system.uses.value) return Logging.addMacroWarning('CPR', 'sneak-attack', 'Already used this turn.');
+    let reasons = [];
     let doSneak = workflow.advantage && !workflow.disadvantage;
-    if (!doSneak && (workflow.advantage || !workflow.disadvantage)) {
+    if (workflow.disadvantage) reasons.push('dis');
+    if (!workflow.advantage) reasons.push('no adv');
+    if (!doSneak && !workflow.disadvantage) {
         const targetToken = workflow.targets.tokens[0]?.document;
         if (targetToken) doSneak = tokenUtils.findNearby(targetToken, 5, {disposition: 'enemy', includeIncapacitated: false}).some(token => token !== workflow.token.document);
+        if (!doSneak) reasons.push('no nearby ally');
     }
     doSneak ||= await automationUtils.calledEvent('sneakAttackDoSneak', workflow.actor, {data: {workflow}});
     if (!doSneak) {
-        Logging.addMacroWarning('CPR', 'sneak-attack', 'Attack does not qualify for Sneak Attack.');
+        Logging.addMacroWarning('CPR', 'sneak-attack', `Attack does not qualify for Sneak Attack (${reasons.join(', ')}.`);
         return;
     }
     workflowUtils.setWorkflowProperty(workflow, 'canSneak', true);

@@ -286,7 +286,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       }
     }
   },
@@ -374,10 +374,10 @@
       "system": {
         "changes": [
           {
-            "key": "system.rolls.attack.mode",
-            "value": -1,
+            "key": "flags.midi-qol.disadvantage.attack.all",
+            "value": 1,
             "priority": 20,
-            "type": "add",
+            "type": "override",
             "phase": "initial",
             "_id": "n2Vr65Y4Q7uaE7oF",
             "conditions": "{}",
