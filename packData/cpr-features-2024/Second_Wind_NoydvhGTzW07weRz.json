@@ -177,7 +177,7 @@
     },
     "uses": {
       "spent": 0,
-      "max": "4",
+      "max": "@scale.fighter.second-wind",
       "recovery": [
         {
           "period": "lr",
@@ -222,7 +222,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.9"
       }
     }
   },
