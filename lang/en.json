@@ -1036,6 +1036,10 @@
                     "Dice": "Poison Damage Dice (d6)",
                     "DiceHint": "0 uses the potion's own dice."
                 },
+                "PreserveLife": {
+                    "Limit": "Percentage HP Limit",
+                    "Prompt": "Distribute up to {maxAmount} healing."
+                },
                 "OilOfSharpness": {
                     "NoWeapons": "No eligible weapon or ammunition to coat.",
                     "Select": "Which weapon or ammunition to coat?",

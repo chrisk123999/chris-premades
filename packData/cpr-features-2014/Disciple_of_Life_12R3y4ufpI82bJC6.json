@@ -1,0 +1,111 @@
+{
+  "name": "Disciple of Life",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "disciple-of-life",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "advancement": {},
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 3,
+      "repeatable": false,
+      "items": []
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true
+    },
+    "midiProperties": {
+      "confirmTargets": "default"
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "damageBonusToOneRoll",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "bonus": "2 + @workflow.castData.castLevel",
+            "bonusDamageType": [],
+            "applyTo": "healing",
+            "attackType": "",
+            "damageType": [],
+            "healingType": [
+              "healing"
+            ],
+            "identifiers": [],
+            "properties": [],
+            "itemType": [
+              "spell"
+            ],
+            "spellLevel": [],
+            "spellSchool": [],
+            "firstCastOnly": true,
+            "rollActivity": "",
+            "rollItem": false,
+            "maxTargets": 0,
+            "everyRoll": false,
+            "requireHit": true,
+            "attackerRange": 0,
+            "targetWounded": false,
+            "targetEffects": [],
+            "targetCreatureTypes": [],
+            "useActivityCosts": false,
+            "allowCritical": true
+          }
+        }
+      }
+    }
+  },
+  "img": "icons/magic/light/hand-sparks-smoke-teal.webp",
+  "folder": "VESYL7NjK1jxwJVt",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "12R3y4ufpI82bJC6",
+  "_key": "!items!12R3y4ufpI82bJC6"
+}

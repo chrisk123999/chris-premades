@@ -58,16 +58,49 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "disciple-of-life"
+            "identifier": "damageBonusToOneRoll",
+            "rules": "all"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "bonus": "2 + @workflow.castData.castLevel",
+            "bonusDamageType": [],
+            "applyTo": "healing",
+            "attackType": "",
+            "damageType": [],
+            "healingType": [
+              "healing"
+            ],
+            "identifiers": [],
+            "properties": [],
+            "itemType": [
+              "spell"
+            ],
+            "spellLevel": [],
+            "spellSchool": [],
+            "firstCastOnly": true,
+            "rollActivity": "",
+            "rollItem": false,
+            "maxTargets": 0,
+            "everyRoll": false,
+            "requireHit": true,
+            "attackerRange": 0,
+            "targetWounded": false,
+            "targetEffects": [],
+            "targetCreatureTypes": [],
+            "useActivityCosts": false,
+            "allowCritical": true
+          }
+        }
       }
     }
   },

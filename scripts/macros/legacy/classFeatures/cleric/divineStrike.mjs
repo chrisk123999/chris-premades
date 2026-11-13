@@ -1,23 +1,21 @@
 import {animationUtils, automationUtils, DamageBonus, Logging, workflowUtils} from '../../../../proxy.mjs';
+const DAMAGE_TYPE = {
+    death: 'necrotic',
+    forge: 'fire',
+    nature: ['cold', 'fire', 'lightning'],
+    order: 'psychic',
+    tempest: 'thunder',
+    trickery: 'poison',
+    war: '' // workflow default
+};
 async function damage({document: activity, workflow}) {
     if (workflow.hitTargets.size !== 1 || workflow.isFumble || !workflowUtils.isAttackType(workflow, 'weaponAttack')) return;
     if (!activity.item.system.uses.value) return Logging.addMacroWarning('CPR', 'divine-strike', 'Already used this turn.');
     const config = automationUtils.getConfigValues(activity.item, ['formula', 'classIdentifier']);
     const subclass = workflow.actor.classes[config.classIdentifier]?.subclass?.identifier;
-    let damageType = 'radiant';
-    switch(subclass) {
-        case 'death': damageType = 'necrotic'; break;
-        case 'forge': damageType = 'fire'; break;
-        case 'nature': damageType = ['cold', 'fire', 'lightning']; break;
-        case 'order': damageType = 'psychic'; break;
-        case 'tempest': damageType = 'thunder'; break;
-        case 'trickery': damageType = 'poison'; break;
-        case 'war': damageType = ''; break; // workflow default
-        default: damageType = 'radiant'; break;
-    }
     const animation = automationUtils.getResolvedAnimation(activity.item, 'animation', config.animation);
     const playAnimation = animation?.animation && animationUtils.sequencerCheck() && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck();
-    return new DamageBonus(activity, {formula: config.formula, type: damageType})
+    return new DamageBonus(activity, {formula: config.formula, type: DAMAGE_TYPE[subclass] ?? 'radiant'})
         .withDefaultCosts()
         .withOnUse(async ({workflow}) => {
             if (playAnimation) animation.animation.macros.play(workflow);

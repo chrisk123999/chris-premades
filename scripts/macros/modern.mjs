@@ -91,9 +91,6 @@ export {divineStrike as 'blessed-strikes-divine-strike'} from './modern/classFea
 export {greaterDivineIntervention as 'greater-divine-intervention', greaterDivineInterventionRest as 'greater-divine-intervention-rest'} from './modern/classFeatures/cleric/greaterDivineIntervention.mjs';
 export {improvedPotentSpellcasting as 'improved-blessed-strikes'} from './modern/classFeatures/cleric/improvedPotentSpellcasting.mjs';
 
-/*             Life              */
-export {discipleOfLife as 'disciple-of-life'} from './modern/classFeatures/cleric/life/discipleOfLife.mjs';
-
 /*             Light             */
 export {improvedWardingFlare as 'improved-warding-flare'} from './modern/classFeatures/cleric/light/improvedWardingFlare.mjs';
 export {wardingFlare as 'warding-flare'} from './modern/classFeatures/cleric/light/wardingFlare.mjs';

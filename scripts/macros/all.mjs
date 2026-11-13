@@ -66,6 +66,15 @@ export {battleMagic as 'battle-magic'} from './all/classFeatures/bard/valor/batt
 export {combatInspiration as 'combat-inspiration', combatInspirationEffect} from './all/classFeatures/bard/valor/combatInspiration.mjs';
 
 /******************************/
+/*           Cleric           */
+/******************************/
+
+/*            Life            */
+export {blessedHealer as 'blessed-healer'} from './all/classFeatures/cleric/life/blessedHealer.mjs';
+export {preserveLife as 'preserve-life', preserveLife as 'channel-divinity-preserve-life'} from './all/classFeatures/cleric/life/preserveLife.mjs';
+export {supremeHealing as 'supreme-healing'} from './all/classFeatures/cleric/life/supremeHealing.mjs';
+
+/******************************/
 /*           Druid            */
 /******************************/
 export {beastSpells as 'beast-spells'} from './all/classFeatures/druid/beastSpells.mjs';
