@@ -103,10 +103,10 @@
           "automationOnly": false,
           "identifier": "",
           "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "displayActivityName": false,
           "rollMode": "default",
@@ -125,7 +125,29 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "name": ""
+        "name": "",
+        "img": "",
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        },
+        "otherActivityId": "",
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2024",
+                  "identifier": "improved-warding-flare"
+                }
+              ]
+            }
+          }
+        }
       }
     },
     "uses": {
@@ -161,25 +183,28 @@
     }
   },
   "flags": {
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
       "macros": {
         "item": [
           {
             "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "improved-warding-flare"
+            "identifier": "itemRecovery",
+            "rules": "all"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "itemRecovery": {
+            "identifier": "warding-flare",
+            "period": "sr",
+            "formula": ""
+          }
+        }
       }
     }
   },

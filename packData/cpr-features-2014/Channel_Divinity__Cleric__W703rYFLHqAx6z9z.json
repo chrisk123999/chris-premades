@@ -482,7 +482,10 @@
       "automation": {
         "source": "chris-premades",
         "version": "2.1.4",
-        "sourceType": "class:cleric"
+        "sourceType": "class:cleric",
+        "aliases": [
+          "channel-divinity-cleric"
+        ]
       }
     }
   },

@@ -93,7 +93,6 @@ export {improvedPotentSpellcasting as 'improved-blessed-strikes'} from './modern
 
 /*             Light             */
 export {improvedWardingFlare as 'improved-warding-flare'} from './modern/classFeatures/cleric/light/improvedWardingFlare.mjs';
-export {wardingFlare as 'warding-flare'} from './modern/classFeatures/cleric/light/wardingFlare.mjs';
 
 /*           Trickery            */
 export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './modern/classFeatures/cleric/trickery/blessingOfTheTrickster.mjs';

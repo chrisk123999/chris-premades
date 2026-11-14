@@ -1049,6 +1049,10 @@
                 "Haste": {
                     "Lethargic": "Haste: Lethargic",
                     "NoActions": "You can't take actions while lethargic."
+                },
+                "WardingFlare": {
+                    "Immune": "Immune Conditions",
+                    "ImmuneHint": "An attacker is unaffected by this feature if they are immune to one of these conditions."
                 }
             },
             "Generic": {

@@ -74,6 +74,11 @@ export {blessedHealer as 'blessed-healer'} from './all/classFeatures/cleric/life
 export {preserveLife as 'preserve-life', preserveLife as 'channel-divinity-preserve-life'} from './all/classFeatures/cleric/life/preserveLife.mjs';
 export {supremeHealing as 'supreme-healing'} from './all/classFeatures/cleric/life/supremeHealing.mjs';
 
+/*            Light           */
+export {coronaOfLight as 'corona-of-light'} from './all/classFeatures/cleric/light/coronaOfLight.mjs';
+export {radianceOfTheDawn as 'radiance-of-the-dawn', radianceOfTheDawn as 'channel-divinity-radiance-of-the-dawn'} from './all/classFeatures/cleric/light/radianceOfTheDawn.mjs';
+export {wardingFlare as 'warding-flare'} from './all/classFeatures/cleric/light/wardingFlare.mjs';
+
 /******************************/
 /*           Druid            */
 /******************************/

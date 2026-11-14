@@ -21,7 +21,7 @@ async function validTarget(activity, target, rules, type, total) {
         item: activity.item.name
     })}</p></div>`;
     const choice = await dialogUtils.confirm(activity.item.name, prompt, {userId: queryUtils.firstOwner(activity.actor, true)});
-    if (!choice) return log(`Cutting Words exited early due to a declined prompt. (activity) ${activity.uuid}`);
+    if (!choice) return;
     if (rules === '2014' && actorUtils.checkTrait(target.actor, 'ci', 'charmed'))
         return log('CHRISPREMADES.Macros.All.CuttingWords.Immune', true);
     return true;
