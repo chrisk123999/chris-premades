@@ -1501,6 +1501,14 @@
                     "Self": "Self",
                     "Targets": "Targets"
                 },
+                "FeatAbility": {
+                    "AbilitiesHint": "Abilities the feat chooses between. The ability picked in the feat's Ability Score Improvement sets save DCs, attack rolls and cast spells. Without a recorded pick, save DCs keep their formula and the others use the highest listed ability."
+                },
+                "IgnoreTraits": {
+                    "DamageTypesHint": "Damage of these types ignores the chosen traits.",
+                    "Traits": "Ignored Traits",
+                    "TraitsHint": "Damage traits ignored by the listed damage types. Downgrade Immunity treats immunity as resistance."
+                },
                 "ProneOnHit": {
                     "MaxSizeHint": "Targets larger than this size are not knocked prone."
                 },

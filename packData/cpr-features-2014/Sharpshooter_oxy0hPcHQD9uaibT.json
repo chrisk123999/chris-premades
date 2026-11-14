@@ -1,0 +1,126 @@
+{
+  "_id": "oxy0hPcHQD9uaibT",
+  "name": "Sharpshooter",
+  "type": "feat",
+  "img": "icons/skills/ranged/arrow-flying-white-blue.webp",
+  "folder": "U5r0w1z7gAOfck2F",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "rules": "2014",
+      "revision": 1,
+      "book": "PHB",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "sharpshooter",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "XNHZUZWx8ulIFnkz",
+      "name": "Sharpshooter",
+      "img": "icons/skills/ranged/arrow-flying-white-blue.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "showIcon": 0,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "flags.dnd5e.sharpShooter",
+            "type": "override",
+            "value": "true",
+            "phase": "initial",
+            "priority": 20,
+            "_id": "2ja6VfCBCQOS1LjJ",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [],
+          "disableCondition": ""
+        }
+      },
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!oxy0hPcHQD9uaibT.XNHZUZWx8ulIFnkz"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "sharpshooter",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!oxy0hPcHQD9uaibT"
+}

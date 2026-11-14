@@ -1,0 +1,127 @@
+{
+  "_id": "UwvQou5h9CH1OtNs",
+  "name": "Speedy",
+  "type": "feat",
+  "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+  "folder": "M3jqOSOgp6TElvqU",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "rules": "2024",
+      "revision": 1,
+      "book": "PHB 2024",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": "general"
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "speedy",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "YaNTjPU4wRA8lqEw",
+      "name": "Speedy",
+      "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "showIcon": 0,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.bonus",
+            "type": "add",
+            "value": "10",
+            "phase": "initial",
+            "priority": 20,
+            "_id": "pR8E5TYOp7Sdp4bv",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "flags.gambits-premades.oaDisadvantage",
+            "type": "override",
+            "value": "true",
+            "phase": "initial",
+            "priority": 20,
+            "_id": "NpCNiXk6M4oOdWuB",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [],
+          "disableCondition": ""
+        }
+      },
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!UwvQou5h9CH1OtNs.YaNTjPU4wRA8lqEw"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!UwvQou5h9CH1OtNs"
+}

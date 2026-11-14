@@ -151,6 +151,7 @@ export {wingsOfFlying as 'wings-of-flying', wingsOfFlyingRecharge as 'wings-of-f
 /*============================*/
 /*           FEATS            */
 /*============================*/
+export {heavyArmorMaster as 'heavy-armor-master'} from './all/feats/heavyArmorMaster.mjs';
 export {preciseStrike as 'precise-strike'} from './all/feats/preciseStrike.mjs';
 
 /*============================*/

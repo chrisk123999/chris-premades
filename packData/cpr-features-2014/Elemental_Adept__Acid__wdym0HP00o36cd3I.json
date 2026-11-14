@@ -1,0 +1,96 @@
+{
+  "_id": "wdym0HP00o36cd3I",
+  "name": "Elemental Adept (Acid)",
+  "type": "feat",
+  "img": "icons/magic/acid/projectile-faceted-glob.webp",
+  "folder": "U5r0w1z7gAOfck2F",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "rules": "2014",
+      "revision": 1,
+      "book": "PHB",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "elemental-adept-acid",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "ignoreTraits",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "ignoreTraits": {
+            "damageTypes": [
+              "acid"
+            ]
+          }
+        }
+      },
+      "alternateAttributes": {
+        "RollModifier": [
+          {
+            "value": [
+              "min2"
+            ],
+            "restrictions": {
+              "DamageType": {
+                "value": [
+                  "acid"
+                ]
+              },
+              "Type": {
+                "value": [
+                  "spell"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!wdym0HP00o36cd3I"
+}
