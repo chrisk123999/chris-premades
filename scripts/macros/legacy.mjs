@@ -301,6 +301,11 @@ export {bg3Brace as 'bg3-brace', bg3GapingWounds as 'bg3-gaping-wounds', bg3Weap
 export {dmgCleave as 'dmg-cleave'} from './legacy/homebrew/dmgCleave.mjs';
 
 /*============================*/
+/*           FEATS            */
+/*============================*/
+export {sharpshooter} from './legacy/feats/sharpshooter.mjs';
+
+/*============================*/
 /*           SPELLS           */
 /*============================*/
 export {deckOfIllusions2014 as 'deck-of-illusions'} from './all/equipment/deckOfIllusions.mjs';

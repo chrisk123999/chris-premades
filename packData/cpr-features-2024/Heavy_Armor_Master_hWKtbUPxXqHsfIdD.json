@@ -1,0 +1,146 @@
+{
+  "_id": "hWKtbUPxXqHsfIdD",
+  "name": "Heavy Armor Master",
+  "type": "feat",
+  "img": "icons/environment/people/infantry-armored.webp",
+  "folder": "M3jqOSOgp6TElvqU",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "rules": "2024",
+      "revision": 1,
+      "book": "PHB 2024",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": "general"
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "heavy-armor-master",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "N88xnSzt8VDZyr4w",
+      "name": "Heavy Armor Master",
+      "img": "icons/environment/people/infantry-armored.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "showIcon": 0,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dm.amount.bludgeoning",
+            "type": "add",
+            "value": "-@prof",
+            "phase": "initial",
+            "priority": 20,
+            "_id": "svLTYc8X0sr9FX3M",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dm.amount.piercing",
+            "type": "add",
+            "value": "-@prof",
+            "phase": "initial",
+            "priority": 20,
+            "_id": "RWdGXHi0gYrtSCrs",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dm.amount.slashing",
+            "type": "add",
+            "value": "-@prof",
+            "phase": "initial",
+            "priority": 20,
+            "_id": "U1WMBAjZiMQLqKsn",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [],
+          "disableCondition": "attributes.ac.equippedArmor?.system.type.value !== 'heavy'"
+        }
+      },
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!hWKtbUPxXqHsfIdD.N88xnSzt8VDZyr4w"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      },
+      "macros": {
+        "item": [
+          {
+            "source": "chris-premades",
+            "identifier": "heavy-armor-master",
+            "rules": "all"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!hWKtbUPxXqHsfIdD"
+}
