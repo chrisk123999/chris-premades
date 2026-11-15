@@ -79,6 +79,10 @@ export {coronaOfLight as 'corona-of-light'} from './all/classFeatures/cleric/lig
 export {radianceOfTheDawn as 'radiance-of-the-dawn', radianceOfTheDawn as 'channel-divinity-radiance-of-the-dawn'} from './all/classFeatures/cleric/light/radianceOfTheDawn.mjs';
 export {wardingFlare as 'warding-flare'} from './all/classFeatures/cleric/light/wardingFlare.mjs';
 
+/*           Trickery         */
+export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './all/classFeatures/cleric/trickery/blessingOfTheTrickster.mjs';
+export {invokeDuplicity, invokeDuplicityDistraction, invokeDuplicitySpell} from './all/classFeatures/cleric/trickery/invokeDuplicity.mjs';
+
 /******************************/
 /*           Druid            */
 /******************************/

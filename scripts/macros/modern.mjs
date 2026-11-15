@@ -94,8 +94,9 @@ export {improvedPotentSpellcasting as 'improved-blessed-strikes'} from './modern
 /*             Light             */
 export {improvedWardingFlare as 'improved-warding-flare'} from './modern/classFeatures/cleric/light/improvedWardingFlare.mjs';
 
-/*           Trickery            */
-export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './modern/classFeatures/cleric/trickery/blessingOfTheTrickster.mjs';
+/*            Trickery           */
+export {improvedDuplicity as 'improved-duplicity'} from './modern/classFeatures/cleric/trickery/improvedDuplicity.mjs';
+export {trickstersTransposition as 'tricksters-transposition'} from './modern/classFeatures/cleric/trickery/trickstersTransposition.mjs';
 
 /*********************************/
 /*             Druid             */

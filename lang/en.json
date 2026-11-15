@@ -329,6 +329,7 @@
             "Ability": "Ability",
             "Activities": "Activities",
             "Activity": "Activity",
+            "ActivityIdentifier": "Activity Identifier",
             "AdditionalTargets": "Additional Targets",
             "AffectAllies": "Should Affect Allies",
             "All": "All",
@@ -765,6 +766,10 @@
                     "Equipped": "Equipped Items",
                     "EquippedHint": "One or more of these item types must be equipped.",
                     "Prompt": "Use {item} to reduce the damage dealt to {name}?"
+                },
+                "InvokeDuplicity": {
+                    "Name": "Illusion of {name}",
+                    "Prompt": "Choose an illusion from which to cast a spell."
                 },
                 "Jump": {
                     "DifficultTerrain": "Landing in difficult terrain?",
@@ -2170,6 +2175,7 @@
                     "Multiple": "Which target would you like to unmark?",
                     "NoTargets": "No valid targets within range!"
                 },
+                "ImprovedDuplicity": "Choose an ally to heal.",
                 "ImprovedPotentSpellcasting": "Select an ally to give temporary hit points to:",
                 "InspiringMovement": "Ask an ally if they can spend their reaction to move up to half their speed.",
                 "MagicItemTinker": {
@@ -2296,6 +2302,7 @@
                     "Group": "Teleporting {name} ({num} of {total})",
                     "Prompt": "Use {feature} to teleport?"
                 },
+                "TrickstersTransposition": "Swap places with the chosen illusion.",
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
                 },

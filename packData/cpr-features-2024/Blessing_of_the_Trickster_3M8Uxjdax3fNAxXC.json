@@ -50,7 +50,11 @@
           "dontApply": true,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": []
+          "specialDuration": [
+            "longRest"
+          ],
+          "applicationMode": "default",
+          "expiryMode": "delete"
         },
         "core": {
           "overlay": false
@@ -88,12 +92,19 @@
           "chatFlavor": ""
         },
         "duration": {
-          "units": "day",
+          "units": "disp",
           "concentration": false,
           "override": false,
-          "value": "1"
+          "value": "1",
+          "expiry": "longRest"
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "Ns6ZImvsnZkxFelb",
+            "uuid": null,
+            "level": {}
+          }
+        ],
         "range": {
           "units": "ft",
           "override": false,
@@ -109,7 +120,7 @@
           "affects": {
             "choice": false,
             "count": "1",
-            "type": "creature",
+            "type": "willing",
             "special": ""
           },
           "override": false,
@@ -148,7 +159,7 @@
           "triggeredActivityRollAs": "self",
           "forceDialog": false,
           "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "",
           "confirmTargets": "default",
           "autoTargetType": "any",
           "autoTargetAction": "default",
@@ -174,7 +185,15 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "name": ""
+        "name": "",
+        "img": "",
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -210,29 +229,16 @@
     }
   },
   "flags": {
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
           {
             "source": "chris-premades",
-            "rules": "2024",
+            "rules": "all",
             "identifier": "blessing-of-the-trickster"
           }
         ]
