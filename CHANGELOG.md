@@ -3,17 +3,21 @@
 - 2014 Druid: Beast Spells keeps only druid spells and drops spells with a material component. At druid level 20 it keeps material components that have no cost and are not consumed.
 - 2014 Druid: Spell slots spent in Wild Shape carry back to the druid on revert.
 ## Automated Feats:
-- 2014: Elemental Adept (Acid, Cold, Fire, Lightning, Thunder), Ember of the Fire Giant: Searing Ignition, Fury of the Frost Giant: Frigid Retaliation, Guile of the Cloud Giant: Cloudy Escape, Heavy Armor Master, Keenness of the Stone Giant: Stone Throw, Scion of the Outer Planes (Chaotic Outer Plane, Evil Outer Plane, Good Outer Plane, Lawful Outer Plane, The Outlands), Sharpshooter, Telekinetic: Shove and Vigor of the Hill Giant: Bulwark.
-- 2024: Elemental Adept (Acid, Cold, Fire, Lightning, Thunder), Heavy Armor Master, Purple Dragon Rook, Sharpshooter, Speedy and Telekinetic: Shove.
-- Giant feat save DCs, Stone Throw's attack, Telekinetic: Shove's DC and Scion of the Outer Planes' cantrip use the ability chosen for the feat, or the highest of its options when no choice is recorded.
-- Scion of the Outer Planes casts its cantrip without material components.
-- 2014 Sharpshooter offers the -5 attack / +10 damage option before each ranged weapon attack.
-- Heavy Armor Master turns its damage reduction on or off as soon as the feat or armor is added or removed.
+- 2014: Agent of Order: Stasis Strike, Baleful Scion: Grasp of Avarice, Crusher, Elemental Adept (Acid, Cold, Fire, Lightning, Thunder), Ember of the Fire Giant: Searing Ignition, Fury of the Frost Giant: Frigid Retaliation, Guile of the Cloud Giant: Cloudy Escape, Heavy Armor Master, Keenness of the Stone Giant: Stone Throw, Orcish Fury: Extra Damage, Piercer, Savage Attacker, Scion of the Outer Planes (Chaotic Outer Plane, Evil Outer Plane, Good Outer Plane, Lawful Outer Plane, The Outlands), Sharpshooter, Slasher, Strike of the Giants (Cloud Strike, Fire Strike, Frost Strike, Hill Strike, Stone Strike, Storm Strike), Telekinetic: Shove and Vigor of the Hill Giant: Bulwark.
+- 2024: Crusher, Elemental Adept (Acid, Cold, Fire, Lightning, Thunder), Heavy Armor Master, Piercer, Purple Dragon Rook, Savage Attacker, Sharpshooter, Slasher, Speedy and Telekinetic: Shove.
+## Automated Species Features:
+- 2014: Relentless Endurance.
 ## Generic Macros:
+- `preventDeath` runs a `preventDeath` called event after it keeps the actor alive.
 - New `featAbility` generic sets an item's save DCs, attacks and cast spells to the ability chosen in its feat's Ability Score Improvement.
 - New `ignoreTraits` generic makes damage of chosen types ignore resistance, immunity, vulnerability or absorption, or downgrade immunity to resistance.
+- `damageBonusToOneRoll` can limit a bonus to once per turn, or to once per turn for each creature, and skip rolls made with its own item. It can include ranged attacks with thrown weapons alongside its attack type. Each used bonus is recorded on the workflow.
+- `attackRider` can limit a rider to chosen damage types, critical hits and attacks that hit a single target, and can apply it automatically.
 ## Bug Fixes:
 - Reverting Wild Shape on an unlinked token updates that token's uses, conditions and spell slots instead of the base actor.
+- 2024 Unbreakable Majesty: a failed save turns the hit into a miss and the attack finishes instead of waiting for a damage roll.
+- Dreadful Strikes deals its extra damage to each creature once per turn, and Dread Ambusher once per turn.
+- Exploit Opening keeps the chosen damage roll when manual rolls are on, and rerolls only the weapon's own damage.
 
 # 2.1.8 Pre-Release:
 ## Update Notes:

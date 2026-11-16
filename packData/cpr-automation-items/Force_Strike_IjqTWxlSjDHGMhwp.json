@@ -259,6 +259,9 @@
             }
           }
         }
+      },
+      "automation": {
+        "source": "chris-premades"
       }
     }
   },

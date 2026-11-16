@@ -870,6 +870,9 @@
             "favorite": false
           }
         }
+      },
+      "automation": {
+        "source": "chris-premades"
       }
     }
   },

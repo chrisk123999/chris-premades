@@ -256,7 +256,13 @@
   },
   "effects": [],
   "folder": "lnb5XwKs7AKQ9Xna",
-  "flags": {},
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades"
+      }
+    }
+  },
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",

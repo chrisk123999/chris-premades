@@ -29,6 +29,12 @@ function applies(activity, actor, workflow, config) {
     if (config.identifiers.length && !config.identifiers.includes(documentUtils.getIdentifier(workflow.item))) return false;
     if (config.attackType && !workflowUtils.isAttackType(workflow, config.attackType)) return false;
     if (config.attackAbility.length && !config.attackAbility.includes(workflow.activity.ability)) return false;
+    if (config.singleTarget && workflow.hitTargets.count !== 1) return false;
+    if (config.criticalOnly && !workflow.isCritical) return false;
+    if (config.damageTypes.length) {
+        const rolled = workflowUtils.getDamageTypes(workflow.damageRolls ?? []);
+        if (!config.damageTypes.some(type => rolled.has(type))) return false;
+    }
     if (config.maxSize) {
         const maxSize = CONFIG.DND5E.actorSizes[config.maxSize]?.numerical;
         if (workflow.hitTargets.documents.some(token => actorUtils.getSize(token.actor) > maxSize)) return false;
@@ -53,7 +59,7 @@ async function damage({document: activity, actor, workflow}) {
     if (config.tag || !applies(activity, actor, workflow, config)) return;
     const typeMatch = config.creatureTypeBonus && config.targetCreatureTypes.length && workflow.hitTargets.documents.every(token => token.actor && config.targetCreatureTypes.includes(actorUtils.typeOrRace(token.actor)));
     const formula = typeMatch ? config.bonus + ' + ' + config.creatureTypeBonus : config.bonus;
-    const bonus = new DamageBonus(activity, {formula, type: config.bonusDamageType})
+    const bonus = new DamageBonus(activity, {formula, type: config.bonusDamageType, optional: !config.automatic})
         .withOnUse(({workflow, bonus}) => {
             addRiders(workflow, [bonus.document.uuid]);
             const scaling = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling') ?? []);
@@ -100,6 +106,10 @@ async function rider({document: activity, actor, token, workflow}) {
  * - `workflowProperty`: only offer when an earlier bonus has set this workflow property.
  * - `identifiers`: only offer for attacks with items that have one of these identifiers.
  * - `attackType`: only offer for this attack type.
+ * - `damageTypes`: only offer when the damage roll deals one of these damage types.
+ * - `criticalOnly`: only offer on a critical hit.
+ * - `singleTarget`: only offer when the attack hits exactly one target.
+ * - `automatic`: apply the rider without offering it as a choice.
  * - `maxSize`: only offer when every hit target is this size or smaller.
  * - `requiredItems`: only offer when the actor has an item with one of these identifiers.
  * - `suppressedBy`: do not offer when the actor has an item with one of these identifiers.
@@ -111,7 +121,7 @@ async function rider({document: activity, actor, token, workflow}) {
  */
 export const attackRider = {
     rules: 'all',
-    version: '2.1.7',
+    version: '2.1.9',
     category: 'damage',
     generic: true,
     documents: ['activity'],
@@ -191,6 +201,35 @@ export const attackRider = {
         },
         identifiers: identifiersConfig,
         attackType: attackTypeConfig,
+        damageTypes: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.DamageType',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
+            get options() { return constants.damageTypeOptions; }
+        },
+        criticalOnly: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.CriticalOnly',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.CriticalOnlyHint'
+        },
+        singleTarget: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SingleTarget',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SingleTargetHint'
+        },
+        automatic: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.Automatic',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.AutomaticHint'
+        },
         attackAbility: {
             default: [],
             type: 'select-many',
