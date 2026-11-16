@@ -588,6 +588,9 @@
         },
         "Macros": {
             "All": {
+                "Crusher": {
+                    "Move": "Move {target} 5 feet?"
+                },
                 "GenericActions": {
                     "Actions": "Offered Actions",
                     "HideDC": "Hide: DC",
@@ -609,6 +612,12 @@
                 },
                 "GrinningSinner": {
                     "Jinx": "Sinner's Jinx"
+                },
+                "Piercer": {
+                    "Reroll": "Reroll which damage die?"
+                },
+                "SavageAttacker": {
+                    "Use": "Use {name}? (Weapon Damage: {total}; Average Damage: {average})"
                 },
                 "ReadySpell": {
                     "ActivationTypes": "Activation Types",
@@ -1101,10 +1110,14 @@
                     "ChooseHint": "Prompt for unaffected creatures on cast. When off, only enemies are affected."
                 },
                 "AttackRider": {
+                    "Automatic": "Automatic",
+                    "AutomaticHint": "Apply this option without offering it as a choice.",
                     "BonusDamageTypeHint": "Damage type of the extra damage. Uses the attack's damage type when empty.",
                     "BonusHint": "Extra damage added to the roll when this option is chosen.",
                     "CreatureTypeBonus": "Creature Type Bonus",
                     "CreatureTypeBonusHint": "Extra damage added to the bonus when every hit target is one of the Target Creature Types.",
+                    "CriticalOnly": "Critical Hits Only",
+                    "CriticalOnlyHint": "Only offer this option on a critical hit.",
                     "Limit": "Limit",
                     "LimitHint": "How many tagged options can be chosen for one damage roll.",
                     "MaxSizeHint": "Only offer this option when every hit target is this size or smaller.",
@@ -1114,6 +1127,8 @@
                     "RequiredItemsHint": "Only offer this option when the actor has an item with one of these identifiers.",
                     "SelfAsTouch": "Self Range as Touch",
                     "SelfAsTouchHint": "When the activity's range is Self, roll it on the hit targets instead of the attacker.",
+                    "SingleTarget": "Single Target Only",
+                    "SingleTargetHint": "Only offer this option when the attack hits exactly one target.",
                     "SuppressedBy": "Suppressed By",
                     "SuppressedByHint": "Do not offer this option when the actor has an item with one of these identifiers.",
                     "Tag": "Tag",
@@ -1216,10 +1231,14 @@
                     "CriticalHint": "Critical hit rules can be applied to this bonus.",
                     "EveryRoll": "Apply to Every Roll",
                     "EveryRollHint": "Add this bonus to each roll of a multi-attack rather than one of them.",
+                    "ExcludeSelf": "Exclude Own Item",
+                    "ExcludeSelfHint": "Do not offer this bonus on rolls made with the item that carries it.",
                     "FirstCast": "First Spell Cast Only",
                     "FirstCastHint": "Bonus applies only on the initial cast for a spell.",
                     "OncePerTurn": "Once Per Turn",
                     "OncePerTurnHint": "Limit this bonus to one use per turn.",
+                    "OncePerTurnPerTarget": "Once Per Turn Per Target",
+                    "OncePerTurnPerTargetHint": "Each creature can take this bonus once per turn.",
                     "TargetCreatureTypes": "Target Creature Types",
                     "TargetCreatureTypesHint": "Only apply this bonus to hit targets of these creature types.",
                     "TargetEffects": "Target Effects",
@@ -1231,7 +1250,9 @@
                     "AttackerRange": "Attacker Range",
                     "AttackerRangeHint": "Only add the bonus against targets within this many feet of the attacker. 0 ignores distance.",
                     "RequireHit": "Require Hit",
-                    "RequireHitHint": "Only apply this bonus to targets that were hit."
+                    "RequireHitHint": "Only apply this bonus to targets that were hit.",
+                    "ThrownRanged": "Include Thrown Ranged Attacks",
+                    "ThrownRangedHint": "Also trigger for ranged weapon attacks made with a thrown weapon."
                 },
                 "ExtraAttack": "Identifier of the attack item.",
                 "Grapple": {
@@ -1829,6 +1850,13 @@
                     "Spells": "Spells",
                     "Swamp": "Swamp Spells"
                 },
+                "OrcishFury": {
+                    "Attack": "Use your reaction to make one weapon attack?",
+                    "ExtraDice": "Extra Weapon Dice",
+                    "Target": "Choose the creature to attack.",
+                    "TriggerIdentifiersHint": "Features that offer the reaction attack after keeping you alive.",
+                    "Weapon": "Choose the weapon to attack with."
+                },
                 "Overchannel": {
                     "Damage": "Use {itemName} at the cost of {damageFormula} damage?"
                 },
@@ -2384,11 +2412,8 @@
                 },
                 "ExploitOpening": {
                     "Ask": "Ask Each Time",
-                    "Choose": "Choose which damage roll to use.",
-                    "First": "First Roll: {total}",
                     "Higher": "Always Use the Higher Roll",
-                    "Keep": "Damage Roll to Keep",
-                    "Second": "Second Roll: {total}"
+                    "Keep": "Damage Roll to Keep"
                 },
                 "GuidedPrecision": {
                     "ConcentrationSpells": "Protected Concentration Spells",

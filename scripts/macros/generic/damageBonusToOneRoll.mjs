@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, dataUtils, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, dataUtils, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
@@ -19,6 +19,10 @@ async function damage({document, workflow}) {
     if (!itemUtils.getEquipmentState(document)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
     if (!config.bonus.length) return;
+    if (config.excludeSelf && workflow.item?.uuid === (document.documentName === 'Item' ? document : document.parent)?.uuid) return;
+    const combatData = (config.oncePerTurn || config.oncePerTurnPerTarget) && workflow.token ? tokenUtils.getCombatData(workflow.token.document) : undefined;
+    const stamps = document.flags['chris-premades']?.damageBonusToOneRoll?.stamps ?? [];
+    if (config.oncePerTurn && combatData && combatUtils.isStampedThisTurn(stamps, workflow.token.id, combatData)) return;
     const bladeCantrip = workflow.item.flags['chris-premades']?.bladeCantrip;
     const multiSingleTarget = workflow.workflowOptions['chris-premades']?.multiSingleTarget;
     const trackLastUse = !config.everyRoll && multiSingleTarget;
@@ -29,7 +33,8 @@ async function damage({document, workflow}) {
     if (config.applyTo === 'damage' && !workflow.activity.hasDamage) return;
     if (config.applyTo === 'healing' && !workflow.activity.hasHealing) return;
     if (config.attackType.length) {
-        if (!workflowUtils.isAttackType(workflow, config.attackType)) return;
+        const thrown = config.thrownRanged && workflowUtils.isAttackType(workflow, 'rangedWeaponAttack') && workflow.item.system.properties?.has('thr');
+        if (!thrown && !workflowUtils.isAttackType(workflow, config.attackType)) return;
     }
     if (config.damageType.length) {
         const rolled = workflowUtils.getDamageTypes(workflow.damageRolls);
@@ -69,8 +74,9 @@ async function damage({document, workflow}) {
     const hasEffect = actor => !config.targetEffects.length || config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(actor, identifier, {multiple: true, sourceActor: workflow.actor}).length);
     const hasType = actor => !config.targetCreatureTypes.length || config.targetCreatureTypes.includes(actorUtils.typeOrRace(actor));
     const inRange = token => !config.attackerRange || (workflow.token && token.object && tokenUtils.isWithinDistance(workflow.token.document, token, config.attackerRange));
-    const narrowed = config.requireHit || config.targetEffects.length || config.targetCreatureTypes.length || config.attackerRange;
-    const targets = narrowed ? workflow.hitTargets.documents.filter(token => token.actor && hasEffect(token.actor) && hasType(token.actor) && inRange(token)) : undefined;
+    const fresh = token => !config.oncePerTurnPerTarget || !combatData || !combatUtils.isStampedThisTurn(stamps, token.id, combatData);
+    const narrowed = config.requireHit || config.targetEffects.length || config.targetCreatureTypes.length || config.attackerRange || config.oncePerTurnPerTarget;
+    const targets = narrowed ? workflow.hitTargets.documents.filter(token => token.actor && hasEffect(token.actor) && hasType(token.actor) && inRange(token) && fresh(token)) : undefined;
     if (targets && !targets.length) return;
     const bonus = new DamageBonus(document, {
         roll: new CONFIG.Dice.DamageRoll(config.bonus, dataUtils.getFormulaData({document, workflow})),
@@ -80,6 +86,14 @@ async function damage({document, workflow}) {
         optional
     }).withOnUse(async ({bonus}) => {
         if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
+        const usedOn = bonus.targets.size ? Array.from(bonus.targets) : workflow.hitTargets.documents;
+        if (combatData?.inCombat) {
+            let next = config.oncePerTurn ? combatUtils.addTurnStamp(stamps, workflow.token.id, combatData) : stamps;
+            if (config.oncePerTurnPerTarget) next = usedOn.reduce((current, token) => combatUtils.addTurnStamp(current, token.id, combatData), next);
+            await documentUtils.setFlag(document, 'chris-premades', 'damageBonusToOneRoll.stamps', next);
+        }
+        const used = workflowUtils.getWorkflowProperty(workflow, 'damageBonusToOneRoll') ?? {};
+        workflowUtils.setWorkflowProperty(workflow, 'damageBonusToOneRoll', {...used, [document.uuid]: {formula: bonus.roll.formula, total: bonus.roll.total, type: bonus.roll.options.type, targets: usedOn.map(token => token.uuid)}});
         await workflowUtils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
     });
     if (targets) bonus.targets = targets;
@@ -99,6 +113,7 @@ async function damage({document, workflow}) {
  * - `bonusDamageType`: damage types offered as choices for this bonus.
  * - `applyTo`: add the bonus to damage, healing, or both.
  * - `attackType`: only trigger for this attack type.
+ * - `thrownRanged`: with `attackType`, also trigger for ranged weapon attacks made with a thrown weapon.
  * - `damageType`: only trigger when the roll deals one of these damage types.
  * - `healingType`: only trigger when the activity heals one of these healing types.
  * - `identifiers`: only trigger for items with one of these identifiers.
@@ -117,6 +132,11 @@ async function damage({document, workflow}) {
  * - `targetCreatureTypes`: only apply to hit targets of these creature types.
  * - `useActivityCosts`: apply the item's default costs. Not offered when they cannot be paid.
  * - `allowCritical`: critical hit rules can be applied to this bonus.
+ * - `oncePerTurn`: offer the bonus once per turn. Outside combat it is always offered.
+ * - `oncePerTurnPerTarget`: each creature can take the bonus once per turn. Outside combat it is always offered.
+ * - `excludeSelf`: skip rolls made with the item that carries the bonus.
+ *
+ * Records each used bonus on the workflow property `damageBonusToOneRoll`, keyed by the bonus document's uuid, as `{formula, total, type, targets}`.
  */
 export const damageBonusToOneRoll = {
     rules: 'all',
@@ -159,6 +179,13 @@ export const damageBonusToOneRoll = {
             ]
         },
         attackType: attackTypeConfig,
+        thrownRanged: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ThrownRanged',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ThrownRangedHint'
+        },
         damageType: {
             default: [],
             type: 'select-many',
@@ -289,6 +316,27 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Critical',
             hint:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.CriticalHint'
+        },
+        oncePerTurn: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurnHint'
+        },
+        oncePerTurnPerTarget: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurnPerTarget',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurnPerTargetHint'
+        },
+        excludeSelf: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ExcludeSelf',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ExcludeSelfHint'
         }
     }
 };

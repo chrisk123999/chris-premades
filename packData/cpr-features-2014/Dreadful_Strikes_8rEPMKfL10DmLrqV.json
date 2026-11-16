@@ -77,7 +77,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.9"
       },
       "genericConfig": {
         "chris-premades": {
@@ -87,8 +87,8 @@
               "psychic"
             ],
             "attackType": "weaponAttack",
-            "oncePerTurn": true,
-            "allowCritical": true
+            "allowCritical": true,
+            "oncePerTurnPerTarget": true
           }
         }
       },

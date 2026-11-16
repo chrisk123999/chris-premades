@@ -151,8 +151,11 @@ export {wingsOfFlying as 'wings-of-flying', wingsOfFlyingRecharge as 'wings-of-f
 /*============================*/
 /*           FEATS            */
 /*============================*/
+export {crusher} from './all/feats/crusher.mjs';
 export {heavyArmorMaster as 'heavy-armor-master'} from './all/feats/heavyArmorMaster.mjs';
+export {piercer} from './all/feats/piercer.mjs';
 export {preciseStrike as 'precise-strike'} from './all/feats/preciseStrike.mjs';
+export {savageAttacker as 'savage-attacker'} from './all/feats/savageAttacker.mjs';
 
 /*============================*/
 /*      FIGHTING STYLES       */

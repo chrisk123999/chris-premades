@@ -22,10 +22,12 @@ async function damage({document, ditem, targetToken, workflow}) {
     }
     workflowUtils.preventZeroHP(ditem);
     if (config.display && !saveActivity) await workflowUtils.completeItemUse(document, [targetToken]);
+    await automationUtils.calledEvent('preventDeath', document.actor, {canOverlap: true, data: {item: document, workflow}});
 }
 /**
  * Offers to use this item when a hit would drop the actor to 0 hit points, keeping the actor alive.
  * Bound on an item. Fires on `targetDamageComplete`.
+ * Runs the called event `preventDeath` with `{item, workflow}` after it keeps the actor alive.
  *
  * Config:
  * - `killedOutright`: also trigger when the damage would kill outright.
