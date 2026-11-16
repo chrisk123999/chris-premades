@@ -1,0 +1,182 @@
+{
+  "name": "Avatar of Battle",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Avatar of Battle",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "bludgeoning",
+            "priority": 1,
+            "phase": "initial",
+            "_id": "XZdZMvUTONO5rW3Y",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "piercing",
+            "priority": 1,
+            "phase": "initial",
+            "_id": "EmnyVr7cJleTI91F",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "slashing",
+            "priority": 1,
+            "phase": "initial",
+            "_id": "ak1RhpeUpE0gerc6",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.bypasses",
+            "value": "mgc",
+            "type": "add",
+            "priority": 1,
+            "phase": "initial",
+            "_id": "VYMQmmax1ZRQJhMs",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "description": "",
+      "img": "icons/equipment/shield/kite-wooden-oak-glow.webp",
+      "_id": "yIOow6NjcGRrlrnU",
+      "type": "base",
+      "origin": "Compendium.chris-premades.CPRFeatures2014.Item.V4tspgftdqqRkArV",
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!V4tspgftdqqRkArV.yIOow6NjcGRrlrnU"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {
+      "0CufwAQasQNjXnsV": {
+        "configuration": {
+          "allowReplacements": false,
+          "choices": [],
+          "grants": [
+            "dr:bludgeoning",
+            "dr:piercing"
+          ],
+          "mode": "default"
+        },
+        "_id": "0CufwAQasQNjXnsV",
+        "type": "Trait",
+        "flags": {},
+        "level": 17,
+        "hint": "",
+        "name": "Avatar of Battle",
+        "value": {
+          "chosen": [
+            "dr:bludgeoning,piercing,slashing"
+          ]
+        }
+      }
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "avatar-of-battle",
+    "source": {
+      "book": "PHB",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 17,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      }
+    }
+  },
+  "img": "icons/equipment/shield/kite-wooden-oak-glow.webp",
+  "folder": "otsXKqVkya9Zy0zV",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "V4tspgftdqqRkArV",
+  "_key": "!items!V4tspgftdqqRkArV"
+}

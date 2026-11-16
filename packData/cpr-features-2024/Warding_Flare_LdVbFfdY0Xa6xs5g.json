@@ -196,7 +196,6 @@
         "source": "chris-premades",
         "version": "2.1.9"
       },
-      "macros": {},
       "config": {
         "immune": []
       }

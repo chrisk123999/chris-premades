@@ -14,12 +14,12 @@ async function recover({workflow}) {
 }
 export const harnessDivinePower = {
     name: 'Harness Divine Power',
-    version: '2.0.3',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {
             pass: 'activityRollFinished',
-            macro: recover, 
+            macro: recover,
             priority: 50
         }
     ],

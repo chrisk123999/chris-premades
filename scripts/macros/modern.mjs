@@ -98,6 +98,9 @@ export {improvedWardingFlare as 'improved-warding-flare'} from './modern/classFe
 export {improvedDuplicity as 'improved-duplicity'} from './modern/classFeatures/cleric/trickery/improvedDuplicity.mjs';
 export {trickstersTransposition as 'tricksters-transposition'} from './modern/classFeatures/cleric/trickery/trickstersTransposition.mjs';
 
+/*               War             */
+export {warGodsBlessing as 'war-gods-blessing'} from './modern/classFeatures/cleric/war/warGodsBlessing.mjs';
+
 /*********************************/
 /*             Druid             */
 /*********************************/

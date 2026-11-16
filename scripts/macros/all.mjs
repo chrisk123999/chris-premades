@@ -83,6 +83,10 @@ export {wardingFlare as 'warding-flare'} from './all/classFeatures/cleric/light/
 export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './all/classFeatures/cleric/trickery/blessingOfTheTrickster.mjs';
 export {invokeDuplicity, invokeDuplicityDistraction, invokeDuplicitySpell} from './all/classFeatures/cleric/trickery/invokeDuplicity.mjs';
 
+/*             War            */
+export {warGodsBlessing as 'guided-strike', warGodsBlessing as 'channel-divinity-war-gods-blessing'} from './all/classFeatures/cleric/war/warGodsBlessing.mjs';
+export {warPriest as 'war-priest'} from './all/classFeatures/cleric/war/warPriest.mjs';
+
 /******************************/
 /*           Druid            */
 /******************************/

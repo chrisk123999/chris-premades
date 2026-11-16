@@ -49,6 +49,13 @@
                   "rules": "2014",
                   "identifier": "harness-divine-power"
                 }
+              ],
+              "called": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "channelDivinityClericActivity"
+                }
               ]
             }
           }
@@ -214,7 +221,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.9"
       }
     }
   },
