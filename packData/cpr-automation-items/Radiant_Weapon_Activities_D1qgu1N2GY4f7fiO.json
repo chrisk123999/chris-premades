@@ -501,7 +501,13 @@
       "_key": "!items.effects!D1qgu1N2GY4f7fiO.Fhbctu4SvDdFhY0V"
     }
   ],
-  "flags": {},
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades"
+      }
+    }
+  },
   "_stats": {
     "coreVersion": "14.364",
     "systemId": "dnd5e",

@@ -108,7 +108,13 @@
     }
   ],
   "folder": null,
-  "flags": {},
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades"
+      }
+    }
+  },
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
