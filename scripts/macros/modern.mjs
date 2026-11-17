@@ -112,6 +112,9 @@ export {wildShape as 'wild-shape'} from './modern/classFeatures/druid/wildShape.
 /*             Moon              */
 export {lunarForm as 'lunar-form'} from './modern/classFeatures/druid/moon/lunarForm.mjs';
 
+/*              Sea              */
+export {wrathOfTheSea as 'wrath-of-the-sea'} from './modern/classFeatures/druid/sea/wrathOfTheSea.mjs';
+
 /*            Wicker             */
 export {bewitchedEffigy as 'bewitched-effigy', bewitchedEffigySacrifice as 'bewitched-effigy-sacrifice'} from './modern/classFeatures/druid/wicker/bewitchedEffigy.mjs';
 export {soulboundPoppet as 'soulbound-poppet', soulboundPoppetDoll as 'soulbound-poppet-doll'} from './modern/classFeatures/druid/wicker/soulboundPoppet.mjs';
@@ -124,6 +127,12 @@ export {wickerZenith as 'wicker-zenith'} from './modern/classFeatures/druid/wick
 /*********************************/
 export {studiedAttacks as 'studied-attacks'} from './modern/classFeatures/fighter/studiedAttacks.mjs';
 export {tacticalShift as 'tactical-shift'} from './modern/classFeatures/fighter/tacticalShift.mjs';
+
+/*        Battle Master          */
+export {demoralizingShout as 'maneuvers-demoralizing-shout'} from './modern/classFeatures/fighter/battleMaster/demoralizingShout.mjs';
+export {knowYourEnemy as 'know-your-enemy'} from './modern/classFeatures/fighter/battleMaster/knowYourEnemy.mjs';
+export {relentless} from './modern/classFeatures/fighter/battleMaster/relentless.mjs';
+export {wardingManeuver as 'maneuvers-warding-maneuver'} from './modern/classFeatures/fighter/battleMaster/wardingManeuver.mjs';
 
 /*********************************/
 /*             Monk              */
@@ -237,6 +246,9 @@ export {fullBlooded as 'full-blooded'} from './modern/classFeatures/wizard/sangr
 export {charmTwister as 'charm-twister', oldBlessing, twistedHexCharm as 'twisted-hex-charm'} from './modern/feats/charmTwister.mjs';
 export {exploitOpening as 'exploit-opening'} from './modern/feats/exploitOpening.mjs';
 export {familyFirst as 'family-first'} from './modern/feats/familyFirst.mjs';
+export {iFoughtILived as 'i-fought-i-lived'} from './modern/feats/iFoughtILived.mjs';
+export {iHidFromTheTerror as 'i-hid-from-the-terror'} from './modern/feats/iHidFromTheTerror.mjs';
+export {iOpenedTheGate as 'i-opened-the-gate'} from './modern/feats/iOpenedTheGate.mjs';
 export {protectionMoved} from './modern/feats/protection.mjs';
 export {sangromanticInitiate as 'sangromantic-initiate'} from './modern/feats/sangromanticInitiate.mjs';
 export {tirelessReveler as 'tireless-reveler'} from './modern/feats/tirelessReveler.mjs';

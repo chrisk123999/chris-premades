@@ -1,0 +1,133 @@
+{
+  "folder": "9ZrZTTAV5UhwTP0o",
+  "name": "Aquatic Affinity",
+  "type": "feat",
+  "_id": "FXzIYRDKVXeS4m8Q",
+  "img": "icons/magic/water/wave-water-blue.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "aquatic-affinity",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "PHB 2024",
+      "license": ""
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "repeatable": false,
+      "level": 6
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Aquatic Affinity",
+      "img": "icons/magic/water/wave-water-blue.webp",
+      "origin": "Compendium.chris-premades.CPRClassFeatures2024.Item.FXzIYRDKVXeS4m8Q",
+      "_id": "TnZkEP4MH28m8BBS",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.swim",
+            "value": "@attributes.movement.walk",
+            "priority": 20,
+            "type": "upgrade",
+            "phase": "initial",
+            "_id": "THkQT1yiYbU3CZzG",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "rider": {
+          "statuses": []
+        },
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dnd5e": {
+          "riders": {}
+        },
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "disableIncapacitated": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "showIcon": 1,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!FXzIYRDKVXeS4m8Q.TnZkEP4MH28m8BBS"
+    }
+  ],
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!FXzIYRDKVXeS4m8Q"
+}

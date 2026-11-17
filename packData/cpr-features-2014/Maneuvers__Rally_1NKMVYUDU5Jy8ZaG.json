@@ -1,0 +1,246 @@
+{
+  "name": "Maneuvers: Rally",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": "maneuver"
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {
+      "LN1uZeJnL4RXJOH3": {
+        "type": "heal",
+        "_id": "LN1uZeJnL4RXJOH3",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:superiority-dice",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "",
+          "value": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false,
+          "expiry": null
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "",
+            "stationary": false
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": true,
+            "formula": "@flags.chris-premades.superiorityDie + @abilities.cha.mod"
+          },
+          "scaling": {
+            "number": 1
+          },
+          "bonus": "",
+          "modifiers": []
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "name": "Rally",
+        "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDamageDialog": "",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "followUp": false,
+          "followUpTargets": "default",
+          "followUpCondition": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "targetMustBeSeen": false,
+          "skipConcentrationCheck": false,
+          "statuses": []
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": "",
+          "rollAs": "target"
+        },
+        "behaviors": [],
+        "flags": {},
+        "visibility": {
+          "identifier": "",
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "otherActivityId": null,
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "moveDistance": 0,
+          "moveDirection": "away",
+          "moveTiming": "start",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        }
+      }
+    },
+    "identifier": "maneuvers-rally",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "flags": {
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      },
+      "macros": {
+        "item": [
+          {
+            "source": "chris-premades",
+            "identifier": "martial-adept-pool",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+  "folder": "D6f7JKP7GIgPb8sj",
+  "_id": "1NKMVYUDU5Jy8ZaG",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!1NKMVYUDU5Jy8ZaG"
+}

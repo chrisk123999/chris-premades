@@ -1,4 +1,4 @@
-import {activityUtils, automationUtils, constants, dialogUtils, documentUtils, Logging, queryUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, constants, dialogUtils, documentUtils, Logging, queryUtils, rollUtils, workflowUtils} from '../../proxy.mjs';
 async function damage({document, ditem, targetToken, workflow}) {
     if (!ditem.isHit) return;
     const resultingHP = ditem.oldHP + (ditem.oldTempHP ?? 0) - ditem.totalDamage;
@@ -9,6 +9,7 @@ async function damage({document, ditem, targetToken, workflow}) {
     if (config.deathOnly && resultingHP > -maxHP) return;
     if (config.excludeCritical && workflow.isCritical) return;
     if (config.excludeDamageTypes.length && workflowUtils.getDamageTypes(workflow.damageRolls).intersects(new Set(config.excludeDamageTypes))) return;
+    if (config.healingTraits && actorUtils.checkTrait(document.actor, 'di', 'healing')) return;
     if (!document.system.uses.value) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'No uses remaining.');
     const selection = await dialogUtils.confirmUseItem(document, {userId: queryUtils.firstOwner(document.actor, true)});
     if (!selection) return;
@@ -20,8 +21,12 @@ async function damage({document, ditem, targetToken, workflow}) {
         const saveWorkflow = await workflowUtils.syntheticActivityDataRoll(activityData, document, [targetToken]);
         if (saveWorkflow?.failedSaves.count) return;
     }
-    workflowUtils.preventZeroHP(ditem);
-    if (config.display && !saveActivity) await workflowUtils.completeItemUse(document, [targetToken]);
+    let targetHP = config.targetHP ? Math.max(rollUtils.rollDiceSync(config.targetHP, {document}).total, 1) : 1;
+    if (config.healingTraits && actorUtils.checkTrait(document.actor, 'dr', 'healing')) targetHP = Math.max(Math.floor(targetHP / 2), 1);
+    workflowUtils.preventZeroHP(ditem, {targetHP});
+    const useActivity = document.system.activities.get(config.useActivity);
+    if (useActivity) await workflowUtils.completeActivityUse(useActivity, [targetToken]);
+    else if (config.display && !saveActivity) await workflowUtils.completeItemUse(document, [targetToken]);
     await automationUtils.calledEvent('preventDeath', document.actor, {canOverlap: true, data: {item: document, workflow}});
 }
 /**
@@ -37,10 +42,13 @@ async function damage({document, ditem, targetToken, workflow}) {
  * - `excludeCritical`: does not trigger on critical hits.
  * - `excludeDamageTypes`: does not trigger when the damage includes one of these types.
  * - `display`: roll this item when it triggers without a save activity.
+ * - `targetHP`: formula for the hit points the actor is left on. Blank leaves it on 1.
+ * - `healingTraits`: treat the hit points as healing: healing immunity stops it, healing resistance halves them.
+ * - `useActivity`: rolled when it triggers, in place of the item.
  */
 export const preventDeath = {
     rules: 'all',
-    version: '2.0.3',
+    version: '2.1.9',
     category: 'mechanics',
     generic: true,
     documents: ['item'],
@@ -95,6 +103,27 @@ export const preventDeath = {
             type: 'checkbox',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Display'
+        },
+        targetHP: {
+            default: '',
+            type: 'text',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.TargetHP',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.TargetHPHint'
+        },
+        healingTraits: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.HealingTraits',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.HealingTraitsHint'
+        },
+        useActivity: {
+            default: '',
+            type: 'selectActivity',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivity',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivityHint'
         }
     }
 };

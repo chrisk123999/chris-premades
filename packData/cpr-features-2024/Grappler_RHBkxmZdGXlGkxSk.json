@@ -1,0 +1,335 @@
+{
+  "name": "Grappler",
+  "type": "feat",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "rules": "2024",
+      "revision": 1,
+      "book": "PHB 2024",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "turn",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "type": {
+      "value": "feat",
+      "subtype": "general"
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {
+      "grapplerPunchGrb": {
+        "type": "save",
+        "_id": "grapplerPunchGrb",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "special": "",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "attackRider"
+                },
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "grapple"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "singleTarget": true,
+                  "ownTurn": true,
+                  "useActivityCosts": true
+                },
+                "grapple": {}
+              }
+            },
+            "hidden": true
+          }
+        },
+        "range": {
+          "value": "5",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "none",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "identifier": "punch-and-grab",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "name": "Punch and Grab",
+        "identifier": "punch-and-grab",
+        "save": {
+          "ability": [
+            "str",
+            "dex"
+          ],
+          "dc": {
+            "calculation": "str",
+            "formula": ""
+          }
+        }
+      }
+    },
+    "identifier": "grappler",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "grapplerFastWrst",
+      "name": "Fast Wrestler",
+      "img": "icons/skills/melee/unarmed-punch-fist.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "showIcon": 2,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "system": {
+        "changes": [
+          {
+            "phase": "initial",
+            "priority": 20,
+            "_id": "grapplerFastWr00",
+            "conditions": "{}",
+            "replacement": "",
+            "key": "flags.cat.grappleDrag.freeSizeOffset",
+            "type": "override",
+            "value": "0"
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [],
+          "disableCondition": ""
+        }
+      },
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!RHBkxmZdGXlGkxSk.grapplerFastWrst"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "rules": "all",
+            "identifier": "grappleAttackAdvantage"
+          }
+        ]
+      }
+    }
+  },
+  "folder": "M3jqOSOgp6TElvqU",
+  "_id": "RHBkxmZdGXlGkxSk",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!RHBkxmZdGXlGkxSk"
+}

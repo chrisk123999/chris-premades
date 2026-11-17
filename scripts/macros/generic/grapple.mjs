@@ -9,6 +9,7 @@ async function doGrapple({document: activity, token, workflow}) {
     };
     if (config.useActivityInfo) data.activity = activity;
     if (config.dc) data.flatDC = (await rollUtils.rollDice(config.dc, {document: activity}))?.total;
+    if (config.bonus) data.bonus = (await rollUtils.rollDice(config.bonus, {document: activity, message: true, flavor: activity.item.name}))?.total;
     for (const target of workflow.targets.documents) {
         if (target.actor) await tokenUtils.grapple(token, target, data);
     }
@@ -26,13 +27,14 @@ async function doGrapple({document: activity, token, workflow}) {
  * - `auto`: apply the grapple without rolling dice.
  * - `checkSize`: check target size.
  * - `dc`: flat DC formula. Overrides activity info if present.
+ * - `bonus`: rolled and added to the grappler's skill check when no DC is given.
  * - `conditions`: additional conditions attached to the grapple effect.
  * - `useActivityInfo`: icons, item name, and roll DC are taken from the parent activity.
  * - `replaceActivity`: the parent activity roll is discarded and replaced by the grapple.
  */
 export const grapple = {
     rules: 'all',
-    version: '2.1.4',
+    version: '2.1.9',
     category: 'utility',
     generic: true,
     documents: ['activity'],
@@ -63,6 +65,13 @@ export const grapple = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.FlatDC',
             hint: 'CHRISPREMADES.Macros.Generic.Grapple.FlatDCHint'
+        },
+        bonus: {
+            default: '',
+            type: 'formula',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.Bonus',
+            hint: 'CHRISPREMADES.Macros.Generic.Grapple.BonusHint'
         },
         conditions: {
             default: [],
