@@ -1,0 +1,506 @@
+{
+  "name": "Channel Divinity: Arcane Abjuration",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Turned",
+      "img": "icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp",
+      "system": {
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "message": null
+        },
+        "changes": [
+          {
+            "key": "flags.midi-qol.actions.reactionsMax",
+            "type": "override",
+            "value": 0,
+            "phase": "initial",
+            "_id": "v9ugygEWrkbN2BQb",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
+          }
+        ],
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "transfer": false,
+      "_id": "tjeAVUBQ4hfKFLvr",
+      "type": "base",
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "applicationMode": "default",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": true,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "conditions": [
+            "reaction"
+          ],
+          "specialDuration": [
+            "damagedByAlly",
+            "damagedByEnemy"
+          ]
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!bntx8W6BSHLx1HB2.tjeAVUBQ4hfKFLvr"
+    },
+    {
+      "_id": "z43UPN6E7YtZu0pB",
+      "name": "Banished",
+      "img": "icons/magic/unholy/orb-swirling-teal.webp",
+      "type": "base",
+      "transfer": false,
+      "disabled": false,
+      "system": {
+        "changes": [
+          {
+            "key": "system.rolls.ability.save.success",
+            "type": "override",
+            "value": 1,
+            "priority": 20,
+            "phase": "initial",
+            "_id": "Slq4u6BQdPWuAHzo",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.attributes.ac.bonus",
+            "type": "add",
+            "value": 99,
+            "priority": 20,
+            "phase": "initial",
+            "_id": "cPj3S3L30deyp8QZ",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "flags.midi-qol.grants.noCritical.all",
+            "type": "custom",
+            "value": 1,
+            "priority": 20,
+            "phase": "initial",
+            "_id": "8DVx3F2w668wRoce",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "flags.midi-qol.neverTarget",
+            "type": "custom",
+            "value": 1,
+            "priority": 20,
+            "phase": "initial",
+            "_id": "eeuiuSbjEAE8DGdY",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "behavior": null,
+          "item": "Compendium.chris-premades.CPRFeatures2014.Item.bntx8W6BSHLx1HB2",
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": true,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "flags": {
+        "cat": {
+          "identifier": "banished",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "banish",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "banish": {
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "banishment"
+                }
+              }
+            }
+          }
+        },
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "applicationMode": "default",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "statuses": [
+        "incapacitated"
+      ],
+      "description": "",
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "origin": null,
+      "tint": "#ffffff",
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!bntx8W6BSHLx1HB2.z43UPN6E7YtZu0pB"
+    }
+  ],
+  "system": {
+    "activities": {
+      "saveChanDAAclNe0": {
+        "name": "Arcane Abjuration",
+        "type": "save",
+        "_id": "saveChanDAAclNe0",
+        "img": "icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "behaviors": [],
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "feat:channel-divinity",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "value": "",
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "expiry": null,
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "tjeAVUBQ4hfKFLvr",
+            "uuid": null,
+            "onSave": false,
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
+        "flags": {
+          "cat": {
+            "macros": {
+              "called": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "channelDivinityClericActivity"
+                }
+              ],
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2014",
+                  "identifier": "channel-divinity-arcane-abjuration"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "targetCreatureTypes",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "targetCreatureTypes": {
+                  "creatureTypes": [
+                    "celestial",
+                    "elemental",
+                    "fey",
+                    "fiend"
+                  ],
+                  "invert": false,
+                  "aliveOnly": true,
+                  "maxSize": "",
+                  "maxCR": -1,
+                  "chooseTargets": false,
+                  "excludeSelf": true,
+                  "limit": "1",
+                  "canSee": false,
+                  "minIntelligence": 0,
+                  "excludeSummoner": false
+                }
+              }
+            }
+          }
+        },
+        "range": {
+          "value": "30",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "damage": {
+          "onSave": "half",
+          "critical": {
+            "allow": false
+          },
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          },
+          "visible": true,
+          "bonus": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "followUp": false,
+          "followUpTargets": "default",
+          "followUpCondition": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": false,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "targetMustBeSeen": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "statuses": []
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "moveDistance": 0,
+          "moveDirection": "away",
+          "moveTiming": "start",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "friendlySave": "default"
+      }
+    },
+    "uses": {
+      "spent": null,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "channel-divinity-arcane-abjuration",
+    "source": {
+      "book": "SCAG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": "channelDivinity"
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      }
+    }
+  },
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp",
+  "folder": "AWOWAeiNPiqD0bYV",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "bntx8W6BSHLx1HB2",
+  "_key": "!items!bntx8W6BSHLx1HB2"
+}

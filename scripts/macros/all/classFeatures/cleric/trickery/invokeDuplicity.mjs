@@ -6,6 +6,7 @@ async function duplicate({document: activity, summon, updates, macroClass: {iden
     updates.statuses = ['ethereal'];
     genericUtils.setProperty(updates, 'name', name);
     genericUtils.setProperty(updates, 'prototypeToken.name', name);
+    genericUtils.setProperty(updates, 'flags.midi-qol.neverTarget', true);
     genericUtils.setProperty(updates, 'system.traits.size', owner.system.traits.size);
     if (ownerToken) {
         genericUtils.setProperty(updates, 'prototypeToken.width', ownerToken.width);

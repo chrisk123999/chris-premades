@@ -105,6 +105,10 @@ export {destroyUndead as 'destroy-undead'} from './legacy/classFeatures/cleric/d
 export {divineStrike as 'divine-strike'} from './legacy/classFeatures/cleric/divineStrike.mjs';
 export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatures/cleric/harnessDivinePower.mjs';
 
+/*           Arcana           */
+export {arcaneAbjuration as 'channel-divinity-arcane-abjuration'} from './legacy/classFeatures/cleric/arcana/arcaneAbjuration.mjs';
+export {spellBreaker as 'spell-breaker'} from './legacy/classFeatures/cleric/arcana/spellBreaker.mjs';
+
 /******************************/
 /*           Druid            */
 /******************************/

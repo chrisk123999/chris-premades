@@ -1584,6 +1584,10 @@
                     "SummonName": "Animated Object",
                     "ExtraPerLevel": "Extra Objects per Level"
                 },
+                "ArcaneAbjuration": {
+                    "GrantBanish": "Grant Banish Effect",
+                    "BanishCR": "Max Banish CR"
+                },
                 "ArcaneWard": {
                     "Protect": "Protect {tokenName} with your arcane ward?",
                     "TempHP": "Consume Temp HP First:"
@@ -1874,6 +1878,10 @@
                     "Select": "Use your reaction to spend a spell slot to reduce damage?"
                 },
                 "SoulOfArtifice": "Choose an item to destroy:",
+                "SpellBreaker": {
+                    "Prompt": "Choose an ally and a spell effect to end on them.",
+                    "Warn": "There are no targets with eligible spell effects!"
+                },
                 "SummonFey": {
                     "FeyStep": "Fey Step",
                     "Fuming": "Fuming",
@@ -2139,6 +2147,7 @@
                 },
                 "DanceVirtuoso": "Does this check involve you dancing?",
                 "DeflectAttacks": "Redirect Attack?",
+                "DispellingRecovery": "Identifiers for spells that remove conditions.",
                 "ExtremeResilience": {
                     "Select": "Select a feature to recover a use of."
                 },

@@ -91,6 +91,10 @@ export {divineStrike as 'blessed-strikes-divine-strike'} from './modern/classFea
 export {greaterDivineIntervention as 'greater-divine-intervention', greaterDivineInterventionRest as 'greater-divine-intervention-rest'} from './modern/classFeatures/cleric/greaterDivineIntervention.mjs';
 export {improvedPotentSpellcasting as 'improved-blessed-strikes'} from './modern/classFeatures/cleric/improvedPotentSpellcasting.mjs';
 
+/*            Arcana             */
+export {dispellingRecovery as 'dispelling-recovery'} from './modern/classFeatures/cleric/arcana/dispellingRecovery.mjs';
+export {modifyMagicFortify, modifyMagicTenacious} from './modern/classFeatures/cleric/arcana/modifyMagic.mjs';
+
 /*             Light             */
 export {improvedWardingFlare as 'improved-warding-flare'} from './modern/classFeatures/cleric/light/improvedWardingFlare.mjs';
 
