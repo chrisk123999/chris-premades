@@ -1359,7 +1359,6 @@
                     "Attack": "Attacks",
                     "Confirm": "Prompt Before Use",
                     "Magical": "Spells and Magical Effects",
-                    "OncePerTurn": "Once Per Turn",
                     "RangeHint": "Also protect other creatures within this distance. 0 protects the owner only.",
                     "RollActivity": "Reduction Activity",
                     "RollActivityHint": "Rolled when the feature triggers. Its roll total is subtracted from the damage, and its costs are spent.",
@@ -1634,7 +1633,6 @@
                 "AspectBeastBear": "Is this a check to push, pull, lift, or break?",
                 "AwakenedSpellbook": {
                     "ExtraDamageTypes": "Additional Damage Types",
-                    "OncePerTurn": "Once Per Turn",
                     "Select": "Change damage type?"
                 },
                 "BladeFlourish": {

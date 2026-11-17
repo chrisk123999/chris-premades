@@ -71,8 +71,13 @@
         },
         "uses": {
           "spent": 0,
-          "recovery": [],
-          "max": ""
+          "max": "1",
+          "recovery": [
+            {
+              "period": "turn",
+              "type": "recoverAll"
+            }
+          ]
         },
         "visibility": {
           "level": {
@@ -219,7 +224,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       }
     }
   },

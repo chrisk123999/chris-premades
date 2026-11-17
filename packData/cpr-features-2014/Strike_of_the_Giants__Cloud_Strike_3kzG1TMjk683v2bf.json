@@ -58,6 +58,12 @@
               "value": "1",
               "target": "",
               "scaling": {}
+            },
+            {
+              "type": "activityUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -112,8 +118,13 @@
         },
         "uses": {
           "spent": 0,
-          "max": "",
-          "recovery": []
+          "max": "1",
+          "recovery": [
+            {
+              "period": "turn",
+              "type": "recoverAll"
+            }
+          ]
         },
         "useConditionText": "",
         "midiProperties": {
@@ -346,7 +357,6 @@
             "attackType": "meleeWeaponAttack",
             "requireHit": true,
             "maxTargets": 1,
-            "oncePerTurn": true,
             "useActivityCosts": true,
             "rollActivity": "dnd5eactivity100",
             "bonusDamageType": [

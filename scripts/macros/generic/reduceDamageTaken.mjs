@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, automationUtils, combatUtils, constants, dialogUtils, documentUtils, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, constants, dialogUtils, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig} from './damageBonusToOneRoll.mjs';
 function isMagical(workflow) {
     if (workflow.item?.type === 'spell' || workflow.item?.system.properties?.has('mgc')) return true;
@@ -20,9 +20,6 @@ async function damage({document: item, ditem, workflow, targetToken, macroClass:
     if (config.attackType && !workflowUtils.isAttackType(workflow, config.attackType)) return;
     if (config.damageTypes.length && !workflowUtils.getDamageTypes(workflow.damageRolls).intersects(new Set(config.damageTypes))) return;
     if (config.skipIncapacitated && item.actor.statuses.has('incapacitated')) return;
-    const combatData = tokenUtils.getCombatData(bearerToken);
-    const stamps = item.flags['chris-premades']?.reduceDamageTaken?.stamps ?? [];
-    if (config.oncePerTurn && combatUtils.isStampedThisTurn(stamps, bearerToken.id, combatData)) return;
     const activity = config.rollActivity.map(id => item.system.activities.get(id)).find(candidate => candidate && activityUtils.checkCosts(candidate));
     if (!activity) return;
     if (activity.activation.type === 'reaction' && actorUtils.hasUsedReaction(item.actor)) return;
@@ -36,7 +33,6 @@ async function damage({document: item, ditem, workflow, targetToken, macroClass:
     const useWorkflow = await workflowUtils.completeActivityUse(activity, [], {fast: true});
     const amount = rollUtils.getRollsTotal(useWorkflow?.utilityRolls ?? []);
     if (amount > 0) workflowUtils.modifyDamageAppliedFlat(ditem, -amount);
-    if (config.oncePerTurn && combatData.inCombat) await documentUtils.setFlag(item, 'chris-premades', 'reduceDamageTaken.stamps', combatUtils.addTurnStamp(stamps, bearerToken.id, combatData));
 }
 /**
  * Rolls an activity to reduce damage taken by the owner, or by creatures near it.
@@ -49,7 +45,6 @@ async function damage({document: item, ditem, workflow, targetToken, macroClass:
  * - `source`: only reduce damage from any source, magical sources or attacks.
  * - `attackType`: only reduce damage from this attack type.
  * - `damageTypes`: only reduce damage that includes one of these types.
- * - `oncePerTurn`: at most once per turn in combat.
  * - `skipIncapacitated`: does not trigger while the owner is incapacitated.
  * - `confirm`: prompt the owner before using it.
  */
@@ -107,12 +102,6 @@ export const reduceDamageTaken = {
             label: 'CHRISPREMADES.Config.DamageTypes',
             hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
             get options() { return constants.damageTypeOptions; }
-        },
-        oncePerTurn: {
-            default: false,
-            type: 'checkbox',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.OncePerTurn'
         },
         skipIncapacitated: {
             default: false,

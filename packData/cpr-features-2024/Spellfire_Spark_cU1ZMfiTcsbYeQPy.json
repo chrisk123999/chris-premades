@@ -52,7 +52,14 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "activityUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""
@@ -100,8 +107,13 @@
         },
         "uses": {
           "spent": 0,
-          "max": "",
-          "recovery": []
+          "max": "1",
+          "recovery": [
+            {
+              "period": "turn",
+              "type": "recoverAll"
+            }
+          ]
         },
         "useConditionText": "",
         "midiProperties": {
@@ -584,7 +596,6 @@
               "ZiaAqHCUoqJcatkU"
             ],
             "source": "magical",
-            "oncePerTurn": true,
             "skipIncapacitated": true,
             "confirm": false
           },
