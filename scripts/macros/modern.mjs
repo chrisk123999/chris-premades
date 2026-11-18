@@ -95,6 +95,11 @@ export {improvedPotentSpellcasting as 'improved-blessed-strikes'} from './modern
 export {dispellingRecovery as 'dispelling-recovery'} from './modern/classFeatures/cleric/arcana/dispellingRecovery.mjs';
 export {modifyMagicFortify, modifyMagicTenacious} from './modern/classFeatures/cleric/arcana/modifyMagic.mjs';
 
+/*             Grave             */
+export {circleOfMortality as 'circle-of-mortality'} from './modern/classFeatures/cleric/grave/circleOfMortality.mjs';
+export {divineReaper as 'divine-reaper'} from './modern/classFeatures/cleric/grave/divineReaper.mjs';
+export {pathToTheGrave as 'path-to-the-grave'} from './modern/classFeatures/cleric/grave/pathToTheGrave.mjs';
+
 /*             Light             */
 export {improvedWardingFlare as 'improved-warding-flare'} from './modern/classFeatures/cleric/light/improvedWardingFlare.mjs';
 

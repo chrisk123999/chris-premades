@@ -89,7 +89,7 @@
             "spellSchool": [],
             "firstCastOnly": true,
             "rollActivity": "",
-            "rollItem": false,
+            "rollItem": true,
             "maxTargets": 0,
             "everyRoll": false,
             "requireHit": true,

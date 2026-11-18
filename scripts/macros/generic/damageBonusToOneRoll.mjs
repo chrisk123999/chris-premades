@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, DamageBonus, dataUtils, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, DamageBonus, dataUtils, documentUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
@@ -24,7 +24,7 @@ async function damage({document, workflow}) {
     const trackLastUse = !config.everyRoll && multiSingleTarget;
     if (trackLastUse && document.flags['chris-premades']?.lastUse === multiSingleTarget.rollID) return;
     const needsHit = config.everyRoll || config.useActivityCosts || multiSingleTarget?.remainingAttacks > 1;
-    const optional = !config.everyRoll && needsHit;
+    const optional = !config.contextual && !config.everyRoll && needsHit;
     if (needsHit && workflow.activity.hasAttack && !workflow.hitTargets.count) return;
     if (config.applyTo === 'damage' && !workflow.activity.hasDamage) return;
     if (config.applyTo === 'healing' && !workflow.activity.hasHealing) return;
@@ -62,15 +62,14 @@ async function damage({document, workflow}) {
         }
     }
     if (config.firstCastOnly && workflowUtils.isSustainedRoll(workflow)) return;
-    if (config.targetWounded) {
-        const actor = (workflow.hitTargets.documents[0] ?? workflow.targets.documents[0])?.actor;
-        if (!actor || !actorUtils.isWounded(actor)) return;
-    }
     const hasEffect = actor => !config.targetEffects.length || config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(actor, identifier, {multiple: true, sourceActor: workflow.actor}).length);
-    const hasType = actor => !config.targetCreatureTypes.length || config.targetCreatureTypes.includes(actorUtils.typeOrRace(actor));
     const inRange = token => !config.attackerRange || (workflow.token && token.object && tokenUtils.isWithinDistance(workflow.token.document, token, config.attackerRange));
-    const narrowed = config.requireHit || config.targetEffects.length || config.targetCreatureTypes.length || config.attackerRange;
-    const targets = narrowed ? workflow.hitTargets.documents.filter(token => token.actor && hasEffect(token.actor) && hasType(token.actor) && inRange(token)) : undefined;
+    const hasType = actor => !config.targetCreatureTypes.length || config.targetCreatureTypes.includes(actorUtils.typeOrRace(actor));
+    const wounded = actor => !config.targetWounded || !actor || actorUtils.isWounded(actor);
+    const narrowed = config.requireHit || config.targetEffects.length || config.targetCreatureTypes.length || config.attackerRange || config.targetWounded;
+    const targets = narrowed ? (config.requireHit ? workflow.hitTargets : workflow.targets).documents.filter(token =>
+        token.actor && hasEffect(token.actor) && hasType(token.actor) && inRange(token) && wounded(token.actor)
+    ) : undefined;
     if (targets && !targets.length) return;
     const bonus = new DamageBonus(document, {
         roll: new CONFIG.Dice.DamageRoll(config.bonus, dataUtils.getFormulaData({document, workflow})),
@@ -82,10 +81,11 @@ async function damage({document, workflow}) {
         if (trackLastUse) await documentUtils.setFlag(document, 'chris-premades', 'lastUse', multiSingleTarget.rollID);
         await workflowUtils.rollConfiguredSource(bonus, config, Array.from(bonus.targets ?? []));
     });
-    if (targets) bonus.targets = targets;
+    if (targets) bonus.targets = bonus.targetOptions = targets;
     if (config.useActivityCosts) {
         if (!workflow.hitTargets.count) return;
-        bonus.withDefaultCosts().initialize(workflow);
+        const activity = config.rollActivity ? document.system.activities?.get(config.rollActivity) : undefined;
+        bonus.withDefaultCosts({activity}).initialize(workflow);
         if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'Not enough uses or resources.');
     }
     return bonus;
@@ -137,6 +137,13 @@ export const damageBonusToOneRoll = {
             type: 'formula',
             label: 'CHRISPREMADES.Config.DamageBonus',
             category: 'behavior'
+        },
+        contextual: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Contextual',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ContextualHint'
         },
         bonusDamageType: {
             default: [],

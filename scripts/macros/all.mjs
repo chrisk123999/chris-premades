@@ -69,6 +69,11 @@ export {combatInspiration as 'combat-inspiration', combatInspirationEffect} from
 /*           Cleric           */
 /******************************/
 
+/*           Grave            */
+export {circleOfMortality as 'circle-of-mortality'} from './all/classFeatures/cleric/grave/circleOfMortality.mjs';
+export {keeperOfSouls as 'keeper-of-souls'} from './all/classFeatures/cleric/grave/keeperOfSouls.mjs';
+export {sentinelAtDeathsDoor as 'sentinel-at-deaths-door'} from './all/classFeatures/cleric/grave/sentinelAtDeathsDoor.mjs';
+
 /*            Life            */
 export {blessedHealer as 'blessed-healer'} from './all/classFeatures/cleric/life/blessedHealer.mjs';
 export {preserveLife as 'preserve-life', preserveLife as 'channel-divinity-preserve-life'} from './all/classFeatures/cleric/life/preserveLife.mjs';

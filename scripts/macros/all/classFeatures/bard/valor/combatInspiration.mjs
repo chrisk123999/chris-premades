@@ -10,8 +10,7 @@ async function modifyInspiration({data, document: item, macroClass: {identifier,
     if (!formula) return Logging.addMacroWarning(source, identifier, `Combat Inspiration could not find a formula on the bardic inspiration effect! (activity) ${data.activity.uuid}`);
     data.effectData.name = item.name;
     data.effectData.img = item.img;
-    // TODO this does not work for modern, still prompts on misses
-    // midi needs to check ac bonuses at other reaction phases, currently only uses `reactionattacked`
+    // TODO potentially swap to new CAT AC events
     const flag = `flags.midi-qol.optional.${identifier}.`;
     data.effectData.system.changes.push(
         {key: flag + 'acOnAttack', type: 'custom', value: formula},

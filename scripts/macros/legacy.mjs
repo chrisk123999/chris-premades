@@ -109,6 +109,9 @@ export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatur
 export {arcaneAbjuration as 'channel-divinity-arcane-abjuration'} from './legacy/classFeatures/cleric/arcana/arcaneAbjuration.mjs';
 export {spellBreaker as 'spell-breaker'} from './legacy/classFeatures/cleric/arcana/spellBreaker.mjs';
 
+/*            Grave           */
+export {pathToTheGrave as 'channel-divinity-path-to-the-grave'} from './legacy/classFeatures/cleric/grave/pathToTheGrave.mjs';
+
 /******************************/
 /*           Druid            */
 /******************************/

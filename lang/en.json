@@ -849,6 +849,10 @@
                     "MustDrop": "Failed the save and must drop the heated object!",
                     "Unable": "Unable to Drop"
                 },
+                "KeeperOfSouls": {
+                    "Spell": "This feature can be used with a spell slot of this level or higher.",
+                    "SpellPrompt": "No item uses remaining! A spell slot is required to use {document}."
+                },
                 "MirrorImage": {
                     "Hit": "Attack hit a duplicate and destroyed it.",
                     "Miss": "Attack targeted a duplicate and missed.",
@@ -1225,6 +1229,8 @@
                     "ApplyToHint": "This bonus applies to damage, healing, or both.",
                     "BonusDamageType": "Bonus Damage Type",
                     "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
+                    "Contextual": "Contextual",
+                    "ContextualHint": "This bonus always applies when its conditions are met, but may still prompt for damage type or target.",
                     "Critical": "Allow Critical",
                     "CriticalHint": "Critical hit rules can be applied to this bonus.",
                     "EveryRoll": "Apply to Every Roll",
@@ -2148,6 +2154,7 @@
                 "DanceVirtuoso": "Does this check involve you dancing?",
                 "DeflectAttacks": "Redirect Attack?",
                 "DispellingRecovery": "Identifiers for spells that remove conditions.",
+                "EnhancedNecromancy": "Enhanced Necromancy",
                 "ExtremeResilience": {
                     "Select": "Select a feature to recover a use of."
                 },
@@ -2215,6 +2222,7 @@
                 "PactOfTheChain": {
                     "Attack": "Choose an attack for your familiar to make."
                 },
+                "PathToTheGrave": "End Curse Early",
                 "PowerNap": {
                     "Select": "Select a hit die to recover."
                 },
