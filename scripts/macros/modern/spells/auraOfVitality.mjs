@@ -10,8 +10,8 @@ async function heal(item, token, firstCast, atLevel) {
     await workflowUtils.completeActivityUse(activity, [selection.result], {atLevel, options, consumeUsage: false, consumeResources: false, spellSlot: false});
 }
 async function cast({workflow}) {
-    if (workflow.activity.identifier === 'aura-of-vitality-heal' || !workflow.tokenDocument) return;
-    await heal(workflow.item, workflow.tokenDocument, true, workflow.castData.castLevel);
+    if (workflow.activity.identifier === 'aura-of-vitality-heal' || !workflow.token) return;
+    await heal(workflow.item, workflow.token.document, true, workflow.castData.castLevel);
 }
 async function turnStart({document: effect, token}) {
     const level = effectUtils.getCastData(effect)?.castLevel;
