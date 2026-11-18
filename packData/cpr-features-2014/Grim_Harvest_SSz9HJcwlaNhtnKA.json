@@ -12,9 +12,14 @@
       "rules": "2014"
     },
     "uses": {
-      "max": "",
       "spent": 0,
-      "recovery": []
+      "max": "1",
+      "recovery": [
+        {
+          "period": "turn",
+          "type": "recoverAll"
+        }
+      ]
     },
     "type": {
       "value": "class",
@@ -203,7 +208,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.9"
       }
     }
   },

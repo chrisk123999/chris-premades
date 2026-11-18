@@ -1,9 +1,8 @@
-import {activityUtils, actorUtils, automationUtils, combatUtils, constants, documentUtils, genericUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, constants, documentUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function late({document: item, workflow, token}) {
     if (!workflow.hitTargets.count || !workflow.damageList) return;
     const combatData = tokenUtils.getCombatData(token);
-    const stamps = genericUtils.getProperty(item, 'flags.cat.grimHarvest.stamps') ?? [];
-    if (combatUtils.isStampedThisTurn(stamps, token.id, combatData)) return;
+    if (item.system.hasLimitedUses && !item.system.uses.value) return;
     const excludedCreatureTypes = automationUtils.getConfigValue(item, 'excludedCreatureTypes') ?? [];
     let doHealing = false;
     for (const i of workflow.damageList) {
@@ -25,11 +24,11 @@ async function late({document: item, workflow, token}) {
     if (!feature) return Logging.addMacroWarning('CPR', 'grim-harvest', 'Grim Harvest healing activity missing.', {notify: 'warn'});
     const activityData = activityUtils.getDamageModifiedActivityData(feature, healingAmount);
     await workflowUtils.syntheticActivityDataRoll(activityData, item, [token]);
-    await documentUtils.update(item, {'flags.cat.grimHarvest.stamps': combatUtils.addTurnStamp(stamps, token.id, combatData)});
+    if (item.system.hasLimitedUses && combatData.inCombat) await documentUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
 }
 export const grimHarvest = {
     name: 'Grim Harvest',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

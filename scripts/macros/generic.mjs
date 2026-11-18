@@ -25,7 +25,7 @@ export {attackBonus, checkBonus, saveBonus, skillBonus, toolBonus} from './gener
 /*============================*/
 /*         CONDITIONS         */
 /*============================*/
-export {choiceRemoveCondition, turnEndChoiceRemoveCondition, turnStartChoiceRemoveCondition} from './generic/choiceRemoveCondition.mjs';
+export {choiceRemoveCondition, conditionGainedChoiceRemoveCondition, turnEndChoiceRemoveCondition, turnStartChoiceRemoveCondition} from './generic/choiceRemoveCondition.mjs';
 export {grapple} from './generic/grapple.mjs';
 export {proneOnFail} from './generic/proneOnFail.mjs';
 export {proneOnHit} from './generic/proneOnHit.mjs';
@@ -38,6 +38,7 @@ export {bladeSpell} from './generic/bladeSpell.mjs';
 export {modifyNextDamage} from './generic/modifyNextDamage.mjs';
 export {negateDamageFromEffect} from './generic/negateDamageFromEffect.mjs';
 export {nextHitRider} from './generic/nextHitRider.mjs';
+export {reduceDamageTaken} from './generic/reduceDamageTaken.mjs';
 export {selectDamageType} from './generic/selectDamageType.mjs';
 
 /*============================*/
@@ -47,9 +48,12 @@ export {banish} from './generic/banish.mjs';
 export {breathing} from './generic/breathing.mjs';
 export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
 export {environment, environmentEffect} from './generic/environment.mjs';
+export {featAbility} from './generic/featAbility.mjs';
 export {firearm} from './generic/firearm.mjs';
+export {grappleAttackAdvantage} from './generic/grappleAttackAdvantage.mjs';
 export {hide} from './generic/hide.mjs';
 export {ignoreCover} from './generic/ignoreCover.mjs';
+export {ignoreTraits} from './generic/ignoreTraits.mjs';
 export {immuneAutoSucceed} from './generic/immuneAutoSucceed.mjs';
 export {packTactics} from './generic/packTactics.mjs';
 export {preventDeath} from './generic/preventDeath.mjs';
@@ -94,8 +98,8 @@ export {targetCreatureTypes} from './generic/targetCreatureTypes.mjs';
 /*============================*/
 export {itemRecovery} from './generic/itemRecovery.mjs';
 export {restoreUses} from './generic/restoreUses.mjs';
-export {storedItem} from './generic/storedItem.mjs';
 export {specialItemUse} from './generic/specialItemUse.mjs';
+export {storedItem} from './generic/storedItem.mjs';
 export {useOnDeath} from './generic/useOnDeath.mjs';
 export {useOnEvent} from './generic/useOnEvent.mjs';
 

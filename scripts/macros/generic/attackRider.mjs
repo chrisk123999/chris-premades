@@ -29,6 +29,13 @@ function applies(activity, actor, workflow, config) {
     if (config.identifiers.length && !config.identifiers.includes(documentUtils.getIdentifier(workflow.item))) return false;
     if (config.attackType && !workflowUtils.isAttackType(workflow, config.attackType)) return false;
     if (config.attackAbility.length && !config.attackAbility.includes(workflow.activity.ability)) return false;
+    if (config.weaponTypes.length && !config.weaponTypes.includes(workflow.item.system.type?.value)) return false;
+    if (config.singleTarget && workflow.hitTargets.count !== 1) return false;
+    if (config.criticalOnly && !workflow.isCritical) return false;
+    if (config.damageTypes.length) {
+        const rolled = workflowUtils.getDamageTypes(workflow.damageRolls ?? []);
+        if (!config.damageTypes.some(type => rolled.has(type))) return false;
+    }
     if (config.maxSize) {
         const maxSize = CONFIG.DND5E.actorSizes[config.maxSize]?.numerical;
         if (workflow.hitTargets.documents.some(token => actorUtils.getSize(token.actor) > maxSize)) return false;
@@ -48,12 +55,42 @@ export async function getTaggedRiders(actor, workflow, tag) {
     const extra = await automationUtils.calledEvent('attackRiderLimit', actor, {multiResult: true, canOverlap: true, data: {tag, workflow}});
     return {activities, limit: base + extra.reduce((total, value) => total + (Number(value) || 0), 0)};
 }
+export function riderInput(name, label, riders, selected) {
+    if (!riders.activities.length) return;
+    return {
+        name,
+        label,
+        options: {
+            maxTotal: riders.limit,
+            options: riders.activities.map(activity => ({value: activity.uuid, label: activity.name, image: activity.img})),
+            onchange: ({input}) => selected.splice(0, selected.length, ...riders.activities.filter(activity => input.options.some(option => option.selected && option.value === activity.uuid)))
+        }
+    };
+}
+async function ownerBonus(activity, actor, workflow, config) {
+    const riders = await getTaggedRiders(actor, workflow, config.ownsTag);
+    if (!riders.activities.length) return;
+    const selected = [];
+    const bonus = new DamageBonus(activity, {formula: config.bonus, type: config.bonusDamageType})
+        .withValidation(() => selected.length > 0)
+        .withOnUse(async ({workflow}) => {
+            addRiders(workflow, selected.map(rider => rider.uuid));
+            await workflowUtils.completeActivityUse(activity, [], {consumeUsage: false});
+        })
+        .withInputs([['comboboxMulti', [riderInput(config.ownsTag, activity.name, riders, selected)]]]);
+    if (!config.useActivityCosts) return bonus;
+    bonus.withDefaultCosts();
+    bonus.initialize(workflow);
+    if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'Not enough uses or resources.');
+    return bonus;
+}
 async function damage({document: activity, actor, workflow}) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'attackRider', configKeys);
     if (config.tag || !applies(activity, actor, workflow, config)) return;
+    if (config.ownsTag) return await ownerBonus(activity, actor, workflow, config);
     const typeMatch = config.creatureTypeBonus && config.targetCreatureTypes.length && workflow.hitTargets.documents.every(token => token.actor && config.targetCreatureTypes.includes(actorUtils.typeOrRace(token.actor)));
     const formula = typeMatch ? config.bonus + ' + ' + config.creatureTypeBonus : config.bonus;
-    const bonus = new DamageBonus(activity, {formula, type: config.bonusDamageType})
+    const bonus = new DamageBonus(activity, {formula, type: config.bonusDamageType, optional: !config.automatic})
         .withOnUse(({workflow, bonus}) => {
             addRiders(workflow, [bonus.document.uuid]);
             const scaling = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling') ?? []);
@@ -97,9 +134,15 @@ async function rider({document: activity, actor, token, workflow}) {
  * - `targetCreatureTypes`: creature types that receive `creatureTypeBonus`.
  * - `tag`: tagged options are offered as choices under the bonus that owns the tag.
  * - `limit`: how many tagged options can be chosen for one damage roll.
+ * - `ownsTag`: offer `bonus` once, with this tag's options as choices; at least one must be chosen.
  * - `workflowProperty`: only offer when an earlier bonus has set this workflow property.
  * - `identifiers`: only offer for attacks with items that have one of these identifiers.
  * - `attackType`: only offer for this attack type.
+ * - `weaponTypes`: only offer for attacks with weapons of one of these types.
+ * - `damageTypes`: only offer when the damage roll deals one of these damage types.
+ * - `criticalOnly`: only offer on a critical hit.
+ * - `singleTarget`: only offer when the attack hits exactly one target.
+ * - `automatic`: apply the rider without offering it as a choice.
  * - `maxSize`: only offer when every hit target is this size or smaller.
  * - `requiredItems`: only offer when the actor has an item with one of these identifiers.
  * - `suppressedBy`: do not offer when the actor has an item with one of these identifiers.
@@ -111,7 +154,7 @@ async function rider({document: activity, actor, token, workflow}) {
  */
 export const attackRider = {
     rules: 'all',
-    version: '2.1.7',
+    version: '2.1.9',
     category: 'damage',
     generic: true,
     documents: ['activity'],
@@ -175,6 +218,13 @@ export const attackRider = {
             label: 'CHRISPREMADES.Macros.Generic.AttackRider.Tag',
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.TagHint'
         },
+        ownsTag: {
+            default: '',
+            type: 'text',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnsTag',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnsTagHint'
+        },
         limit: {
             default: '1',
             type: 'formula',
@@ -191,6 +241,43 @@ export const attackRider = {
         },
         identifiers: identifiersConfig,
         attackType: attackTypeConfig,
+        damageTypes: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.DamageType',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
+            get options() { return constants.damageTypeOptions; }
+        },
+        criticalOnly: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.CriticalOnly',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.CriticalOnlyHint'
+        },
+        singleTarget: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SingleTarget',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SingleTargetHint'
+        },
+        automatic: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.Automatic',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.AutomaticHint'
+        },
+        weaponTypes: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.WeaponTypes',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.WeaponTypesHint',
+            get options() { return constants.weaponTypes; }
+        },
         attackAbility: {
             default: [],
             type: 'select-many',

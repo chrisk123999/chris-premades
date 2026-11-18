@@ -1,0 +1,16 @@
+{
+  "name": "Circle of the Sea",
+  "type": "Item",
+  "folder": "bbR7kJffMX4MkL49",
+  "sorting": "a",
+  "_id": "9ZrZTTAV5UhwTP0o",
+  "description": "",
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!9ZrZTTAV5UhwTP0o"
+}

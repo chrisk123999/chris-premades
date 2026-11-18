@@ -4,7 +4,7 @@ export async function addItemRecovery(feature, targetIdentifier, recovery) {
     if (!target) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(feature), 'Target item not found on actor: ' + targetIdentifier);
     const identifier = 'recovery-' + documentUtils.getIdentifier(feature);
     const existing = documentUtils.getEffectByIdentifier(target, identifier);
-    if (existing && foundry.utils.objectsEqual(existing.system.changes[0]?.value, [recovery])) return;
+    if (existing && foundry.utils.equals(existing.system.changes[0]?.value, [recovery])) return;
     if (existing) await documentUtils.deleteDocument(existing);
     const effectData = documentUtils.getBaseEffectData(feature, {
         name: feature.name,

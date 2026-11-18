@@ -1,5 +1,5 @@
 import {actorUtils, automationUtils, DamageBonus, documentUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
-import {addRiders, getTaggedRiders} from '../../../generic/attackRider.mjs';
+import {addRiders, getTaggedRiders, riderInput} from '../../../generic/attackRider.mjs';
 async function bonus({workflow, document}) {
     if (!workflow.item || !workflow.activity) return;
     if (!workflow.hitTargets.count) return;
@@ -53,18 +53,6 @@ async function bonus({workflow, document}) {
 async function missed({workflow, document}) {
     if (!workflow.item || !workflowUtils.isAttackType(workflow, 'attack') || workflow.hitTargets.count || !document.system.uses.value) return;
     Logging.addMacroWarning('CPR', 'sneak-attack', 'Attack missed.');
-}
-function riderInput(name, label, riders, selected) {
-    if (!riders.activities.length) return;
-    return {
-        name,
-        label,
-        options: {
-            maxTotal: riders.limit,
-            options: riders.activities.map(activity => ({value: activity.uuid, label: activity.name, image: activity.img})),
-            onchange: ({input}) => selected.splice(0, selected.length, ...riders.activities.filter(activity => input.options.some(option => option.selected && option.value === activity.uuid)))
-        }
-    };
 }
 async function use({workflow, bonus}) {
     const inCombat = workflow.token.document.inCombat;

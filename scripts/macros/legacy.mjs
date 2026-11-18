@@ -308,6 +308,17 @@ export {bg3Brace as 'bg3-brace', bg3GapingWounds as 'bg3-gaping-wounds', bg3Weap
 export {dmgCleave as 'dmg-cleave'} from './legacy/homebrew/dmgCleave.mjs';
 
 /*============================*/
+/*           FEATS            */
+/*============================*/
+export {agentOfOrder as 'agent-of-order-stasis-strike'} from './legacy/feats/agentOfOrder.mjs';
+export {martialAdept as 'martial-adept', martialAdeptPool as 'martial-adept-pool'} from './legacy/feats/martialAdept.mjs';
+export {cloudStrike as 'strike-of-the-giants-cloud-strike'} from './legacy/feats/cloudStrike.mjs';
+export {graspOfAvarice as 'baleful-scion-grasp-of-avarice'} from './legacy/feats/graspOfAvarice.mjs';
+export {reactiveResistance as 'gift-of-the-chromatic-dragon-reactive-resistance'} from './legacy/feats/reactiveResistance.mjs';
+export {orcishFury as 'orcish-fury-extra-damage'} from './legacy/feats/orcishFury.mjs';
+export {sharpshooter} from './legacy/feats/sharpshooter.mjs';
+
+/*============================*/
 /*           SPELLS           */
 /*============================*/
 export {deckOfIllusions2014 as 'deck-of-illusions'} from './all/equipment/deckOfIllusions.mjs';

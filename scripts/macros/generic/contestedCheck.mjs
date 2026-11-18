@@ -1,12 +1,19 @@
 import {activityUtils, actorUtils, automationUtils, constants, documentUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function targeting({document: activity, token, workflow}) {
-    const sizeCheck = automationUtils.getGenericConfigValue(activity, 'chris-premades', 'contestedCheck', 'sizeCheck');
-    if (!sizeCheck || !token) return;
+    const {sizeCheck, grappledOnly} = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'contestedCheck', ['sizeCheck', 'grappledOnly']);
+    if ((!sizeCheck && !grappledOnly) || !token) return;
+    const grappled = grappledOnly ? tokenUtils.getGrappled(token) : [];
     const invalid = [];
     for (const target of workflow.targets.documents) {
-        if (target.actor && !await tokenUtils.grappleShoveSizeCheck(token, target, sizeCheck, false)) invalid.push(target);
+        if (grappledOnly && !grappled.some(other => other.id === target.id)) invalid.push(target);
+        else if (sizeCheck && target.actor && !await tokenUtils.grappleShoveSizeCheck(token, target, sizeCheck, false)) invalid.push(target);
     }
-    if (invalid.length) await workflowUtils.removeTargets(workflow, invalid);
+    if (!invalid.length) return;
+    if (grappledOnly && invalid.length === workflow.targets.count) {
+        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No target is grappled by the user.', {notify: 'warn'});
+        return true;
+    }
+    await workflowUtils.removeTargets(workflow, invalid);
 }
 async function contest({document: activity, actor, workflow}) {
     const targets = workflow.targets.documents.filter(target => target.actor);
@@ -33,10 +40,11 @@ async function contest({document: activity, actor, workflow}) {
  * - `sourceAbilities`: ability checks the user contests with when no skill is set. The highest modifier is rolled.
  * - `advantageMaxSize`: roll with advantage when every target is this size or smaller.
  * - `sizeCheck`: remove targets that are too large or immune for this grapple or shove.
+ * - `grappledOnly`: remove targets the user is not grappling. Cancels the use when no target is left.
  */
 export const contestedCheck = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.1.9',
     category: 'utility',
     generic: true,
     documents: ['activity'],
@@ -89,6 +97,13 @@ export const contestedCheck = {
                 {value: 'shove-push', label: 'CHRISPREMADES.Macros.Generic.ContestedCheck.ShovePush'},
                 {value: 'shove-prone', label: 'CHRISPREMADES.Macros.Generic.ContestedCheck.ShoveProne'}
             ]
+        },
+        grappledOnly: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.ContestedCheck.GrappledOnly',
+            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.GrappledOnlyHint'
         }
     }
 };

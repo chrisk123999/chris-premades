@@ -1,3 +1,35 @@
+# 2.1.9 Pre-Release:
+## Automated Class Features:
+- 2014 Fighter: Battle Master: Relentless, Superiority Dice and Maneuvers (Ambush, Bait and Switch, Brace, Commander's Strike, Commanding Presence, Disarming Attack, Distracting Strike, Evasive Footwork, Feinting Attack, Goading Attack, Grappling Strike, Lunging Attack, Maneuvering Attack, Menacing Attack, Parry, Precision Attack, Pushing Attack, Quick Toss, Rally, Riposte, Sweeping Attack, Tactical Assessment, Trip Attack).
+- 2024 Fighter: Battle Master: Know Your Enemy, Relentless, Superiority Dice and Maneuvers (Ambush, Bait and Switch, Battle Shout, Commander's Strike, Commanding Presence, Demoralizing Shout, Disarming Attack, Distracting Strike, Evasive Footwork, Feinting Attack, Goading Attack, Heroic Leap, Lunging Attack, Maneuvering Attack, Menacing Attack, Mortal Strike, Parry, Precision Attack, Pushing Attack, Rally, Riposte, Sweeping Attack, Tactical Assessment, Trip Attack, Warding Maneuver).
+- 2024 Druid: Circle of the Sea: Aquatic Affinity, Oceanic Gift, Stormborn and Wrath of the Sea.
+- 2014 Druid: Beast Spells keeps only druid spells and drops spells with a material component. At druid level 20 it keeps material components that have no cost and are not consumed.
+- 2014 Druid: Spell slots spent in Wild Shape carry back to the druid on revert.
+## Automated Feats:
+- 2014: Agent of Order: Stasis Strike, Baleful Scion: Grasp of Avarice, Crusher, Elemental Adept (Acid, Cold, Fire, Lightning, Thunder), Ember of the Fire Giant: Searing Ignition, Fury of the Frost Giant: Frigid Retaliation, Gift of the Chromatic Dragon (Chromatic Infusion, Reactive Resistance), Grappler, Guile of the Cloud Giant: Cloudy Escape, Heavy Armor Master, Keenness of the Stone Giant: Stone Throw, Martial Adept, Orcish Fury: Extra Damage, Piercer, Planar Wanderer (Planar Adaptation, Portal Cracker), Righteous Heritor: Soothe Pain, Savage Attacker, Scion of the Outer Planes (Chaotic Outer Plane, Evil Outer Plane, Good Outer Plane, Lawful Outer Plane, The Outlands), Sharpshooter, Slasher, Strike of the Giants (Cloud Strike, Fire Strike, Frost Strike, Hill Strike, Stone Strike, Storm Strike), Tavern Brawler, Telekinetic: Shove and Vigor of the Hill Giant: Bulwark.
+- 2024: Crusher, Elemental Adept (Acid, Cold, Fire, Lightning, Thunder), Grappler, Heavy Armor Master, I Fought, I Lived, I Hid from the Terror, I Opened the Gate, I Pierced the Illusion, I Survived to Tell the Tale, Piercer, Purple Dragon Rook, Savage Attacker, Sharpshooter, Slasher, Speedy, Spellfire Spark, Tavern Brawler and Telekinetic: Shove.
+## Automated Species Features:
+- 2014: Relentless Endurance.
+## Generic Macros:
+- New `conditionGainedChoiceRemoveCondition` variant of `choiceRemoveCondition` rolls when the creature would gain a listed condition, and stops the condition on a high enough roll.
+- New `featAbility` generic sets an item's save DCs, attacks and cast spells to the ability chosen in its feat's Ability Score Improvement.
+- New `grappleAttackAdvantage` generic grants advantage on attacks against creatures you grapple.
+- New `ignoreTraits` generic makes damage of chosen types ignore resistance, immunity, vulnerability or absorption, or downgrade immunity to resistance.
+- New `reduceDamageTaken` generic rolls an activity to reduce damage taken by its owner or by creatures near it, with filters for magical sources, attacks, attack types, damage types and once per turn. It rolls the first of its activities whose costs can be paid.
+- `attackRider` can limit a rider to chosen damage types, chosen weapon types, critical hits and attacks that hit a single target, and can apply it automatically. A new owner mode offers one bonus that applies chosen riders sharing a tag.
+- `choiceRemoveCondition` variants can require a minimum roll before removing a condition.
+- `contestedCheck` can limit its targets to creatures the user is grappling.
+- `damageBonusToOneRoll` can limit a bonus to once per turn, or to once per turn for each creature, and skip rolls made with its own item. It can include ranged attacks with thrown weapons alongside its attack type. Each used bonus is recorded on the workflow.
+- `grapple` can add a rolled bonus to the grappler's check.
+- `preventDeath` can leave the creature on a formula of hit points, apply healing resistance and immunity to them, and roll a chosen activity when it triggers. It runs a `preventDeath` called event after it keeps the actor alive.
+## Bug Fixes:
+- 2024 Unbreakable Majesty: a failed save turns the hit into a miss and the attack finishes instead of waiting for a damage roll.
+- Dreadful Strikes deals its extra damage to each creature once per turn, and Dread Ambusher once per turn.
+- Exploit Opening keeps the chosen damage roll when manual rolls are on, and rerolls only the weapon's own damage.
+- Reverting Wild Shape on an unlinked token updates that token's uses, conditions and spell slots instead of the base actor.
+- `preventDeath`, Hand of Death and Beacon of Hope read the damaged creature's hit points instead of the attacker's or caster's.
+- Automations run on rolls made right after the world loads.
+
 # 2.1.8 Pre-Release:
 ## Update Notes:
 - Requires CAT 0.1.8.

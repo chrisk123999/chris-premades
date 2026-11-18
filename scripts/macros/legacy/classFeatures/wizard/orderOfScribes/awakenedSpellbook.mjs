@@ -1,11 +1,8 @@
-import {actorUtils, automationUtils, combatUtils, constants, dialogUtils, documentUtils, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 import {rememberCombat} from '../../../../generic/selectDamageType.mjs';
 async function damage({document: item, workflow, token}) {
     if (!workflow.targets.count) return;
-    const oncePerTurn = automationUtils.getConfigValue(item, 'oncePerTurn');
-    const combatData = oncePerTurn ? tokenUtils.getCombatData(token) : undefined;
-    const stamps = genericUtils.getProperty(item, 'flags.cat.awakenedSpellbook.stamps') ?? [];
-    if (oncePerTurn && combatUtils.isStampedThisTurn(stamps, token.id, combatData)) return;
+    if (item.system.hasLimitedUses && !item.system.uses.value) return;
     if (workflow.item.type !== 'spell') {
         if (workflow.item.type !== 'feat') return;
         if (!workflow.item.flags?.cat?.castData?.castLevel) return;
@@ -46,7 +43,7 @@ async function damage({document: item, workflow, token}) {
     const newRolls = [];
     for (const oldRoll of oldDamageRolls) newRolls.push(await rollUtils.getChangedDamageRoll(oldRoll, selection));
     await workflow.setDamageRolls(newRolls);
-    if (oncePerTurn) await documentUtils.update(item, {'flags.cat.awakenedSpellbook.stamps': combatUtils.addTurnStamp(stamps, token.id, combatData)});
+    if (item.system.hasLimitedUses && tokenUtils.getCombatData(token).inCombat) await documentUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
 }
 export const awakenedSpellbook = {
     name: 'Awakened Spellbook: Replace Damage',
@@ -60,12 +57,6 @@ export const awakenedSpellbook = {
         }
     ],
     config: {
-        oncePerTurn: {
-            default: false,
-            type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.Legacy.AwakenedSpellbook.OncePerTurn',
-            category: 'mechanics'
-        },
         extraDamageTypes: {
             default: [],
             type: 'select-many',

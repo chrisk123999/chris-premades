@@ -1,0 +1,16 @@
+{
+  "name": "Battle Master",
+  "type": "Item",
+  "folder": "8ax5XkSTWyxxPBH8",
+  "sorting": "a",
+  "_id": "PMKHxdPybWt7cow4",
+  "description": "",
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!PMKHxdPybWt7cow4"
+}

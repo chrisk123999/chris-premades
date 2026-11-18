@@ -1,0 +1,96 @@
+{
+  "_id": "ccMR58LfI30qI4uI",
+  "name": "Elemental Adept (Lightning)",
+  "type": "feat",
+  "img": "icons/magic/lightning/bolt-strike-blue.webp",
+  "folder": "U5r0w1z7gAOfck2F",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "rules": "2014",
+      "revision": 1,
+      "book": "PHB",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "elemental-adept-lightning",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "ignoreTraits",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "ignoreTraits": {
+            "damageTypes": [
+              "lightning"
+            ]
+          }
+        }
+      },
+      "alternateAttributes": {
+        "RollModifier": [
+          {
+            "value": [
+              "min2"
+            ],
+            "restrictions": {
+              "DamageType": {
+                "value": [
+                  "lightning"
+                ]
+              },
+              "Type": {
+                "value": [
+                  "spell"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!ccMR58LfI30qI4uI"
+}
