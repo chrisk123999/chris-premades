@@ -1121,6 +1121,8 @@
                     "Limit": "Limit",
                     "LimitHint": "How many tagged options can be chosen for one damage roll.",
                     "MaxSizeHint": "Only offer this option when every hit target is this size or smaller.",
+                    "OwnsTag": "Owns Tag",
+                    "OwnsTagHint": "Offer this bonus once, with the options carrying this tag as choices. At least one must be chosen.",
                     "OwnTurn": "Own Turn Only",
                     "OwnTurnHint": "In combat, only offer this option on the attacker's own turn.",
                     "RequiredItems": "Required Items",
@@ -1135,6 +1137,7 @@
                     "TagHint": "Tagged options are offered as choices under the bonus that owns the tag instead of as separate bonuses.",
                     "TargetCreatureTypes": "Target Creature Types",
                     "TargetCreatureTypesHint": "Creature types that receive the Creature Type Bonus.",
+                    "WeaponTypesHint": "Only offer this option for attacks with weapons of one of these types.",
                     "WorkflowProperty": "Workflow Property",
                     "WorkflowPropertyHint": "Only offer this option when an earlier bonus has set this workflow property."
                 },
@@ -1180,6 +1183,8 @@
                     "AutoSingleHint": "Skip the prompt when no more qualifying conditions are present than can be removed.",
                     "Count": "Number of Conditions",
                     "CountHint": "Formula for how many conditions can be removed per use. @scaling reads the activity's consumption scaling.",
+                    "MinimumRoll": "Minimum Roll",
+                    "MinimumRollHint": "Conditions are only removed from the user when the activity's roll total reaches this. 0 removes them on any roll.",
                     "Select": "Select a condition to remove:",
                     "SelectMany": "Select conditions to remove:",
                     "Self": "Self",
@@ -1215,6 +1220,8 @@
                 "ContestedCheck": {
                     "AdvantageMaxSizeHint": "Roll the contest with advantage when every target is this size or smaller.",
                     "Grapple": "Grapple",
+                    "GrappledOnly": "Grappled Targets Only",
+                    "GrappledOnlyHint": "Remove targets the user is not grappling. Cancels the use when no target is left.",
                     "ShoveProne": "Shove (Prone)",
                     "ShovePush": "Shove (Push)",
                     "SizeCheck": "Size Check",
@@ -1259,6 +1266,7 @@
                     "ActivityInfo": "Use Activity Info",
                     "ActivityInfoHint": "Icons, item name, and roll DC will be taken from the parent save activity.",
                     "AutoHint": "Apply grapple without rolling dice.",
+                    "BonusHint": "Rolled and added to the grappler's Athletics check when no DC is given.",
                     "ConditionsHint": "Additional conditions to attach to the grapple effect.",
                     "FlatDCHint": "Overrides activity info if present.",
                     "ReplaceActivity": "Replace Activity",
@@ -1306,9 +1314,15 @@
                     "DeathOnly": "Killed Outright Only",
                     "ExcludeCritical": "Ignore Critical Hits",
                     "ExcludeDamageTypes": "Ignored Damage Types",
+                    "HealingTraits": "Apply Healing Resistance and Immunity",
+                    "HealingTraitsHint": "Healing immunity stops the feature; healing resistance halves the hit points left.",
                     "InstantDeath": "Include Killed Outright",
                     "SaveActivity": "Survival Save Activity",
-                    "SaveActivityHint": "Roll this activity when the feature is used; a failed save stops it from preventing death."
+                    "SaveActivityHint": "Roll this activity when the feature is used; a failed save stops it from preventing death.",
+                    "TargetHP": "Hit Points Left",
+                    "TargetHPHint": "Formula for the hit points the creature is left on. Blank leaves it on 1.",
+                    "UseActivity": "Use Activity",
+                    "UseActivityHint": "Roll this activity when the feature triggers, in place of the item."
                 },
                 "ProficiencyChoice": {
                     "EffectHint": "Effect applied to each target. The {key} placeholder in its change keys becomes the chosen skill or tool path.",
@@ -1338,6 +1352,18 @@
                     "SizesHint": "Limit the new target to these sizes.",
                     "SwapPlaces": "Swap Places",
                     "SwapPlacesHint": "The creature being attacked and the new target swap places."
+                },
+                "ReduceDamageTaken": {
+                    "AlliesOnly": "Allies Only",
+                    "Any": "Any",
+                    "Attack": "Attacks",
+                    "Confirm": "Prompt Before Use",
+                    "Magical": "Spells and Magical Effects",
+                    "RangeHint": "Also protect other creatures within this distance. 0 protects the owner only.",
+                    "RollActivity": "Reduction Activity",
+                    "RollActivityHint": "Rolled when the feature triggers. Its roll total is subtracted from the damage, and its costs are spent.",
+                    "SkipIncapacitated": "Not While Incapacitated",
+                    "Source": "Damage Source"
                 },
                 "ReduceMaxHP": {
                     "LongRestCures": "Long Rest Cures",
@@ -1607,7 +1633,6 @@
                 "AspectBeastBear": "Is this a check to push, pull, lift, or break?",
                 "AwakenedSpellbook": {
                     "ExtraDamageTypes": "Additional Damage Types",
-                    "OncePerTurn": "Once Per Turn",
                     "Select": "Change damage type?"
                 },
                 "BladeFlourish": {
@@ -2041,6 +2066,16 @@
                     "Leather": "Leather",
                     "Burlap": "Burlap"
                 },
+                "Maneuvers": {
+                    "BaitSwitchAC": "Who gains the AC bonus until the start of your next turn?",
+                    "CommanderConfirm": "Use your reaction to make one weapon attack, adding the superiority die to its damage?",
+                    "CommanderSelect": "Choose the creature that strikes.",
+                    "ManeuveringConfirm": "Use your reaction to move up to half your speed without provoking opportunity attacks from the target?",
+                    "ManeuveringSelect": "Choose the creature that moves.",
+                    "Self": "You",
+                    "SweepingSelect": "Choose the creature the attack also hits.",
+                    "Weapon": "Choose the weapon to attack with."
+                },
                 "MastersAmulet": {
                     "Guardian": "Linked Shield Guardian",
                     "MissingBound": "That creature isn't bound to an amulet. Only a shield guardian with Bound can be linked.",
@@ -2095,6 +2130,23 @@
                 }
             },
             "Modern": {
+                "WrathOfTheSea": {
+                    "Ally": "An Ally",
+                    "Both": "Both (Expends Another Use of Wild Shape)",
+                    "Choose": "Who manifests the emanation?",
+                    "Self": "Yourself",
+                    "StormbornDamageTypes": "Stormborn Resistances",
+                    "Target": "Choose a creature in the emanation."
+                },
+                "IOpenedTheGate": {
+                    "Use": "Use Foul Arcana to give {name} +2 to its save DC? You have the Paralyzed condition until the start of your next turn."
+                },
+                "KnowYourEnemy": {
+                    "None": "It has no immunities, resistances or vulnerabilities."
+                },
+                "WardingManeuver": {
+                    "Use": "Use Warding Maneuver to protect {name}?"
+                },
                 "SupremeSneak": {
                     "TurnEnd": "Are you behind Three-Quarters Cover or Total Cover? If not, you stop hiding."
                 },

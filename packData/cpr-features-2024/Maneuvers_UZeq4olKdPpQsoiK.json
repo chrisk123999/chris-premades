@@ -1,0 +1,16 @@
+{
+  "name": "Maneuvers",
+  "type": "Item",
+  "folder": "PMKHxdPybWt7cow4",
+  "sorting": "a",
+  "_id": "UZeq4olKdPpQsoiK",
+  "description": "",
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!UZeq4olKdPpQsoiK"
+}

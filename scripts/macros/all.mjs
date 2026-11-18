@@ -76,6 +76,15 @@ export {wildShape as 'wild-shape', wildShapeChooseForms, wildShapeRevert} from '
 /******************************/
 export {indomitable} from './all/classFeatures/fighter/indomitable.mjs';
 
+/*       Battle Master        */
+export {ambush as 'maneuvers-ambush'} from './all/classFeatures/fighter/battleMaster/ambush.mjs';
+export {baitAndSwitch as 'maneuvers-bait-and-switch'} from './all/classFeatures/fighter/battleMaster/baitAndSwitch.mjs';
+export {commandersStrike as 'maneuvers-commanders-strike'} from './all/classFeatures/fighter/battleMaster/commandersStrike.mjs';
+export {maneuveringAttack as 'maneuvers-maneuvering-attack'} from './all/classFeatures/fighter/battleMaster/maneuveringAttack.mjs';
+export {brace as 'maneuvers-brace', riposte as 'maneuvers-riposte'} from './all/classFeatures/fighter/battleMaster/riposte.mjs';
+export {superiorityDice as 'superiority-dice'} from './all/classFeatures/fighter/battleMaster/superiorityDice.mjs';
+export {sweepingAttack as 'maneuvers-sweeping-attack'} from './all/classFeatures/fighter/battleMaster/sweepingAttack.mjs';
+
 /******************************/
 /*            Monk            */
 /******************************/
@@ -156,6 +165,7 @@ export {heavyArmorMaster as 'heavy-armor-master'} from './all/feats/heavyArmorMa
 export {piercer} from './all/feats/piercer.mjs';
 export {preciseStrike as 'precise-strike'} from './all/feats/preciseStrike.mjs';
 export {savageAttacker as 'savage-attacker'} from './all/feats/savageAttacker.mjs';
+export {tavernBrawler as 'tavern-brawler'} from './all/feats/tavernBrawler.mjs';
 
 /*============================*/
 /*      FIGHTING STYLES       */

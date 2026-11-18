@@ -8,6 +8,7 @@ function getTargetActor(config) {
     return targets.length === 1 ? targets[0].actor : undefined;
 }
 async function preChecks({activity, config, macroClass: {identifier}}) {
+    if (workflowUtils.getWorkflowProperty(config.workflow, 'conditionGained')) return;
     const {affects, requireCondition} = automationUtils.getGenericConfigValues(activity, 'chris-premades', identifier, ['affects', 'requireCondition']);
     if (affects === 'target') {
         const targetActor = getTargetActor(config);
@@ -64,15 +65,29 @@ async function reactionRemove(item, actor, reactionConditions) {
     await removeEffects(actor, effects);
 }
 async function remove({workflow, macroClass: {identifier}}) {
+    if (workflowUtils.getWorkflowProperty(workflow, 'conditionGained')) return;
     const config = automationUtils.getGenericConfigValues(workflow.activity, 'chris-premades', identifier, configKeys);
     const actor = config.affects === 'target' ? workflow.targets.documents[0]?.actor : workflow.actor;
     if (!actor) return;
     const conditions = config.affects === 'target' ? getConditions(workflow.activity, identifier, actor) : workflowUtils.getWorkflowProperty(workflow, 'choiceRemoveCondition')?.map(uuid => fromUuidSync(uuid, {strict: false})).filter(Boolean);
-    if (conditions?.length) await chooseConditions(workflow, actor, conditions, config);
+    const minimumRoll = Number(config.minimumRoll) || 0;
+    const rollMet = config.affects === 'target' || !minimumRoll || rollUtils.getRollsTotal(workflow.utilityRolls ?? []) >= minimumRoll;
+    if (conditions?.length && rollMet) await chooseConditions(workflow, actor, conditions, config);
     await reactionRemove(workflow.item, actor, config.reactionConditions);
 }
 async function rollFeature({document: activity, macroClass: {identifier}}) {
-    const conditions = getConditions(activity, identifier);
+    await rollConditions(activity, getConditions(activity, identifier));
+}
+async function conditionGained({document: activity, effect, macroClass: {identifier}}) {
+    const {conditions, minimumRoll} = automationUtils.getGenericConfigValues(activity, 'chris-premades', identifier, ['conditions', 'minimumRoll']);
+    const statuses = new Set(effect.statuses ?? []);
+    if (!conditions.some(condition => statuses.has(condition) && !activity.actor.statuses.has(condition))) return;
+    const options = {};
+    workflowUtils.setWorkflowProperty(options, 'conditionGained', true);
+    const workflow = await workflowUtils.syntheticActivityRoll(activity, [], {options, userId: queryUtils.firstOwner(activity.actor, true)});
+    return rollUtils.getRollsTotal(workflow?.utilityRolls ?? []) >= (Number(minimumRoll) || 0);
+}
+async function rollConditions(activity, conditions) {
     if (!conditions?.length) return;
     const options = {};
     workflowUtils.setWorkflowProperty(options, 'choiceRemoveCondition', conditions.map(effect => effect.uuid));
@@ -86,6 +101,7 @@ async function rollFeature({document: activity, macroClass: {identifier}}) {
  * - `choiceRemoveCondition`: runs when the activity is used.
  * - `turnEndChoiceRemoveCondition`: also rolls the activity on `actorTurnEnd` when a listed condition is present.
  * - `turnStartChoiceRemoveCondition`: also rolls the activity on `actorTurnStart` when a listed condition is present.
+ * - `conditionGainedChoiceRemoveCondition`: also rolls the activity on `actorDoCreated` when an effect would give a listed condition the creature does not have, and prevents the effect when the roll reaches `minimumRoll`.
  *
  * Config:
  * - `conditions`: conditions that can be removed. The use is cancelled when the creature has none of them.
@@ -96,10 +112,11 @@ async function rollFeature({document: activity, macroClass: {identifier}}) {
  * - `autoSingle`: remove the conditions without a prompt when no more than `count` qualify.
  * - `requireCondition`: cancel the use when the creature has none of the conditions.
  * - `reactionConditions`: conditions the creature can end with its reaction.
+ * - `minimumRoll`: removing from the user needs the activity's roll total to reach this. 0 removes on any roll.
  */
 export const choiceRemoveCondition = {
     rules: 'all',
-    version: '2.1.4',
+    version: '2.1.9',
     category: 'utility',
     generic: true,
     documents: ['activity'],
@@ -169,6 +186,13 @@ export const choiceRemoveCondition = {
             label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.ReactionConditions',
             hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.ReactionConditionsHint',
             get options() { return constants.statusOptions;}
+        },
+        minimumRoll: {
+            default: '0',
+            type: 'text',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.MinimumRoll',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.MinimumRollHint'
         }
     }
 };
@@ -190,6 +214,16 @@ export const turnStartChoiceRemoveCondition = {
             pass: 'actorTurnStart',
             macro: rollFeature,
             priority: 200
+        }
+    ]
+};
+export const conditionGainedChoiceRemoveCondition = {
+    ...choiceRemoveCondition,
+    effect: [
+        {
+            pass: 'actorDoCreated',
+            macro: conditionGained,
+            priority: 50
         }
     ]
 };

@@ -1,4 +1,4 @@
-import {combatUtils, DamageBonus, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+import {DamageBonus, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function isPiercingHit(workflow) {
     return workflow.hitTargets.count && workflowUtils.isAttackType(workflow, 'attack') && workflowUtils.getDamageTypes(workflow.damageRolls ?? []).has('piercing');
 }
@@ -11,11 +11,10 @@ async function critical({document: item, workflow}) {
 async function reroll({document: item, workflow}) {
     if (!isPiercingHit(workflow) || !workflow.token) return;
     const combatData = tokenUtils.getCombatData(workflow.token.document);
-    const stamps = item.flags['chris-premades']?.piercer?.stamps ?? [];
-    if (combatUtils.isStampedThisTurn(stamps, workflow.token.id, combatData)) return;
+    if (item.system.hasLimitedUses && !item.system.uses.value) return;
     const selection = await dialogUtils.selectDie(workflow.damageRolls, item.name, _loc('CHRISPREMADES.Macros.All.Piercer.Reroll'));
     if (!selection?.length) return;
-    if (combatData.inCombat) await documentUtils.setFlag(item, 'chris-premades', 'piercer.stamps', combatUtils.addTurnStamp(stamps, workflow.token.id, combatData));
+    if (item.system.hasLimitedUses && combatData.inCombat) await documentUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});
     await workflowUtils.rerollDamageDice(workflow, selection, item);
 }
 export const piercer = {

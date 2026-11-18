@@ -18,9 +18,14 @@
       "license": ""
     },
     "uses": {
-      "max": "",
       "spent": 0,
-      "recovery": []
+      "max": "1",
+      "recovery": [
+        {
+          "period": "turn",
+          "type": "recoverAll"
+        }
+      ]
     },
     "type": {
       "value": "feat",

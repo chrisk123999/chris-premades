@@ -58,6 +58,12 @@
               "value": "1",
               "target": "",
               "scaling": {}
+            },
+            {
+              "type": "activityUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
             }
           ],
           "scaling": {
@@ -107,8 +113,13 @@
         },
         "uses": {
           "spent": 0,
-          "max": "",
-          "recovery": []
+          "max": "1",
+          "recovery": [
+            {
+              "period": "turn",
+              "type": "recoverAll"
+            }
+          ]
         },
         "useConditionText": "",
         "midiProperties": {
@@ -256,7 +267,6 @@
             "requireHit": true,
             "attackerRange": 60,
             "maxTargets": 1,
-            "oncePerTurn": true,
             "useActivityCosts": true,
             "excludeSelf": true,
             "rollActivity": "dnd5eactivity000"

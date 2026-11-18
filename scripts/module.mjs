@@ -31,9 +31,8 @@ Hooks.once('init', () => {
     }
     for (const [baseItem, uuid] of Object.entries(constants.firearmBaseItems)) CONFIG.DND5E.weaponIds[baseItem] = 'Compendium.' + uuid;
 });
-Hooks.once('catReady', () => {
+Hooks.once('setup', () => {
     const validKeys = [...catConstants.triggerTypes, 'rules', 'generic', 'genericConfig', 'documents'];
-    const ignoredPackIds = [constants.packs.samples.embeddedMacros, constants.packs.misc.automationItems];
     Object.entries(animations).forEach(([identifier, value]) => api.registerAnimation({
         ...value,
         source: 'chris-premades',
@@ -63,6 +62,9 @@ Hooks.once('catReady', () => {
         }
     });
     Object.entries(weaponMasteries).forEach(([mastery, value]) => api.registerMastery({...value, mastery}));
+});
+Hooks.once('catReady', () => {
+    const ignoredPackIds = [constants.packs.samples.embeddedMacros, constants.packs.misc.automationItems];
     api.registerSourceName('chris-premades', 'Cauldron of Plentiful Resources');
     api.registerAutomationModule('chris-premades', {ignoredPackIds, infoFetcherCallback});
     api.postWelcome('chris-premades', {title: 'CHRISPREMADES.Welcome.Title', content: 'CHRISPREMADES.Welcome.Content'});
