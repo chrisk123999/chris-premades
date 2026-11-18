@@ -1,0 +1,697 @@
+{
+  "_id": "9ZHHgaUCwie4roxa",
+  "name": "Vampire's Plaything",
+  "type": "feat",
+  "img": "icons/magic/control/energy-stream-link-large-orange.webp",
+  "folder": "M3jqOSOgp6TElvqU",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "rules": "2024",
+      "revision": 1,
+      "book": "ABoH",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "@prof",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "type": {
+      "value": "feat",
+      "subtype": "origin"
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "activities": {
+      "utilityDecanfNe0": {
+        "_id": "utilityDecanfNe0",
+        "type": "utility",
+        "name": "Decanting",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "activityUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "",
+          "value": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "special": "",
+          "override": false,
+          "units": "inst",
+          "expiry": null
+        },
+        "effects": [
+          {
+            "_id": "aQp3zzOqCv4R0Okd",
+            "level": {}
+          }
+        ],
+        "range": {
+          "value": "",
+          "special": "",
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": false,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "1",
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ]
+        },
+        "useConditionText": "",
+        "midiProperties": {
+          "identifier": "decanting",
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "followUp": false,
+          "followUpTargets": "default",
+          "followUpCondition": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "targetMustBeSeen": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "statuses": []
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "rest": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "useOnEvent",
+                  "rules": "all"
+                }
+              ],
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "vampires-plaything",
+                  "rules": "2024"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "useOnEvent": {
+                  "events": [
+                    "long"
+                  ],
+                  "confirm": true
+                }
+              }
+            }
+          }
+        },
+        "behaviors": [],
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": null,
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "moveDistance": 0,
+          "moveDirection": "away",
+          "moveTiming": "start",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "identifier": "decanting"
+      },
+      "utilityTimRDfNe1": {
+        "_id": "utilityTimRDfNe1",
+        "type": "utility",
+        "name": "Timely Retreat: Dash",
+        "img": "",
+        "sort": 1,
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "value": "@attributes.movement.max",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "timely-retreat-dash",
+          "displayActivityName": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "identifier": "timely-retreat-dash",
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "flags": {
+          "cat": {
+            "genericConfig": {
+              "chris-premades": {
+                "movementAnimation": {
+                  "selectLocationsAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "selectLocations"
+                  },
+                  "moveAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "cunningActionDash"
+                  },
+                  "movementEffect": ""
+                }
+              }
+            },
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "movementAnimation",
+                  "rules": "all"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "utilityTimRDfNe2": {
+        "_id": "utilityTimRDfNe2",
+        "type": "utility",
+        "name": "Timely Retreat: Disengage",
+        "img": "",
+        "sort": 2,
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "a5nwFdkUmvBforC9"
+          }
+        ],
+        "range": {
+          "value": "",
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": false,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "forceAttackDialog": false,
+          "forceDamageDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "timely-retreat-disengage",
+          "displayActivityName": true,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true,
+        "identifier": "timely-retreat-disengage",
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "flags": {
+          "cat": {
+            "genericConfig": {
+              "chris-premades": {
+                "movementAnimation": {
+                  "selectLocationsAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "selectLocations"
+                  },
+                  "moveAnimation": {
+                    "source": "chris-premades",
+                    "identifier": "cunningActionDisengage"
+                  },
+                  "movementEffect": ""
+                }
+              }
+            },
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "movementAnimation",
+                  "rules": "all"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "identifier": "vampires-plaything",
+    "enchant": {},
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "aQp3zzOqCv4R0Okd",
+      "name": "Vampire's Plaything: Decanting",
+      "img": "icons/magic/control/energy-stream-link-large-orange.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "showIcon": 2,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "system": {
+        "changes": [],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [
+            "longRest"
+          ],
+          "disableCondition": ""
+        },
+        "cat": {
+          "identifier": "vampiresPlaythingDecanting"
+        }
+      },
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!9ZHHgaUCwie4roxa.aQp3zzOqCv4R0Okd"
+    },
+    {
+      "name": "Disengage",
+      "origin": null,
+      "duration": {
+        "value": 0,
+        "units": "rounds",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none"
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "identifier": "disengage"
+        }
+      },
+      "img": "icons/skills/movement/feet-spurred-boots-brown.webp",
+      "_id": "a5nwFdkUmvBforC9",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.gambits-premades.oaImmunity",
+            "value": 1,
+            "priority": 20,
+            "type": "override",
+            "phase": "initial",
+            "_id": "Hl0112m1NPcVCL2K",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ]
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!9ZHHgaUCwie4roxa.a5nwFdkUmvBforC9"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!9ZHHgaUCwie4roxa"
+}

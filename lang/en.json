@@ -1612,6 +1612,12 @@
                 }
             },
             "Legacy": {
+                "AberrantDragonmark": {
+                    "SelectHitDie": "Expend a Hit Die to empower your mark?"
+                },
+                "ImbueCard": {
+                    "NoSpells": "You have no spell slots or class spell list to imbue a card from."
+                },
                 "Antagonize": {
                     "Victim": "Choose the creature it attacks.",
                     "Weapon": "Choose the weapon it attacks with."
@@ -2421,6 +2427,12 @@
                     "Select": "Choose up to {maxAmount} creatures to receive a map. At least two are needed.",
                     "TooFew": "Adventurer's Atlas needs at least two creatures."
                 },
+                "Alert": {
+                    "Invalid": "You cannot swap Initiative while Incapacitated or without an Initiative roll.",
+                    "NoAllies": "No willing ally can swap Initiative with you.",
+                    "NotStart": "Initiative can only be swapped right after Initiative is rolled.",
+                    "Select": "Swap Initiative with which ally?"
+                },
                 "AuraOfElementalShielding": {
                     "Ask": "Ask Each Turn",
                     "DamageTypeHint": "A fixed damage type skips the prompt when the item is added and at the start of each turn.",
@@ -2467,6 +2479,10 @@
                     "Higher": "Always Use the Higher Roll",
                     "Keep": "Damage Roll to Keep"
                 },
+                "FateGambler": {
+                    "Check": "Did you succeed on an ability check made against another creature?",
+                    "NoInspiration": "You do not have Heroic Inspiration."
+                },
                 "GuidedPrecision": {
                     "ConcentrationSpells": "Protected Concentration Spells",
                     "TargetEffects": "Marking Effects"
@@ -2512,6 +2528,12 @@
                     "Ask": "Ask Each Time",
                     "Charm": "Twisted Hex",
                     "Target": "Twisted Hex needs another creature as its target."
+                },
+                "VampiresPlaything": {
+                    "Antitoxin": "Antitoxin",
+                    "Missing": "The selected liquid could not be found in any item compendium.",
+                    "PotionOfHealing": "Potion of Healing",
+                    "Select": "Which liquid do you decant?"
                 },
                 "VampiricBite": {
                     "Drain": "Drain",

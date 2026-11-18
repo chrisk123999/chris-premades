@@ -1,4 +1,4 @@
-import {actorUtils, applications, automationUtils, compendiumUtils, constants, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, tokenUtils, uiUtils} from '../../../../proxy.mjs';
+import {actorUtils, applications, automationUtils, compendiumUtils, constants, documentUtils, effectUtils, itemUtils, Logging, rollUtils, tokenUtils, uiUtils} from '../../../../proxy.mjs';
 import {swapArtificerPlan as artificer} from './useOrSwapPlan.mjs';
 // helpers
 async function fetchItems(actor, token, tools, rules) {
@@ -91,17 +91,7 @@ async function store({macroClass: {identifier, source}, workflow}) {
         flags: {cat: {identifier}}
     }]))?.[0];
     if (!parent) return Logging.addMacroWarning(source, identifier, `Spell-Storing Item failed to create parent effect. (self uuid) ${workflow.actor.uuid} (target item) ${item.uuid}`);
-    castActivity.uses.max = uses;
-    castActivity.spell.uuid = spell.uuid;
-    castActivity.midiProperties.automationOnly = false;
-    castActivity.spell.challenge = {
-        attack: workflow.actor.system.attributes.spell.attack,
-        save: workflow.actor.system.attributes.spell.dc,
-        override: true
-    };
-    genericUtils.setProperty(castActivity, 'flags.dnd5e.dependentOn', parent.uuid);
-    await documentUtils.update(item, {[`system.activities.${castActivity._id}`]: castActivity});
-    const created = item.system.activities.get(castActivity._id);
+    const created = await itemUtils.attachCastActivity(item, castActivity, spell, parent, {caster: workflow.actor, updates: {uses: {max: uses}}});
     if (!created) return Logging.addMacroWarning(source, identifier, `Spell-Storing Item failed to create cast activity. (self uuid) ${workflow.actor.uuid} (target item) ${item.uuid}`);
     await documentUtils.setFlag(parent, source, 'createdSpellStoring', created.uuid);
 }
