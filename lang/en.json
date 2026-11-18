@@ -748,6 +748,7 @@
                     "Creature": "Onto Another Creature",
                     "Ground": "Onto Ground",
                     "Reaction": "Use your reaction to hit the surface head or feet first?",
+                    "SelectCreature": "Which creature do you land on?",
                     "Tiny": "One or both creatures are tiny!",
                     "Type": "Type of Fall:",
                     "Water": "Into Water"
@@ -878,9 +879,11 @@
                 "Retaliation": "Spend a reaction to make a counterattack?",
                 "SpellStoringItem": {
                     "NoItems": "You and your allies are not carrying any valid items for spell storing!",
+                    "NoSpells": "No configured spell list is registered and no artificer spells are on your sheet.",
                     "Existing": "Existing Spell-Storing Item",
                     "Prompt": "Choose an item in which to store a spell:",
-                    "Recharge": "{actor} recharges a spell-storing item, <b>{item}</b>, on {target} from {uses} to {max} uses."
+                    "Recharge": "{actor} recharges a spell-storing item, <b>{item}</b>, on {target} from {uses} to {max} uses.",
+                    "SelectSheetSpell": "The configured spell list is not registered. Choose one of your artificer spells to store:"
                 },
                 "SpiritualWeapon": {
                     "Style": "Choose the weapon's style.",
@@ -1412,6 +1415,10 @@
                     "AtCast": "Choose When Cast",
                     "AtCastHint": "Prompt once when the spell is cast and use that damage type for every later damage roll."
                 },
+                "SkillAbility": {
+                    "UseItem": "Use Item",
+                    "UseItemHint": "Use the item when a check switches ability, so the swap shows in chat."
+                },
                 "SpecialItemUse": {
                     "ActivationTypes": "Activation Types",
                     "ActivationTypesHint": "Only activities with one of these activation types can be used. Leave empty to allow any.",
@@ -1419,8 +1426,6 @@
                     "ActivityIdentifierHint": "Use only the activity with this identifier. Leave blank to allow any matching activity.",
                     "ConsumeResources": "Consume Resources",
                     "ConsumeResourcesHint": "Spend the resources the used activity consumes.",
-                    "ConsumeUsage": "Consume Uses",
-                    "ConsumeUsageHint": "Spend the used item or activity's own uses.",
                     "EquippedOnly": "Equipped Items Only",
                     "ExcludeActivityTypes": "Excluded Activity Types",
                     "ExcludeActivityTypesHint": "Activities of these types cannot be used.",
@@ -1550,11 +1555,6 @@
                 },
                 "FeatAbility": {
                     "AbilitiesHint": "Abilities the feat chooses between. The ability picked in the feat's Ability Score Improvement sets save DCs, attack rolls and cast spells. Without a recorded pick, save DCs keep their formula and the others use the highest listed ability."
-                },
-                "IgnoreTraits": {
-                    "DamageTypesHint": "Damage of these types ignores the chosen traits.",
-                    "Traits": "Ignored Traits",
-                    "TraitsHint": "Damage traits ignored by the listed damage types. Downgrade Immunity treats immunity as resistance."
                 },
                 "ProneOnHit": {
                     "MaxSizeHint": "Targets larger than this size are not knocked prone."

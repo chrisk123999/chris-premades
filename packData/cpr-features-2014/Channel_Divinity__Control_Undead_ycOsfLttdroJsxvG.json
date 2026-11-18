@@ -181,7 +181,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.4"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
@@ -224,7 +224,8 @@
       "_id": "ssf3wptVRpgtltRU",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -273,7 +274,8 @@
       "_id": "YsTfnfPBFbQiPDUk",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {

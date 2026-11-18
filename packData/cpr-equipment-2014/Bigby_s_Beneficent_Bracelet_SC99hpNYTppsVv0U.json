@@ -138,7 +138,7 @@
           "level": {},
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false
+          "requireMagic": true
         },
         "useConditionReason": "",
         "otherActivityId": null,
@@ -365,7 +365,7 @@
           "level": {},
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false
+          "requireMagic": true
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -508,7 +508,7 @@
           "level": {},
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false
+          "requireMagic": true
         },
         "useConditionText": "",
         "useConditionReason": "",
@@ -634,7 +634,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "move": [

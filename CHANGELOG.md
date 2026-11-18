@@ -1,4 +1,6 @@
 # 2.1.9 Pre-Release:
+## Update Notes:
+- Requires dnd5e 6.1, midi-qol 14.7, DAE 14.6.10 and CAT 0.1.9.
 ## Automated Class Features:
 - 2014 Fighter: Battle Master: Relentless, Superiority Dice and Maneuvers (Ambush, Bait and Switch, Brace, Commander's Strike, Commanding Presence, Disarming Attack, Distracting Strike, Evasive Footwork, Feinting Attack, Goading Attack, Grappling Strike, Lunging Attack, Maneuvering Attack, Menacing Attack, Parry, Precision Attack, Pushing Attack, Quick Toss, Rally, Riposte, Sweeping Attack, Tactical Assessment, Trip Attack).
 - 2024 Fighter: Battle Master: Know Your Enemy, Relentless, Superiority Dice and Maneuvers (Ambush, Bait and Switch, Battle Shout, Commander's Strike, Commanding Presence, Demoralizing Shout, Disarming Attack, Distracting Strike, Evasive Footwork, Feinting Attack, Goading Attack, Heroic Leap, Lunging Attack, Maneuvering Attack, Menacing Attack, Mortal Strike, Parry, Precision Attack, Pushing Attack, Rally, Riposte, Sweeping Attack, Tactical Assessment, Trip Attack, Warding Maneuver).
@@ -14,8 +16,10 @@
 - New `conditionGainedChoiceRemoveCondition` variant of `choiceRemoveCondition` rolls when the creature would gain a listed condition, and stops the condition on a high enough roll.
 - New `featAbility` generic sets an item's save DCs, attacks and cast spells to the ability chosen in its feat's Ability Score Improvement.
 - New `grappleAttackAdvantage` generic grants advantage on attacks against creatures you grapple.
-- New `ignoreTraits` generic makes damage of chosen types ignore resistance, immunity, vulnerability or absorption, or downgrade immunity to resistance.
 - New `reduceDamageTaken` generic rolls an activity to reduce damage taken by its owner or by creatures near it, with filters for magical sources, attacks, attack types, damage types and once per turn. It rolls the first of its activities whose costs can be paid.
+- New `skillAbility` generic lets listed skill checks use whichever listed ability gives the higher modifier.
+- `teleport` companions are token ids only.
+- `specialItemUse` drops Consume Uses; use Consume Resources.
 - `attackRider` can limit a rider to chosen damage types, chosen weapon types, critical hits and attacks that hit a single target, and can apply it automatically. A new owner mode offers one bonus that applies chosen riders sharing a tag.
 - `choiceRemoveCondition` variants can require a minimum roll before removing a condition.
 - `contestedCheck` can limit its targets to creatures the user is grappling.
@@ -23,7 +27,17 @@
 - `grapple` can add a rolled bonus to the grappler's check.
 - `preventDeath` can leave the creature on a formula of hit points, apply healing resistance and immunity to them, and roll a chosen activity when it triggers. It runs a `preventDeath` called event after it keeps the actor alive.
 ## Bug Fixes:
+- Effects from spells, magic items and magical features are suppressed by antimagic.
+- Magic item activities, except a weapon's attack, are hidden while the item's magic is unavailable.
+- Fall deals falling damage, landing on an adjacent creature when you fall onto one. Slow Fall reduces any falling damage.
+- Stabilize rolls Medicine against a conscious creature's stanchable wound and ends it on a success.
+- 2014 Shocking Grasp and the Thunderbuss rune apply the system's No Reactions effect.
+- Pushes, pulls and animations skip creatures on another scene or level.
+- Spell-Storing Item refunds its use and keeps the stored spell when cancelled or failed. Without a registered spell list it offers your sheet's artificer spells.
 - 2024 Unbreakable Majesty: a failed save turns the hit into a miss and the attack finishes instead of waiting for a damage roll.
+- 2014 Song of Defense works with temporary hit points.
+- 2014 Arcane Ward no longer absorbs healing or temporary hit points.
+- Hidden Ace - Imbue Card no longer stops other macros when you have no spells.
 - Dreadful Strikes deals its extra damage to each creature once per turn, and Dread Ambusher once per turn.
 - Exploit Opening keeps the chosen damage roll when manual rolls are on, and rerolls only the weapon's own damage.
 - Reverting Wild Shape on an unlinked token updates that token's uses, conditions and spell slots instead of the base actor.

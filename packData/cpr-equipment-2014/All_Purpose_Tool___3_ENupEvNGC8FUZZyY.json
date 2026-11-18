@@ -183,7 +183,10 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "transform-tool"
+        "identifier": "transform-tool",
+        "visibility": {
+          "requireMagic": true
+        }
       },
       "TLfbvxGA9TUiGLaB": {
         "type": "utility",
@@ -304,7 +307,10 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "channel-creative-forces"
+        "identifier": "channel-creative-forces",
+        "visibility": {
+          "requireMagic": true
+        }
       }
     },
     "identifier": "all-purpose-tool-3"
@@ -314,7 +320,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

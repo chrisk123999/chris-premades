@@ -2,12 +2,12 @@ import {'wild-shape' as wildShapeAll} from '../../../all.mjs';
 async function damaged({document: effect, workflow}) {
     const ditem = workflow.damageList.find(d => d.isHit && d.actorId === effect.parent.id);
     if (!ditem || ditem.newHP > 0) return;
-    const overflow = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0) - ditem.oldTempHP - ditem.oldHP;
+    const overflow = ditem.calculatedDamages.reduce((acc, i) => acc + i.value, 0) - ditem.oldTempHP - ditem.oldHP;
     await wildShapeAll.revert(effect.parent, overflow);
 }
 export const wildShape = {
     name: wildShapeAll.name,
-    version: '2.1.8',
+    version: '2.1.9',
     rules: '2014',
     notes: 'For convenience in combat, this automation does not work exactly rules as written. Forms must be prepared in direct link profiles on the transform activity, or by rolling the "Learn Form" activity.\n\n' + wildShapeAll.notes,
     scales: [

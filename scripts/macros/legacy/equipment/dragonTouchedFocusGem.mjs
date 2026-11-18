@@ -4,11 +4,11 @@ async function teleport({document: item, workflow}) {
     if (!['spell', 'pact'].includes(workflow.item.system.method) || !workflowUtils.getCastLevel(workflow)) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'gem-teleport');
     if (!activity || !await dialogUtils.confirmUseItem(activity)) return;
-    await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {consumeUsage: false, consumeResources: false});
+    await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {consumeResources: false});
 }
 export const dragonTouchedFocusGem = {
     name: 'Dragon-Touched Focus (Stirring / Gem)',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

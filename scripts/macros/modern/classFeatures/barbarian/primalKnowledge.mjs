@@ -1,4 +1,5 @@
-import {automationUtils, constants, genericUtils, workflowUtils} from '../../../../proxy.mjs';
+import {automationUtils, constants, genericUtils} from '../../../../proxy.mjs';
+import {swapSkillAbility} from '../../../generic/skillAbility.mjs';
 import utils from '../../../../utils.mjs';
 async function modifyRage({document: item, data: {effectData}}) {
     if (!effectData) return;
@@ -13,18 +14,11 @@ async function skill({actor, config, document: rageEffect}) {
     const item = await fromUuid(rageEffect?.flags['chris-premades']?.primalKnowledge);
     if (!item) return;
     const {ability, skills} = automationUtils.getConfigValues(item, ['ability', 'skills']);
-    if (!skills.includes(config.skill)) return;
-    const abil = actor.system.skills[config.skill].ability;
-    if (abil === ability) return;
-    const original = actor.system.abilities[abil];
-    const replacement = actor.system.abilities[ability];
-    if (original.mod + original.check.bonus >= replacement.mod + replacement.check.bonus) return;
-    await workflowUtils.completeItemUse(item);
-    config.ability = ability;
+    await swapSkillAbility({actor, config, item, skills, abilities: [ability]});
 }
 export const primalKnowldege = {
     name: 'Primal Knowledge',
-    version:  '2.0.2',
+    version: '2.1.9',
     rules: '2024',
     called: [
         {

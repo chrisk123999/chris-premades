@@ -309,7 +309,6 @@ export {martialAdept as 'martial-adept', martialAdeptPool as 'martial-adept-pool
 export {cloudStrike as 'strike-of-the-giants-cloud-strike'} from './legacy/feats/cloudStrike.mjs';
 export {cruel} from './legacy/feats/cruel.mjs';
 export {dualWielder as 'dual-wielder'} from './legacy/feats/dualWielder.mjs';
-export {forestSage as 'forest-sage'} from './legacy/feats/forestSage.mjs';
 export {graspOfAvarice as 'baleful-scion-grasp-of-avarice'} from './legacy/feats/graspOfAvarice.mjs';
 export {imbueCard as 'cartomancer-hidden-ace-imbue-card'} from './legacy/feats/imbueCard.mjs';
 export {reactiveResistance as 'gift-of-the-chromatic-dragon-reactive-resistance'} from './legacy/feats/reactiveResistance.mjs';

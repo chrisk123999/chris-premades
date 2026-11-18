@@ -14,7 +14,7 @@ async function early({document, activity, config}) {
     await workflowUtils.completeActivityUse(newItem.system.activities.get(activity.id), [], {
         options: {workflowOptions: {'chris-premades': {createThrall: true}}}
     });
-    await workflowUtils.completeItemUse(document, [], {consumeUsage: false, consumeResources: false});
+    await workflowUtils.completeItemUse(document, [], {consumeResources: false});
     return true;
 }
 async function thrall({document, actor, summon, updates}) {
@@ -75,7 +75,7 @@ async function hexBonus({document, workflow, token}) {
 }
 export const createThrall = {
     name: 'Create Thrall',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {pass: 'actorPreTargeting', macro: early, priority: 50}

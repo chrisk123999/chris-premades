@@ -6,11 +6,11 @@ async function cast({workflow}) {
     if (!concentration || !bolt) return;
     const storming = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.All.CallLightning.Storming', {userId: queryUtils.firstOwner(workflow.actor, true)});
     if (storming) await documentUtils.setFlag(concentration, 'cat', 'castLevelBonus', 1);
-    workflowUtils.syntheticActivityRoll(bolt, [], {atLevel: workflowUtils.getCastLevel(workflow) + (storming ? 1 : 0), consumeUsage: false, consumeResources: false, spellSlot: false});
+    workflowUtils.syntheticActivityRoll(bolt, [], {atLevel: workflowUtils.getCastLevel(workflow) + (storming ? 1 : 0), consumeResources: false, spellSlot: false});
 }
 export const callLightning = {
     name: 'Call Lightning',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {pass: 'itemRollFinished', macro: cast, priority: 50}

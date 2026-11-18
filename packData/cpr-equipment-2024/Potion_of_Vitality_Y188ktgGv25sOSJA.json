@@ -73,6 +73,9 @@
         },
         "midiProperties": {
           "identifier": "potion-of-vitality"
+        },
+        "visibility": {
+          "requireMagic": true
         }
       }
     },
@@ -170,7 +173,8 @@
         }
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -184,7 +188,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.5"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

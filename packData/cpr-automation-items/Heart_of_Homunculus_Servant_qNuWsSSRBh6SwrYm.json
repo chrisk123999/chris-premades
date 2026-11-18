@@ -80,7 +80,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "roll": {
@@ -240,7 +240,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "roll": {
@@ -388,7 +388,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "roll": {
@@ -537,7 +537,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "roll": {
@@ -685,7 +685,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "roll": {
@@ -872,7 +872,8 @@
         }
       },
       "automation": {
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "version": "2.1.9"
       }
     }
   },

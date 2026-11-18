@@ -54,12 +54,12 @@ async function nearbyDied({document, effect, token, actor}) {
     const species = actorUtils.typeOrRace(actor);
     if (species !== 'humanoid') return;
     const sourceToken = actorUtils.getFirstToken(document.actor);
-    await workflowUtils.completeActivityUse(document, [sourceToken], {consumeUsage: false, consumeResources: false});
+    await workflowUtils.completeActivityUse(document, [sourceToken], {consumeResources: false});
     await documentUtils.update(document.item, {'system.uses.spent': document.item.system.uses.spent - 1});
 }
 export const handOfDeath = {
     name: 'Hand of Death',
-    version: '2.0.4',
+    version: '2.1.9',
     rules: '2024',
     item: [
         {

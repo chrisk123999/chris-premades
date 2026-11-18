@@ -262,10 +262,26 @@
         "skill": [
           {
             "source": "chris-premades",
-            "identifier": "forest-sage",
-            "rules": "2014"
+            "identifier": "skillAbility",
+            "rules": "all"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "skillAbility": {
+            "skills": [
+              "ani",
+              "arc",
+              "nat",
+              "sur"
+            ],
+            "abilities": [
+              "int",
+              "wis"
+            ]
+          }
+        }
       }
     }
   },

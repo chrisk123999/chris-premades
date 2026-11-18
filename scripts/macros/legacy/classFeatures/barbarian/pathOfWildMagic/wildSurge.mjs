@@ -57,7 +57,7 @@ async function surge({document: item, data: {effect: rage, token} = {}}) {
     if (result === 'protectiveLights') genericUtils.mergeObject(markerData, {flags: {cat: aura(['ally'], 'protectiveLight1', '10')}});
     const [marker] = await effectUtils.createEffects(item.actor, [markerData], {parentEntity: rage}) ?? [];
     if (!marker) return;
-    const use = (identifier, targets = []) => workflowUtils.syntheticActivityRoll(itemUtils.getActivityByIdentifier(item, identifier), targets, {consumeUsage: false, consumeResources: false, spellSlot: false});
+    const use = (identifier, targets = []) => workflowUtils.syntheticActivityRoll(itemUtils.getActivityByIdentifier(item, identifier), targets, {consumeResources: false, spellSlot: false});
     switch (result) {
         case 'shadowyTendrils':
             await use('shadowy-tendrils', tokenUtils.findNearby(token, 30, {disposition: 'enemy'}));
@@ -93,7 +93,7 @@ async function explode({document}) {
     const spirits = summonUtils.getSummonsBySource(document).filter(summon => summon.token);
     for (const spirit of spirits) {
         const targets = tokenUtils.findNearby(spirit.token, 5);
-        if (activity && targets.length) await workflowUtils.syntheticActivityRoll(activity, targets, {consumeUsage: false, consumeResources: false, spellSlot: false});
+        if (activity && targets.length) await workflowUtils.syntheticActivityRoll(activity, targets, {consumeResources: false, spellSlot: false});
         await summonUtils.deleteSummon(spirit);
     }
 }
@@ -103,7 +103,7 @@ async function retribution({document: effect, workflow}) {
     if (!workflow.hitTargets.documents.some(token => token.actor === actor)) return;
     const item = actorUtils.getItemByIdentifier(actor, 'wild-surge');
     const activity = item ? itemUtils.getActivityByIdentifier(item, 'retribution') : undefined;
-    if (activity) await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {consumeUsage: false, consumeResources: false, spellSlot: false});
+    if (activity) await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {consumeResources: false, spellSlot: false});
 }
 async function flowers({regions, workflow}) {
     const marker = actorUtils.getEffectByIdentifier(workflow.actor, 'wildSurge');
@@ -123,7 +123,7 @@ async function flowers({regions, workflow}) {
 }
 export const wildSurge = {
     name: 'Wild Surge',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: '2014',
     called: [{pass: 'actorRageBegin', macro: surge, priority: 50}],
     combat: [{pass: 'actorEveryTurn', macro: explode, priority: 50}]

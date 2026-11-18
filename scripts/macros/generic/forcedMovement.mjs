@@ -8,7 +8,10 @@ const variants = {
 async function getDistance(activity, config, sourceToken, targetToken, direction, maximum) {
     if (config.maxSize && actorUtils.getSize(targetToken.actor) > CONFIG.DND5E.actorSizes[config.maxSize]?.numerical) return 0;
     let limit = maximum;
-    if (direction < 0 && config.stopAdjacent) limit = Math.min(limit, Math.floor((tokenUtils.getDistance(sourceToken, targetToken) - 4) / 5) * 5);
+    if (direction < 0 && config.stopAdjacent) {
+        const distance = tokenUtils.getDistance(sourceToken, targetToken);
+        if (Number.isFinite(distance)) limit = Math.min(limit, Math.floor((distance - 4) / 5) * 5);
+    }
     if (limit <= 0) return 0;
     if (!config.choose) return limit;
     const steps = Array.from({length: Math.floor(limit / 5)}, (_, index) => (index + 1) * 5);
@@ -86,7 +89,7 @@ function buildConfig(animationIdentifier) {
 }
 const base = {
     rules: 'all',
-    version: '2.1.4',
+    version: '2.1.9',
     category: 'utility',
     generic: true,
     documents: ['activity'],

@@ -331,7 +331,8 @@
       "img": "icons/magic/air/wind-vortex-swirl-blue.webp",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -393,7 +394,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       },
       "macros": {
         "summon": [

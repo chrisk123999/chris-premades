@@ -6,13 +6,7 @@ async function pickCompanions({document, workflow}) {
     if (config.excludeUser && workflow.targets.has(workflow.token)) await workflowUtils.removeTargets(workflow, [workflow.tokenDocument]);
     const max = Number(config.companions) || 0;
     if (!max) return;
-    let companions = workflowUtils.getWorkflowProperty(workflow, 'chris-premades.teleportCompanions')?.map(t => {
-        if (typeof t === 'string') {
-            const token = workflow.token.scene.tokens.get(t);
-            if (token) return token;
-        }
-        if (t instanceof TokenDocument.implementation) return t;
-    }).filter(Boolean);
+    let companions = getCompanions(workflow);
     if (!companions?.length || companions.length > max) {
         const casterSize = actorUtils.getSize(workflow.actor);
         const nearby = tokenUtils.findNearby(workflow.token.document, config.companionRange, {disposition: 'ally'}).filter(token => !config.companionMaxSize || actorUtils.getSize(token.actor) <= casterSize);
@@ -30,6 +24,9 @@ async function pickCompanions({document, workflow}) {
     if (!companions.length) return;
     workflowUtils.setWorkflowProperty(workflow, 'chris-premades.teleportCompanions', companions.map(token => token.id));
     await workflowUtils.removeTargets(workflow, companions);
+}
+function getCompanions(workflow) {
+    return workflowUtils.getWorkflowProperty(workflow, 'chris-premades.teleportCompanions')?.map(id => workflow.token.scene.tokens.get(id)).filter(Boolean);
 }
 function getSpacesNear(token, target, range) {
     const {size} = token.parent.grid;
@@ -68,7 +65,7 @@ async function use({document, workflow}) {
         return;
     }
     if (config.targets !== 'failedSaves') {
-        const followers = workflowUtils.getWorkflowProperty(workflow, 'chris-premades.teleportCompanions')?.map(t => typeof t === 'string' ? workflow.token.scene.tokens.get(t) : t).filter(Boolean) ?? [];
+        const followers = getCompanions(workflow) ?? [];
         const token = workflow.token.document;
         const current = token.getCenterPoint();
         const allowedPoints = config.visitedThisTurn ? token.movementHistory.map(point => token.getCenterPoint(point)).filter(point => point.x !== current.x || point.y !== current.y) : undefined;
@@ -83,7 +80,7 @@ async function use({document, workflow}) {
 /**
  * Teleports the user, or each target that failed its save, once the roll finishes.
  * Bound on an activity. Fires on `activityRollFinished`.
- * Provide preselected targets by setting the workflow property `chris-premades.teleportCompanions` to an array of token ids or token documents.
+ * Provide preselected targets by setting the workflow property `chris-premades.teleportCompanions` to an array of token ids.
  *
  * Config:
  * - `targets`: teleport the user, each target that failed its save, or the user to a space near one of the targets. The user picks every destination. `swap` trades places with the first target that failed its save.
@@ -98,7 +95,7 @@ async function use({document, workflow}) {
  */
 export const teleport = {
     rules: 'all',
-    version: '2.1.7',
+    version: '2.1.9',
     category: 'movement',
     generic: true,
     documents: ['activity'],

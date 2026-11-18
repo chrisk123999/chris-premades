@@ -10,13 +10,13 @@ async function damage({document, workflow}) {
     if (!workflow.targets.count || !workflow.damageRolls?.length) return;
     const damageTypes = automationUtils.getConfigValue(document, 'damageTypes');
     if (!damageTypes.length) return;
-    const damageType = await dialogUtils.selectDamageType(damageTypes, workflow.item.name, 'CHRISPREMADES.Generic.SelectDamageType', rememberCombat(workflow.token, document)) || damageTypes[0];
+    const damageType = await dialogUtils.selectDamageType(damageTypes, workflow.item.name, 'CHRISPREMADES.Generic.SelectDamageType', rememberCombat(workflow.token?.document, document)) || damageTypes[0];
     const damageRolls = await Promise.all(workflow.damageRolls.map(async roll => await rollUtils.getChangedDamageRoll(roll, damageType)));
     await workflow.setDamageRolls(damageRolls);
 }
 export const heartOfTheStorm = {
     name: 'Heart of the Storm',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'actorPreambleComplete', macro: early, priority: 50},

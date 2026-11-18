@@ -478,7 +478,7 @@
           "message": null
         },
         "conditions": "{}",
-        "magical": false,
+        "magical": true,
         "rider": {
           "statuses": []
         }

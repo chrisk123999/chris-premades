@@ -16,7 +16,7 @@ async function use({document, workflow}) {
     const activity = activities.length === 1 ? activities[0] : await dialogUtils.selectDocumentDialog(document.item.name, 'CHRISPREMADES.Macros.Generic.SpecialItemUse.SelectActivity', activities);
     if (!activity) return;
     const targets = workflow.targets.documents;
-    await workflowUtils.specialItemUse(item, targets, document.item, {activity, consumeUsage: config.consumeUsage, consumeResources: config.consumeResources});
+    await workflowUtils.specialItemUse(item, targets, document.item, {activity, consumeResources: config.consumeResources});
 }
 /**
  * Uses an activity from another of the user's items once the roll finishes.
@@ -31,12 +31,11 @@ async function use({document, workflow}) {
  * - `activityIdentifier`: use only the activity with this identifier. Leave blank to allow any matching activity.
  * - `activationTypes`: only activities with one of these activation types can be used. Leave empty to allow any.
  * - `excludeActivityTypes`: activities of these types cannot be used.
- * - `consumeUsage`: spend the used item or activity's own uses.
  * - `consumeResources`: spend the resources the used activity consumes.
  */
 export const specialItemUse = {
     rules: 'all',
-    version: '2.1.8',
+    version: '2.1.9',
     category: 'utility',
     generic: true,
     documents: ['activity'],
@@ -91,13 +90,6 @@ export const specialItemUse = {
             label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ExcludeActivityTypes',
             hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ExcludeActivityTypesHint',
             get options() { return constants.activityTypeOptions; }
-        },
-        consumeUsage: {
-            default: false,
-            type: 'checkbox',
-            category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ConsumeUsage',
-            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ConsumeUsageHint'
         },
         consumeResources: {
             default: false,

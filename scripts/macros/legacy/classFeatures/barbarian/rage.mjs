@@ -7,7 +7,7 @@ async function rageEnd({workflow}) {
     if (rageEffect) await documentUtils.deleteDocument(rageEffect);
 }
 async function attack({document: rageEffect, workflow}) {
-    const combatData = tokenUtils.getCombatData(workflow.token);
+    const combatData = tokenUtils.getCombatData(workflow.token.document);
     if (!combatData.inCombat) return;
     if (!workflow.targets.count || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (!workflow.targets.documents.some(t => t.disposition !== workflow.tokenDocument.disposition)) return;

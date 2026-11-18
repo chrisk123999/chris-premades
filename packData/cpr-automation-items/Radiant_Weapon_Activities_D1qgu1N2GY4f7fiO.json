@@ -394,7 +394,8 @@
             "phase": "final",
             "priority": null
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -450,7 +451,8 @@
       "_id": "Fhbctu4SvDdFhY0V",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -504,7 +506,8 @@
   "flags": {
     "cat": {
       "automation": {
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "version": "2.1.9"
       }
     }
   },

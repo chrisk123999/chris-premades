@@ -6,14 +6,14 @@ async function betBig(item, token) {
     if (item.actor.system.attributes.inspiration) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'bet-big');
     if (!activity) return Logging.addMacroWarning('CPR', 'fate-gambler', 'Missing the bet-big activity.', {notify: 'warn'});
-    await workflowUtils.completeActivityUse(activity, token ? [token.document ?? token] : []);
+    await workflowUtils.completeActivityUse(activity, token ? [token] : []);
 }
 async function rollFinished({document: item, workflow}) {
     if (workflow.actor.system.attributes.inspiration) return;
     const killed = workflow.damageList?.some(entry => entry.oldHP > 0 && entry.newHP === 0 && hasCR(fromUuidSync(entry.actorUuid)));
     const saved = workflow.saveResults?.length && (workflow.failedSaves?.documents ?? []).some(token => hasCR(token.actor));
     if (!killed && !saved) return;
-    await betBig(item, workflow.token);
+    await betBig(item, workflow.token?.document);
 }
 async function check({document: item, actor, roll, token}) {
     if (actor.system.attributes.inspiration || roll.isFailure) return;

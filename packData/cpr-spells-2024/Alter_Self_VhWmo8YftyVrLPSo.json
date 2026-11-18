@@ -525,7 +525,8 @@
             "value": "@attributes.movement.walk",
             "priority": 5
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {
         "dae": {
@@ -567,7 +568,8 @@
       "folder": null,
       "sort": 0,
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "flags": {
         "dae": {
@@ -646,7 +648,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

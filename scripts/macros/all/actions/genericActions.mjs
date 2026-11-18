@@ -61,7 +61,7 @@ async function use({document: item, workflow}) {
     });
     itemData.effects.forEach(effect => genericUtils.setProperty(effect, 'flags.cat.config', {...effect.flags?.cat?.config, ...item.flags.cat?.config}));
     Object.values(itemData.system.activities).forEach(activity => activity.consumption.targets = activity.consumption.targets.filter(target => target.type !== 'itemUses' || target.target));
-    const actionWorkflow = await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [], {consumeUsage: false, userId: game.user.id});
+    const actionWorkflow = await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [], {userId: game.user.id});
     if (isHealingSurge && actionWorkflow) await documentUtils.setFlag(item, 'chris-premades', 'healingSurgeUsed', true);
 }
 async function rest({document: item}) {
@@ -131,7 +131,7 @@ export const genericActionsHooks = {
 };
 export const genericActions = {
     name: 'Generic Actions',
-    version: '2.1.8',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

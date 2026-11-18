@@ -747,7 +747,8 @@
         "units": "seconds"
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "flags": {
         "dae": {
@@ -780,7 +781,8 @@
         "units": "seconds"
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "flags": {
         "dae": {
@@ -813,7 +815,8 @@
         "units": "seconds"
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "flags": {
         "dae": {
@@ -862,7 +865,8 @@
             "value": "turn=start,rollType=save,saveAbility=wis,saveDC=$activity.dc,saveMagic=true,saveCount=0+,rollMode=public,label=Bestow Curse: Dodge on Turn",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {
         "dae": {
@@ -895,7 +899,8 @@
         "units": "seconds"
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "flags": {
         "dae": {
@@ -928,7 +933,8 @@
         "units": "seconds"
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "flags": {
         "dae": {

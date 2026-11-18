@@ -2,7 +2,7 @@ import {actorUtils, automationUtils, combatUtils, dialogUtils, itemUtils, Loggin
 async function used({actor, data: {workflow, targetToken}}) {
     const item = actorUtils.getItemByIdentifier(actor, 'wails-from-the-grave');
     const activity = item ? itemUtils.getActivityByIdentifier(item, 'damage') : undefined;
-    if (!combatUtils.isOwnTurn(workflow.token) || !targetToken?.object) return;
+    if (!combatUtils.isOwnTurn(workflow.token.document) || !targetToken?.object) return;
     if (!activity) return Logging.addMacroWarning('CPR', 'wails-from-the-grave', 'Damage activity missing from item.', {notify: 'warn'});
     const tokensOfTheDeparted = actorUtils.getItemByIdentifier(actor, 'tokens-of-the-departed');
     const tokenActivity = tokensOfTheDeparted?.system.uses.value ? itemUtils.getActivityByIdentifier(tokensOfTheDeparted, 'use-wail') : undefined;
@@ -20,11 +20,11 @@ async function used({actor, data: {workflow, targetToken}}) {
     }
     const extra = await automationUtils.calledEvent('wailsFromTheGraveTargets', actor, {multiResult: true, canOverlap: true, data: {workflow, targetToken}});
     if (spendToken) await workflowUtils.syntheticActivityRoll(tokenActivity, []);
-    await workflowUtils.syntheticActivityRoll(activity, [selection.result, ...extra], {consumeUsage: !spendToken, consumeResources: !spendToken});
+    await workflowUtils.syntheticActivityRoll(activity, [selection.result, ...extra], {consumeResources: !spendToken});
 }
 export const wailsFromTheGrave = {
     name: 'Wails from the Grave',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2014',
     called: [
         {

@@ -267,7 +267,8 @@
             "value": "1",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {
         "cat": {
@@ -313,7 +314,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

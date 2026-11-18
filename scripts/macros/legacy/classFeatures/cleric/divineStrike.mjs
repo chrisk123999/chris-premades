@@ -22,12 +22,12 @@ async function damage({document: activity, workflow}) {
         .withOnUse(async ({workflow}) => {
             if (playAnimation) animation.animation.macros.play(workflow);
             const combat = !!workflow.token.document.combatant;
-            await workflowUtils.syntheticActivityRoll(activity, [], {consumeResources: combat, consumeUsage: combat});
+            await workflowUtils.syntheticActivityRoll(activity, [], {consumeResources: combat});
         });
 }
 export const divineStrike = {
     name: 'Divine Strike',
-    version: '2.0.3',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

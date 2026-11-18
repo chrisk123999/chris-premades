@@ -3,7 +3,7 @@ async function damage({document, workflow, targetToken, ditem}) {
     if (!workflow.token || !targetToken.object) return;
     const sourceToken = workflow.token.document;
     const gap = tokenUtils.getDistance(sourceToken, targetToken);
-    const distance = workflow.failedSaves.has(targetToken) ? Math.min(10, Math.floor((gap - 4) / 5) * 5) : 0;
+    const distance = workflow.failedSaves.has(targetToken) && Number.isFinite(gap) ? Math.min(10, Math.floor((gap - 4) / 5) * 5) : 0;
     const move = distance > 0 ? () => tokenUtils.slideToken(targetToken, {sourceToken, distance: -distance}) : undefined;
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     if (animation?.macros?.play) await animation.macros.play(sourceToken, targetToken, {...options, move});
@@ -13,7 +13,7 @@ async function damage({document, workflow, targetToken, ditem}) {
 }
 export const lightningLure = {
     name: 'Lightning Lure',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

@@ -126,7 +126,7 @@
           "level": {},
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false
+          "requireMagic": true
         },
         "identifier": "light"
       },
@@ -251,7 +251,7 @@
           "level": {},
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false
+          "requireMagic": true
         },
         "identifier": "invisibility"
       }
@@ -355,7 +355,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -396,7 +397,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -410,7 +412,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       }
     }
   },

@@ -40,7 +40,7 @@ async function rider({document: effect, workflow}) {
     if (endFirst) await documentUtils.deleteDocument(concentration ?? effect);
     let riderWorkflow;
     if (activity && targets.length) {
-        riderWorkflow = await workflowUtils.syntheticActivityRoll(activity, targets, {config: {scaling, concentration: {begin: false}}, consumeUsage: false, consumeResources: false, spellSlot: false});
+        riderWorkflow = await workflowUtils.syntheticActivityRoll(activity, targets, {config: {scaling, concentration: {begin: false}}, consumeResources: false, spellSlot: false});
     }
     if (endFirst) return;
     if (config.endSpell === 'onSave' && !riderWorkflow?.failedSaves?.count) {
@@ -68,7 +68,7 @@ async function rider({document: effect, workflow}) {
  */
 export const nextHitRider = {
     rules: 'all',
-    version: '2.0.4',
+    version: '2.1.9',
     category: 'damage',
     generic: true,
     documents: ['activeeffect'],

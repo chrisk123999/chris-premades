@@ -1,11 +1,11 @@
-import {actorUtils} from '../../../proxy.mjs';
+import {effectUtils} from '../../../proxy.mjs';
 async function rune({workflow}) {
     if (workflow.activity.identifier !== 'thunderbuss-rune') return;
-    await Promise.all(workflow.failedSaves.documents.map(token => actorUtils.setReactionUsed(token.actor)));
+    await Promise.all(workflow.failedSaves.documents.map(token => effectUtils.applyNoReactions(token.actor, {origin: workflow.item.uuid, specialDuration: ['turnStart']})));
 }
 export const thunderbuss = {
     name: 'Thunderbuss',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

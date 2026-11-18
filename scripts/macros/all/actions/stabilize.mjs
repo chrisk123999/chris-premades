@@ -1,8 +1,28 @@
 import {automationUtils, documentUtils, effectUtils, rollUtils} from '../../../proxy.mjs';
+function getStanchDC(actor) {
+    const dcs = actor.effects.filter(effect => effect.active).flatMap(effect => {
+        const raw = effect.flags['midi-qol']?.stanch ?? effect.system.changes?.find(change => change.key === 'flags.midi-qol.stanch')?.value;
+        if (raw === undefined || raw === null || raw === '' || raw === false) return [];
+        let fields = raw;
+        if (typeof raw !== 'object') fields = /^\s*\d+\s*$/.test(String(raw)) ? {dc: raw} : Object.fromEntries(String(raw).split(',').map(part => part.split('=').map(text => text.trim())));
+        if ((fields.skill || 'med') !== 'med') return [];
+        return [Number(fields.dc) || 10];
+    });
+    return dcs.length ? Math.min(...dcs) : undefined;
+}
 async function use({document: item, workflow}) {
     if (workflow.activity.identifier !== 'stabilize') return;
-    const actor = workflow.targets.documents[0]?.actor;
-    if (!actor || actor.system.attributes.hp.value > 0 || actor.statuses.has('dead') || actor.statuses.has('stable')) return;
+    const token = workflow.targets.documents[0];
+    const actor = token?.actor;
+    if (!actor || actor.statuses.has('dead')) return;
+    if (actor.system.attributes.hp.value > 0) {
+        const dc = getStanchDC(actor);
+        if (dc === undefined) return;
+        if (!game.user.targets.has(token.object)) canvas.tokens.setTargets([token.id]);
+        await workflow.actor.rollSkill({skill: 'med', target: dc});
+        return;
+    }
+    if (actor.statuses.has('stable')) return;
     if (automationUtils.getConfigValue(item, 'check') !== false) {
         const [roll] = await workflow.actor.rollSkill({skill: 'med', target: 10}) ?? [];
         if (!roll || roll.total < 10) return;
@@ -31,7 +51,7 @@ async function wake({document: effect}) {
 }
 export const stabilize = {
     name: 'Stabilize',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

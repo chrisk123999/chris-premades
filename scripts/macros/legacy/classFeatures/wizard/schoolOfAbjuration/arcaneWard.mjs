@@ -2,12 +2,11 @@ import {automationUtils, constants, dialogUtils, documentUtils, itemUtils, Loggi
 export async function arcaneWardHelper({document: item, ditem, projectedWard, token, targetToken}) {
     if (!ditem.isHit) return;
     const temp = ditem.oldTempHP * automationUtils.getConfigValue(item, 'tempFirst');
-    const hpDamage = ditem.damageDetail.reduce((acc, i) => acc + (i.properties.has('heal') ? 0 : i.value), 0) - temp;
+    const hpDamage = ditem.totalDamage - temp;
     if (hpDamage <= 0) return;
     const uses = item.system.uses.value;
     if (!uses) return;
     const absorbed = Math.min(hpDamage, uses);
-    const remainingDamage = hpDamage - absorbed;
     if (projectedWard) {
         if (targetToken.disposition !== token.disposition) return;
         if (!targetToken.object || !tokenUtils.isWithinDistance(token, targetToken, automationUtils.getConfigValue(projectedWard, 'range'))) return;
@@ -16,7 +15,7 @@ export async function arcaneWardHelper({document: item, ditem, projectedWard, to
         await workflowUtils.completeItemUse(projectedWard);
     }
     await documentUtils.update(item, {'system.uses.spent': item.system.uses.spent + absorbed});
-    workflowUtils.setDamageItemDamage(ditem, remainingDamage + temp, false);
+    workflowUtils.modifyDamageAppliedFlat(ditem, -absorbed);
 }
 async function late({document, workflow}) {
     if (workflow.item.type !== 'spell') return;
@@ -41,7 +40,7 @@ async function longRest({document}) {
 }
 export const arcaneWard = {
     name: 'Arcane Ward',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

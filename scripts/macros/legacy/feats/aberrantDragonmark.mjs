@@ -17,7 +17,7 @@ async function surge({document: item, workflow}) {
     }
     if (!target) return;
     const activityData = activityUtils.getDamageModifiedActivityData(odd ? activity : healing, String(total));
-    await workflowUtils.syntheticActivityDataRoll(activityData, item, [target], {consumeUsage: false, consumeResources: false, spellSlot: false});
+    await workflowUtils.syntheticActivityDataRoll(activityData, item, [target], {consumeResources: false, spellSlot: false});
 }
 export const aberrantDragonmark = {
     name: 'Aberrant Dragonmark',

@@ -23,7 +23,7 @@ export function addRiders(workflow, uuids) {
 function applies(activity, actor, workflow, config) {
     if (!workflow.hitTargets.count || workflow.activity?.uuid === activity.uuid) return false;
     if (!itemUtils.getEquipmentState(activity.item)) return false;
-    if (config.ownTurn && !combatUtils.isOwnTurn(workflow.token)) return false;
+    if (config.ownTurn && !combatUtils.isOwnTurn(workflow.token.document)) return false;
     if (activity.item.type === 'spell' && !itemUtils.canCast(activity.item)) return false;
     if (config.workflowProperty && !workflowUtils.getWorkflowProperty(workflow, config.workflowProperty)) return false;
     if (config.identifiers.length && !config.identifiers.includes(documentUtils.getIdentifier(workflow.item))) return false;
@@ -75,7 +75,7 @@ async function ownerBonus(activity, actor, workflow, config) {
         .withValidation(() => selected.length > 0)
         .withOnUse(async ({workflow}) => {
             addRiders(workflow, selected.map(rider => rider.uuid));
-            await workflowUtils.completeActivityUse(activity, [], {consumeUsage: false});
+            await workflowUtils.completeActivityUse(activity, []);
         })
         .withInputs([['comboboxMulti', [riderInput(config.ownsTag, activity.name, riders, selected)]]]);
     if (!config.useActivityCosts) return bonus;
@@ -111,7 +111,7 @@ async function rider({document: activity, actor, token, workflow}) {
     const hitTargets = workflow.hitTargets.documents;
     const targets = selfOnly ? (token ? [token] : []) : withNearby(hitTargets, automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'riderNearbyRange'));
     const scaling = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling') ?? [])[activity.uuid] ?? 0;
-    const options = {consumeUsage: false, config: {scaling}};
+    const options = {config: {scaling}};
     if (activity.item.system.linkedActivity) options.config.cause = {activity: activity.item.getFlag('dnd5e', 'cachedFor'), resources: true};
     else if (scaling && activity.isSpell) options.atLevel = activity.item.system.level + scaling;
     playRiderAnimation(activity, 'attackRider', hitTargets, workflow.token?.document);

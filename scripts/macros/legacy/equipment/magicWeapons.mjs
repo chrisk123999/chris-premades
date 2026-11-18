@@ -10,7 +10,7 @@ async function bloodSpearKill({workflow}) {
 }
 async function crystalHeal({document: item, workflow}) {
     if (workflow.activity.type !== 'attack' || workflow.hitTargets.count !== 1 || !item.system.uses.value) return;
-    const radiant = workflow.damageList?.[0]?.damageDetail?.filter(detail => detail.type === 'radiant').reduce((total, detail) => total + detail.value, 0);
+    const radiant = workflow.damageList?.[0]?.calculatedDamages?.filter(detail => detail.type === 'radiant').reduce((total, detail) => total + detail.value, 0);
     const heal = itemUtils.getActivityByIdentifier(item, 'crystal-blade-heal');
     if (!radiant || !heal || !await dialogUtils.confirmUseItem(heal)) return;
     await workflowUtils.syntheticActivityDataRoll(activityUtils.getDamageModifiedActivityData(heal, String(radiant)), item, [workflow.token.document]);
@@ -29,7 +29,7 @@ async function dragonsWrathBurst({document: item, workflow}) {
     const target = workflow.hitTargets.documents[0];
     if (!target.object) return;
     const nearby = tokenUtils.findNearby(target, 5, {disposition: 'ally'}).filter(token => token.actor);
-    if (burst && nearby.length) await workflowUtils.syntheticActivityRoll(burst, nearby, {consumeUsage: false, consumeResources: false});
+    if (burst && nearby.length) await workflowUtils.syntheticActivityRoll(burst, nearby, {consumeResources: false});
 }
 async function grovelthrashDamage({document: item, workflow}) {
     if (workflow.activity.type !== 'attack' || workflow.hitTargets.count !== 1) return;
@@ -42,10 +42,10 @@ async function grovelthrashDamage({document: item, workflow}) {
 async function grovelthrashReaction({document: item, targetToken: token, workflow, ditem}) {
     if (!item.system.uses.value || actorUtils.hasUsedReaction(item.actor) || !ditem.newHP || !workflow.token || !token.object) return;
     if (!tokenUtils.isWithinDistance(token, workflow.token.document, 30) || !tokenUtils.canSee(token, workflow.token.document)) return;
-    const dealt = ditem.damageDetail.reduce((total, detail) => total + detail.value, 0);
+    const dealt = ditem.calculatedDamages.reduce((total, detail) => total + detail.value, 0);
     const reaction = itemUtils.getActivityByIdentifier(item, 'grovelthrash-reaction');
     if (!dealt || !reaction || !await dialogUtils.confirmUseItem(item, {userId: queryUtils.firstOwner(item.actor, true)})) return;
-    await workflowUtils.syntheticActivityDataRoll(activityUtils.getDamageModifiedActivityData(reaction, String(dealt)), item, [workflow.token.document], {consumeUsage: true, consumeResources: true});
+    await workflowUtils.syntheticActivityDataRoll(activityUtils.getDamageModifiedActivityData(reaction, String(dealt)), item, [workflow.token.document], {consumeResources: true});
     await actorUtils.setReactionUsed(item.actor);
 }
 function ruinsWakeReaction({document: item, workflow}) {
@@ -57,7 +57,7 @@ async function ruinsWakeKill({document: item, workflow}) {
     const entry = slewTarget(workflow);
     const heal = itemUtils.getActivityByIdentifier(item, 'ruins-wake-heal');
     if (!entry || !heal?.uses.value || !await dialogUtils.confirmUseItem(heal)) return;
-    await workflowUtils.syntheticActivityDataRoll(activityUtils.getDamageModifiedActivityData(heal, String(Math.floor(entry.totalDamage))), item, [workflow.token.document], {consumeUsage: true, consumeResources: true});
+    await workflowUtils.syntheticActivityDataRoll(activityUtils.getDamageModifiedActivityData(heal, String(Math.floor(entry.totalDamage))), item, [workflow.token.document], {consumeResources: true});
 }
 export const bloodSpear = {
     name: 'Blood Spear',
@@ -67,7 +67,7 @@ export const bloodSpear = {
 };
 export const crystalBlade = {
     name: 'Crystal Blade',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'itemPreTargeting', macro: crystalLight, priority: 50},
@@ -76,13 +76,13 @@ export const crystalBlade = {
 };
 export const dragonsWrath = {
     name: 'Dragon\'s Wrath Weapon',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [{pass: 'itemRollFinished', macro: dragonsWrathBurst, priority: 50}]
 };
 export const grovelthrash = {
     name: 'Grovelthrash',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'itemDamageRollComplete', macro: grovelthrashDamage, priority: 50},
@@ -91,7 +91,7 @@ export const grovelthrash = {
 };
 export const ruinsWake = {
     name: 'Ruin\'s Wake',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'itemAttackRollConfig', macro: ruinsWakeReaction, priority: 50},

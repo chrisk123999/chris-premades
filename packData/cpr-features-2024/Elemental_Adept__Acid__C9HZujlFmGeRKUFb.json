@@ -39,27 +39,63 @@
     "advancement": {},
     "crewed": false
   },
-  "effects": [],
-  "flags": {
-    "cat": {
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "identifier": "ignoreTraits",
-            "rules": "all"
-          }
-        ]
+  "effects": [
+    {
+      "_id": "8jFSbe6dK6vlFbeU",
+      "name": "Elemental Adept (Acid)",
+      "img": "icons/magic/acid/projectile-faceted-glob.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "showIcon": 0,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
-      "genericConfig": {
-        "chris-premades": {
-          "ignoreTraits": {
-            "damageTypes": [
-              "acid"
-            ]
+      "system": {
+        "changes": [
+          {
+            "key": "damage",
+            "type": "dnd5e.damage.ignore.resistance",
+            "value": "acid",
+            "phase": "initial",
+            "priority": 100,
+            "_id": "3eDl9B5h1onVfk7c",
+            "conditions": "{\"k\":\"item.school\",\"o\":\"empty\",\"v\":false}",
+            "replacement": ""
           }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
         }
       },
+      "flags": {},
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.1.1"
+      },
+      "_key": "!items.effects!C9HZujlFmGeRKUFb.8jFSbe6dK6vlFbeU"
+    }
+  ],
+  "flags": {
+    "cat": {
       "alternateAttributes": {
         "RollModifier": [
           {

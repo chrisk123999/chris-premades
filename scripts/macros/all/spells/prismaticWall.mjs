@@ -56,7 +56,7 @@ async function passThrough({document: item, workflow}) {
     if (!target || !wall) return;
     for (const layer of wall.flags['chris-premades'].prismaticLayers) {
         const activity = itemUtils.getActivityByIdentifier(item, `prismatic-wall-${layer}`);
-        if (activity) await workflowUtils.syntheticActivityRoll(activity, [target], {atLevel: wall.flags.dnd5e?.spellLevel, consumeUsage: false, consumeResources: false, spellSlot: false});
+        if (activity) await workflowUtils.syntheticActivityRoll(activity, [target], {atLevel: wall.flags.dnd5e?.spellLevel, consumeResources: false, spellSlot: false});
     }
 }
 async function destroyLayer({document: item, workflow}) {

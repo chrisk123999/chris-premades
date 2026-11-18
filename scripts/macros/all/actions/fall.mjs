@@ -1,4 +1,4 @@
-import {actorUtils, applications, automationUtils, dialogUtils, Logging, rollUtils, workflowUtils} from '../../../proxy.mjs';
+import {actorUtils, applications, automationUtils, dialogUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function doFall({workflow}) {
     const rollDC = automationUtils.getConfigValue(workflow.item, 'rollDC');
     const selection = await applications.DialogApp.dialog(workflow.item.name, '', [
@@ -23,7 +23,7 @@ async function doFall({workflow}) {
     let formula = dnd5e.rules.getFallDamageFormula(selection.distance, canvas.grid.units);
     if (!formula) return;
     let otherTarget = false;
-    const target = game.user.targets.first()?.document;
+    let target;
     switch(selection.type) {
         case 'water': {
             if (actorUtils.hasUsedReaction(workflow.actor)) break;
@@ -39,6 +39,9 @@ async function doFall({workflow}) {
             break;
         }
         case 'creature': {
+            const candidates = workflow.token ? tokenUtils.findNearby(workflow.token.document, 5) : [];
+            target = candidates.length > 1 ? (await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.Fall.SelectCreature', candidates))?.result : candidates[0];
+            if (!target) break;
             const targetSize = actorUtils.getSize(target.actor);
             const sourceSize = actorUtils.getSize(workflow.actor);
             if (sourceSize === 0 || targetSize === 0) {
@@ -56,15 +59,15 @@ async function doFall({workflow}) {
         }
     }
     await ground(workflow.actor);
-    await workflow.setDamageRolls([await rollUtils.damageRoll(formula, workflow.activity, {type: CONFIG.DND5E.falling.damageType})]);
-    if (otherTarget) await workflowUtils.applyDamage([target], workflow.damageTotal, 'bludgeoning');
+    await workflow.setDamageRolls([await rollUtils.damageRoll(formula, workflow.activity, {type: CONFIG.DND5E.falling.damageType, properties: ['falling']})]);
+    if (otherTarget) await workflowUtils.applyDamage([target], workflow.damageTotal, CONFIG.DND5E.falling.damageType, {properties: ['falling']});
 }
 async function ground(actor) {
     await actorUtils.applyConditions(actor, ['prone']);
 }
 export const fall =  {
     name: 'Fall',
-    version: '2.0.4',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

@@ -136,6 +136,9 @@
         },
         "midiProperties": {
           "identifier": "x-ray"
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "danothSpyglassAw": {
@@ -195,6 +198,9 @@
         },
         "midiProperties": {
           "identifier": "spyglass"
+        },
+        "visibility": {
+          "requireMagic": true
         }
       }
     },
@@ -229,7 +235,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -243,7 +250,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "skill": [

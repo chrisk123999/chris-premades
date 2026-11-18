@@ -11,7 +11,7 @@ async function provoke({workflow}) {
             const weapon = weapons.length > 1 ? await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.Legacy.Antagonize.Weapon', weapons, {userId}) : weapons[0];
             if (victim && weapon) {
                 await actorUtils.setReactionUsed(actor);
-                await workflowUtils.completeActivityUse(weapon.system.activities.find(activity => activity.type === 'attack'), [victim], {userId: queryUtils.firstOwner(actor, true), consumeUsage: false, consumeResources: false, fast: true});
+                await workflowUtils.completeActivityUse(weapon.system.activities.find(activity => activity.type === 'attack'), [victim], {userId: queryUtils.firstOwner(actor, true), consumeResources: false, fast: true});
                 continue;
             }
         }
@@ -20,7 +20,7 @@ async function provoke({workflow}) {
 }
 export const antagonize = {
     name: 'Antagonize',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: provoke, priority: 50}

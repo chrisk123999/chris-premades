@@ -8,11 +8,11 @@ async function used({actor, data: {activity, targets}}) {
     if (!candidates.length) return;
     const selection = await dialogUtils.selectTargetDialog(activity.item.name, _loc('CHRISPREMADES.Macros.Modern.VersatileTrickster.Select'), candidates, {skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(actor, true)});
     if (!selection?.result) return;
-    await workflowUtils.syntheticActivityRoll(activity, [selection.result], {consumeUsage: false, consumeResources: false});
+    await workflowUtils.syntheticActivityRoll(activity, [selection.result], {consumeResources: false});
 }
 export const versatileTrickster = {
     name: 'Versatile Trickster',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2024',
     called: [
         {

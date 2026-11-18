@@ -4,7 +4,7 @@ async function undead({document: item, workflow}) {
     if (actorUtils.typeOrRace(workflow.hitTargets.documents[0].actor) !== 'undead') return;
     await workflow.setDamageRolls([await rollUtils.damageRoll('1d10', workflow.activity, {type: 'healing'})]);
     const backlash = itemUtils.getActivityByIdentifier(item, 'blackrazor-backlash');
-    if (backlash) await workflowUtils.syntheticActivityRoll(backlash, [workflow.token.document], {consumeUsage: false, consumeResources: false});
+    if (backlash) await workflowUtils.syntheticActivityRoll(backlash, [workflow.token.document], {consumeResources: false});
 }
 async function devour({document: item, workflow}) {
     if (workflow.activity.identifier !== 'blackrazor' || workflow.hitTargets.count !== 1) return;
@@ -22,7 +22,7 @@ async function faded({document: effect, ditem}) {
 }
 export const blackrazor = {
     name: 'Blackrazor',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

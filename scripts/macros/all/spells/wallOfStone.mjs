@@ -21,7 +21,7 @@ async function escape({document: item, workflow}) {
     const nearby = scene.tokens.filter(token => token.object && token.actor && !token.actor.flags.cat?.wallPanel && token.object.center.x > x - margin && token.object.center.x < x + width + margin && token.object.center.y > y - margin && token.object.center.y < y + height + margin);
     const enclosed = nearby.filter(token => isEnclosed(token.object, region.bounds));
     if (!enclosed.length) return;
-    const save = await workflowUtils.syntheticActivityRoll(activity, enclosed, {consumeUsage: false, consumeResources: false, spellSlot: false});
+    const save = await workflowUtils.syntheticActivityRoll(activity, enclosed, {consumeResources: false, spellSlot: false});
     if (!save) return;
     for (const token of enclosed) {
         if (save.failedSaves.has(token) || actorUtils.hasUsedReaction(token.actor)) continue;

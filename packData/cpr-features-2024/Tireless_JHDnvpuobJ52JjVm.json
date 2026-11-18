@@ -124,7 +124,10 @@
         },
         "name": "",
         "img": "",
-        "appliedEffects": []
+        "appliedEffects": [],
+        "visibility": {
+          "requireMagic": true
+        }
       }
     },
     "uses": {
@@ -172,7 +175,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
       "macros": {
         "rest": [

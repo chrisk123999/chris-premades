@@ -8,7 +8,7 @@ async function weave({document, workflow}) {
     if (quantity < 1) return;
     const itemData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'wicker-token-charm', {object: true, translate: 'CHRISPREMADES.Macros.Modern.WickerToken.Token'});
     if (!itemData) return Logging.addMacroWarning('CPR', 'wicker-token', 'Wicker Token missing from the automation items compendium.', {notify: 'warn'});
-    const druidToken = workflow.token?.document ?? workflow.token;
+    const druidToken = workflow.token?.document;
     const candidates = new Map();
     const onScene = new Set([workflow.actor]);
     for (const token of druidToken?.parent?.tokens ?? []) {
@@ -39,7 +39,7 @@ async function touch({activity, actor, token, config}) {
 }
 export const wickerToken = {
     name: 'Wicker Token',
-    version: '2.1.4',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {

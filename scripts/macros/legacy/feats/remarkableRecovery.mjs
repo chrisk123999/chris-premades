@@ -9,7 +9,7 @@ async function healed({document: item, workflow, sourceToken}) {
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('healing')) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'remarkable-recovery');
     if (!activity) return Logging.addMacroWarning('CPR', 'remarkable-recovery-regain-hit-points', 'Missing the remarkable-recovery activity.', {notify: 'warn'});
-    await workflowUtils.completeActivityUse(activity, [sourceToken.document ?? sourceToken]);
+    await workflowUtils.completeActivityUse(activity, [sourceToken]);
 }
 export const remarkableRecovery = {
     name: 'Remarkable Recovery: Regain Hit Points',

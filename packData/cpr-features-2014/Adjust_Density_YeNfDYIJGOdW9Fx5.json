@@ -41,7 +41,8 @@
             "conditions": "{}",
             "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -124,7 +125,8 @@
             "conditions": "{}",
             "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -484,7 +486,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.9"
       }
     }
   },

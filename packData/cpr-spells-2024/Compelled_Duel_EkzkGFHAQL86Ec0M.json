@@ -226,7 +226,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
@@ -248,7 +248,8 @@
       "transfer": false,
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -297,7 +298,8 @@
       "transfer": false,
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {

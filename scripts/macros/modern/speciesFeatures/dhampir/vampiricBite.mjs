@@ -7,7 +7,7 @@ async function empower({document: item, workflow}) {
     if (automationUtils.getConfigValue(item, 'ignoredCreatureTypes').includes(actorUtils.typeOrRace(target.actor))) return;
     const damageTypes = new Set(workflow.activity.damage.parts.flatMap(part => Array.from(part.types)));
     const entry = workflow.damageList?.find(ditem => ditem.targetUuid === target.uuid);
-    const dealt = Math.floor(entry?.damageDetail?.reduce((total, damage) => total + (damageTypes.has(damage.type) ? damage.value : 0), 0) ?? 0);
+    const dealt = Math.floor(entry?.calculatedDamages?.reduce((total, damage) => total + (damageTypes.has(damage.type) ? damage.value : 0), 0) ?? 0);
     if (dealt <= 0) return;
     const buttons = [
         ['CHRISPREMADES.Macros.Modern.VampiricBite.Drain', 'drain'],
@@ -32,7 +32,7 @@ async function empower({document: item, workflow}) {
 }
 export const vampiricBite = {
     name: 'Vampiric Bite',
-    version: '2.1.4',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {

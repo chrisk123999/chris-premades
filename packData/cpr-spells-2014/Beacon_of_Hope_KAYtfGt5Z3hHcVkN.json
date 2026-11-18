@@ -262,7 +262,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       }
     }
   },
@@ -288,7 +288,8 @@
             "value": "1",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {
         "cat": {

@@ -19,7 +19,7 @@ async function drink({workflow}) {
     if (effectData) genericUtils.setProperty(effectData, 'flags.chris-premades.potionOfPoison', {dice, saveDC: config.saveDC});
     itemData.system.activities = {[poison.id]: poisonData};
     itemData.flags.cat.macros.roll = itemData.flags.cat.macros.roll.filter(macro => macro.identifier !== 'spellAnimation');
-    await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [token], {consumeUsage: false, consumeResources: false});
+    await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [token], {consumeResources: false});
 }
 async function turnStart({document: effect, token}) {
     const dice = effect.flags['chris-premades']?.potionOfPoison?.dice;
@@ -38,7 +38,7 @@ async function turnEnd({document: effect}) {
 }
 export const potionOfPoison = {
     name: 'Potion of Poison',
-    version: '2.1.5',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

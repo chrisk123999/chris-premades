@@ -5,7 +5,10 @@ async function imbue({document: item, workflow}) {
     if (!template) return Logging.addMacroWarning('CPR', 'cartomancer-hidden-ace-imbue-card', 'Missing the imbued-card activity.', {notify: 'warn'});
     const maxLevel = Math.max(0, ...Object.values(workflow.actor.system.spells).filter(slot => slot.max).map(slot => slot.level));
     const lists = Object.values(workflow.actor.spellcastingClasses).flatMap(cls => ['class:' + cls.identifier, cls.subclass && 'subclass:' + cls.subclass.identifier]).filter(key => key && dnd5e.registry.spellLists.options.some(option => option.value === key));
-    if (!maxLevel || !lists.length) return genericUtils.notify('CHRISPREMADES.Macros.Legacy.ImbueCard.NoSpells', {type: 'info'});
+    if (!maxLevel || !lists.length) {
+        genericUtils.notify('CHRISPREMADES.Macros.Legacy.ImbueCard.NoSpells', {type: 'info'});
+        return;
+    }
     const [spell] = await compendiumUtils.selectSpellFromLists(lists, {maxLevel, castTime: ['action'], title: item.name, icon: item.img}) ?? [];
     if (!spell) return;
     const previous = actorUtils.getEffectByIdentifier(workflow.actor, 'imbueCard');

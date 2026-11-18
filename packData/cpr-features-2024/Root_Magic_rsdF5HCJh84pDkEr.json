@@ -61,7 +61,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "spell": {
@@ -226,7 +226,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "spell": {
@@ -391,7 +391,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "spell": {
@@ -529,7 +529,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
       "macros": {
         "item": [

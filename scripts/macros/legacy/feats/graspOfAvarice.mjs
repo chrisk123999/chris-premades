@@ -4,7 +4,7 @@ async function heal({document: item, workflow}) {
     if (!used || !workflow.token) return;
     const target = fromUuidSync(used.targets[0]);
     const entry = workflow.damageList?.find(entry => entry.actorUuid === target?.actor?.uuid);
-    const detail = entry?.damageDetail?.findLast(detail => detail.type === used.type && detail.formula?.trim().replace(/^\+\s*/, '') === used.formula);
+    const detail = entry?.calculatedDamages?.findLast(detail => detail.type === used.type && detail.formula?.trim().replace(/^\+\s*/, '') === used.formula);
     const healing = detail ? detail.value : Math.floor(used.total * (target?.actor ? MidiQOL.getTraitMult(target.actor, used.type, workflow.item) : 1));
     if (healing > 0) await workflowUtils.applyDamage([workflow.token.document], healing, 'healing');
 }

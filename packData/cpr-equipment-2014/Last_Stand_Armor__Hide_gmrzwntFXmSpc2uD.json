@@ -204,7 +204,10 @@
         "otherActivityId": "",
         "otherActivityAsParentType": true,
         "friendlySave": "default",
-        "identifier": "last-stand"
+        "identifier": "last-stand",
+        "visibility": {
+          "requireMagic": true
+        }
       }
     },
     "identifier": "last-stand-armor-hide"
@@ -243,7 +246,8 @@
             "value": "1",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {
         "cat": {
@@ -276,7 +280,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "effect": [
