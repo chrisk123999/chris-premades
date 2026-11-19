@@ -18,7 +18,7 @@ async function promptTurnUndead({data, document: activity}) {
 async function preTurnUndead({workflow}) {
     if (!workflow.targets.count) return;
     const validCreatures = automationUtils.getConfigValue(workflow.item, 'creatureTypes') ?? [];
-    const targets = workflow.targets.documents.filter(t => 
+    const targets = workflow.targets.documents.filter(t =>
         t.actor?.system.attributes.hp.value > 0 &&
         validCreatures.includes(actorUtils.typeOrRace(t.actor))
     );
@@ -108,6 +108,18 @@ export const turnUndead = {
             pass: 'activityRollFinished',
             macro: postTurnUndead,
             priority: 50
+        }
+    ]
+};
+export const channelDivinityClericActivity = {
+    rules: 'all',
+    version: '2.1.9',
+    called: [
+        {
+            pass: 'actorChannelDivinityCleric',
+            // activities with this macro will show up in the prompt
+            macro: ({document: activity}) => activity,
+            priority: 200
         }
     ]
 };

@@ -1,0 +1,175 @@
+{
+  "name": "Avatar of Battle",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Avatar of Battle",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "bludgeoning",
+            "priority": 1,
+            "phase": "initial",
+            "_id": "JwQhSCyohT37QlLS",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "piercing",
+            "priority": 1,
+            "phase": "initial",
+            "_id": "4LGI7NuUQc20Tym3",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "slashing",
+            "priority": 1,
+            "phase": "initial",
+            "_id": "caTqTLM3ZKuGTs00",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "description": "",
+      "img": "icons/equipment/shield/kite-wooden-oak-glow.webp",
+      "_id": "rvyp9RwaZRZnSINj",
+      "type": "base",
+      "origin": "Compendium.chris-premades.CPRFeatures2024.Item.Yu2RGDL0cMROs1zh",
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!Yu2RGDL0cMROs1zh.rvyp9RwaZRZnSINj"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {
+      "oY9uzB6uV2E66zDL": {
+        "configuration": {
+          "allowReplacements": false,
+          "choices": [],
+          "grants": [
+            "dr:bludgeoning",
+            "dr:piercing",
+            "dr:slashing"
+          ],
+          "mode": "default"
+        },
+        "_id": "oY9uzB6uV2E66zDL",
+        "type": "Trait",
+        "flags": {},
+        "level": 17,
+        "hint": "",
+        "name": "Avatar of Battle",
+        "value": {
+          "chosen": [
+            "dr:bludgeoning",
+            "dr:piercing",
+            "dr:slashing"
+          ]
+        }
+      }
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "avatar-of-battle",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 17,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      }
+    }
+  },
+  "img": "icons/equipment/shield/kite-wooden-oak-glow.webp",
+  "folder": "loQh7azfMqY6ceB9",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "Yu2RGDL0cMROs1zh",
+  "_key": "!items!Yu2RGDL0cMROs1zh"
+}

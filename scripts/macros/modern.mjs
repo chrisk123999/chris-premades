@@ -91,15 +91,24 @@ export {divineStrike as 'blessed-strikes-divine-strike'} from './modern/classFea
 export {greaterDivineIntervention as 'greater-divine-intervention', greaterDivineInterventionRest as 'greater-divine-intervention-rest'} from './modern/classFeatures/cleric/greaterDivineIntervention.mjs';
 export {improvedPotentSpellcasting as 'improved-blessed-strikes'} from './modern/classFeatures/cleric/improvedPotentSpellcasting.mjs';
 
-/*             Life              */
-export {discipleOfLife as 'disciple-of-life'} from './modern/classFeatures/cleric/life/discipleOfLife.mjs';
+/*            Arcana             */
+export {dispellingRecovery as 'dispelling-recovery'} from './modern/classFeatures/cleric/arcana/dispellingRecovery.mjs';
+export {modifyMagicFortify, modifyMagicTenacious} from './modern/classFeatures/cleric/arcana/modifyMagic.mjs';
+
+/*             Grave             */
+export {circleOfMortality as 'circle-of-mortality'} from './modern/classFeatures/cleric/grave/circleOfMortality.mjs';
+export {divineReaper as 'divine-reaper'} from './modern/classFeatures/cleric/grave/divineReaper.mjs';
+export {pathToTheGrave as 'path-to-the-grave'} from './modern/classFeatures/cleric/grave/pathToTheGrave.mjs';
 
 /*             Light             */
 export {improvedWardingFlare as 'improved-warding-flare'} from './modern/classFeatures/cleric/light/improvedWardingFlare.mjs';
-export {wardingFlare as 'warding-flare'} from './modern/classFeatures/cleric/light/wardingFlare.mjs';
 
-/*           Trickery            */
-export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './modern/classFeatures/cleric/trickery/blessingOfTheTrickster.mjs';
+/*            Trickery           */
+export {improvedDuplicity as 'improved-duplicity'} from './modern/classFeatures/cleric/trickery/improvedDuplicity.mjs';
+export {trickstersTransposition as 'tricksters-transposition'} from './modern/classFeatures/cleric/trickery/trickstersTransposition.mjs';
+
+/*               War             */
+export {warGodsBlessing as 'war-gods-blessing'} from './modern/classFeatures/cleric/war/warGodsBlessing.mjs';
 
 /*********************************/
 /*             Druid             */

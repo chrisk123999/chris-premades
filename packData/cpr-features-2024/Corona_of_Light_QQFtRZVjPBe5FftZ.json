@@ -1,0 +1,491 @@
+{
+  "name": "Corona of Light",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Corona of Light",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "value": 60,
+            "type": "upgrade",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "AHGjmt7PrrSUZNQ0",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "token.light.dim",
+            "value": 90,
+            "type": "upgrade",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "ftw3sixiCub33Ass",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "token.light.color",
+            "value": "#ffea00",
+            "type": "override",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "ybOmzaJLXXopTipg",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "token.light.alpha",
+            "value": 0.25,
+            "type": "override",
+            "priority": 20,
+            "phase": "initial",
+            "_id": "q96sjgO4H05vLvWR",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "token.light.animation.intensity",
+            "type": "override",
+            "value": 1,
+            "phase": "initial",
+            "_id": "L97X75i5EUM5gIP0",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
+          },
+          {
+            "key": "token.light.animation.speed",
+            "type": "override",
+            "value": 1,
+            "phase": "initial",
+            "_id": "CS215Ay2Kj7ZJlZP",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
+          },
+          {
+            "key": "token.light.animation.type",
+            "type": "override",
+            "value": "starlight",
+            "phase": "initial",
+            "_id": "E7jjtHtXXTMhSYvc",
+            "conditions": "{}",
+            "replacement": "",
+            "priority": null
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "duration": {
+        "value": 60,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "disabled": false,
+      "showIcon": 2,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneNameOnly",
+          "enableCondition": "",
+          "disableCondition": "",
+          "applicationMode": "default",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": true,
+          "dontApply": false,
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "genericConfig": {
+            "cat": {
+              "aura": {
+                "radius": "@effect.source.activity.target.template.size",
+                "dispositions": [
+                  "enemy"
+                ],
+                "includeSelf": false,
+                "sourceDisable": [],
+                "targetDisable": [],
+                "creatureTypes": [],
+                "sourceStatuses": [],
+                "walls": true,
+                "effect": "qit0dgRSI9FXebKH",
+                "enemyEffect": "",
+                "value": "",
+                "stackHighest": false,
+                "enterActivity": "",
+                "exitActivity": "",
+                "turnStartActivity": "",
+                "turnEndActivity": "",
+                "enterOnCreate": true,
+                "oncePerTurn": false,
+                "filter": ""
+              }
+            }
+          },
+          "macros": {
+            "aura": [
+              {
+                "source": "cat",
+                "identifier": "aura",
+                "rules": "all"
+              }
+            ]
+          }
+        }
+      },
+      "description": "",
+      "_id": "AB0NTDGzoTWoLbfD",
+      "img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!QQFtRZVjPBe5FftZ.AB0NTDGzoTWoLbfD"
+    },
+    {
+      "name": "In The Light",
+      "img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
+      "system": {
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "message": null
+        },
+        "changes": [],
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "transfer": false,
+      "_id": "qit0dgRSI9FXebKH",
+      "type": "base",
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 2,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "applicationMode": "default",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "cat": {
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "rules": "all",
+                "identifier": "corona-of-light"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!QQFtRZVjPBe5FftZ.qit0dgRSI9FXebKH"
+    }
+  ],
+  "system": {
+    "activities": {
+      "utilityCoOLclass": {
+        "name": "",
+        "type": "utility",
+        "_id": "utilityCoOLclass",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "behaviors": [],
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "value": "",
+          "chatFlavor": ""
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "expiry": null,
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "AB0NTDGzoTWoLbfD",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "uuid": null
+          }
+        ],
+        "flags": {},
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "affects": {
+            "count": "",
+            "type": "enemy",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "emanationNoTemplate",
+            "size": "60",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "formula": "",
+          "name": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": "",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "followUp": false,
+          "followUpTargets": "default",
+          "followUpCondition": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "targetMustBeSeen": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "statuses": []
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "moveDistance": 0,
+          "moveDirection": "away",
+          "moveTiming": "start",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "max": "max(1, @abilities.wis.mod)",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "corona-of-light",
+    "source": {
+      "book": "PHB 2024",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 17,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.9"
+      }
+    }
+  },
+  "img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
+  "folder": "b2hup0AAa9gHlL4c",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_id": "QQFtRZVjPBe5FftZ",
+  "_key": "!items!QQFtRZVjPBe5FftZ"
+}

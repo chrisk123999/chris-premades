@@ -100,10 +100,17 @@ export {mastersFlourish as 'masters-flourish'} from './legacy/classFeatures/bard
 /******************************/
 /*           Cleric           */
 /******************************/
-export {channelDivinity as 'channel-divinity|class:cleric', turnUndead} from './legacy/classFeatures/cleric/channelDivinity.mjs';
+export {channelDivinity as 'channel-divinity|class:cleric', turnUndead, channelDivinityClericActivity} from './legacy/classFeatures/cleric/channelDivinity.mjs';
 export {destroyUndead as 'destroy-undead'} from './legacy/classFeatures/cleric/destroyUndead.mjs';
 export {divineStrike as 'divine-strike'} from './legacy/classFeatures/cleric/divineStrike.mjs';
 export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatures/cleric/harnessDivinePower.mjs';
+
+/*           Arcana           */
+export {arcaneAbjuration as 'channel-divinity-arcane-abjuration'} from './legacy/classFeatures/cleric/arcana/arcaneAbjuration.mjs';
+export {spellBreaker as 'spell-breaker'} from './legacy/classFeatures/cleric/arcana/spellBreaker.mjs';
+
+/*            Grave           */
+export {pathToTheGrave as 'channel-divinity-path-to-the-grave'} from './legacy/classFeatures/cleric/grave/pathToTheGrave.mjs';
 
 /******************************/
 /*           Druid            */

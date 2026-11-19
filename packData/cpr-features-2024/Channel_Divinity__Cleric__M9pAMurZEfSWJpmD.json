@@ -226,7 +226,7 @@
           ],
           "custom": {
             "enabled": true,
-            "formula": "(ceil(@classes.cleric.levels/6))d8 + @abilities.wis.mod"
+            "formula": "@scale.cleric.divine-spark + @abilities.wis.mod"
           },
           "scaling": {
             "mode": "whole",
@@ -306,7 +306,8 @@
           "animationType": "",
           "animationSpeed": 5,
           "animationIntensity": 5
-        }
+        },
+        "otherActivityId": ""
       },
       "addDiviSpSaVsDa1": {
         "name": "Divine Spark: Damage",
@@ -404,11 +405,12 @@
             {
               "custom": {
                 "enabled": true,
-                "formula": "(ceil(@classes.cleric.levels/6))d8 + @abilities.wis.mod"
+                "formula": "@scale.cleric.divine-spark + @abilities.wis.mod"
               },
               "number": null,
               "denomination": null,
               "bonus": "",
+              "modifiers": [],
               "types": [
                 "none"
               ],
@@ -426,7 +428,8 @@
           "dc": {
             "calculation": "wis",
             "formula": ""
-          }
+          },
+          "bonus": ""
         },
         "useConditionText": "",
         "useConditionReason": "",

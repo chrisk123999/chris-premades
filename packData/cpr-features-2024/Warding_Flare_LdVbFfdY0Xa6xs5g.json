@@ -1,74 +1,7 @@
 {
   "name": "Warding Flare",
   "type": "feat",
-  "effects": [
-    {
-      "name": "Warding Flare",
-      "img": "icons/magic/light/explosion-star-glow-yellow.webp",
-      "origin": null,
-      "transfer": false,
-      "_id": "ZOQZcwJniLpXzlGb",
-      "type": "base",
-      "system": {
-        "changes": [
-          {
-            "key": "flags.midi-qol.grants.disadvantage.attack.all",
-            "value": 1,
-            "priority": 20,
-            "type": "custom",
-            "phase": "initial",
-            "_id": "ArvLCr6to0iKfNQr",
-            "conditions": "{}",
-            "replacement": ""
-          }
-        ]
-      },
-      "disabled": false,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [],
-      "sort": 0,
-      "flags": {
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          },
-          "dependents": []
-        },
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "stackable": "noneName",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [
-            "isAttacked"
-          ]
-        },
-        "core": {
-          "overlay": false
-        }
-      },
-      "showIcon": 1,
-      "folder": null,
-      "_stats": {
-        "coreVersion": "14.369",
-        "systemId": "dnd5e",
-        "systemVersion": "6.0.6"
-      },
-      "_key": "!items.effects!LdVbFfdY0Xa6xs5g.ZOQZcwJniLpXzlGb"
-    }
-  ],
+  "effects": [],
   "system": {
     "activities": {
       "utilityWaFlclNe0": {
@@ -147,7 +80,7 @@
           "name": "",
           "formula": ""
         },
-        "useConditionText": "reaction == 'preAttack'",
+        "useConditionText": "false",
         "useConditionReason": "",
         "effectConditionText": "",
         "macroData": {
@@ -172,10 +105,10 @@
           "automationOnly": false,
           "identifier": "",
           "forceAttackDialog": false,
-          "forceDamageDialog": false,
+          "forceDamageDialog": "",
           "autoTargetType": "any",
           "autoTargetAction": "default",
-          "otherActivityCompatible": true,
+          "otherActivityCompatible": false,
           "otherActivityAsParentType": true,
           "displayActivityName": false,
           "rollMode": "default",
@@ -186,7 +119,8 @@
           "magicEffect": false,
           "magicDamage": false,
           "noConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "default",
+          "targetMustBeSeen": true
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -194,12 +128,33 @@
           "preRemoveConditionText": "",
           "postRemoveConditionText": ""
         },
-        "otherActivityId": "none"
+        "otherActivityId": "none",
+        "img": "",
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "warding-flare"
+                }
+              ]
+            }
+          }
+        }
       }
     },
     "uses": {
       "spent": 0,
-      "max": "@abilities.wis.mod",
+      "max": "max(@abilities.wis.mod, 1)",
       "recovery": [
         {
           "period": "lr",
@@ -236,25 +191,13 @@
     }
   },
   "flags": {
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "warding-flare"
-          }
-        ]
+      "config": {
+        "immune": []
       }
     }
   },

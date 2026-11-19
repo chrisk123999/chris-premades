@@ -96,6 +96,28 @@ export const channelDivinity = {
                 value: {},
                 title: 'Channel Divinity'
             }
+        },
+        {
+            identifier: 'divine-spark',
+            classIdentifier: 'cleric',
+            data: {
+                type: 'ScaleValue',
+                configuration: {
+                    distance: {
+                        units: ''
+                    },
+                    identifier: 'divine-spark',
+                    type: 'dice',
+                    scale: {
+                        2: {number: 1, faces: 8},
+                        7: {number: 2, faces: 8},
+                        13: {number: 3, faces: 8},
+                        18: {number: 4, faces: 8}
+                    }
+                },
+                value: {},
+                title: 'Divine Spark'
+            }
         }
     ]
 };

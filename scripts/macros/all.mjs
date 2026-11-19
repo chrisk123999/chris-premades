@@ -66,6 +66,33 @@ export {battleMagic as 'battle-magic'} from './all/classFeatures/bard/valor/batt
 export {combatInspiration as 'combat-inspiration', combatInspirationEffect} from './all/classFeatures/bard/valor/combatInspiration.mjs';
 
 /******************************/
+/*           Cleric           */
+/******************************/
+
+/*           Grave            */
+export {circleOfMortality as 'circle-of-mortality'} from './all/classFeatures/cleric/grave/circleOfMortality.mjs';
+export {keeperOfSouls as 'keeper-of-souls'} from './all/classFeatures/cleric/grave/keeperOfSouls.mjs';
+export {sentinelAtDeathsDoor as 'sentinel-at-deaths-door'} from './all/classFeatures/cleric/grave/sentinelAtDeathsDoor.mjs';
+
+/*            Life            */
+export {blessedHealer as 'blessed-healer'} from './all/classFeatures/cleric/life/blessedHealer.mjs';
+export {preserveLife as 'preserve-life', preserveLife as 'channel-divinity-preserve-life'} from './all/classFeatures/cleric/life/preserveLife.mjs';
+export {supremeHealing as 'supreme-healing'} from './all/classFeatures/cleric/life/supremeHealing.mjs';
+
+/*            Light           */
+export {coronaOfLight as 'corona-of-light'} from './all/classFeatures/cleric/light/coronaOfLight.mjs';
+export {radianceOfTheDawn as 'radiance-of-the-dawn', radianceOfTheDawn as 'channel-divinity-radiance-of-the-dawn'} from './all/classFeatures/cleric/light/radianceOfTheDawn.mjs';
+export {wardingFlare as 'warding-flare'} from './all/classFeatures/cleric/light/wardingFlare.mjs';
+
+/*           Trickery         */
+export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './all/classFeatures/cleric/trickery/blessingOfTheTrickster.mjs';
+export {invokeDuplicity, invokeDuplicityDistraction, invokeDuplicitySpell} from './all/classFeatures/cleric/trickery/invokeDuplicity.mjs';
+
+/*             War            */
+export {warGodsBlessing as 'guided-strike', warGodsBlessing as 'channel-divinity-war-gods-blessing'} from './all/classFeatures/cleric/war/warGodsBlessing.mjs';
+export {warPriest as 'war-priest'} from './all/classFeatures/cleric/war/warPriest.mjs';
+
+/******************************/
 /*           Druid            */
 /******************************/
 export {beastSpells as 'beast-spells'} from './all/classFeatures/druid/beastSpells.mjs';

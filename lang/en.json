@@ -329,6 +329,7 @@
             "Ability": "Ability",
             "Activities": "Activities",
             "Activity": "Activity",
+            "ActivityIdentifier": "Activity Identifier",
             "AdditionalTargets": "Additional Targets",
             "AffectAllies": "Should Affect Allies",
             "All": "All",
@@ -776,6 +777,10 @@
                     "EquippedHint": "One or more of these item types must be equipped.",
                     "Prompt": "Use {item} to reduce the damage dealt to {name}?"
                 },
+                "InvokeDuplicity": {
+                    "Name": "Illusion of {name}",
+                    "Prompt": "Choose an illusion from which to cast a spell."
+                },
                 "Jump": {
                     "DifficultTerrain": "Landing in difficult terrain?",
                     "LowObstacle": "Is there a low obstacle?"
@@ -853,6 +858,10 @@
                     "Drop": "Drop the heated object?",
                     "MustDrop": "Failed the save and must drop the heated object!",
                     "Unable": "Unable to Drop"
+                },
+                "KeeperOfSouls": {
+                    "Spell": "This feature can be used with a spell slot of this level or higher.",
+                    "SpellPrompt": "No item uses remaining! A spell slot is required to use {document}."
                 },
                 "MirrorImage": {
                     "Hit": "Attack hit a duplicate and destroyed it.",
@@ -1048,6 +1057,10 @@
                     "Dice": "Poison Damage Dice (d6)",
                     "DiceHint": "0 uses the potion's own dice."
                 },
+                "PreserveLife": {
+                    "Limit": "Percentage HP Limit",
+                    "Prompt": "Distribute up to {maxAmount} healing."
+                },
                 "OilOfSharpness": {
                     "NoWeapons": "No eligible weapon or ammunition to coat.",
                     "Select": "Which weapon or ammunition to coat?",
@@ -1057,6 +1070,10 @@
                 "Haste": {
                     "Lethargic": "Haste: Lethargic",
                     "NoActions": "You can't take actions while lethargic."
+                },
+                "WardingFlare": {
+                    "Immune": "Immune Conditions",
+                    "ImmuneHint": "An attacker is unaffected by this feature if they are immune to one of these conditions."
                 }
             },
             "Generic": {
@@ -1237,6 +1254,8 @@
                     "ApplyToHint": "This bonus applies to damage, healing, or both.",
                     "BonusDamageType": "Bonus Damage Type",
                     "BonusDamageTypeHint": "Damage types to offer as choices for this bonus.",
+                    "Contextual": "Contextual",
+                    "ContextualHint": "This bonus always applies when its conditions are met, but may still prompt for damage type or target.",
                     "Critical": "Allow Critical",
                     "CriticalHint": "Critical hit rules can be applied to this bonus.",
                     "EveryRoll": "Apply to Every Roll",
@@ -1632,6 +1651,10 @@
                     "SummonName": "Animated Object",
                     "ExtraPerLevel": "Extra Objects per Level"
                 },
+                "ArcaneAbjuration": {
+                    "GrantBanish": "Grant Banish Effect",
+                    "BanishCR": "Max Banish CR"
+                },
                 "ArcaneWard": {
                     "Protect": "Protect {tokenName} with your arcane ward?",
                     "TempHP": "Consume Temp HP First:"
@@ -1928,6 +1951,10 @@
                     "Select": "Use your reaction to spend a spell slot to reduce damage?"
                 },
                 "SoulOfArtifice": "Choose an item to destroy:",
+                "SpellBreaker": {
+                    "Prompt": "Choose an ally and a spell effect to end on them.",
+                    "Warn": "There are no targets with eligible spell effects!"
+                },
                 "SummonFey": {
                     "FeyStep": "Fey Step",
                     "Fuming": "Fuming",
@@ -2220,6 +2247,8 @@
                 },
                 "DanceVirtuoso": "Does this check involve you dancing?",
                 "DeflectAttacks": "Redirect Attack?",
+                "DispellingRecovery": "Identifiers for spells that remove conditions.",
+                "EnhancedNecromancy": "Enhanced Necromancy",
                 "ExtremeResilience": {
                     "Select": "Select a feature to recover a use of."
                 },
@@ -2256,6 +2285,7 @@
                     "Multiple": "Which target would you like to unmark?",
                     "NoTargets": "No valid targets within range!"
                 },
+                "ImprovedDuplicity": "Choose an ally to heal.",
                 "ImprovedPotentSpellcasting": "Select an ally to give temporary hit points to:",
                 "InspiringMovement": "Ask an ally if they can spend their reaction to move up to half their speed.",
                 "MagicItemTinker": {
@@ -2286,6 +2316,7 @@
                 "PactOfTheChain": {
                     "Attack": "Choose an attack for your familiar to make."
                 },
+                "PathToTheGrave": "End Curse Early",
                 "PowerNap": {
                     "Select": "Select a hit die to recover."
                 },
@@ -2382,6 +2413,7 @@
                     "Group": "Teleporting {name} ({num} of {total})",
                     "Prompt": "Use {feature} to teleport?"
                 },
+                "TrickstersTransposition": "Swap places with the chosen illusion.",
                 "UnarguableWizardry": {
                     "Prompt": "Unarguable Wizardry"
                 },
