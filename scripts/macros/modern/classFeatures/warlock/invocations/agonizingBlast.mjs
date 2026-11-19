@@ -10,7 +10,7 @@ async function use({document, workflow}) {
     const max = automationUtils.getConfigValue(document, 'max');
     const selection = await dialogUtils.selectDocumentDialog(document.name, _loc('CHRISPREMADES.Macros.Modern.AgonizingBlast.Select'), spells, {max, sort: 'alphabetical', checkbox: true});
     if (!selection) return;
-    const chosen = Array.isArray(selection) ? selection.map(entry => entry.document ?? entry) : [selection];
+    const chosen = Array.isArray(selection) ? selection.map(entry => entry.document) : [selection];
     await documentUtils.setFlag(document, 'chris-premades', 'agonizingBlast.spells', chosen.map(spell => spell.name));
 }
 function damage({document, workflow}) {
@@ -23,7 +23,7 @@ function damage({document, workflow}) {
 }
 export const agonizingBlast = {
     name: 'Eldritch Invocations: Agonizing Blast',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50},

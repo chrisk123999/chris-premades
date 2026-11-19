@@ -76,14 +76,14 @@ async function damage({workflow}) {
     if (!damageTypes.length) return;
     let damageType = damageTypes[0];
     if (damageTypes.length > 1) {
-        damageType = await dialogUtils.selectDamageType(damageTypes, feature.name, _loc('CHRISPREMADES.Macros.Modern.PactOfTheBlade.ReplaceDamage'), {addNo: true, ...rememberCombat(workflow.token, feature)});
+        damageType = await dialogUtils.selectDamageType(damageTypes, feature.name, _loc('CHRISPREMADES.Macros.Modern.PactOfTheBlade.ReplaceDamage'), {addNo: true, ...rememberCombat(workflow.token?.document, feature)});
         if (!damageType) return;
     }
     await applyDamageType(workflow, damageType);
 }
 export const pactOfTheBlade = {
     name: 'Eldritch Invocations: Pact of the Blade',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {pass: 'itemRollFinished', macro: bond, priority: 50},
@@ -115,7 +115,7 @@ export const pactOfTheBlade = {
 };
 export const pactOfTheBladeAttack = {
     name: 'Pact of the Blade: Attack',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {pass: 'enchantmentDamageRollComplete', macro: damage, priority: 25}

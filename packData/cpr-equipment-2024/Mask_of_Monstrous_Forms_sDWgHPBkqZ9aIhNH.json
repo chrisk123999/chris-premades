@@ -91,7 +91,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "profiles": [],
@@ -216,7 +216,8 @@
         "changes": [],
         "origin": {
           "item": "Compendium.chris-premades.CPRFeatures2024.Item.UMWUkAcP2UhQrNv7"
-        }
+        },
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -284,7 +285,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       }
     }
   },

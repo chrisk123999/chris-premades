@@ -34,7 +34,6 @@ async function damage({document, ditem, actor}) {
     await documentUtils.deleteDocument(document);
     if (sourceEffect) await documentUtils.deleteDocument(sourceEffect);
     await workflowUtils.completeItemUse(originItem, [], {
-        consumeUsage: false,
         consumeResources: false,
         options: {workflowOptions: {'chris-premades': {giftOfTheProtectors: true}}}
     });
@@ -49,7 +48,7 @@ export const giftOfTheProtectors = {
 };
 export const giftOfTheProtectorsProtected = {
     name: 'Gift of the Protectors: Protected',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'targetDamageComplete', macro: damage, priority: 250}

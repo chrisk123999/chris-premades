@@ -48,7 +48,7 @@
           "message": null
         },
         "conditions": "{}",
-        "magical": false,
+        "magical": true,
         "rider": {
           "statuses": []
         }
@@ -116,7 +116,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "aura": [

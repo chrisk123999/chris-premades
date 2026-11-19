@@ -748,6 +748,7 @@
                     "Creature": "Onto Another Creature",
                     "Ground": "Onto Ground",
                     "Reaction": "Use your reaction to hit the surface head or feet first?",
+                    "SelectCreature": "Which creature do you land on?",
                     "Tiny": "One or both creatures are tiny!",
                     "Type": "Type of Fall:",
                     "Water": "Into Water"
@@ -878,9 +879,11 @@
                 "Retaliation": "Spend a reaction to make a counterattack?",
                 "SpellStoringItem": {
                     "NoItems": "You and your allies are not carrying any valid items for spell storing!",
+                    "NoSpells": "No configured spell list is registered and no artificer spells are on your sheet.",
                     "Existing": "Existing Spell-Storing Item",
                     "Prompt": "Choose an item in which to store a spell:",
-                    "Recharge": "{actor} recharges a spell-storing item, <b>{item}</b>, on {target} from {uses} to {max} uses."
+                    "Recharge": "{actor} recharges a spell-storing item, <b>{item}</b>, on {target} from {uses} to {max} uses.",
+                    "SelectSheetSpell": "The configured spell list is not registered. Choose one of your artificer spells to store:"
                 },
                 "SpiritualWeapon": {
                     "Style": "Choose the weapon's style.",
@@ -1412,6 +1415,10 @@
                     "AtCast": "Choose When Cast",
                     "AtCastHint": "Prompt once when the spell is cast and use that damage type for every later damage roll."
                 },
+                "SkillAbility": {
+                    "UseItem": "Use Item",
+                    "UseItemHint": "Use the item when a check switches ability, so the swap shows in chat."
+                },
                 "SpecialItemUse": {
                     "ActivationTypes": "Activation Types",
                     "ActivationTypesHint": "Only activities with one of these activation types can be used. Leave empty to allow any.",
@@ -1419,8 +1426,6 @@
                     "ActivityIdentifierHint": "Use only the activity with this identifier. Leave blank to allow any matching activity.",
                     "ConsumeResources": "Consume Resources",
                     "ConsumeResourcesHint": "Spend the resources the used activity consumes.",
-                    "ConsumeUsage": "Consume Uses",
-                    "ConsumeUsageHint": "Spend the used item or activity's own uses.",
                     "EquippedOnly": "Equipped Items Only",
                     "ExcludeActivityTypes": "Excluded Activity Types",
                     "ExcludeActivityTypesHint": "Activities of these types cannot be used.",
@@ -1551,11 +1556,6 @@
                 "FeatAbility": {
                     "AbilitiesHint": "Abilities the feat chooses between. The ability picked in the feat's Ability Score Improvement sets save DCs, attack rolls and cast spells. Without a recorded pick, save DCs keep their formula and the others use the highest listed ability."
                 },
-                "IgnoreTraits": {
-                    "DamageTypesHint": "Damage of these types ignores the chosen traits.",
-                    "Traits": "Ignored Traits",
-                    "TraitsHint": "Damage traits ignored by the listed damage types. Downgrade Immunity treats immunity as resistance."
-                },
                 "ProneOnHit": {
                     "MaxSizeHint": "Targets larger than this size are not knocked prone."
                 },
@@ -1612,6 +1612,12 @@
                 }
             },
             "Legacy": {
+                "AberrantDragonmark": {
+                    "SelectHitDie": "Expend a Hit Die to empower your mark?"
+                },
+                "ImbueCard": {
+                    "NoSpells": "You have no spell slots or class spell list to imbue a card from."
+                },
                 "Antagonize": {
                     "Victim": "Choose the creature it attacks.",
                     "Weapon": "Choose the weapon it attacks with."
@@ -2421,6 +2427,12 @@
                     "Select": "Choose up to {maxAmount} creatures to receive a map. At least two are needed.",
                     "TooFew": "Adventurer's Atlas needs at least two creatures."
                 },
+                "Alert": {
+                    "Invalid": "You cannot swap Initiative while Incapacitated or without an Initiative roll.",
+                    "NoAllies": "No willing ally can swap Initiative with you.",
+                    "NotStart": "Initiative can only be swapped right after Initiative is rolled.",
+                    "Select": "Swap Initiative with which ally?"
+                },
                 "AuraOfElementalShielding": {
                     "Ask": "Ask Each Turn",
                     "DamageTypeHint": "A fixed damage type skips the prompt when the item is added and at the start of each turn.",
@@ -2467,6 +2479,10 @@
                     "Higher": "Always Use the Higher Roll",
                     "Keep": "Damage Roll to Keep"
                 },
+                "FateGambler": {
+                    "Check": "Did you succeed on an ability check made against another creature?",
+                    "NoInspiration": "You do not have Heroic Inspiration."
+                },
                 "GuidedPrecision": {
                     "ConcentrationSpells": "Protected Concentration Spells",
                     "TargetEffects": "Marking Effects"
@@ -2512,6 +2528,12 @@
                     "Ask": "Ask Each Time",
                     "Charm": "Twisted Hex",
                     "Target": "Twisted Hex needs another creature as its target."
+                },
+                "VampiresPlaything": {
+                    "Antitoxin": "Antitoxin",
+                    "Missing": "The selected liquid could not be found in any item compendium.",
+                    "PotionOfHealing": "Potion of Healing",
+                    "Select": "Which liquid do you decant?"
                 },
                 "VampiricBite": {
                     "Drain": "Drain",

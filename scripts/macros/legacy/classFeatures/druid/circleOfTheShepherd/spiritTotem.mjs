@@ -20,7 +20,7 @@ async function hawk({document, workflow}) {
     if (!await dialogUtils.confirm(document.name, _loc(translations + 'HawkAttack', {name: workflow.token.name}), {userId: queryUtils.firstOwner(document.actor, true)})) return;
     workflow.tracker.advantage.add('spirit-totem-hawk', activity.name);
     await actorUtils.setReactionUsed(document.actor);
-    await workflowUtils.completeActivityUse(activity, [target], {consumeUsage: false, consumeResources: false, spellSlot: false});
+    await workflowUtils.completeActivityUse(activity, [target], {consumeResources: false, spellSlot: false});
 }
 async function unicorn({document, workflow}) {
     if (workflow.item.type !== 'spell' || !workflow.item.system.level || !workflow.activity.consumption.spellSlot) return;
@@ -29,11 +29,11 @@ async function unicorn({document, workflow}) {
     const activity = itemUtils.getActivityByIdentifier(document, 'unicorn-spirit');
     if (!totem || !activity) return;
     const targets = alliesNear(document, totem);
-    if (targets.length) await workflowUtils.completeActivityUse(activity, targets, {consumeUsage: false, consumeResources: false, spellSlot: false});
+    if (targets.length) await workflowUtils.completeActivityUse(activity, targets, {consumeResources: false, spellSlot: false});
 }
 export const spiritTotem = {
     name: 'Spirit Totem',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'sceneAttackRollConfig', macro: hawk, priority: 60},

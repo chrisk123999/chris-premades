@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils} from '../../../proxy.mjs';
+import {automationUtils, effectUtils} from '../../../proxy.mjs';
 import {playTargetAnimations} from '../../generic/spellAnimation.mjs';
 async function attack({document, workflow}) {
     const armor = workflow.targets.documents[0]?.actor?.system.attributes.ac.equippedArmor;
@@ -9,12 +9,12 @@ function playAnimation({document, workflow}) {
     playTargetAnimations(workflow, automationUtils.getResolvedAnimation(document, 'animation'));
 }
 async function late({document, workflow}) {
-    await Promise.all(workflow.hitTargets.documents.map(token => actorUtils.setReactionUsed(token.actor)));
+    await Promise.all(workflow.hitTargets.documents.map(token => effectUtils.applyNoReactions(token.actor, {origin: workflow.item.uuid, specialDuration: ['turnStart']})));
     playAnimation({document, workflow});
 }
 export const shockingGrasp = {
     name: 'Shocking Grasp',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

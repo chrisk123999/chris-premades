@@ -54,7 +54,7 @@ async function finished({document: item, workflow}) {
     } else if (season === 'winter') {
         const activity = itemUtils.getActivityByIdentifier(item, 'winter');
         if (!activity) return Logging.addMacroWarning('CPR', 'entangling-vines', 'Winter activity missing from item.', {notify: 'warn'});
-        await workflowUtils.syntheticActivityRoll(activity, targets, {consumeUsage: false, consumeResources: false});
+        await workflowUtils.syntheticActivityRoll(activity, targets, {consumeResources: false});
     }
 }
 async function added({document: item}) {
@@ -65,7 +65,7 @@ async function added({document: item}) {
 }
 export const entanglingVines = {
     name: 'Entangling Vines',
-    version: '2.1.4',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {

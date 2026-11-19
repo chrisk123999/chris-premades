@@ -171,7 +171,6 @@
                     "transform",
                     "utility"
                   ],
-                  "consumeUsage": true,
                   "consumeResources": true
                 }
               }
@@ -310,7 +309,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.8",
+        "version": "2.1.9",
         "sourceType": "action:knock-out"
       },
       "macros": {

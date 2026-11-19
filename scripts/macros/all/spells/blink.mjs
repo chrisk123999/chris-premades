@@ -15,12 +15,12 @@ async function vanish({document: effect, token}) {
 async function reappear({document: effect}) {
     const item = fromUuidSync(effect.flags['chris-premades']?.blinkItem ?? '', {strict: false});
     const activity = item ? itemUtils.getActivityByIdentifier(item, 'blink-return') : undefined;
-    if (activity) await workflowUtils.completeActivityUse(activity, [], {consumeUsage: false, consumeResources: false, spellSlot: false});
+    if (activity) await workflowUtils.completeActivityUse(activity, [], {consumeResources: false, spellSlot: false});
     await documentUtils.deleteDocument(effect);
 }
 export const blink = {
     name: 'Blink',
-    version: '2.1.4',
+    version: '2.1.9',
     rules: 'all',
     combat: [
         {pass: 'actorTurnEnd', macro: vanish, priority: 50}

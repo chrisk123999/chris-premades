@@ -38,7 +38,7 @@ async function damage({document: item, workflow, token}) {
     values = values.difference(new Set(['healing', 'temphp', 'none', 'midi-none']));
     if (oldDamageTypes.size === 1) values = values.difference(oldDamageTypes);
     if (!values.size) return;
-    const selection = await dialogUtils.selectDamageType(Array.from(values), item.name, 'CHRISPREMADES.Macros.Legacy.AwakenedSpellbook.Select', {addNo: true, sort: 'alphabetical', ...rememberCombat(token ?? workflow.token, item)});
+    const selection = await dialogUtils.selectDamageType(Array.from(values), item.name, 'CHRISPREMADES.Macros.Legacy.AwakenedSpellbook.Select', {addNo: true, sort: 'alphabetical', ...rememberCombat(token ?? workflow.token?.document, item)});
     if (!selection) return;
     const newRolls = [];
     for (const oldRoll of oldDamageRolls) newRolls.push(await rollUtils.getChangedDamageRoll(oldRoll, selection));
@@ -47,7 +47,7 @@ async function damage({document: item, workflow, token}) {
 }
 export const awakenedSpellbook = {
     name: 'Awakened Spellbook: Replace Damage',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

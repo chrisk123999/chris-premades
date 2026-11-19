@@ -56,7 +56,8 @@
             "conditions": "{}",
             "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "origin": null,
       "_stats": {
@@ -132,7 +133,8 @@
             "conditions": "{}",
             "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "origin": null,
       "_stats": {
@@ -218,7 +220,8 @@
             "conditions": "{}",
             "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "origin": null,
       "_stats": {
@@ -273,7 +276,8 @@
       "img": "icons/magic/control/silhouette-hold-change-blue.webp",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "origin": null,
       "_stats": {
@@ -572,7 +576,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.9"
       }
     }
   },

@@ -221,7 +221,8 @@
       "sort": 0,
       "flags": {},
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -235,7 +236,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       }
     }
   },

@@ -710,7 +710,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.5"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
@@ -759,7 +759,8 @@
       "transfer": false,
       "disabled": false,
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "flags": {
         "dae": {

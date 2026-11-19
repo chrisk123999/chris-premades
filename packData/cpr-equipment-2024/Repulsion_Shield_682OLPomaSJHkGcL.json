@@ -97,7 +97,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "roll": {
@@ -248,7 +248,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
       "config": {
         "sizeLimit": "lg"

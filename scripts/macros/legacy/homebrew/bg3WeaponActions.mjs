@@ -94,7 +94,7 @@ async function riders({document: activity, workflow}) {
     if (activity.type !== 'save') {
         await documentUtils.setFlag(workflow.actor, 'chris-premades', 'bg3WeaponActions', (workflow.actor.getFlag('chris-premades', 'bg3WeaponActions') ?? 0) + 1);
         const save = itemUtils.getActivityByIdentifier(activity.item, key + '-save');
-        if (save && workflow.hitTargets.count) await workflowUtils.syntheticActivityRoll(save, workflow.hitTargets.documents, {consumeUsage: false, consumeResources: false});
+        if (save && workflow.hitTargets.count) await workflowUtils.syntheticActivityRoll(save, workflow.hitTargets.documents, {consumeResources: false});
         return;
     }
     if (!workflow.failedSaves.count) return;
@@ -118,7 +118,7 @@ async function gapingWounds({workflow}) {
 export const bg3Hooks = {equipped, rest};
 export const bg3WeaponAction = {
     name: 'BG3 Weapon Action',
-    version: '2.1.6',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

@@ -25,7 +25,7 @@ async function bolt({document: item, workflow}) {
     if (animation?.macros?.play) animation.macros.play(workflow.token.document, target, {...options, damageType: 'lightning'});
     if (documentUtils.getRules(item) === '2024') tokens.push(target);
     else workflowUtils.setWorkflowProperty(workflow, 'javelinOfLightning', true);
-    if (save && tokens.length) await workflowUtils.syntheticActivityRoll(save, tokens, {consumeUsage: false, consumeResources: false});
+    if (save && tokens.length) await workflowUtils.syntheticActivityRoll(save, tokens, {consumeResources: false});
 }
 async function damage({workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, 'javelinOfLightning') || !workflow.hitTargets.count) return;
@@ -33,7 +33,7 @@ async function damage({workflow}) {
 }
 export const javelinOfLightning = {
     name: 'Javelin of Lightning',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

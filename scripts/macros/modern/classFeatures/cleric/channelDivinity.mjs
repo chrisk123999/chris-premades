@@ -37,12 +37,12 @@ async function applyTurnUndead({workflow}) {
 }
 async function damageType({workflow}) {
     const types = automationUtils.getConfigValue(workflow.item, 'damageTypes') ?? [];
-    const selection = await dialogUtils.selectDamageType(types, workflow.item.name, 'CHRISPREMADES.Generic.SelectDamageType', rememberCombat(workflow.token, workflow.item));
+    const selection = await dialogUtils.selectDamageType(types, workflow.item.name, 'CHRISPREMADES.Generic.SelectDamageType', rememberCombat(workflow.token?.document, workflow.item));
     await applyDamageType(workflow, selection || types[0] || 'radiant');
 }
 export const channelDivinity = {
     name: 'Channel Divinity',
-    version: '2.0.3',
+    version: '2.1.9',
     rules: '2024',
     notes: channelDivinityLegacy.notes,
     roll: channelDivinityLegacy.roll,

@@ -350,7 +350,7 @@
           "message": null
         },
         "conditions": "{}",
-        "magical": false
+        "magical": true
       },
       "sort": 0,
       "showIcon": 1,

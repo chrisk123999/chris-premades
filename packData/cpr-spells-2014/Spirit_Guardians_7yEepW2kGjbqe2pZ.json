@@ -462,7 +462,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
@@ -507,7 +507,8 @@
             "value": "0.5",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {},
       "statuses": [],
@@ -530,7 +531,8 @@
       "img": "icons/magic/defensive/shield-barrier-blades-teal.webp",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {},

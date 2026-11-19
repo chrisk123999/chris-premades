@@ -337,7 +337,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
@@ -402,7 +402,8 @@
       "img": "icons/skills/melee/sword-stuck-glowing-pink.webp",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "sort": 0,
       "_stats": {

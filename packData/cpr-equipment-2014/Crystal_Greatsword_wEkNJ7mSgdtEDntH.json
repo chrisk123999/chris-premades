@@ -393,6 +393,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "6fAaNItUqR3FqftS": {
@@ -507,7 +510,10 @@
           "postRemoveConditionText": ""
         },
         "otherActivityId": "none",
-        "identifier": "crystal-blade-bright"
+        "identifier": "crystal-blade-bright",
+        "visibility": {
+          "requireMagic": true
+        }
       },
       "dimLightGreatswo": {
         "_id": "dimLightGreatswo",
@@ -570,6 +576,9 @@
         },
         "midiProperties": {
           "identifier": "crystal-blade-dim"
+        },
+        "visibility": {
+          "requireMagic": true
         }
       }
     },
@@ -617,7 +626,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -658,7 +668,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -672,7 +683,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

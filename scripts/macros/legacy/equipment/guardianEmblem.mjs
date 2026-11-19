@@ -9,13 +9,13 @@ async function protect({document: item, workflow}) {
     const userId = queryUtils.firstOwner(item.actor, true);
     if (!await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.Legacy.GuardianEmblem.Protect', {item: item.name, name: target.name}), {userId})) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'protect');
-    if (activity) await workflowUtils.syntheticActivityRoll(activity, [target], {consumeUsage: true, consumeResources: true, userId});
+    if (activity) await workflowUtils.syntheticActivityRoll(activity, [target], {consumeResources: true, userId});
     if (token.inCombat) await actorUtils.setReactionUsed(item.actor);
     workflow.isCritical = false;
 }
 export const guardianEmblem = {
     name: 'Guardian Emblem',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

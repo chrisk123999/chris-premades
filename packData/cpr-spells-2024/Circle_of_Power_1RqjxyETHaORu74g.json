@@ -224,7 +224,8 @@
       "transfer": false,
       "disabled": false,
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "flags": {
         "cat": {
@@ -300,7 +301,8 @@
             "value": "item?.itemType === \"spell\" || activity?.midiProperties?.magicEffect",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {
         "cat": {
@@ -327,7 +329,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       }
     }
   },

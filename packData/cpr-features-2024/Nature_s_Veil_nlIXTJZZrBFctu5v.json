@@ -177,7 +177,8 @@
         "changes": [],
         "origin": {
           "item": "Compendium.chris-premades.CPRFeatures2024.Item.nlIXTJZZrBFctu5v"
-        }
+        },
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -239,7 +240,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.9"
       }
     }
   },

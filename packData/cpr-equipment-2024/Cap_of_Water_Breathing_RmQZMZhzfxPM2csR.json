@@ -182,7 +182,10 @@
         },
         "otherActivityId": "none",
         "identifier": "bubble",
-        "name": ""
+        "name": "",
+        "visibility": {
+          "requireMagic": true
+        }
       }
     },
     "identifier": "cap-of-water-breathing"
@@ -246,7 +249,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -260,7 +264,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.8"
+        "version": "2.1.9"
       },
       "macros": {
         "item": [

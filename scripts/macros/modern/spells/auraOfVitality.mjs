@@ -4,7 +4,7 @@ async function heal(item, token) {
     if (!activity || !token) return;
     const nearby = [token, ...tokenUtils.findNearby(token, 30, {disposition: 'ally'})];
     const selection = await dialogUtils.selectTargetDialog(item.name, 'CHRISPREMADES.Macros.Modern.AuraOfVitality.Select', nearby, {skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(item.actor, true)});
-    if (selection?.result) await workflowUtils.completeActivityUse(activity, [selection.result], {consumeUsage: false, consumeResources: false, spellSlot: false});
+    if (selection?.result) await workflowUtils.completeActivityUse(activity, [selection.result], {consumeResources: false, spellSlot: false});
 }
 async function cast({workflow}) {
     if (workflow.activity.identifier === 'aura-of-vitality-heal' || !workflow.token) return;
@@ -16,7 +16,7 @@ async function turnStart({document: effect, token}) {
 }
 export const auraOfVitality = {
     name: 'Aura of Vitality',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {pass: 'itemRollFinished', macro: cast, priority: 50}

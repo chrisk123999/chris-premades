@@ -290,7 +290,10 @@
         "fumbleThreshold": 1,
         "name": "Reaction Attack",
         "_id": "IkPZUrOZjXdebwie",
-        "identifier": "ruins-wake-reaction"
+        "identifier": "ruins-wake-reaction",
+        "visibility": {
+          "requireMagic": true
+        }
       },
       "pdN0h28Wm8MTZbxr": {
         "type": "save",
@@ -437,7 +440,10 @@
         "otherActivityAsParentType": true,
         "friendlySave": "default",
         "name": "Bolt of Lightning",
-        "identifier": ""
+        "identifier": "",
+        "visibility": {
+          "requireMagic": true
+        }
       },
       "LGsDm1qczj9CjDlp": {
         "type": "utility",
@@ -565,7 +571,10 @@
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "name": "Battle Cry",
-        "identifier": ""
+        "identifier": "",
+        "visibility": {
+          "requireMagic": true
+        }
       },
       "4sV7Uw5ed3Qj58By": {
         "type": "heal",
@@ -695,6 +704,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       }
     },
@@ -830,7 +842,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -871,7 +884,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -885,7 +899,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

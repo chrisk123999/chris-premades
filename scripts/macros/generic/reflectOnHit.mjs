@@ -27,7 +27,7 @@ async function attacked({document: effect, sourceToken, workflow, castData}) {
     }
     const {animation, options} = automationUtils.getResolvedAnimation(effect, 'animation', {source: 'chris-premades', identifier: 'reflectOnHit'});
     animation?.macros?.play?.(sourceToken, workflow.token.document, {...options, damageType: activity.damage?.parts?.[0]?.types?.first(), hit: true});
-    await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {atLevel: castData?.castLevel || undefined, consumeUsage: false, consumeResources: false, spellSlot: false});
+    await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {atLevel: castData?.castLevel || undefined, consumeResources: false, spellSlot: false});
 }
 /**
  * Rolls an activity from the effect's source item, or the item a transferred effect sits on, against each creature that hits the effect's bearer with an attack.
@@ -44,7 +44,7 @@ async function attacked({document: effect, sourceToken, workflow, castData}) {
  */
 export const reflectOnHit = {
     rules: 'all',
-    version: '2.1.3',
+    version: '2.1.9',
     category: 'damage',
     generic: true,
     documents: ['activeeffect'],

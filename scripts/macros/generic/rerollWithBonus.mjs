@@ -27,8 +27,8 @@ async function reroll({actor, config, dialog, document: item, message, roll, mac
     if (!newRoll) return roll;
     let consume = !!settings.consume;
     if (settings.consume === 'success' && !newRoll.isSuccess) consume = false;
-    if (activity) await workflowUtils.syntheticActivityRoll(activity, [], {consumeResources: consume, consumeUsage: consume});
-    else if (settings.rollItem) await workflowUtils.syntheticItemRoll(item, [], {consumeResources: consume, consumeUsage: consume});
+    if (activity) await workflowUtils.syntheticActivityRoll(activity, [], {consumeResources: consume});
+    else if (settings.rollItem) await workflowUtils.syntheticItemRoll(item, [], {consumeResources: consume});
     return rollUtils.replaceRollShowDiscarded(roll, newRoll);
 }
 const genericConfig = {
@@ -105,7 +105,7 @@ const tool = {
 const configKeys = [...Object.keys(genericConfig), 'skill', 'tool'];
 const base = {
     rules: 'all',
-    version: '2.0.4',
+    version: '2.1.9',
     category: 'utility',
     generic: true,
     documents: ['item'],

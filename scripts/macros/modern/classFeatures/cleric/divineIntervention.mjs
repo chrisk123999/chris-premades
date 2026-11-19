@@ -40,11 +40,11 @@ async function use({workflow}) {
     itemData.system.method = 'innate';
     itemData.system.activation.type = 'special';
     const item = itemUtils.syntheticItem(itemData, workflow.actor);
-    await workflowUtils.completeItemUse(item, undefined, {consumeResources: false, consumeUsage: false, spellSlot: false});
+    await workflowUtils.completeItemUse(item, undefined, {consumeResources: false, spellSlot: false});
 }
 export const divineIntervention = {
     name: 'Divine Intervention',
-    version: '2.0.3',
+    version: '2.1.9',
     rules: '2024',
     notes: 'Use the "actorDivineIntervention" called event (async) to provide additional spells. Return {source, identifier}, where source is the granting item and will be rolled if the spell is used.\n\tData available: classIdentifier, maxLevel, workflow.',
     roll: [

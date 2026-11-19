@@ -797,7 +797,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       },
       "macros": {
         "called": [
@@ -880,7 +880,8 @@
             "type": "add",
             "value": "restrained"
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {

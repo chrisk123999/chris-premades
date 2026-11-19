@@ -23,11 +23,11 @@ async function burst({document: effect, workflow}) {
         animation?.macros?.play?.(workflow.token?.document, target, options);
     }
     await documentUtils.deleteDocument(effect);
-    if (activity && nearby.length) await workflowUtils.syntheticActivityRoll(activity, nearby, {atLevel: documentUtils.getSavedCastData(effect).castLevel || undefined, consumeUsage: false, consumeResources: false, spellSlot: false});
+    if (activity && nearby.length) await workflowUtils.syntheticActivityRoll(activity, nearby, {atLevel: documentUtils.getSavedCastData(effect).castLevel || undefined, consumeResources: false, spellSlot: false});
 }
 export const lightningArrow = {
     name: 'Lightning Arrow',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {pass: 'actorPreItemRoll', macro: prime, priority: 50},

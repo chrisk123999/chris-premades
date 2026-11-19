@@ -43,13 +43,13 @@ async function wrapsDamage({document: item, workflow}) {
     if (ravenous?.uses.value && await dialogUtils.confirmUseItem(ravenous)) {
         await workflowUtils.bonusDamage(workflow, '6d6', {damageType: 'necrotic'});
         workflowUtils.setWorkflowProperty(workflow, 'ravenousStrike', true);
-        await workflowUtils.syntheticActivityRoll(ravenous, [workflow.token.document], {consumeUsage: true, consumeResources: true});
+        await workflowUtils.syntheticActivityRoll(ravenous, [workflow.token.document], {consumeResources: true});
     }
     await damageBonus(workflow, wrapsBonus(item));
 }
 async function wrapsHeal({workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, 'ravenousStrike')) return;
-    const necrotic = (workflow.damageList ?? []).flatMap(entry => entry.damageDetail ?? []).filter(detail => detail.type === 'necrotic').reduce((total, detail) => total + detail.value, 0);
+    const necrotic = (workflow.damageList ?? []).flatMap(entry => entry.calculatedDamages ?? []).filter(detail => detail.type === 'necrotic').reduce((total, detail) => total + detail.value, 0);
     if (necrotic) await workflowUtils.applyDamage([workflow.token.document], necrotic, 'healing');
 }
 async function wrapsRest({document: item}) {
@@ -69,7 +69,7 @@ export const insigniaOfClaws = {
 };
 export const eldritchClawTattoo = {
     name: 'Eldritch Claw Tattoo',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'actorAttackRollBonuses', macro: clawAttack, priority: 50},
@@ -78,7 +78,7 @@ export const eldritchClawTattoo = {
 };
 export const wrapsOfDyamak = {
     name: 'Wraps of Dyamak',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'actorAttackRollBonuses', macro: wrapsAttack, priority: 50},

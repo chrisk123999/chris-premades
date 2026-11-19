@@ -1,10 +1,11 @@
 import cprConstants from '../../../constants.mjs';
 import {compendiumUtils, dialogUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
+const multiplier = entry => entry.active?.multiplier ?? 1;
 function leftoverDamage(details, hp) {
     let pool = hp;
     const total = {};
-    for (const entry of [...details].sort((a, b) => b.active.multiplier - a.active.multiplier)) {
-        if (entry.active.multiplier === 0) continue;
+    for (const entry of [...details].sort((a, b) => multiplier(b) - multiplier(a))) {
+        if (multiplier(entry) === 0) continue;
         total[entry.type] ??= 0;
         if (entry.value <= pool) {
             pool -= entry.value;
@@ -14,7 +15,7 @@ function leftoverDamage(details, hp) {
             total[entry.type] += entry.damage;
             continue;
         }
-        total[entry.type] += Math.floor(entry.damage - (pool / entry.active.multiplier));
+        total[entry.type] += Math.floor(entry.damage - (pool / multiplier(entry)));
         pool = 0;
     }
     return total;
@@ -26,7 +27,7 @@ async function rollFinished(workflow) {
     const target = workflow.hitTargets.documents[0];
     if (!entry || entry.newHP !== 0 || !(entry.oldHP > 0) || !target.actor || !target.object) return;
     if (mode === 'full' && entry.oldHP !== target.actor.system.attributes.hp.max) return;
-    const damage = leftoverDamage(entry.damageDetail ?? [], entry.oldHP);
+    const damage = leftoverDamage(entry.calculatedDamages ?? [], entry.oldHP);
     if (!Object.values(damage).some(value => value > 0)) return;
     const range = workflowUtils.getRange(workflow) || 5;
     const nearby = tokenUtils.findNearby(target, 5, {disposition: 'ally'}).filter(token => token.actor && tokenUtils.isWithinDistance(workflow.token.document, token, range));
@@ -52,7 +53,7 @@ async function damage({workflow}) {
 }
 export const dmgCleave = {
     name: 'DMG Cleave',
-    version: '2.1.6',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

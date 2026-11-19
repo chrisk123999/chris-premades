@@ -896,7 +896,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
@@ -937,7 +937,8 @@
             "value": "10",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {
         "cat": {
@@ -1018,7 +1019,8 @@
             "value": "10",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {
         "cat": {

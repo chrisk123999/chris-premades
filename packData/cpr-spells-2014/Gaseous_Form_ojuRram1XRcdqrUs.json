@@ -184,7 +184,7 @@
           "message": null
         },
         "conditions": "{}",
-        "magical": false
+        "magical": true
       },
       "sort": 0,
       "showIcon": 1,
@@ -241,7 +241,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       }
     }
   },

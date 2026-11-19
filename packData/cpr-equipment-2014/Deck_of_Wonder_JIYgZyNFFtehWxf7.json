@@ -113,7 +113,10 @@
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "name": "Draw",
-        "identifier": "draw"
+        "identifier": "draw",
+        "visibility": {
+          "requireMagic": true
+        }
       },
       "1OTE2K1oxe7rsTMz": {
         "type": "utility",
@@ -228,6 +231,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "SUCMSm96gxtI0BSI": {
@@ -347,6 +353,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "szBdnzJqEovDWMdm": {
@@ -466,6 +475,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "3lW0yuxozSXKobb2": {
@@ -580,6 +592,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "yv8DOKKZVnz8qeyG": {
@@ -694,6 +709,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "zRcnhtYky0XZ9Cc6": {
@@ -808,6 +826,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "O8hzvTGUAPenf5Xn": {
@@ -927,6 +948,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "kAHAHY4D67dbU7V9": {
@@ -1046,6 +1070,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "EHiWM4OgOgF6x5rC": {
@@ -1164,6 +1191,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "BK4phyoXIXufGoFM": {
@@ -1282,6 +1312,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "kF2TGuyY0FEfkeex": {
@@ -1410,6 +1443,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "n62jaoODVWWVJqU2": {
@@ -1524,6 +1560,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "2n9gyuaNbmXktYnG": {
@@ -1654,6 +1693,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "Y6UuW0wcsxuYKqy4": {
@@ -1773,6 +1815,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "faUM2CUDjehhg4P7": {
@@ -1887,6 +1932,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "NiaGPQQEfTm6yGBg": {
@@ -2005,6 +2053,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "RLHbxQLG158m7Wei": {
@@ -2119,6 +2170,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "G8jy67ejYKG4TBpw": {
@@ -2237,6 +2291,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "TBNjgoKxSmxiTCwQ": {
@@ -2356,6 +2413,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "27NyxfP8j4get5u3": {
@@ -2475,6 +2535,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "vTe1otYIl5r7xf2N": {
@@ -2589,6 +2652,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "dA8wGDwn2OZ8SpNh": {
@@ -2703,6 +2769,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "aLi1wGKrfZTQGOR0": {
@@ -2818,6 +2887,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       }
     },
@@ -2904,7 +2976,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -2966,7 +3039,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -2999,7 +3073,8 @@
         }
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3040,7 +3115,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3081,7 +3157,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3122,7 +3199,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3164,7 +3242,8 @@
         }
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3205,7 +3284,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3246,7 +3326,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3324,7 +3405,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3359,7 +3441,8 @@
         }
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3429,7 +3512,8 @@
         }
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3462,7 +3546,8 @@
         }
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3503,7 +3588,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3544,7 +3630,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3585,7 +3672,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3626,7 +3714,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3668,7 +3757,8 @@
         }
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3701,7 +3791,8 @@
         }
       },
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -3715,7 +3806,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

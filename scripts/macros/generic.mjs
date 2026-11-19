@@ -53,7 +53,6 @@ export {firearm} from './generic/firearm.mjs';
 export {grappleAttackAdvantage} from './generic/grappleAttackAdvantage.mjs';
 export {hide} from './generic/hide.mjs';
 export {ignoreCover} from './generic/ignoreCover.mjs';
-export {ignoreTraits} from './generic/ignoreTraits.mjs';
 export {immuneAutoSucceed} from './generic/immuneAutoSucceed.mjs';
 export {packTactics} from './generic/packTactics.mjs';
 export {preventDeath} from './generic/preventDeath.mjs';
@@ -108,3 +107,4 @@ export {useOnEvent} from './generic/useOnEvent.mjs';
 /*============================*/
 export {actionDismissal} from './generic/actionDismissal.mjs';
 export {removeRegion} from './generic/removeRegion.mjs';
+export {skillAbility} from './generic/skillAbility.mjs';

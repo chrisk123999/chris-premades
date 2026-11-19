@@ -54,7 +54,7 @@ async function cast(actor, effect, targets, userId) {
     const spellActivity = await fromUuid(activityUuid);
     await documentUtils.setFlag(effect, 'chris-premades', 'readySpell.released', true);
     if (spellActivity?.requiresConcentration) await endHolding(effect);
-    if (spellActivity) await workflowUtils.completeActivityUse(spellActivity, targets, {userId, atLevel: level, consumeUsage: false, consumeResources: false, spellSlot: false, config: {consume: {action: false}}});
+    if (spellActivity) await workflowUtils.completeActivityUse(spellActivity, targets, {userId, atLevel: level, consumeResources: false, spellSlot: false, config: {consume: {action: false}}});
     await endHolding(effect);
     if (actor.effects.has(effect.id)) await documentUtils.deleteDocument(effect);
 }
@@ -84,7 +84,7 @@ async function turnStart({document: effect}) {
         await documentUtils.deleteDocument(effect);
         return;
     }
-    const targets = Array.from(game.users.get(userId)?.targets ?? []).map(token => token.document ?? token);
+    const targets = Array.from(game.users.get(userId)?.targets ?? []).map(token => token.document);
     await cast(actor, effect, targets, userId);
 }
 async function lost({document: effect}) {
@@ -104,7 +104,7 @@ async function lost({document: effect}) {
 }
 export const readySpell = {
     name: 'Ready Spell',
-    version: '2.1.8',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

@@ -51,7 +51,7 @@ async function manifest({workflow, macroClass: {identifier}}) {
         const enemies = tokenUtils.findNearby(target, emanation).filter(other => other.actor && other !== token && other.disposition !== target.disposition);
         if (!item || !enemies.length) continue;
         const enemy = enemies.length > 1 ? (await dialogUtils.selectTargetDialog(activity.item.name, 'CHRISPREMADES.Macros.Modern.WrathOfTheSea.Target', enemies))?.result : enemies[0];
-        if (enemy) await workflowUtils.completeActivityUse(item.system.activities.contents[0], [enemy], {consumeUsage: false, consumeResources: false, options: {workflowOptions: {notBonusAction: true}}});
+        if (enemy) await workflowUtils.completeActivityUse(item.system.activities.contents[0], [enemy], {consumeResources: false, options: {workflowOptions: {notBonusAction: true}}});
     }
 }
 export const wrathOfTheSea = {

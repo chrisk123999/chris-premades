@@ -544,7 +544,8 @@
       "_id": "SOTIXYPUzcm24eB1",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -592,7 +593,8 @@
       "_id": "ut5o4sHbHGh5BHOf",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -640,7 +642,8 @@
       "_id": "dgKDpkVZdETfhvBG",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -688,7 +691,8 @@
       "_id": "4smn6quV2K7jJRkV",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -736,7 +740,8 @@
       "_id": "1ZpzHVhZAuJdU7ap",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -797,7 +802,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.5"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

@@ -10,7 +10,8 @@
       "_id": "SnE7LlLVG0T6yVwx",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -244,7 +245,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.2"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

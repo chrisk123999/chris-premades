@@ -32,14 +32,14 @@ async function safeHaven({document: effect, ditem, targetToken}) {
     workflowUtils.preventZeroHP(ditem, {targetHP: hitPoints});
     await documentUtils.deleteDocument(effect);
     const activity = itemUtils.getActivityByIdentifier(feature, 'safe-haven');
-    if (activity) await workflowUtils.completeActivityUse(activity, [token], {consumeUsage: false, consumeResources: false});
+    if (activity) await workflowUtils.completeActivityUse(activity, [token], {consumeResources: false});
     if (!destination?.object) return;
     const {animation, options} = automationUtils.getResolvedAnimation(feature, 'animation');
     await tokenUtils.teleportToken(token, {animation, options, range: config.range, centerpoint: destination.object.center, userId});
 }
 export const superiorAtlas = {
     name: 'Superior Atlas',
-    version: '2.1.4',
+    version: '2.1.9',
     rules: '2024',
     notes: 'Safe Haven runs from the superiorAtlasSafeHaven macro on the map effects created by Adventurer\'s Atlas.',
     roll: [

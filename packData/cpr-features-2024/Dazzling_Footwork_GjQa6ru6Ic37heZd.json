@@ -121,7 +121,6 @@
                   "activityIdentifier": "",
                   "activationTypes": [],
                   "excludeActivityTypes": [],
-                  "consumeUsage": false,
                   "consumeResources": false
                 }
               }
@@ -357,7 +356,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       }
     }
   },
