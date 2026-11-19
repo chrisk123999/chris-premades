@@ -28,9 +28,9 @@ async function use({document, workflow}) {
             const ditem = workflow.damageList.find(i => i.actorId === token.actor.id);
             if (!ditem) return;
             if (!damageTypes.length) {
-                targetDamage = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0);
+                targetDamage = ditem.calculatedDamages.reduce((acc, i) => acc + i.value, 0);
             } else {
-                targetDamage = ditem.damageDetail.reduce((acc, i) => acc + (damageTypes.includes(i.type) ? i.value : 0), 0);
+                targetDamage = ditem.calculatedDamages.reduce((acc, i) => acc + (damageTypes.includes(i.type) ? i.value : 0), 0);
             }
             if (halfDamage) targetDamage = Math.floor(targetDamage / 2);
         }
@@ -101,7 +101,7 @@ async function use({document, workflow}) {
  */
 export const reduceMaxHP = {
     rules: 'all',
-    version: '2.0.3',
+    version: '2.1.9',
     category: 'mechanics',
     generic: true,
     documents: ['activity'],

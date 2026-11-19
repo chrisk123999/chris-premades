@@ -91,7 +91,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "roll": {
@@ -249,7 +249,7 @@
           },
           "requireAttunement": false,
           "requireIdentification": false,
-          "requireMagic": false,
+          "requireMagic": true,
           "identifier": ""
         },
         "roll": {
@@ -473,7 +473,7 @@
       "macros": {},
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.9"
       }
     }
   },

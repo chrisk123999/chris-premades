@@ -413,7 +413,8 @@
             "conditions": "{}",
             "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "duration": {
         "value": null,
@@ -465,7 +466,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       }
     }
   },

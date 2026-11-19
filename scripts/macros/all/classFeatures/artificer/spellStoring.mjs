@@ -1,4 +1,4 @@
-import {actorUtils, applications, automationUtils, compendiumUtils, constants, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, tokenUtils, uiUtils} from '../../../../proxy.mjs';
+import {actorUtils, applications, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, tokenUtils, uiUtils, workflowUtils} from '../../../../proxy.mjs';
 import {swapArtificerPlan as artificer} from './useOrSwapPlan.mjs';
 // helpers
 async function fetchItems(actor, token, tools, rules) {
@@ -27,6 +27,28 @@ async function fetchItems(actor, token, tools, rules) {
     }
     return items;
 }
+function hasRegisteredList(spellLists) {
+    return spellLists.some(key => dnd5e.registry.spellLists.forType(key));
+}
+function getSheetSpells(actor, maxLevel, rules) {
+    return actor.itemTypes.spell.filter(spell => spell.system.level >= 1
+        && spell.system.level <= Number(maxLevel)
+        && spell.system.activation?.type === 'action'
+        && (spell.system.sourceItem?.startsWith('class:artificer') || spell.system.classIdentifier === 'artificer')
+        && (rules !== '2024' || !spell.system.materials?.consumed));
+}
+async function selectSpell(item, config, rules) {
+    if (hasRegisteredList(config.spellLists)) return (await compendiumUtils.selectSpellFromLists(config.spellLists, {
+        filters: rules === '2024' ? [{k: 'system.materials.consumed', v: false}] : undefined,
+        maxLevel: config.maxLevel,
+        title: item.name,
+        icon: item.img,
+        castTime: ['action']
+    }))?.[0];
+    const spell = await dialogUtils.selectDocumentDialog(item.name, 'CHRISPREMADES.Macros.All.SpellStoringItem.SelectSheetSpell', getSheetSpells(item.actor, config.maxLevel, rules), {sort: 'alphabetical', showSpellLevel: true});
+    if (!spell) return;
+    return await fromUuid(spell._stats?.compendiumSource) ?? spell;
+}
 const makeButton = async item => ({
     label: item.name,
     name: item.uuid,
@@ -36,17 +58,27 @@ const makeButton = async item => ({
     }
 });
 // macro
+async function preTargeting({activity}) {
+    const {spellLists, maxLevel} = automationUtils.getConfigValues(activity.item, ['spellLists', 'maxLevel']);
+    if (hasRegisteredList(spellLists) || getSheetSpells(activity.actor, maxLevel, documentUtils.getRules(activity.item)).length) return;
+    genericUtils.notify('CHRISPREMADES.Macros.All.SpellStoringItem.NoSpells', {type: 'warn'});
+    return true;
+}
+async function stop(workflow, source, identifier, message, options) {
+    await workflowUtils.refundUse(workflow);
+    return Logging.addMacroWarning(source, identifier, message, options);
+}
 async function store({macroClass: {identifier, source}, workflow}) {
     const rules = documentUtils.getRules(workflow.item);
     const config = automationUtils.getConfigValues(workflow.item, Object.keys(spellStoringItem.config));
     const castActivity = itemUtils.getActivityByIdentifier(workflow.item, 'spell-storing-stored-spell')?.toObject();
-    if (!castActivity) return Logging.addMacroWarning(source, identifier, 'Spell-Storing Item exited early due to a missing cast acttivity. (identifier) spell-storing-stored-spell');
+    if (!castActivity) return stop(workflow, source, identifier, 'Spell-Storing Item exited early due to a missing cast activity. (identifier) spell-storing-stored-spell');
     const uses = (await rollUtils.rollDice(config.uses, {document: workflow.activity}))?.total;
-    if (uses === undefined) return Logging.addMacroWarning(source, identifier, `Spell-Storing Item exited early due to a failed formula parse. (formula) ${config.uses}`);
+    if (uses === undefined) return stop(workflow, source, identifier, `Spell-Storing Item exited early due to a failed formula parse. (formula) ${config.uses}`);
     const items = await fetchItems(workflow.actor, workflow.token?.document, new Set(config.tools), rules);
     const existingEffect = actorUtils.getEffectByIdentifier(workflow.actor, identifier);
     const existing = await fromUuid(existingEffect?.flags[source]?.createdSpellStoring);
-    if (!existing && !items.size) return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.All.SpellStoringItem.NoItems', {notify: 'warn'});
+    if (!existing && !items.size) return stop(workflow, source, identifier, 'CHRISPREMADES.Macros.All.SpellStoringItem.NoItems', {notify: 'warn'});
     const inputs = [];
     if (existing) inputs.push(['button', [{
         label: `[${existing.actor.name}] ${existing.item.name} - ${existing.uses.value}/${existing.uses.max}`,
@@ -74,42 +106,34 @@ async function store({macroClass: {identifier, source}, workflow}) {
         return;
     }
     const item = await fromUuid(choice?.buttons);
-    if (!item) return Logging.addMacroWarning(source, identifier, 'Spell-Storing Item exited early due to a declined item choice prompt.');
-    const spell = (await compendiumUtils.selectSpellFromLists(config.spellLists, {
-        filters: rules === '2024' ? [{k: 'system.materials.consumed', v: false}] : undefined,
-        maxLevel: config.maxLevel,
-        title: workflow.item.name,
-        icon: workflow.item.img,
-        castTime: ['action']
-    }))?.[0];
-    if (!spell) return Logging.addMacroWarning(source, identifier, 'Spell-Storing Item exited early due to a declined spell choice prompt.');
-    if (existingEffect) await documentUtils.deleteDocument(existingEffect);
+    if (!item) return stop(workflow, source, identifier, 'Spell-Storing Item exited early due to a declined item choice prompt.');
+    const spell = await selectSpell(workflow.item, config, rules);
+    if (!spell) return stop(workflow, source, identifier, 'Spell-Storing Item exited early due to a declined spell choice prompt.');
     const parent = (await effectUtils.createEffects(workflow.actor, [{
         name: `[${item.actor.name}] ${workflow.item.name}`,
         img: workflow.item.img,
         origin: workflow.activity.uuid,
         flags: {cat: {identifier}}
     }]))?.[0];
-    if (!parent) return Logging.addMacroWarning(source, identifier, `Spell-Storing Item failed to create parent effect. (self uuid) ${workflow.actor.uuid} (target item) ${item.uuid}`);
-    castActivity.uses.max = uses;
-    castActivity.spell.uuid = spell.uuid;
-    castActivity.midiProperties.automationOnly = false;
-    castActivity.spell.challenge = {
-        attack: workflow.actor.system.attributes.spell.attack,
-        save: workflow.actor.system.attributes.spell.dc,
-        override: true
-    };
-    genericUtils.setProperty(castActivity, 'flags.dnd5e.dependentOn', parent.uuid);
-    await documentUtils.update(item, {[`system.activities.${castActivity._id}`]: castActivity});
-    const created = item.system.activities.get(castActivity._id);
-    if (!created) return Logging.addMacroWarning(source, identifier, `Spell-Storing Item failed to create cast activity. (self uuid) ${workflow.actor.uuid} (target item) ${item.uuid}`);
+    if (!parent) return stop(workflow, source, identifier, `Spell-Storing Item failed to create parent effect. (self uuid) ${workflow.actor.uuid} (target item) ${item.uuid}`);
+    const created = await itemUtils.attachCastActivity(item, castActivity, spell, parent, {caster: workflow.actor, updates: {uses: {max: uses}}});
+    if (!created) {
+        await documentUtils.deleteDocument(parent);
+        return stop(workflow, source, identifier, `Spell-Storing Item failed to create cast activity. (self uuid) ${workflow.actor.uuid} (target item) ${item.uuid}`);
+    }
+    if (existingEffect) await documentUtils.deleteDocument(existingEffect);
     await documentUtils.setFlag(parent, source, 'createdSpellStoring', created.uuid);
 }
 export const spellStoringItem = {
     name: 'Spell-Storing Item',
-    version: '2.1.8',
+    version: '2.1.9',
     rules: 'all',
     roll: [
+        {
+            pass: 'activityPreTargeting',
+            macro: preTargeting,
+            priority: 50
+        },
         {
             pass: 'activityRollFinished',
             macro: store,

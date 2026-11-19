@@ -37,7 +37,7 @@ async function endure({document: item, data: {item: trigger, workflow}}) {
     const weapon = usable.length > 1 ? await dialogUtils.selectDocumentDialog(item.name, 'CHRISPREMADES.Macros.Legacy.OrcishFury.Weapon', usable, {userId}) : usable[0];
     if (!weapon) return;
     await actorUtils.setReactionUsed(actor);
-    await workflowUtils.completeActivityUse(weapon.system.activities.find(activity => activity.type === 'attack'), [victim], {userId, consumeUsage: false, consumeResources: false});
+    await workflowUtils.completeActivityUse(weapon.system.activities.find(activity => activity.type === 'attack'), [victim], {userId, consumeResources: false});
 }
 export const orcishFury = {
     name: 'Orcish Fury: Extra Damage',

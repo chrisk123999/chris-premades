@@ -252,15 +252,18 @@ export {fullBlooded as 'full-blooded'} from './modern/classFeatures/wizard/sangr
 /*===============================*/
 /*             FEATS             */
 /*===============================*/
+export {alert} from './modern/feats/alert.mjs';
 export {charmTwister as 'charm-twister', oldBlessing, twistedHexCharm as 'twisted-hex-charm'} from './modern/feats/charmTwister.mjs';
 export {exploitOpening as 'exploit-opening'} from './modern/feats/exploitOpening.mjs';
 export {familyFirst as 'family-first'} from './modern/feats/familyFirst.mjs';
+export {fateGambler as 'fate-gambler'} from './modern/feats/fateGambler.mjs';
 export {iFoughtILived as 'i-fought-i-lived'} from './modern/feats/iFoughtILived.mjs';
 export {iHidFromTheTerror as 'i-hid-from-the-terror'} from './modern/feats/iHidFromTheTerror.mjs';
 export {iOpenedTheGate as 'i-opened-the-gate'} from './modern/feats/iOpenedTheGate.mjs';
 export {protectionMoved} from './modern/feats/protection.mjs';
 export {sangromanticInitiate as 'sangromantic-initiate'} from './modern/feats/sangromanticInitiate.mjs';
 export {tirelessReveler as 'tireless-reveler'} from './modern/feats/tirelessReveler.mjs';
+export {vampiresPlaything as 'vampires-plaything'} from './modern/feats/vampiresPlaything.mjs';
 
 /*===============================*/
 /*         MISCELLANEOUS         */

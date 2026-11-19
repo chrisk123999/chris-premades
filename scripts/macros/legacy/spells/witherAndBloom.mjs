@@ -25,11 +25,11 @@ async function late({document, workflow}) {
     if (!count) return Logging.addMacroWarning('CPR', 'wither-and-bloom', 'No Hit Dice spent.');
     if (animation?.macros?.heal) animation.macros.heal(target);
     const activityData = activityUtils.getDamageModifiedActivityData(activity, formula + ' + @mod');
-    await workflowUtils.syntheticActivityDataRoll(activityData, document, [target], {spellSlot: false, consumeUsage: false, consumeResources: false});
+    await workflowUtils.syntheticActivityDataRoll(activityData, document, [target], {spellSlot: false, consumeResources: false});
 }
 export const witherAndBloom = {
     name: 'Wither and Bloom',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

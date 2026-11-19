@@ -407,7 +407,10 @@
         "otherActivityId": "",
         "otherActivityAsParentType": true,
         "friendlySave": "default",
-        "identifier": "dragons-wrath-breath"
+        "identifier": "dragons-wrath-breath",
+        "visibility": {
+          "requireMagic": true
+        }
       },
       "SGlACkJ3w5E7YiGu": {
         "type": "damage",
@@ -539,6 +542,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       }
     },
@@ -551,7 +557,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

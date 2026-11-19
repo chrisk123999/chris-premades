@@ -17,7 +17,7 @@ function damage({document, workflow}) {
     const bonus = new DamageBonus(document, {formula: getFormula(selected, extraDie), type: automationUtils.getConfigValue(document, 'damageType')})
         .withOnUse(async ({workflow}) => {
             await actorUtils.spendSpellSlots(workflow.actor, selected.value);
-            await workflowUtils.completeItemUse(document, workflow.hitTargets.documents, {consumeUsage: false, consumeResources: false});
+            await workflowUtils.completeItemUse(document, workflow.hitTargets.documents, {consumeResources: false});
         });
     if (slots.length === 1) return bonus;
     return bonus.withInputs([['combobox', [{
@@ -35,7 +35,7 @@ function damage({document, workflow}) {
 }
 export const divineSmite = {
     name: 'Divine Smite',
-    version: '2.0.4',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

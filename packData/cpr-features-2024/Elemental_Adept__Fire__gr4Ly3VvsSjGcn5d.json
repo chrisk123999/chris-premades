@@ -39,27 +39,63 @@
     "advancement": {},
     "crewed": false
   },
-  "effects": [],
-  "flags": {
-    "cat": {
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "identifier": "ignoreTraits",
-            "rules": "all"
-          }
-        ]
+  "effects": [
+    {
+      "_id": "xRptdmxxrqUyCsx5",
+      "name": "Elemental Adept (Fire)",
+      "img": "icons/magic/fire/projectile-embers-orange.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "showIcon": 0,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
-      "genericConfig": {
-        "chris-premades": {
-          "ignoreTraits": {
-            "damageTypes": [
-              "fire"
-            ]
+      "system": {
+        "changes": [
+          {
+            "key": "damage",
+            "type": "dnd5e.damage.ignore.resistance",
+            "value": "fire",
+            "phase": "initial",
+            "priority": 100,
+            "_id": "ojztvefVAwL6vm6r",
+            "conditions": "{\"k\":\"item.school\",\"o\":\"empty\",\"v\":false}",
+            "replacement": ""
           }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
         }
       },
+      "flags": {},
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.1.1"
+      },
+      "_key": "!items.effects!gr4Ly3VvsSjGcn5d.xRptdmxxrqUyCsx5"
+    }
+  ],
+  "flags": {
+    "cat": {
       "alternateAttributes": {
         "RollModifier": [
           {

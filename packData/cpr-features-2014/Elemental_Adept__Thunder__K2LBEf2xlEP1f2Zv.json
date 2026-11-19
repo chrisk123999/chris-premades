@@ -39,27 +39,63 @@
     "advancement": {},
     "crewed": false
   },
-  "effects": [],
-  "flags": {
-    "cat": {
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "identifier": "ignoreTraits",
-            "rules": "all"
-          }
-        ]
+  "effects": [
+    {
+      "_id": "WcXfWQqeNZlN3qpY",
+      "name": "Elemental Adept (Thunder)",
+      "img": "icons/magic/fire/projectile-fireball-purple.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "showIcon": 0,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
-      "genericConfig": {
-        "chris-premades": {
-          "ignoreTraits": {
-            "damageTypes": [
-              "thunder"
-            ]
+      "system": {
+        "changes": [
+          {
+            "key": "damage",
+            "type": "dnd5e.damage.ignore.resistance",
+            "value": "thunder",
+            "phase": "initial",
+            "priority": 100,
+            "_id": "imsXwYXETLJ4UVkX",
+            "conditions": "{\"k\":\"item.school\",\"o\":\"empty\",\"v\":false}",
+            "replacement": ""
           }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
         }
       },
+      "flags": {},
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.1.1"
+      },
+      "_key": "!items.effects!K2LBEf2xlEP1f2Zv.WcXfWQqeNZlN3qpY"
+    }
+  ],
+  "flags": {
+    "cat": {
       "alternateAttributes": {
         "RollModifier": [
           {

@@ -23,6 +23,7 @@ async function use({document, workflow}) {
     const sourceToken = workflow.token.document;
     const pulled = workflow.failedSaves.tokens.map(target => target.document)
         .map(targetToken => ({targetToken, distance: tokenUtils.getDistance(sourceToken, targetToken)}))
+        .filter(({distance}) => Number.isFinite(distance))
         .sort((a, b) => a.distance - b.distance);
     for (const {targetToken, distance} of pulled) {
         const slide = Math.min(0, 5 - distance);
@@ -33,7 +34,7 @@ async function use({document, workflow}) {
 }
 export const warpingImplosion = {
     name: 'Warping Implosion',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'activityPreTargeting', macro: early, priority: 50},

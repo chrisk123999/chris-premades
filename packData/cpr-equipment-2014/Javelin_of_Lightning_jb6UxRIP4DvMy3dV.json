@@ -385,6 +385,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "javelinBoltUse01": {
@@ -531,7 +534,10 @@
         "otherActivityUuid": "",
         "attackRollPerTarget": "default",
         "fumbleThreshold": 1,
-        "identifier": "javelin-of-lightning-bolt"
+        "identifier": "javelin-of-lightning-bolt",
+        "visibility": {
+          "requireMagic": true
+        }
       }
     },
     "identifier": "javelin-of-lightning",
@@ -543,7 +549,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

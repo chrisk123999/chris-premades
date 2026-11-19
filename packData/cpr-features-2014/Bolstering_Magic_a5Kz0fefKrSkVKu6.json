@@ -15,7 +15,7 @@
           "message": null
         },
         "conditions": "{}",
-        "magical": false,
+        "magical": true,
         "rider": {
           "statuses": []
         }
@@ -134,7 +134,7 @@
       "name": "Bolstered Spell Slots",
       "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-red.webp",
       "system": {
-        "magical": false,
+        "magical": true,
         "origin": {
           "item": "Compendium.chris-premades.CPRFeatures2014.Item.a5Kz0fefKrSkVKu6",
           "actor": null,
@@ -602,7 +602,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       }
     }
   },

@@ -605,7 +605,7 @@
           "message": null
         },
         "conditions": "{}",
-        "magical": false,
+        "magical": true,
         "rider": {
           "statuses": []
         }
@@ -688,7 +688,8 @@
             "value": "[{\"number\":2,\"denomination\":8,\"types\":[\"radiant\"]}]",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {
         "cat": {
@@ -746,7 +747,8 @@
             "value": "30",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "flags": {},
       "statuses": [],

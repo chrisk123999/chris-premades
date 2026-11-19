@@ -6,7 +6,8 @@
       "name": "Adventurer's Atlas: Maps",
       "statuses": [],
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "duration": {
         "value": null,
@@ -65,7 +66,8 @@
             "type": "add",
             "_id": "qIlx41AN1uYkDp4y"
           }
-        ]
+        ],
+        "magical": true
       },
       "duration": {
         "value": null,
@@ -342,7 +344,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.9"
       }
     }
   },

@@ -237,7 +237,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.8"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
@@ -293,7 +293,7 @@
           "message": null
         },
         "conditions": "{}",
-        "magical": false
+        "magical": true
       },
       "disabled": false,
       "duration": {

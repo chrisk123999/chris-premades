@@ -56,7 +56,7 @@ async function missed({workflow, document}) {
 }
 async function use({workflow, bonus}) {
     const inCombat = workflow.token.document.inCombat;
-    await workflowUtils.completeItemUse(bonus.document, workflow.targets.documents, {fast: true, consumeResources: inCombat, consumeUsage: inCombat});
+    await workflowUtils.completeItemUse(bonus.document, workflow.targets.documents, {fast: true, consumeResources: inCombat});
     const {animation} = automationUtils.getResolvedAnimation(bonus.document, 'animation');
     const targetToken = workflow.targets.documents[0];
     if (animation && targetToken.object) {
@@ -93,7 +93,7 @@ function validate({bonus, strikes = []}) {
 }
 export const sneakAttack = {
     name: 'Sneak Attack',
-    version: '2.1.5',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

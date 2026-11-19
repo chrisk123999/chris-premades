@@ -310,12 +310,17 @@ export {dmgCleave as 'dmg-cleave'} from './legacy/homebrew/dmgCleave.mjs';
 /*============================*/
 /*           FEATS            */
 /*============================*/
+export {aberrantDragonmark as 'aberrant-dragonmark'} from './legacy/feats/aberrantDragonmark.mjs';
 export {agentOfOrder as 'agent-of-order-stasis-strike'} from './legacy/feats/agentOfOrder.mjs';
 export {martialAdept as 'martial-adept', martialAdeptPool as 'martial-adept-pool'} from './legacy/feats/martialAdept.mjs';
 export {cloudStrike as 'strike-of-the-giants-cloud-strike'} from './legacy/feats/cloudStrike.mjs';
+export {cruel} from './legacy/feats/cruel.mjs';
+export {dualWielder as 'dual-wielder'} from './legacy/feats/dualWielder.mjs';
 export {graspOfAvarice as 'baleful-scion-grasp-of-avarice'} from './legacy/feats/graspOfAvarice.mjs';
+export {imbueCard as 'cartomancer-hidden-ace-imbue-card'} from './legacy/feats/imbueCard.mjs';
 export {reactiveResistance as 'gift-of-the-chromatic-dragon-reactive-resistance'} from './legacy/feats/reactiveResistance.mjs';
 export {orcishFury as 'orcish-fury-extra-damage'} from './legacy/feats/orcishFury.mjs';
+export {remarkableRecovery as 'remarkable-recovery-regain-hit-points'} from './legacy/feats/remarkableRecovery.mjs';
 export {sharpshooter} from './legacy/feats/sharpshooter.mjs';
 
 /*============================*/

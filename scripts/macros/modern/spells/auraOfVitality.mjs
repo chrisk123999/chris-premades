@@ -7,7 +7,7 @@ async function heal(item, token, firstCast, atLevel) {
     if (!selection?.result) return;
     const options = {};
     if (firstCast) workflowUtils.setNotSustainedRoll(options);
-    await workflowUtils.completeActivityUse(activity, [selection.result], {atLevel, options, consumeUsage: false, consumeResources: false, spellSlot: false});
+    await workflowUtils.completeActivityUse(activity, [selection.result], {atLevel, options, consumeResources: false, spellSlot: false});
 }
 async function cast({workflow}) {
     if (workflow.activity.identifier === 'aura-of-vitality-heal' || !workflow.token) return;
@@ -20,7 +20,7 @@ async function turnStart({document: effect, token}) {
 }
 export const auraOfVitality = {
     name: 'Aura of Vitality',
-    version: '2.1.3',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {pass: 'itemRollFinished', macro: cast, priority: 50}

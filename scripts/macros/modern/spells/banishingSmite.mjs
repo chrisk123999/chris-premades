@@ -7,7 +7,7 @@ async function banish({document, actor, workflow}) {
     const targets = workflow.targets.documents.filter(token => token.actor && token.actor.system.attributes.hp.value <= maxHp);
     const endSpell = () => effectUtils.endConcentration(actor, document);
     if (!targets.length) return await endSpell();
-    await workflowUtils.syntheticActivityRoll(activity, targets, {consumeUsage: false, consumeResources: false, spellSlot: false, config: {concentration: {begin: false}}});
+    await workflowUtils.syntheticActivityRoll(activity, targets, {consumeResources: false, spellSlot: false, config: {concentration: {begin: false}}});
     const banished = targets.filter(token => documentUtils.getEffectByIdentifier(token.actor, 'banished', {sourceActor: actor}));
     if (!banished.length) return await endSpell();
     const concentration = effectUtils.getConcentrationEffect(actor, document);
@@ -17,7 +17,7 @@ async function banish({document, actor, workflow}) {
 }
 export const banishingSmite = {
     name: 'Banishing Smite',
-    version: '2.1.4',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {

@@ -207,7 +207,7 @@ async function wildShapeExpire({document: effect, overflowDamage}) {
     const items = wildShaped.items.contents;
     const conditions = wildShaped.effects.filter(eff => effectUtils.getConditions(eff).size);
     const reverted = await wildShaped.revertOriginalForm();
-    const original = reverted instanceof TokenDocument.implementation ? reverted.actor : reverted;
+    const original = reverted?.actor ?? reverted;
     if (!original) return;
     const updates = [];
     const itemUpdates = [];
@@ -246,7 +246,7 @@ async function wildShapeExpire({document: effect, overflowDamage}) {
 }
 export const wildShape = {
     name: 'Wild Shape',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: 'all',
     notes: 'Use the "actorWildShape" called event (async) to modify the wild shape active effect and worn items.\n\tData available: actor, classIdentifier, classLevel, newActor, keepItems, effectData, rules.\nUse the "actorWildShapeForms" called event (async) to provide additional actor documents as choices. Return {actor, source}, where source is the granting item and will be rolled if the actor is used.\n\tData available: activity, actor, canFly, canSwim, cr, creatureTypes, packs, rules.',
     revert: calledRevert,

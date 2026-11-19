@@ -6,7 +6,8 @@
       "name": "Turned",
       "statuses": [],
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "duration": {
         "value": null,
@@ -76,7 +77,8 @@
       "type": "base",
       "_id": "PhHhDCmfrdQVNb6T",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {

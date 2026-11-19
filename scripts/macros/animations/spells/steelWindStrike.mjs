@@ -168,7 +168,10 @@ async function start(sourceToken, targets, {cameraZoom, sound} = {}) {
     }
     await animationUtils.preloadAnimations(files);
     const center = sourceToken.getCenterPoint();
-    const aoe = targets.reduce((largest, target) => Math.max(largest, (tokenUtils.getDistance(sourceToken, target) + 5) / 2), 6);
+    const aoe = targets.reduce((largest, target) => {
+        const distance = tokenUtils.getDistance(sourceToken, target);
+        return Number.isFinite(distance) ? Math.max(largest, (distance + 5) / 2) : largest;
+    }, 6);
     const radius = (aoe / 2) * sourceToken.parent.grid.size;
     const pointAt = (angle, distance = radius) => ({x: center.x + (distance * Math.cos(angle)), y: center.y + (distance * Math.sin(angle)), angle});
     const initialPoints = [Math.PI / 6, Math.PI * (7 / 6), Math.PI * (11 / 6), Math.PI * (3 / 4), Math.PI * (6 / 4)].map(angle => pointAt(angle));

@@ -124,6 +124,9 @@
         },
         "midiProperties": {
           "identifier": "oil-of-sharpness"
+        },
+        "visibility": {
+          "requireMagic": true
         }
       }
     }
@@ -175,7 +178,8 @@
             "phase": "initial",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "_stats": {
         "coreVersion": "14.369",
@@ -189,7 +193,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.5"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

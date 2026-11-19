@@ -17,7 +17,7 @@ async function moved({document: item, token, origin, action}) {
     const userId = queryUtils.firstOwner(item.actor, true);
     if (!await dialogUtils.confirm(itemUtils.getMasteryLabel('set'), _loc('CHRISPREMADES.WeaponMasteries.Set.Prompt', {target: token.name, weapon: item.name}), {userId})) return;
     await actorUtils.setReactionUsed(item.actor);
-    await workflowUtils.syntheticActivityRoll(activity, [token], {userId, consumeUsage: false});
+    await workflowUtils.syntheticActivityRoll(activity, [token], {userId});
 }
 export const setMastery = {
     label: 'CHRISPREMADES.WeaponMasteries.Set.Label',

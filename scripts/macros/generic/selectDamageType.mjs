@@ -1,6 +1,6 @@
 import {automationUtils, constants, dialogUtils, documentUtils, tokenUtils} from '../../proxy.mjs';
 export function rememberCombat(token, document) {
-    const scopeId = token ? tokenUtils.getCombatData(token.document ?? token).combatId : null;
+    const scopeId = token ? tokenUtils.getCombatData(token).combatId : null;
     return scopeId ? {remember: 'combat', rememberKey: {scopeId, uuid: document.uuid}} : {};
 }
 export async function applyDamageType(workflow, type) {
@@ -26,7 +26,7 @@ async function damageType({document: item, workflow}) {
         const chosen = getCastDamageType(item);
         if (types.includes(chosen)) return applyDamageType(workflow, chosen);
     }
-    const options = config.rememberChoice ? rememberCombat(workflow.token, item) : {};
+    const options = config.rememberChoice ? rememberCombat(workflow.token?.document, item) : {};
     await applyDamageType(workflow, await dialogUtils.selectDamageType(types, workflow.item.name, 'CHRISPREMADES.Generic.SelectDamageType', options) || types[0]);
 }
 function preRollDamage(config, dialog) {
@@ -50,7 +50,7 @@ export const selectDamageTypeHooks = {preRollDamage};
  */
 export const selectDamageType = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.1.9',
     category: 'damage',
     generic: true,
     documents: ['item'],

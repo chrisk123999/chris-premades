@@ -1,6 +1,7 @@
 import constants from './constants.mjs';
 import {all, generic, legacy, modern} from './macros.mjs';
 import {genericActionsHooks} from './macros/all/actions/genericActions.mjs';
+import {alertHooks} from './macros/modern/feats/alert.mjs';
 import * as animations from './macros/animations.mjs';
 import {environmentHooks} from './macros/generic/environment.mjs';
 import {selectDamageTypeHooks} from './macros/generic/selectDamageType.mjs';
@@ -17,6 +18,7 @@ Hooks.on('createToken', genericActionsHooks.createToken);
 Hooks.on('createActiveEffect', genericActionsHooks.createActiveEffect);
 Hooks.on('createToken', environmentHooks.createToken);
 Hooks.on('dnd5e.preRollDamageV2', selectDamageTypeHooks.preRollDamage);
+Hooks.on('updateCombatant', alertHooks.updateCombatant);
 Hooks.on('updateItem', bg3Hooks.equipped);
 Hooks.on('dnd5e.restCompleted', bg3Hooks.rest);
 Hooks.once('init', () => {

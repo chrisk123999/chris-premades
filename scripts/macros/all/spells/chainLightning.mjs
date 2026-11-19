@@ -17,11 +17,11 @@ async function leap({document: item, workflow, castData}) {
     if (workflow.token && animation?.macros?.play) animation.macros.play(workflow.token.document, primary, {...options, leaps, damageType: activity.damage.parts[0]?.types.first()});
     if (!leaps.length) return;
     const activityData = activityUtils.getDamageModifiedActivityData(activity, String(workflow.damageTotal));
-    await workflowUtils.syntheticActivityDataRoll(activityData, item, leaps, {atLevel: castData.castLevel, consumeUsage: false, consumeResources: false, spellSlot: false});
+    await workflowUtils.syntheticActivityDataRoll(activityData, item, leaps, {atLevel: castData.castLevel, consumeResources: false, spellSlot: false});
 }
 export const chainLightning = {
     name: 'Chain Lightning',
-    version: '2.1.4',
+    version: '2.1.9',
     rules: 'all',
     roll: [
         {

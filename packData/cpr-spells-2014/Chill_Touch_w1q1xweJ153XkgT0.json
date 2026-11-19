@@ -250,7 +250,8 @@
             "phase": "final",
             "priority": 20
           }
-        ]
+        ],
+        "magical": true
       },
       "origin": null,
       "sort": 0,
@@ -302,7 +303,8 @@
       "_id": "eRe8jHTFkoE2Su3o",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "origin": null,
       "sort": 0,
@@ -359,7 +361,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.0"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

@@ -8,17 +8,14 @@ async function damageApplication({targetToken, ditem}) {
     const selection = await dialogUtils.selectSpellSlots(targetToken.actor, originItem.name, _loc('CHRISPREMADES.Macros.Legacy.SongOfDefense.Select'), {maxAmount: 1, maxAmountMode: 'count', userId: queryUtils.firstOwner(targetToken.actor, true)});
     if (!selection?.length) return;
     const reductionPerLevel = automationUtils.getConfigValue(originItem, 'reductionPerLevel');
-    let damageReduction = targetToken.actor.system.spells[selection[0].key].level * reductionPerLevel;
+    const damageReduction = targetToken.actor.system.spells[selection[0].key].level * reductionPerLevel;
     await actorUtils.spendSpellSlots(targetToken.actor, selection[0].key);
-    const totalDone = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0);
-    damageReduction = Math.min(totalDone, damageReduction);
-    ditem.damageDetail.push({value: -damageReduction, type: 'none'});
-    ditem.hpDamage = totalDone - damageReduction;
+    workflowUtils.modifyDamageAppliedFlat(ditem, -damageReduction);
     await workflowUtils.completeItemUse(originItem);
 }
 export const songOfDefense = {
     name: 'Song of Defense',
-    version: '2.0.3',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

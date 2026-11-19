@@ -9,7 +9,7 @@ async function use({workflow}) {
     await effectUtils.endConcentration(workflow.actor, workflow.item);
     if (!holder || !burst) return;
     const targets = tokenUtils.findNearby(holder, 30, {disposition: 'enemy'});
-    if (targets.length) await workflowUtils.completeActivityUse(burst, targets, {consumeUsage: false, consumeResources: false, spellSlot: false});
+    if (targets.length) await workflowUtils.completeActivityUse(burst, targets, {consumeResources: false, spellSlot: false});
 }
 export const holyWeapon = {
     name: 'Holy Weapon',

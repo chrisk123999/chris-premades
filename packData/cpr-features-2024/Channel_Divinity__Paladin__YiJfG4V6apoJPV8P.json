@@ -10,7 +10,8 @@
       "_id": "T9HiLOS1bT8Vz0ci",
       "type": "base",
       "system": {
-        "changes": []
+        "changes": [],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -247,7 +248,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4",
+        "version": "2.1.9",
         "sourceType": "class:paladin",
         "aliases": [
           "channel-divinity-paladin"

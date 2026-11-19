@@ -197,7 +197,6 @@ async function useTwinned({document, workflow}) {
     await workflowUtils.syntheticItemRoll(selection, [targets[1]], {
         config: {concentration: {begin: false}},
         atLevel: workflowUtils.getCastLevel(firstWorkflow),
-        consumeUsage: false,
         consumeResources: false,
         spellSlot: false
     });
@@ -221,7 +220,7 @@ async function earlyTwinned({workflow}) {
 }
 export const carefulSpell = {
     name: 'Metamagic: Careful Spell',
-    version: '2.1.6',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: useCareful, priority: 50}

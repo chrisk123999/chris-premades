@@ -2,7 +2,7 @@ import {activityUtils, automationUtils, constants, itemUtils, workflowUtils} fro
 async function damaged({document, workflow, ditem}) {
     if (!ditem.isHit) return;
     const damageType = automationUtils.getConfigValue(document, 'damageType');
-    const damage = ditem.damageDetail.reduce((total, entry) => total + (entry.type === damageType ? entry.value : 0), 0);
+    const damage = ditem.calculatedDamages.reduce((total, entry) => total + (entry.type === damageType ? entry.value : 0), 0);
     if (!damage) return;
     const activity = itemUtils.getActivityByIdentifier(document, 'damage');
     if (!activity) return;
@@ -11,7 +11,7 @@ async function damaged({document, workflow, ditem}) {
 }
 export const thoughtShield = {
     name: 'Thought Shield',
-    version: '2.0.0',
+    version: '2.1.9',
     rules: '2024',
     roll: [
         {pass: 'targetDamageComplete', macro: damaged, priority: 200}

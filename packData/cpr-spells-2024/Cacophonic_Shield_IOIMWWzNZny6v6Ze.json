@@ -448,7 +448,7 @@
           "message": null
         },
         "conditions": "{}",
-        "magical": false
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -545,7 +545,7 @@
           "message": null
         },
         "conditions": "{}",
-        "magical": false
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -623,7 +623,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.5"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [

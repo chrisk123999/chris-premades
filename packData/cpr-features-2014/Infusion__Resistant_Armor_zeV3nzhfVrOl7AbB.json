@@ -403,7 +403,8 @@
             "conditions": "{}",
             "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "duration": {
         "value": null,
@@ -471,7 +472,8 @@
         ],
         "origin": {
           "item": "Compendium.chris-premades.CPRFeatures2014.Item.zeV3nzhfVrOl7AbB"
-        }
+        },
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -522,7 +524,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.9"
       }
     }
   },

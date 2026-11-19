@@ -21,7 +21,8 @@
             "conditions": "{}",
             "replacement": ""
           }
-        ]
+        ],
+        "magical": true
       },
       "disabled": false,
       "duration": {
@@ -481,7 +482,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4",
+        "version": "2.1.9",
         "sourceType": "class:cleric",
         "aliases": [
           "channel-divinity-cleric"

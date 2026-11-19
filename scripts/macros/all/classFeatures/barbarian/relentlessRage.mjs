@@ -12,16 +12,11 @@ async function damaged({document: activity, ditem, targetToken}) {
     const hp = (await rollUtils.rollDice(heal.healing.formula, {document: activity})).total;
     const change = ditem.oldHP - hp;
     if (change < 0) await workflowUtils.completeActivityUse(heal, [targetToken]);
-    ditem.hpDamage = ditem.oldHP - (change > 0) * hp;
-    ditem.totalDamage = ditem.hpDamage + ditem.oldTempHP;
-    ditem.newHP = hp;
-    ditem.newTempHP = 0;
-    ditem.damageDetail.forEach(i => i.value = 0);
-    ditem.damageDetail[0].value = ditem.totalDamage;
+    workflowUtils.preventZeroHP(ditem, {targetHP: hp});
 }
 export const relentlessRage = {
     name: 'Relentless Rage',
-    version: '2.0.2',
+    version: '2.1.9',
     rules: 'all',
     notes: 'The formula in the heal activity can be adjusted, but non-deterministic values may not function properly.',
     roll: [

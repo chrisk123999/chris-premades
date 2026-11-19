@@ -28,8 +28,8 @@ async function early({document, activity, config}) {
     await workflowUtils.completeActivityUse(restoreActivity);
     const freshActivity = document.actor.items.get(document.id)?.system.activities.get(activity.id);
     if (!freshActivity) return true;
-    const targets = Array.from(config.midiOptions?.targetsToUse ?? [], token => token instanceof TokenDocument ? token : token.document ?? token);
-    await workflowUtils.completeActivityUse(freshActivity, targets, {consumeUsage: config.consumeUsage !== false, consumeResources: config.consume?.resources !== false});
+    const targets = new MidiQOL.TokenDocumentSet(config.midiOptions?.targetsToUse ?? []).documents;
+    await workflowUtils.completeActivityUse(freshActivity, targets, {consumeResources: config.consume?.resources !== false});
     return true;
 }
 /**
@@ -45,7 +45,7 @@ async function early({document, activity, config}) {
  */
 export const restoreUses = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.1.9',
     category: 'utility',
     generic: true,
     documents: ['item'],

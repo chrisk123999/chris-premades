@@ -21,7 +21,7 @@ async function damage({document: item, workflow}) {
         if (!await dialogUtils.confirm(item.name, _loc('CHRISPREMADES.Macros.All.SavageAttacker.Use', {name: item.name, total, average}))) return;
     } else if (!await dialogUtils.confirmUseItem(item)) return;
     const inCombat = workflow.token.document.inCombat;
-    await workflowUtils.completeActivityUse(activity, [], {consumeUsage: inCombat, consumeResources: inCombat});
+    await workflowUtils.completeActivityUse(activity, [], {consumeResources: inCombat});
     await workflowUtils.rerollKeepDamage(workflow, item, {keep: legacy ? 'higher' : '', count: rollCount});
 }
 export const savageAttacker = {

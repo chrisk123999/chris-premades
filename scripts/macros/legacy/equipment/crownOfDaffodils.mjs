@@ -7,7 +7,7 @@ async function bestow({document: item, workflow}) {
     if (passive) await documentUtils.update(passive, {disabled: true});
     const wither = itemUtils.getActivityByIdentifier(live, 'wither');
     if (!wither) return;
-    const witherWorkflow = await workflowUtils.syntheticActivityRoll(wither, [workflow.token.document], {consumeUsage: false, consumeResources: false});
+    const witherWorkflow = await workflowUtils.syntheticActivityRoll(wither, [workflow.token.document], {consumeResources: false});
     if (witherWorkflow?.utilityRolls?.[0]?.total === 1) await documentUtils.deleteDocument(live);
 }
 async function bloom({document: item}) {
@@ -16,7 +16,7 @@ async function bloom({document: item}) {
 }
 export const crownOfDaffodils = {
     name: 'Crown of Daffodils',
-    version: '2.1.7',
+    version: '2.1.9',
     rules: '2014',
     roll: [
         {

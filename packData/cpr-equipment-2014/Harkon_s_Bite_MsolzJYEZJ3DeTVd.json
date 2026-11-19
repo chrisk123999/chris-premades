@@ -363,7 +363,10 @@
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
         "name": "Hybrid Form",
-        "flags": {}
+        "flags": {},
+        "visibility": {
+          "requireMagic": true
+        }
       },
       "WQ0woxm1pYxEOILu": {
         "type": "attack",
@@ -510,6 +513,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "eMMNE7VZ8Q99itxn": {
@@ -656,6 +662,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "7QuoUyFat2lxvbpz": {
@@ -769,7 +778,10 @@
         "otherActivityAsParentType": true,
         "name": "Wolf Form",
         "_id": "7QuoUyFat2lxvbpz",
-        "flags": {}
+        "flags": {},
+        "visibility": {
+          "requireMagic": true
+        }
       },
       "lpOMH3DISniwyg9G": {
         "type": "utility",
@@ -879,6 +891,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       },
       "bnggEGieTxb1JBWs": {
@@ -1008,6 +1023,9 @@
           "cat": {
             "hidden": true
           }
+        },
+        "visibility": {
+          "requireMagic": true
         }
       }
     },
@@ -1077,7 +1095,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.9"
       },
       "macros": {
         "roll": [
