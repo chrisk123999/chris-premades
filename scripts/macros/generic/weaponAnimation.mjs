@@ -1,7 +1,7 @@
 import {automationUtils, workflowUtils} from '../../proxy.mjs';
 import {playTargetAnimations} from './spellAnimation.mjs';
-async function attack({document, workflow}) {
-    if (!workflow.token || !workflow.targets.count || workflowUtils.getWorkflowProperty(workflow, 'skipWeaponAnimation')) return;
+export async function playWeaponAnimation(document, workflow) {
+    if (!workflow.token || !workflow.targets.count) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'weaponAnimation', ['activityId', 'advanced']);
     if (config.activityId && config.activityId !== workflow.activity?.id) return;
     if (config.advanced) {
@@ -13,7 +13,11 @@ async function attack({document, workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'weaponAnimation'});
     const ammunition = workflow.ammunition ?? workflow.actor?.items.get(workflow.attackRoll?.options?.ammunition);
     const attackMode = workflow.attackMode ?? workflow.attackRoll?.options?.attackMode;
-    playTargetAnimations(workflow, {animation, options: {...options, item: workflow.item, activity: workflow.activity, ammunition, attackMode, misfire: workflowUtils.getWorkflowProperty(workflow, 'firearmMisfire')}});
+    await playTargetAnimations(workflow, {animation, options: {...options, item: workflow.item, activity: workflow.activity, ammunition, attackMode, misfire: workflowUtils.getWorkflowProperty(workflow, 'firearmMisfire')}});
+}
+async function attack({document, workflow}) {
+    if (workflowUtils.getWorkflowProperty(workflow, 'skipWeaponAnimation')) return;
+    playWeaponAnimation(document, workflow);
 }
 async function saveShot({document, workflow}) {
     if (workflow.activity?.type !== 'save' || document.type !== 'weapon') return;
@@ -32,7 +36,7 @@ async function saveShot({document, workflow}) {
  */
 export const weaponAnimation = {
     rules: 'all',
-    version: '2.1.7',
+    version: '2.1.10',
     category: 'animations',
     generic: true,
     documents: ['item'],

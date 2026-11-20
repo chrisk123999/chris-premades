@@ -11,6 +11,7 @@
 - New `willingFail` generic lets each non-hostile target choose to fail a save it succeeded on. Infernal Conduit and Eyes of the Gate use it.
 - New `moveTargets` generic lets each target of an activity move part of its speed to a spot it picks, without provoking opportunity attacks.
 ## Bug Fixes:
+- True Strike and Green-Flame Blade play the weapon animation at the moment of the hit instead of before the spell animation.
 - Potion of Invulnerability grants resistance to all damage.
 - `preventDeath` no longer triggers on creatures already at 0 hit points.
 # 2.1.9 Pre-Release:

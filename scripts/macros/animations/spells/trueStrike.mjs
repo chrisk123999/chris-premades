@@ -1,8 +1,8 @@
 import {animationUtils} from '../../../proxy.mjs';
-async function playDetailed(sourceToken, targetToken, missed) {
+async function playDetailed(sourceToken, targetToken, missed, strike) {
     const strikeDuration = missed ? 3000 : 6000;
     /* eslint-disable indent */
-    new Sequence()
+    await new Sequence()
         .effect()
             .file('jb2a.ward.star.yellow.02')
             .atLocation(sourceToken)
@@ -102,6 +102,7 @@ async function playDetailed(sourceToken, targetToken, missed) {
             .scaleToObject(0.5)
             .delay(40)
             .playIf(!missed)
+        .thenDo(async () => strike?.())
         .effect()
             .file('modules/animated-spell-effects-cartoon/spell-effects/cartoon/magic/mind_sliver_LINE.webm')
             .atLocation(targetToken)
@@ -158,8 +159,9 @@ async function playDetailed(sourceToken, targetToken, missed) {
         .play();
     /* eslint-enable indent */
 }
-async function attack(sourceToken, targetToken, {missed} = {}) {
-    if (animationUtils.jb2aCheck() === 'patreon') return playDetailed(sourceToken, targetToken, missed);
+async function attack(sourceToken, targetToken, {missed, strike} = {}) {
+    if (animationUtils.jb2aCheck() === 'patreon') return playDetailed(sourceToken, targetToken, missed, strike);
+    await strike?.();
     if (missed) return;
     /* eslint-disable indent */
     new Sequence()

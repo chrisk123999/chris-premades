@@ -16,11 +16,11 @@ export function getTargetResults(workflow) {
 export function playTargetAnimations(workflow, {animation, options}, {includeSelf} = {}) {
     if (!workflow.token || !workflow.targets.count || !animation?.macros?.play) return;
     const damageType = getDamageType(workflow);
-    for (const token of workflow.targets.tokens) {
+    return Promise.all(workflow.targets.tokens.map(token => {
         const self = token.document === workflow.token.document;
-        if (self && workflow.activity?.type === 'utility' && !includeSelf) continue;
-        animation.macros.play(self ? undefined : workflow.token.document, token.document, {...options, damageType, ...getTargetResult(workflow, token)});
-    }
+        if (self && workflow.activity?.type === 'utility' && !includeSelf) return;
+        return animation.macros.play(self ? undefined : workflow.token.document, token.document, {...options, damageType, ...getTargetResult(workflow, token)});
+    }));
 }
 export function playAreaAnimation(workflow, {animation, options}, {region = workflow.template, radius = (workflow.activity && activityUtils.getTemplateSize(workflow.activity)) || 0} = {}) {
     if (!workflow.token || !animation?.macros?.play) return;
@@ -54,7 +54,7 @@ function late({document, workflow}) {
  */
 export const spellAnimation = {
     rules: 'all',
-    version: '2.1.5',
+    version: '2.1.10',
     category: 'animations',
     generic: true,
     documents: ['item'],

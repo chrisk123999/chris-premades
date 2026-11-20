@@ -8,7 +8,8 @@ const colorMap = {
 function getColor(color) {
     return animationUtils.jb2aCheck() === 'patreon' ? color : 'orange';
 }
-async function attack(sourceToken, targetToken, {missed, color = 'green'} = {}) {
+async function attack(sourceToken, targetToken, {missed, color = 'green', strike} = {}) {
+    await strike?.();
     if (missed) return;
     new Sequence()
         .effect()

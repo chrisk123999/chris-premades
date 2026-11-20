@@ -1,3 +1,4 @@
+import {playWeaponAnimation} from './weaponAnimation.mjs';
 import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function selectNearby(document, targets, count) {
     if (targets.length <= count) return targets;
@@ -45,11 +46,22 @@ async function use({document, workflow}) {
             types: config.bonusDamageTypes
         });
     });
-    const attackWorkflow = await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [targetToken], {fast: false, options: {workflowOptions: {autoRollAttack: true, fastForwardDamage: true}}});
+    const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'bladeSpell'});
+    const syncWeaponAnimation = !!animation?.macros.attack && weapon.flags.cat?.macros?.roll?.some(macro => macro.identifier === 'weaponAnimation');
+    const attackOptions = {workflowOptions: {autoRollAttack: true, fastForwardDamage: true}};
+    if (syncWeaponAnimation) workflowUtils.setWorkflowProperty(attackOptions, 'skipWeaponAnimation', true);
+    const attackWorkflow = await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [targetToken], {fast: false, options: attackOptions});
     if (!attackWorkflow) return;
     const hitTarget = attackWorkflow.hitTargets.documents[0];
-    const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'bladeSpell'});
-    if (animation?.macros.attack && targetToken.object) await animation.macros.attack(workflow.token.document, targetToken, {...animationOptions, missed: !hitTarget});
+    if (animation?.macros.attack && targetToken.object) {
+        let struck = !syncWeaponAnimation;
+        const strike = () => {
+            struck = true;
+            return playWeaponAnimation(weapon, attackWorkflow);
+        };
+        await animation.macros.attack(workflow.token.document, targetToken, {...animationOptions, missed: !hitTarget, strike});
+        if (!struck) await strike();
+    }
     if (!hitTarget) return;
     if (config.onHitEffect) {
         const effectData = documentUtils.getEffectData(document, config.onHitEffect);
@@ -94,11 +106,11 @@ async function use({document, workflow}) {
  * - `effectNearbyTargets`: maximum number of creatures that receive the nearby effect.
  * - `activityNearby`: activity used against creatures near the hit target. Its target count limits the choices.
  * - `activityNearbyRange`: distance from the hit target in which creatures can be chosen for the nearby activity.
- * - `animation`: attack played from the caster to the target. A leap plays from the hit target to each nearby target.
+ * - `animation`: attack played from the caster to the target. Its `strike` option plays the weapon's own `weaponAnimation` at the moment of the hit. A leap plays from the hit target to each nearby target.
  */
 export const bladeSpell = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.1.10',
     category: 'damage',
     generic: true,
     documents: ['item'],
