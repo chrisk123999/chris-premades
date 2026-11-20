@@ -1,0 +1,359 @@
+{
+  "name": "Interdict Boons: Eyes of the Gate",
+  "type": "feat",
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "folder": "3Y5YDQoZEC7PLvTb",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "activities": {
+      "HWcJlyXZaNiBsPhK": {
+        "_id": "HWcJlyXZaNiBsPhK",
+        "type": "save",
+        "name": "Eyes of the Gate",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:baleful-interdict",
+              "value": "1",
+              "scaling": {
+                "mode": "amount",
+                "formula": ""
+              }
+            },
+            {
+              "type": "itemUses",
+              "target": "feat:interdict-boons",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": true,
+            "max": "@scale.illrigger.baleful-interdict"
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "hour",
+          "concentration": false,
+          "override": false,
+          "value": "@scaling"
+        },
+        "effects": [
+          {
+            "_id": "8Kxo0nRVEsivUp6s"
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "60"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "use",
+        "midiProperties": {
+          "identifier": "use",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "targetMustBeSeen": true
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "willingFail",
+                  "rules": "all"
+                }
+              ]
+            }
+          }
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
+        },
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        }
+      },
+      "35ScqtlfUeTAZ4D9": {
+        "_id": "35ScqtlfUeTAZ4D9",
+        "type": "utility",
+        "name": "Perceive",
+        "sort": 1,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "perceive",
+        "midiProperties": {
+          "identifier": "perceive",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {}
+      },
+      "EcYOntHUB8yOX5Ru": {
+        "_id": "EcYOntHUB8yOX5Ru",
+        "type": "utility",
+        "name": "Place Seal Through Bond",
+        "sort": 2,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "seal",
+        "midiProperties": {
+          "identifier": "seal",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {}
+      }
+    },
+    "identifier": "interdict-boons-eyes-of-the-gate",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "8Kxo0nRVEsivUp6s",
+      "name": "Interdict Boons: Eyes of the Gate",
+      "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "expired": false,
+        "value": 1,
+        "units": "hours",
+        "expiry": null
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "eyes-of-the-gate-bond",
+                "rules": "2014"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!QsaQfB5HY0HJu4ki.8Kxo0nRVEsivUp6s"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "interdict-boons-eyes-of-the-gate",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_id": "QsaQfB5HY0HJu4ki",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!QsaQfB5HY0HJu4ki"
+}

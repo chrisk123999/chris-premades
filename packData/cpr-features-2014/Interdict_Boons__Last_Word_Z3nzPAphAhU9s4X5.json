@@ -1,0 +1,180 @@
+{
+  "name": "Interdict Boons: Last Word",
+  "type": "feat",
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "folder": "3Y5YDQoZEC7PLvTb",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "activities": {
+      "MDmVx2ITiAYxFzhn": {
+        "_id": "MDmVx2ITiAYxFzhn",
+        "type": "save",
+        "name": "Last Word",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:baleful-interdict",
+              "value": "1",
+              "scaling": {
+                "mode": "amount",
+                "formula": ""
+              }
+            },
+            {
+              "type": "itemUses",
+              "target": "feat:interdict-boons",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": true,
+            "max": "3"
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "enemy",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "explode",
+        "midiProperties": {
+          "identifier": "explode",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 3,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 3,
+                "formula": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    "identifier": "interdict-boons-last-word",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "interdict-boons-last-word",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_id": "Z3nzPAphAhU9s4X5",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!Z3nzPAphAhU9s4X5"
+}

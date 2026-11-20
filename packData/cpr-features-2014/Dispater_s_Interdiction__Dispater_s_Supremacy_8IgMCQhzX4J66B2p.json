@@ -1,0 +1,66 @@
+{
+  "name": "Dispater's Interdiction: Dispater's Supremacy",
+  "type": "feat",
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "folder": "f4SHWzaeemLHuMyI",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 18,
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "dispaters-interdiction-dispaters-supremacy",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "dispaters-interdiction-dispaters-supremacy",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_id": "8IgMCQhzX4J66B2p",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!8IgMCQhzX4J66B2p"
+}

@@ -1,0 +1,102 @@
+{
+  "name": "Dispater's Blessing",
+  "type": "feat",
+  "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+  "folder": "f4SHWzaeemLHuMyI",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "dispaters-blessing",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "mjOfwhzF8MOdP1df",
+      "name": "Dispater's Blessing",
+      "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.armorProf.value",
+            "value": "hvy",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "expired": false,
+        "value": null,
+        "units": "seconds",
+        "expiry": null
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!Ja3U4bAD3mcwUrGH.mjOfwhzF8MOdP1df"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      }
+    }
+  },
+  "_id": "Ja3U4bAD3mcwUrGH",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!Ja3U4bAD3mcwUrGH"
+}

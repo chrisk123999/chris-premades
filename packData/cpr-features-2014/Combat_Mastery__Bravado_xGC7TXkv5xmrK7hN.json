@@ -1,0 +1,75 @@
+{
+  "name": "Combat Mastery: Bravado",
+  "type": "feat",
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "folder": "4oFfFW9Puwau9JWX",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "combat-mastery-bravado",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      },
+      "alternateAttributes": {
+        "ACFormula": [
+          {
+            "value": "10 + @abilities.dex.mod + @abilities.cha.mod",
+            "restrictions": {
+              "Armor": {
+                "value": [
+                  "light",
+                  "medium",
+                  "heavy"
+                ],
+                "invert": true,
+                "requireAll": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "_id": "xGC7TXkv5xmrK7hN",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!xGC7TXkv5xmrK7hN"
+}

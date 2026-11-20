@@ -1,0 +1,571 @@
+{
+  "name": "Master of Hell",
+  "type": "feat",
+  "img": "icons/magic/fire/flame-burning-earth-orange.webp",
+  "folder": "EqhQHzcqeO2NWgKt",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 20,
+      "repeatable": false
+    },
+    "activities": {
+      "BsXmfx5YGM5Fr41V": {
+        "_id": "BsXmfx5YGM5Fr41V",
+        "type": "save",
+        "name": "Inferno",
+        "sort": 0,
+        "img": "icons/magic/fire/flame-burning-earth-orange.webp",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "VskREIgc4URBN40I",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "150"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "sphere",
+            "size": "50",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "enemy",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "inferno",
+        "midiProperties": {
+          "identifier": "inferno",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "5d10"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            },
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "5d10"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "necrotic"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
+        }
+      },
+      "K2AsUIr0VhlyI65J": {
+        "_id": "K2AsUIr0VhlyI65J",
+        "type": "save",
+        "name": "Pestilence",
+        "sort": 0,
+        "img": "icons/magic/acid/pouring-gas-smoke-liquid.webp",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "aOgf4YOxPhXOe5Oy",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "150"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "sphere",
+            "size": "50",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "enemy",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "pestilence",
+        "midiProperties": {
+          "identifier": "pestilence",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "5d10"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "poison"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            },
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "5d10"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "necrotic"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
+        }
+      },
+      "dq1iUdiLb9bI1M3X": {
+        "_id": "dq1iUdiLb9bI1M3X",
+        "type": "save",
+        "name": "Darkness",
+        "sort": 0,
+        "img": "icons/magic/water/wave-water-teal.webp",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": false,
+          "value": "10"
+        },
+        "effects": [
+          {
+            "_id": "jrga1oCU4pzsWA0v",
+            "onSave": true
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "150"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "sphere",
+            "size": "50",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "enemy",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "darkness",
+        "midiProperties": {
+          "identifier": "darkness",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "10d10"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "cold"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    "identifier": "master-of-hell",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "jrga1oCU4pzsWA0v",
+      "name": "Master of Hell: Darkness",
+      "img": "icons/magic/water/wave-water-teal.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [
+        "blinded"
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "expired": false,
+        "value": 1,
+        "units": "minutes",
+        "expiry": null
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "macros": {
+            "move": [
+              {
+                "source": "chris-premades",
+                "identifier": "master-of-hell-darkness",
+                "rules": "2014"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!xjwU4lrLcYcueo1i.jrga1oCU4pzsWA0v"
+    },
+    {
+      "_id": "VskREIgc4URBN40I",
+      "name": "Master of Hell: Inferno",
+      "img": "icons/magic/fire/flame-burning-earth-orange.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.OverTime",
+            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=dex,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,damageRoll=1d10[fire]+1d10[necrotic],rollMode=publicroll",
+            "type": "custom",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "expired": false,
+        "value": 1,
+        "units": "minutes",
+        "expiry": null
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!xjwU4lrLcYcueo1i.VskREIgc4URBN40I"
+    },
+    {
+      "_id": "aOgf4YOxPhXOe5Oy",
+      "name": "Master of Hell: Pestilence",
+      "img": "icons/magic/acid/pouring-gas-smoke-liquid.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [
+        "poisoned"
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "expired": false,
+        "value": 1,
+        "units": "minutes",
+        "expiry": null
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!xjwU4lrLcYcueo1i.aOgf4YOxPhXOe5Oy"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "master-of-hell",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_id": "xjwU4lrLcYcueo1i",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!xjwU4lrLcYcueo1i"
+}

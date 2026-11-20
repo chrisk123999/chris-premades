@@ -1,0 +1,218 @@
+{
+  "name": "Interdict Boons: Iron Gaol",
+  "type": "feat",
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "folder": "3Y5YDQoZEC7PLvTb",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "activities": {
+      "GZbxKkBLeNzRd2QQ": {
+        "_id": "GZbxKkBLeNzRd2QQ",
+        "type": "save",
+        "name": "Iron Gaol",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:baleful-interdict",
+              "value": "4",
+              "scaling": {}
+            },
+            {
+              "type": "itemUses",
+              "target": "feat:interdict-boons",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "NZcoezRKfQ5j0fjP"
+          }
+        ],
+        "range": {
+          "units": "touch",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "use",
+        "midiProperties": {
+          "identifier": "use",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "save": {
+          "ability": [
+            "cha"
+          ],
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
+        },
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        }
+      }
+    },
+    "identifier": "interdict-boons-iron-gaol",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "NZcoezRKfQ5j0fjP",
+      "name": "Interdict Boons: Iron Gaol",
+      "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.OverTime",
+            "value": "turn=end,allowIncapacitated=true,rollType=save,saveAbility=cha,saveDC=$activity.dc,saveDamage=nodamage,saveCount=1,rollMode=publicroll",
+            "type": "custom",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "expired": false,
+        "value": 1,
+        "units": "minutes",
+        "expiry": null
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "banish",
+                "rules": "all"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!akkoS9XqLX064v5p.NZcoezRKfQ5j0fjP"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "interdict-boons-iron-gaol",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_id": "akkoS9XqLX064v5p",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!akkoS9XqLX064v5p"
+}

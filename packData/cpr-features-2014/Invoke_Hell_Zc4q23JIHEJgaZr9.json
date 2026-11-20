@@ -1,0 +1,62 @@
+{
+  "name": "Invoke Hell",
+  "type": "feat",
+  "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+  "folder": "EqhQHzcqeO2NWgKt",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 3,
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "invoke-hell",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      }
+    }
+  },
+  "_id": "Zc4q23JIHEJgaZr9",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!Zc4q23JIHEJgaZr9"
+}

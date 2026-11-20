@@ -20,6 +20,7 @@ async function damage({document: item, ditem, workflow, targetToken, macroClass:
     if (config.attackType && !workflowUtils.isAttackType(workflow, config.attackType)) return;
     if (config.damageTypes.length && !workflowUtils.getDamageTypes(workflow.damageRolls).intersects(new Set(config.damageTypes))) return;
     if (config.skipIncapacitated && item.actor.statuses.has('incapacitated')) return;
+    if (config.seeSource && (!workflow.token || !tokenUtils.canSee(bearerToken, workflow.token.document))) return;
     const activity = config.rollActivity.map(id => item.system.activities.get(id)).find(candidate => candidate && activityUtils.checkCosts(candidate));
     if (!activity) return;
     if (activity.activation.type === 'reaction' && actorUtils.hasUsedReaction(item.actor)) return;
@@ -46,11 +47,12 @@ async function damage({document: item, ditem, workflow, targetToken, macroClass:
  * - `attackType`: only reduce damage from this attack type.
  * - `damageTypes`: only reduce damage that includes one of these types.
  * - `skipIncapacitated`: does not trigger while the owner is incapacitated.
+ * - `seeSource`: only trigger when the owner can see the creature dealing the damage.
  * - `confirm`: prompt the owner before using it.
  */
 export const reduceDamageTaken = {
     rules: 'all',
-    version: '2.1.9',
+    version: '2.1.10',
     category: 'damage',
     generic: true,
     documents: ['item'],
@@ -108,6 +110,12 @@ export const reduceDamageTaken = {
             type: 'checkbox',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.SkipIncapacitated'
+        },
+        seeSource: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.SeeSource'
         },
         confirm: {
             default: true,

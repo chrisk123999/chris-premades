@@ -1,0 +1,165 @@
+{
+  "name": "Interdict Boons: Abating Seal",
+  "type": "feat",
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "folder": "3Y5YDQoZEC7PLvTb",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "activities": {
+      "dReppu3kOvUHv2Cw": {
+        "_id": "dReppu3kOvUHv2Cw",
+        "type": "utility",
+        "name": "Abating Seal",
+        "sort": 0,
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:baleful-interdict",
+              "value": "1",
+              "scaling": {}
+            },
+            {
+              "type": "itemUses",
+              "target": "feat:interdict-boons",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "use",
+        "midiProperties": {
+          "identifier": "use",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "useConditionText": "false",
+        "roll": {
+          "formula": "1d10 + floor(@classes.illrigger.levels / 2)",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        }
+      }
+    },
+    "identifier": "interdict-boons-abating-seal",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "reduceDamageTaken",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "reduceDamageTaken": {
+            "rollActivity": [
+              "dReppu3kOvUHv2Cw"
+            ],
+            "range": "30",
+            "confirm": true,
+            "skipIncapacitated": true,
+            "seeSource": true
+          }
+        }
+      }
+    }
+  },
+  "_id": "pxZq2puFz6G400tP",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!pxZq2puFz6G400tP"
+}

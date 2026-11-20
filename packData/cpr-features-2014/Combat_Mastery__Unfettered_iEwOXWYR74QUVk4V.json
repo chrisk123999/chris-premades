@@ -1,0 +1,126 @@
+{
+  "name": "Combat Mastery: Unfettered",
+  "type": "feat",
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "folder": "4oFfFW9Puwau9JWX",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 2,
+      "repeatable": false
+    },
+    "activities": {},
+    "identifier": "combat-mastery-unfettered",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "VADgmY3VuDnHdPQ8",
+      "name": "Combat Mastery: Unfettered",
+      "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.ignoreNearbyFoes",
+            "value": "1",
+            "type": "override",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "expired": false,
+        "value": null,
+        "units": "seconds",
+        "expiry": null
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!iEwOXWYR74QUVk4V.VADgmY3VuDnHdPQ8"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      },
+      "alternateAttributes": {
+        "Range": [
+          {
+            "value": "30",
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "baleful-interdict"
+                ]
+              }
+            }
+          },
+          {
+            "value": "25",
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "infernal-conduit"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "_id": "iEwOXWYR74QUVk4V",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!iEwOXWYR74QUVk4V"
+}

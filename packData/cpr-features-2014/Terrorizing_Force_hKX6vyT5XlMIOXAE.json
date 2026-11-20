@@ -1,0 +1,235 @@
+{
+  "name": "Terrorizing Force",
+  "type": "feat",
+  "img": "icons/magic/unholy/beam-ringed-impact-purple.webp",
+  "folder": "EqhQHzcqeO2NWgKt",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 11,
+      "repeatable": false
+    },
+    "activities": {
+      "ndCPTbUlMTqEboLO": {
+        "_id": "ndCPTbUlMTqEboLO",
+        "type": "utility",
+        "name": "Choose Damage Type",
+        "sort": 0,
+        "activation": {
+          "type": "longRest",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "choose",
+        "midiProperties": {
+          "identifier": "choose",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {}
+      },
+      "gCjvY32ctZCk07Sw": {
+        "_id": "gCjvY32ctZCk07Sw",
+        "type": "utility",
+        "name": "Terrorizing Force",
+        "sort": 1,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "rider",
+        "midiProperties": {
+          "identifier": "rider",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "bonus": "(1 + @flags.chris-premades.terrorizingForce.majesty)d8",
+                  "automatic": true,
+                  "attackType": "weaponAttack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "identifier": "terrorizing-force",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "selectDamageType",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "selectDamageType": {
+            "damageType": [
+              "cold",
+              "fire",
+              "necrotic",
+              "poison"
+            ],
+            "atCast": true
+          }
+        }
+      }
+    },
+    "chris-premades": {
+      "selectedDamageType": "necrotic"
+    }
+  },
+  "_id": "hKX6vyT5XlMIOXAE",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!hKX6vyT5XlMIOXAE"
+}

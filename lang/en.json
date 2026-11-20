@@ -579,6 +579,7 @@
             "MissingPackItem": "Could not find a required compendium item."
         },
         "Generic": {
+            "CannotSee": "You can't see that creature.",
             "CreatureNameAndSize": "{size} {name}",
             "SelectDamageType": "Select Damage Type",
             "SelectTarget": "Select a target.",
@@ -1130,6 +1131,7 @@
                     "ChooseHint": "Prompt for unaffected creatures on cast. When off, only enemies are affected."
                 },
                 "AttackRider": {
+                    "AttackModes": "Attack Modes",
                     "Automatic": "Automatic",
                     "AutomaticHint": "Apply this option without offering it as a choice.",
                     "BonusDamageTypeHint": "Damage type of the extra damage. Uses the attack's damage type when empty.",
@@ -1151,6 +1153,8 @@
                     "SelfAsTouchHint": "When the activity's range is Self, roll it on the hit targets instead of the attacker.",
                     "SingleTarget": "Single Target Only",
                     "SingleTargetHint": "Only offer this option when the attack hits exactly one target.",
+                    "SizeAboveUser": "Sizes Above Attacker",
+                    "SizeAboveUserHint": "Only offer this option when every hit target is at most this many sizes larger than the attacker. Leave blank to ignore size.",
                     "SuppressedBy": "Suppressed By",
                     "SuppressedByHint": "Do not offer this option when the actor has an item with one of these identifiers.",
                     "Tag": "Tag",
@@ -1339,12 +1343,28 @@
                     "HealingTraits": "Apply Healing Resistance and Immunity",
                     "HealingTraitsHint": "Healing immunity stops the feature; healing resistance halves the hit points left.",
                     "InstantDeath": "Include Killed Outright",
+                    "OthersOnly": "Protect Others Only",
+                    "RangeHint": "Also protect other creatures within this distance. 0 protects only the owner.",
                     "SaveActivity": "Survival Save Activity",
                     "SaveActivityHint": "Roll this activity when the feature is used; a failed save stops it from preventing death.",
                     "TargetHP": "Hit Points Left",
                     "TargetHPHint": "Formula for the hit points the creature is left on. Blank leaves it on 1.",
                     "UseActivity": "Use Activity",
                     "UseActivityHint": "Roll this activity when the feature triggers, in place of the item."
+                },
+                "AllyAttack": {
+                    "Choose": "Choose a weapon or cantrip to attack with.",
+                    "ChooseWeapon": "Choose the weapon to attack with."
+                },
+                "MoveTargets": {
+                    "Fraction": "Speed Fraction"
+                },
+                "LanguageChoice": {
+                    "Count": "Languages",
+                    "Replace": "Replace Previous Choice",
+                    "ReplaceLimit": "Languages Replaced Per Use",
+                    "Select": "Choose the languages you can speak.",
+                    "TooMany": "You can replace at most {count} of your previous languages."
                 },
                 "ProficiencyChoice": {
                     "EffectHint": "Effect applied to each target. The {key} placeholder in its change keys becomes the chosen skill or tool path.",
@@ -1384,6 +1404,7 @@
                     "RangeHint": "Also protect other creatures within this distance. 0 protects the owner only.",
                     "RollActivity": "Reduction Activity",
                     "RollActivityHint": "Rolled when the feature triggers. Its roll total is subtracted from the damage, and its costs are spent.",
+                    "SeeSource": "Source Must Be Visible",
                     "SkipIncapacitated": "Not While Incapacitated",
                     "Source": "Damage Source"
                 },
@@ -1628,11 +1649,41 @@
                         "SpreadFire": "Spread Fire",
                         "TwinnedBarrel": "Twinned Barrel"
                     }
+                },
+                "WillingFail": {
+                    "Prompt": "Does {target} willingly fail the save against {item}?"
                 }
             },
             "Legacy": {
                 "AberrantDragonmark": {
                     "SelectHitDie": "Expend a Hit Die to empower your mark?"
+                },
+                "BalefulInterdict": {
+                    "AlreadyPlaced": "You already placed a seal this turn.",
+                    "Boons": "Interdict Boons",
+                    "BoonsPrompt": "Activate an interdict boon?",
+                    "BurnPrompt": "Burn seals on {target}?",
+                    "DamageType": "Choose the damage type of the burned seals.",
+                    "NoSource": "No dead creature with your seals is within range of the target.",
+                    "PlacePrompt": "Place a seal on {target}?",
+                    "Seals": "Seals",
+                    "SelectSource": "Move the seals from which creature?"
+                },
+                "BloodPrice": {
+                    "Prompt": "Use {itemName}? (Roll Total: {rollTotal})",
+                    "Retaliate": "Choose an enemy to take the Hit Die damage."
+                },
+                "CombatMasteryLies": {
+                    "Select": "Choose the melee weapon type that uses Charisma."
+                },
+                "DispatersSupremacy": {
+                    "CriticalRange": "Critical Range Increase"
+                },
+                "EyesOfTheGate": {
+                    "Break": "{name}: Break Bond",
+                    "NoBond": "You are not bound to a creature's awareness.",
+                    "OutOfRange": "The target must be within seal range of the bound creature, and the bound creature must see it.",
+                    "TooFar": "The bound creature must be within 300 feet."
                 },
                 "ImbueCard": {
                     "NoSpells": "You have no spell slots or class spell list to imbue a card from."
@@ -1818,6 +1869,10 @@
                     "Curses": "Curses",
                     "WeaponPrompt": "{name} has been cursed by {feature} and must choose a weapon to attack a nearby target."
                 },
+                "InfernalConduit": {
+                    "ExhaustionLevel": "Exhaustion Level",
+                    "Self": "You must touch another creature."
+                },
                 "InfuseItem": {
                     "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",
                     "BootsOfTheWindingPath": "Boots of the Winding Path",
@@ -1859,6 +1914,20 @@
                     "Offer": "Use {item} to grant temporary hit points?",
                     "Select": "Distribute {total} temporary hit points among allies within 30 feet."
                 },
+                "InterdictBoon": {
+                    "BonusActionOnly": "Bonus Action Placement Only",
+                    "Burned": "Seals Burned",
+                    "Choose": "Creature You Choose",
+                    "DamageFromBurn": "Deal the Burned Seal Damage",
+                    "Hit": "Weapon Hit on an Interdicted Creature",
+                    "NearTarget": "Enemies Within 5 Feet of the Target",
+                    "Placed": "Seal Placed",
+                    "RelativeSize": "Sizes Larger Than You",
+                    "Self": "Self",
+                    "Target": "Interdicted Creature",
+                    "Targets": "Targets",
+                    "Trigger": "Trigger"
+                },
                 "IntimidatingPresence": {
                     "Immune": "Immune",
                     "ImmunityDuration": "Immunity Duration",
@@ -1869,6 +1938,14 @@
                 "InvestmentOfTheChainMaster": {
                     "Movement": "Choose a movement type for your familiar.",
                     "Speed": "Granted Movement Speed"
+                },
+                "IronGaol": {
+                    "Native": "Is {target} native to Hell?"
+                },
+                "LastWord": {
+                    "No": "No",
+                    "Prompt": "Use {itemName}?",
+                    "Use": "Expend {count}"
                 },
                 "ManifestMind": {
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
@@ -2160,6 +2237,17 @@
                 "PariahsShield": {
                     "Protect": "Use your reaction and {item} to take the damage dealt to {name}?",
                     "MaxBonus": "Maximum AC Bonus"
+                },
+                "AcheronsChain": {
+                    "Choose": "Pull {target} 10 feet toward you, or grapple them?",
+                    "Grapple": "Grapple",
+                    "Pull": "Pull"
+                },
+                "Devastator": {
+                    "Allies": "Choose allies who can use their reaction to attack."
+                },
+                "TelekineticSeal": {
+                    "NoSeal": "You have no seals left to place."
                 }
             },
             "Modern": {

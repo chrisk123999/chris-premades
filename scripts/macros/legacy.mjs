@@ -124,6 +124,34 @@ export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures
 export {echoAvatar as 'echo-avatar', legionOfOne as 'legion-of-one', manifestEcho as 'manifest-echo', unleashIncarnation as 'unleash-incarnation'} from './legacy/classFeatures/fighter/echoKnight/manifestEcho.mjs';
 
 /******************************/
+/*         Illrigger          */
+/******************************/
+export {balefulInterdict as 'baleful-interdict', balefulInterdictSeal as 'baleful-interdict-seal'} from './legacy/classFeatures/illrigger/balefulInterdict.mjs';
+export {bloodPrice as 'blood-price'} from './legacy/classFeatures/illrigger/bloodPrice.mjs';
+export {combatMasteryBrutal as 'combat-mastery-brutal'} from './legacy/classFeatures/illrigger/brutal.mjs';
+export {combatMasteryInexorable as 'combat-mastery-inexorable'} from './legacy/classFeatures/illrigger/inexorable.mjs';
+export {combatMasteryLies as 'combat-mastery-lies'} from './legacy/classFeatures/illrigger/lies.mjs';
+export {infernalConduit as 'infernal-conduit'} from './legacy/classFeatures/illrigger/infernalConduit.mjs';
+export {infernalMajestyEffect as 'infernal-majesty-effect'} from './legacy/classFeatures/illrigger/infernalMajesty.mjs';
+export {interdictBoon as 'interdict-boons-acherons-chain', interdictBoon as 'interdict-boons-bedevil', interdictBoon as 'interdict-boons-diss-onslaught', interdictBoon as 'interdict-boons-flash-of-brimstone', interdictBoon as 'interdict-boons-impaling-shot', interdictBoon as 'interdict-boons-soul-eater', interdictBoon as 'interdict-boons-souls-doom', interdictBoon as 'interdict-boons-styxs-apathy', interdictBoon as 'interdict-boons-unleash-hell', interdictBoon as 'dispaters-interdiction-by-the-throat'} from './legacy/classFeatures/illrigger/interdictBoon.mjs';
+export {interdictBoonIronGaol as 'interdict-boons-iron-gaol'} from './legacy/classFeatures/illrigger/ironGaol.mjs';
+export {interdictBoonLastWord as 'interdict-boons-last-word'} from './legacy/classFeatures/illrigger/lastWord.mjs';
+export {interdictBoonVengefulShot as 'interdict-boons-vengeful-shot'} from './legacy/classFeatures/illrigger/vengefulShot.mjs';
+export {eyesOfTheGate as 'interdict-boons-eyes-of-the-gate', eyesOfTheGateBond as 'eyes-of-the-gate-bond', eyesOfTheGatePerceiving as 'eyes-of-the-gate-perceiving', eyesOfTheGateBreak as 'eyes-of-the-gate-break'} from './legacy/classFeatures/illrigger/eyesOfTheGate.mjs';
+export {masterOfHell as 'master-of-hell', masterOfHellDarkness as 'master-of-hell-darkness'} from './legacy/classFeatures/illrigger/masterOfHell.mjs';
+export {interdictBoonAcheronsChain as 'acherons-chain'} from './legacy/classFeatures/illrigger/acheronsChain.mjs';
+export {interdictBoonHellishFrenzy as 'interdict-boons-hellish-frenzy'} from './legacy/classFeatures/illrigger/hellishFrenzy.mjs';
+export {interdictBoonSoulsDoom as 'souls-doom'} from './legacy/classFeatures/illrigger/soulsDoom.mjs';
+export {interdictBoonSwiftRetribution as 'interdict-boons-swift-retribution'} from './legacy/classFeatures/illrigger/swiftRetribution.mjs';
+
+/*         Painkiller         */
+export {deathstrike as 'deathstrike'} from './legacy/classFeatures/illrigger/painkiller/deathstrike.mjs';
+export {devastator as 'devastator'} from './legacy/classFeatures/illrigger/painkiller/devastator.mjs';
+export {dispatersInterdictionDispatersSupremacy as 'dispaters-interdiction-dispaters-supremacy'} from './legacy/classFeatures/illrigger/painkiller/dispatersSupremacy.mjs';
+export {dispatersInterdictionTelekineticSeal as 'dispaters-interdiction-telekinetic-seal'} from './legacy/classFeatures/illrigger/painkiller/telekineticSeal.mjs';
+export {invokeHellPunishment as 'invoke-hell-punishment'} from './legacy/classFeatures/illrigger/painkiller/punishment.mjs';
+
+/******************************/
 /*            Monk            */
 /******************************/
 export {dedicatedWeapon as 'dedicated-weapon'} from './legacy/classFeatures/monk/dedicatedWeapon.mjs';

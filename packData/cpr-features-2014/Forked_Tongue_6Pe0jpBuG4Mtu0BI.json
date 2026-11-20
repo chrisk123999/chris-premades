@@ -1,0 +1,195 @@
+{
+  "name": "Forked Tongue",
+  "type": "feat",
+  "img": "icons/creatures/reptiles/lizard-iguana-green.webp",
+  "folder": "EqhQHzcqeO2NWgKt",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "TIR",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "activities": {
+      "Qf8gCih1eGvveI43": {
+        "_id": "Qf8gCih1eGvveI43",
+        "type": "utility",
+        "name": "Choose Languages",
+        "sort": 0,
+        "activation": {
+          "type": "longRest",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "choose",
+        "midiProperties": {
+          "identifier": "choose",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "languageChoice",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "languageChoice": {
+                  "count": "min(3, 2 + floor(@classes.illrigger.levels / 9))",
+                  "replace": true,
+                  "replaceLimit": "1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "identifier": "forked-tongue",
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "3z6Q6upiafCOqo6B",
+      "name": "Forked Tongue",
+      "img": "icons/creatures/reptiles/lizard-iguana-green.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.languages.value",
+            "value": "infernal",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.advantage.skill.ins",
+            "value": "@classes.illrigger.levels >= 9",
+            "type": "override",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "expired": false,
+        "value": null,
+        "units": "seconds",
+        "expiry": null
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!6Pe0jpBuG4Mtu0BI.3z6Q6upiafCOqo6B"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.10"
+      }
+    }
+  },
+  "_id": "6Pe0jpBuG4Mtu0BI",
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!6Pe0jpBuG4Mtu0BI"
+}
