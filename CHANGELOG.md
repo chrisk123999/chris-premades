@@ -1,3 +1,18 @@
+# 2.1.10 Pre-Release:
+## Automated Class Features:
+- Illrigger: Base class and Painkiller subclass.
+## Automated Species Features:
+- 2014: Shadar-kai - Blessing of the Raven Queen.
+## Generic Macros:
+- `preventDeath` can protect allies within a range of its owner, or only creatures other than its owner.
+- `reduceDamageTaken` can require its owner to see the creature dealing the damage.
+- `attackRider` can limit a rider to attack modes and to targets no more than a set number of sizes larger than the attacker. Without a set damage type it uses the type chosen with `selectDamageType`.
+- New `languageChoice` generic lets the user pick languages to learn and limits how many a later use can swap. Forked Tongue uses it.
+- New `willingFail` generic lets each non-hostile target choose to fail a save it succeeded on. Infernal Conduit and Eyes of the Gate use it.
+- New `moveTargets` generic lets each target of an activity move part of its speed to a spot it picks, without provoking opportunity attacks.
+## Bug Fixes:
+- Potion of Invulnerability grants resistance to all damage.
+- `preventDeath` no longer triggers on creatures already at 0 hit points.
 # 2.1.9 Pre-Release:
 ## Update Notes:
 - Requires dnd5e 6.1, midi-qol 14.7, DAE 14.6.10 and CAT 0.1.9.

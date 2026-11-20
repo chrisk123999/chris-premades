@@ -1,15 +1,16 @@
-import {activityUtils, actorUtils, automationUtils, constants, dialogUtils, documentUtils, Logging, queryUtils, rollUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, constants, dialogUtils, documentUtils, Logging, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function damage({document, ditem, targetToken, workflow}) {
-    if (!ditem.isHit) return;
+    if (!ditem.isHit || ditem.oldHP <= 0) return;
     const resultingHP = ditem.oldHP + (ditem.oldTempHP ?? 0) - ditem.totalDamage;
     if (resultingHP > 0) return;
-    const maxHP = document.actor.system.attributes.hp.effectiveMax;
+    const actor = targetToken.actor;
+    const maxHP = actor.system.attributes.hp.effectiveMax;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'preventDeath', Object.keys(preventDeath.genericConfig));
     if (!config.killedOutright && resultingHP <= -maxHP) return;
     if (config.deathOnly && resultingHP > -maxHP) return;
     if (config.excludeCritical && workflow.isCritical) return;
     if (config.excludeDamageTypes.length && workflowUtils.getDamageTypes(workflow.damageRolls).intersects(new Set(config.excludeDamageTypes))) return;
-    if (config.healingTraits && actorUtils.checkTrait(document.actor, 'di', 'healing')) return;
+    if (config.healingTraits && actorUtils.checkTrait(actor, 'di', 'healing')) return;
     if (!document.system.uses.value) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'No uses remaining.');
     const selection = await dialogUtils.confirmUseItem(document, {userId: queryUtils.firstOwner(document.actor, true)});
     if (!selection) return;
@@ -22,16 +23,34 @@ async function damage({document, ditem, targetToken, workflow}) {
         if (saveWorkflow?.failedSaves.count) return;
     }
     let targetHP = config.targetHP ? Math.max(rollUtils.rollDiceSync(config.targetHP, {document}).total, 1) : 1;
-    if (config.healingTraits && actorUtils.checkTrait(document.actor, 'dr', 'healing')) targetHP = Math.max(Math.floor(targetHP / 2), 1);
+    if (config.healingTraits && actorUtils.checkTrait(actor, 'dr', 'healing')) targetHP = Math.max(Math.floor(targetHP / 2), 1);
     workflowUtils.preventZeroHP(ditem, {targetHP});
     const useActivity = document.system.activities.get(config.useActivity);
     if (useActivity) await workflowUtils.completeActivityUse(useActivity, [targetToken]);
     else if (config.display && !saveActivity) await workflowUtils.completeItemUse(document, [targetToken]);
     await automationUtils.calledEvent('preventDeath', document.actor, {canOverlap: true, data: {item: document, workflow}});
 }
+function reactionSpent(document) {
+    const activity = document.system.activities.get(automationUtils.getGenericConfigValue(document, 'chris-premades', 'preventDeath', 'useActivity'));
+    return activity?.activation.type === 'reaction' && actorUtils.hasUsedReaction(document.actor);
+}
+async function selfDamage({document, ditem, targetToken, workflow}) {
+    if (automationUtils.getGenericConfigValue(document, 'chris-premades', 'preventDeath', 'othersOnly') || reactionSpent(document)) return;
+    await damage({document, ditem, targetToken, workflow});
+}
+async function nearbyDamage({document, ditem, targetToken, workflow}) {
+    if (!targetToken?.actor || targetToken.actor === document.actor) return;
+    const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'preventDeath', ['range', 'alliesOnly']);
+    if (!Number(config.range)) return;
+    const ownerToken = actorUtils.getFirstToken(document.actor);
+    if (!ownerToken || ownerToken.parent !== targetToken.parent || !tokenUtils.isWithinDistance(ownerToken, targetToken, Number(config.range))) return;
+    if (config.alliesOnly && tokenUtils.isEnemy(ownerToken, targetToken)) return;
+    if (reactionSpent(document)) return;
+    await damage({document, ditem, targetToken, workflow});
+}
 /**
  * Offers to use this item when a hit would drop the actor to 0 hit points, keeping the actor alive.
- * Bound on an item. Fires on `targetDamageComplete`.
+ * Bound on an item. Fires on `targetDamageComplete`, and on `sceneDamageComplete` for other creatures when `range` is set.
  * Runs the called event `preventDeath` with `{item, workflow}` after it keeps the actor alive.
  *
  * Config:
@@ -45,18 +64,28 @@ async function damage({document, ditem, targetToken, workflow}) {
  * - `targetHP`: formula for the hit points the actor is left on. Blank leaves it on 1.
  * - `healingTraits`: treat the hit points as healing: healing immunity stops it, healing resistance halves them.
  * - `useActivity`: rolled when it triggers, in place of the item.
+ * - `range`: also protect other creatures within this distance. 0 protects the owner only.
+ * - `alliesOnly`: with a range, only protect allies of the owner.
+ * - `othersOnly`: never protect the owner.
  */
 export const preventDeath = {
     rules: 'all',
-    version: '2.1.9',
+    version: '2.1.10',
     category: 'mechanics',
     generic: true,
     documents: ['item'],
     roll: [
         {
             pass: 'targetDamageComplete',
-            macro: damage,
-            priority: 150
+            macro: selfDamage,
+            priority: 150,
+            canOverlap: true
+        },
+        {
+            pass: 'sceneDamageComplete',
+            macro: nearbyDamage,
+            priority: 150,
+            canOverlap: true
         }
     ],
     genericConfig: {
@@ -124,6 +153,25 @@ export const preventDeath = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivity',
             hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivityHint'
+        },
+        range: {
+            default: '0',
+            type: 'text',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.Range',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.RangeHint'
+        },
+        alliesOnly: {
+            default: true,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.AlliesOnly'
+        },
+        othersOnly: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.OthersOnly'
         }
     }
 };

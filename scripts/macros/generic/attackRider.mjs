@@ -1,5 +1,6 @@
 import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, documentUtils, effectUtils, itemUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig, identifiersConfig} from './damageBonusToOneRoll.mjs';
+import {getCastDamageType} from './selectDamageType.mjs';
 export const riderNearbyRangeConfig = {
     default: 0,
     type: 'number',
@@ -40,6 +41,8 @@ function applies(activity, actor, workflow, config) {
         const maxSize = CONFIG.DND5E.actorSizes[config.maxSize]?.numerical;
         if (workflow.hitTargets.documents.some(token => actorUtils.getSize(token.actor) > maxSize)) return false;
     }
+    if (config.sizeAboveUser !== '' && workflow.hitTargets.documents.some(token => actorUtils.getSize(token.actor) > actorUtils.getSize(actor) + Number(config.sizeAboveUser))) return false;
+    if (config.attackModes.length && !config.attackModes.includes(workflow.attackMode)) return false;
     if (config.requiredItems.length && !actorUtils.getItemByIdentifiers(actor, config.requiredItems)) return false;
     if (config.suppressedBy.length && actorUtils.getItemByIdentifiers(actor, config.suppressedBy)) return false;
     return true;
@@ -90,7 +93,7 @@ async function damage({document: activity, actor, workflow}) {
     if (config.ownsTag) return await ownerBonus(activity, actor, workflow, config);
     const typeMatch = config.creatureTypeBonus && config.targetCreatureTypes.length && workflow.hitTargets.documents.every(token => token.actor && config.targetCreatureTypes.includes(actorUtils.typeOrRace(token.actor)));
     const formula = typeMatch ? config.bonus + ' + ' + config.creatureTypeBonus : config.bonus;
-    const bonus = new DamageBonus(activity, {formula, type: config.bonusDamageType, optional: !config.automatic})
+    const bonus = new DamageBonus(activity, {formula, type: config.bonusDamageType || getCastDamageType(activity.item), optional: !config.automatic})
         .withOnUse(({workflow, bonus}) => {
             addRiders(workflow, [bonus.document.uuid]);
             const scaling = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling') ?? []);
@@ -129,7 +132,7 @@ async function rider({document: activity, actor, token, workflow}) {
  *
  * Config:
  * - `bonus`: extra damage added to the roll when this option is chosen.
- * - `bonusDamageType`: damage type of the extra damage. Empty uses the attack's damage type.
+ * - `bonusDamageType`: damage type of the extra damage. Empty uses the type chosen with `selectDamageType` at use, then the attack's damage type.
  * - `creatureTypeBonus`: extra damage added when every hit target is one of `targetCreatureTypes`.
  * - `targetCreatureTypes`: creature types that receive `creatureTypeBonus`.
  * - `tag`: tagged options are offered as choices under the bonus that owns the tag.
@@ -144,6 +147,8 @@ async function rider({document: activity, actor, token, workflow}) {
  * - `singleTarget`: only offer when the attack hits exactly one target.
  * - `automatic`: apply the rider without offering it as a choice.
  * - `maxSize`: only offer when every hit target is this size or smaller.
+ * - `sizeAboveUser`: only offer when every hit target is at most this many sizes larger than the attacker. Blank ignores size.
+ * - `attackModes`: only offer for attacks made in one of these attack modes.
  * - `requiredItems`: only offer when the actor has an item with one of these identifiers.
  * - `suppressedBy`: do not offer when the actor has an item with one of these identifiers.
  * - `ownTurn`: in combat, only offer on the attacker's own turn.
@@ -154,7 +159,7 @@ async function rider({document: activity, actor, token, workflow}) {
  */
 export const attackRider = {
     rules: 'all',
-    version: '2.1.9',
+    version: '2.1.10',
     category: 'damage',
     generic: true,
     documents: ['activity'],
@@ -293,6 +298,20 @@ export const attackRider = {
             label: 'CHRISPREMADES.Config.MaxSize',
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.MaxSizeHint',
             get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.sizeOptions]; }
+        },
+        sizeAboveUser: {
+            default: '',
+            type: 'text',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SizeAboveUser',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SizeAboveUserHint'
+        },
+        attackModes: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.AttackModes',
+            get options() { return Object.entries(CONFIG.DND5E.attackModes).map(([value, {label}]) => ({value, label})); }
         },
         requiredItems: {
             default: [],
