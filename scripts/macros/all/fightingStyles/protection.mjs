@@ -48,11 +48,12 @@ async function attacked({workflow}) {
 export const protection = {
     name: 'Protection',
     rules: 'all',
-    version: '2.0.3',
+    version: '2.1.10',
     roll: [
         {
             pass: 'sceneAttackRollConfig',
             macro: attacked,
+            thirdParty: true,
             priority: 600
         }
     ]

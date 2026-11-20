@@ -24,12 +24,13 @@ async function protect({document: item, targetToken, ditem}) {
 }
 export const pariahsShield = {
     name: 'Pariah\'s Shield',
-    version: '2.1.7',
+    version: '2.1.10',
     rules: '2014',
     roll: [
         {
             pass: 'sceneDamageComplete',
             macro: protect,
+            thirdParty: true,
             priority: 150
         }
     ],

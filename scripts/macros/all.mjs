@@ -233,7 +233,7 @@ export {deathWard as 'death-ward'} from './all/spells/deathWard.mjs';
 export {disintegrate} from './all/spells/disintegrate.mjs';
 export {dragonsBreath as 'dragons-breath'} from './all/spells/dragonsBreath.mjs';
 export {enlargeReduce as 'enlarge-reduce', enlargeReduceEffect as 'enlarge-reduce-effect'} from './all/spells/enlargeReduce.mjs';
-export {findFamiliar as 'find-familiar', findFamiliarPocket as 'find-familiar-pocket', findFamiliarTouch as 'find-familiar-touch', findFamiliarTouchEffect as 'find-familiar-touch-effect'} from './all/spells/findFamiliar.mjs';
+export {findFamiliar as 'find-familiar', findFamiliarPocket as 'find-familiar-pocket'} from './all/spells/findFamiliar.mjs';
 export {fireShield as 'fire-shield'} from './all/spells/fireShield.mjs';
 export {fireStorm as 'fire-storm'} from './all/spells/fireStorm.mjs';
 export {fogCloud as 'fog-cloud'} from './all/spells/fogCloud.mjs';

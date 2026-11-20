@@ -12,12 +12,13 @@ async function spent({document: item, actor, token}) {
 }
 export const tirelessReveler = {
     name: 'Tireless Reveler',
-    version: '2.1.4',
+    version: '2.1.10',
     rules: '2024',
     called: [
         {
             pass: 'nearbyHeroicInspirationSpent',
             macro: spent,
+            thirdParty: true,
             priority: 50,
             configDistance: 'distance',
             dispositions: ['ally']

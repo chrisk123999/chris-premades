@@ -11,12 +11,13 @@ async function sceneDamage({document, targetToken, ditem}) {
 }
 export const projectedWard = {
     name: 'Projected Ward',
-    version: '2.0.0',
+    version: '2.1.10',
     rules: '2014',
     roll: [
         {
             pass: 'sceneDamageComplete',
             macro: sceneDamage,
+            thirdParty: true,
             priority: 50
         }
     ],

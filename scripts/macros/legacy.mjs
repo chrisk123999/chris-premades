@@ -36,9 +36,7 @@ export {
     infusionReturningWeapon as 'infusion-returning-weapon',
     infusionSpellRefuelingRing as 'infusion-spell-refueling-ring', infusionArmorOfMagicalStrengthProne, infusionCollectAmmoWeapons, infusionCollectArmorRobes, infusionCollectArmors,
     infusionCollectArmorShield, infusionCollectFoci,
-    infusionCollectShield, infusionCollectThrownWeapons, infusionCollectWeapons, infusionHomunculusServantChannel,
-    infusionHomunculusServantChannelEarly,
-    infusionHomunculusServantCommand,
+    infusionCollectShield, infusionCollectThrownWeapons, infusionCollectWeapons,
     infusionHomunculusServantDeath
 } from './legacy/classFeatures/artificer/infusions.mjs';
 export {rightToolForTheJob as 'the-right-tool-for-the-job'} from './legacy/classFeatures/artificer/rightToolForTheJob.mjs';

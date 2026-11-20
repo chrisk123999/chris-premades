@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, folderUtils, itemUtils, Logging, summonUtils, tokenUtils} from '../../../proxy.mjs';
+import {activityUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, folderUtils, itemUtils, Logging, summonUtils} from '../../../proxy.mjs';
 export const srdFamiliars = ['bat', 'cat', 'crab', 'frog', 'hawk', 'lizard', 'octopus', 'owl', 'poisonous-snake', 'quipper', 'rat', 'raven', 'sea-horse', 'spider', 'weasel'];
 async function preventRecast({document: activity}) {
     if (!summonUtils.getSummonsBySource(activity.item).length) return;
@@ -42,66 +42,9 @@ async function pocket({workflow}) {
         await summonUtils.placeAllSourceSummons(workflow.item, activityUtils.getRange(workflow.activity), {token: workflow.token.document});
     }
 }
-async function touch({document, workflow}) {
-    const summons = summonUtils.getSummonsBySource(workflow.item);
-    if (!summons.length) return Logging.addMacroWarning('CPR', 'find-familiar-touch', 'No familiar summoned.');
-    const effectData = documentUtils.getBaseEffectData(workflow.activity, {
-        name: document.name + ': ' + workflow.activity.name,
-        img: document.img,
-        origin: document.uuid,
-        identifier: 'findFamiliarTouch',
-        duration: {value: 1, units: 'seconds'},
-        specialDuration: ['1Attack'],
-        macros: [
-            {
-                type: 'roll',
-                macros: [
-                    {
-                        source: 'chris-premades',
-                        rules: 'all',
-                        identifier:
-                        'find-familiar-touch-effect'
-                    }
-                ]
-            }
-        ],
-        changes: [
-            {
-                key: 'flags.midi-qol.rangeOverride.attack.all',
-                type: 'custom',
-                value: 1,
-                priority: 20
-            }
-        ]
-    });
-    const [casterEffect] = await effectUtils.createEffects(workflow.actor, [effectData]);
-    await Promise.all(summons.map(summon => effectUtils.createEffects(summon.actor, [effectData], {parentEntity: casterEffect})));
-}
-async function early({document, workflow, token}) {
-    if (workflow.item.type !== 'spell' || workflow.item.system.range.units !== 'touch') {
-        Logging.addMacroWarning('CPR', 'find-familiar-touch-effect', 'CHRISPREMADES.Macros.All.FindFamiliar.InvalidSpell', {notify: 'info'});
-        return true;
-    }
-    const originActivity = await effectUtils.getOriginActivity(document);
-    const familiarTokens = summonUtils.getSummonsBySource(originActivity?.item).map(summon => summon.token).filter(Boolean);
-    const range = familiarTokens.length ? automationUtils.getConfigValue(originActivity.item, 'touchRange') : 0;
-    const inRange = familiarTokens.filter(familiarToken => tokenUtils.isWithinDistance(token, familiarToken, range));
-    if (!inRange.length) {
-        Logging.addMacroWarning('CPR', 'find-familiar-touch-effect', 'CHRISPREMADES.Macros.All.FindFamiliar.TooFar', {notify: 'info'});
-        return true;
-    }
-    const available = inRange.filter(familiarToken => !actorUtils.hasUsedReaction(familiarToken.actor));
-    if (!available.length) {
-        Logging.addMacroWarning('CPR', 'find-familiar-touch-effect', 'CHRISPREMADES.Macros.All.FindFamiliar.ReactionUsed', {notify: 'info'});
-        return true;
-    }
-    const target = workflow.targets.tokens[0]?.document;
-    const [familiarToken] = target ? available.sort((a, b) => tokenUtils.getDistance(target, a) - tokenUtils.getDistance(target, b)) : available;
-    await actorUtils.setReactionUsed(familiarToken.actor);
-}
 export const findFamiliar = {
     name: 'Find Familiar',
-    version: '2.1.4',
+    version: '2.1.10',
     rules: 'all',
     roll: [
         {
@@ -136,12 +79,6 @@ export const findFamiliar = {
             category: 'summons',
             get options() { return [{value: '', label: 'CHRISPREMADES.Macros.All.FindFamiliar.Ask'}, ...constants.spiritTypeOptions]; }
         },
-        touchRange: {
-            default: 100,
-            type: 'number',
-            label: 'CHRISPREMADES.Macros.All.FindFamiliar.TouchRange',
-            category: 'homebrew'
-        },
         celestialAnimation: {
             default: {source: 'chris-premades', identifier: 'celestialSummon'},
             type: 'selectAnimation',
@@ -164,30 +101,6 @@ export const findFamiliar = {
             category: 'animations'
         }
     }
-};
-export const findFamiliarTouchEffect = {
-    name: 'Find Familiar: Touch',
-    version: findFamiliar.version,
-    rules: 'all',
-    roll: [
-        {
-            pass: 'actorPreambleComplete',
-            macro: early,
-            priority: 50
-        }
-    ]
-};
-export const findFamiliarTouch = {
-    name: 'Find Familiar: Touch',
-    version: findFamiliar.version,
-    rules: 'all',
-    roll: [
-        {
-            pass: 'activityRollFinished',
-            macro: touch,
-            priority: 50
-        }
-    ]
 };
 export const findFamiliarPocket = {
     name: 'Find Familiar: Pocket',

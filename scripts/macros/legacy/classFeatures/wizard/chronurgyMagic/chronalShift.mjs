@@ -97,22 +97,22 @@ async function thirdPartyAttack({document: item, workflow}) {
 }
 export const chronalShift = {
     name: 'Chronal Shift',
-    version: '2.0.0',
+    version: '2.1.10',
     rules: '2014',
     roll: [
         {pass: 'actorAttackRoll', macro: selfAttack, priority: 800},
-        {pass: 'sceneAttackRoll', macro: thirdPartyAttack, priority: 801}
+        {pass: 'sceneAttackRoll', macro: thirdPartyAttack, priority: 801, thirdParty: true}
     ],
     check: [
-        {pass: 'sceneBonus', macro: thirdPartyCheck, priority: 50},
+        {pass: 'sceneBonus', macro: thirdPartyCheck, priority: 50, thirdParty: true},
         {pass: 'actorBonus', macro: selfCheck, priority: 100}
     ],
     save: [
-        {pass: 'sceneBonus', macro: thirdPartySave, priority: 50},
+        {pass: 'sceneBonus', macro: thirdPartySave, priority: 50, thirdParty: true},
         {pass: 'actorBonus', macro: selfSave, priority: 100}
     ],
     skill: [
-        {pass: 'sceneBonus', macro: thirdPartySkill, priority: 50},
+        {pass: 'sceneBonus', macro: thirdPartySkill, priority: 50, thirdParty: true},
         {pass: 'actorBonus', macro: selfSkill, priority: 100}
     ],
     config: {

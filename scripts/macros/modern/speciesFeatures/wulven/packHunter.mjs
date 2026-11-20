@@ -22,12 +22,13 @@ async function save({document: item, actor, token, options}) {
 const nearby = {configDistance: 'distance', dispositions: ['ally'], disabled: ['incapacitated'], canOverlap: true};
 export const packHunter = {
     name: 'Pack Hunter',
-    version: '2.1.4',
+    version: '2.1.10',
     rules: '2024',
     roll: [
         {
             pass: 'nearbyAttackRollConfig',
             macro: attack,
+            thirdParty: true,
             priority: 600,
             ...nearby
         }
@@ -36,6 +37,7 @@ export const packHunter = {
         {
             pass: 'nearbySituational',
             macro: save,
+            thirdParty: true,
             priority: 600,
             ...nearby
         }

@@ -36,19 +36,7 @@
           "override": false
         },
         "effects": [],
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "2014",
-                  "identifier": "infusionHomunculusServantCommand"
-                }
-              ]
-            }
-          }
-        },
+        "flags": {},
         "range": {
           "units": "self",
           "override": false,
@@ -202,10 +190,19 @@
               "roll": [
                 {
                   "source": "chris-premades",
-                  "rules": "2014",
-                  "identifier": "infusionHomunculusServantChannel"
+                  "rules": "all",
+                  "identifier": "touchDelivery"
                 }
               ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "touchDelivery": {
+                  "summonIdentifier": "homunculusServant",
+                  "range": 120,
+                  "specialDuration": "1Spell"
+                }
+              }
             }
           }
         },
@@ -867,13 +864,14 @@
             ],
             "maxDistance": 0,
             "replaceExisting": false,
-            "favorite": false
+            "favorite": false,
+            "controlActivityId": "npOMj9CAS7ExdZW1"
           }
         }
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.10"
       }
     }
   },

@@ -338,7 +338,11 @@
         },
         "otherActivityId": "none",
         "behaviors": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        },
         "visibility": {
           "level": {},
           "requireAttunement": false,
@@ -421,7 +425,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.10"
       },
       "macros": {
         "move": [
@@ -445,9 +449,6 @@
             "activityId": "dnd5eactivity000",
             "replaceExisting": true,
             "favorite": true,
-            "commandActivityIds": [
-              "HXtMUw0oxE9aTZxM"
-            ],
             "summons": [
               {
                 "profile": "dancingItem00000",
@@ -475,7 +476,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "controlActivityId": "HXtMUw0oxE9aTZxM"
           }
         }
       }

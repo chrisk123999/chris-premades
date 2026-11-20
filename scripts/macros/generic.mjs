@@ -84,6 +84,7 @@ export {checkModifier, saveModifier, skillModifier, toolModifier} from './generi
 /*          SUMMONS           */
 /*============================*/
 export {summonModifier} from './generic/summonModifier.mjs';
+export {touchDelivery, touchDeliveryEffect} from './generic/touchDelivery.mjs';
 
 /*============================*/
 /*         TARGETING          */

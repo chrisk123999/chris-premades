@@ -341,7 +341,11 @@
         },
         "otherActivityId": "none",
         "behaviors": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        },
         "visibility": {
           "level": {},
           "requireAttunement": false,
@@ -603,7 +607,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.10"
       },
       "macros": {
         "move": [
@@ -627,9 +631,6 @@
             "activityId": "dnd5eactivity000",
             "replaceExisting": true,
             "favorite": true,
-            "commandActivityIds": [
-              "wUkNiHWwAXZH0uW8"
-            ],
             "followUpActivityId": "wildfireDamage01",
             "followUpTiming": "create",
             "followUpTargets": "all",
@@ -661,7 +662,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "controlActivityId": "wUkNiHWwAXZH0uW8"
           }
         }
       }

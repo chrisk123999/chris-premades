@@ -37,7 +37,7 @@ async function damage({ditem, macroClass: {identifier, source}, targetToken, tok
 }
 export const spiritShield = {
     name: 'Spirit Shield',
-    version: '2.1.4',
+    version: '2.1.10',
     rules: '2014',
     called: [
         {
@@ -97,6 +97,7 @@ export const spiritShieldProtect = {
         {
             pass: 'sceneDamageFlatReductions',
             macro: damage,
+            thirdParty: true,
             priority: 500
         }
     ]

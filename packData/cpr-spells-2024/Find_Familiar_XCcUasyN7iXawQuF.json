@@ -332,7 +332,7 @@
                 {
                   "source": "chris-premades",
                   "rules": "all",
-                  "identifier": "find-familiar-touch"
+                  "identifier": "touchDelivery"
                 }
               ]
             }
@@ -564,7 +564,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.10"
       },
       "macros": {}
     }

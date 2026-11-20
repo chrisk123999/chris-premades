@@ -84,6 +84,7 @@ export const preventDeath = {
         {
             pass: 'sceneDamageComplete',
             macro: nearbyDamage,
+            thirdParty: true,
             priority: 150,
             canOverlap: true
         }

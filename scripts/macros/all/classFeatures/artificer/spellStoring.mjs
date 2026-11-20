@@ -92,16 +92,13 @@ async function store({macroClass: {identifier, source}, workflow}) {
         inputs.push(['button', await Promise.all(group.map(i => makeButton(i))), {displayAsRows: true, legend: group[0].actor.name}]);
     const choice = await applications.DialogApp.dialog(workflow.item.name, 'CHRISPREMADES.Macros.All.SpellStoringItem.Prompt', inputs, 'cancel');
     if (choice?.buttons === 'recharge') {
-        await ChatMessage.implementation.create({
-            speaker: ChatMessage.implementation.getSpeaker({actor: workflow.actor}),
-            content: _loc('CHRISPREMADES.Macros.All.SpellStoringItem.Recharge', {
-                actor: workflow.actor.name,
-                item: existing.item.name,
-                target: existing.actor.name,
-                uses: existing.uses.value,
-                max: existing.uses.max
-            })
-        });
+        await MidiQOL.addCardNote(workflow, _loc('CHRISPREMADES.Macros.All.SpellStoringItem.Recharge', {
+            actor: workflow.actor.name,
+            item: existing.item.name,
+            target: existing.actor.name,
+            uses: existing.uses.value,
+            max: existing.uses.max
+        }));
         await documentUtils.update(existing, {'uses.spent': 0});
         return;
     }
@@ -126,7 +123,7 @@ async function store({macroClass: {identifier, source}, workflow}) {
 }
 export const spellStoringItem = {
     name: 'Spell-Storing Item',
-    version: '2.1.9',
+    version: '2.1.10',
     rules: 'all',
     roll: [
         {

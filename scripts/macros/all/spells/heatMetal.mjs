@@ -25,10 +25,7 @@ async function heldCheck(document, targetToken, casterEffect, held) {
     if (choice !== 'unable') {
         const heldWorkflow = await workflowUtils.syntheticActivityRoll(held, [targetToken], {spellSlot: false});
         if (heldWorkflow?.failedSaves.count) {
-            await ChatMessage.implementation.create({
-                speaker: ChatMessage.implementation.getSpeaker({token: targetToken}),
-                content: _loc('CHRISPREMADES.Macros.All.HeatMetal.MustDrop')
-            });
+            await MidiQOL.addCardNote(heldWorkflow, _loc('CHRISPREMADES.Macros.All.HeatMetal.MustDrop'));
             return;
         }
     }
@@ -83,7 +80,7 @@ async function pulse({document, workflow}) {
 }
 export const heatMetal = {
     name: 'Heat Metal',
-    version: '2.1.3',
+    version: '2.1.10',
     rules: 'all',
     roll: [
         {

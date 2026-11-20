@@ -26,7 +26,7 @@ function getOutcome(familiarity, total) {
 async function blindRoll(formula, flavor, speaker) {
     return (await rollUtils.rollDice(formula, {message: true, flavor: _loc(flavor), speaker, mode: 'blind'})).roll;
 }
-async function offTarget(item, rules, speaker, userId) {
+async function offTarget(workflow, item, rules, speaker, userId) {
     const distanceRoll = await blindRoll(rules === '2014' ? '1d10 * 1d10' : '2d12', 'CHRISPREMADES.Macros.All.Teleport.Distance', speaker);
     const directionRoll = await blindRoll('1d8', 'CHRISPREMADES.Macros.All.Teleport.Direction', speaker);
     let distance = distanceRoll.total;
@@ -37,12 +37,7 @@ async function offTarget(item, rules, speaker, userId) {
         units = await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Macros.All.Teleport.Units', [['CHRISPREMADES.Macros.All.Teleport.Miles', 'Miles'], ['CHRISPREMADES.Macros.All.Teleport.Feet', 'Feet']], {userId}) ?? 'Miles';
         distance = Math.floor(distanceRoll.total / 100 * travel);
     }
-    await ChatMessage.create({
-        speaker,
-        content: _loc('CHRISPREMADES.Macros.All.Teleport.OffTargetString', {distance, units: _loc('CHRISPREMADES.Macros.All.Teleport.' + units).toLowerCase(), direction: _loc('CHRISPREMADES.Macros.All.Teleport.Directions.' + directions[rules][directionRoll.total - 1])}),
-        whisper: [userId],
-        blind: true
-    });
+    await MidiQOL.addCardNote(workflow, _loc('CHRISPREMADES.Macros.All.Teleport.OffTargetString', {distance, units: _loc('CHRISPREMADES.Macros.All.Teleport.' + units).toLowerCase(), direction: _loc('CHRISPREMADES.Macros.All.Teleport.Directions.' + directions[rules][directionRoll.total - 1])}), {whisper: [userId]});
 }
 async function use({workflow}) {
     if (workflow.activity.identifier !== 'teleport') return;
@@ -69,14 +64,14 @@ async function use({workflow}) {
     } while (outcome === 'Mishap');
     const damage = itemUtils.getActivityByIdentifier(item, 'teleport-damage');
     if (mishaps && damage) await workflowUtils.syntheticActivityDataRoll(activityUtils.getDamageModifiedActivityData(damage, (mishaps * 3) + 'd10', {types: ['force']}), item, [token, ...followers]);
-    if (outcome === 'OffTarget') await offTarget(item, rules, speaker, userId);
+    if (outcome === 'OffTarget') await offTarget(workflow, item, rules, speaker, userId);
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
     const range = distanceUtils.fromGridSpaces(canvas.scene, Math.ceil(Math.max(canvas.dimensions.width, canvas.dimensions.height) / canvas.dimensions.size));
     await tokenUtils.teleportToken(token, {animation, options, range, followers, followerRange: range, requireSight: false, ignoreWalls: true, userId});
 }
 export const teleport = {
     name: 'Teleport',
-    version: '2.1.4',
+    version: '2.1.10',
     rules: '2014',
     roll: [
         {pass: 'itemRollFinished', macro: use, priority: 50}

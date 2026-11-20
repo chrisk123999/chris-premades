@@ -1,4 +1,4 @@
-import {actorUtils, applications, automationUtils, compendiumUtils, constants, dataUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, summonUtils, tokenUtils, uiUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, applications, automationUtils, compendiumUtils, constants, dataUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, summonUtils, uiUtils, workflowUtils} from '../../../../proxy.mjs';
 import {swapArtificerPlan as artificer} from '../../../all.mjs';
 import {default as cpr} from '../../../../constants.mjs';
 // called events
@@ -293,69 +293,6 @@ async function homunculus({macroClass: {source, identifier}, workflow}) {
     await documentUtils.makeDependent(parent, [summon.actor]);
     await summonUtils.placeSummon(summon, 5, {token: target});
 }
-async function homunculusChannel({document: activity, macroClass: {source}}) {
-    const summon = summonUtils.getSummonsByIdentifier('homunculusServant', {actor: activity.actor})[0];
-    if (!summon?.token) return genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.HomunculusNotActive');
-    if (actorUtils.hasUsedReaction(summon.actor))
-        return genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.ReactionUsed');
-    const effectData = documentUtils.getBaseEffectData(activity, {
-        name: activity.name,
-        img: activity.img,
-        origin: activity.uuid,
-        specialDuration: ['1Spell'],
-        identifier: 'homunculusChannel',
-        duration: {value: 1, units: 'seconds'},
-        macros: [
-            {
-                type: 'roll',
-                macros: [
-                    {
-                        source: 'chris-premades',
-                        rules: '2014',
-                        identifier: 'infusionHomunculusServantChannelEarly'
-                    }
-                ]
-            }
-        ],
-        changes: [
-            {
-                key: 'flags.midi-qol.rangeOverride.attack.all',
-                type: 'custom',
-                value: 1,
-                priority: 20
-            }
-        ]
-    });
-    genericUtils.setProperty(effectData, 'flags.dae.expiryMode', 'delete');
-    genericUtils.setProperty(effectData, 'flags.dae.stackable', 'noneName');
-    genericUtils.setProperty(effectData, `flags.${source}.infusion`, activity.item.flags[source]?.[artificer.keys.createdItemFlag]);
-    const [casterEffect] = await effectUtils.createEffects(activity.actor, [effectData]);
-    await effectUtils.createEffects(summon.actor, [effectData], {parentEntity: casterEffect});
-}
-async function homunculusChannelEarly({activity, document: effect, macroClass: {source}, token}) {
-    const notify = msg => { 
-        genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.' + msg); 
-        return true;
-    };
-    if (activity.item.type !== 'spell' || activity.item.system.range.units !== 'touch') return notify('InvalidSpell');
-    const homunculus = summonUtils.getSummonsByIdentifier('homunculusServant', {actor: activity.actor})[0]?.token;
-    if (!homunculus) return notify('TooFar');
-    const infusion = await fromUuid(effect.flags[source]?.infusion);
-    const range = infusion ? automationUtils.getConfigValue(infusion, 'touchRange') : 120;
-    if (!tokenUtils.isWithinDistance(token, homunculus, range)) return notify('TooFar');
-    if (actorUtils.hasUsedReaction(homunculus.actor)) return notify('ReactionUsed');
-    await actorUtils.setReactionUsed(homunculus.actor);
-}
-async function homunculusCommand({document: activity}) {
-    const summon = summonUtils.getSummonsByIdentifier('homunculusServant', {actor: activity.actor})[0];
-    if (!summon?.token) return genericUtils.notify('CHRISPREMADES.Macros.Legacy.InfuseItem.HomunculusNotActive');
-    const actorSheet = activity.actor.sheet;
-    const summonSheet = summon.actor.sheet;
-    if (actorSheet.rendered && !actorSheet.minimized) await actorSheet.minimize();
-    if (!summonSheet.rendered) await summonSheet.render({force: true});
-    else if (summonSheet.minimized) await summonSheet.maximize();
-    uiUtils.bringToFront(summonSheet);
-}
 async function homunculusDeath({document: heart}) {
     await documentUtils.deleteDocument(heart);
 }
@@ -477,7 +414,7 @@ async function spellRing({macroClass: {source, identifier}, workflow}) {
     );
 }
 const metadata = {
-    version: '2.1.3',
+    version: '2.1.10',
     rules: '2014'
 };
 const bonusConfig = {
@@ -538,12 +475,6 @@ export const infusionHomunculusServant = {
             category: 'homebrew',
             label: 'CHRISPREMADES.Config.ClassIdentifier'
         },
-        touchRange: {
-            default: 120,
-            type: 'number',
-            category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.All.FindFamiliar.TouchRange'
-        },
         hp: {
             default: '1 + @abilities.int.mod + @classes.artificer.levels',
             type: 'formula',
@@ -581,18 +512,6 @@ export const infusionHomunculusServant = {
         }
     }
 };
-export const infusionHomunculusServantChannel = rollMacro(homunculusChannel);
-export const infusionHomunculusServantChannelEarly = {
-    ...metadata,
-    roll: [
-        {
-            pass: 'actorPreTargeting',
-            macro: homunculusChannelEarly,
-            priority: 50
-        }
-    ]
-};
-export const infusionHomunculusServantCommand = rollMacro(homunculusCommand);
 export const infusionHomunculusServantDeath = {
     ...metadata,
     summon: [

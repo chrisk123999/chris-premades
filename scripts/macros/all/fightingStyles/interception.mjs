@@ -32,11 +32,12 @@ async function intercept({ditem, targetToken, workflow}) {
 export const interception = {
     name: 'Interception',
     rules: 'all',
-    version: '2.0.3',
+    version: '2.1.10',
     roll: [ 
         {
             pass: 'sceneDamageFlatReductions',
             macro: intercept,
+            thirdParty: true,
             priority: 600
         }
     ],

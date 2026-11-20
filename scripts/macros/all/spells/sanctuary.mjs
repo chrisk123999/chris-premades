@@ -13,10 +13,7 @@ async function targeted({document, sourceToken, workflow}) {
     if (!saveWorkflow?.failedSaves?.count) return;
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
     if (sourceToken.object) animation?.macros.play?.(workflow.token.document, sourceToken, options);
-    await ChatMessage.implementation.create({
-        speaker: ChatMessage.implementation.getSpeaker({token: workflow.token.document}),
-        content: _loc('CHRISPREMADES.Macros.All.Sanctuary.Failed')
-    });
+    await MidiQOL.addCardNote(saveWorkflow, _loc('CHRISPREMADES.Macros.All.Sanctuary.Failed'));
     workflow.aborted = true;
     return true;
 }
@@ -29,7 +26,7 @@ async function cast({document, workflow}) {
 }
 export const sanctuary = {
     name: 'Sanctuary',
-    version: '2.1.3',
+    version: '2.1.10',
     rules: 'all',
     roll: [
         {

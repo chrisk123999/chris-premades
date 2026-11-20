@@ -31,15 +31,11 @@ async function use({document, actor, workflow}) {
     const targetActor = workflow.targets.documents[0].actor;
     const content = [compare(first, actor, targetActor), compare(second, actor, targetActor)].join('<br>');
     const gmIds = game.users.filter(user => user.isGM).map(user => user.id);
-    await ChatMessage.implementation.create({
-        speaker: ChatMessage.implementation.getSpeaker({actor, token: workflow.token?.document}),
-        content,
-        whisper: [...new Set([...gmIds, game.user.id])]
-    });
+    await MidiQOL.addCardNote(workflow, content, {whisper: [...new Set([...gmIds, game.user.id])]});
 }
 export const insightfulManipulator = {
     name: 'Insightful Manipulator',
-    version: '2.0.0',
+    version: '2.1.10',
     rules: '2014',
     roll: [
         {

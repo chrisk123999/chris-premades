@@ -10,10 +10,16 @@
 - New `languageChoice` generic lets the user pick languages to learn and limits how many a later use can swap. Forked Tongue uses it.
 - New `willingFail` generic lets each non-hostile target choose to fail a save it succeeded on. Infernal Conduit and Eyes of the Gate use it.
 - New `moveTargets` generic lets each target of an activity move part of its speed to a spot it picks, without provoking opportunity attacks.
+- New `touchDelivery` generic delivers the user's next touch spell through one of their summons, spending the summon's reaction. Find Familiar, Flock of Familiars and the Homunculus Servant's Channel Magic use it.
+## Automation Improvements:
+- Animate Objects (2024), Animating Performance, Danse Macabre and Summon Wildfire Spirit have a Command activity that opens the summons' sheets. The Homunculus Servant's Command uses the same control.
+- Protection, Interception, Chronal Shift, Projected Ward, Spirit Shield, Pariah's Shield, Pack Hunter, Tireless Reveler and `preventDeath` for other creatures follow CAT's Third-Party Reactions setting.
+- Heat Metal, Mirror Image, Sanctuary, Teleport, Spell-Storing Item, Insightful Manipulator and firearm misfires add their messages to the roll's chat card instead of a separate message.
 ## Bug Fixes:
 - True Strike and Green-Flame Blade play the weapon animation at the moment of the hit instead of before the spell animation.
 - Potion of Invulnerability grants resistance to all damage.
 - `preventDeath` no longer triggers on creatures already at 0 hit points.
+- A Find Familiar or Homunculus Servant carrying a touch spell can use its own attacks and spells.
 # 2.1.9 Pre-Release:
 ## Update Notes:
 - Requires dnd5e 6.1, midi-qol 14.7, DAE 14.6.10 and CAT 0.1.9.

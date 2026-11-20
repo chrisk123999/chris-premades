@@ -11,10 +11,7 @@ async function rollDuplicates(effect, sourceToken, formula) {
     return roll.total;
 }
 async function report(workflow, key) {
-    await ChatMessage.implementation.create({
-        speaker: ChatMessage.implementation.getSpeaker({token: workflow.token.document}),
-        content: _loc('CHRISPREMADES.Macros.All.MirrorImage.' + key)
-    });
+    await MidiQOL.addCardNote(workflow, _loc('CHRISPREMADES.Macros.All.MirrorImage.' + key));
 }
 function playAnimation(item, workflow, sourceToken, effect, index, missed) {
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');
@@ -57,7 +54,7 @@ async function attacked({document: effect, sourceToken, workflow}) {
 }
 export const mirrorImage = {
     name: 'Mirror Image',
-    version: '2.1.3',
+    version: '2.1.10',
     rules: 'all',
     roll: [
         {

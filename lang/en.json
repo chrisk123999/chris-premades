@@ -761,11 +761,7 @@
                     "CreatureType": "Familiar Creature Type",
                     "CreatureTypeHint": "Always summon this creature type instead of prompting. Wild Companion always summons a fey.",
                     "Folder": "Familiar Actor Folder",
-                    "InvalidSpell": "Only spells with a range of touch can be cast through your familiar.",
                     "NoActors": "No actors were found in the {folder} folder.",
-                    "ReactionUsed": "Your familiar has already used its reaction.",
-                    "TooFar": "Your familiar is not close enough.",
-                    "TouchRange": "Touch Spell Range",
                     "Type": "Choose a creature type for your familiar."
                 },
                 "Hex": {
@@ -1481,6 +1477,17 @@
                     "MagicalWeaponsHint": "The summon's items that deal damage count as magical.",
                     "SourceIdentifiersHint": "Only modify summons created by items with these identifiers. Leave empty for any summon."
                 },
+                "TouchDelivery": {
+                    "InvalidSpell": "Only spells with a range of touch can be delivered this way.",
+                    "NextAttack": "Next Attack",
+                    "NextSpell": "Next Spell",
+                    "NoSummon": "No summon is on the canvas to deliver the spell.",
+                    "ReactionUsed": "Every summon in range has already used its reaction.",
+                    "SpecialDuration": "Ends After",
+                    "SummonIdentifier": "Summon Identifier",
+                    "SummonIdentifierHint": "Summons with this identifier deliver the spell. Leave blank to use summons created by this item.",
+                    "TooFar": "No summon is close enough to deliver the spell."
+                },
                 "TargetCreatureTypes": {
                     "AliveOnly": "Living Targets Only",
                     "AliveOnlyHint": "Remove targets at 0 hit points.",
@@ -1881,20 +1888,16 @@
                     "ExtraBonus": "Grant +2 Bonus",
                     "ForceStrike": "Force Strike",
                     "HelmAwareness": "Helm of Awareness",
-                    "HomunculusNotActive": "Place your homunculus token before using its features.",
                     "HomunculusHeart": "Heart of Homunculus Servant",
                     "HomunculusServant": "Homunculus Servant",
-                    "InvalidSpell": "Only spells with a range of touch can be cast through your homunculus.",
                     "NoArmor": "Target has no valid non-magical armor!",
                     "NoFoci": "Target has no valid non-magical rod, staff, or wand!",
                     "NoShield": "Target has no valid non-magical shield!",
                     "NotProne": "You have no prone status to remove!",
                     "NoWeapon": "Target has no valid non-magical weapon!",
                     "PlanName": "Infusion",
-                    "ReactionUsed": "Your homunculus has already used its reaction.",
                     "Resistance": "Resistance Type",
-                    "SpellRing": "Spell-Refueling Ring",
-                    "TooFar": "Your homunculus is out of range for Channel Magic."
+                    "SpellRing": "Spell-Refueling Ring"
                 },
                 "InsightfulManipulator": {
                     "ChaScore": "Charisma Score",

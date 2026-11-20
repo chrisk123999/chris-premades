@@ -52,7 +52,7 @@ async function summon({workflow}) {
 }
 export const flockOfFamiliars = {
     name: 'Flock of Familiars',
-    version: '2.1.4',
+    version: '2.1.10',
     rules: '2014',
     roll: [
         {pass: 'activityRollFinished', macro: summon, priority: 50}
@@ -83,12 +83,6 @@ export const flockOfFamiliars = {
             type: 'number',
             label: 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.BaseSummons',
             hint: 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.BaseSummonsHint',
-            category: 'homebrew'
-        },
-        touchRange: {
-            default: 100,
-            type: 'number',
-            label: 'CHRISPREMADES.Macros.All.FindFamiliar.TouchRange',
             category: 'homebrew'
         },
         celestialAnimation: {

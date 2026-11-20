@@ -70,7 +70,7 @@ async function misfire({document: item, workflow}) {
     workflowUtils.setWorkflowProperty(workflow, 'firearmMisfire', true);
     workflow.hitTargets = new Set();
     await Promise.all([
-        ChatMessage.implementation.create({speaker: ChatMessage.implementation.getSpeaker({token: workflow.token?.document}), content: _loc('CHRISPREMADES.Macros.Generic.Firearm.Misfired', {item: item.name})}),
+        MidiQOL.addCardNote(workflow, _loc('CHRISPREMADES.Macros.Generic.Firearm.Misfired', {item: item.name})),
         itemUtils.enchantItem(item, statusData(item, 'damaged'))
     ]);
 }
@@ -103,7 +103,7 @@ async function repair({document: item, workflow}) {
  */
 export const firearm = {
     rules: 'all',
-    version: '2.1.7',
+    version: '2.1.10',
     category: 'mechanics',
     generic: true,
     documents: ['item'],
