@@ -21,7 +21,7 @@ export function wallPanel(name, {hp, ac, immune = [], vulnerable = []}) {
     return {name, system: {attributes: {hp: {value: hp, max: hp}, ac: {flat: ac, override: ac}}, traits: {di: {value: immune}, dv: {value: vulnerable}}}};
 }
 /**
- * Tokens a wall's area covers: those its centre line crosses plus those whose centre lies inside its band.
+ * Tokens a wall's area covers: those its center line crosses plus those whose center lies inside its band.
  * @param {object} scene Scene the wall is on.
  * @param {object} path Drawn path, from `crosshairUtils.drawPath`.
  * @param {object[]} shapes Region polygon shapes of the wall band.
@@ -45,12 +45,12 @@ function tokensInWall(scene, path, shapes) {
  * @param {number} [options.height] Wall height in feet, used for the region elevation.
  * @param {string|object} [options.walls] Wall preset or data for the Wall documents. Omit for none.
  * @param {number} [options.sectionLength] Split the Wall documents into sections of at most this many feet.
- * @param {boolean} [options.push] Push creatures out of the wall's area to the side their centre is on. They stay targeted.
+ * @param {boolean} [options.push] Push creatures out of the wall's area to the side their center is on. They stay targeted.
  * @param {string} [options.color] Region colour.
  * @param {object[]} [options.behaviors] Region behavior data, such as movement cost.
  * @param {object} [options.side] `{identifier, depth, color, name}`: a region on the chosen side, bound to the activity with that identifier.
  * @param {object} [options.panels] Panel actor updates from {@link wallPanel}: give each Wall document a destructible panel token.
- * @param {object} [options.light] Ambient light config placed at the wall's centre, removed with the wall. `bright` and `dim` are in feet.
+ * @param {object} [options.light] Ambient light config placed at the wall's center, removed with the wall. `bright` and `dim` are in feet.
  * @param {object} [options.aura] `{identifier, distance, color, name}`: a region covering the wall and reaching this many feet out from both faces, bound to the activity with that identifier.
  * @param {number} [options.timer] Rounds the wall lasts when the spell has no concentration.
  * @param {boolean} [options.permanent] The wall stays when concentration lasts its full duration, and goes when concentration ends early.

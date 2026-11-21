@@ -1,0 +1,16 @@
+{
+  "_id": "J59Sw6bWRpnseBlg",
+  "name": "Artillerist",
+  "type": "Item",
+  "folder": "WmaiuZy693KKxt8C",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!J59Sw6bWRpnseBlg"
+}

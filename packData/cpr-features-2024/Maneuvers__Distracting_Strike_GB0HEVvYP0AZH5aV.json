@@ -223,7 +223,7 @@
         "otherActivityAsParentType": true
       }
     },
-    "identifier": "maneuvers-distracting-strike",
+    "identifier": "distracting-strike",
     "enchant": {},
     "advancement": {},
     "crewed": false
@@ -238,7 +238,10 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11",
+        "aliases": [
+          "maneuver-options-distracting-strike"
+        ]
       }
     }
   },

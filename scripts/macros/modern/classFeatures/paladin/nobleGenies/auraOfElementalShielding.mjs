@@ -14,15 +14,15 @@ async function setType(item, {initial = false} = {}) {
     change.value = type;
     await documentUtils.update(effect, {'system.changes': changes});
 }
-async function created({document: item}) {
-    if (item.actor) await setType(item, {initial: true});
+async function created({document: item, massApply}) {
+    if (item.actor && !massApply) await setType(item, {initial: true});
 }
 async function turnStart({document: item}) {
     await setType(item);
 }
 export const auraOfElementalShielding = {
     name: 'Aura of Elemental Shielding',
-    version: '2.1.4',
+    version: '2.1.11',
     rules: '2024',
     item: [
         {

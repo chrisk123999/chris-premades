@@ -1,5 +1,6 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     devtool: 'source-map',
@@ -19,6 +20,9 @@ module.exports = {
             })
         ]
     },
+    plugins: [
+        new webpack.ProvidePlugin({Sequence: [path.resolve(__dirname, 'scripts/macros/animations/sequence.mjs'), 'default']})
+    ],
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')

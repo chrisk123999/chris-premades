@@ -1,7 +1,7 @@
 import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, queryUtils} from '../../proxy.mjs';
 async function preCreate({document, actor, summon, updates}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'summonModifier', configKeys);
-    if (!config.effect && !config.magicalWeapons) return;
+    if (!config.effect && !config.magicalWeapons && !config.items.length) return;
     if (config.sourceIdentifiers.length) {
         const source = summon.sourceDocument;
         if (!source || !config.sourceIdentifiers.includes(documentUtils.getIdentifier(source.item ?? source))) return;
@@ -16,6 +16,15 @@ async function preCreate({document, actor, summon, updates}) {
     if (effectData) {
         updates.effects ??= sourceActor.effects.map(effect => effect.toObject());
         updates.effects.push(effectData);
+    }
+    if (config.items.length) {
+        const itemData = (await Promise.all(config.items.map(uuid => fromUuid(uuid)))).filter(Boolean).map(item => {
+            const data = item.toObject();
+            delete data._id;
+            return data;
+        });
+        updates.items ??= sourceActor.items.map(item => item.toObject());
+        updates.items.push(...itemData);
     }
     if (!config.magicalWeapons) return;
     updates.items ??= sourceActor.items.map(item => item.toObject());
@@ -33,11 +42,12 @@ async function preCreate({document, actor, summon, updates}) {
  * - `creatureTypes`: only modify summons of these creature types. Leave empty for any creature type.
  * - `effect`: effect from this item to add to the summon.
  * - `magicalWeapons`: the summon's items that deal damage count as magical.
+ * - `items`: items added to the summon.
  * - `confirm`: prompt the owner before the summon is modified.
  */
 export const summonModifier = {
     rules: 'all',
-    version: '2.0.0',
+    version: '2.1.11',
     category: 'summons',
     generic: true,
     documents: ['item'],
@@ -70,6 +80,13 @@ export const summonModifier = {
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Effect',
             hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.EffectHint'
+        },
+        items: {
+            default: [],
+            type: 'documents',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.SummonModifier.Items',
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.ItemsHint'
         },
         magicalWeapons: {
             default: false,

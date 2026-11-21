@@ -14,12 +14,13 @@ async function addLimb(item) {
     if (!limbData) return Logging.addMacroWarning('CPR', 'root-magic', 'Limb item not found in the automation items compendium.', {notify: 'warn'});
     await itemUtils.createItems(item.actor, [limbData], {parentEntity: item});
 }
-async function added({document: item}) {
+async function added({document: item, massApply}) {
     await addLimb(item);
     let ability = automationUtils.getConfigValue(item, 'ability');
-    if (!ability) {
-        const buttons = constants.abilityOptions.filter(option => abilities.includes(option.value)).map(option => [option.label, option.value, {image: option.image}]);
-        ability = await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Macros.Modern.RootMagic.SelectAbility', buttons, {userId: queryUtils.firstOwner(item.actor, true)});
+    if (!ability && massApply) {
+        ability = actorUtils.getBestAbility(item.actor, abilities);
+    } else if (!ability) {
+        ability = await dialogUtils.abilityDialog(item.name, 'CHRISPREMADES.Macros.Modern.RootMagic.SelectAbility', item.actor, abilities, {userId: queryUtils.firstOwner(item.actor, true)});
         if (!ability) return;
         await automationUtils.setConfigValue(item, 'ability', ability);
     }
@@ -31,7 +32,7 @@ async function updated({document: item}) {
 }
 export const rootMagic = {
     name: 'Root Magic',
-    version: '2.1.4',
+    version: '2.1.11',
     rules: '2024',
     item: [
         {

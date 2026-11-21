@@ -1,0 +1,16 @@
+{
+  "_id": "o8I8GAALHq3H5ZAa",
+  "name": "Steel Defender",
+  "type": "Item",
+  "folder": "LMfgYwuo2ZcYqe1b",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!o8I8GAALHq3H5ZAa"
+}

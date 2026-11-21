@@ -1,0 +1,16 @@
+{
+  "_id": "CE4ctal1nYpvNMeE",
+  "name": "Eldritch Cannon",
+  "type": "Item",
+  "folder": "2WVx1t3xRWSxA5Iw",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!CE4ctal1nYpvNMeE"
+}

@@ -590,6 +590,15 @@
         },
         "Macros": {
             "All": {
+                "ArcaneArmor": {
+                    "Select": "Choose the armor to turn into Arcane Armor."
+                },
+                "ArmorModel": {
+                    "NotBloodied": "Defensive Field can only be used while you are Bloodied.",
+                    "NotRested": "You can only change your armor model after finishing a Short or Long Rest.",
+                    "NotWearing": "You must be wearing your Arcane Armor.",
+                    "PullAttack": "Make a melee weapon attack against the pulled creature?"
+                },
                 "Crusher": {
                     "Move": "Move {target} 5 feet?"
                 },
@@ -642,6 +651,9 @@
                 "CheckCover": {
                     "TargetCover": "Cover each creature has from you:",
                     "YourCover": "Cover you have from each creature:"
+                },
+                "SteelDefender": {
+                    "RepairTarget": "Repair can only target the defender itself or a Construct or object it can see."
                 },
                 "Underwater": {
                     "MeleeDamageTypes": "Melee Damage Types",
@@ -1074,6 +1086,16 @@
                 }
             },
             "Generic": {
+                "ActionDismissal": {
+                    "Summon": "Dismiss Summon",
+                    "SummonHint": "Dismiss the summon that owns this item instead of deleting the item."
+                },
+                "AttackDisadvantage": {
+                    "Against": "Disadvantage Against",
+                    "AgainstHint": "Which attacks made by the creature with this effect have disadvantage.",
+                    "Others": "Anyone but the source",
+                    "Source": "The source"
+                },
                 "Breathing": {
                     "Mode": "Breathes",
                     "ModeHint": "Environment areas don't make the creature hold its breath where it can breathe.",
@@ -1111,6 +1133,11 @@
                     "TimingHint": "When tokens in this area are affected.",
                     "Underwater": "Underwater"
                 },
+                "RequireTools": {
+                    "Equipped": "Must Be Equipped",
+                    "EquippedHint": "The tool must be equipped. When off, carrying it is enough.",
+                    "Missing": "{feature} needs one of these tools: {tools}."
+                },
                 "StoredItem": {
                     "Missing": "The stored item could not be found."
                 },
@@ -1139,18 +1166,24 @@
                     "Limit": "Limit",
                     "LimitHint": "How many tagged options can be chosen for one damage roll.",
                     "MaxSizeHint": "Only offer this option when every hit target is this size or smaller.",
+                    "OncePerTurnHint": "Offer once per turn, shared by every activity on this item.",
                     "OwnsTag": "Owns Tag",
                     "OwnsTagHint": "Offer this bonus once, with the options carrying this tag as choices. At least one must be chosen.",
                     "OwnTurn": "Own Turn Only",
                     "OwnTurnHint": "In combat, only offer this option on the attacker's own turn.",
                     "RequiredItems": "Required Items",
                     "RequiredItemsHint": "Only offer this option when the actor has an item with one of these identifiers.",
+                    "RiderPick": "Pick One Recipient",
+                    "RiderPickHint": "Pick one creature from the hit targets and those within the nearby range to roll the activity on.",
+                    "RiderPickPrompt": "Choose who receives the effect.",
                     "SelfAsTouch": "Self Range as Touch",
                     "SelfAsTouchHint": "When the activity's range is Self, roll it on the hit targets instead of the attacker.",
                     "SingleTarget": "Single Target Only",
                     "SingleTargetHint": "Only offer this option when the attack hits exactly one target.",
                     "SizeAboveUser": "Sizes Above Attacker",
                     "SizeAboveUserHint": "Only offer this option when every hit target is at most this many sizes larger than the attacker. Leave blank to ignore size.",
+                    "SummonAttacks": "Summon Attacks",
+                    "SummonAttacksHint": "Also offer when a summon created by an item with one of these identifiers hits.",
                     "SuppressedBy": "Suppressed By",
                     "SuppressedByHint": "Do not offer this option when the actor has an item with one of these identifiers.",
                     "Tag": "Tag",
@@ -1268,6 +1301,8 @@
                     "OncePerTurnHint": "Limit this bonus to one use per turn.",
                     "OncePerTurnPerTarget": "Once Per Turn Per Target",
                     "OncePerTurnPerTargetHint": "Each creature can take this bonus once per turn.",
+                    "SourceClasses": "Spell Classes",
+                    "SourceClassesHint": "Only trigger for spells from these comma-separated class identifiers.",
                     "TargetCreatureTypes": "Target Creature Types",
                     "TargetCreatureTypesHint": "Only apply this bonus to hit targets of these creature types.",
                     "TargetEffects": "Target Effects",
@@ -1323,6 +1358,8 @@
                         "never": "Never",
                         "onSave": "When the Target Saves"
                     },
+                    "Incoming": "Next Attack Against",
+                    "IncomingHint": "The bonus applies to the next attack against the creature with this effect, from any attacker. The effect ends after that attack.",
                     "RollActivityHint": "Activity rolled on the hit target after the bonus damage."
                 },
                 "PackTactics": {
@@ -1474,6 +1511,8 @@
                     "Confirm": "Apply {document} to {summon}?",
                     "CreatureTypesHint": "Only modify summons of these creature types. Leave empty for any creature type.",
                     "EffectHint": "Effect from this item to add to the summon.",
+                    "Items": "Items",
+                    "ItemsHint": "Items added to the summon.",
                     "MagicalWeaponsHint": "The summon's items that deal damage count as magical.",
                     "SourceIdentifiersHint": "Only modify summons created by items with these identifiers. Leave empty for any summon."
                 },
@@ -1531,7 +1570,7 @@
                     "NearTarget": "Near a Target",
                     "Swap": "Swap With a Target",
                     "ExcludeUser": "Exclude the User",
-                    "ExcludeUserHint": "On a self teleport, remove the user from the activity's targets. Use for areas centred on the space the user leaves.",
+                    "ExcludeUserHint": "On a self teleport, remove the user from the activity's targets. Use for areas centered on the space the user leaves.",
                     "SelectNear": "Choose the creature to appear next to."
                 },
                 "UseOnEvent": {
@@ -1573,7 +1612,7 @@
                     "SourceActivity": "Source Activity",
                     "SourceActivityHint": "Activity that placed the region this activity moves.",
                     "MaxRange": "Maximum Range",
-                    "MaxRangeHint": "Furthest the region's centre can move from its old centre. 0 ignores distance.",
+                    "MaxRangeHint": "Furthest the region's center can move from its old center. 0 ignores distance.",
                     "NoSourceActivity": "Source activity for the region move not found.",
                     "NoRegion": "No placed region found to move.",
                     "TooFar": "The area can only move up to {maxRange} feet."
@@ -1691,6 +1730,27 @@
                     "NoBond": "You are not bound to a creature's awareness.",
                     "OutOfRange": "The target must be within seal range of the bound creature, and the bound creature must see it.",
                     "TooFar": "The bound creature must be within 300 feet."
+                },
+                "EldritchCannon": {
+                    "CommandRange": "Command Range",
+                    "Flamethrower": "Eldritch Cannon: Flamethrower",
+                    "ForceBallista": "Eldritch Cannon: Force Ballista",
+                    "Limit": "You already have {max} eldritch cannon(s).",
+                    "Protector": "Eldritch Cannon: Protector",
+                    "Second": "Create your second cannon with the same action?",
+                    "TooFar": "You must be within {distance} feet of the cannon."
+                },
+                "ExperimentalElixir": {
+                    "Administer": "An elixir can only be administered to an Incapacitated creature.",
+                    "Boldness": "Experimental Elixir: Boldness",
+                    "Choose": "Choose the elixir's effect.",
+                    "ChooseType": "Choose Elixir Types",
+                    "Count": "Elixirs per Long Rest",
+                    "Flight": "Experimental Elixir: Flight",
+                    "Healing": "Experimental Elixir: Healing",
+                    "Resilience": "Experimental Elixir: Resilience",
+                    "Swiftness": "Experimental Elixir: Swiftness",
+                    "Transformation": "Experimental Elixir: Transformation"
                 },
                 "ImbueCard": {
                     "NoSpells": "You have no spell slots or class spell list to imbue a card from."
@@ -2254,6 +2314,14 @@
                 }
             },
             "Modern": {
+                "PerfectWeapon": {
+                    "Convert": "Change the weapon's damage to {type}?",
+                    "Element": "Choose the Elemental Strike damage type.",
+                    "Transfer": "Transfer how much of the weapon's bonus to your Armor Class?"
+                },
+                "RunesOfWar": {
+                    "NotWielding": "You must be wielding your Ghaal'Shaarat."
+                },
                 "WrathOfTheSea": {
                     "Ally": "An Ally",
                     "Both": "Both (Expends Another Use of Wild Shape)",
@@ -2773,6 +2841,7 @@
         },
         "Summons": {
             "CreatureNames": {
+                "SteelDefender": "Steel Defender",
                 "WildfireSpirit": "Wildfire Spirit",
                 "DancingItem": "Dancing Item",
                 "ForceSculpture": "Force Sculpture",

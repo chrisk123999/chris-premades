@@ -125,7 +125,7 @@ export function addTiles(sequence, region, path, file, prefix) {
  * Place a looping dome or globe asset over a ring wall, persisting until the region is deleted.
  * @param {Sequence} sequence Sequence to add to.
  * @param {object} region Wall region the effect is tied to.
- * @param {{x: number, y: number, radius: number}} ring Ring centre and radius in canvas pixels.
+ * @param {{x: number, y: number, radius: number}} ring Ring center and radius in canvas pixels.
  * @param {string} file Asset to place.
  * @param {object} [options]
  * @param {string} options.prefix Persist name prefix.
@@ -176,7 +176,7 @@ export function addBurst(sequence, region, path, file, {size = 2, step = 40} = {
     });
 }
 /**
- * Where a wall's cast animation points: the ring centre, the first point of the path or the centre of the first flat panel.
+ * Where a wall's cast animation points: the ring center, the first point of the path or the center of the first flat panel.
  * @param {object} path Drawn wall path.
  * @returns {{x: number, y: number}|undefined}
  */

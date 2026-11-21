@@ -209,7 +209,7 @@
         }
       }
     },
-    "identifier": "maneuvers-rally",
+    "identifier": "rally",
     "enchant": {},
     "advancement": {},
     "crewed": false
@@ -224,7 +224,10 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11",
+        "aliases": [
+          "maneuver-options-rally"
+        ]
       }
     }
   },

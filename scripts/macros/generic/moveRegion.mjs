@@ -57,11 +57,11 @@ async function use({document, workflow}) {
 /**
  * Moves the region an earlier activity placed to the area this activity places, then deletes the new area.
  * Bound on an activity. Fires on `activityRollFinished`.
- * Lights made dependent on the region follow it to its new centre.
+ * Lights made dependent on the region follow it to its new center.
  *
  * Config:
  * - `sourceActivityId`: activity that placed the region being moved.
- * - `maxRange`: furthest the region's centre can move, in feet. 0 ignores distance.
+ * - `maxRange`: furthest the region's center can move, in feet. 0 ignores distance.
  */
 export const moveRegion = {
     rules: 'all',

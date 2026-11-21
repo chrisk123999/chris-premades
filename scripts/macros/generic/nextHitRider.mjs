@@ -12,10 +12,14 @@ function getHitTargetUuids(effect, workflow, config) {
     if (!workflow.hitTargets.count || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
     return [workflow.hitTargets.uuids[0]];
 }
+function isAttacked(effect, workflow) {
+    return workflow.targets.documents.some(token => token.actor?.uuid === effect.parent?.uuid);
+}
 async function damage({document: effect, workflow}) {
     if (!workflow.hitTargets.count) return;
     const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'nextHitRider', configKeys);
     if (!config.bonus || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
+    if (config.incoming) return;
     const {item, scaling} = getSpell(effect);
     if (!item) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(effect), 'Origin spell not found.', {notify: 'warn'});
     const roll = new CONFIG.Dice.DamageRoll(config.bonus, {...item.getRollData(), scaling});
@@ -27,8 +31,25 @@ async function damage({document: effect, workflow}) {
     bonus.targets = workflow.hitTargets.documents;
     return bonus;
 }
+async function incomingDamage({document: effect, workflow}) {
+    const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'nextHitRider', configKeys);
+    if (!config.incoming || !config.bonus || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
+    const targets = workflow.hitTargets.documents.filter(token => token.actor?.uuid === effect.parent?.uuid);
+    if (!targets.length) return;
+    const {item} = getSpell(effect);
+    const roll = new CONFIG.Dice.DamageRoll(config.bonus, item?.getRollData() ?? {});
+    const bonus = new DamageBonus(effect, {roll, optional: false, maxTargets: 1, maxScaling: 0, type: config.bonusDamageType});
+    bonus.targets = targets;
+    return bonus;
+}
+async function incomingRider({document: effect, workflow}) {
+    const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'nextHitRider', configKeys);
+    if (!config.incoming || !workflowUtils.isAttackType(workflow, config.attackType || 'attack') || !isAttacked(effect, workflow)) return;
+    await documentUtils.deleteDocument(effect);
+}
 async function rider({document: effect, workflow}) {
     const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'nextHitRider', configKeys);
+    if (config.incoming) return;
     const targetUuids = getHitTargetUuids(effect, workflow, config);
     if (!targetUuids) return;
     const {item, concentration, scaling} = getSpell(effect);
@@ -65,10 +86,11 @@ async function rider({document: effect, workflow}) {
  * - `riderNearbyRange`: the rider activity also targets creatures within this many feet of the hit target. 0 targets the hit target only.
  * - `endSpell`: when the spell ends after the rider activity is rolled.
  * - `animation`: played on the hit target when the rider triggers.
+ * - `incoming`: the bonus applies to the next attack against the creature with this effect, from any attacker. The effect ends after that attack.
  */
 export const nextHitRider = {
     rules: 'all',
-    version: '2.1.9',
+    version: '2.1.11',
     category: 'damage',
     generic: true,
     documents: ['activeeffect'],
@@ -76,11 +98,24 @@ export const nextHitRider = {
         {
             pass: 'actorOptionalBonusDamage',
             macro: damage,
-            priority: 250
+            priority: 250,
+            canOverlap: true
         },
         {
             pass: 'actorRollFinished',
             macro: rider,
+            priority: 200,
+            canOverlap: true
+        },
+        {
+            pass: 'targetOptionalBonusDamage',
+            macro: incomingDamage,
+            priority: 250,
+            canOverlap: true
+        },
+        {
+            pass: 'targetRollFinished',
+            macro: incomingRider,
             priority: 200,
             canOverlap: true
         }
@@ -125,6 +160,13 @@ export const nextHitRider = {
             label: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpell',
             hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpellHint',
             get options() { return ['never', 'always', 'onSave'].map(value => ({value, label: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpellOptions.' + value})); }
+        },
+        incoming: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.NextHitRider.Incoming',
+            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.IncomingHint'
         }
     }
 };

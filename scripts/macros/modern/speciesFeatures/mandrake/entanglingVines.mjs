@@ -57,15 +57,15 @@ async function finished({document: item, workflow}) {
         await workflowUtils.syntheticActivityRoll(activity, targets, {consumeResources: false});
     }
 }
-async function added({document: item}) {
-    if (automationUtils.getConfigValue(item, 'season')) return;
+async function added({document: item, massApply}) {
+    if (massApply || automationUtils.getConfigValue(item, 'season')) return;
     const buttons = seasons.map(season => [_loc('CHRISPREMADES.Macros.Modern.EntanglingVines.Seasons.' + season), season]);
     const season = await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Macros.Modern.EntanglingVines.SelectSeason', buttons, {userId: queryUtils.firstOwner(item.actor, true)});
     if (season) await automationUtils.setConfigValue(item, 'season', season);
 }
 export const entanglingVines = {
     name: 'Entangling Vines',
-    version: '2.1.9',
+    version: '2.1.11',
     rules: '2024',
     roll: [
         {

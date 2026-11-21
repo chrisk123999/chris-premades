@@ -206,7 +206,7 @@
         "name": "Bait and Switch"
       }
     },
-    "identifier": "maneuvers-bait-and-switch",
+    "identifier": "bait-and-switch",
     "enchant": {},
     "advancement": {},
     "crewed": false
@@ -221,7 +221,10 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11",
+        "aliases": [
+          "maneuver-options-bait-and-switch"
+        ]
       },
       "macros": {
         "roll": [
