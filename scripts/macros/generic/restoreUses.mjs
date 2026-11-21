@@ -29,7 +29,7 @@ async function early({document, activity, config}) {
     const freshActivity = document.actor.items.get(document.id)?.system.activities.get(activity.id);
     if (!freshActivity) return true;
     const targets = new MidiQOL.TokenDocumentSet(config.midiOptions?.targetsToUse ?? []).documents;
-    await workflowUtils.completeActivityUse(freshActivity, targets, {consumeResources: config.consume?.resources !== false});
+    await workflowUtils.completeActivityUse(freshActivity, targets, {config});
     return true;
 }
 /**

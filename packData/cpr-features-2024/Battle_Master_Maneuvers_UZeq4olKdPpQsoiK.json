@@ -1,9 +1,9 @@
 {
-  "name": "Maneuvers",
+  "name": "Battle Master Maneuvers",
   "type": "Item",
-  "folder": "G9AfnFT9Flx3V6x0",
+  "folder": "8ax5XkSTWyxxPBH8",
   "sorting": "a",
-  "_id": "D6f7JKP7GIgPb8sj",
+  "_id": "UZeq4olKdPpQsoiK",
   "description": "",
   "color": null,
   "flags": {},
@@ -12,5 +12,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!folders!D6f7JKP7GIgPb8sj"
+  "_key": "!folders!UZeq4olKdPpQsoiK"
 }
