@@ -89,7 +89,7 @@ async function use({document, workflow}) {
  * - `requireSight`: only allow spaces the user can see. Turn off for teleports that need no sight.
  * - `companions`: how many allies within `companionRange` the user may bring along. They keep their position relative to the user and are dropped from the activity's targets.
  * - `companionMaxSize`: only offer companions no larger than the user.
- * - `excludeUser`: drop the user from the activity's targets on a self teleport, for areas centred on the space the user leaves.
+ * - `excludeUser`: drop the user from the activity's targets on a self teleport, for areas centered on the space the user leaves.
  * - `visitedThisTurn`: on a self teleport, only allow spaces the user occupied earlier this turn.
  * - `animation`: played during the teleport.
  */

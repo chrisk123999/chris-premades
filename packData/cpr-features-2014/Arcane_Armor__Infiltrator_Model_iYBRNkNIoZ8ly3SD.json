@@ -1,0 +1,348 @@
+{
+  "_id": "iYBRNkNIoZ8ly3SD",
+  "name": "Arcane Armor: Infiltrator Model",
+  "type": "feat",
+  "img": "icons/magic/defensive/shield-barrier-glowing-triangle-red.webp",
+  "folder": "zuANlePYAT8emFz8",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "arcane-armor-infiltrator-model",
+    "activities": {
+      "Jgv4qIBkkkChPfk1": {
+        "_id": "Jgv4qIBkkkChPfk1",
+        "type": "utility",
+        "name": "Infiltrator Model",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "perm",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "dPjCMK1GF6mmBLS5"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "infiltrator",
+        "midiProperties": {
+          "identifier": "infiltrator",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "chris-premades": {
+            "armorModel": {
+              "model": "infiltrator",
+              "weapon": "lightning-launcher"
+            }
+          },
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "requireTools",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "requireTools": {
+                  "tools": [
+                    "smith"
+                  ],
+                  "equipped": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "h0jPVBcariKN5E1P": {
+        "_id": "h0jPVBcariKN5E1P",
+        "type": "utility",
+        "name": "Lightning Launcher: Extra Damage",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "launcher-bonus",
+        "midiProperties": {
+          "identifier": "launcher-bonus",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "bonus": "1d6",
+                  "bonusDamageType": "lightning",
+                  "identifiers": [
+                    "lightning-launcher"
+                  ],
+                  "oncePerTurn": true,
+                  "ownTurn": true
+                }
+              }
+            },
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "infiltrator"
+            }
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "dPjCMK1GF6mmBLS5",
+      "name": "Infiltrator Model",
+      "img": "icons/magic/defensive/shield-barrier-glowing-triangle-red.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.walk",
+            "value": "5",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.advantage.skill.ste",
+            "value": "1",
+            "type": "custom",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "chris-premades": {
+          "armorModel": {
+            "model": "infiltrator"
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!iYBRNkNIoZ8ly3SD.dPjCMK1GF6mmBLS5"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "armor-model",
+            "rules": "all"
+          }
+        ],
+        "item": [
+          {
+            "source": "chris-premades",
+            "identifier": "armor-model",
+            "rules": "all"
+          }
+        ],
+        "rest": [
+          {
+            "source": "chris-premades",
+            "identifier": "armor-model",
+            "rules": "all"
+          }
+        ]
+      },
+      "alternateAttributes": {
+        "Ability": [
+          {
+            "value": [
+              "int"
+            ],
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "lightning-launcher"
+                ],
+                "invert": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!iYBRNkNIoZ8ly3SD"
+}

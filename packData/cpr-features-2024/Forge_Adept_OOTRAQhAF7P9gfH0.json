@@ -1,0 +1,16 @@
+{
+  "_id": "OOTRAQhAF7P9gfH0",
+  "name": "Forge Adept",
+  "type": "Item",
+  "folder": "Phgwq5vw7siN2wVj",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!OOTRAQhAF7P9gfH0"
+}

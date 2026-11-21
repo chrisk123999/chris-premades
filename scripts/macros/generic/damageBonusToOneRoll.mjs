@@ -56,6 +56,7 @@ async function damage({document, workflow}) {
             if (!['spell', 'weapon'].some(t => config.itemType.includes(t))) return;
         } else if (!config.itemType.includes(workflow.item.type)) return;
     }
+    if (config.sourceClasses && !config.sourceClasses.split(',').map(value => value.trim()).includes(workflow.item.system.classIdentifier)) return;
     if (workflow.item.type === 'spell' || bladeCantrip) {
         if (config.spellLevel.length) {
             const castLevel = bladeCantrip ? 0 : workflowUtils.getCastLevel(workflow);
@@ -118,6 +119,7 @@ async function damage({document, workflow}) {
  * - `healingType`: only trigger when the activity heals one of these healing types.
  * - `identifiers`: only trigger for items with one of these identifiers.
  * - `properties`: only trigger for items with one of these properties.
+ * - `sourceClasses`: only trigger for spells from these comma-separated class identifiers.
  * - `itemType`: only trigger for these item types.
  * - `spellLevel`: only trigger for spells cast at one of these levels. This setting is checked against spell items only.
  * - `spellSchool`: only trigger for spells of these schools. This setting is checked against spell items only.
@@ -140,7 +142,7 @@ async function damage({document, workflow}) {
  */
 export const damageBonusToOneRoll = {
     rules: 'all',
-    version: '2.1.7',
+    version: '2.1.11',
     category: 'damage',
     generic: true,
     documents: ['activeeffect', 'item'],
@@ -233,6 +235,13 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Config.SpellLevel',
             hint: 'CHRISPREMADES.Macros.Generic.Common.SpellLevelHint',
             get options() { return constants.spellSlotOptions; }
+        },
+        sourceClasses: {
+            default: '',
+            type: 'text',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.SourceClasses',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.SourceClassesHint'
         },
         spellSchool: {
             default: [],

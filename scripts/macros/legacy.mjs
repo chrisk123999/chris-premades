@@ -20,6 +20,8 @@ export {underwaterLegacy as underwater} from './all/actions/underwater.mjs';
 /******************************/
 /*         Artificer          */
 /******************************/
+export {createEldritchCannon as 'create-eldritch-cannon', eldritchCannonActivation as 'eldritch-cannon-activation'} from './legacy/classFeatures/artificer/eldritchCannon.mjs';
+export {experimentalElixir as 'experimental-elixir', experimentalElixirDrink as 'experimental-elixir-drink'} from './legacy/classFeatures/artificer/experimentalElixir.mjs';
 export {infuseItem as 'infuse-item'} from './legacy/classFeatures/artificer/infuseItem.mjs';
 export {
     infusionArcanePropulsion as 'infusion-arcane-propulsion-armor',
@@ -98,7 +100,7 @@ export {mastersFlourish as 'masters-flourish'} from './legacy/classFeatures/bard
 /******************************/
 /*           Cleric           */
 /******************************/
-export {channelDivinity as 'channel-divinity|class:cleric', turnUndead, channelDivinityClericActivity} from './legacy/classFeatures/cleric/channelDivinity.mjs';
+export {channelDivinity as 'channel-divinity|class:cleric', channelDivinityClericActivity, turnUndead} from './legacy/classFeatures/cleric/channelDivinity.mjs';
 export {destroyUndead as 'destroy-undead'} from './legacy/classFeatures/cleric/destroyUndead.mjs';
 export {divineStrike as 'divine-strike'} from './legacy/classFeatures/cleric/divineStrike.mjs';
 export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatures/cleric/harnessDivinePower.mjs';
@@ -124,30 +126,30 @@ export {echoAvatar as 'echo-avatar', legionOfOne as 'legion-of-one', manifestEch
 /******************************/
 /*         Illrigger          */
 /******************************/
+export {interdictBoonAcheronsChain as 'acherons-chain'} from './legacy/classFeatures/illrigger/acheronsChain.mjs';
 export {balefulInterdict as 'baleful-interdict', balefulInterdictSeal as 'baleful-interdict-seal'} from './legacy/classFeatures/illrigger/balefulInterdict.mjs';
 export {bloodPrice as 'blood-price'} from './legacy/classFeatures/illrigger/bloodPrice.mjs';
 export {combatMasteryBrutal as 'combat-mastery-brutal'} from './legacy/classFeatures/illrigger/brutal.mjs';
+export {eyesOfTheGateBond as 'eyes-of-the-gate-bond', eyesOfTheGateBreak as 'eyes-of-the-gate-break', eyesOfTheGatePerceiving as 'eyes-of-the-gate-perceiving', eyesOfTheGate as 'interdict-boons-eyes-of-the-gate'} from './legacy/classFeatures/illrigger/eyesOfTheGate.mjs';
+export {interdictBoonHellishFrenzy as 'interdict-boons-hellish-frenzy'} from './legacy/classFeatures/illrigger/hellishFrenzy.mjs';
 export {combatMasteryInexorable as 'combat-mastery-inexorable'} from './legacy/classFeatures/illrigger/inexorable.mjs';
-export {combatMasteryLies as 'combat-mastery-lies'} from './legacy/classFeatures/illrigger/lies.mjs';
 export {infernalConduit as 'infernal-conduit'} from './legacy/classFeatures/illrigger/infernalConduit.mjs';
 export {infernalMajestyEffect as 'infernal-majesty-effect'} from './legacy/classFeatures/illrigger/infernalMajesty.mjs';
-export {interdictBoon as 'interdict-boons-acherons-chain', interdictBoon as 'interdict-boons-bedevil', interdictBoon as 'interdict-boons-diss-onslaught', interdictBoon as 'interdict-boons-flash-of-brimstone', interdictBoon as 'interdict-boons-impaling-shot', interdictBoon as 'interdict-boons-soul-eater', interdictBoon as 'interdict-boons-souls-doom', interdictBoon as 'interdict-boons-styxs-apathy', interdictBoon as 'interdict-boons-unleash-hell', interdictBoon as 'dispaters-interdiction-by-the-throat'} from './legacy/classFeatures/illrigger/interdictBoon.mjs';
+export {interdictBoon as 'dispaters-interdiction-by-the-throat', interdictBoon as 'interdict-boons-acherons-chain', interdictBoon as 'interdict-boons-bedevil', interdictBoon as 'interdict-boons-diss-onslaught', interdictBoon as 'interdict-boons-flash-of-brimstone', interdictBoon as 'interdict-boons-impaling-shot', interdictBoon as 'interdict-boons-soul-eater', interdictBoon as 'interdict-boons-souls-doom', interdictBoon as 'interdict-boons-styxs-apathy', interdictBoon as 'interdict-boons-unleash-hell'} from './legacy/classFeatures/illrigger/interdictBoon.mjs';
 export {interdictBoonIronGaol as 'interdict-boons-iron-gaol'} from './legacy/classFeatures/illrigger/ironGaol.mjs';
 export {interdictBoonLastWord as 'interdict-boons-last-word'} from './legacy/classFeatures/illrigger/lastWord.mjs';
-export {interdictBoonVengefulShot as 'interdict-boons-vengeful-shot'} from './legacy/classFeatures/illrigger/vengefulShot.mjs';
-export {eyesOfTheGate as 'interdict-boons-eyes-of-the-gate', eyesOfTheGateBond as 'eyes-of-the-gate-bond', eyesOfTheGatePerceiving as 'eyes-of-the-gate-perceiving', eyesOfTheGateBreak as 'eyes-of-the-gate-break'} from './legacy/classFeatures/illrigger/eyesOfTheGate.mjs';
+export {combatMasteryLies as 'combat-mastery-lies'} from './legacy/classFeatures/illrigger/lies.mjs';
 export {masterOfHell as 'master-of-hell', masterOfHellDarkness as 'master-of-hell-darkness'} from './legacy/classFeatures/illrigger/masterOfHell.mjs';
-export {interdictBoonAcheronsChain as 'acherons-chain'} from './legacy/classFeatures/illrigger/acheronsChain.mjs';
-export {interdictBoonHellishFrenzy as 'interdict-boons-hellish-frenzy'} from './legacy/classFeatures/illrigger/hellishFrenzy.mjs';
 export {interdictBoonSoulsDoom as 'souls-doom'} from './legacy/classFeatures/illrigger/soulsDoom.mjs';
 export {interdictBoonSwiftRetribution as 'interdict-boons-swift-retribution'} from './legacy/classFeatures/illrigger/swiftRetribution.mjs';
+export {interdictBoonVengefulShot as 'interdict-boons-vengeful-shot'} from './legacy/classFeatures/illrigger/vengefulShot.mjs';
 
 /*         Painkiller         */
 export {deathstrike as 'deathstrike'} from './legacy/classFeatures/illrigger/painkiller/deathstrike.mjs';
 export {devastator as 'devastator'} from './legacy/classFeatures/illrigger/painkiller/devastator.mjs';
 export {dispatersInterdictionDispatersSupremacy as 'dispaters-interdiction-dispaters-supremacy'} from './legacy/classFeatures/illrigger/painkiller/dispatersSupremacy.mjs';
-export {dispatersInterdictionTelekineticSeal as 'dispaters-interdiction-telekinetic-seal'} from './legacy/classFeatures/illrigger/painkiller/telekineticSeal.mjs';
 export {invokeHellPunishment as 'invoke-hell-punishment'} from './legacy/classFeatures/illrigger/painkiller/punishment.mjs';
+export {dispatersInterdictionTelekineticSeal as 'dispaters-interdiction-telekinetic-seal'} from './legacy/classFeatures/illrigger/painkiller/telekineticSeal.mjs';
 
 /******************************/
 /*            Monk            */
@@ -338,14 +340,14 @@ export {dmgCleave as 'dmg-cleave'} from './legacy/homebrew/dmgCleave.mjs';
 /*============================*/
 export {aberrantDragonmark as 'aberrant-dragonmark'} from './legacy/feats/aberrantDragonmark.mjs';
 export {agentOfOrder as 'agent-of-order-stasis-strike'} from './legacy/feats/agentOfOrder.mjs';
-export {martialAdept as 'martial-adept', martialAdeptPool as 'martial-adept-pool'} from './legacy/feats/martialAdept.mjs';
 export {cloudStrike as 'strike-of-the-giants-cloud-strike'} from './legacy/feats/cloudStrike.mjs';
 export {cruel} from './legacy/feats/cruel.mjs';
 export {dualWielder as 'dual-wielder'} from './legacy/feats/dualWielder.mjs';
 export {graspOfAvarice as 'baleful-scion-grasp-of-avarice'} from './legacy/feats/graspOfAvarice.mjs';
 export {imbueCard as 'cartomancer-hidden-ace-imbue-card'} from './legacy/feats/imbueCard.mjs';
-export {reactiveResistance as 'gift-of-the-chromatic-dragon-reactive-resistance'} from './legacy/feats/reactiveResistance.mjs';
+export {martialAdept as 'martial-adept', martialAdeptPool as 'martial-adept-pool'} from './legacy/feats/martialAdept.mjs';
 export {orcishFury as 'orcish-fury-extra-damage'} from './legacy/feats/orcishFury.mjs';
+export {reactiveResistance as 'gift-of-the-chromatic-dragon-reactive-resistance'} from './legacy/feats/reactiveResistance.mjs';
 export {remarkableRecovery as 'remarkable-recovery-regain-hit-points'} from './legacy/feats/remarkableRecovery.mjs';
 export {sharpshooter} from './legacy/feats/sharpshooter.mjs';
 

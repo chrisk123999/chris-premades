@@ -1,0 +1,128 @@
+{
+  "_id": "DkMzPxhpm1rMs1sD",
+  "name": "Fortified Position",
+  "type": "feat",
+  "img": "icons/magic/defensive/barrier-shield-dome-pink.webp",
+  "folder": "CE4ctal1nYpvNMeE",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "eldritch-cannon-fortified-position",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "tnIPA9iojetPn3jV",
+      "name": "Fortified Position",
+      "img": "icons/magic/defensive/barrier-shield-dome-pink.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.ac.bonus",
+            "value": "+2",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.dex.bonuses.save",
+            "value": "+2",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!DkMzPxhpm1rMs1sD.tnIPA9iojetPn3jV"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "aura": [
+          {
+            "source": "cat",
+            "identifier": "aura",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "aura": {
+            "radius": "10",
+            "dispositions": [
+              "ally"
+            ],
+            "includeSelf": false,
+            "effect": "tnIPA9iojetPn3jV"
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!DkMzPxhpm1rMs1sD"
+}

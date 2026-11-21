@@ -1,0 +1,579 @@
+{
+  "_id": "9NZrV4CEsbNfXizV",
+  "name": "Ghaal'Shaarat",
+  "type": "feat",
+  "img": "icons/weapons/axes/axe-battle-broad-stone.webp",
+  "folder": "OOTRAQhAF7P9gfH0",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "ghaal-shaarat",
+    "activities": {
+      "lLZ8q3OvCg8CW9yY": {
+        "_id": "lLZ8q3OvCg8CW9yY",
+        "type": "enchant",
+        "name": "Imbue Weapon",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "",
+          "value": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "special": "",
+          "override": false,
+          "units": "perm",
+          "expiry": null
+        },
+        "effects": [
+          {
+            "_id": "uwd85RhHn8G3P0z3",
+            "level": {
+              "min": 3,
+              "max": 8
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "cUgQiIDQ006mgF4Y",
+            "level": {
+              "min": 9,
+              "max": 14
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          },
+          {
+            "_id": "LJ82LfSWnliFl492",
+            "level": {
+              "min": 15,
+              "max": null
+            },
+            "riders": {
+              "activity": [],
+              "effect": [],
+              "item": []
+            }
+          }
+        ],
+        "range": {
+          "value": "",
+          "special": "",
+          "override": false,
+          "units": "touch"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft",
+            "stationary": false
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": false,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "useConditionText": "",
+        "midiProperties": {
+          "identifier": "imbue",
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "followUp": false,
+          "followUpTargets": "default",
+          "followUpCondition": "",
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "targetMustBeSeen": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default",
+          "statuses": []
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "requireTools",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "requireTools": {
+                  "tools": [
+                    "smith"
+                  ],
+                  "equipped": true
+                }
+              }
+            }
+          }
+        },
+        "behaviors": [],
+        "visibility": {
+          "identifier": "artificer",
+          "level": {
+            "min": 3,
+            "max": null
+          }
+        },
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "otherActivityId": null,
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "attachToken": "default",
+          "moveDistance": 0,
+          "moveDirection": "away",
+          "moveTiming": "start",
+          "templateOrigin": "default",
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityAsParentType": true,
+        "identifier": "imbue",
+        "enchant": {
+          "self": false
+        },
+        "restrictions": {
+          "allowMagical": true,
+          "type": "weapon",
+          "categories": [
+            "simpleM",
+            "martialM"
+          ],
+          "properties": []
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "uwd85RhHn8G3P0z3",
+      "name": "Ghaal'Shaarat",
+      "img": "icons/weapons/axes/axe-battle-broad-stone.webp",
+      "type": "enchantment",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "value": "{} (Ghaal'Shaarat)",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "value": "mgc",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "value": "thr",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "value": "ret",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.magicalBonus",
+            "value": "1",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.range.value",
+            "value": "30",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "system.range.long",
+            "value": "120",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "flags.chris-premades.ghaalShaarat",
+            "value": "true",
+            "type": "override",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "ghaal-shaarat",
+                "rules": "2024"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!9NZrV4CEsbNfXizV.uwd85RhHn8G3P0z3"
+    },
+    {
+      "_id": "cUgQiIDQ006mgF4Y",
+      "name": "Ghaal'Shaarat",
+      "img": "icons/weapons/axes/axe-battle-broad-stone.webp",
+      "type": "enchantment",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "value": "{} (Ghaal'Shaarat)",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "value": "mgc",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "value": "thr",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "value": "ret",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.magicalBonus",
+            "value": "2",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.range.value",
+            "value": "30",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "system.range.long",
+            "value": "120",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "flags.chris-premades.ghaalShaarat",
+            "value": "true",
+            "type": "override",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "ghaal-shaarat",
+                "rules": "2024"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!9NZrV4CEsbNfXizV.cUgQiIDQ006mgF4Y"
+    },
+    {
+      "_id": "LJ82LfSWnliFl492",
+      "name": "Ghaal'Shaarat",
+      "img": "icons/weapons/axes/axe-battle-broad-stone.webp",
+      "type": "enchantment",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "name",
+            "value": "{} (Ghaal'Shaarat)",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "value": "mgc",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "value": "thr",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.properties",
+            "value": "ret",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.magicalBonus",
+            "value": "3",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.range.value",
+            "value": "30",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "system.range.long",
+            "value": "120",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "flags.chris-premades.ghaalShaarat",
+            "value": "true",
+            "type": "override",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "ghaal-shaarat",
+                "rules": "2024"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!9NZrV4CEsbNfXizV.LJ82LfSWnliFl492"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!9NZrV4CEsbNfXizV"
+}

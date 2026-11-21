@@ -1,0 +1,118 @@
+{
+  "_id": "lI1K33EMKvgsL7oI",
+  "name": "Battle Ready",
+  "type": "feat",
+  "img": "icons/weapons/swords/sword-guard-serrated.webp",
+  "folder": "OOTRAQhAF7P9gfH0",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "battle-ready",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "hnUHvFXgFXLC1CCy",
+      "name": "Battle Ready",
+      "img": "icons/weapons/swords/sword-guard-serrated.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.weaponProf.value",
+            "value": "mar",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!lI1K33EMKvgsL7oI.hnUHvFXgFXLC1CCy"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "alternateAttributes": {
+        "Ability": [
+          {
+            "value": [
+              "int"
+            ],
+            "restrictions": {
+              "Property": {
+                "value": [
+                  "mgc"
+                ],
+                "invert": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!lI1K33EMKvgsL7oI"
+}

@@ -28,8 +28,11 @@ export {underwater} from './all/actions/underwater.mjs';
 /******************************/
 /*         Artificer          */
 /******************************/
+export {arcaneArmor as 'arcane-armor'} from './all/classFeatures/artificer/arcaneArmor.mjs';
+export {armorModel as 'armor-model', perfectedArmor as 'perfected-armor'} from './all/classFeatures/artificer/armorModel.mjs';
 export {flashOfGenius as 'flash-of-genius'} from './all/classFeatures/artificer/flashOfGenius.mjs';
 export {spellStoringItem as 'spell-storing-item'} from './all/classFeatures/artificer/spellStoring.mjs';
+export {steelDefenderDeflectAttack as 'steel-defender-deflect-attack', steelDefenderRepair as 'steel-defender-repair'} from './all/classFeatures/artificer/steelDefender.mjs';
 export {fromPlanCreateArtificerPlan, fromPlanSwapArtificerPlan, infusionPrechecks, swapArtificerPlan, useArtificerPlan} from './all/classFeatures/artificer/useOrSwapPlan.mjs';
 
 /******************************/
@@ -76,12 +79,12 @@ export {sentinelAtDeathsDoor as 'sentinel-at-deaths-door'} from './all/classFeat
 
 /*            Life            */
 export {blessedHealer as 'blessed-healer'} from './all/classFeatures/cleric/life/blessedHealer.mjs';
-export {preserveLife as 'preserve-life', preserveLife as 'channel-divinity-preserve-life'} from './all/classFeatures/cleric/life/preserveLife.mjs';
+export {preserveLife as 'channel-divinity-preserve-life', preserveLife as 'preserve-life'} from './all/classFeatures/cleric/life/preserveLife.mjs';
 export {supremeHealing as 'supreme-healing'} from './all/classFeatures/cleric/life/supremeHealing.mjs';
 
 /*            Light           */
 export {coronaOfLight as 'corona-of-light'} from './all/classFeatures/cleric/light/coronaOfLight.mjs';
-export {radianceOfTheDawn as 'radiance-of-the-dawn', radianceOfTheDawn as 'channel-divinity-radiance-of-the-dawn'} from './all/classFeatures/cleric/light/radianceOfTheDawn.mjs';
+export {radianceOfTheDawn as 'channel-divinity-radiance-of-the-dawn', radianceOfTheDawn as 'radiance-of-the-dawn'} from './all/classFeatures/cleric/light/radianceOfTheDawn.mjs';
 export {wardingFlare as 'warding-flare'} from './all/classFeatures/cleric/light/wardingFlare.mjs';
 
 /*           Trickery         */
@@ -89,7 +92,7 @@ export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './all/class
 export {invokeDuplicity, invokeDuplicityDistraction, invokeDuplicitySpell} from './all/classFeatures/cleric/trickery/invokeDuplicity.mjs';
 
 /*             War            */
-export {warGodsBlessing as 'guided-strike', warGodsBlessing as 'channel-divinity-war-gods-blessing'} from './all/classFeatures/cleric/war/warGodsBlessing.mjs';
+export {warGodsBlessing as 'channel-divinity-war-gods-blessing', warGodsBlessing as 'guided-strike'} from './all/classFeatures/cleric/war/warGodsBlessing.mjs';
 export {warPriest as 'war-priest'} from './all/classFeatures/cleric/war/warPriest.mjs';
 
 /******************************/

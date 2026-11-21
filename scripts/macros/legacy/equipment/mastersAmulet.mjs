@@ -18,7 +18,7 @@ async function damaged({document: item, ditem}) {
 }
 export const mastersAmulet = {
     name: 'Master\'s Amulet',
-    version: '2.1.8',
+    version: '2.1.11',
     rules: '2014',
     roll: [
         {
@@ -41,7 +41,8 @@ export const mastersAmulet = {
         },
         guardian: {
             default: '',
-            type: 'text',
+            type: 'document',
+            documentType: 'Actor',
             label: 'CHRISPREMADES.Macros.Legacy.MastersAmulet.Guardian',
             category: 'mechanics'
         }

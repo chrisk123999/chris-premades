@@ -33,12 +33,14 @@ export {proneOnHit} from './generic/proneOnHit.mjs';
 /*============================*/
 /*           DAMAGE           */
 /*============================*/
+export {attackDisadvantage} from './generic/attackDisadvantage.mjs';
 export {attackRider} from './generic/attackRider.mjs';
 export {bladeSpell} from './generic/bladeSpell.mjs';
 export {modifyNextDamage} from './generic/modifyNextDamage.mjs';
 export {negateDamageFromEffect} from './generic/negateDamageFromEffect.mjs';
 export {nextHitRider} from './generic/nextHitRider.mjs';
 export {reduceDamageTaken} from './generic/reduceDamageTaken.mjs';
+export {requireTools} from './generic/requireTools.mjs';
 export {selectDamageType} from './generic/selectDamageType.mjs';
 
 /*============================*/
@@ -54,16 +56,16 @@ export {grappleAttackAdvantage} from './generic/grappleAttackAdvantage.mjs';
 export {hide} from './generic/hide.mjs';
 export {ignoreCover} from './generic/ignoreCover.mjs';
 export {immuneAutoSucceed} from './generic/immuneAutoSucceed.mjs';
+export {languageChoice} from './generic/languageChoice.mjs';
+export {moveTargets} from './generic/moveTargets.mjs';
 export {packTactics} from './generic/packTactics.mjs';
 export {preventDeath} from './generic/preventDeath.mjs';
 export {proficiencyChoice} from './generic/proficiencyChoice.mjs';
-export {languageChoice} from './generic/languageChoice.mjs';
-export {moveTargets} from './generic/moveTargets.mjs';
-export {willingFail} from './generic/willingFail.mjs';
 export {reduceMaxHP} from './generic/reduceMaxHP.mjs';
 export {rolledDuration} from './generic/rolledDuration.mjs';
 export {saveToEndWhenFar} from './generic/saveToEndWhenFar.mjs';
 export {unhideActivities} from './generic/unhideActivities.mjs';
+export {willingFail} from './generic/willingFail.mjs';
 
 /*============================*/
 /*          MOVEMENT          */

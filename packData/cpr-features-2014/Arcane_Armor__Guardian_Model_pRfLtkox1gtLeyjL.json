@@ -1,0 +1,342 @@
+{
+  "_id": "pRfLtkox1gtLeyjL",
+  "name": "Arcane Armor: Guardian Model",
+  "type": "feat",
+  "img": "icons/magic/defensive/shield-barrier-glowing-triangle-green.webp",
+  "folder": "zuANlePYAT8emFz8",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "arcane-armor-guardian-model",
+    "activities": {
+      "WmiAskrosQn2saVT": {
+        "_id": "WmiAskrosQn2saVT",
+        "type": "utility",
+        "name": "Guardian Model",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "perm",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "7pGvTWoCokMv2wyO"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "guardian",
+        "midiProperties": {
+          "identifier": "guardian",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "chris-premades": {
+            "armorModel": {
+              "model": "guardian",
+              "weapon": "thunder-gauntlets"
+            }
+          },
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "requireTools",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "requireTools": {
+                  "tools": [
+                    "smith"
+                  ],
+                  "equipped": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "dHY1Qsy9AzgiXAFL": {
+        "_id": "dHY1Qsy9AzgiXAFL",
+        "type": "heal",
+        "name": "Defensive Field",
+        "sort": 1,
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "activityUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "@prof",
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "defensive-field",
+        "midiProperties": {
+          "identifier": "defensive-field",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "guardian"
+            }
+          }
+        },
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "",
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": true,
+            "formula": "@classes.artificer.levels"
+          },
+          "scaling": {
+            "mode": "",
+            "number": 1,
+            "formula": ""
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "7pGvTWoCokMv2wyO",
+      "name": "Guardian Model",
+      "img": "icons/magic/defensive/shield-barrier-glowing-triangle-green.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "chris-premades": {
+          "armorModel": {
+            "model": "guardian"
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!pRfLtkox1gtLeyjL.7pGvTWoCokMv2wyO"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "armor-model",
+            "rules": "all"
+          }
+        ],
+        "item": [
+          {
+            "source": "chris-premades",
+            "identifier": "armor-model",
+            "rules": "all"
+          }
+        ],
+        "rest": [
+          {
+            "source": "chris-premades",
+            "identifier": "armor-model",
+            "rules": "all"
+          }
+        ]
+      },
+      "alternateAttributes": {
+        "Ability": [
+          {
+            "value": [
+              "int"
+            ],
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "thunder-gauntlets"
+                ],
+                "invert": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!pRfLtkox1gtLeyjL"
+}

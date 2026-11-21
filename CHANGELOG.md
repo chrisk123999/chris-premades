@@ -1,4 +1,10 @@
 # 2.1.11 Pre-Release:
+## Automated Class Features:
+- 2014 Artificer: Alchemist, Armorer, Artillerist and Battle Smith.
+- 2024 Artificer: Armorer, Battle Smith and Forge Adept.
+## Generic Macros:
+- New `attackDisadvantage` generic.
+- `attackRider`, `nextHitRider`, `summonModifier`, `actionDismissal` and `damageBonusToOneRoll` have new options.
 ## Automation Improvements:
 - 2024 Battle Master maneuvers match Player's Handbook and DDB Importer items.
 # 2.1.10 Pre-Release:

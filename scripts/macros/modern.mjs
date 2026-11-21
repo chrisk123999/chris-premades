@@ -10,9 +10,9 @@
 /*            ACTIONS            */
 /*===============================*/
 export {genericActionsModern as 'generic-actions'} from './all/actions/genericActions.mjs';
+export {holdBreathModern as 'hold-breath', suffocationOutOfAir} from './all/actions/holdBreath.mjs';
 export {underwaterModern as underwater} from './all/actions/underwater.mjs';
 export {influence} from './modern/actions/influence.mjs';
-export {holdBreathModern as 'hold-breath', suffocationOutOfAir} from './all/actions/holdBreath.mjs';
 
 /*===============================*/
 /*        CLASS FEATURES         */
@@ -21,6 +21,7 @@ export {holdBreathModern as 'hold-breath', suffocationOutOfAir} from './all/acti
 /*********************************/
 /*           Artificer           */
 /*********************************/
+export {ghaalShaarat as 'ghaal-shaarat', perfectWeapon as 'perfect-weapon', runesOfWar as 'runes-of-war'} from './modern/classFeatures/artificer/forgeAdept.mjs';
 export {magicItemTinker as 'magic-item-tinker', magicItemTinkerCharge, magicItemTinkerDrain, magicItemTinkerTransmute} from './modern/classFeatures/artificer/magicItemTinker.mjs';
 export {replicateMagicItem as 'replicate-magic-item'} from './modern/classFeatures/artificer/replicateMagicItem.mjs';
 export {soulOfArtifice as 'soul-of-artifice'} from './modern/classFeatures/artificer/soulOfArtifice.mjs';
@@ -342,8 +343,8 @@ export {sanctumOfTheShepherd as 'sanctum-of-the-shepherd', sanctumOfTheShepherdM
 export {shockingGrasp as 'shocking-grasp'} from './modern/spells/shockingGrasp.mjs';
 export {spellfireFlare as 'spellfire-flare'} from './modern/spells/spellfireFlare.mjs';
 export {sproutFoliage as 'sprout-foliage'} from './modern/spells/sproutFoliage.mjs';
-export {summerWinds as 'summer-winds'} from './modern/spells/summerWinds.mjs';
 export {steelWindStrike as 'steel-wind-strike'} from './modern/spells/steelWindStrike.mjs';
+export {summerWinds as 'summer-winds'} from './modern/spells/summerWinds.mjs';
 export {timeStop as 'time-stop', timeStopEffect as 'time-stop-effect'} from './modern/spells/timeStop.mjs';
 export {wiltingSmite as 'wilting-smite'} from './modern/spells/wiltingSmite.mjs';
 export {wish, wishImmunity as 'wish-immunity', wishStress as 'wish-stress'} from './modern/spells/wish.mjs';

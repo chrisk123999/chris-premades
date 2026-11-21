@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, documentUtils, effectUtils, itemUtils, Logging, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, combatUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, itemUtils, Logging, queryUtils, rollUtils, summonUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig, identifiersConfig} from './damageBonusToOneRoll.mjs';
 import {getCastDamageType} from './selectDamageType.mjs';
 export const riderNearbyRangeConfig = {
@@ -27,10 +27,12 @@ function applies(activity, actor, workflow, config) {
     if (config.ownTurn && !combatUtils.isOwnTurn(workflow.token.document)) return false;
     if (activity.item.type === 'spell' && !itemUtils.canCast(activity.item)) return false;
     if (config.workflowProperty && !workflowUtils.getWorkflowProperty(workflow, config.workflowProperty)) return false;
-    if (config.identifiers.length && !config.identifiers.includes(documentUtils.getIdentifier(workflow.item))) return false;
-    if (config.attackType && !workflowUtils.isAttackType(workflow, config.attackType)) return false;
-    if (config.attackAbility.length && !config.attackAbility.includes(workflow.activity.ability)) return false;
-    if (config.weaponTypes.length && !config.weaponTypes.includes(workflow.item.system.type?.value)) return false;
+    if (activity.consumption.targets.length && !activityUtils.checkCosts(activity)) return false;
+    const own = workflow.actor?.uuid === actor.uuid;
+    if (own && config.identifiers.length && !config.identifiers.includes(documentUtils.getIdentifier(workflow.item))) return false;
+    if (config.attackType && !workflowUtils.isAttackType(workflow, own ? config.attackType : 'attack')) return false;
+    if (own && config.attackAbility.length && !config.attackAbility.includes(workflow.activity.ability)) return false;
+    if (own && config.weaponTypes.length && !config.weaponTypes.includes(workflow.item.system.type?.value)) return false;
     if (config.singleTarget && workflow.hitTargets.count !== 1) return false;
     if (config.criticalOnly && !workflow.isCritical) return false;
     if (config.damageTypes.length) {
@@ -43,6 +45,8 @@ function applies(activity, actor, workflow, config) {
     }
     if (config.sizeAboveUser !== '' && workflow.hitTargets.documents.some(token => actorUtils.getSize(token.actor) > actorUtils.getSize(actor) + Number(config.sizeAboveUser))) return false;
     if (config.attackModes.length && !config.attackModes.includes(workflow.attackMode)) return false;
+    if (own && config.properties.length && !config.properties.some(property => workflow.item.system.properties?.has(property))) return false;
+    if (config.oncePerTurn && isStamped(activity)) return false;
     if (config.requiredItems.length && !actorUtils.getItemByIdentifiers(actor, config.requiredItems)) return false;
     if (config.suppressedBy.length && actorUtils.getItemByIdentifiers(actor, config.suppressedBy)) return false;
     return true;
@@ -70,6 +74,26 @@ export function riderInput(name, label, riders, selected) {
         }
     };
 }
+function turnData(activity) {
+    const token = actorUtils.getFirstToken(activity.actor);
+    return token ? {token, combatData: tokenUtils.getCombatData(token)} : {};
+}
+function isStamped(activity) {
+    const {token, combatData} = turnData(activity);
+    return !!token && combatUtils.isStampedThisTurn(activity.item.flags['chris-premades']?.attackRider?.stamps, token.id, combatData);
+}
+async function stamp(activity) {
+    const {token, combatData} = turnData(activity);
+    if (!combatData?.inCombat) return;
+    await documentUtils.setFlag(activity.item, 'chris-premades', 'attackRider.stamps', combatUtils.addTurnStamp(activity.item.flags['chris-premades']?.attackRider?.stamps ?? [], token.id, combatData));
+}
+function isOwnedSummon(activity, workflow, config) {
+    if (!config.summonAttacks.length || workflow.actor?.uuid === activity.actor.uuid) return false;
+    const summon = summonUtils.getSummonData(workflow.actor);
+    if (summon?.ownerUuid !== activity.actor.uuid) return false;
+    const source = summon.sourceDocument;
+    return config.summonAttacks.includes(documentUtils.getIdentifier(source?.item ?? source));
+}
 async function ownerBonus(activity, actor, workflow, config) {
     const riders = await getTaggedRiders(actor, workflow, config.ownsTag);
     if (!riders.activities.length) return;
@@ -94,8 +118,9 @@ async function damage({document: activity, actor, workflow}) {
     const typeMatch = config.creatureTypeBonus && config.targetCreatureTypes.length && workflow.hitTargets.documents.every(token => token.actor && config.targetCreatureTypes.includes(actorUtils.typeOrRace(token.actor)));
     const formula = typeMatch ? config.bonus + ' + ' + config.creatureTypeBonus : config.bonus;
     const bonus = new DamageBonus(activity, {formula, type: config.bonusDamageType || getCastDamageType(activity.item), optional: !config.automatic})
-        .withOnUse(({workflow, bonus}) => {
+        .withOnUse(async ({workflow, bonus}) => {
             addRiders(workflow, [bonus.document.uuid]);
+            if (config.oncePerTurn && !config.riderPick) await stamp(activity);
             const scaling = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling') ?? []);
             workflowUtils.setWorkflowProperty(workflow, 'attackRiderScaling', Object.entries({...scaling, [bonus.document.uuid]: bonus.scalingIncrease}));
         });
@@ -112,7 +137,15 @@ async function rider({document: activity, actor, token, workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, 'attackRiders')?.includes(activity.uuid)) return;
     const selfOnly = activity.range.units === 'self' && !automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'selfAsTouch');
     const hitTargets = workflow.hitTargets.documents;
-    const targets = selfOnly ? (token ? [token] : []) : withNearby(hitTargets, automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'riderNearbyRange'));
+    let targets = selfOnly ? (token ? [token] : []) : withNearby(hitTargets, automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'riderNearbyRange'));
+    const viewer = actorUtils.getFirstToken(activity.actor);
+    if (activity.midiProperties?.targetMustBeSeen && viewer) targets = targets.filter(target => tokenUtils.canSee(viewer, target));
+    if (!selfOnly && automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'riderPick')) {
+        const selection = await dialogUtils.selectTargetDialog(activity.name, 'CHRISPREMADES.Macros.Generic.AttackRider.RiderPickPrompt', targets, {skipDeadAndUnconscious: false, userId: queryUtils.firstOwner(activity.actor, true)});
+        if (!selection?.result) return;
+        targets = [selection.result];
+        if (automationUtils.getGenericConfigValue(activity, 'chris-premades', 'attackRider', 'oncePerTurn')) await stamp(activity);
+    }
     const scaling = Object.fromEntries(workflowUtils.getWorkflowProperty(workflow, 'attackRiderScaling') ?? [])[activity.uuid] ?? 0;
     const options = {config: {scaling}};
     if (activity.item.system.linkedActivity) options.config.cause = {activity: activity.item.getFlag('dnd5e', 'cachedFor'), resources: true};
@@ -125,6 +158,16 @@ async function rider({document: activity, actor, token, workflow}) {
         await Promise.all(created.map(effect => documentUtils.setFlag(effect, 'dnd5e', 'scaling', scaling)));
     }
     await automationUtils.calledEvent('attackRiderUsed', actor, {canOverlap: true, data: {activity, riderWorkflow, targets, workflow}});
+}
+async function summonDamage({document: activity, workflow}) {
+    const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'attackRider', configKeys);
+    if (!isOwnedSummon(activity, workflow, config)) return;
+    return (await damage({document: activity, actor: activity.actor, workflow}))?.withDefaultRequest();
+}
+async function summonRider({document: activity, workflow}) {
+    const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'attackRider', configKeys);
+    if (!isOwnedSummon(activity, workflow, config)) return;
+    await rider({document: activity, actor: activity.actor, token: actorUtils.getFirstToken(activity.actor), workflow});
 }
 /**
  * Offers this activity as an optional damage bonus on a hit, then rolls it on the hit targets.
@@ -154,12 +197,16 @@ async function rider({document: activity, actor, token, workflow}) {
  * - `ownTurn`: in combat, only offer on the attacker's own turn.
  * - `selfAsTouch`: a Self range activity is rolled on the hit targets instead of the attacker.
  * - `riderNearbyRange`: the activity also targets creatures within this many feet of the hit targets. 0 targets the hit targets only.
+ * - `riderPick`: the owner picks one creature from the hit targets and those within `riderNearbyRange` to roll the activity on.
+ * - `properties`: only offer for attacks with items that have one of these properties.
+ * - `oncePerTurn`: offer once per turn across every activity on this item. Outside combat it is always offered.
+ * - `summonAttacks`: also offer when a summon created by an item with one of these identifiers hits. Item filters only apply to the owner's own attacks.
  * - `useActivityCosts`: apply the activity's costs and scaling. Not offered when they cannot be paid.
  * - `animation`: played on each hit target when the rider is used.
  */
 export const attackRider = {
     rules: 'all',
-    version: '2.1.10',
+    version: '2.1.11',
     category: 'damage',
     generic: true,
     documents: ['activity'],
@@ -168,11 +215,24 @@ export const attackRider = {
         {
             pass: 'actorOptionalBonusDamage',
             macro: damage,
-            priority: 255
+            priority: 255,
+            canOverlap: true
         },
         {
             pass: 'actorRollFinished',
             macro: rider,
+            priority: 200,
+            canOverlap: true
+        },
+        {
+            pass: 'sceneOptionalBonusDamage',
+            macro: summonDamage,
+            priority: 255,
+            canOverlap: true
+        },
+        {
+            pass: 'sceneRollFinished',
+            macro: summonRider,
             priority: 200,
             canOverlap: true
         }
@@ -342,6 +402,35 @@ export const attackRider = {
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SelfAsTouchHint'
         },
         riderNearbyRange: riderNearbyRangeConfig,
+        riderPick: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.RiderPick',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.RiderPickHint'
+        },
+        properties: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.Properties',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.PropertyHint',
+            get options() { return constants.itemProperties; }
+        },
+        oncePerTurn: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OncePerTurnHint'
+        },
+        summonAttacks: {
+            default: [],
+            type: 'selectIdentifiers',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SummonAttacks',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SummonAttacksHint'
+        },
         useActivityCosts: {
             default: false,
             type: 'checkbox',

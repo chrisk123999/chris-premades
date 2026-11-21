@@ -180,6 +180,11 @@ async function getConfig(workflow, source, identifier) {
         known: (await rollUtils.rollDice(config.known, {document: workflow.activity}))?.total ?? 0
     };
     data.itemTypes = [...data.itemTypes];
+    if (actorUtils.getItemByIdentifier(workflow.actor, 'armor-modifications')) data.createdLimit += 2;
+    if (actorUtils.getItemByIdentifier(workflow.actor, 'improved-armorer')) {
+        data.createdLimit += 1;
+        data.known += 1;
+    }
     if (data.known && data.createdLimit) return data;
     Logging.addMacroWarning(source, identifier, `Artificer class scale formula could not be evaluated: (known plans) ${config.known} | (created limit) ${config.limit}`);
 }

@@ -1,0 +1,271 @@
+{
+  "_id": "Pd1PlEXUnrID2Cyo",
+  "name": "Experimental Elixir",
+  "type": "feat",
+  "img": "icons/tools/laboratory/mortar-liquid-pink.webp",
+  "folder": "I6EKHc21VY98l3VC",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "experimental-elixir",
+    "activities": {
+      "lo9SPZz3zNdRiico": {
+        "_id": "lo9SPZz3zNdRiico",
+        "type": "utility",
+        "name": "Create Elixirs",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "longRest",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "rest",
+        "midiProperties": {
+          "identifier": "rest",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "rest": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "useOnEvent",
+                  "rules": "all"
+                }
+              ],
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "requireTools",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "useOnEvent": {
+                  "events": [
+                    "long"
+                  ]
+                },
+                "requireTools": {
+                  "tools": [
+                    "alchemist"
+                  ],
+                  "equipped": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "IfcjNJhevIh9AtbA": {
+        "_id": "IfcjNJhevIh9AtbA",
+        "type": "utility",
+        "name": "Create Elixir (Spell Slot)",
+        "sort": 1,
+        "img": "",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "spellSlots",
+              "target": "1",
+              "value": "1",
+              "scaling": {
+                "mode": "level",
+                "formula": ""
+              }
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "slot",
+        "midiProperties": {
+          "identifier": "slot",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "requireTools",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "requireTools": {
+                  "tools": [
+                    "alchemist"
+                  ],
+                  "equipped": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "experimental-elixir",
+            "rules": "2014"
+          }
+        ],
+        "rest": [
+          {
+            "source": "chris-premades",
+            "identifier": "experimental-elixir",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!Pd1PlEXUnrID2Cyo"
+}

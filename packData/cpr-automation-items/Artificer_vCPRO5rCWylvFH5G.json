@@ -1,0 +1,16 @@
+{
+  "_id": "vCPRO5rCWylvFH5G",
+  "name": "Artificer",
+  "type": "Item",
+  "folder": "r1GxEl4q63ydnx3x",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!vCPRO5rCWylvFH5G"
+}

@@ -1,0 +1,1947 @@
+{
+  "_id": "MndNHs8vGduZUuTb",
+  "name": "Armor Model",
+  "type": "feat",
+  "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+  "folder": "ga7vuOx2fDP7QpDw",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "max(1, @abilities.int.mod)",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "armor-model",
+    "activities": {
+      "IUFT56CDMSsk3QFR": {
+        "_id": "IUFT56CDMSsk3QFR",
+        "type": "utility",
+        "name": "Dreadnaught",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "perm",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "O4EigHEScsJDCOhx"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "dreadnaught",
+        "midiProperties": {
+          "identifier": "dreadnaught",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "chris-premades": {
+            "armorModel": {
+              "model": "dreadnaught",
+              "weapon": "armor-model-force-demolisher",
+              "perfected": {
+                "number": 2,
+                "denomination": 6
+              }
+            }
+          },
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "requireTools",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "requireTools": {
+                  "tools": [
+                    "smith"
+                  ],
+                  "equipped": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "YTkbOIXmVijGJJsN": {
+        "_id": "YTkbOIXmVijGJJsN",
+        "type": "utility",
+        "name": "Guardian",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "perm",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "VNfIS3CnCKXmC4rR"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "guardian",
+        "midiProperties": {
+          "identifier": "guardian",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "chris-premades": {
+            "armorModel": {
+              "model": "guardian",
+              "weapon": "armor-model-thunder-pulse",
+              "perfected": {
+                "number": 1,
+                "denomination": 10
+              }
+            }
+          },
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "requireTools",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "requireTools": {
+                  "tools": [
+                    "smith"
+                  ],
+                  "equipped": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "AqIFVOHkqJutvrgv": {
+        "_id": "AqIFVOHkqJutvrgv",
+        "type": "utility",
+        "name": "Infiltrator",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "perm",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "dPjCMK1GF6mmBLS5"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "infiltrator",
+        "midiProperties": {
+          "identifier": "infiltrator",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "chris-premades": {
+            "armorModel": {
+              "model": "infiltrator",
+              "weapon": "armor-model-lightning-launcher",
+              "perfected": {
+                "number": 2,
+                "denomination": 6
+              }
+            }
+          },
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "requireTools",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "requireTools": {
+                  "tools": [
+                    "smith"
+                  ],
+                  "equipped": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "gCX0ThXmSThH4tJf": {
+        "_id": "gCX0ThXmSThH4tJf",
+        "type": "utility",
+        "name": "Giant Stature",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "jf4xO56bEN8krkAB"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "giant-stature",
+        "midiProperties": {
+          "identifier": "giant-stature",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "dreadnaught"
+            }
+          }
+        },
+        "visibility": {
+          "identifier": "artificer",
+          "level": {
+            "min": 3,
+            "max": 14
+          }
+        }
+      },
+      "3F3lLQuMCblVCIef": {
+        "_id": "3F3lLQuMCblVCIef",
+        "type": "utility",
+        "name": "Giant Stature (Large)",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "TQkVdadh34b0sS7p"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "giant-stature-large",
+        "midiProperties": {
+          "identifier": "giant-stature-large",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "dreadnaught"
+            }
+          }
+        },
+        "visibility": {
+          "identifier": "artificer",
+          "level": {
+            "min": 15,
+            "max": null
+          }
+        }
+      },
+      "ykWnPPWE3EJdL9Wc": {
+        "_id": "ykWnPPWE3EJdL9Wc",
+        "type": "utility",
+        "name": "Giant Stature (Huge)",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "fu6l4cEfBm3NJI8B"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "giant-stature-huge",
+        "midiProperties": {
+          "identifier": "giant-stature-huge",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "dreadnaught"
+            }
+          }
+        },
+        "visibility": {
+          "identifier": "artificer",
+          "level": {
+            "min": 15,
+            "max": null
+          }
+        }
+      },
+      "GZKmIjgl9gZCf9Vl": {
+        "_id": "GZKmIjgl9gZCf9Vl",
+        "type": "heal",
+        "name": "Defensive Field",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "defensive-field",
+        "midiProperties": {
+          "identifier": "defensive-field",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "guardian"
+            }
+          }
+        },
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "",
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": true,
+            "formula": "@classes.artificer.levels"
+          },
+          "scaling": {
+            "mode": "",
+            "number": 1,
+            "formula": ""
+          }
+        }
+      },
+      "MgxS4koohVYKqfSg": {
+        "_id": "MgxS4koohVYKqfSg",
+        "type": "utility",
+        "name": "Lightning Launcher: Extra Damage",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "launcher-bonus",
+        "midiProperties": {
+          "identifier": "launcher-bonus",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "bonus": "1d6",
+                  "bonusDamageType": "lightning",
+                  "identifiers": [
+                    "armor-model-lightning-launcher"
+                  ],
+                  "oncePerTurn": true,
+                  "ownTurn": true
+                }
+              }
+            },
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "infiltrator"
+            }
+          }
+        }
+      },
+      "SHjZKd5gkmSoSlf0": {
+        "_id": "SHjZKd5gkmSoSlf0",
+        "type": "utility",
+        "name": "Force Demolisher: Push or Pull",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "demolisher-move",
+        "midiProperties": {
+          "identifier": "demolisher-move",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "identifiers": [
+                    "armor-model-force-demolisher"
+                  ],
+                  "sizeAboveUser": "-1",
+                  "ownsTag": "demolisher-move"
+                }
+              }
+            },
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "dreadnaught"
+            }
+          }
+        }
+      },
+      "YJ9LThnhZfDi7X5q": {
+        "_id": "YJ9LThnhZfDi7X5q",
+        "type": "utility",
+        "name": "Force Demolisher: Push",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "demolisher-push",
+        "midiProperties": {
+          "identifier": "demolisher-push",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "pushOnHit",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "identifiers": [
+                    "armor-model-force-demolisher"
+                  ],
+                  "sizeAboveUser": "-1",
+                  "tag": "demolisher-move"
+                },
+                "pushOnHit": {
+                  "distance": "10",
+                  "choose": true
+                }
+              }
+            },
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "dreadnaught"
+            }
+          }
+        }
+      },
+      "EgH0FC2jX6fgd1K3": {
+        "_id": "EgH0FC2jX6fgd1K3",
+        "type": "utility",
+        "name": "Force Demolisher: Pull",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "demolisher-pull",
+        "midiProperties": {
+          "identifier": "demolisher-pull",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "pullOnHit",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "identifiers": [
+                    "armor-model-force-demolisher"
+                  ],
+                  "sizeAboveUser": "-1",
+                  "tag": "demolisher-move"
+                },
+                "pullOnHit": {
+                  "distance": "10",
+                  "choose": true,
+                  "stopAdjacent": true
+                }
+              }
+            },
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "dreadnaught"
+            }
+          }
+        }
+      },
+      "JpA60EhdywN5Vn3F": {
+        "_id": "JpA60EhdywN5Vn3F",
+        "type": "save",
+        "name": "Perfected Armor: Pull",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "activityUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "max(1, @abilities.int.mod)",
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "perfected-pull",
+        "midiProperties": {
+          "identifier": "perfected-pull",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "pullOnFail",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "pullOnFail": {
+                  "distance": "25",
+                  "choose": true,
+                  "stopAdjacent": true
+                }
+              }
+            },
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "guardian"
+            }
+          }
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [],
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true
+        },
+        "useConditionText": "false",
+        "visibility": {
+          "identifier": "artificer",
+          "level": {
+            "min": 15,
+            "max": null
+          }
+        }
+      },
+      "8tSZ5FSdPuIYmEkG": {
+        "_id": "8tSZ5FSdPuIYmEkG",
+        "type": "utility",
+        "name": "Perfected Armor: Glimmer",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "HtAIWmFQR9WXEpHM"
+          }
+        ],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "glimmer",
+        "midiProperties": {
+          "identifier": "glimmer",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "automatic": true,
+                  "identifiers": [
+                    "armor-model-lightning-launcher"
+                  ],
+                  "damageTypes": [
+                    "lightning"
+                  ],
+                  "requiredItems": [
+                    "perfected-armor"
+                  ]
+                }
+              }
+            },
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "infiltrator"
+            }
+          }
+        },
+        "visibility": {
+          "identifier": "artificer",
+          "level": {
+            "min": 15,
+            "max": null
+          }
+        }
+      },
+      "07HZGIWF5iBKLAAq": {
+        "_id": "07HZGIWF5iBKLAAq",
+        "type": "utility",
+        "name": "Perfected Armor: Flight",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "activityUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "turn",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "pcGqGJ2C3yHpCCA5"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "max(1, @abilities.int.mod)",
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "perfected-fly",
+        "midiProperties": {
+          "identifier": "perfected-fly",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          },
+          "chris-premades": {
+            "armorModel": {
+              "model": "infiltrator"
+            }
+          }
+        },
+        "visibility": {
+          "identifier": "artificer",
+          "level": {
+            "min": 15,
+            "max": null
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "O4EigHEScsJDCOhx",
+      "name": "Dreadnaught Model",
+      "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "chris-premades": {
+          "armorModel": {
+            "model": "dreadnaught"
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!MndNHs8vGduZUuTb.O4EigHEScsJDCOhx"
+    },
+    {
+      "_id": "VNfIS3CnCKXmC4rR",
+      "name": "Guardian Model",
+      "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "chris-premades": {
+          "armorModel": {
+            "model": "guardian"
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!MndNHs8vGduZUuTb.VNfIS3CnCKXmC4rR"
+    },
+    {
+      "_id": "dPjCMK1GF6mmBLS5",
+      "name": "Infiltrator Model",
+      "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.walk",
+            "value": "5",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.advantage.skill.ste",
+            "value": "1",
+            "type": "custom",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "chris-premades": {
+          "armorModel": {
+            "model": "infiltrator"
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!MndNHs8vGduZUuTb.dPjCMK1GF6mmBLS5"
+    },
+    {
+      "_id": "jf4xO56bEN8krkAB",
+      "name": "Giant Stature",
+      "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.range.mwak",
+            "value": "5",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.size",
+            "value": "lg",
+            "type": "override",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!MndNHs8vGduZUuTb.jf4xO56bEN8krkAB"
+    },
+    {
+      "_id": "TQkVdadh34b0sS7p",
+      "name": "Giant Stature",
+      "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.range.mwak",
+            "value": "10",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.size",
+            "value": "lg",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.str.check.roll.mode",
+            "value": "1",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.str.save.roll.mode",
+            "value": "1",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!MndNHs8vGduZUuTb.TQkVdadh34b0sS7p"
+    },
+    {
+      "_id": "fu6l4cEfBm3NJI8B",
+      "name": "Giant Stature",
+      "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.range.mwak",
+            "value": "10",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.size",
+            "value": "huge",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.str.check.roll.mode",
+            "value": "1",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.str.save.roll.mode",
+            "value": "1",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!MndNHs8vGduZUuTb.fu6l4cEfBm3NJI8B"
+    },
+    {
+      "_id": "pcGqGJ2C3yHpCCA5",
+      "name": "Perfected Armor: Flight",
+      "img": "icons/equipment/chest/breastplate-collared-steel-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.fly",
+            "value": "@attributes.movement.walk * 2",
+            "type": "upgrade",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!MndNHs8vGduZUuTb.pcGqGJ2C3yHpCCA5"
+    },
+    {
+      "_id": "HtAIWmFQR9WXEpHM",
+      "name": "Glimmer",
+      "img": "icons/magic/lightning/bolt-forked-large-red.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceStart",
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "attackDisadvantage",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "attackDisadvantage": {
+                "against": "source"
+              }
+            }
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!MndNHs8vGduZUuTb.HtAIWmFQR9WXEpHM"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "armor-model",
+            "rules": "all"
+          }
+        ],
+        "item": [
+          {
+            "source": "chris-premades",
+            "identifier": "armor-model",
+            "rules": "all"
+          }
+        ],
+        "rest": [
+          {
+            "source": "chris-premades",
+            "identifier": "armor-model",
+            "rules": "all"
+          }
+        ],
+        "combat": [
+          {
+            "source": "chris-premades",
+            "identifier": "perfected-armor",
+            "rules": "all"
+          }
+        ]
+      },
+      "alternateAttributes": {
+        "Ability": [
+          {
+            "value": [
+              "int"
+            ],
+            "restrictions": {
+              "Identifier": {
+                "value": [
+                  "armor-model-force-demolisher",
+                  "armor-model-thunder-pulse",
+                  "armor-model-lightning-launcher"
+                ],
+                "invert": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!MndNHs8vGduZUuTb"
+}
