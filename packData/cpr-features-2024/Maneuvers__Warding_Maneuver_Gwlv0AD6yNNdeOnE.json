@@ -206,7 +206,7 @@
         "otherActivityAsParentType": true
       }
     },
-    "identifier": "maneuvers-warding-maneuver",
+    "identifier": "warding-maneuver",
     "enchant": {},
     "advancement": {},
     "crewed": false
@@ -221,7 +221,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       },
       "macros": {
         "roll": [

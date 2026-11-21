@@ -223,7 +223,7 @@
         "otherActivityAsParentType": true
       }
     },
-    "identifier": "maneuvers-mortal-strike",
+    "identifier": "mortal-strike",
     "enchant": {},
     "advancement": {},
     "crewed": false
@@ -238,7 +238,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       }
     }
   },

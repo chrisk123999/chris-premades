@@ -1,3 +1,6 @@
+# 2.1.11 Pre-Release:
+## Automation Improvements:
+- 2024 Battle Master maneuvers match Player's Handbook and DDB Importer items.
 # 2.1.10 Pre-Release:
 ## Automated Class Features:
 - Illrigger: Base class and Painkiller subclass.

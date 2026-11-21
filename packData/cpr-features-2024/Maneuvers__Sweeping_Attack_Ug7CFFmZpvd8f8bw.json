@@ -226,7 +226,7 @@
         "otherActivityAsParentType": true
       }
     },
-    "identifier": "maneuvers-sweeping-attack",
+    "identifier": "sweeping-attack",
     "enchant": {},
     "advancement": {},
     "crewed": false
@@ -241,7 +241,10 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11",
+        "aliases": [
+          "maneuver-options-sweeping-attack"
+        ]
       },
       "macros": {
         "called": [

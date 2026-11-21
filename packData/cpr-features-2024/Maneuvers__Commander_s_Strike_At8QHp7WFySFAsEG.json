@@ -205,7 +205,7 @@
         "name": "Commander's Strike"
       }
     },
-    "identifier": "maneuvers-commanders-strike",
+    "identifier": "commanders-strike",
     "enchant": {},
     "advancement": {},
     "crewed": false
@@ -220,7 +220,10 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11",
+        "aliases": [
+          "maneuver-options-commanders-strike"
+        ]
       },
       "macros": {
         "roll": [
