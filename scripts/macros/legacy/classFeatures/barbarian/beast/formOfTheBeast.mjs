@@ -1,5 +1,5 @@
 import {actorUtils, compendiumUtils, dialogUtils, itemUtils, Logging} from '../../../../../proxy.mjs';
-import {default as cpr} from '../../../../../constants.mjs';
+import {cpr} from '../../../../../module.mjs';
 const ids = [
     {id: 'form-of-the-beast-bite', translate: 'CHRISPREMADES.Macros.Legacy.FormOfTheBeast.Bite'},
     {id: 'form-of-the-beast-claws', translate: 'CHRISPREMADES.Macros.Legacy.FormOfTheBeast.Claws'},

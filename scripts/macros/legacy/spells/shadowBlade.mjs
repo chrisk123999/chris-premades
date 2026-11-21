@@ -1,4 +1,4 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, constants, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../proxy.mjs';
 async function createSword(document, workflow) {
     const effect = documentUtils.getEffectByIdentifier(workflow.actor, 'shadowBlade');
@@ -6,7 +6,7 @@ async function createSword(document, workflow) {
         Logging.addMacroWarning('CPR', 'shadow-blade', 'Shadow Blade effect missing from ' + workflow.actor.name + '.', {notify: 'warn'});
         return;
     }
-    const swordData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'shadow-blade-sword', {object: true, translate: 'CHRISPREMADES.Macros.Legacy.ShadowBlade.Sword'});
+    const swordData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'shadow-blade-sword', {object: true, translate: 'CHRISPREMADES.Macros.Legacy.ShadowBlade.Sword'});
     if (!swordData) {
         Logging.addMacroWarning('CPR', 'shadow-blade', 'Shadow Blade Sword missing from the automation items compendium.', {notify: 'warn'});
         return;

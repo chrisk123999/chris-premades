@@ -1,4 +1,4 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {compendiumUtils, documentUtils, genericUtils, itemUtils, rollUtils} from '../../../proxy.mjs';
 const gear = {
     lantern: {2014: 'bullseye-lantern', 2024: 'lantern-bullseye'},
@@ -25,7 +25,7 @@ const creatures = {
 const table = [[8, 'gold'], [15, 'silverCoffer'], [22, 'ironDoor'], [30, 'gems'], [44, 'ladder'], [51, 'horse'], [59, 'pit'], [68, 'potion'], [75, 'rowboat'], [83, 'spellScroll'], [90, 'mastiffs'], [96, 'window'], [100, 'ram']];
 const quantities = {potion: 4};
 export async function getAutomationItemUuid(identifier, rules) {
-    const index = await game.packs.get(cprConstants.packs.misc.automationItems).getIndex({fields: ['system.identifier', 'system.source']});
+    const index = await game.packs.get(cpr.packs.misc.automationItems).getIndex({fields: ['system.identifier', 'system.source']});
     return index.find(i => i.system.identifier === identifier && (i.system.source?.rules || '2014') === rules)?.uuid;
 }
 export async function findItem(identifier, rules) {

@@ -1,20 +1,18 @@
-import cprConstants from '../../../constants.mjs';
-import utils from '../../../utils.mjs';
 import {actorUtils, compendiumUtils, documentUtils, effectUtils, Logging} from '../../../proxy.mjs';
-
+import {cpr, cprUtils} from '../../../module.mjs';
 async function use({document: item, workflow}) {
     if (workflow.activity.identifier !== 'lucky-charm') return;
     const casterEffect = documentUtils.getEffectByIdentifier(item, 'luckyCharmCaster');
     if (!casterEffect) return Logging.addMacroWarning('CPR', 'lucky-charm', 'CHRISPREMADES.Macros.Modern.LuckyCharm.MissingEffect', {notify: 'warn'});
-    const charmData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'lucky-charm-object', {object: true});
+    const charmData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'lucky-charm-object', {object: true});
     if (!charmData) return Logging.addMacroWarning('CPR', 'lucky-charm', 'CHRISPREMADES.Macros.Modern.LuckyCharm.MissingItem', {notify: 'warn'});
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, item);
     const effectData = documentUtils.getEffectData(workflow.activity, casterEffect.id, {parentEntity: concentrationEffect, activityUuid: workflow.activity.uuid});
     const [sourceEffect] = await effectUtils.createEffects(workflow.actor, [effectData]) ?? [];
     if (!sourceEffect) return;
-    await utils.deleteCharms(workflow.actor, 'luckyCharm');
+    await cprUtils.deleteCharms(workflow.actor, 'luckyCharm');
     const carrier = workflow.targets.documents[0]?.actor ?? workflow.actor;
-    await utils.createCharms(carrier, [charmData], {key: 'luckyCharm', source: workflow.actor});
+    await cprUtils.createCharms(carrier, [charmData], {key: 'luckyCharm', source: workflow.actor});
 }
 async function track(item, added) {
     const sourceUuid = item.flags['chris-premades']?.luckyCharm?.source;
@@ -40,7 +38,7 @@ async function deleted({document: item}) {
 async function ended({document: effect}) {
     const actor = effect.parent;
     if (!actor || actorUtils.getEffectByIdentifier(actor, 'luckyCharmCaster')) return;
-    await utils.deleteCharms(actor, 'luckyCharm');
+    await cprUtils.deleteCharms(actor, 'luckyCharm');
 }
 export const luckyCharm = {
     name: 'Lucky Charm',

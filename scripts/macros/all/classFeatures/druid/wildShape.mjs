@@ -1,4 +1,4 @@
-import {default as cpr} from '../../../../constants.mjs';
+import {cpr} from '../../../../module.mjs';
 import {actorUtils, applications, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, uiUtils, workflowUtils} from '../../../../proxy.mjs';
 function getClassItem(item) {
     const classIdentifier = automationUtils.getConfigValue(item, 'classIdentifier') ?? wildShape.config.classIdentifier.default;

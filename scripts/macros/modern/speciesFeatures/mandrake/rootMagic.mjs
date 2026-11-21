@@ -1,4 +1,4 @@
-import cprConstants from '../../../../constants.mjs';
+import {cpr} from '../../../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, itemUtils, Logging, queryUtils} from '../../../../proxy.mjs';
 const abilities = ['int', 'wis', 'cha'];
 async function syncAbility(item, ability) {
@@ -10,7 +10,7 @@ async function syncAbility(item, ability) {
 }
 async function addLimb(item) {
     if (actorUtils.getItemByIdentifier(item.actor, 'root-magic-limb')) return;
-    const limbData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'root-magic-limb', {object: true, translate: 'CHRISPREMADES.Macros.Modern.RootMagic.Limb'});
+    const limbData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'root-magic-limb', {object: true, translate: 'CHRISPREMADES.Macros.Modern.RootMagic.Limb'});
     if (!limbData) return Logging.addMacroWarning('CPR', 'root-magic', 'Limb item not found in the automation items compendium.', {notify: 'warn'});
     await itemUtils.createItems(item.actor, [limbData], {parentEntity: item});
 }

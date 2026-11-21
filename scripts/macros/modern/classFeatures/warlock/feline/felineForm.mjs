@@ -1,4 +1,4 @@
-import cprConstants from '../../../../../constants.mjs';
+import {cpr} from '../../../../../module.mjs';
 import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging} from '../../../../../proxy.mjs';
 const srdActors = 'dnd5e.actors24';
 async function transformActor(document) {
@@ -25,7 +25,7 @@ async function use({document, workflow}) {
         else keepItems = [selection.toObject()];
     }
     if (keepItems.length) await documentUtils.createEmbeddedDocuments(newActor, 'Item', keepItems);
-    const featureData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.modern.features, 'feline-form-revert', {object: true});
+    const featureData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.modern.features, 'feline-form-revert', {object: true});
     if (!featureData) return;
     const classIdentifier = automationUtils.getConfigValue(document, 'classIdentifier');
     const levels = workflow.actor.classes[classIdentifier]?.system.levels ?? 1;

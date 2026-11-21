@@ -1,4 +1,4 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {activityUtils, actorUtils, automationUtils, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 async function feyStep({document, workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
@@ -31,7 +31,7 @@ export const summonFey = {
             label: 'CHRISPREMADES.Config.RealDarkness',
             category: 'mechanics'
         },
-        darknessAnimation: cprConstants.darknessAnimationConfig
+        darknessAnimation: cpr.darknessAnimationConfig
     }
 };
 export const summonFeyFeyStep = {

@@ -1,4 +1,4 @@
-import {default as cpr} from '../../../../../constants.mjs';
+import {cpr} from '../../../../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, constants, documentUtils, itemUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
 function log(source, identifier, msg, notify) {
     Logging.addMacroWarning(source, identifier, msg, {notify});

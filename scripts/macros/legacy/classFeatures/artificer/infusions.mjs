@@ -1,72 +1,72 @@
 import {actorUtils, applications, automationUtils, compendiumUtils, constants, dataUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, summonUtils, uiUtils, workflowUtils} from '../../../../proxy.mjs';
 import {swapArtificerPlan as artificer} from '../../../all.mjs';
-import {default as cpr} from '../../../../constants.mjs';
+import {cpr} from '../../../../module.mjs';
 // called events
 async function collectArmors({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const armor = data.targetActor.itemTypes.equipment.filter(i => i.system.isArmor && i.system.type?.value !== 'shield' && !i.system.properties.has('mgc'));
-    if (!armor.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {notify: 'warn'}); 
+    if (!armor.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {notify: 'warn'});
     return armor;
 }
 async function collectArmorShield({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const armor = data.targetActor.itemTypes.equipment.filter(i => i.system.isArmor && !i.system.properties.has('mgc'));
-    if (!armor.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {notify: 'warn'}); 
+    if (!armor.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {notify: 'warn'});
     return armor;
 }
 async function collectArmorRobes({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
-    const armor = data.targetActor.itemTypes.equipment.filter(i => 
+    const armor = data.targetActor.itemTypes.equipment.filter(i =>
         (i.system.isArmor || i.system.type?.value === 'clothing') &&
         i.system.type?.value !== 'shield' &&
         !i.system.properties.has('mgc')
     );
-    if (!armor.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {notify: 'warn'}); 
+    if (!armor.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoArmor', {notify: 'warn'});
     return armor;
 }
 async function collectFoci({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const foci = data.targetActor.items.filter(i =>
         i.system.properties &&
-        !i.system.properties.has('mgc') && 
-        ( 
+        !i.system.properties.has('mgc') &&
+        (
             (i.system.type?.baseItem === 'quarterstaff' && i.system.properties.has('foc')) ||
             ['rod', 'trinket', 'wand'].includes(i.system.type?.value)
         )
     );
-    if (!foci.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoFoci', {notify: 'warn'}); 
+    if (!foci.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoFoci', {notify: 'warn'});
     return foci;
 }
 async function collectShield({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const shield = data.targetActor.itemTypes.equipment.filter(i => i.system.type?.value === 'shield' && !i.system.properties.has('mgc'));
-    if (!shield.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoShield', {notify: 'warn'}); 
+    if (!shield.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoShield', {notify: 'warn'});
     return shield;
 }
 async function collectWeapons({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
     const weapon = data.targetActor.itemTypes.weapon.filter(i => !i.system.properties.has('mgc') && ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(i.system.type?.value));
-    if (!weapon.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {notify: 'warn'}); 
+    if (!weapon.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {notify: 'warn'});
     return weapon;
 }
 async function collectAmmoWeapons({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
-    const weapon = data.targetActor.itemTypes.weapon.filter(i => 
+    const weapon = data.targetActor.itemTypes.weapon.filter(i =>
         !i.system.properties.has('mgc') &&
         i.system.properties.has('amm') &&
         ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(i.system.type?.value)
     );
-    if (!weapon.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {notify: 'warn'}); 
+    if (!weapon.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {notify: 'warn'});
     return weapon;
 }
 async function collectThrownWeapons({document: activity, data, macroClass: {identifier, source}}) {
     if (data.infusionIdentifier !== documentUtils.getIdentifier(activity.item)) return;
-    const weapon = data.targetActor.itemTypes.weapon.filter(i => 
+    const weapon = data.targetActor.itemTypes.weapon.filter(i =>
         !i.system.properties.has('mgc') &&
         i.system.properties.has('thr') &&
         ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(i.system.type?.value)
     );
-    if (!weapon.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {notify: 'warn'}); 
+    if (!weapon.length) Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Legacy.InfuseItem.NoWeapon', {notify: 'warn'});
     return weapon;
 }
 // helpers
@@ -271,7 +271,7 @@ async function homunculus({macroClass: {source, identifier}, workflow}) {
     const parent = await getParentEffect(workflow.item, sourceDocument);
     if (!parent) return;
     await documentUtils.makeDependent(parent, [sourceDocument]);
-    const config = automationUtils.getConfigValues(workflow.item, Object.keys(infusionHomunculusServant.config));    
+    const config = automationUtils.getConfigValues(workflow.item, Object.keys(infusionHomunculusServant.config));
     const level = workflow.actor.classes[config.classIdentifier]?.system.levels || 1;
     const hp = (await rollUtils.rollDice(config.hp, {document: workflow.activity}))?.total || 1;
     const updates = { system: {
@@ -503,7 +503,7 @@ export const infusionHomunculusServant = {
             i18nOption: 'CHRISPREMADES.Macros.Legacy.InfuseItem.HomunculusServant'
         },
         animation: {
-            default: {source: 'chris-premades', identifier: 'futureSummon'}, 
+            default: {source: 'chris-premades', identifier: 'futureSummon'},
             type: 'selectAnimation',
             category: 'animations',
             inputs: ['summon', 'location', 'token'],

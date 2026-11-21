@@ -9,7 +9,7 @@ async function fetchItems(actor, token, tools, rules) {
     const has = (group, uuid) => group.some(i => i.uuid === uuid);
     await Promise.all(actorUtils.getEffectByIdentifier(actor, artificer.keys.createdEffectIdentifier, {multiple: true}).map(async e => {
         const document = await fromUuid(e.flags.dnd5e?.dependentOn);
-        const item = document?.documentName === 'ActiveEffect' ? document.item: document;
+        const item = document?.documentName === 'ActiveEffect' ? document.item : document;
         if (!item) return;
         if (rules === '2024' && !['trinket', 'wand'].includes(item.system.type.value)) return;
         const group = items.get(item.actor.uuid) ?? [];

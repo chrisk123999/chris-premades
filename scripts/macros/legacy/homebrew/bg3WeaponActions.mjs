@@ -1,4 +1,4 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {actorUtils, compendiumUtils, documentUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../proxy.mjs';
 export const actions = {
     'backbreaker': {weapons: ['warhammer', 'maul'], damage: 'die'},
@@ -47,7 +47,7 @@ async function equipped(weapon, changes, options, userId) {
     if (!changes.system.equipped || !getSetting('bg3WeaponActions')) return;
     const keys = Object.keys(actions).filter(key => qualifies(weapon, key));
     if (!keys.length) return;
-    const sources = await Promise.all(keys.map(key => compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.misc, key, {object: true})));
+    const sources = await Promise.all(keys.map(key => compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.misc, key, {object: true})));
     const enchantment = await itemUtils.enchantItem(weapon, {
         name: _loc('CHRISPREMADES.Settings.Bg3WeaponActions.Name'),
         img: 'modules/chris-premades/images/bg3/Cleave.webp',
@@ -98,7 +98,7 @@ async function riders({document: activity, workflow}) {
         return;
     }
     if (!workflow.failedSaves.count) return;
-    const source = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.misc, key);
+    const source = await compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.misc, key);
     const sourceEffect = documentUtils.getEffectByIdentifier(source, key + '-rider');
     if (!sourceEffect) return;
     const effectData = documentUtils.getEffectData(source, sourceEffect.id);

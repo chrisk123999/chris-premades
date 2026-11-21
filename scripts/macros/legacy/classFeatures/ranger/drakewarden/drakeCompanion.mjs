@@ -1,9 +1,9 @@
-import cprConstants from '../../../../../constants.mjs';
+import {cpr} from '../../../../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 const translations = 'CHRISPREMADES.Macros.Legacy.DrakeCompanion.';
 const damageTypes = ['acid', 'cold', 'fire', 'lightning', 'poison'];
 const sizes = ['sm', 'med', 'lg'];
-async function getFeature(identifier, translate, pack = cprConstants.packs.misc.automationItems) {
+async function getFeature(identifier, translate, pack = cpr.packs.misc.automationItems) {
     return await compendiumUtils.getDocumentByIdentifier(pack, identifier, {object: true, translate});
 }
 function getUpgrades(actor, classIdentifier) {
@@ -19,9 +19,9 @@ async function use({document, workflow}) {
     const damageType = await dialogUtils.selectDamageType(damageTypes, document.name, translations + 'Select');
     if (!damageType) return;
     const [sourceActor, ...items] = await Promise.all([
-        compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.summons, 'drakeCompanion'),
+        compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.summons, 'drakeCompanion'),
         getFeature('drake-companion-draconic-essence', translations + 'DraconicEssence'),
-        getFeature('drake-companion-infused-strikes', translations + 'InfusedStrikes', cprConstants.packs.legacy.monsterFeatures),
+        getFeature('drake-companion-infused-strikes', translations + 'InfusedStrikes', cpr.packs.legacy.monsterFeatures),
         getFeature('drake-companion-bite', translations + 'Bite'),
         getFeature('drake-companion-dodge', translations + 'Dodge')
     ]);

@@ -1,5 +1,5 @@
+import {cpr} from '../../../../../module.mjs';
 import {activityUtils, actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
-import {default as cpr} from '../../../../../constants.mjs';
 async function recipients(activity, token) {
     const actor = activity.actor;
     const oceanicGift = actorUtils.getItemByIdentifier(actor, 'oceanic-gift');

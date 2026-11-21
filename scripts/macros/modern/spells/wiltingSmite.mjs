@@ -1,8 +1,8 @@
-import constants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {actorUtils, dialogUtils, documentUtils} from '../../../proxy.mjs';
 async function spendHitDice({document: item, actor, data}) {
     if (data.activity?.item !== item) return;
-    const features = constants.sangromancyFeatures.map(identifier => actorUtils.getItemByIdentifier(actor, identifier)).filter(feature => feature?.system?.uses?.value);
+    const features = cpr.sangromancyFeatures.map(identifier => actorUtils.getItemByIdentifier(actor, identifier)).filter(feature => feature?.system?.uses?.value);
     const selections = await dialogUtils.selectHitDie(actor, item.name, '', {max: 2, additionalItems: features});
     if (!selections) return;
     await Promise.all(selections.filter(selection => selection.amount).map(({document, amount}) => {

@@ -1,12 +1,11 @@
-import cprConstants from '../../../../../constants.mjs';
 import {automationUtils, compendiumUtils, dialogUtils, Logging, queryUtils, rollUtils, workflowUtils} from '../../../../../proxy.mjs';
-import utils from '../../../../../utils.mjs';
+import {cpr, cprUtils} from '../../../../../module.mjs';
 async function weave({document, workflow}) {
     if (workflow.activity.identifier !== 'weave-wicker-tokens') return;
-    await utils.deleteCharms(workflow.actor, 'wickerToken');
+    await cprUtils.deleteCharms(workflow.actor, 'wickerToken');
     const quantity = rollUtils.rollDiceSync(automationUtils.getConfigValue(document, 'quantity'), {document}).total;
     if (quantity < 1) return;
-    const itemData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'wicker-token-charm', {object: true, translate: 'CHRISPREMADES.Macros.Modern.WickerToken.Token'});
+    const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'wicker-token-charm', {object: true, translate: 'CHRISPREMADES.Macros.Modern.WickerToken.Token'});
     if (!itemData) return Logging.addMacroWarning('CPR', 'wicker-token', 'Wicker Token missing from the automation items compendium.', {notify: 'warn'});
     const druidToken = workflow.token?.document;
     const candidates = new Map();
@@ -26,15 +25,15 @@ async function weave({document, workflow}) {
     const recipients = (selected?.result ?? []).map(token => candidates.get(token.id).actor);
     const remaining = quantity - recipients.length;
     await Promise.all([
-        ...recipients.map(recipient => utils.createCharms(recipient, [{...itemData, system: {...itemData.system, quantity: 1}}], {key: 'wickerToken', source: workflow.actor})),
-        remaining > 0 && utils.createCharms(workflow.actor, [{...itemData, system: {...itemData.system, quantity: remaining}}], {key: 'wickerToken', source: workflow.actor})
+        ...recipients.map(recipient => cprUtils.createCharms(recipient, [{...itemData, system: {...itemData.system, quantity: 1}}], {key: 'wickerToken', source: workflow.actor})),
+        remaining > 0 && cprUtils.createCharms(workflow.actor, [{...itemData, system: {...itemData.system, quantity: remaining}}], {key: 'wickerToken', source: workflow.actor})
     ]);
 }
 async function touch({activity, actor, token, config}) {
     if (activity.item.type !== 'spell' || activity.range.units !== 'touch' || !token?.object) return;
     const targets = workflowUtils.getPreTargetingTargets(config).map(target => target.object).filter(target => target?.actor && target !== token.object);
     const outOfRange = targets.filter(target => MidiQOL.checkActivityRange(activity, token.object, [target], false).result === 'fail');
-    if (!outOfRange.length || !outOfRange.every(target => utils.carriesCharm(target.actor, actor, ['wickerToken']))) return;
+    if (!outOfRange.length || !outOfRange.every(target => cprUtils.carriesCharm(target.actor, actor, ['wickerToken']))) return;
     if (activity.item !== actor.items.get(activity.item.id)) activity.item.updateSource({'system.range.units': 'any'});
 }
 export const wickerToken = {

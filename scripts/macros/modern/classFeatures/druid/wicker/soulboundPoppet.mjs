@@ -1,6 +1,5 @@
-import cprConstants from '../../../../../constants.mjs';
 import {automationUtils, combatUtils, compendiumUtils, constants, DamageBonus, documentUtils, effectUtils, genericUtils, itemUtils, Logging, tokenUtils} from '../../../../../proxy.mjs';
-import utils from '../../../../../utils.mjs';
+import {cpr, cprUtils} from '../../../../../module.mjs';
 function getPoppetData(item) {
     return item.flags['chris-premades']?.soulboundPoppet ?? {};
 }
@@ -12,7 +11,7 @@ async function use({document, workflow}) {
     if (!effect) return Logging.addMacroWarning('CPR', 'soulbound-poppet', 'Soulbound Poppet effect missing from item.', {notify: 'warn'});
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [documentUtils.getEffectData(workflow.activity, effect.id, {activityUuid: workflow.activity.uuid})]) ?? [];
     if (!casterEffect) return;
-    const itemData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'soulbound-poppet-doll', {object: true});
+    const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'soulbound-poppet-doll', {object: true});
     if (!itemData) return Logging.addMacroWarning('CPR', 'soulbound-poppet', 'Soulbound Poppet doll missing from the automation items compendium.', {notify: 'warn'});
     itemData.name = _loc('CHRISPREMADES.Macros.Modern.SoulboundPoppet.Doll', {name: targetToken.name});
     genericUtils.setProperty(itemData, 'flags.chris-premades.soulboundPoppet', {
@@ -21,7 +20,7 @@ async function use({document, workflow}) {
         formula: automationUtils.getConfigValue(document, 'formula'),
         damageType: automationUtils.getConfigValue(document, 'damageType')
     });
-    await utils.createCharms(workflow.actor, [itemData], {key: 'soulboundPoppet', source: workflow.actor, favorite: true});
+    await cprUtils.createCharms(workflow.actor, [itemData], {key: 'soulboundPoppet', source: workflow.actor, favorite: true});
 }
 async function expired({document: effect}) {
     await itemUtils.deleteWorldItemsByFlag('chris-premades', 'soulboundPoppet.effect', effect.uuid);

@@ -1,5 +1,5 @@
 import {actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../../../../proxy.mjs';
-import {default as cpr} from '../../../../constants.mjs';
+import {cpr} from '../../../../module.mjs';
 const keys = {
     swapActivity: 'swap-plan',
     createActivity: 'create-plan',
@@ -48,7 +48,7 @@ async function swapPlan({macroClass: {identifier, source}, workflow}) {
         maxAmount: 1,
         icon: workflow.item.img,
         title: workflow.item.name,
-        hint: _loc('CHRISPREMADES.Macros.All.ArtificerPlans.Choose'),        
+        hint: _loc('CHRISPREMADES.Macros.All.ArtificerPlans.Choose'),
         ...data
     }))?.[0];
     if (!plan) return;
@@ -98,7 +98,7 @@ async function usePlan({macroClass: {identifier, source}, workflow}) {
         return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.Modern.TinkersMagic.NeedTools', {notify: 'warn', format: {feature: workflow.item.name, tools}});
     }
     const created = actorUtils.getEffectByIdentifier(workflow.actor, keys.createdEffectIdentifier, {multiple: true});
-    if (created.length >= config.createdLimit) 
+    if (created.length >= config.createdLimit)
         return Logging.addMacroWarning(source, identifier, 'CHRISPREMADES.Macros.All.ArtificerPlans.MaxCreated', {notify: 'warn', format: {count: created.length, max: config.createdLimit}});
     let selected = await fromUuid(workflowUtils.getWorkflowProperty(workflow, keys.preselectedMarker));
     if (selected && created.some(e => e.origin === selected.uuid))
@@ -115,7 +115,7 @@ async function usePlan({macroClass: {identifier, source}, workflow}) {
     if (!itemHolder) Logging.addMacroWarning(source, identifier, 'Feature was used without a token on a scene.');
     if (documentUtils.getIdentifier(selected).startsWith(keys.infusionIdentifier)) {
         const infusionActivity = itemUtils.getActivityByIdentifier(selected, keys.createActivity);
-        if (!infusionActivity) 
+        if (!infusionActivity)
             return Logging.addMacroWarning(source, identifier, `Artificer infusion failed due to missing create activity with identifier: ${keys.createActivity}`);
         const options = {};
         workflowUtils.setWorkflowProperty(options, keys.prechecksComplete, true);
@@ -141,7 +141,7 @@ async function usePlan({macroClass: {identifier, source}, workflow}) {
     await documentUtils.makeDependent(parentEffect, [createdItem]);
 }
 async function added({actor, macroClass: {identifier, rules, source}}) {
-    if (rules !== '2024') return; 
+    if (rules !== '2024') return;
     const template = await getPlanTemplate(identifier, source);
     if (template) await markPlansNotPrepared(source, actor, template, identifier);
 }

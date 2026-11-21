@@ -1,5 +1,5 @@
+import {cpr} from '../../../module.mjs';
 import {itemUtils} from '../../../proxy.mjs';
-import constants from '../../../constants.mjs';
 import {addImpact, addShake, elementColors, partOption, pickFile} from './spellParts.mjs';
 const meleeFiles = {
     battleaxe: ['jb2a.handaxe.melee.standard.white'],
@@ -67,7 +67,7 @@ const baseItemAmmunition = {
     blowgun: 'blowgunNeedle',
     musket: 'firearmBullet',
     pistol: 'firearmBullet',
-    ...Object.fromEntries(Object.keys(constants.firearmBaseItems).map(key => [key, 'firearmBullet']))
+    ...Object.fromEntries(Object.keys(cpr.firearmBaseItems).map(key => [key, 'firearmBullet']))
 };
 const tints = {
     blue: '#5aa9ff',

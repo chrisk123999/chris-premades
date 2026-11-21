@@ -1,4 +1,4 @@
-import cprConstants from '../../constants.mjs';
+import {cpr} from '../../module.mjs';
 import {actorUtils, automationUtils, combatUtils, compendiumUtils, documentUtils, effectUtils, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 function getStatus(item) {
     if (documentUtils.getEffectByIdentifier(item, 'firearmBroken')) return 'broken';
@@ -60,7 +60,7 @@ async function explosive({document: item, workflow}) {
     if (!item.system.properties.has('explosive') || workflow.activity.type !== 'attack' || !workflow.hitTargets.count || workflowUtils.getWorkflowProperty(workflow, 'firearmMisfire')) return;
     const targets = new Set(workflow.hitTargets.tokens.flatMap(token => tokenUtils.findNearby(token.document, 5, {disposition: 'all', includeIncapacitated: true})).filter(nearby => nearby.actor && !workflow.hitTargets.has(nearby)));
     if (!targets.size) return;
-    const itemData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'firearm-explosive', {object: true, translate: 'CHRISPREMADES.Macros.Generic.Firearm.Properties.Explosive'});
+    const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'firearm-explosive', {object: true, translate: 'CHRISPREMADES.Macros.Generic.Firearm.Properties.Explosive'});
     await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, Array.from(targets));
 }
 async function misfire({document: item, workflow}) {

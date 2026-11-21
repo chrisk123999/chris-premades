@@ -1,4 +1,4 @@
-import cprConstants from '../../../../../constants.mjs';
+import {cpr} from '../../../../../module.mjs';
 import {automationUtils, compendiumUtils, constants, documentUtils, effectUtils, Logging, summonUtils} from '../../../../../proxy.mjs';
 const attackActivity = 'tentacle-of-the-deeps-attack';
 function rangeOverrideData(item, parent) {
@@ -23,7 +23,7 @@ async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'tentacle-of-the-deeps') return;
     const existing = documentUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');
     if (existing) await documentUtils.deleteDocument(existing);
-    const sourceActor = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.summons, 'spectralTentacle');
+    const sourceActor = await compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.summons, 'spectralTentacle');
     if (!sourceActor) return Logging.addMacroWarning('CPR', 'tentacle-of-the-deeps', 'Spectral Tentacle summon actor not found.', {notify: 'warn'});
     const markerEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,

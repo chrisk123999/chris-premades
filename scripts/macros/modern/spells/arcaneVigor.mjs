@@ -1,7 +1,7 @@
-import constants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {actorUtils, dialogUtils, Logging, rollUtils, workflowUtils} from '../../../proxy.mjs';
 async function damage({workflow}) {
-    const features = constants.sangromancyFeatures.map(identifier => actorUtils.getItemByIdentifier(workflow.actor, identifier)).filter(feature => feature?.system?.uses?.value);
+    const features = cpr.sangromancyFeatures.map(identifier => actorUtils.getItemByIdentifier(workflow.actor, identifier)).filter(feature => feature?.system?.uses?.value);
     const max = workflowUtils.getCastLevel(workflow) ?? workflow.item.system.level;
     const selections = await dialogUtils.selectHitDie(workflow.actor, workflow.item.name, _loc('CHRISPREMADES.Macros.Modern.ArcaneVigor.Choose'), {max, additionalItems: features});
     const {count, formula} = await actorUtils.spendHitDice(workflow.actor, selections, {roll: false});

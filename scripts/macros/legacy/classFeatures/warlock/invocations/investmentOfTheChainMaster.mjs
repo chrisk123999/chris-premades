@@ -1,4 +1,4 @@
-import cprConstants from '../../../../../constants.mjs';
+import {cpr} from '../../../../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, dialogUtils, genericUtils, itemUtils, queryUtils, summonUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function familiar({document, summon, updates}) {
     const sourceIdentifier = summon.sourceDocument?.identifier;
@@ -17,7 +17,7 @@ async function familiar({document, summon, updates}) {
             if (activityData.type === 'save') genericUtils.setProperty(activityData, 'save.dc', {calculation: '', formula: String(saveDC), value: saveDC});
         });
     });
-    const resistance = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'investment-of-the-chain-master-resistance', {object: true});
+    const resistance = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'investment-of-the-chain-master-resistance', {object: true});
     delete resistance._id;
     updates.items.push(resistance);
     if (sourceIdentifier === 'flock-of-familiars' && summonUtils.getSummonsByIdentifier('find-familiar', {actor: summon.owner}).length) return;

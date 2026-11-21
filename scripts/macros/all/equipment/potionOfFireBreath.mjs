@@ -1,10 +1,10 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, documentUtils, itemUtils, Logging} from '../../../proxy.mjs';
 async function use({workflow}) {
     const actor = (workflow.targets.documents[0] ?? workflow.tokenDocument)?.actor ?? workflow.actor;
     const effect = actorUtils.getEffectByIdentifier(actor, 'potionOfFireBreath');
     if (!effect) return;
-    const featureData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'potion-of-fire-breath-attack', {object: true, translate: 'CHRISPREMADES.Macros.All.PotionOfFireBreath.Attack'});
+    const featureData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'potion-of-fire-breath-attack', {object: true, translate: 'CHRISPREMADES.Macros.All.PotionOfFireBreath.Attack'});
     if (!featureData) {
         Logging.addMacroWarning('CPR', 'potion-of-fire-breath', 'Potion of Fire Breath Attack missing from the automation items compendium.', {notify: 'warn'});
         return;

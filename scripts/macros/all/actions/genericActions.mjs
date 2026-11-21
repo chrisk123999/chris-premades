@@ -1,4 +1,4 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, dialogUtils, documentUtils, genericUtils, itemUtils, workflowUtils} from '../../../proxy.mjs';
 import {influence} from '../../modern/actions/influence.mjs';
 import {holdBreathLegacy, holdBreathModern} from './holdBreath.mjs';
@@ -18,7 +18,7 @@ const ruleKeys = {
     underwater: 'underwatercombat'
 };
 function getActionsIndex(rules) {
-    const pack = game.packs.get(rules === 'legacy' ? cprConstants.packs.legacy.misc : cprConstants.packs.modern.misc);
+    const pack = game.packs.get(rules === 'legacy' ? cpr.packs.legacy.misc : cpr.packs.modern.misc);
     const folder = pack?.folders.getName('Actions');
     return folder ? pack.index.filter(entry => entry.folder === folder.id) : [];
 }
@@ -112,7 +112,7 @@ async function addActions(token) {
     if (!['character', 'npc'].includes(actor.type)) return;
     if (!includeActor(game.settings.get('chris-premades', 'addActions'), actor, token)) return;
     const rules = game.settings.get('dnd5e', 'rulesVersion');
-    const {misc} = rules === 'legacy' ? cprConstants.packs.legacy : cprConstants.packs.modern;
+    const {misc} = rules === 'legacy' ? cpr.packs.legacy : cpr.packs.modern;
     let itemDatas;
     if (game.settings.get('chris-premades', 'genericActionsItem')) {
         if (actorUtils.getItemByIdentifier(actor, 'generic-actions')) return;

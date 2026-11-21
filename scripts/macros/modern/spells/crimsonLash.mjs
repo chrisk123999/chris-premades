@@ -1,7 +1,7 @@
-import constants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, dialogUtils, documentUtils, genericUtils} from '../../../proxy.mjs';
 async function use({document, workflow}) {
-    const features = constants.sangromancyFeatures.map(identifier => actorUtils.getItemByIdentifier(workflow.actor, identifier)).filter(item => item?.system?.uses?.value);
+    const features = cpr.sangromancyFeatures.map(identifier => actorUtils.getItemByIdentifier(workflow.actor, identifier)).filter(item => item?.system?.uses?.value);
     const hd = workflow.actor.system.attributes.hd.value;
     if (!hd && !features.length) return;
     const selection = (await dialogUtils.selectHitDie(workflow.actor, workflow.item.name, '', {additionalItems: features}) || []).find(i => i.amount);
@@ -19,7 +19,7 @@ async function use({document, workflow}) {
     const numericDie = Number(match[1]);
     const description = automationUtils.getConfigValue(document, 'description');
     const translation = automationUtils.getConfigValue(document, 'translation');
-    const itemData = await compendiumUtils.getDocumentByIdentifier(constants.packs.misc.automationItems, 'crimson-lash-blade', {object: true, description, translation});
+    const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'crimson-lash-blade', {object: true, description, translation});
     genericUtils.setProperty(itemData, 'system.damage.base.denomination', numericDie);
     const activityId = Object.keys(itemData.system.activities)[0];
     genericUtils.setProperty(itemData, 'system.activities.' + activityId + '.flags.cat.otherAbilities.value', [document.abilityMod]);

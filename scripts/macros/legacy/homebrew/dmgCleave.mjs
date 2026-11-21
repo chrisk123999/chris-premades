@@ -1,4 +1,4 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {compendiumUtils, dialogUtils, rollUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 const multiplier = entry => entry.active?.multiplier ?? 1;
 function leftoverDamage(details, hp) {
@@ -35,7 +35,7 @@ async function rollFinished(workflow) {
     const selection = await dialogUtils.selectTargetDialog(_loc('CHRISPREMADES.Settings.DmgCleave.Name'), _loc('CHRISPREMADES.Macros.Legacy.DmgCleave.Use'), nearby, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
     const next = selection?.result;
     if (!next) return;
-    const itemData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.misc, 'dmg-cleave', {object: true});
+    const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.misc, 'dmg-cleave', {object: true});
     if (workflow.item.system.properties.has('mgc')) itemData.system.properties.push('mgc');
     const options = {};
     workflowUtils.setWorkflowProperty(options, 'dmgCleave', {attack: workflow.attackRoll.toJSON(), damage});

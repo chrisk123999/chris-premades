@@ -1,11 +1,11 @@
-import cprConstants from '../../constants.mjs';
+import {cpr} from '../../module.mjs';
 import {activityUtils, automationUtils, compendiumUtils, crosshairUtils, dialogUtils, distanceUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, regionUtils, workflowUtils} from '../../proxy.mjs';
 /**
  * Actor that destructible wall panels are copied from.
  * @returns {Promise<object|undefined>}
  */
 export function getWallPanelActor() {
-    return compendiumUtils.getDocumentByIdentifier(cprConstants.packs.legacy.summons, 'wallPanel');
+    return compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.summons, 'wallPanel');
 }
 /**
  * Panel actor updates for a destructible wall.

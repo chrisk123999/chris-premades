@@ -1,4 +1,4 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../proxy.mjs';
 async function use({document, workflow}) {
     if (!workflow.targets.count) {
@@ -8,7 +8,7 @@ async function use({document, workflow}) {
     }
     const types = automationUtils.getConfigValue(document, 'damageTypes');
     const damageType = await dialogUtils.selectDamageType(types, document.name, 'CHRISPREMADES.Generic.SelectDamageType') || types[0];
-    const featureData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'dragon-breath', {object: true, translate: 'CHRISPREMADES.Macros.All.DragonsBreath.DragonBreath', flatDC: itemUtils.getSaveDC(workflow.item)});
+    const featureData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'dragon-breath', {object: true, translate: 'CHRISPREMADES.Macros.All.DragonsBreath.DragonBreath', flatDC: itemUtils.getSaveDC(workflow.item)});
     if (!featureData) {
         Logging.addMacroWarning('CPR', 'dragons-breath', 'Dragon Breath missing from the automation items compendium.', {notify: 'warn'});
         await effectUtils.endConcentration(workflow.actor, workflow.item);

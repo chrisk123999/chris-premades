@@ -1,4 +1,4 @@
-import {default as cpr} from '../../../../constants.mjs';
+import {cpr} from '../../../../module.mjs';
 import {swapArtificerPlan} from '../../../all.mjs';
 const itemIDs = {
     2: ['alchemy-jug', 'bag-of-holding', 'cap-of-water-breathing', 'goggles-of-night', 'rope-of-climbing', 'sending-stones', 'wand-of-magic-detection', 'wand-of-secrets'],

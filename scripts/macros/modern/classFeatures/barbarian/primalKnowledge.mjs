@@ -1,10 +1,10 @@
 import {automationUtils, constants, genericUtils} from '../../../../proxy.mjs';
 import {swapSkillAbility} from '../../../generic/skillAbility.mjs';
-import utils from '../../../../utils.mjs';
+import {cprUtils} from '../../../../module.mjs';
 async function modifyRage({document: item, data: {effectData}}) {
     if (!effectData) return;
     genericUtils.setProperty(effectData, 'flags.chris-premades.primalKnowledge', item.uuid);
-    return utils.addEffectMacro(effectData, {
+    return cprUtils.addEffectMacro(effectData, {
         macroIdentifier: 'primalKnowledgeEffect',
         rules: primalKnowledgeEffect.rules,
         type: 'skill'

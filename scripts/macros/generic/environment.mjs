@@ -1,4 +1,4 @@
-import cprConstants from '../../constants.mjs';
+import {cpr} from '../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, constants, documentUtils, effectUtils, genericUtils, itemUtils, rollUtils} from '../../proxy.mjs';
 import {startHoldingBreath} from '../all/actions/holdBreath.mjs';
 import {underwaterLegacy, underwaterModern} from '../all/actions/underwater.mjs';
@@ -35,7 +35,7 @@ async function getActionItem(actor, identifier) {
     const item = actorUtils.getItemByIdentifier(actor, identifier);
     if (item) return item;
     const rules = game.settings.get('dnd5e', 'rulesVersion') === 'legacy' ? 'legacy' : 'modern';
-    return await compendiumUtils.getDocumentByIdentifier(cprConstants.packs[rules].misc, identifier);
+    return await compendiumUtils.getDocumentByIdentifier(cpr.packs[rules].misc, identifier);
 }
 async function getUnderwaterData(actor, flags) {
     const item = await getActionItem(actor, 'underwater');
@@ -98,7 +98,7 @@ async function syncEffect({document: effect, token}) {
 async function grantDrinkWater({document: effect}) {
     const actor = effectUtils.getActor(effect);
     if (effect.flags['chris-premades']?.environment !== 'extremeHeat' || !actor || actorUtils.getItemByIdentifier(actor, 'drink-water')) return;
-    const itemData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'drink-water', {object: true});
+    const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'drink-water', {object: true});
     if (itemData) await itemUtils.createItems(actor, [itemData], {favorite: true, parentEntity: effect});
 }
 function hasIdentifier(actor, identifiers) {

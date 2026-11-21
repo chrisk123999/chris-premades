@@ -1,4 +1,4 @@
-import cprConstants from '../../../../../constants.mjs';
+import {cpr} from '../../../../../module.mjs';
 import {actorUtils, automationUtils, compendiumUtils, DamageBonus, documentUtils, genericUtils, itemUtils, Logging, summonUtils, workflowUtils} from '../../../../../proxy.mjs';
 const creatureTypes = {
     'primal-companion-land': 'land',
@@ -33,9 +33,9 @@ async function use({document, workflow}) {
     const prof = workflow.actor.system.attributes.prof;
     const wisdom = workflow.actor.system.abilities.wis.mod;
     const [sourceActor, features, actionItems] = await Promise.all([
-        compendiumUtils.getDocumentByIdentifier(cprConstants.packs.modern.summons, 'primalCompanion'),
-        getFeatures(cprConstants.packs.misc.automationItems, ['primal-companion-primal-bond', ...beastFeatures[creatureType]], {flatAttack: prof + wisdom}),
-        getFeatures(cprConstants.packs.modern.misc, actions)
+        compendiumUtils.getDocumentByIdentifier(cpr.packs.modern.summons, 'primalCompanion'),
+        getFeatures(cpr.packs.misc.automationItems, ['primal-companion-primal-bond', ...beastFeatures[creatureType]], {flatAttack: prof + wisdom}),
+        getFeatures(cpr.packs.modern.misc, actions)
     ]);
     if (!sourceActor) return Logging.addMacroWarning('CPR', 'primal-companion', 'CHRISPREMADES.Error.ActorNotFound', {notify: 'warn'});
     const items = [...features, ...actionItems];

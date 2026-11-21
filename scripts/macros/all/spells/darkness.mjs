@@ -1,4 +1,4 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {actorUtils, automationUtils, documentUtils, effectUtils, genericUtils, regionUtils, summonUtils} from '../../../proxy.mjs';
 import {syncRegionLights} from '../../generic/moveRegion.mjs';
 function getOriginItem(region) {
@@ -99,7 +99,7 @@ export const darkness = {
             label: 'CHRISPREMADES.Config.RealDarkness',
             category: 'mechanics'
         },
-        darknessAnimation: cprConstants.darknessAnimationConfig,
+        darknessAnimation: cpr.darknessAnimationConfig,
         animation: {
             default: {
                 source: 'chris-premades',

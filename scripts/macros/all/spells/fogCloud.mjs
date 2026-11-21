@@ -1,4 +1,4 @@
-import cprConstants from '../../../constants.mjs';
+import {cpr} from '../../../module.mjs';
 import {automationUtils, documentUtils, regionUtils} from '../../../proxy.mjs';
 import {playAreaAnimation} from '../../generic/spellAnimation.mjs';
 import {createLight} from './darkness.mjs';
@@ -31,7 +31,7 @@ export const fogCloud = {
             label: 'CHRISPREMADES.Config.RealDarkness',
             category: 'mechanics'
         },
-        darknessAnimation: cprConstants.darknessAnimationConfig,
+        darknessAnimation: cpr.darknessAnimationConfig,
         animation: {
             default: {
                 source: 'chris-premades',

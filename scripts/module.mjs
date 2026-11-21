@@ -10,6 +10,10 @@ import {dmgCleaveHooks} from './macros/legacy/homebrew/dmgCleave.mjs';
 import * as weaponMasteries from './macros/weaponMasteries.mjs';
 import {api, constants as catConstants} from './proxy.mjs';
 import {registerSettings} from './settings.mjs';
+
+export {default as cprUtils} from './utils.mjs';
+export {constants as cpr};
+
 Hooks.once('catInit', () => {
     registerSettings();
     Hooks.on(catConstants.workflowHookNames.rollFinished, dmgCleaveHooks.rollFinished);

@@ -1,6 +1,5 @@
-import utils from '../../../utils.mjs';
-import cprConstants from '../../../constants.mjs';
 import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, genericUtils, Logging, rollUtils, workflowUtils} from '../../../proxy.mjs';
+import {cpr, cprUtils} from '../../../module.mjs';
 function getSaveDC(actor, item) {
     const castActivity = item.system.activities.getByType('cast')[0];
     const ability = castActivity?.spell.ability || actor.system.attributes.spellcasting || 'int';
@@ -18,12 +17,12 @@ async function weave({document: activity, workflow}) {
         ability = await dialogUtils.buttonDialog(activity.item.name, 'CHRISPREMADES.Macros.Modern.TwistedHex.Ability', buttons);
         if (!ability) return;
     }
-    const itemData = await compendiumUtils.getDocumentByIdentifier(cprConstants.packs.misc.automationItems, 'twisted-hex-charm', {object: true, translate: 'CHRISPREMADES.Macros.Modern.TwistedHex.Charm'});
+    const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'twisted-hex-charm', {object: true, translate: 'CHRISPREMADES.Macros.Modern.TwistedHex.Charm'});
     if (!itemData) return Logging.addMacroWarning('CPR', 'twisted-hex', 'Twisted Hex charm missing from the automation items compendium.', {notify: 'warn'});
     itemData.effects.forEach(effect => effect.system.changes.forEach(change => change.key = change.key.replaceAll('{ability}', ability)));
     genericUtils.setProperty(itemData, 'flags.chris-premades.twistedHex', {ability, dc: getSaveDC(workflow.actor, activity.item)});
-    await utils.deleteCharms(workflow.actor, 'twistedHex');
-    await utils.createCharms(targetToken.actor, [itemData], {key: 'twistedHex', source: workflow.actor});
+    await cprUtils.deleteCharms(workflow.actor, 'twistedHex');
+    await cprUtils.createCharms(targetToken.actor, [itemData], {key: 'twistedHex', source: workflow.actor});
 }
 async function resist(charm, actor, ability) {
     const hexData = charm.flags['chris-premades']?.twistedHex;
@@ -50,7 +49,7 @@ async function attackFinished({document, actor, workflow}) {
 async function filterTargets({document: activity, workflow}) {
     if (!workflow.targets.count) return;
     const charms = automationUtils.getConfigValue(activity.item, 'charms');
-    const invalid = workflow.targets.documents.filter(target => !utils.carriesCharm(target.actor, workflow.actor, charms));
+    const invalid = workflow.targets.documents.filter(target => !cprUtils.carriesCharm(target.actor, workflow.actor, charms));
     if (!invalid.length) return;
     genericUtils.notify('CHRISPREMADES.Macros.Modern.OldBlessing.NoCharm', {type: 'warn', format: {names: invalid.map(target => target.name).join(', ')}});
     await workflowUtils.removeTargets(workflow, invalid);
