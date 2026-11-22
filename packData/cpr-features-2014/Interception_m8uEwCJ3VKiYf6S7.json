@@ -193,17 +193,13 @@
     }
   },
   "flags": {
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.11",
+        "aliases": [
+          "interception"
+        ]
       },
       "macros": {
         "roll": [

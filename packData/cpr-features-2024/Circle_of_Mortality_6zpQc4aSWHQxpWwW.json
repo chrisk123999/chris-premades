@@ -556,7 +556,7 @@
       "genericConfig": {
         "chris-premades": {
           "damageBonusToOneRoll": {
-            "bonus": "@scale.grave.pull-of-death",
+            "bonus": "@scale.grave-domain.pull-of-death",
             "bonusDamageType": [
               "necrotic"
             ],
@@ -599,7 +599,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       }
     }
   },

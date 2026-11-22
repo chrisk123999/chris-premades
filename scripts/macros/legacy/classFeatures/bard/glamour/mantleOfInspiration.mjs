@@ -1,12 +1,12 @@
 import {'mantle-of-inspiration' as mantleAll} from '../../../../all.mjs';
 export const mantleOfInspiration = {
     name: 'MantleOfInspiration',
-    version: '2.1.8',
+    version: '2.1.11',
     rules: '2014',
     config: {
         ...mantleAll.config,
         subclassIdentifier: {
-            default: 'glamour',
+            default: 'college-glamour',
             type: 'text',
             label: 'CHRISPREMADES.Config.SubclassIdentifier',
             category: 'behavior'

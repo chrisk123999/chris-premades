@@ -88,7 +88,8 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.11"
+        "version": "2.1.11",
+        "sourceType": "subclass:battle-smith"
       },
       "alternateAttributes": {
         "Ability": [

@@ -12,6 +12,13 @@ const foreignFlags = [
 const worldReference = /^(Scene|Actor|Compendium\.world)\./;
 const volatileDuration = ['startTime', 'startRound', 'startTurn'];
 const keptStats = ['coreVersion', 'systemId', 'systemVersion'];
+const badID = new Set([
+    'consumable', 'new-consumable',
+    'equipment', 'new-equipment',
+    'feature', 'new-feature',
+    'spell', 'new-spell',
+    'weapon', 'new-weapon'
+]);
 function cleanStats(document) {
     if (!document._stats) return;
     document._stats = Object.fromEntries(keptStats.map(key => [key, document._stats[key]]));
@@ -105,9 +112,16 @@ export function cleanEntry(entry, pack) {
         volatileDuration.forEach(key => delete effect.duration?.[key]);
     });
     (entry.items ?? []).forEach(item => cleanEntry(item));
-    if (pack !== 'cpr-automation-items' && entry.system?.activities) {
-        const missingInfo = verifyAutomationInfo(entry, pack);
-        if (missingInfo) warnings.push(missingInfo);
+    if (entry.system?.activities) {
+        if (badID.has(entry.system.identifier)) warnings.push(makeWarning(
+            `Item has a default identifier!`,
+            `${entry.name} > ${entry.system.identifier}`,
+            `Pack: ${pack} | Item: ${entry._id}`
+        ));
+        if (pack !== 'cpr-automation-items') {
+            const missingInfo = verifyAutomationInfo(entry, pack);
+            if (missingInfo) warnings.push(missingInfo);
+        }
     }
     return warnings;
 }

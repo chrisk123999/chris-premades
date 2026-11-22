@@ -40,7 +40,7 @@
         },
         "flags": {
           "cat": {
-            "genericConfig": {}
+            "spellIdentifier": "find-familiar"
           }
         },
         "range": {
@@ -197,27 +197,9 @@
   },
   "flags": {
     "cat": {
-      "genericConfig": {
-        "chris-premades": {
-          "correctSpellLink": {
-            "activity": "9IAD7uGwHYv4aRyM",
-            "identifier": "find-familiar",
-            "packIds": []
-          }
-        }
-      },
-      "macros": {
-        "item": [
-          {
-            "source": "chris-premades",
-            "identifier": "correctSpellLink",
-            "rules": "all"
-          }
-        ]
-      },
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.11"
       }
     }
   },

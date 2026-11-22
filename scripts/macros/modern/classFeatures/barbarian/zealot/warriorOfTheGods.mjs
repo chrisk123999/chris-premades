@@ -1,10 +1,10 @@
 export const warriorOfTheGods = {
     name: 'WarriorOfTheGods',
-    version: '2.1.4',
+    version: '2.1.11',
     rules: '2024',
     config: {
         subclassIdentifier: {
-            default: 'zealot',
+            default: 'path-zealot',
             type: 'text',
             label: 'CHRISPREMADES.Config.SubclassIdentifier',
             category: 'behavior'

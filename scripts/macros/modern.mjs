@@ -88,7 +88,7 @@ export {unbreakableMajesty as 'unbreakable-majesty'} from './modern/classFeature
 /*********************************/
 export {channelDivinity as 'channel-divinity|class:cleric', divineSparkDamage, turnUndead} from './modern/classFeatures/cleric/channelDivinity.mjs';
 export {divineIntervention as 'divine-intervention'} from './modern/classFeatures/cleric/divineIntervention.mjs';
-export {divineStrike as 'blessed-strikes-divine-strike'} from './modern/classFeatures/cleric/divineStrike.mjs';
+export {divineStrike as 'divine-strike'} from './modern/classFeatures/cleric/divineStrike.mjs';
 export {greaterDivineIntervention as 'greater-divine-intervention', greaterDivineInterventionRest as 'greater-divine-intervention-rest'} from './modern/classFeatures/cleric/greaterDivineIntervention.mjs';
 export {improvedPotentSpellcasting as 'improved-blessed-strikes'} from './modern/classFeatures/cleric/improvedPotentSpellcasting.mjs';
 
@@ -115,7 +115,7 @@ export {warGodsBlessing as 'war-gods-blessing'} from './modern/classFeatures/cle
 /*             Druid             */
 /*********************************/
 export {archdruid} from './modern/classFeatures/druid/archdruid.mjs';
-export {primalStrike as 'elemental-fury-primal-strike'} from './modern/classFeatures/druid/primalStrike.mjs';
+export {primalStrike as 'primal-strike'} from './modern/classFeatures/druid/primalStrike.mjs';
 export {wildResurgence as 'wild-resurgence'} from './modern/classFeatures/druid/wildResurgence.mjs';
 export {wildShape as 'wild-shape'} from './modern/classFeatures/druid/wildShape.mjs';
 

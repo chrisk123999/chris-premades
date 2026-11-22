@@ -1,13 +1,13 @@
 import {circleOfMortality as mortalityAll} from '../../../../all/classFeatures/cleric/grave/circleOfMortality.mjs';
 export const circleOfMortality = {
     name: 'Circle of Mortality',
-    version: '2.1.9',
+    version: '2.1.11',
     rules: '2024',
     roll: mortalityAll.roll,
     config: {
         ...mortalityAll.config,
         subclassIdentifier: {
-            default: 'grave',
+            default: 'grave-domain',
             type: 'text',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SubclassIdentifier'

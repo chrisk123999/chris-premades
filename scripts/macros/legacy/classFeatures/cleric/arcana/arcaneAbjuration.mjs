@@ -42,13 +42,13 @@ export const arcaneAbjuration = {
             get options() { return constants.characterLevelOptions; }
         },
         banish: {
-            default: '@scale.arcana.arcane-abjuration',
+            default: '@scale.arcana-domain.arcane-abjuration',
             type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Legacy.ArcaneAbjuration.BanishCR'
         },
         subclassIdentifier: {
-            default: 'arcana',
+            default: 'arcana-domain',
             type: 'text',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SubclassIdentifier'

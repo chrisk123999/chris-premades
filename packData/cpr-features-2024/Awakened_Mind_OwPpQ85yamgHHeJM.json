@@ -63,7 +63,8 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.8"
+        "version": "2.1.11",
+        "sourceType": "race:elf"
       }
     }
   },

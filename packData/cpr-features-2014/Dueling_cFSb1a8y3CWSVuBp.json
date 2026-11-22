@@ -38,23 +38,6 @@
     }
   },
   "flags": {
-    "dae": {
-      "alwaysActive": false,
-      "activeEquipped": false
-    },
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "macros": {
         "roll": [
@@ -66,8 +49,11 @@
         ]
       },
       "automation": {
-        "version": "2.0.3",
-        "source": "chris-premades"
+        "version": "2.1.11",
+        "source": "chris-premades",
+        "aliases": [
+          "dueling"
+        ]
       }
     }
   },

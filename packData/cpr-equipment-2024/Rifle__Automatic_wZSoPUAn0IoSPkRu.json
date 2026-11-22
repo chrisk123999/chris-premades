@@ -466,7 +466,7 @@
         }
       }
     },
-    "identifier": "automatic-rifle",
+    "identifier": "rifle-automatic",
     "ammunition": {
       "type": "firearmBullet"
     },
@@ -479,7 +479,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.11"
       },
       "macros": {
         "roll": [

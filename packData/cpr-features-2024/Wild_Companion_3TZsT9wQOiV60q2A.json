@@ -39,7 +39,7 @@
         },
         "flags": {
           "cat": {
-            "genericConfig": {}
+            "spellIdentifier": "find-familiar"
           }
         },
         "range": {
@@ -198,16 +198,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
-      },
-      "macros": {
-        "item": [
-          {
-            "source": "chris-premades",
-            "identifier": "correctSpellLink",
-            "rules": "all"
-          }
-        ]
+        "version": "2.1.11"
       }
     }
   },
