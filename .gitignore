@@ -11,3 +11,4 @@ wiki/*.md
 !wiki/Getting-Started.md
 !wiki/Info.md
 !wiki/_Sidebar.md
+!wiki/v13-*.md
