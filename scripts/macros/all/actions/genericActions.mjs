@@ -151,15 +151,15 @@ export const genericActions = {
         actions: {
             default: [],
             type: 'select-many',
-            label: 'CHRISPREMADES.Macros.All.GenericActions.Actions',
-            hint: 'CHRISPREMADES.Macros.All.GenericActions.ActionsHint',
+            label: 'CHRISPREMADES.Macros.All.GenericActions.Actions.Label',
+            hint: 'CHRISPREMADES.Macros.All.GenericActions.Actions.Hint',
             category: 'mechanics',
             options: item => getActionsIndex(getItemRules(item)).map(entry => ({value: entry.system.identifier, label: entry.name}))
         }
     }
 };
 function hideConfig(dc) {
-    return {hideDC: {default: dc, type: 'formula', deterministic: true, category: 'homebrew', label: 'CHRISPREMADES.Macros.All.GenericActions.HideDC', hint: 'CHRISPREMADES.Macros.Generic.Hide.DCHint'}};
+    return {hideDC: {default: dc, type: 'formula', deterministic: true, category: 'homebrew', label: 'CHRISPREMADES.Macros.All.GenericActions.HideDC', hint: 'CHRISPREMADES.Macros.Generic.Hide.DC.Hint'}};
 }
 function labelConfig(config, labels) {
     return Object.fromEntries(Object.entries(labels).map(([key, label]) => [key, Object.defineProperties({}, {...Object.getOwnPropertyDescriptors(config[key]), label: {value: 'CHRISPREMADES.Macros.All.GenericActions.' + label, enumerable: true}})]));

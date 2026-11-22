@@ -11,17 +11,12 @@ async function rollFinished({document, workflow}) {
     await effectUtils.endConcentration(workflow.actor, workflow.item);
 }
 /**
- * Ends concentration on the spell when the roll left no creature affected.
- * Bound on an item or an activity. Fires on `itemRollFinished` and `activityRollFinished`.
- *
- * Config:
- * - `condition`: what counts as unaffected. No failed saves, no targets, or no hits.
- * - `activityId`: only check uses of this activity. Empty checks every activity.
+ * Ends the caster's concentration on this item when a use leaves no creature affected.
  */
 export const endIfUnaffected = {
     rules: 'all',
     version: '2.0.0',
-    category: 'utility',
+    category: 'mechanics',
     generic: true,
     documents: ['item', 'activity'],
     roll: [
@@ -41,8 +36,8 @@ export const endIfUnaffected = {
             default: 'failedSave',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.EndIfUnaffected.Condition',
-            hint: 'CHRISPREMADES.Macros.Generic.EndIfUnaffected.ConditionHint',
+            label: 'CHRISPREMADES.Macros.Generic.EndIfUnaffected.Condition.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.EndIfUnaffected.Condition.Hint',
             get options() { return Object.keys(unaffected).map(value => ({value, label: 'CHRISPREMADES.Macros.Generic.EndIfUnaffected.ConditionOptions.' + value})); }
         },
         activityId: {
@@ -50,7 +45,7 @@ export const endIfUnaffected = {
             type: 'selectActivity',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Activity',
-            hint: 'CHRISPREMADES.Macros.Generic.EndIfUnaffected.ActivityHint'
+            hint: 'CHRISPREMADES.Macros.Generic.EndIfUnaffected.Activity.Hint'
         }
     }
 };

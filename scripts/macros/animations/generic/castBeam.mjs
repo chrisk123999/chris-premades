@@ -175,7 +175,7 @@ export const castBeam = {
     category: 'generic',
     get config() {
         return {
-            style: styleOption(['strands', 'projectile', 'lightning'], 'strands', 'CHRISPREMADES.Animations.SpellParts.StyleBeamHint'),
+            style: styleOption(['strands', 'projectile', 'lightning'], 'strands', 'CHRISPREMADES.Animations.SpellParts.StyleBeam.Hint'),
             color: colorOption(colorMap, ['purple', 'green', 'blue', 'orange', 'yellow']),
             cast: partOption('Cast'),
             shake: partOption('Shake'),

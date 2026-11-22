@@ -5,8 +5,8 @@ export const riderNearbyRangeConfig = {
     default: 0,
     type: 'number',
     category: 'behavior',
-    label: 'CHRISPREMADES.Macros.Generic.Common.RiderNearbyRange',
-    hint: 'CHRISPREMADES.Macros.Generic.Common.RiderNearbyRangeHint'
+    label: 'CHRISPREMADES.Macros.Generic.Common.RiderNearbyRange.Label',
+    hint: 'CHRISPREMADES.Macros.Generic.Common.RiderNearbyRange.Hint'
 };
 export function withNearby(tokens, range) {
     if (!range) return tokens;
@@ -170,39 +170,9 @@ async function summonRider({document: activity, workflow}) {
     await rider({document: activity, actor: activity.actor, token: actorUtils.getFirstToken(activity.actor), workflow});
 }
 /**
- * Offers this activity as an optional damage bonus on a hit, then rolls it on the hit targets.
- * Bound on an activity. Fires on `actorOptionalBonusDamage` and `actorRollFinished`.
- *
- * Config:
- * - `bonus`: extra damage added to the roll when this option is chosen.
- * - `bonusDamageType`: damage type of the extra damage. Empty uses the type chosen with `selectDamageType` at use, then the attack's damage type.
- * - `creatureTypeBonus`: extra damage added when every hit target is one of `targetCreatureTypes`.
- * - `targetCreatureTypes`: creature types that receive `creatureTypeBonus`.
- * - `tag`: tagged options are offered as choices under the bonus that owns the tag.
- * - `limit`: how many tagged options can be chosen for one damage roll.
- * - `ownsTag`: offer `bonus` once, with this tag's options as choices; at least one must be chosen.
- * - `workflowProperty`: only offer when an earlier bonus has set this workflow property.
- * - `identifiers`: only offer for attacks with items that have one of these identifiers.
- * - `attackType`: only offer for this attack type.
- * - `weaponTypes`: only offer for attacks with weapons of one of these types.
- * - `damageTypes`: only offer when the damage roll deals one of these damage types.
- * - `criticalOnly`: only offer on a critical hit.
- * - `singleTarget`: only offer when the attack hits exactly one target.
- * - `automatic`: apply the rider without offering it as a choice.
- * - `maxSize`: only offer when every hit target is this size or smaller.
- * - `sizeAboveUser`: only offer when every hit target is at most this many sizes larger than the attacker. Blank ignores size.
- * - `attackModes`: only offer for attacks made in one of these attack modes.
- * - `requiredItems`: only offer when the actor has an item with one of these identifiers.
- * - `suppressedBy`: do not offer when the actor has an item with one of these identifiers.
- * - `ownTurn`: in combat, only offer on the attacker's own turn.
- * - `selfAsTouch`: a Self range activity is rolled on the hit targets instead of the attacker.
- * - `riderNearbyRange`: the activity also targets creatures within this many feet of the hit targets. 0 targets the hit targets only.
- * - `riderPick`: the owner picks one creature from the hit targets and those within `riderNearbyRange` to roll the activity on.
- * - `properties`: only offer for attacks with items that have one of these properties.
- * - `oncePerTurn`: offer once per turn across every activity on this item. Outside combat it is always offered.
- * - `summonAttacks`: also offer when a summon created by an item with one of these identifiers hits. Item filters only apply to the owner's own attacks.
- * - `useActivityCosts`: apply the activity's costs and scaling. Not offered when they cannot be paid.
- * - `animation`: played on each hit target when the rider is used.
+ * Offers this activity as an optional damage bonus when an attack hits, then rolls the activity on the hit targets.
+ * Its options limit which attacks offer it. Riders that share a tag can be grouped under one bonus, and the attacker
+ * picks which of them to apply.
  */
 export const attackRider = {
     rules: 'all',
@@ -244,65 +214,65 @@ export const attackRider = {
             inputs: ['targetToken'],
             category: 'animations',
             label: 'CHRISPREMADES.Config.Animation',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.RiderAnimationHint'
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RiderAnimation.Hint'
         },
         bonus: {
             default: '',
             type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageBonus',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.BonusHint'
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.Bonus.Hint'
         },
         bonusDamageType: {
             default: '',
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.BonusDamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.BonusDamageType.Hint',
             get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.damageTypeOptions]; }
         },
         creatureTypeBonus: {
             default: '',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.CreatureTypeBonus',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.CreatureTypeBonusHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.CreatureTypeBonus.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.CreatureTypeBonus.Hint'
         },
         targetCreatureTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.TargetCreatureTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.TargetCreatureTypesHint',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.TargetCreatureTypes.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.TargetCreatureTypes.Hint',
             get options() { return constants.creatureTypeOptions; }
         },
         tag: {
             default: '',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.Tag',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.TagHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.Tag.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.Tag.Hint'
         },
         ownsTag: {
             default: '',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnsTag',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnsTagHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnsTag.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnsTag.Hint'
         },
         limit: {
             default: '1',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.Limit',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.LimitHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.Limit.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.Limit.Hint'
         },
         workflowProperty: {
             default: '',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.WorkflowProperty',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.WorkflowPropertyHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.WorkflowProperty.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.WorkflowProperty.Hint'
         },
         identifiers: identifiersConfig,
         attackType: attackTypeConfig,
@@ -311,44 +281,44 @@ export const attackRider = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageType.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         criticalOnly: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.CriticalOnly',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.CriticalOnlyHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.CriticalOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.CriticalOnly.Hint'
         },
         singleTarget: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SingleTarget',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SingleTargetHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SingleTarget.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SingleTarget.Hint'
         },
         automatic: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.Automatic',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.AutomaticHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.Automatic.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.Automatic.Hint'
         },
         weaponTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.WeaponTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.WeaponTypesHint',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.WeaponTypes.Hint',
             get options() { return constants.weaponTypes; }
         },
         attackAbility: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Abilities',
-            hint: 'CHRISPREMADES.Macros.Generic.RollBonus.AbilityHint',
+            label: 'CHRISPREMADES.Macros.Generic.Common.Abilities',
+            hint: 'CHRISPREMADES.Macros.Generic.RollBonus.Ability.Hint',
             get options() { return constants.abilityOptions; }
         },
         maxSize: {
@@ -356,86 +326,88 @@ export const attackRider = {
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.MaxSize',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.MaxSizeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.MaxSize.Hint',
             get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.sizeOptions]; }
         },
         sizeAboveUser: {
             default: '',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SizeAboveUser',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SizeAboveUserHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SizeAboveUser.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SizeAboveUser.Hint'
         },
         attackModes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.AttackModes',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.AttackModes.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.AttackModes.Hint',
             get options() { return Object.entries(CONFIG.DND5E.attackModes).map(([value, {label}]) => ({value, label})); }
         },
         requiredItems: {
             default: [],
             type: 'selectIdentifiers',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.RequiredItems',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.RequiredItemsHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.RequiredItems.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.RequiredItems.Hint'
         },
         suppressedBy: {
             default: [],
             type: 'selectIdentifiers',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SuppressedBy',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SuppressedByHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SuppressedBy.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SuppressedBy.Hint'
         },
         ownTurn: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnTurn',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnTurnHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnTurn.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnTurn.Hint'
         },
         selfAsTouch: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SelfAsTouch',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SelfAsTouchHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SelfAsTouch.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SelfAsTouch.Hint'
         },
         riderNearbyRange: riderNearbyRangeConfig,
         riderPick: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.RiderPick',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.RiderPickHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.RiderPick.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.RiderPick.Hint'
         },
         properties: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Properties',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.PropertyHint',
+            label: 'CHRISPREMADES.Macros.Generic.Common.Properties',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.Property.Hint',
             get options() { return constants.itemProperties; }
         },
         oncePerTurn: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OncePerTurnHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OncePerTurn.Hint'
         },
         summonAttacks: {
             default: [],
             type: 'selectIdentifiers',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SummonAttacks',
-            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SummonAttacksHint'
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.SummonAttacks.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.SummonAttacks.Hint'
         },
         useActivityCosts: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Common.Costs'
+            label: 'CHRISPREMADES.Macros.Generic.Common.Costs',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.Costs.Hint'
         }
     }
 };

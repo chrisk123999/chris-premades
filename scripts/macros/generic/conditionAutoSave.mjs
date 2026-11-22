@@ -18,13 +18,8 @@ async function save({config, options, document, token}) {
     await workflowUtils.completeItemUse(document, [token]);
 }
 /**
- * Makes the actor automatically succeed on saves against activities that apply one of the listed conditions.
- * Bound on an item. Fires on `actorTargetSituational`.
- *
- * Config:
- * - `conditions`: conditions that trigger the automatic success.
- * - `magical`: only trigger against spells and magical items.
- * - `display`: roll this item when it triggers.
+ * Makes the actor automatically succeed on saving throws against activities that apply one of the chosen conditions.
+ * The save's minimum result is raised to its success value.
  */
 export const conditionAutoSave = {
     rules: 'all',
@@ -45,19 +40,22 @@ export const conditionAutoSave = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Conditions',
+            hint: 'CHRISPREMADES.Macros.Generic.ConditionAutoSave.Conditions.Hint',
             get options() {return constants.statusOptions;}
         },
         magical: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Magical'
+            label: 'CHRISPREMADES.Macros.Generic.Common.Magical',
+            hint: 'CHRISPREMADES.Macros.Generic.ConditionAutoSave.Magical.Hint'
         },
         display: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Display'
+            label: 'CHRISPREMADES.Macros.Generic.Common.Display',
+            hint: 'CHRISPREMADES.Macros.Generic.ConditionAutoSave.Display.Hint'
         }
     }
 };

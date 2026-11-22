@@ -2,11 +2,12 @@ import {activityUtils, automationUtils, constants, dialogUtils, rollUtils, workf
 async function reroll({actor, config, dialog, document: item, message, roll, macroClass: {identifier}, checkId, saveId, skillId, toolId}) {
     const settings = automationUtils.getGenericConfigValues(item, 'chris-premades', identifier, configKeys);
     if (settings.failedOnly && roll.isSuccess) return;
-    if (settings.oncePerRoll && workflowUtils.getWorkflowProperty(config, identifier)) return;
+    const activity = item.system.activities.get(settings.rollActivity);
+    const prompts = !!(activity && settings.consume);
+    if ((settings.oncePerRoll || !prompts) && workflowUtils.getWorkflowProperty(config, identifier)) return;
     if (settings.ability?.length && !settings.ability.includes(config.ability)) return;
     if (settings.skill?.length && !settings.skill.includes(config.skill)) return;
     if (settings.tool?.length && !settings.tool.includes(config.tool)) return;
-    const activity = item.system.activities.get(settings.rollActivity);
     if (activity && settings.consume) {
         if (!activityUtils.checkCosts(activity)) return;
         if (!await dialogUtils.confirmUseRollTotal(item, roll.total)) return;
@@ -37,53 +38,55 @@ const genericConfig = {
         type: 'formula',
         category: 'behavior',
         label: 'CHRISPREMADES.Config.Formula',
-        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.BonusHint'
+        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Bonus.Hint'
     },
     ability: {
         default: [],
         type: 'select-many',
         category: 'behavior',
-        label: 'CHRISPREMADES.Config.Abilities',
-        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.AbilityHint',
+        label: 'CHRISPREMADES.Macros.Generic.Common.Abilities',
+        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Ability.Hint',
         get options() { return constants.abilityOptions; }
     },
     failedOnly: {
         default: true,
         type: 'checkbox',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Failed',
-        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.FailedHint'
+        label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Failed.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Failed.Hint'
     },
     oncePerRoll: {
         default: true,
         type: 'checkbox',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Once',
-        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.OnceHint'
+        label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Once.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Once.Hint'
     },
     consume: {
         default: false,
         type: 'select',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Consume',
-        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.CostsHint',
+        label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Consume.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Consume.Hint',
         options: [
             {label: 'CHRISPREMADES.Config.None', value: false},
-            {label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Consume', value: 'always'},
-            {label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.ConsumeSuccess', value: 'success'}
+            {label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Consume.Label', value: 'always'},
+            {label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.ConsumeSuccess.Label', value: 'success'}
         ]
     },
     rollActivity: {
         default: '',
         type: 'selectActivity',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity'
+        label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Hint'
     },
     rollItem: {
         default: true,
         type: 'checkbox',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.Common.RollItem'
+        label: 'CHRISPREMADES.Macros.Generic.Common.RollItem.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.Common.RollItem.Hint'
     }
 };
 const skill = {
@@ -91,7 +94,7 @@ const skill = {
     type: 'select-many',
     category: 'behavior',
     label: 'CHRISPREMADES.Config.Skills',
-    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.SkillHint',
+    hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Skill.Hint',
     get options() { return constants.skillOptions; }
 };
 const tool = {
@@ -99,14 +102,14 @@ const tool = {
     type: 'select-many',
     category: 'behavior',
     label: 'CHRISPREMADES.Config.Tools',
-    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.ToolHint',
+    hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Tool.Hint',
     get options() { return constants.toolOptions; }
 };
 const configKeys = [...Object.keys(genericConfig), 'skill', 'tool'];
 const base = {
     rules: 'all',
-    version: '2.1.9',
-    category: 'utility',
+    version: '2.1.11',
+    category: 'behavior',
     generic: true,
     documents: ['item'],
     genericConfig
@@ -119,25 +122,9 @@ const pass = [
     }
 ];
 /**
- * Rerolls a d20 roll with an added bonus and keeps the new result.
- * Bound on an item. Fires on `actorBonus`.
- *
- * Variants:
- * - `rerollCheckWithBonus`: rerolls ability checks.
- * - `rerollSaveWithBonus`: rerolls saving throws.
- * - `rerollSkillWithBonus`: rerolls skill checks. Adds the `skill` config.
- * - `rerollToolWithBonus`: rerolls tool checks. Adds the `tool` config.
- *
- * Config:
- * - `bonus`: formula added to the reroll.
- * - `ability`: limit the reroll to a list of abilities.
- * - `failedOnly`: the reroll is offered on failed rolls only.
- * - `oncePerRoll`: the reroll can be used once per roll.
- * - `consume`: spend costs always or only when the reroll succeeds. With an activity set, costs must be payable first.
- * - `rollActivity`: roll this activity when used.
- * - `rollItem`: roll this item when used and no activity is set.
- * - `skill`: limit the reroll to a list of skills.
- * - `tool`: limit the reroll to a list of tools.
+ * Rerolls a d20 roll with an added bonus and keeps the new result, with one variant each for ability checks, saving
+ * throws, skill checks and tool checks. The discarded roll stays visible on the chat card. When the reroll consumes the
+ * roll activity's costs, the owner confirms first and the reroll is skipped if the costs can't be paid.
  */
 export const rerollCheckWithBonus = {...base, check: pass};
 export const rerollSaveWithBonus = {...base, save: pass};

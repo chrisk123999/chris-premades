@@ -36,19 +36,8 @@ async function damage({document: item, ditem, workflow, targetToken, macroClass:
     if (amount > 0) workflowUtils.modifyDamageAppliedFlat(ditem, -amount);
 }
 /**
- * Rolls an activity to reduce damage taken by the owner, or by creatures near it.
- * Bound on an item. Fires on `sceneDamageFlatReductions`.
- *
- * Config:
- * - `rollActivity`: rolled when it triggers. The first one whose costs can be paid is used; its roll total is the reduction.
- * - `range`: also protect other creatures within this distance. 0 protects the owner only.
- * - `alliesOnly`: with a range, only protect allies of the owner.
- * - `source`: only reduce damage from any source, magical sources or attacks.
- * - `attackType`: only reduce damage from this attack type.
- * - `damageTypes`: only reduce damage that includes one of these types.
- * - `skipIncapacitated`: does not trigger while the owner is incapacitated.
- * - `seeSource`: only trigger when the owner can see the creature dealing the damage.
- * - `confirm`: prompt the owner before using it.
+ * Rolls an activity to reduce damage taken by the owner, or by creatures near it, when a hit deals damage. The roll total
+ * is subtracted from the damage. A reaction activity is skipped once the owner's reaction is spent.
  */
 export const reduceDamageTaken = {
     rules: 'all',
@@ -69,27 +58,29 @@ export const reduceDamageTaken = {
             default: [],
             type: 'selectActivities',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.RollActivity',
-            hint: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.RollActivityHint'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.RollActivity.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.RollActivity.Hint'
         },
         range: {
             default: '0',
             type: 'text',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Range',
-            hint: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.RangeHint'
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.Range.Hint'
         },
         alliesOnly: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.AlliesOnly'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.AlliesOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.AlliesOnly.Hint'
         },
         source: {
             default: 'any',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.Source',
+            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.Source.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.Source.Hint',
             options: [
                 {label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.Any', value: 'any'},
                 {label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.Magical', value: 'magical'},
@@ -102,26 +93,29 @@ export const reduceDamageTaken = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageType.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         skipIncapacitated: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.SkipIncapacitated'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.SkipIncapacitated.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.SkipIncapacitated.Hint'
         },
         seeSource: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.SeeSource'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.SeeSource.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.SeeSource.Hint'
         },
         confirm: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.Confirm'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.Confirm.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.Confirm.Hint'
         }
     }
 };

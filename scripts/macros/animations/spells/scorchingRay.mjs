@@ -151,7 +151,7 @@ export const scorchingRay = {
                 default: 'complex',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Animation',
-                hint: 'CHRISPREMADES.Animations.ScorchingRayTypeHint',
+                hint: 'CHRISPREMADES.Animations.ScorchingRayType.Hint',
                 options: {
                     simple: {
                         label: 'CHRISPREMADES.Config.Animations.Simple'
@@ -166,15 +166,15 @@ export const scorchingRay = {
                 default: 'orange',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Color',
-                hint: 'CHRISPREMADES.Animations.ScorchingRayColorHint',
+                hint: 'CHRISPREMADES.Animations.ScorchingRayColor.Hint',
                 options: animationUtils.buildColorOptions(colorMap, {
                     freeColors: ['orange'],
                     labelPrefix: 'CHRISPREMADES.Config.Colors.'
                 })
             },
             sound: {
-                label: 'CHRISPREMADES.Config.Sound',
-                hint: 'CHRISPREMADES.Config.SoundHint',
+                label: 'CHRISPREMADES.Config.Sound.Label',
+                hint: 'CHRISPREMADES.Config.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
                 default: ''

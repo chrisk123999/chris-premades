@@ -146,7 +146,7 @@ export const castBurst = {
     category: 'generic',
     get config() {
         return {
-            style: styleOption(['bell', 'impact', 'splash', 'drain'], 'bell', 'CHRISPREMADES.Animations.SpellParts.StyleBurstHint'),
+            style: styleOption(['bell', 'impact', 'splash', 'drain'], 'bell', 'CHRISPREMADES.Animations.SpellParts.StyleBurst.Hint'),
             color: colorOption(colorMap, ['green', 'blue', 'orange', 'yellow']),
             cast: partOption('Cast'),
             shake: partOption('Shake')

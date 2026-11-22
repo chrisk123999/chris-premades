@@ -73,29 +73,29 @@ export const mirrorImage = {
         thresholds: {
             default: '11, 8, 6',
             type: 'text',
-            label: 'CHRISPREMADES.Macros.All.MirrorImage.Thresholds',
-            hint: 'CHRISPREMADES.Macros.All.MirrorImage.ThresholdsHint',
+            label: 'CHRISPREMADES.Macros.All.MirrorImage.Thresholds.Label',
+            hint: 'CHRISPREMADES.Macros.All.MirrorImage.Thresholds.Hint',
             category: 'homebrew'
         },
         dieSize: {
             default: 'd6',
             type: 'text',
             label: 'CHRISPREMADES.Config.DieSize',
-            hint: 'CHRISPREMADES.Macros.All.MirrorImage.DieSizeHint',
+            hint: 'CHRISPREMADES.Macros.All.MirrorImage.DieSize.Hint',
             category: 'homebrew'
         },
         duplicateBaseAC: {
             default: 10,
             type: 'number',
-            label: 'CHRISPREMADES.Macros.All.MirrorImage.DuplicateBaseAC',
-            hint: 'CHRISPREMADES.Macros.All.MirrorImage.DuplicateBaseACHint',
+            label: 'CHRISPREMADES.Macros.All.MirrorImage.DuplicateBaseAC.Label',
+            hint: 'CHRISPREMADES.Macros.All.MirrorImage.DuplicateBaseAC.Hint',
             category: 'homebrew'
         },
         threshold: {
             default: 3,
             type: 'number',
-            label: 'CHRISPREMADES.Macros.All.MirrorImage.Threshold',
-            hint: 'CHRISPREMADES.Macros.All.MirrorImage.ThresholdHint',
+            label: 'CHRISPREMADES.Macros.All.MirrorImage.Threshold.Label',
+            hint: 'CHRISPREMADES.Macros.All.MirrorImage.Threshold.Hint',
             category: 'homebrew'
         },
         animation: {

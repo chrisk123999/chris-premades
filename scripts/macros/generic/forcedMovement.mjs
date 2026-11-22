@@ -50,28 +50,28 @@ function buildConfig(animationIdentifier) {
             type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Distance',
-            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.DistanceHint'
+            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.Distance.Hint'
         },
         choose: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PushOnFail.Choose',
-            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.ChooseHint'
+            label: 'CHRISPREMADES.Macros.Generic.PushOnFail.Choose.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.Choose.Hint'
         },
         stopAdjacent: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PushOnFail.StopAdjacent',
-            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.StopAdjacentHint'
+            label: 'CHRISPREMADES.Macros.Generic.PushOnFail.StopAdjacent.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.StopAdjacent.Hint'
         },
         maxSize: {
             default: '',
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.MaxSize',
-            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.MaxSizeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.MaxSize.Hint',
             get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.sizeOptions]; }
         },
         animation: {
@@ -83,14 +83,14 @@ function buildConfig(animationIdentifier) {
             inputs: ['sourceToken', 'targetToken', 'options'],
             category: 'animations',
             label: 'CHRISPREMADES.Config.Animation',
-            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.AnimationHint'
+            hint: 'CHRISPREMADES.Macros.Generic.PushOnFail.Animation.Hint'
         }
     };
 }
 const base = {
     rules: 'all',
     version: '2.1.9',
-    category: 'utility',
+    category: 'movement',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -102,21 +102,9 @@ const base = {
     ]
 };
 /**
- * Moves targets toward or away from the user once the roll finishes.
- * Bound on an activity. Fires on `activityRollFinished`.
- *
- * Variants:
- * - `pushOnFail`: pushes targets that failed the save.
- * - `pullOnFail`: pulls targets that failed the save.
- * - `pullOnHit`: pulls targets that were hit.
- * - `pushOnHit`: pushes targets that were hit.
- *
- * Config:
- * - `distance`: maximum distance in feet. Accepts a formula, rolled once per use.
- * - `choose`: prompt for the distance in 5 ft steps up to the maximum.
- * - `stopAdjacent`: a pull never moves the target past adjacent.
- * - `maxSize`: targets larger than this size are not moved.
- * - `animation`: played from the user to each target. The move runs inside it.
+ * Pushes targets away from the user or pulls them toward it once the roll finishes. There is one variant each for
+ * pushing or pulling targets that failed the save, and for pushing or pulling targets that were hit. Each target slides
+ * in a straight line as forced movement. Nothing happens when the activity is used without a token.
  */
 export const pushOnFail = {...base, genericConfig: buildConfig()};
 export const pullOnFail = {...base, genericConfig: buildConfig('castBeam')};

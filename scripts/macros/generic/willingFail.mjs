@@ -10,9 +10,8 @@ async function saved({document: activity, workflow}) {
     }
 }
 /**
- * Lets each non-hostile target that succeeds on the save choose to fail it instead.
- * Bound on an activity. Fires on `activitySavesComplete`.
- * The target's owner is asked, or the GM when no player owns it.
+ * Lets each non-hostile target that succeeds on the activity's save choose to fail it instead. The target's owner is
+ * asked, or the GM when no player owns it. The user's own actor is never asked.
  */
 export const willingFail = {
     rules: 'all',

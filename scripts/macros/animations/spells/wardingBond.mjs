@@ -69,7 +69,7 @@ export const wardingBond = {
     get config() {
         return {
             cast: partOption('Cast'),
-            tether: partOption('Tether', {hint: 'CHRISPREMADES.Animations.WardingBondTetherHint'})
+            tether: partOption('Tether', {hint: 'CHRISPREMADES.Animations.WardingBondTether.Hint'})
         };
     }
 };

@@ -176,8 +176,8 @@ export function difficultTerrain() {
 const freeDrawConfig = {
     default: false,
     type: 'checkbox',
-    label: 'CHRISPREMADES.Macros.Generic.Wall.FreeDraw',
-    hint: 'CHRISPREMADES.Macros.Generic.Wall.FreeDrawHint',
+    label: 'CHRISPREMADES.Macros.Generic.Wall.FreeDraw.Label',
+    hint: 'CHRISPREMADES.Macros.Generic.Wall.FreeDraw.Hint',
     category: 'homebrew'
 };
 /**

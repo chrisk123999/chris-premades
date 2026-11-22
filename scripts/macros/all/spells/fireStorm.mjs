@@ -77,8 +77,8 @@ export const fireStorm = {
         sparePlants: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.All.FireStorm.SparePlants',
-            hint: 'CHRISPREMADES.Macros.All.FireStorm.SparePlantsHint',
+            label: 'CHRISPREMADES.Macros.All.FireStorm.SparePlants.Label',
+            hint: 'CHRISPREMADES.Macros.All.FireStorm.SparePlants.Hint',
             category: 'behavior'
         },
         animation: {

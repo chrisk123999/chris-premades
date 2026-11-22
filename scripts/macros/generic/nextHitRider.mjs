@@ -36,8 +36,8 @@ async function incomingDamage({document: effect, workflow}) {
     if (!config.incoming || !config.bonus || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
     const targets = workflow.hitTargets.documents.filter(token => token.actor?.uuid === effect.parent?.uuid);
     if (!targets.length) return;
-    const {item} = getSpell(effect);
-    const roll = new CONFIG.Dice.DamageRoll(config.bonus, item?.getRollData() ?? {});
+    const {item, scaling} = getSpell(effect);
+    const roll = new CONFIG.Dice.DamageRoll(config.bonus, {...item?.getRollData(), scaling});
     const bonus = new DamageBonus(effect, {roll, optional: false, maxTargets: 1, maxScaling: 0, type: config.bonusDamageType});
     bonus.targets = targets;
     return bonus;
@@ -75,18 +75,9 @@ async function rider({document: effect, workflow}) {
     await documentUtils.deleteDocument(effect);
 }
 /**
- * Adds bonus damage to the next hit, then rolls a rider activity on the target and removes the effect. With no bonus, the next hit only triggers the rider.
- * Bound on an effect. Fires on `actorOptionalBonusDamage` and `actorRollFinished`.
- *
- * Config:
- * - `bonus`: extra damage added on the next hit. `@scaling` is the number of levels the spell was upcast.
- * - `bonusDamageType`: damage type of the bonus. None uses the attack's damage type.
- * - `attackType`: only trigger for this attack type. Empty matches any attack.
- * - `rollActivity`: activity rolled on the hit target after the bonus damage.
- * - `riderNearbyRange`: the rider activity also targets creatures within this many feet of the hit target. 0 targets the hit target only.
- * - `endSpell`: when the spell ends after the rider activity is rolled.
- * - `animation`: played on the hit target when the rider triggers.
- * - `incoming`: the bonus applies to the next attack against the creature with this effect, from any attacker. The effect ends after that attack.
+ * Adds bonus damage to the actor's next hit, then rolls a rider activity from the origin spell on the target and removes
+ * the effect. With no bonus, the next hit only triggers the rider. Effects the rider creates on its targets end when the
+ * spell's concentration ends.
  */
 export const nextHitRider = {
     rules: 'all',
@@ -127,21 +118,21 @@ export const nextHitRider = {
             inputs: ['targetToken'],
             category: 'animations',
             label: 'CHRISPREMADES.Config.Animation',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.RiderAnimationHint'
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RiderAnimation.Hint'
         },
         bonus: {
             default: '',
             type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageBonus',
-            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.BonusHint'
+            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.Bonus.Hint'
         },
         bonusDamageType: {
             default: '',
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
-            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.BonusDamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.BonusDamageType.Hint',
             get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.damageTypeOptions]; }
         },
         attackType: attackTypeConfig,
@@ -149,24 +140,24 @@ export const nextHitRider = {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity',
-            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.RollActivityHint'
+            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.RollActivity.Hint'
         },
         riderNearbyRange: riderNearbyRangeConfig,
         endSpell: {
             default: 'never',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpell',
-            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpellHint',
+            label: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpell.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpell.Hint',
             get options() { return ['never', 'always', 'onSave'].map(value => ({value, label: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpellOptions.' + value})); }
         },
         incoming: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.NextHitRider.Incoming',
-            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.IncomingHint'
+            label: 'CHRISPREMADES.Macros.Generic.NextHitRider.Incoming.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.Incoming.Hint'
         }
     }
 };

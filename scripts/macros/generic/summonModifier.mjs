@@ -9,7 +9,7 @@ async function preCreate({document, actor, summon, updates}) {
     const sourceActor = await summon.getSourceActor();
     if (config.creatureTypes.length && !config.creatureTypes.includes(actorUtils.typeOrRace(sourceActor))) return;
     if (config.confirm) {
-        const selection = await dialogUtils.confirm(document.name, _loc('CHRISPREMADES.Macros.Generic.SummonModifier.Confirm', {document: document.name, summon: sourceActor.name}), {userId: queryUtils.firstOwner(actor, true)});
+        const selection = await dialogUtils.confirm(document.name, _loc('CHRISPREMADES.Macros.Generic.SummonModifier.Confirm.Prompt', {document: document.name, summon: sourceActor.name}), {userId: queryUtils.firstOwner(actor, true)});
         if (!selection) return;
     }
     const effectData = documentUtils.getEffectData(document, config.effect);
@@ -34,16 +34,8 @@ async function preCreate({document, actor, summon, updates}) {
     });
 }
 /**
- * Modifies summons as they are created.
- * Bound on an item. Fires on `actorPreCreate`.
- *
- * Config:
- * - `sourceIdentifiers`: only modify summons created by items with these identifiers. Leave empty for any summon.
- * - `creatureTypes`: only modify summons of these creature types. Leave empty for any creature type.
- * - `effect`: effect from this item to add to the summon.
- * - `magicalWeapons`: the summon's items that deal damage count as magical.
- * - `items`: items added to the summon.
- * - `confirm`: prompt the owner before the summon is modified.
+ * Adds an effect, items or the magical property on damaging items to summons as they are created. Only summons that
+ * match the source and creature type filters are changed.
  */
 export const summonModifier = {
     rules: 'all',
@@ -64,42 +56,43 @@ export const summonModifier = {
             type: 'selectIdentifiers',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Identifiers',
-            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.SourceIdentifiersHint'
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.SourceIdentifiers.Hint'
         },
         creatureTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.CreatureTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.CreatureTypesHint',
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.CreatureTypes.Hint',
             get options() { return constants.creatureTypeOptions; }
         },
         effect: {
             default: '',
             type: 'selectEffect',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Effect',
-            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.EffectHint'
+            label: 'CHRISPREMADES.Macros.Generic.Common.Effect',
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.Effect.Hint'
         },
         items: {
             default: [],
             type: 'documents',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SummonModifier.Items',
-            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.ItemsHint'
+            label: 'CHRISPREMADES.Macros.Generic.SummonModifier.Items.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.Items.Hint'
         },
         magicalWeapons: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Magical',
-            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.MagicalWeaponsHint'
+            label: 'CHRISPREMADES.Macros.Generic.Common.Magical',
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.MagicalWeapons.Hint'
         },
         confirm: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.PromptToUse'
+            label: 'CHRISPREMADES.Config.PromptToUse',
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.Confirm.Hint'
         }
     }
 };

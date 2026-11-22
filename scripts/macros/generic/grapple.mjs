@@ -20,22 +20,14 @@ async function doGrapple({document: activity, token, workflow}) {
     }
 }
 /**
- * Attempts to grapple each target before the activity rolls.
- * Bound on an activity. Fires on `activityPreItemRoll`.
- *
- * Config:
- * - `auto`: apply the grapple without rolling dice.
- * - `checkSize`: check target size.
- * - `dc`: flat DC formula. Overrides activity info if present.
- * - `bonus`: rolled and added to the grappler's skill check when no DC is given.
- * - `conditions`: additional conditions attached to the grapple effect.
- * - `useActivityInfo`: icons, item name, and roll DC are taken from the parent activity.
- * - `replaceActivity`: the parent activity roll is discarded and replaced by the grapple.
+ * Attempts to grapple each target before the activity rolls. The escape DC comes from Flat DC, then the activity's
+ * save DC, then the grappler's Athletics check. With Replace Activity on, the activity's own roll is canceled and its
+ * consumption is kept.
  */
 export const grapple = {
     rules: 'all',
     version: '2.1.9',
-    category: 'utility',
+    category: 'conditions',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -51,49 +43,50 @@ export const grapple = {
             type: 'checkbox',
             category: 'behavior',
             label:'CHRISPREMADES.Config.AutoApply',
-            hint: 'CHRISPREMADES.Macros.Generic.Grapple.AutoHint'
+            hint: 'CHRISPREMADES.Macros.Generic.Grapple.Auto.Hint'
         },
         checkSize: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.Grapple.Size'
+            label:'CHRISPREMADES.Macros.Generic.Grapple.Size',
+            hint: 'CHRISPREMADES.Macros.Generic.Grapple.CheckSize.Hint'
         },
         dc: {
             default: '',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.FlatDC',
-            hint: 'CHRISPREMADES.Macros.Generic.Grapple.FlatDCHint'
+            label: 'CHRISPREMADES.Macros.Generic.Grapple.FlatDC.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Grapple.FlatDC.Hint'
         },
         bonus: {
             default: '',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Bonus',
-            hint: 'CHRISPREMADES.Macros.Generic.Grapple.BonusHint'
+            label: 'CHRISPREMADES.Macros.Generic.Grapple.Bonus.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Grapple.Bonus.Hint'
         },
         conditions: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Conditions',
-            hint: 'CHRISPREMADES.Macros.Generic.Grapple.ConditionsHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Grapple.Conditions.Hint',
             get options() { return constants.statusOptions; }
         },
         useActivityInfo: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.Grapple.ActivityInfo',
-            hint:'CHRISPREMADES.Macros.Generic.Grapple.ActivityInfoHint'
+            label:'CHRISPREMADES.Macros.Generic.Grapple.ActivityInfo.Label',
+            hint:'CHRISPREMADES.Macros.Generic.Grapple.ActivityInfo.Hint'
         },
         replaceActivity: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.Grapple.ReplaceActivity',
-            hint:'CHRISPREMADES.Macros.Generic.Grapple.ReplaceActivityHint'
+            label:'CHRISPREMADES.Macros.Generic.Grapple.ReplaceActivity.Label',
+            hint:'CHRISPREMADES.Macros.Generic.Grapple.ReplaceActivity.Hint'
         }
     }
 };

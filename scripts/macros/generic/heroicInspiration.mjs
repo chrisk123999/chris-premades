@@ -12,17 +12,13 @@ async function rollFinished({document, workflow}) {
     await Promise.all(Array.from(recipients, actor => documentUtils.update(actor, {'system.attributes.inspiration': true})));
 }
 /**
- * Gives Heroic Inspiration to the activity's user or its targets.
- * Bound on an activity. Fires on `activityPreTargeting` and `activityRollFinished`.
- * Creatures that already have Heroic Inspiration or are not characters are skipped, and the use is cancelled when nobody is left.
- *
- * Config:
- * - `affects`: give Heroic Inspiration to the user of the activity or to its targets.
+ * Gives Heroic Inspiration to the activity's user or its targets. Creatures that already have Heroic Inspiration or are
+ * not player characters are skipped. The use is canceled before targeting when nobody is left to receive it.
  */
 export const heroicInspiration = {
     rules: 'all',
     version: '2.1.4',
-    category: 'utility',
+    category: 'rolls',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -42,8 +38,8 @@ export const heroicInspiration = {
             default: 'self',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.HeroicInspiration.Affects',
-            hint: 'CHRISPREMADES.Macros.Generic.HeroicInspiration.AffectsHint',
+            label: 'CHRISPREMADES.Macros.Generic.HeroicInspiration.Affects.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.HeroicInspiration.Affects.Hint',
             options: [
                 {label: 'CHRISPREMADES.Macros.Generic.HeroicInspiration.Self', value: 'self'},
                 {label: 'CHRISPREMADES.Macros.Generic.HeroicInspiration.Targets', value: 'targets'}

@@ -15,12 +15,9 @@ async function sync({document}) {
     for (const token of actorUtils.getTokens(actor)) await syncEnvironment(token);
 }
 /**
- * Marks an item or effect that lets its creature breathe water, or not need to breathe at all.
- * Environment areas skip Holding Breath for it.
- * Bound on an item or effect. Fires on `created` and `deleted`.
- *
- * Config:
- * - `mode`: `water` or `none`.
+ * Lets the creature that has this item or active effect breathe water, or not need to breathe at all. Environment areas
+ * skip Holding Breath for that creature. Adding or removing the document resyncs the creature's tokens with their
+ * environment areas.
  */
 export const breathing = {
     rules: 'all',
@@ -56,8 +53,9 @@ export const breathing = {
         mode: {
             default: 'water',
             type: 'select',
-            label: 'CHRISPREMADES.Macros.Generic.Breathing.Mode',
-            hint: 'CHRISPREMADES.Macros.Generic.Breathing.ModeHint',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Breathing.Mode.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Breathing.Mode.Hint',
             options: [
                 {value: 'water', label: 'CHRISPREMADES.Macros.Generic.Breathing.Water'},
                 {value: 'none', label: 'CHRISPREMADES.Macros.Generic.Breathing.None'}

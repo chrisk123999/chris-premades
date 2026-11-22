@@ -58,7 +58,7 @@ export const nobleScion = {
             default: '10 + 20 * floor(@classes.paladin.levels / 18)',
             type: 'formula',
             label: 'CHRISPREMADES.Config.Distance',
-            hint: 'CHRISPREMADES.Macros.Modern.NobleScion.DistanceHint',
+            hint: 'CHRISPREMADES.Macros.Modern.NobleScion.Distance.Hint',
             category: 'behavior'
         }
     }

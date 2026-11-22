@@ -150,7 +150,7 @@ export const castTouch = {
     category: 'generic',
     get config() {
         return {
-            style: styleOption(['lightning', 'strike'], 'lightning', 'CHRISPREMADES.Animations.SpellParts.StyleTouchHint'),
+            style: styleOption(['lightning', 'strike'], 'lightning', 'CHRISPREMADES.Animations.SpellParts.StyleTouch.Hint'),
             color: colorOption(colorMap, ['blue'], {random: true}),
             cast: partOption('Cast'),
             detailed: partOption('Detailed'),

@@ -32,8 +32,8 @@ export const shockingGrasp = {
         metalArmor: {
             default: ['breastplate', 'chainmail', 'chainshirt', 'halfplate', 'plate', 'ringmail', 'scalemail', 'splint'],
             type: 'select-many',
-            label: 'CHRISPREMADES.Macros.Legacy.ShockingGrasp.MetalArmor',
-            hint: 'CHRISPREMADES.Macros.Legacy.ShockingGrasp.MetalArmorHint',
+            label: 'CHRISPREMADES.Macros.Legacy.ShockingGrasp.MetalArmor.Label',
+            hint: 'CHRISPREMADES.Macros.Legacy.ShockingGrasp.MetalArmor.Hint',
             category: 'homebrew',
             homebrew: true,
             get options() { return Object.keys(CONFIG.DND5E.armorIds).map(value => ({value, label: dnd5e.documents.Trait.keyLabel('armor:' + value)})); }

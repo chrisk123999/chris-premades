@@ -85,10 +85,10 @@ export const blindnessDeafness = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.BlindnessDeafnessColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.BlindnessDeafnessColor.Hint'}),
             cast: partOption('Cast'),
             shake: partOption('Shake'),
-            aura: partOption('Aura', {hint: 'CHRISPREMADES.Animations.SpellParts.PersistentHint'})
+            aura: partOption('Aura', {hint: 'CHRISPREMADES.Animations.SpellParts.Persistent.Hint'})
         };
     }
 };

@@ -45,7 +45,7 @@ export const divineReaper = {
             type: 'select',
             category: 'homebrew',
             label: 'CHRISPREMADES.Config.SpellLevel',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellLevelHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellLevel.Hint',
             get options() { return constants.spellSlotOptions; }
         },
         spellSchool: {
@@ -53,7 +53,7 @@ export const divineReaper = {
             type: 'select-many',
             category: 'homebrew',
             label: 'CHRISPREMADES.Config.SpellSchool',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchoolHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchool.Hint',
             get options() { return constants.spellSchoolOptions; }
         },
         spellList: {

@@ -7,12 +7,7 @@ async function use({document, workflow}) {
     await documentUtils.deleteDocument(document);
 }
 /**
- * Deletes the item once its roll finishes.
- * Bound on an item. Fires on `itemRollFinished`.
- *
- * Config:
- * - `activityId`: only delete when this activity is used. Blank deletes on any activity.
- * - `summon`: dismiss the summon that owns the item instead of deleting the item.
+ * Deletes the item once it is used. With Dismiss Summon on, the summon that owns the item is dismissed instead.
  */
 export const actionDismissal = {
     rules: 'all',
@@ -31,14 +26,16 @@ export const actionDismissal = {
         activityId: {
             default: '',
             type: 'selectActivity',
+            category: 'behavior',
             label: 'CHRISPREMADES.Config.Activity',
-            hint: ''
+            hint: 'CHRISPREMADES.Macros.Generic.ActionDismissal.ActivityId.Hint'
         },
         summon: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.Generic.ActionDismissal.Summon',
-            hint: 'CHRISPREMADES.Macros.Generic.ActionDismissal.SummonHint'
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.ActionDismissal.Summon.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ActionDismissal.Summon.Hint'
         }
     }
 };

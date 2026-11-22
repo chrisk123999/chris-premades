@@ -4,23 +4,16 @@ async function damage({document: effect, workflow}) {
     const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'modifyNextDamage', configKeys);
     if (config.itemTypes.length && !config.itemTypes.includes(workflow.item.type)) return;
     if (workflow.item.type === 'spell' && workflowUtils.getCastLevel(workflow) > config.maxSpellLevel) return;
-    const rolls = config.mode === 'double' ? [...workflow.damageRolls, ...workflow.damageRolls] : await Promise.all(workflow.damageRolls.map(roll => roll.reroll({maximize: true})));
+    const rolls = config.mode === 'double' ? [...workflow.damageRolls, ...workflow.damageRolls.map(roll => roll.constructor.fromData(roll.toJSON()))] : await Promise.all(workflow.damageRolls.map(roll => roll.reroll({maximize: true})));
     await workflow.setDamageRolls(rolls);
     if (config.consume) await documentUtils.deleteDocument(effect);
 }
 /**
- * Maximizes or doubles the bearer's next damage roll.
- * Bound on an effect. Fires on `actorDamageRollComplete`.
- *
- * Config:
- * - `mode`: maximize every die, or count every damage roll twice.
- * - `itemTypes`: only rolls from these item types. Empty allows any.
- * - `maxSpellLevel`: spells cast above this level are skipped.
- * - `consume`: delete the effect once it modifies a roll.
+ * Maximizes or doubles the next damage roll made by the actor that has this effect.
  */
 export const modifyNextDamage = {
     rules: 'all',
-    version: '2.1.5',
+    version: '2.1.11',
     category: 'damage',
     generic: true,
     documents: ['activeeffect'],
@@ -36,7 +29,8 @@ export const modifyNextDamage = {
             default: 'maximize',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.Mode',
+            label: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.Mode.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.Mode.Hint',
             options: [
                 {value: 'maximize', label: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.Maximize'},
                 {value: 'double', label: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.Double'}
@@ -47,19 +41,22 @@ export const modifyNextDamage = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
+            hint: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.ItemTypes.Hint',
             get options() { return constants.usableItemTypes; }
         },
         maxSpellLevel: {
             default: 9,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.MaxSpellLevel'
+            label: 'CHRISPREMADES.Config.MaxSpellLevel',
+            hint: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.MaxSpellLevel.Hint'
         },
         consume: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.Consume'
+            label: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.Consume.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ModifyNextDamage.Consume.Hint'
         }
     }
 };

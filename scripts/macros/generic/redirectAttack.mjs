@@ -5,7 +5,7 @@ async function redirect({document: item, workflow, sourceToken, token: attackerT
     const config = automationUtils.getGenericConfigValues(item, 'chris-premades', 'redirectAttack', configKeys);
     if (config.requireCover && !tokenUtils.checkCover(attackerToken, sourceToken, {activity: workflow.activity})) return;
     const candidates = tokenUtils.findNearby(sourceToken, config.range, {disposition: config.disposition}).filter(t => {
-        if (t.id === attackerToken.id) return false;
+        if (t.id === attackerToken.id || !t.actor) return false;
         return !config.sizes.length || config.sizes.includes(actorUtils.getSize(t.actor, true));
     });
     if (!candidates.length) return;
@@ -24,21 +24,12 @@ async function redirect({document: item, workflow, sourceToken, token: attackerT
     await workflowUtils.updateTargets(workflow, [...targets, newTarget]);
 }
 /**
- * Offers to redirect an attack against the user to another nearby creature.
- * Bound on an item. Fires on `targetTargeting`.
- * Nothing is offered once the user's reaction is spent.
- *
- * Config:
- * - `activityId`: activity rolled when the attack is redirected. Leave blank to use the item.
- * - `range`: maximum distance between the creature being attacked and the new target.
- * - `disposition`: disposition of the new target relative to the creature being attacked.
- * - `sizes`: limit the new target to these sizes.
- * - `swapPlaces`: the creature being attacked and the new target swap places.
- * - `requireCover`: only offer the redirect while the creature being attacked has cover from the attacker.
+ * Offers to redirect an attack against the item's owner to another nearby creature by using the item. Nothing is offered
+ * once the owner's reaction is spent.
  */
 export const redirectAttack = {
     rules: 'all',
-    version: '2.1.4',
+    version: '2.1.11',
     category: 'targeting',
     generic: true,
     documents: ['item'],
@@ -55,44 +46,44 @@ export const redirectAttack = {
             type: 'selectActivity',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Activity',
-            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.ActivityHint'
+            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.Activity.Hint'
         },
         range: {
             default: 5,
             type: 'number',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Range',
-            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.RangeHint'
+            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.Range.Hint'
         },
         disposition: {
             default: '',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Disposition',
-            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.DispositionHint',
-            get options() { return [{value: '', label: 'CHRISPREMADES.Config.All'}, ...constants.dispositionOptions]; }
+            label: 'CHRISPREMADES.Macros.Generic.Common.Disposition',
+            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.Disposition.Hint',
+            get options() { return [{value: '', label: 'CHRISPREMADES.Macros.Generic.Common.All'}, ...constants.dispositionOptions]; }
         },
         sizes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SizeLimit',
-            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.SizesHint',
+            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.Sizes.Hint',
             get options() { return constants.sizeOptions; }
         },
         swapPlaces: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.RedirectAttack.SwapPlaces',
-            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.SwapPlacesHint'
+            label: 'CHRISPREMADES.Macros.Generic.RedirectAttack.SwapPlaces.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.SwapPlaces.Hint'
         },
         requireCover: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.RedirectAttack.RequireCover',
-            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.RequireCoverHint'
+            label: 'CHRISPREMADES.Macros.Generic.RedirectAttack.RequireCover.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.RedirectAttack.RequireCover.Hint'
         }
     }
 };

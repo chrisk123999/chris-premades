@@ -33,7 +33,7 @@ export const smite = {
                 default: 'blueyellow',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Color',
-                hint: 'CHRISPREMADES.Animations.SmiteColorHint',
+                hint: 'CHRISPREMADES.Animations.SmiteColor.Hint',
                 options: animationUtils.buildColorOptions(colorMap, {
                     freeColors: ['blueyellow'],
                     requirements: ['jb2a_patreon'],

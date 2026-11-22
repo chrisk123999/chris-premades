@@ -79,10 +79,10 @@ export const detectThoughts = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.DetectThoughts.ColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.DetectThoughts.Color.Hint'}),
             opacity: {
                 label: 'CHRISPREMADES.Config.Opacity',
-                hint: 'CHRISPREMADES.Animations.DetectThoughts.OpacityHint',
+                hint: 'CHRISPREMADES.Animations.DetectThoughts.Opacity.Hint',
                 type: 'number',
                 default: 1
             },

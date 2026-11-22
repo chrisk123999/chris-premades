@@ -12,13 +12,8 @@ async function turnEnd({document: effect, token}) {
     await documentUtils.deleteDocument(effect);
 }
 /**
- * Rolls a save at the end of the creature's turn while it is far from the effect's source.
- * Bound on an effect. Fires on `actorTurnEnd`.
- * A successful save removes the effect.
- *
- * Config:
- * - `distance`: the save is offered only when the creature is farther than this from the effect's source.
- * - `rollActivity`: save activity on the source item. A success removes this effect.
+ * Rolls a save activity from the effect's source item against the affected creature when it ends its turn far from the
+ * source. A successful save removes the effect.
  */
 export const saveToEndWhenFar = {
     rules: 'all',
@@ -39,14 +34,14 @@ export const saveToEndWhenFar = {
             type: 'number',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Distance',
-            hint: 'CHRISPREMADES.Macros.Generic.SaveToEndWhenFar.DistanceHint'
+            hint: 'CHRISPREMADES.Macros.Generic.SaveToEndWhenFar.Distance.Hint'
         },
         rollActivity: {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity',
-            hint: 'CHRISPREMADES.Macros.Generic.SaveToEndWhenFar.RollActivityHint'
+            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SaveToEndWhenFar.RollActivity.Hint'
         }
     }
 };

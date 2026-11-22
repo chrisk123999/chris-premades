@@ -58,8 +58,8 @@ export const dragonsBreath = {
         bonusDice: {
             default: 1,
             type: 'number',
-            label: 'CHRISPREMADES.Macros.All.DragonsBreath.BonusDice',
-            hint: 'CHRISPREMADES.Macros.All.DragonsBreath.BonusDiceHint',
+            label: 'CHRISPREMADES.Macros.All.DragonsBreath.BonusDice.Label',
+            hint: 'CHRISPREMADES.Macros.All.DragonsBreath.BonusDice.Hint',
             category: 'homebrew',
             homebrew: true
         }

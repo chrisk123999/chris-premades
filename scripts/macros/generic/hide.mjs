@@ -2,6 +2,7 @@ import {actorUtils, automationUtils, documentUtils, effectUtils, genericUtils, r
 async function use({document, workflow}) {
     if (workflow.failedSaves.count) return;
     const total = workflow.saveResults?.[0]?.total;
+    if (total === undefined) return;
     const dc = automationUtils.getGenericConfigValue(document, 'chris-premades', 'hide', 'dc');
     if (dc && total < rollUtils.rollDiceSync(String(dc), {document}).total) return;
     const existing = actorUtils.getEffectByStatusID(workflow.actor, 'hiding');
@@ -13,17 +14,13 @@ async function use({document, workflow}) {
     await effectUtils.createEffects(workflow.actor, [effectData], {createAnimation: animation, deleteAnimation: animation, effectOptions: {keepId: true}});
 }
 /**
- * Gives the user the system's Hiding condition once the roll finishes, unless the check failed.
- * The check total is the DC to find them, and attacking ends it.
- * Bound on an activity. Fires on `activityRollFinished`.
- *
- * Config:
- * - `dc`: formula the check total must reach. Leave blank for no DC.
- * - `animation`: played when the condition is created and deleted.
+ * Gives the user the Hiding status once the check finishes, unless the check failed. The check total becomes the DC
+ * to find the user. The status ends after the user's next attack. A new success replaces any Hiding status the user
+ * already has.
  */
 export const hide = {
     rules: 'all',
-    version: '2.1.8',
+    version: '2.1.11',
     category: 'mechanics',
     generic: true,
     documents: ['activity'],
@@ -41,7 +38,7 @@ export const hide = {
             deterministic: true,
             category: 'homebrew',
             label: 'CHRISPREMADES.Config.DC',
-            hint: 'CHRISPREMADES.Macros.Generic.Hide.DCHint'
+            hint: 'CHRISPREMADES.Macros.Generic.Hide.DC.Hint'
         },
         animation: {
             default: {
@@ -49,9 +46,10 @@ export const hide = {
                 identifier: 'hide'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['effect', 'token', 'config'],
             label: 'CHRISPREMADES.Config.Animation',
-            hint: ''
+            hint: 'CHRISPREMADES.Macros.Generic.Hide.Animation.Hint'
         }
     }
 };

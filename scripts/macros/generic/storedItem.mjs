@@ -17,14 +17,14 @@ async function use({document: item, workflow}) {
     await itemUtils.createItems(workflow.actor, [itemData]);
 }
 /**
- * Turns a patch or card into the item or creatures it stores when it is used.
- * Bound on an item. Fires on `itemRollFinished`.
- * The item stores its contents in `flags.cat.storedItem`: `uuid` of an item or actor, plus `quantity`, `updates` for an item, or `count` for creatures.
+ * When the item is used, creates the item or creatures it stores, such as the contents of a patch or card. The contents
+ * live in `flags.cat.storedItem`: the `uuid` of an item or actor, plus `quantity` and `updates` for an item, or `count`
+ * for creatures. Creatures are summoned and placed near the user's token.
  */
 export const storedItem = {
     rules: 'all',
     version: '2.1.7',
-    category: 'utility',
+    category: 'uses',
     generic: true,
     documents: ['item'],
     roll: [

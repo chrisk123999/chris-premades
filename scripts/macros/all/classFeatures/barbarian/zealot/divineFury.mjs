@@ -44,7 +44,7 @@ export const divineFury = {
             type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Formula',
-            hint: 'CHRISPREMADES.Macros.All.DivineFury.FormulaHint'
+            hint: 'CHRISPREMADES.Macros.All.DivineFury.Formula.Hint'
         },
         damageType: {
             default: ['necrotic', 'radiant'],

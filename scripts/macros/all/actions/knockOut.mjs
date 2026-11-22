@@ -67,16 +67,16 @@ export const knockOut = {
             default: ['melee'],
             type: 'select-many',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.All.KnockOut.AttackTypes',
-            hint: 'CHRISPREMADES.Macros.All.KnockOut.AttackTypesHint',
+            label: 'CHRISPREMADES.Macros.All.KnockOut.AttackTypes.Label',
+            hint: 'CHRISPREMADES.Macros.All.KnockOut.AttackTypes.Hint',
             options: [{value: 'melee', label: 'DND5E.ATTACK.Type.Melee'}, {value: 'ranged', label: 'DND5E.ATTACK.Type.Ranged'}]
         },
         promptOnZero: {
             default: false,
             type: 'checkbox',
             category: 'mechanics',
-            label: 'CHRISPREMADES.Macros.All.KnockOut.PromptOnZero',
-            hint: 'CHRISPREMADES.Macros.All.KnockOut.PromptOnZeroHint'
+            label: 'CHRISPREMADES.Macros.All.KnockOut.PromptOnZero.Label',
+            hint: 'CHRISPREMADES.Macros.All.KnockOut.PromptOnZero.Hint'
         }
     }
 };

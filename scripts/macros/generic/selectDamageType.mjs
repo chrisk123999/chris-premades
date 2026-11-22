@@ -38,15 +38,8 @@ function preRollDamage(config, dialog) {
 }
 export const selectDamageTypeHooks = {preRollDamage};
 /**
- * Prompts for a damage type and applies it to every damage roll. With `atCast`, the choice is made once when the spell is cast.
- * Bound on an item. Fires on `itemPreambleComplete` and `itemDamageRoll`.
- * No prompt is shown when fewer than two types are available.
- * When a damage part has several types, the system's damage dialog is skipped so only this prompt asks.
- *
- * Config:
- * - `damageType`: damage types offered. Leave empty to use the types of the activity's first damage part.
- * - `rememberChoice`: offer "Don't ask again this combat" on the prompt.
- * - `atCast`: choose when the item's first activity is used and reuse that type for every later damage roll.
+ * Prompts for a damage type and applies it to every damage roll of the item. No prompt is shown when fewer than two types
+ * are available. When a damage part has several types, the system's damage dialog is skipped so only this prompt asks.
  */
 export const selectDamageType = {
     rules: 'all',
@@ -72,22 +65,22 @@ export const selectDamageType = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
-            hint: 'CHRISPREMADES.Macros.Generic.SelectDamageType.DamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.SelectDamageType.DamageType.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         rememberChoice: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SelectDamageType.RememberChoice',
-            hint: 'CHRISPREMADES.Macros.Generic.SelectDamageType.RememberChoiceHint'
+            label: 'CHRISPREMADES.Macros.Generic.SelectDamageType.RememberChoice.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SelectDamageType.RememberChoice.Hint'
         },
         atCast: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SelectDamageType.AtCast',
-            hint: 'CHRISPREMADES.Macros.Generic.SelectDamageType.AtCastHint'
+            label: 'CHRISPREMADES.Macros.Generic.SelectDamageType.AtCast.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SelectDamageType.AtCast.Hint'
         }
     }
 };

@@ -70,7 +70,7 @@ async function magicMissile({document: activity, macroClass: {identifier, source
     })));
     const choices = await applications.DialogApp.dialog(
         `${activity.item.name}: ${activity.name}`,
-        'CHRISPREMADES.Macros.Modern.Spells.MagicMissile',
+        'CHRISPREMADES.Macros.Modern.Spells.MagicMissile.Label',
         [['selectAmount', inputs, {displayAsRows: true, totalMax: config.attacks}]],
         'okCancel',
         {width: 400}
@@ -152,7 +152,7 @@ export const spells = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Modern.Spells.MagicMissileWeapons',
-            hint: 'CHRISPREMADES.Macros.Modern.Spells.MagicMissileHint',
+            hint: 'CHRISPREMADES.Macros.Modern.Spells.MagicMissile.Hint',
             get options() { return constants.weaponOptions; }
         },
         properties: {

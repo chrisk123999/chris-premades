@@ -67,8 +67,8 @@ export const flockOfFamiliars = {
         creatureType: {
             default: '',
             type: 'select',
-            label: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureType',
-            hint: 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.CreatureTypeHint',
+            label: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureType.Label',
+            hint: 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.CreatureType.Hint',
             category: 'summons',
             get options() { return [{value: '', label: 'CHRISPREMADES.Macros.All.FindFamiliar.Ask'}, ...constants.spiritTypeOptions]; }
         },
@@ -81,8 +81,8 @@ export const flockOfFamiliars = {
         baseSummons: {
             default: 3,
             type: 'number',
-            label: 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.BaseSummons',
-            hint: 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.BaseSummonsHint',
+            label: 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.BaseSummons.Label',
+            hint: 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.BaseSummons.Hint',
             category: 'homebrew'
         },
         celestialAnimation: {

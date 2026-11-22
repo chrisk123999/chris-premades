@@ -31,13 +31,13 @@ export const darknessSphere = {
     config: {
         opacity: {
             label: 'CHRISPREMADES.Config.Opacity',
-            hint: 'CHRISPREMADES.Animations.Darkness.OpacityHint',
+            hint: 'CHRISPREMADES.Animations.Darkness.Opacity.Hint',
             type: 'number',
             default: 0.5
         },
         scale: {
             label: 'CHRISPREMADES.Config.Scale',
-            hint: 'CHRISPREMADES.Animations.Darkness.ScaleHint',
+            hint: 'CHRISPREMADES.Animations.Darkness.Scale.Hint',
             type: 'number',
             default: 1.25
         }

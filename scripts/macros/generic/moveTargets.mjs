@@ -8,16 +8,13 @@ async function use({document: activity, workflow}) {
     for (const token of workflow.targets.documents) await moveWithin(token, Number(config.fraction) || 0.5);
 }
 /**
- * Lets each target of the activity move to a spot it picks with a crosshair, without provoking opportunity attacks.
- * Bound on an activity. Fires on `activityRollFinished`.
- *
- * Config:
- * - `fraction`: share of each target's walking speed it can move.
+ * Lets each target of the activity move once the roll finishes, without provoking opportunity attacks. The target's
+ * owner picks the destination with a crosshair. Targets with no walking speed do not move.
  */
 export const moveTargets = {
     rules: 'all',
     version: '2.1.10',
-    category: 'utility',
+    category: 'mechanics',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -32,7 +29,8 @@ export const moveTargets = {
             default: 0.5,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.MoveTargets.Fraction'
+            label: 'CHRISPREMADES.Macros.Generic.MoveTargets.Fraction.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.MoveTargets.Fraction.Hint'
         }
     }
 };

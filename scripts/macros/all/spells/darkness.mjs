@@ -82,15 +82,15 @@ export const darkness = {
         seeThroughIdentifiers: {
             default: ['eyes-of-the-dark'],
             type: 'selectIdentifiers',
-            label: 'CHRISPREMADES.Macros.All.Darkness.SeeThroughIdentifiers',
-            hint: 'CHRISPREMADES.Macros.All.Darkness.SeeThroughIdentifiersHint',
+            label: 'CHRISPREMADES.Macros.All.Darkness.SeeThroughIdentifiers.Label',
+            hint: 'CHRISPREMADES.Macros.All.Darkness.SeeThroughIdentifiers.Hint',
             category: 'homebrew'
         },
         spreadAroundCorners: {
             default: true,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.All.Darkness.SpreadAroundCorners',
-            hint: 'CHRISPREMADES.Macros.All.Darkness.SpreadAroundCornersHint',
+            label: 'CHRISPREMADES.Macros.All.Darkness.SpreadAroundCorners.Label',
+            hint: 'CHRISPREMADES.Macros.All.Darkness.SpreadAroundCorners.Hint',
             category: 'mechanics'
         },
         useRealDarkness: {

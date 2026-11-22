@@ -156,29 +156,29 @@ export const weaponAttack = {
                 default: 'auto',
                 type: 'select',
                 label: 'CHRISPREMADES.Animations.SpellParts.Style',
-                hint: 'CHRISPREMADES.Animations.WeaponAttack.StyleHint',
+                hint: 'CHRISPREMADES.Animations.WeaponAttack.Style.Hint',
                 options: Object.fromEntries(['auto', 'melee', 'thrown', 'ranged', 'firearm'].map(key => [key, {label: 'CHRISPREMADES.Animations.WeaponAttack.Styles.' + key.capitalize()}]))
             },
             weapon: {
                 default: 'auto',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Weapon',
-                hint: 'CHRISPREMADES.Animations.WeaponAttack.WeaponHint',
+                hint: 'CHRISPREMADES.Animations.WeaponAttack.Weapon.Hint',
                 options: meleeOptions()
             },
             projectile: {
                 default: 'auto',
                 type: 'select',
-                label: 'CHRISPREMADES.Animations.WeaponAttack.Projectile',
-                hint: 'CHRISPREMADES.Animations.WeaponAttack.ProjectileHint',
+                label: 'CHRISPREMADES.Animations.WeaponAttack.Projectile.Label',
+                hint: 'CHRISPREMADES.Animations.WeaponAttack.Projectile.Hint',
                 options: projectileOptions()
             },
-            tint: partOption('Tint', {hint: 'CHRISPREMADES.Animations.WeaponAttack.TintHint'}),
-            impact: partOption('Impact', {hint: 'CHRISPREMADES.Animations.WeaponAttack.ImpactHint'}),
+            tint: partOption('Tint', {hint: 'CHRISPREMADES.Animations.WeaponAttack.Tint.Hint'}),
+            impact: partOption('Impact', {hint: 'CHRISPREMADES.Animations.WeaponAttack.Impact.Hint'}),
             shake: partOption('Shake'),
             sound: {
-                label: 'CHRISPREMADES.Config.Sound',
-                hint: 'CHRISPREMADES.Animations.WeaponAttack.SoundHint',
+                label: 'CHRISPREMADES.Config.Sound.Label',
+                hint: 'CHRISPREMADES.Animations.WeaponAttack.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
                 default: ''

@@ -69,8 +69,8 @@ export const tandemFootwork = {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Modern.TandemFootWork.Combatant',
-            hint: 'CHRISPREMADES.Macros.Modern.TandemFootWork.CombatantHint'
+            label: 'CHRISPREMADES.Macros.Modern.TandemFootWork.Combatant.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.TandemFootWork.Combatant.Hint'
         }
     }
 };

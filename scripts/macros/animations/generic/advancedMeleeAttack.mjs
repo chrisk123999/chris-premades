@@ -367,14 +367,14 @@ export const advancedMeleeAttack = {
                 default: 'shortsword',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Weapon',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.WeaponHint',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.Weapon.Hint',
                 options: weaponOptions()
             },
             trailColor: {
                 default: 'none',
                 type: 'select',
-                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.TrailColor',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.TrailColorHint',
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.TrailColor.Label',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.TrailColor.Hint',
                 options: animationUtils.buildColorOptions(trailColorMap, {
                     freeColors: ['none', ...trailColors['01']],
                     requirements: ['jb2a_patreon'],
@@ -385,37 +385,37 @@ export const advancedMeleeAttack = {
             enableSwitchDistance: {
                 default: false,
                 type: 'checkbox',
-                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableSwitchDistance',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableSwitchDistanceHint'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableSwitchDistance.Label',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableSwitchDistance.Hint'
             },
             enableReturn: {
                 default: false,
                 type: 'checkbox',
-                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableReturn',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableReturnHint'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableReturn.Label',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableReturn.Hint'
             },
             enableBlood: {
                 default: false,
                 type: 'checkbox',
-                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableBlood',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableBloodHint'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableBlood.Label',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableBlood.Hint'
             },
             enableShake: {
                 default: false,
                 type: 'checkbox',
-                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableShake',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableShakeHint'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableShake.Label',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.EnableShake.Hint'
             },
             soundMelee: {
                 label: 'CHRISPREMADES.Config.SoundMelee',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.SoundMeleeHint',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.SoundMelee.Hint',
                 type: 'file',
                 fileType: 'audio',
                 default: ''
             },
             soundRanged: {
                 label: 'CHRISPREMADES.Config.SoundRanged',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.SoundRangedHint',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.SoundRanged.Hint',
                 type: 'file',
                 fileType: 'audio',
                 default: ''
@@ -424,11 +424,11 @@ export const advancedMeleeAttack = {
                 default: 300,
                 type: 'number',
                 label: 'CHRISPREMADES.Config.SoundDelay',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.SoundDelayHint'
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.SoundDelay.Hint'
             },
             impact: {
-                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.ImpactFile',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.ImpactFileHint',
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.ImpactFile.Label',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.ImpactFile.Hint',
                 type: 'file',
                 fileType: 'image',
                 default: ''
@@ -436,8 +436,8 @@ export const advancedMeleeAttack = {
             attackDelay: {
                 default: 1000,
                 type: 'number',
-                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.AttackDelay',
-                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.AttackDelayHint'
+                label: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.AttackDelay.Label',
+                hint: 'CHRISPREMADES.Animations.AdvancedMeleeAttack.AttackDelay.Hint'
             }
         };
     },

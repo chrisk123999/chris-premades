@@ -20,7 +20,7 @@ async function use({document, workflow}) {
     const reactionItemIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionItemIdentifiers');
     const reactionEffectIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionEffectIdentifiers');
     let remainingAttacks = totalTargets;
-    let validTargets = new Set(workflow.targets.documents);
+    let validTargets = new Set(workflow.targets.documents.filter(token => token.actor));
     const utilityRollAsDamage = workflow.utilityRolls ? automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'utilityRollAsDamage') : false;
     if (utilityRollAsDamage) {
         let total = rollUtils.getRollsTotal(workflow.utilityRolls);
@@ -96,14 +96,11 @@ async function use({document, workflow}) {
                     validTargets = validTargets.filter(t => t.id !== targetDoc.id);
                     break;
                 }
-                let workflow;
                 options.options.workflowOptions['chris-premades'].multiSingleTarget.remainingAttacks = remainingAttacks;
-                if (utilityRollAsDamage) {
-                    workflow = await workflowUtils.syntheticActivityRoll(attackActivity, [targetDoc], options);
-                } else {
-                    workflow = await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true, fast: true, ...options});
-                }
-                if (animation && animation.macros?.attack && targetDoc.object) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted || !workflow.hitTargets.count, ...animationOptions});
+                const attackWorkflow = utilityRollAsDamage
+                    ? await workflowUtils.syntheticActivityRoll(attackActivity, [targetDoc], options)
+                    : await workflowUtils.completeActivityUse(attackActivity, [targetDoc], {autoDamage: true, fast: true, ...options});
+                if (animation?.macros?.attack && targetDoc.object) await animation.macros.attack(workflow.token.document, targetDoc, {missed: reacted || !attackWorkflow?.hitTargets.count, ...animationOptions});
                 remainingAttacks--;
                 if (currentSkip && targetDoc.actor.system.attributes.hp.value <= 0) {
                     validTargets = validTargets.filter(t => t.id !== targetDoc.id);
@@ -115,23 +112,13 @@ async function use({document, workflow}) {
     if (animation?.macros?.end) animation.macros.end(workflow.token.document);
 }
 /**
- * Splits a rolled number of single-target attacks among the selected targets.
- * Bound on an item. Fires on `itemRollFinished`.
- *
- * Config:
- * - `activityId`: only run when this activity is used.
- * - `formula`: number of attacks. `@item.level` and `@scaling` use the cast level and upcast levels.
- * - `skipDeadAndUnconscious`: skip targets at 0 hit points.
- * - `attackActivityId`: activity rolled once per attack.
- * - `animation`: played from the user to the target on each attack.
- * - `reactionItemIdentifiers`: spells a target is offered as a reaction before its attacks.
- * - `reactionEffectIdentifiers`: effects that mark a target as having reacted, which plays the animation as a miss.
- * - `utilityRollAsDamage`: the utility roll total replaces the attack activity's damage.
- * - `combineAttacks`: roll one attack per target, with the first damage part's dice number set to the attacks allocated to it.
+ * Splits a rolled number of single-target attacks among the activity's targets and rolls the attack activity once per
+ * attack. Each target can be offered a reaction spell before its attacks. The rolled attacks carry the
+ * `chris-premades.multiSingleTarget` workflow option with the number of attacks remaining.
  */
 export const multiSingleTarget = {
     rules: 'all',
-    version: '1.6.1',
+    version: '2.1.11',
     category: 'targeting',
     generic: true,
     documents: ['item'],
@@ -146,26 +133,30 @@ export const multiSingleTarget = {
         activityId: {
             default: '',
             type: 'selectActivity',
+            category: 'behavior',
             label: 'CHRISPREMADES.Config.Activity',
-            hint: ''
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.ActivityId.Hint'
         },
         formula: {
             default: '@item.level',
             type: 'formula',
+            category: 'behavior',
             label: 'CHRISPREMADES.Config.Formula',
-            hint: ''
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.Formula.Hint'
         },
         skipDeadAndUnconscious: {
             default: true,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Config.SkipDeadAndUnconscious',
-            hint: ''
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Common.SkipDeadAndUnconscious',
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.SkipDeadAndUnconscious.Hint'
         },
         attackActivityId: {
             default: '',
             type: 'selectActivity',
-            label: 'CHRISPREMADES.Config.AttackActivity',
-            hint: ''
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.AttackActivity',
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.AttackActivityId.Hint'
         },
         animation: {
             default: {
@@ -173,33 +164,38 @@ export const multiSingleTarget = {
                 identifier: 'magicMissile'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['sourceToken', 'targetToken', 'options'],
             label: 'CHRISPREMADES.Config.Animation',
-            hint: ''
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.Animation.Hint'
         },
         reactionItemIdentifiers: {
             default: [],
             type: 'selectIdentifiers',
-            label: 'CHRISPREMADES.Config.ReactionItemIdentifiers',
-            hint: ''
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.ReactionItemIdentifiers.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.ReactionItemIdentifiers.Hint'
         },
         reactionEffectIdentifiers: {
             default: [],
             type: 'selectIdentifiers',
-            label: 'CHRISPREMADES.Config.ReactionEffectIdentifiers',
-            hint: ''
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.ReactionEffectIdentifiers.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.ReactionEffectIdentifiers.Hint'
         },
         utilityRollAsDamage: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Config.UtilityRollAsDamage',
-            hint: ''
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.UtilityRollAsDamage.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.UtilityRollAsDamage.Hint'
         },
         combineAttacks: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.CombineAttacks',
-            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.CombineAttacksHint'
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.CombineAttacks.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.MultiSingleTarget.CombineAttacks.Hint'
         }
     }
 };

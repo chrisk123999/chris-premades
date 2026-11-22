@@ -63,7 +63,7 @@ export const compelledDuel = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.CompelledDuelColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.CompelledDuelColor.Hint'}),
             cast: partOption('Cast')
         };
     }

@@ -63,7 +63,7 @@ export const chaosBolt = {
             default: 'acid, cold, fire, force, lightning, poison, psychic, thunder',
             type: 'text',
             label: 'CHRISPREMADES.Config.DamageTypes',
-            hint: 'CHRISPREMADES.Macros.Legacy.ChaosBolt.DamageTypesHint',
+            hint: 'CHRISPREMADES.Macros.Legacy.ChaosBolt.DamageTypes.Hint',
             homebrew: true,
             category: 'homebrew'
         },

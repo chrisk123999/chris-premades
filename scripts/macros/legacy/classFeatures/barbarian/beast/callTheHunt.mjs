@@ -30,7 +30,7 @@ async function huntDamage({document: effect, macroClass: {identifier, source}, w
     if (!formula) return Logging.addMacroWarning(source, identifier, `Call of the Hunt exited early with a missing damage bonus formula. (effect) ${effect.uuid}`);
     return new DamageBonus(effect, {actor: effect.parent, formula})
         .withScalingHints(({bonus}) => {
-            const label = _loc('CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn');
+            const label = _loc('CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn.Label');
             bonus.scalingHints = [{label, id: label}];
         })
         .withOnUse(async ({bonus, workflow}) => {

@@ -46,7 +46,7 @@ export const greenFlameBlade = {
                 default: 'green',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Color',
-                hint: 'CHRISPREMADES.Animations.GreenFlameBladeColorHint',
+                hint: 'CHRISPREMADES.Animations.GreenFlameBladeColor.Hint',
                 options: animationUtils.buildColorOptions(colorMap, {
                     freeColors: ['orange'],
                     labelPrefix: 'CHRISPREMADES.Config.Colors.',

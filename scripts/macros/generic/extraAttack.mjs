@@ -47,7 +47,7 @@ function getNearby(token, range, skipDead) {
 }
 async function getTargets(workflow, range, maxAmount, skipDeadAndUnconscious, nearby) {
     if (!nearby?.length) nearby = getNearby(workflow.token.document, range, skipDeadAndUnconscious);
-    if (!nearby.length) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Legacy.HuntersMark.NoTargets', {notify: 'warn'});
+    if (!nearby.length) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Generic.Common.NoTargets', {notify: 'warn'});
     if (nearby.length === 1) return {result: [{document: nearby[0], value: maxAmount}], skip: skipDeadAndUnconscious};
     const selection = await dialogUtils.selectTargetDialog(
         workflow.item.name, 
@@ -63,19 +63,13 @@ async function getTargets(workflow, range, maxAmount, skipDeadAndUnconscious, ne
     if (selection?.result?.length) return selection;
 }
 /**
- * Splits a number of attacks with another item among nearby enemies once the roll finishes.
- * Bound on an activity. Fires on `activityRollFinished`.
- *
- * Config:
- * - `attacks`: number of attacks made.
- * - `prompt`: make the attacks automatically. Off leaves them to be rolled by hand.
- * - `skip`: skip dead and unconscious targets.
- * - `identifier`: identifier of the attack item.
- * - `animation`: played from the user to the target on each attack.
+ * After the activity is used, splits a number of attacks with another item on the actor among enemies within that
+ * item's range. Enemies the activity targeted are offered first, and the prompt repeats until every attack is made.
+ * A result of 0 from the `actorExtraAttack` called event cancels all of them.
  */
 export const extraAttack = {
     rules: 'all',
-    version: '2.1.5',
+    version: '2.1.11',
     category: 'targeting',
     generic: true,
     documents: ['activity'],
@@ -92,26 +86,29 @@ export const extraAttack = {
             default: 2,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Attacks'
+            label: 'CHRISPREMADES.Config.Attacks',
+            hint: 'CHRISPREMADES.Macros.Generic.ExtraAttack.Attacks.Hint'
         },
         prompt: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.PromptTargets'
+            label: 'CHRISPREMADES.Macros.Generic.ExtraAttack.PromptTargets',
+            hint: 'CHRISPREMADES.Macros.Generic.ExtraAttack.Prompt.Hint'
         },
         skip: {
             default: true,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Config.SkipDeadAndUnconscious',
-            hint: ''
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Common.SkipDeadAndUnconscious',
+            hint: 'CHRISPREMADES.Macros.Generic.ExtraAttack.Skip.Hint'
         },
         identifier: {
             default: 'unarmed-strike',
             type: 'text',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Identifier',
-            hint: 'CHRISPREMADES.Macros.Generic.ExtraAttack'
+            hint: 'CHRISPREMADES.Macros.Generic.ExtraAttack.Identifier.Hint'
         },
         animation: {
             default: {
@@ -119,8 +116,10 @@ export const extraAttack = {
                 identifier: 'flurryOfBlows'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['sourceToken', 'targetTokens', 'options'],
-            label: 'CHRISPREMADES.Config.Animation'
+            label: 'CHRISPREMADES.Config.Animation',
+            hint: 'CHRISPREMADES.Macros.Generic.ExtraAttack.Animation.Hint'
         }
     }
 };

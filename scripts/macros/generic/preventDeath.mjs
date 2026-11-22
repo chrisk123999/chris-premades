@@ -49,24 +49,9 @@ async function nearbyDamage({document, ditem, targetToken, workflow}) {
     await damage({document, ditem, targetToken, workflow});
 }
 /**
- * Offers to use this item when a hit would drop the actor to 0 hit points, keeping the actor alive.
- * Bound on an item. Fires on `targetDamageComplete`, and on `sceneDamageComplete` for other creatures when `range` is set.
- * Runs the called event `preventDeath` with `{item, workflow}` after it keeps the actor alive.
- *
- * Config:
- * - `killedOutright`: also trigger when the damage would kill outright.
- * - `deathOnly`: only trigger when the damage would kill outright.
- * - `saveActivity`: rolled when the item is used. A failed save stops it from preventing death.
- * - `dcFromDamage`: add the damage dealt to the save DC.
- * - `excludeCritical`: does not trigger on critical hits.
- * - `excludeDamageTypes`: does not trigger when the damage includes one of these types.
- * - `display`: roll this item when it triggers without a save activity.
- * - `targetHP`: formula for the hit points the actor is left on. Blank leaves it on 1.
- * - `healingTraits`: treat the hit points as healing: healing immunity stops it, healing resistance halves them.
- * - `useActivity`: rolled when it triggers, in place of the item.
- * - `range`: also protect other creatures within this distance. 0 protects the owner only.
- * - `alliesOnly`: with a range, only protect allies of the owner.
- * - `othersOnly`: never protect the owner.
+ * Offers to use this item when a hit would drop a creature from above 0 hit points to 0, and keeps it above 0
+ * instead. The item needs a use remaining, and each trigger asks the owner to confirm. Once it keeps a creature up, it
+ * runs the `preventDeath` called event with the item and the workflow.
  */
 export const preventDeath = {
     rules: 'all',
@@ -94,85 +79,93 @@ export const preventDeath = {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.InstantDeath'
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.InstantDeath',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.KilledOutright.Hint'
         },
         deathOnly: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.DeathOnly'
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.DeathOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.DeathOnly.Hint'
         },
         saveActivity: {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.SaveActivity',
-            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.SaveActivityHint'
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.SaveActivity.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.SaveActivity.Hint'
         },
         dcFromDamage: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.DCFromDamage'
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.DCFromDamage',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.DcFromDamage.Hint'
         },
         excludeCritical: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.ExcludeCritical'
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.ExcludeCritical.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.ExcludeCritical.Hint'
         },
         excludeDamageTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.ExcludeDamageTypes',
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.ExcludeDamageTypes.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.ExcludeDamageTypes.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         display: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Display'
+            label: 'CHRISPREMADES.Macros.Generic.Common.Display',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.Display.Hint'
         },
         targetHP: {
             default: '',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.TargetHP',
-            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.TargetHPHint'
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.TargetHP.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.TargetHP.Hint'
         },
         healingTraits: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.HealingTraits',
-            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.HealingTraitsHint'
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.HealingTraits.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.HealingTraits.Hint'
         },
         useActivity: {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivity',
-            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivityHint'
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivity.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivity.Hint'
         },
         range: {
             default: '0',
             type: 'text',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Range',
-            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.RangeHint'
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.Range.Hint'
         },
         alliesOnly: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.AlliesOnly'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceDamageTaken.AlliesOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.AlliesOnly.Hint'
         },
         othersOnly: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.OthersOnly'
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.OthersOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.OthersOnly.Hint'
         }
     }
 };

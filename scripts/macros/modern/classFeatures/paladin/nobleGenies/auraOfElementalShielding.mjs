@@ -48,7 +48,7 @@ export const auraOfElementalShielding = {
             default: '',
             type: 'select',
             label: 'CHRISPREMADES.Config.DamageType',
-            hint: 'CHRISPREMADES.Macros.Modern.AuraOfElementalShielding.DamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Modern.AuraOfElementalShielding.DamageType.Hint',
             category: 'behavior',
             get options() { return [{value: '', label: 'CHRISPREMADES.Macros.Modern.AuraOfElementalShielding.Ask'}, ...constants.damageTypeOptions]; }
         },

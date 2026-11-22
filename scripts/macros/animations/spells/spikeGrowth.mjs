@@ -35,7 +35,7 @@ export const spikeGrowth = {
         cast: partOption('Cast'),
         opacity: {
             label: 'CHRISPREMADES.Config.Opacity',
-            hint: 'CHRISPREMADES.Animations.SpikeGrowth.OpacityHint',
+            hint: 'CHRISPREMADES.Animations.SpikeGrowth.Opacity.Hint',
             type: 'number',
             default: 0.8
         }

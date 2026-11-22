@@ -39,7 +39,7 @@ export const boomingBlade = {
                 default: 'blue',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Color',
-                hint: 'CHRISPREMADES.Animations.BoomingBladeColorHint',
+                hint: 'CHRISPREMADES.Animations.BoomingBladeColor.Hint',
                 options: animationUtils.buildColorOptions(colorMap, {
                     freeColors: ['blue'],
                     labelPrefix: 'CHRISPREMADES.Config.Colors.',

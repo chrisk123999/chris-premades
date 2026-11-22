@@ -48,7 +48,7 @@ export const sprayOfCards = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, [], {auto: false, hint: 'CHRISPREMADES.Animations.SprayOfCardsColorHint'})
+            color: colorOption(colorMap, [], {auto: false, hint: 'CHRISPREMADES.Animations.SprayOfCardsColor.Hint'})
         };
     }
 };

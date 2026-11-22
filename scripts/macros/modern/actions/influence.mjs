@@ -46,15 +46,15 @@ export const influence = {
             default: 15,
             type: 'number',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Modern.Influence.MinimumDC',
-            hint: 'CHRISPREMADES.Macros.Modern.Influence.MinimumDCHint'
+            label: 'CHRISPREMADES.Macros.Modern.Influence.MinimumDC.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.Influence.MinimumDC.Hint'
         },
         skills: {
             default: ['dec', 'itm', 'prf', 'per', 'ani'],
             type: 'select-many',
             category: 'homebrew',
             label: 'CHRISPREMADES.Config.Skills',
-            hint: 'CHRISPREMADES.Macros.Modern.Influence.SkillsHint',
+            hint: 'CHRISPREMADES.Macros.Modern.Influence.Skills.Hint',
             get options() { return constants.skillOptions; }
         }
     }

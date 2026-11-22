@@ -22,18 +22,13 @@ async function added({document}) {
     await addItemRecovery(document, identifier, formula ? {period, type: 'formula', formula} : {period, type: 'recoverAll'});
 }
 /**
- * Enchants another item on the actor with an extra uses recovery entry.
- * Bound on an item. Fires on `created`, `medkit`, and `munched`.
- *
- * Config:
- * - `identifier`: identifier of the item that gains the recovery.
- * - `period`: recovery period.
- * - `formula`: formula for the uses recovered. Empty recovers all uses.
+ * Gives another item on the actor an extra uses recovery entry through an enchantment. The enchantment is replaced when
+ * the recovery changes.
  */
 export const itemRecovery = {
     version: '2.1.0',
     rules: 'all',
-    category: 'utility',
+    category: 'uses',
     generic: true,
     documents: ['item'],
     item: [
@@ -46,13 +41,15 @@ export const itemRecovery = {
             default: '',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Identifier'
+            label: 'CHRISPREMADES.Config.Identifier',
+            hint: 'CHRISPREMADES.Macros.Generic.ItemRecovery.Identifier.Hint'
         },
         period: {
             default: 'initiative',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ItemRecovery.Period',
+            label: 'CHRISPREMADES.Macros.Generic.ItemRecovery.Period.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ItemRecovery.Period.Hint',
             get options() { return Object.entries(CONFIG.DND5E.limitedUsePeriods).map(([value, {label}]) => ({value, label})); }
         },
         formula: {
@@ -60,7 +57,7 @@ export const itemRecovery = {
             type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Formula',
-            hint: 'CHRISPREMADES.Macros.Generic.ItemRecovery.FormulaHint'
+            hint: 'CHRISPREMADES.Macros.Generic.ItemRecovery.Formula.Hint'
         }
     }
 };

@@ -63,56 +63,58 @@ const genericConfig = {
         type: 'formula',
         category: 'behavior',
         label: 'CHRISPREMADES.Config.Formula',
-        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.BonusHint'
+        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.Bonus.Hint'
     },
     phase: {
         default: 'postResult',
         type: 'select',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.Common.Phase',
-        hint: 'CHRISPREMADES.Macros.Generic.Common.PhaseHint',
+        label: 'CHRISPREMADES.Macros.Generic.Common.Phase.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.Common.Phase.Hint',
         get options() { return constants.bonusPhaseOptions; }
     },
     ability: {
         default: [],
         type: 'select-many',
         category: 'behavior',
-        label: 'CHRISPREMADES.Config.Abilities',
-        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.AbilityHint',
+        label: 'CHRISPREMADES.Macros.Generic.Common.Abilities',
+        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.Ability.Hint',
         get options() { return constants.abilityOptions; }
     },
     optional: {
         default: true,
         type: 'checkbox',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.RollBonus.Optional',
-        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.OptionalHint'
+        label: 'CHRISPREMADES.Macros.Generic.RollBonus.Optional.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.Optional.Hint'
     },
     rollActivity: {
         default: '',
         type: 'selectActivity',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity'
+        label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Hint'
     },
     rollItem: {
         default: false,
         type: 'checkbox',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.Common.RollItem'
+        label: 'CHRISPREMADES.Macros.Generic.Common.RollItem.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.Common.RollItem.Hint'
     },
     useActivityCosts: {
         default: false,
         type: 'checkbox',
         category: 'behavior',
         label: 'CHRISPREMADES.Macros.Generic.Common.Costs',
-        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.CostsHint'
+        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.Costs.Hint'
     },
     consumeSuccessOnly: {
         default: false,
         type: 'checkbox',
         category: 'behavior',
-        label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.ConsumeSuccess',
-        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.ConsumeSuccessHint'
+        label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.ConsumeSuccess.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.ConsumeSuccess.Hint'
     }
 };
 const skillConfig = {
@@ -120,7 +122,7 @@ const skillConfig = {
     type: 'select-many',
     category: 'behavior',
     label: 'CHRISPREMADES.Config.Skills',
-    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.SkillHint',
+    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.Skill.Hint',
     get options() { return constants.skillOptions; }
 };
 const toolConfig = {
@@ -128,21 +130,21 @@ const toolConfig = {
     type: 'select-many',
     category: 'behavior',
     label: 'CHRISPREMADES.Config.Tools',
-    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.ToolHint',
+    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.Tool.Hint',
     get options() { return constants.toolOptions; }
 };
 const proficientOnlyConfig = {
     default: false,
     type: 'checkbox',
     category: 'behavior',
-    label: 'CHRISPREMADES.Macros.Generic.RollBonus.ProficientOnly',
-    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.ProficientOnlyHint'
+    label: 'CHRISPREMADES.Macros.Generic.RollBonus.ProficientOnly.Label',
+    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.ProficientOnly.Hint'
 };
 const configKeys = [...Object.keys(genericConfig), 'skill', 'tool', 'proficientOnly', 'identifiers', 'attackType'];
 const base = {
     rules: 'all',
     version: '1.1.0',
-    category: 'utility',
+    category: 'behavior',
     generic: true,
     documents: ['activeeffect', 'activity', 'item'],
     genericConfig
@@ -160,30 +162,8 @@ const pass = [
     }
 ];
 /**
- * Offers a bonus formula on a d20 roll.
- * Bound on an effect, an activity or an item.
- *
- * Variants:
- * - `attackBonus`: attack rolls. Fires on `actorOptionalBonusAttack` and `actorAttackRollComplete`.
- * - `checkBonus`: ability checks. Fires on `actorOptionalBonus` and `actorPost`.
- * - `saveBonus`: saving throws. Fires on `actorOptionalBonus` and `actorPost`.
- * - `skillBonus`: skill checks. Fires on `actorOptionalBonus` and `actorPost`.
- * - `toolBonus`: tool checks. Fires on `actorOptionalBonus` and `actorPost`.
- *
- * Config:
- * - `bonus`: formula added to the roll when this bonus is taken.
- * - `phase`: when this bonus is offered during the roll.
- * - `ability`: limit this bonus to a list of abilities.
- * - `optional`: prompt before the bonus is added. When off, it is always added.
- * - `rollActivity`: roll this activity when the bonus is used.
- * - `rollItem`: roll this item when the bonus is used.
- * - `useActivityCosts`: only offer this bonus when its costs can be paid.
- * - `consumeSuccessOnly`: costs are spent only if the roll succeeds. On attacks, only if a target was hit.
- * - `identifiers`: `attackBonus` only. Limit this bonus to attacks from these items.
- * - `attackType`: `attackBonus` only. Limit this bonus by attack type.
- * - `skill`: `skillBonus` only. Limit this bonus to a list of skills.
- * - `tool`: `toolBonus` only. Limit this bonus to a list of tools.
- * - `proficientOnly`: `skillBonus` and `toolBonus` only. Offer this bonus only on proficient skills or tools.
+ * Offers a bonus formula on a d20 roll, with one variant each for attack rolls, ability checks, saving throws, skill
+ * checks and tool checks. The bonus can be optional or always applied, and can roll an activity or item when it's used.
  */
 export const attackBonus = {
     ...base,

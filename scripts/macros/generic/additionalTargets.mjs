@@ -29,7 +29,7 @@ async function extraTarget({document: item, workflow}) {
     }
     if (!nearby.size) return;
     const selection = (await dialogUtils.selectTargetDialog(
-        'CHRISPREMADES.Config.AdditionalTargets',
+        'CHRISPREMADES.Macros.Generic.AdditionalTargets.AdditionalTargets',
         _loc('CAT.Dialog.UseOn', {document: item.name, target: workflow.item.name}),
         nearby,
         {
@@ -51,20 +51,9 @@ async function extraTarget({document: item, workflow}) {
     }
 }
 /**
- * Prompts to add nearby tokens as extra targets of a matching item, then rolls this item or an activity.
- * Bound on an item. Fires on `actorTargeting`.
- *
- * Config:
- * - `damageType`: only trigger when the used activity deals one of these damage types.
- * - `healingType`: only trigger when the used activity heals one of these healing types.
- * - `identifiers`: only trigger for items with one of these identifiers.
- * - `itemType`: only trigger for these item types.
- * - `disposition`: which tokens can be added, relative to the measuring token.
- * - `range`: distance in feet within which tokens can be added.
- * - `rangeFrom`: measure range from each target or from the attacker.
- * - `rollActivity`: activity rolled after targets are added.
- * - `rollItem`: roll this item instead of `rollActivity`.
- * - `targets`: how many extra targets can be chosen. Any value below one is unlimited.
+ * When its owner uses another matching item with at least one target, prompts to add nearby tokens as extra targets.
+ * Once targets are added, this item or one of its activities is rolled. Declining the prompt adds no targets and rolls
+ * nothing.
  */
 export const additionalTargets = {
     rules: 'all',
@@ -85,15 +74,15 @@ export const additionalTargets = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageType.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         healingType: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.HealingType',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.HealingTypeHint',
+            label: 'CHRISPREMADES.Macros.Generic.Common.HealingType.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.HealingType.Hint',
             get options() { return constants.healingTypeOptions; }
         },
         identifiers: {
@@ -101,23 +90,24 @@ export const additionalTargets = {
             type: 'selectIdentifiers',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Identifiers',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.IdentifierHint'
+            hint: 'CHRISPREMADES.Macros.Generic.Common.Identifier.Hint'
         },
         itemType: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.ItemTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.ItemType.Hint',
             get options() { return constants.usableItemTypes; }
         },
         disposition: {
             default: 'ally',
             type: 'select',
             category: 'behavior',
-            label:'CHRISPREMADES.Config.Disposition',
+            label:'CHRISPREMADES.Macros.Generic.Common.Disposition',
+            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.Disposition.Hint',
             get options() { return [
-                {value: 'all', label: _loc('CHRISPREMADES.Config.All')},
+                {value: 'all', label: _loc('CHRISPREMADES.Macros.Generic.Common.All')},
                 {value: 'ally', label: _loc('CHRISPREMADES.Macros.Generic.AdditionalTargets.MatchTarget')},
                 {value: 'enemy', label: _loc('CHRISPREMADES.Macros.Generic.AdditionalTargets.HostileTarget')},
                 {value: 'neutral', label: _loc('CHRISPREMADES.Macros.Generic.AdditionalTargets.NeutralTarget')}
@@ -127,37 +117,40 @@ export const additionalTargets = {
             default: 5,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Range'
+            label: 'CHRISPREMADES.Config.Range',
+            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.Range.Hint'
         },
         rangeFrom: {
             default: 'target',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.RangeFrom',
-            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.RangeFromHint',
+            label: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.RangeFrom.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.RangeFrom.Hint',
             get options() { return [
-                {value: 'attacker', label: _loc('CHRISPREMADES.Config.Attacker')},
-                {value: 'target', label: _loc('CHRISPREMADES.Config.Target')}
+                {value: 'attacker', label: _loc('CHRISPREMADES.Macros.Generic.AdditionalTargets.Attacker')},
+                {value: 'target', label: _loc('CHRISPREMADES.Macros.Generic.AdditionalTargets.Target.Label')}
             ]; }
         },
         rollActivity: {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity'
+            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Hint'
         },
         rollItem: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.Common.RollItem'
+            label:'CHRISPREMADES.Macros.Generic.Common.RollItem.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RollItem.Hint'
         },
         targets: {
             default: 1,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.AdditionalTargets',
-            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.TargetHint'
+            label: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.AdditionalTargets',
+            hint: 'CHRISPREMADES.Macros.Generic.AdditionalTargets.Target.Hint'
         }
     }
 };

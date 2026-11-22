@@ -61,7 +61,7 @@ export const rootMagic = {
             default: '',
             type: 'select',
             label: 'CHRISPREMADES.Config.Ability',
-            hint: 'CHRISPREMADES.Macros.Modern.RootMagic.AbilityHint',
+            hint: 'CHRISPREMADES.Macros.Modern.RootMagic.Ability.Hint',
             category: 'mechanics',
             get options() { return [{value: '', label: 'CHRISPREMADES.Macros.Modern.RootMagic.Ask'}, ...constants.abilityOptions.filter(option => abilities.includes(option.value))]; }
         }

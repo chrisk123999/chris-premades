@@ -30,17 +30,9 @@ async function attacked({document: effect, sourceToken, workflow, castData}) {
     await workflowUtils.syntheticActivityRoll(activity, [workflow.token.document], {atLevel: castData?.castLevel || undefined, consumeResources: false, spellSlot: false});
 }
 /**
- * Rolls an activity from the effect's source item, or the item a transferred effect sits on, against each creature that hits the effect's bearer with an attack.
- * Bound on an effect. Fires on `targetAttackRollComplete`, so it runs before the attack's damage is applied.
- * Each hit bearer reflects once, from its same-named effect with the highest cast level.
- *
- * Config:
- * - `rollActivity`: activity on the source item rolled against the attacker, at the level the effect was cast.
- * - `attackType`: only trigger for this attack type. Empty matches any attack.
- * - `range`: only trigger when the attacker is within this distance. 0 ignores distance.
- * - `requireTempHP`: only trigger while the bearer has temporary hit points.
- * - `oncePerTurn`: only trigger once per turn for each bearer. Outside combat it always triggers.
- * - `animation`: played from the bearer to the attacker.
+ * Rolls an activity against each creature that hits the effect's bearer with an attack, before the attack's damage is
+ * applied. The activity comes from the effect's source item, or from the item a transferred effect sits on. A bearer
+ * with several same-named effects reflects once, from the one with the highest cast level.
  */
 export const reflectOnHit = {
     rules: 'all',
@@ -61,8 +53,8 @@ export const reflectOnHit = {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity',
-            hint: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.RollActivityHint'
+            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.RollActivity.Hint'
         },
         attackType: attackTypeConfig,
         range: {
@@ -70,21 +62,21 @@ export const reflectOnHit = {
             type: 'number',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Range',
-            hint: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.RangeHint'
+            hint: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.Range.Hint'
         },
         requireTempHP: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.RequireTempHP',
-            hint: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.RequireTempHPHint'
+            label: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.RequireTempHP.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.RequireTempHP.Hint'
         },
         oncePerTurn: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.OncePerTurn',
-            hint: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.OncePerTurnHint'
+            label: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.OncePerTurn.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.OncePerTurn.Hint'
         },
         animation: {
             default: {
@@ -94,6 +86,7 @@ export const reflectOnHit = {
             type: 'selectAnimation',
             inputs: ['sourceToken', 'targetToken', 'options'],
             label: 'CHRISPREMADES.Config.Animation',
+            hint: 'CHRISPREMADES.Macros.Generic.ReflectOnHit.Animation.Hint',
             category: 'animations'
         }
     }

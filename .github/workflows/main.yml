@@ -73,3 +73,29 @@ jobs:
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json", "Authorization" : "${{ secrets.FOUNDRY_KEY }}"}'
         data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "manifest": "${{env.FOUNDRY_MANIFEST}}", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "14", "verified": "14", "maximum": "14"} } }'
+
+  sync-docs:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        ref: docs
+        fetch-depth: 0
+
+    # Bring the released code into the docs branch so the wiki matches the release
+    - name: Merge release into docs
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+        git merge --no-edit "${{ github.event.release.tag_name }}"
+        git push origin docs
+
+  # Pushes made with GITHUB_TOKEN don't trigger workflows, so call the wiki publish directly
+  publish-wiki:
+    needs: sync-docs
+    permissions:
+      contents: write
+    uses: chrisk123999/chris-premades/.github/workflows/publish-wiki.yml@docs

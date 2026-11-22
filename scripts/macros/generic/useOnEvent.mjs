@@ -4,7 +4,7 @@ async function use(activity, token, event) {
     if (!config.events.includes(event)) return;
     if (event === 'long' && config.events.includes('short')) return;
     if (['turnStart', 'turnEnd'].includes(event) && activity.actor.statuses.has('incapacitated')) return;
-    if (!activityUtils.checkCosts(activity)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'Not enough uses to trigger on rest.');
+    if (!activityUtils.checkCosts(activity)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'CHRISPREMADES.Macros.Generic.Common.NotEnoughUses');
     const pools = activityUtils.getRecoveryPools(activity).filter(({document}) => document.documentName === 'Item').map(({document}) => document);
     if (config.poolCondition === 'empty' && !(pools.length && pools.every(pool => !pool.system.uses.value))) return;
     if (config.poolCondition === 'notFull' && !pools.some(pool => pool.system.uses.spent)) return;
@@ -28,19 +28,13 @@ async function turnEnd({document}) {
     await use(document, undefined, 'turnEnd');
 }
 /**
- * Uses this activity after a rest or at the start or end of its owner's turn.
- * Bound on an activity. Fires on `actorShort`, `actorLong`, `actorTurnStart` and `actorTurnEnd`.
- * Nothing happens when the activity's costs cannot be paid, and turn events skip an incapacitated owner.
- *
- * Config:
- * - `events`: use this activity after these events. Short Rest also fires after a long rest.
- * - `poolCondition`: only use this activity when the items whose uses it recovers are in this state.
- * - `confirm`: prompt the owner before the activity is used.
+ * Uses the activity after a rest or at the start or end of its owner's turn. Nothing happens when the activity's costs
+ * cannot be paid. Turn events skip an incapacitated owner.
  */
 export const useOnEvent = {
     rules: 'all',
-    version: '2.1.3',
-    category: 'utility',
+    version: '2.1.11',
+    category: 'uses',
     generic: true,
     documents: ['activity'],
     rest: [
@@ -72,8 +66,8 @@ export const useOnEvent = {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.UseOnEvent.Events',
-            hint: 'CHRISPREMADES.Macros.Generic.UseOnEvent.EventsHint',
+            label: 'CHRISPREMADES.Macros.Generic.UseOnEvent.Events.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.UseOnEvent.Events.Hint',
             options: [
                 {label: 'CHRISPREMADES.Macros.Generic.UseOnEvent.ShortRest', value: 'short'},
                 {label: 'CHRISPREMADES.Macros.Generic.UseOnEvent.LongRest', value: 'long'},
@@ -85,8 +79,8 @@ export const useOnEvent = {
             default: '',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.UseOnEvent.PoolCondition',
-            hint: 'CHRISPREMADES.Macros.Generic.UseOnEvent.PoolConditionHint',
+            label: 'CHRISPREMADES.Macros.Generic.UseOnEvent.PoolCondition.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.UseOnEvent.PoolCondition.Hint',
             options: [
                 {label: 'CHRISPREMADES.Config.None', value: ''},
                 {label: 'CHRISPREMADES.Macros.Generic.UseOnEvent.Empty', value: 'empty'},
@@ -97,7 +91,8 @@ export const useOnEvent = {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.PromptToUse'
+            label: 'CHRISPREMADES.Config.PromptToUse',
+            hint: 'CHRISPREMADES.Macros.Generic.UseOnEvent.Confirm.Hint'
         }
     }
 };

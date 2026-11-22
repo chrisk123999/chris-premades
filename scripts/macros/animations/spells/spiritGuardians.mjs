@@ -56,7 +56,7 @@ export const spiritGuardians = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, ['blueyellow'], {hint: 'CHRISPREMADES.Animations.SpiritGuardiansColorHint'})
+            color: colorOption(colorMap, ['blueyellow'], {hint: 'CHRISPREMADES.Animations.SpiritGuardiansColor.Hint'})
         };
     },
     get credits() { return [animationUtils.getCredits('tyler')]; }

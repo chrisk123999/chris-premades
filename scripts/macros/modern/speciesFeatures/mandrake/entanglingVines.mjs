@@ -105,8 +105,8 @@ export const entanglingVines = {
         season: {
             default: '',
             type: 'select',
-            label: 'CHRISPREMADES.Macros.Modern.EntanglingVines.Season',
-            hint: 'CHRISPREMADES.Macros.Modern.EntanglingVines.SeasonHint',
+            label: 'CHRISPREMADES.Macros.Modern.EntanglingVines.Season.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.EntanglingVines.Season.Hint',
             category: 'mechanics',
             get options() { return [{value: '', label: 'CHRISPREMADES.Macros.Modern.EntanglingVines.Ask'}, ...seasons.map(season => ({value: season, label: 'CHRISPREMADES.Macros.Modern.EntanglingVines.Seasons.' + season}))]; }
         },

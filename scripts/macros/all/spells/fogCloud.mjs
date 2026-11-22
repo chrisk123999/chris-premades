@@ -21,8 +21,8 @@ export const fogCloud = {
         spreadAroundCorners: {
             default: true,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.All.FogCloud.SpreadAroundCorners',
-            hint: 'CHRISPREMADES.Macros.All.FogCloud.SpreadAroundCornersHint',
+            label: 'CHRISPREMADES.Macros.All.FogCloud.SpreadAroundCorners.Label',
+            hint: 'CHRISPREMADES.Macros.All.FogCloud.SpreadAroundCorners.Hint',
             category: 'mechanics'
         },
         useRealDarkness: {

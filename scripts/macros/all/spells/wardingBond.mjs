@@ -75,7 +75,7 @@ export const wardingBond = {
             default: 60,
             type: 'number',
             label: 'CHRISPREMADES.Config.Distance',
-            hint: 'CHRISPREMADES.Macros.All.WardingBond.MaxDistanceHint',
+            hint: 'CHRISPREMADES.Macros.All.WardingBond.MaxDistance.Hint',
             category: 'homebrew'
         }
     }

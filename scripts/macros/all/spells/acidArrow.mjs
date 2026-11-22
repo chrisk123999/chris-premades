@@ -93,7 +93,7 @@ export const acidArrow = {
             ]
         },
         sound: {
-            label: 'CHRISPREMADES.Config.Sound',
+            label: 'CHRISPREMADES.Config.Sound.Label',
             type: 'file',
             default: '',
             category: 'animations'

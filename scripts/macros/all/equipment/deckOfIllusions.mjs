@@ -191,8 +191,8 @@ function deck(rules) {
                 type: 'documentMap',
                 documentType: 'Actor',
                 count: true,
-                label: 'CHRISPREMADES.Macros.All.DeckOfIllusions.Cards',
-                hint: 'CHRISPREMADES.Macros.All.DeckOfIllusions.CardsHint',
+                label: 'CHRISPREMADES.Macros.All.DeckOfIllusions.Cards.Label',
+                hint: 'CHRISPREMADES.Macros.All.DeckOfIllusions.Cards.Hint',
                 category: 'mechanics'
             },
             drawerCards: {

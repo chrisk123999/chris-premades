@@ -841,8 +841,8 @@ function createSummon(name, macro, requirements = []) {
         category: 'generic',
         config: {
             sound: {
-                label: 'CHRISPREMADES.Config.Sound',
-                hint: 'CHRISPREMADES.Animations.SummonSoundHint',
+                label: 'CHRISPREMADES.Config.Sound.Label',
+                hint: 'CHRISPREMADES.Animations.SummonSound.Hint',
                 type: 'file',
                 fileType: 'audio',
                 default: ''

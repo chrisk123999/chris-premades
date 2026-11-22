@@ -5,14 +5,12 @@ async function use({document, effect}) {
     await workflowUtils.completeItemUse(document);
 }
 /**
- * Uses this item when its owner gains the dead status.
- * Bound on an item. Fires on `actorCreated`.
- * Unequipped items are skipped.
+ * Uses this item when its owner gains the Dead status. Unequipped items are not used.
  */
 export const useOnDeath = {
     rules: 'all',
     version: '2.0.0',
-    category: 'utility',
+    category: 'uses',
     generic: true,
     documents: ['item'],
     effect: [

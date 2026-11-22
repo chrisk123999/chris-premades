@@ -56,7 +56,7 @@ export const wallOfFire = {
     category: 'spell',
     config: {
         cast: partOption('Cast'),
-        shimmer: partOption('Shimmer', {hint: 'CHRISPREMADES.Animations.WallOfFireShimmerHint'})
+        shimmer: partOption('Shimmer', {hint: 'CHRISPREMADES.Animations.WallOfFireShimmer.Hint'})
     },
     get credits() { return [animationUtils.getCredits('tyler')]; }
 };

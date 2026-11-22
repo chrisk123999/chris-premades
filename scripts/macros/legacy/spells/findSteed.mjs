@@ -86,15 +86,15 @@ const config = {
     folder: {
         default: '',
         type: 'text',
-        label: 'CHRISPREMADES.Macros.Legacy.FindSteed.Folder',
-        hint: 'CHRISPREMADES.Macros.Legacy.FindSteed.FolderHint',
+        label: 'CHRISPREMADES.Macros.Legacy.FindSteed.Folder.Label',
+        hint: 'CHRISPREMADES.Macros.Legacy.FindSteed.Folder.Hint',
         category: 'summons'
     },
     creatureType: {
         default: '',
         type: 'select',
-        label: 'CHRISPREMADES.Macros.Legacy.FindSteed.CreatureType',
-        hint: 'CHRISPREMADES.Macros.Legacy.FindSteed.CreatureTypeHint',
+        label: 'CHRISPREMADES.Macros.Legacy.FindSteed.CreatureType.Label',
+        hint: 'CHRISPREMADES.Macros.Legacy.FindSteed.CreatureType.Hint',
         category: 'summons',
         get options() { return [{value: '', label: 'CHRISPREMADES.Macros.Legacy.FindSteed.Ask'}, ...constants.spiritTypeOptions]; }
     },

@@ -292,22 +292,22 @@ export const swapArtificerPlan = {
             mode: 'pack',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.All.ArtificerPlans.CustomCompendium',
-            hint: 'CHRISPREMADES.Macros.Modern.TinkersMagic.CustomCompendiumHint'
+            hint: 'CHRISPREMADES.Macros.Modern.TinkersMagic.CustomCompendium.Hint'
         },
         itemTypes: {
             default: ['consumable', 'container', 'equipment', 'loot', 'tool', 'weapon'],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.ItemTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.ItemType.Hint',
             get options() { return constants.physicalItemTypes; }
         },
         requireTools: {
             default: ['tinker'],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Modern.TinkersMagic.RequireTools',
-            hint: 'CHRISPREMADES.Macros.Modern.TinkersMagic.RequireToolsHint',
+            label: 'CHRISPREMADES.Macros.Modern.TinkersMagic.RequireTools.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.TinkersMagic.RequireTools.Hint',
             get options() { return constants.toolOptions; }
         }
     }

@@ -144,8 +144,8 @@ export const armsOfHadar = {
         pull: {
             default: true,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Animations.ArmsOfHadar.Pull',
-            hint: 'CHRISPREMADES.Animations.ArmsOfHadar.PullHint'
+            label: 'CHRISPREMADES.Animations.ArmsOfHadar.Pull.Label',
+            hint: 'CHRISPREMADES.Animations.ArmsOfHadar.Pull.Hint'
         }
     },
     get credits() { return [animationUtils.getCredits('eskie')]; }

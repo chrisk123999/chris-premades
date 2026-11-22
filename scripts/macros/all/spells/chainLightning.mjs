@@ -34,8 +34,8 @@ export const chainLightning = {
         anyCreature: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.All.ChainLightning.AnyCreature',
-            hint: 'CHRISPREMADES.Macros.All.ChainLightning.AnyCreatureHint',
+            label: 'CHRISPREMADES.Macros.All.ChainLightning.AnyCreature.Label',
+            hint: 'CHRISPREMADES.Macros.All.ChainLightning.AnyCreature.Hint',
             category: 'behavior'
         },
         leapRange: {

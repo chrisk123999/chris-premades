@@ -40,7 +40,7 @@ export const eldritchBlast = {
                 default: 'purple',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Color',
-                hint: 'CHRISPREMADES.Animations.EldritchBlastColorHint',
+                hint: 'CHRISPREMADES.Animations.EldritchBlastColor.Hint',
                 options: animationUtils.buildColorOptions(colorMap, {
                     freeColors: ['purple'],
                     labelPrefix: 'CHRISPREMADES.Config.Colors.',
@@ -49,8 +49,8 @@ export const eldritchBlast = {
                 })
             },
             sound: {
-                label: 'CHRISPREMADES.Config.Sound',
-                hint: 'CHRISPREMADES.Config.SoundHint',
+                label: 'CHRISPREMADES.Config.Sound.Label',
+                hint: 'CHRISPREMADES.Config.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
                 default: ''

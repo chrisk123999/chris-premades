@@ -83,8 +83,8 @@ export const tinkersMagic = {
             default: ['tinker'],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Modern.TinkersMagic.RequireTools',
-            hint: 'CHRISPREMADES.Macros.Modern.TinkersMagic.RequireToolsHint',
+            label: 'CHRISPREMADES.Macros.Modern.TinkersMagic.RequireTools.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.TinkersMagic.RequireTools.Hint',
             get options() { return constants.toolOptions; }
         },
         compendium: {
@@ -93,15 +93,15 @@ export const tinkersMagic = {
             documentType: 'Item',
             mode: 'pack',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Modern.TinkersMagic.CustomCompendium',
-            hint: 'CHRISPREMADES.Macros.Modern.TinkersMagic.CustomCompendiumHint'
+            label: 'CHRISPREMADES.Macros.Modern.TinkersMagic.CustomCompendium.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.TinkersMagic.CustomCompendium.Hint'
         },
         itemTypes: {
             default: ['container', 'consumable', 'equipment', 'loot'],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.ItemTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.ItemType.Hint',
             get options() { return constants.physicalItemTypes; }
         }
     }

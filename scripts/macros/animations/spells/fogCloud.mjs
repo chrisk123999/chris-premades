@@ -36,13 +36,13 @@ export const fogCloud = {
         cast: partOption('Cast'),
         opacity: {
             label: 'CHRISPREMADES.Config.Opacity',
-            hint: 'CHRISPREMADES.Animations.FogCloud.OpacityHint',
+            hint: 'CHRISPREMADES.Animations.FogCloud.Opacity.Hint',
             type: 'number',
             default: 0.5
         },
         scale: {
             label: 'CHRISPREMADES.Config.Scale',
-            hint: 'CHRISPREMADES.Animations.FogCloud.ScaleHint',
+            hint: 'CHRISPREMADES.Animations.FogCloud.Scale.Hint',
             type: 'number',
             default: 1
         }

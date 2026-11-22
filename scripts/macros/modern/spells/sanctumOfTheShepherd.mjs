@@ -64,7 +64,7 @@ export const sanctumOfTheShepherd = {
             default: 'max(@mod, 1)',
             type: 'formula',
             label: 'CHRISPREMADES.Config.Formula',
-            hint: 'CHRISPREMADES.Macros.Modern.SanctumOfTheShepherd.CreaturesHint',
+            hint: 'CHRISPREMADES.Macros.Modern.SanctumOfTheShepherd.Creatures.Hint',
             category: 'homebrew'
         }
     }

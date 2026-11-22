@@ -36,8 +36,8 @@ export const flashOfGenius = {
             default: 'postResult',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Common.Phase',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.PhaseHint',
+            label: 'CHRISPREMADES.Macros.Generic.Common.Phase.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.Phase.Hint',
             get options() { return constants.bonusPhaseOptions; }
         }
     }

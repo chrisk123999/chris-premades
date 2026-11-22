@@ -97,7 +97,7 @@ export const interdictBoon = {
         attackType: {
             default: '',
             type: 'text',
-            label: 'CHRISPREMADES.Config.AttackType',
+            label: 'CHRISPREMADES.Config.AttackType.Label',
             category: 'behavior'
         },
         targets: {

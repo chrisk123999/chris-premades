@@ -143,7 +143,7 @@ export const faerieFire = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.FaerieFire.ColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.FaerieFire.Color.Hint'}),
             cast: partOption('Cast')
         };
     },

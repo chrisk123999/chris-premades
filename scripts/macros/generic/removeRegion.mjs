@@ -3,8 +3,7 @@ async function remove({document}) {
     await documentUtils.deleteDocument(document);
 }
 /**
- * Deletes the effect it is bound on at the next turn.
- * Bound on an effect. Fires on `actorEveryTurn`.
+ * Deletes the effect at the next turn change in combat.
  */
 export const removeRegion = {
     rules: 'all',

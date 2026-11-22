@@ -7,10 +7,6 @@
 /*============================*/
 /*         ANIMATIONS         */
 /*============================*/
-export {endIfUnaffected} from './generic/endIfUnaffected.mjs';
-export {inheritCastLevel} from './generic/inheritCastLevel.mjs';
-export {moveRegion} from './generic/moveRegion.mjs';
-export {reflectOnHit} from './generic/reflectOnHit.mjs';
 export {spellAnimation} from './generic/spellAnimation.mjs';
 export {wallPanels, wallPermanence} from './generic/wallSpell.mjs';
 export {weaponAnimation} from './generic/weaponAnimation.mjs';
@@ -18,7 +14,6 @@ export {weaponAnimation} from './generic/weaponAnimation.mjs';
 /*============================*/
 /*          BEHAVIOR          */
 /*============================*/
-export {damageBonusToOneRoll} from './generic/damageBonusToOneRoll.mjs';
 export {rerollCheckWithBonus, rerollSaveWithBonus, rerollSkillWithBonus, rerollToolWithBonus} from './generic/rerollWithBonus.mjs';
 export {attackBonus, checkBonus, saveBonus, skillBonus, toolBonus} from './generic/rollBonus.mjs';
 
@@ -33,14 +28,14 @@ export {proneOnHit} from './generic/proneOnHit.mjs';
 /*============================*/
 /*           DAMAGE           */
 /*============================*/
-export {attackDisadvantage} from './generic/attackDisadvantage.mjs';
 export {attackRider} from './generic/attackRider.mjs';
 export {bladeSpell} from './generic/bladeSpell.mjs';
+export {damageBonusToOneRoll} from './generic/damageBonusToOneRoll.mjs';
 export {modifyNextDamage} from './generic/modifyNextDamage.mjs';
 export {negateDamageFromEffect} from './generic/negateDamageFromEffect.mjs';
 export {nextHitRider} from './generic/nextHitRider.mjs';
 export {reduceDamageTaken} from './generic/reduceDamageTaken.mjs';
-export {requireTools} from './generic/requireTools.mjs';
+export {reflectOnHit} from './generic/reflectOnHit.mjs';
 export {selectDamageType} from './generic/selectDamageType.mjs';
 
 /*============================*/
@@ -49,6 +44,7 @@ export {selectDamageType} from './generic/selectDamageType.mjs';
 export {banish} from './generic/banish.mjs';
 export {breathing} from './generic/breathing.mjs';
 export {conditionAutoSave} from './generic/conditionAutoSave.mjs';
+export {endIfUnaffected} from './generic/endIfUnaffected.mjs';
 export {environment, environmentEffect} from './generic/environment.mjs';
 export {featAbility} from './generic/featAbility.mjs';
 export {firearm} from './generic/firearm.mjs';
@@ -56,12 +52,14 @@ export {grappleAttackAdvantage} from './generic/grappleAttackAdvantage.mjs';
 export {hide} from './generic/hide.mjs';
 export {ignoreCover} from './generic/ignoreCover.mjs';
 export {immuneAutoSucceed} from './generic/immuneAutoSucceed.mjs';
+export {inheritCastLevel} from './generic/inheritCastLevel.mjs';
 export {languageChoice} from './generic/languageChoice.mjs';
 export {moveTargets} from './generic/moveTargets.mjs';
 export {packTactics} from './generic/packTactics.mjs';
 export {preventDeath} from './generic/preventDeath.mjs';
 export {proficiencyChoice} from './generic/proficiencyChoice.mjs';
 export {reduceMaxHP} from './generic/reduceMaxHP.mjs';
+export {requireTools} from './generic/requireTools.mjs';
 export {rolledDuration} from './generic/rolledDuration.mjs';
 export {saveToEndWhenFar} from './generic/saveToEndWhenFar.mjs';
 export {unhideActivities} from './generic/unhideActivities.mjs';
@@ -72,11 +70,13 @@ export {willingFail} from './generic/willingFail.mjs';
 /*============================*/
 export {pullOnFail, pullOnHit, pushOnFail, pushOnHit} from './generic/forcedMovement.mjs';
 export {movementAnimation} from './generic/movementAnimation.mjs';
+export {moveRegion} from './generic/moveRegion.mjs';
 export {teleport} from './generic/teleport.mjs';
 
 /*============================*/
 /*           ROLLS            */
 /*============================*/
+export {attackDisadvantage} from './generic/attackDisadvantage.mjs';
 export {contestedCheck} from './generic/contestedCheck.mjs';
 export {contextAdvantage} from './generic/contextAdvantage.mjs';
 export {heroicInspiration} from './generic/heroicInspiration.mjs';

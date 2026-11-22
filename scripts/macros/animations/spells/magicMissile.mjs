@@ -85,7 +85,7 @@ export const magicMissile = {
                 default: 'purple',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Color',
-                hint: 'CHRISPREMADES.Animations.MagicMissileColorHint',
+                hint: 'CHRISPREMADES.Animations.MagicMissileColor.Hint',
                 options: animationUtils.buildColorOptions(colorMap, {
                     freeColors: ['purple'],
                     requirements: ['jb2a_patreon'],
@@ -95,8 +95,8 @@ export const magicMissile = {
                 })
             },
             sound: {
-                label: 'CHRISPREMADES.Config.Sound',
-                hint: 'CHRISPREMADES.Config.SoundHint',
+                label: 'CHRISPREMADES.Config.Sound.Label',
+                hint: 'CHRISPREMADES.Config.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
                 default: ''

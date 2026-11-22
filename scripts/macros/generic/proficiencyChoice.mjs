@@ -39,19 +39,14 @@ async function use({document: activity, workflow}) {
     }
 }
 /**
- * Prompts for a skill or tool for each target and applies an effect built around the choice.
- * Bound on an activity. Fires on `activityRollFinished`.
- * With no targets, the user is prompted instead.
- *
- * Config:
- * - `effect`: effect applied to each target. The {key} placeholder in its change keys becomes the chosen path.
- * - `traits`: offer skills, tools, or both.
- * - `proficiency`: limit the choices by the target's current proficiency.
+ * Prompts for a skill or tool for each target once the roll finishes, then applies an effect built around the choice.
+ * With no targets, the user makes the choice for themselves. A chosen tool the target does not have yet is added with
+ * its default ability. The effect ends with the item's concentration when it has one.
  */
 export const proficiencyChoice = {
     rules: 'all',
     version: '2.0.0',
-    category: 'utility',
+    category: 'mechanics',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -66,15 +61,15 @@ export const proficiencyChoice = {
             default: '',
             type: 'selectEffect',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Effect',
-            hint: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.EffectHint'
+            label: 'CHRISPREMADES.Macros.Generic.Common.Effect',
+            hint: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Effect.Hint'
         },
         traits: {
             default: ['skills'],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Traits',
-            hint: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.TraitsHint',
+            label: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Traits.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Traits.Hint',
             get options() { return [
                 {value: 'skills', label: _loc('CHRISPREMADES.Config.Skills')},
                 {value: 'tools', label: _loc('CHRISPREMADES.Config.Tools')}
@@ -84,10 +79,10 @@ export const proficiencyChoice = {
             default: '',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Proficiency',
-            hint: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.ProficiencyHint',
+            label: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Proficiency.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Proficiency.Hint',
             get options() { return [
-                {value: '', label: _loc('CHRISPREMADES.Config.All')},
+                {value: '', label: _loc('CHRISPREMADES.Macros.Generic.Common.All')},
                 {value: 'lacking', label: _loc('DND5E.NotProficient')},
                 {value: 'proficient', label: _loc('DND5E.Proficient')}
             ]; }

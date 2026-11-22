@@ -8,11 +8,7 @@ async function attack({document, macroClass: {identifier}, workflow}) {
     workflow.tracker.advantage.add(identifier, document.name);
 }
 /**
- * Grants advantage on attack rolls against creatures grappled by the attacker.
- * Bound on an item or an effect. Fires on `actorAttackRollConfig`.
- *
- * Config:
- * - `attackType`: only grant advantage for this attack type.
+ * Grants advantage on attack rolls when every target is grappled by the attacker.
  */
 export const grappleAttackAdvantage = {
     rules: 'all',
@@ -33,7 +29,7 @@ export const grappleAttackAdvantage = {
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.AttackType.Label',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.AttackTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.AttackType.Hint',
             get options() { return constants.attackTypeOptions; }
         }
     }

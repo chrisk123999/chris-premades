@@ -45,8 +45,8 @@ export const interception = {
         equipped: {
             default: ['martialM', 'martialR', 'simpleM', 'simpleR', 'shield'],
             type: 'select-many',
-            label: 'CHRISPREMADES.Macros.All.Interception.Equipped',
-            hint: 'CHRISPREMADES.Macros.All.Interception.EquippedHint',
+            label: 'CHRISPREMADES.Macros.All.Interception.Equipped.Label',
+            hint: 'CHRISPREMADES.Macros.All.Interception.Equipped.Hint',
             category: 'behavior',
             get options() { return [
                 {label: CONFIG.DND5E.armorTypes.shield, value: 'shield'},

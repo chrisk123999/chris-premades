@@ -24,13 +24,8 @@ async function use({document, workflow}) {
     if (effect) await documentUtils.deleteDocument(effect);
 }
 /**
- * Prompts for locations within range once the roll finishes, then moves the user's token through them.
- * Bound on an activity. Fires on `activityRollFinished`.
- *
- * Config:
- * - `selectLocationsAnimation`: picks the locations. Range is the activity's range, or the token's movement.
- * - `moveAnimation`: moves the token through the chosen locations.
- * - `movementEffect`: effect applied to the user during the move and deleted after it.
+ * After the activity is used, prompts for locations within range and moves the user's token through them. Range is the
+ * activity's range, or the token's remaining movement when the activity has none.
  */
 export const movementAnimation = {
     rules: 'all',
@@ -52,9 +47,10 @@ export const movementAnimation = {
                 identifier: 'selectLocations'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['token', 'range', 'options'],
             label: 'CHRISPREMADES.Macros.Generic.MovementAnimation.SelectAnimation',
-            hint: ''
+            hint: 'CHRISPREMADES.Macros.Generic.MovementAnimation.SelectLocationsAnimation.Hint'
         },
         moveAnimation: {
             default: {
@@ -62,15 +58,17 @@ export const movementAnimation = {
                 identifier: 'cunningActionDash'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['token', 'positions'],
-            label: 'CHRISPREMADES.Macros.Generic.MovementAnimation.MoveAnimation',
-            hint: ''
+            label: 'CHRISPREMADES.Macros.Generic.MovementAnimation.MoveAnimation.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.MovementAnimation.MoveAnimation.Hint'
         },
         movementEffect: {
             default: '',
             type: 'selectEffect',
-            label: 'CHRISPREMADES.Macros.Generic.MovementAnimation.MovementEffect',
-            hint: ''
+            category: 'animations',
+            label: 'CHRISPREMADES.Macros.Generic.MovementAnimation.MovementEffect.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.MovementAnimation.MovementEffect.Hint'
         }
     }
 };

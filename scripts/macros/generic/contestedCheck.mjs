@@ -32,20 +32,13 @@ async function contest({document: activity, actor, workflow}) {
     await workflowUtils.setActivity(workflow, activityUtils.getCheckDCModifiedActivityData(workflow.activity, roll.total));
 }
 /**
- * Rolls a check for the user and sets the activity's check DC to the result.
- * Bound on an activity. Fires on `activityTargeting` and `activityPreambleComplete`.
- *
- * Config:
- * - `sourceSkills`: skills the user contests with. The highest total is rolled.
- * - `sourceAbilities`: ability checks the user contests with when no skill is set. The highest modifier is rolled.
- * - `advantageMaxSize`: roll with advantage when every target is this size or smaller.
- * - `sizeCheck`: remove targets that are too large or immune for this grapple or shove.
- * - `grappledOnly`: remove targets the user is not grappling. Cancels the use when no target is left.
+ * Rolls a skill or ability check for the user and sets the activity's check DC to the result, so targets contest it
+ * with the activity's own check. Declining the roll cancels the use.
  */
 export const contestedCheck = {
     rules: 'all',
     version: '2.1.9',
-    category: 'utility',
+    category: 'rolls',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -66,15 +59,15 @@ export const contestedCheck = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Skills',
-            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SourceSkillsHint',
+            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SourceSkills.Hint',
             get options() { return constants.skillOptions; }
         },
         sourceAbilities: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Abilities',
-            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SourceAbilitiesHint',
+            label: 'CHRISPREMADES.Macros.Generic.Common.Abilities',
+            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SourceAbilities.Hint',
             get options() { return constants.abilityOptions; }
         },
         advantageMaxSize: {
@@ -82,15 +75,15 @@ export const contestedCheck = {
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.MaxSize',
-            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.AdvantageMaxSizeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.AdvantageMaxSize.Hint',
             get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.sizeOptions]; }
         },
         sizeCheck: {
             default: '',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SizeCheck',
-            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SizeCheckHint',
+            label: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SizeCheck.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.SizeCheck.Hint',
             options: [
                 {value: '', label: 'CHRISPREMADES.Config.None'},
                 {value: 'grapple', label: 'CHRISPREMADES.Macros.Generic.ContestedCheck.Grapple'},
@@ -102,8 +95,8 @@ export const contestedCheck = {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ContestedCheck.GrappledOnly',
-            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.GrappledOnlyHint'
+            label: 'CHRISPREMADES.Macros.Generic.ContestedCheck.GrappledOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ContestedCheck.GrappledOnly.Hint'
         }
     }
 };

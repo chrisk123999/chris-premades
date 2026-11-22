@@ -86,27 +86,9 @@ async function use({document, workflow}) {
     }
 }
 /**
- * Makes an attack with one of the caster's equipped weapons against a single target, then applies on-hit riders.
- * Bound on an item. Fires on `itemRollFinished`.
- *
- * Config:
- * - `activityId`: only run when this activity is used. Blank runs on any activity.
- * - `meleeOnly`: only offer equipped melee weapons.
- * - `proficientOnly`: only offer weapons the caster is proficient with.
- * - `ability`: ability for the weapon's attack and damage rolls. Spellcasting uses this spell's ability.
- * - `damageTypes`: damage types that can replace the weapon's damage type.
- * - `optionalDamageReplacement`: let the caster keep the weapon's normal damage type.
- * - `bonusDamageDieFormula`: number of extra damage dice. Blank uses cantrip scaling.
- * - `bonusDamageDieDenomination`: die size of the extra damage dice. 0 adds none.
- * - `bonusDamageTypes`: damage types of the extra damage dice.
- * - `onHitEffect`: effect applied to the target when the weapon attack hits.
- * - `activityOnHit`: activity used against the target when the weapon attack hits.
- * - `effectNearby`: effect applied to chosen creatures near the hit target.
- * - `effectNearbyRange`: distance from the hit target in which creatures can receive the nearby effect.
- * - `effectNearbyTargets`: maximum number of creatures that receive the nearby effect.
- * - `activityNearby`: activity used against creatures near the hit target. Its target count limits the choices.
- * - `activityNearbyRange`: distance from the hit target in which creatures can be chosen for the nearby activity.
- * - `animation`: attack played from the caster to the target. Its `strike` option plays the weapon's own `weaponAnimation` at the moment of the hit. A leap plays from the hit target to each nearby target.
+ * Makes an attack with one of the caster's equipped weapons against a single target, then applies effects and activities
+ * to the hit target and to chosen creatures near it. The weapon attack can use a different ability and damage type and
+ * gain extra damage dice. A weapon with `weaponAnimation` plays its own animation in step with this item's animation.
  */
 export const bladeSpell = {
     rules: 'all',
@@ -127,28 +109,28 @@ export const bladeSpell = {
             type: 'selectActivity',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Activity',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityIdHint'
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityId.Hint'
         },
         meleeOnly: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.MeleeOnly',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.MeleeOnlyHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.MeleeOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.MeleeOnly.Hint'
         },
         proficientOnly: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.ProficientOnly',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ProficientOnlyHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.ProficientOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ProficientOnly.Hint'
         },
         ability: {
             default: 'default',
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Ability',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.AbilityHint',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.Ability.Hint',
             get options() {
                 return [
                     {value: 'default', label: 'DND5E.Default'},
@@ -162,86 +144,86 @@ export const bladeSpell = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.DamageTypesHint',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.DamageTypes.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         optionalDamageReplacement: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.OptionalDamageReplacement',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.OptionalDamageReplacementHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.OptionalDamageReplacement.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.OptionalDamageReplacement.Hint'
         },
         bonusDamageDieFormula: {
             default: '',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageDieFormula',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageDieFormulaHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageDieFormula.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageDieFormula.Hint'
         },
         bonusDamageDieDenomination: {
             default: 0,
             type: 'number',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DieSize',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageDieDenominationHint'
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageDieDenomination.Hint'
         },
         bonusDamageTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageTypesHint',
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageTypes.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.BonusDamageTypes.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         onHitEffect: {
             default: '',
             type: 'selectEffect',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.OnHitEffect',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.OnHitEffectHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.OnHitEffect.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.OnHitEffect.Hint'
         },
         activityOnHit: {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityOnHit',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityOnHitHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityOnHit.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityOnHit.Hint'
         },
         effectNearby: {
             default: '',
             type: 'selectEffect',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearby',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearbyHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearby.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearby.Hint'
         },
         effectNearbyRange: {
             default: 5,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearbyRange',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearbyRangeHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearbyRange.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearbyRange.Hint'
         },
         effectNearbyTargets: {
             default: 1,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearbyTargets',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearbyTargetsHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearbyTargets.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.EffectNearbyTargets.Hint'
         },
         activityNearby: {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityNearby',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityNearbyHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityNearby.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityNearby.Hint'
         },
         activityNearbyRange: {
             default: 5,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityNearbyRange',
-            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityNearbyRangeHint'
+            label: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityNearbyRange.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.ActivityNearbyRange.Hint'
         },
         animation: {
             default: {
@@ -249,9 +231,10 @@ export const bladeSpell = {
                 identifier: 'none'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['sourceToken', 'targetToken', 'options'],
             label: 'CHRISPREMADES.Config.Animation',
-            hint: ''
+            hint: 'CHRISPREMADES.Macros.Generic.BladeSpell.Animation.Hint'
         }
     }
 };

@@ -9,16 +9,12 @@ async function late({document: activity, workflow}) {
     }));
 }
 /**
- * Knocks prone each target that was hit.
- * Bound on an activity. Fires on `activityRollFinished`.
- *
- * Config:
- * - `maxSize`: targets larger than this size are not knocked prone.
+ * Knocks prone each target the activity hits.
  */
 export const proneOnHit = {
     rules: 'all',
     version: '2.1.4',
-    category: 'utility',
+    category: 'conditions',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -34,7 +30,7 @@ export const proneOnHit = {
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.MaxSize',
-            hint: 'CHRISPREMADES.Macros.Generic.ProneOnHit.MaxSizeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.ProneOnHit.MaxSize.Hint',
             get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.sizeOptions]; }
         }
     }

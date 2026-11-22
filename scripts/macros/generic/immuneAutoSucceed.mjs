@@ -27,13 +27,13 @@ function checkImmunities({document: activity, macroClass: {identifier, source}, 
     }
 }
 /**
- * Targets succeed on checks or saves from this activity if it would apply a condition to which they are immune.
- * Bound on an activity. Fires on `activityPreambleComplete`.
+ * Targets immune to a condition this activity applies automatically succeed on its check or save. The roll card names
+ * the effect that grants the immunity when one does. Set it only on check or save activities that apply a condition.
  */
 export const immuneAutoSucceed = {
     rules: 'all',
     version: '2.1.7',
-    category: 'utility',
+    category: 'mechanics',
     generic: true,
     documents: ['activity'],
     roll: [

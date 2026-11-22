@@ -75,7 +75,7 @@ export const orcishFury = {
             default: ['relentless-endurance'],
             type: 'selectIdentifiers',
             label: 'CHRISPREMADES.Config.Identifiers',
-            hint: 'CHRISPREMADES.Macros.Legacy.OrcishFury.TriggerIdentifiersHint',
+            hint: 'CHRISPREMADES.Macros.Legacy.OrcishFury.TriggerIdentifiers.Hint',
             category: 'homebrew'
         }
     }

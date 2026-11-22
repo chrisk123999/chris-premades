@@ -19,16 +19,12 @@ async function fail({workflow}) {
     }));
 }
 /**
- * Knocks prone each target that failed the save.
- * Bound on an activity. Fires on `activityPreItemRoll`, `activityPreambleComplete` and `activityRollFinished`.
- *
- * Config:
- * - `skipProne`: skip targets that are already prone or immune to it. Cancels the use when no target is left.
+ * Knocks prone each target that fails the activity's save. Adds `prone` to the workflow's `conditions` property.
  */
 export const proneOnFail = {
     rules: 'all',
     version: '2.1.0',
-    category: 'utility',
+    category: 'conditions',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -53,8 +49,8 @@ export const proneOnFail = {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ProneOnFail.SkipProne',
-            hint: 'CHRISPREMADES.Macros.Generic.ProneOnFail.SkipProneHint'
+            label: 'CHRISPREMADES.Macros.Generic.ProneOnFail.SkipProne.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ProneOnFail.SkipProne.Hint'
         }
     }
 };

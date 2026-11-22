@@ -65,7 +65,7 @@ export const crownOfMadness = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.CrownOfMadnessColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.CrownOfMadnessColor.Hint'}),
             cast: partOption('Cast'),
             shake: partOption('Shake')
         };

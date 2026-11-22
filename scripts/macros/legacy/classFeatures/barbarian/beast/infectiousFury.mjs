@@ -88,7 +88,7 @@ export const infectiousFury = {
             type: 'selectIdentifiers',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Identifiers',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.IdentifierHint'
+            hint: 'CHRISPREMADES.Macros.Generic.Common.Identifier.Hint'
         }
     }
 };

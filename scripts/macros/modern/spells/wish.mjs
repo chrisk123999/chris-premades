@@ -9,7 +9,7 @@ async function selectSpell(maxLevel) {
 }
 async function early({document, activity}) {
     if (activity.identifier === 'wish-stress' || !automationUtils.getConfigValue(document, 'blocked')) return;
-    genericUtils.notify('CHRISPREMADES.Macros.Modern.Wish.Blocked', {type: 'warn'});
+    genericUtils.notify('CHRISPREMADES.Macros.Modern.Wish.Blocked.Label', {type: 'warn'});
     return true;
 }
 async function duplicateSpell({document, workflow}) {
@@ -145,8 +145,8 @@ export const wish = {
         chanceNumber: {
             default: 33,
             type: 'number',
-            label: 'CHRISPREMADES.Macros.Modern.Wish.ChanceNumber',
-            hint: 'CHRISPREMADES.Macros.Modern.Wish.ChanceNumberHint',
+            label: 'CHRISPREMADES.Macros.Modern.Wish.ChanceNumber.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.Wish.ChanceNumber.Hint',
             category: 'homebrew',
             homebrew: true
         },
@@ -154,7 +154,7 @@ export const wish = {
             default: false,
             type: 'checkbox',
             label: 'CHRISPREMADES.Macros.Modern.Wish.BlockedLabel',
-            hint: 'CHRISPREMADES.Macros.Modern.Wish.BlockedHint',
+            hint: 'CHRISPREMADES.Macros.Modern.Wish.Blocked.Hint',
             category: 'mechanics'
         },
         instantHealthConditions: {

@@ -89,7 +89,7 @@ export const flameBlade = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, ['orange'], {auto: false, hint: 'CHRISPREMADES.Animations.FlameBladeColorHint'}),
+            color: colorOption(colorMap, ['orange'], {auto: false, hint: 'CHRISPREMADES.Animations.FlameBladeColor.Hint'}),
             cast: partOption('Cast'),
             impact: partOption('Impact')
         };

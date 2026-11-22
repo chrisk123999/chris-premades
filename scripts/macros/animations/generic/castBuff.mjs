@@ -107,10 +107,10 @@ export const castBuff = {
     category: 'generic',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.SpellParts.BuffColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.SpellParts.BuffColor.Hint'}),
             cast: partOption('Cast'),
-            aura: partOption('Aura', {defaultValue: false, hint: 'CHRISPREMADES.Animations.SpellParts.PersistentHint'}),
-            shield: partOption('Shield', {defaultValue: false, hint: 'CHRISPREMADES.Animations.SpellParts.PersistentHint'})
+            aura: partOption('Aura', {defaultValue: false, hint: 'CHRISPREMADES.Animations.SpellParts.Persistent.Hint'}),
+            shield: partOption('Shield', {defaultValue: false, hint: 'CHRISPREMADES.Animations.SpellParts.Persistent.Hint'})
         };
     },
     get credits() { return [animationUtils.getCredits('eskie')]; }

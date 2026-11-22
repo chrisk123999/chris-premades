@@ -20,12 +20,8 @@ async function deleted({document}) {
     if (animation?.macros?.return) await Promise.all(tokens.map(token => animation.macros.return(token)));
 }
 /**
- * Hides the affected actor's tokens while the effect exists and reveals them when it is deleted.
- * Bound on an effect. Fires on `created` and `deleted`.
- * An effect flagged `flags.cat.banish.permanent` that runs its full duration leaves the tokens hidden.
- *
- * Config:
- * - `animation`: played on each token before it is hidden, and again when it returns.
+ * Hides the affected actor's tokens while the effect exists and reveals them when it is deleted. An effect flagged
+ * `flags.cat.banish.permanent` that runs its full duration leaves the tokens hidden.
  */
 export const banish = {
     rules: 'all',
@@ -54,7 +50,8 @@ export const banish = {
             type: 'selectAnimation',
             inputs: ['targetToken'],
             category: 'animations',
-            label: 'CHRISPREMADES.Config.Animation'
+            label: 'CHRISPREMADES.Config.Animation',
+            hint: 'CHRISPREMADES.Macros.Generic.Banish.Animation.Hint'
         }
     }
 };

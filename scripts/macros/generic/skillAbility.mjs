@@ -16,13 +16,8 @@ async function skill({document, actor, config}) {
     await swapSkillAbility({actor, config, item: useItem ? document : undefined, skills, abilities});
 }
 /**
- * Listed skill checks use whichever listed ability gives the higher modifier.
- * Bound on an item. Fires on `actorSituational`.
- *
- * Config:
- * - `skills`: skills whose ability can change.
- * - `abilities`: abilities the check can use instead.
- * - `useItem`: use the item when the ability changes, to show the swap in chat.
+ * Checks with the selected skills use whichever selected ability gives the highest modifier, counting ability check
+ * bonuses. The skill's normal ability is kept on a tie.
  */
 export const skillAbility = {
     rules: 'all',
@@ -43,21 +38,23 @@ export const skillAbility = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Skills',
+            hint: 'CHRISPREMADES.Macros.Generic.SkillAbility.Skills.Hint',
             get options() { return constants.skillOptions; }
         },
         abilities: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Abilities',
+            label: 'CHRISPREMADES.Macros.Generic.Common.Abilities',
+            hint: 'CHRISPREMADES.Macros.Generic.SkillAbility.Abilities.Hint',
             get options() { return constants.abilityOptions; }
         },
         useItem: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SkillAbility.UseItem',
-            hint: 'CHRISPREMADES.Macros.Generic.SkillAbility.UseItemHint'
+            label: 'CHRISPREMADES.Macros.Generic.SkillAbility.UseItem.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SkillAbility.UseItem.Hint'
         }
     }
 };

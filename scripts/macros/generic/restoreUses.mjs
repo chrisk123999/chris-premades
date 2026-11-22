@@ -33,20 +33,14 @@ async function early({document, activity, config}) {
     return true;
 }
 /**
- * Controls when this item's restore activity can be used, and offers it when the item runs out of uses.
- * Bound on an item. Fires on `itemPreTargeting`.
- * The restore activity is blocked while no uses are spent.
- * When the offered restore runs, the original activity is used again afterwards.
- *
- * Config:
- * - `restoreActivity`: activity that restores this item's uses. Blank uses the first activity that restores one.
- * - `requireEmpty`: block the restore activity while uses remain.
- * - `offerRestore`: when another activity needs a use and none remain, offer to run the restore activity first.
+ * Controls when this item's restore activity can be used, and offers to run it when another activity needs a use and
+ * none remain. The restore activity is blocked while no uses are spent. After an offered restore, the original
+ * activity is used again.
  */
 export const restoreUses = {
     rules: 'all',
     version: '2.1.9',
-    category: 'utility',
+    category: 'uses',
     generic: true,
     documents: ['item'],
     roll: [
@@ -61,22 +55,22 @@ export const restoreUses = {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.RestoreUses.RestoreActivity',
-            hint: 'CHRISPREMADES.Macros.Generic.RestoreUses.RestoreActivityHint'
+            label: 'CHRISPREMADES.Macros.Generic.RestoreUses.RestoreActivity.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.RestoreUses.RestoreActivity.Hint'
         },
         requireEmpty: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.RestoreUses.RequireEmpty',
-            hint: 'CHRISPREMADES.Macros.Generic.RestoreUses.RequireEmptyHint'
+            label: 'CHRISPREMADES.Macros.Generic.RestoreUses.RequireEmpty.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.RestoreUses.RequireEmpty.Hint'
         },
         offerRestore: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.RestoreUses.OfferRestore',
-            hint: 'CHRISPREMADES.Macros.Generic.RestoreUses.OfferRestoreHint'
+            label: 'CHRISPREMADES.Macros.Generic.RestoreUses.OfferRestore.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.RestoreUses.OfferRestore.Hint'
         }
     }
 };

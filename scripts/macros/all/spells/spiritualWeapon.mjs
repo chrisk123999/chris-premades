@@ -110,15 +110,15 @@ export const spiritualWeapon = {
             type: 'file',
             sequencer: true,
             fileType: 'imagevideo',
-            label: 'CHRISPREMADES.Macros.All.SpiritualWeapon.SavedTokenImg',
-            hint: 'CHRISPREMADES.Macros.All.SpiritualWeapon.SavedTokenImgHint',
+            label: 'CHRISPREMADES.Macros.All.SpiritualWeapon.SavedTokenImg.Label',
+            hint: 'CHRISPREMADES.Macros.All.SpiritualWeapon.SavedTokenImg.Hint',
             category: 'animations'
         },
         reach: {
             default: 5,
             type: 'number',
-            label: 'CHRISPREMADES.Macros.All.SpiritualWeapon.Reach',
-            hint: 'CHRISPREMADES.Macros.All.SpiritualWeapon.ReachHint',
+            label: 'CHRISPREMADES.Macros.All.SpiritualWeapon.Reach.Label',
+            hint: 'CHRISPREMADES.Macros.All.SpiritualWeapon.Reach.Hint',
             category: 'homebrew'
         },
         animation: {

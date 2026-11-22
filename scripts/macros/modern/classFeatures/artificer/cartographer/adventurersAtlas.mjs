@@ -71,7 +71,7 @@ export const adventurersAtlas = {
             type: 'number',
             category: 'homebrew',
             label: 'CHRISPREMADES.Config.Range',
-            hint: 'CHRISPREMADES.Macros.Modern.AdventurersAtlas.RangeHint'
+            hint: 'CHRISPREMADES.Macros.Modern.AdventurersAtlas.Range.Hint'
         }
     }
 };

@@ -132,18 +132,10 @@ async function exposure({document: effect, worldTime}) {
     }
 }
 /**
- * Applies environment effects to tokens in this scene, level or region.
- * Underwater and No Air start Holding Breath unless the creature can breathe there. Breathable Air in any overlapping area cancels that.
- * Extreme Cold and Extreme Heat roll a Constitution save each hour of world time. Extreme Heat grants a Drink Water item, and drinking skips the next heat save.
- * Effects are removed once the token is in no matching area.
- * Bound on a scene, level or region. Fires when a token is placed, moves, enters or leaves, and when combat starts.
- *
- * Config:
- * - `environments`: environments the area has.
- * - `timing`: always, or only while the token is in combat.
- * - `coldIdentifiers`, `heatIdentifiers`: items or effects that make the save succeed.
- * - `heatDisadvantageIdentifiers`: items or effects that give disadvantage on the heat save.
- * - Homebrew: `saveInterval`, `coldDC`, `heatDC`, `heatDCIncrease`, `heatArmorTypes` and `exhaustion`.
+ * Applies environment effects to tokens in this scene, level or region, and removes them once the token is in no
+ * matching area. Underwater and No Air start Holding Breath unless the creature can breathe there, and Breathable Air in
+ * any overlapping area cancels that. Extreme Cold and Extreme Heat call for a Constitution save at a set interval of
+ * world time, and Extreme Heat grants a Drink Water item that skips the next heat save.
  */
 export const environment = {
     rules: 'all',
@@ -170,14 +162,17 @@ export const environment = {
         environments: {
             default: [],
             type: 'select-many',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.Environments',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Environment.Environments.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.Environments.Hint',
             options: ['underwater', 'noAir', 'breathableAir', 'extremeCold', 'extremeHeat', 'highAltitude'].map(value => ({value, label: 'CHRISPREMADES.Macros.Generic.Environment.' + value.capitalize()}))
         },
         timing: {
             default: 'always',
             type: 'select',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.Timing',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.TimingHint',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Environment.Timing.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.Timing.Hint',
             options: [
                 {value: 'always', label: 'CHRISPREMADES.Macros.Generic.Environment.Always'},
                 {value: 'combat', label: 'CHRISPREMADES.Macros.Generic.Environment.Combat'}
@@ -187,62 +182,65 @@ export const environment = {
             showIf: ({environments}) => environments.includes('extremeCold'),
             default: [],
             type: 'selectIdentifiers',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.ColdIdentifiers',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.ColdIdentifiersHint'
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Environment.ColdIdentifiers.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.ColdIdentifiers.Hint'
         },
         heatIdentifiers: {
             showIf: ({environments}) => environments.includes('extremeHeat'),
             default: [],
             type: 'selectIdentifiers',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatIdentifiers',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatIdentifiersHint'
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatIdentifiers.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatIdentifiers.Hint'
         },
         heatDisadvantageIdentifiers: {
             showIf: ({environments}) => environments.includes('extremeHeat'),
             default: [],
             type: 'selectIdentifiers',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatDisadvantageIdentifiers',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatDisadvantageIdentifiersHint'
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatDisadvantageIdentifiers.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatDisadvantageIdentifiers.Hint'
         },
         saveInterval: {
             showIf: ({environments}) => environments.some(environment => ['extremeCold', 'extremeHeat'].includes(environment)),
             default: 3600,
             type: 'number',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.SaveInterval',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.SaveIntervalHint'
+            label: 'CHRISPREMADES.Macros.Generic.Environment.SaveInterval.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.SaveInterval.Hint'
         },
         coldDC: {
             showIf: ({environments}) => environments.includes('extremeCold'),
             default: 10,
             type: 'number',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.ColdDC',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.ColdDCHint'
+            label: 'CHRISPREMADES.Macros.Generic.Environment.ColdDC.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.ColdDC.Hint'
         },
         heatDC: {
             showIf: ({environments}) => environments.includes('extremeHeat'),
             default: 5,
             type: 'number',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatDC',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatDCHint'
+            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatDC.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatDC.Hint'
         },
         heatDCIncrease: {
             showIf: ({environments}) => environments.includes('extremeHeat'),
             default: 1,
             type: 'number',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatDCIncrease',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatDCIncreaseHint'
+            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatDCIncrease.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatDCIncrease.Hint'
         },
         heatArmorTypes: {
             showIf: ({environments}) => environments.includes('extremeHeat'),
             default: ['medium', 'heavy'],
             type: 'select-many',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatArmorTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatArmorTypesHint',
+            label: 'CHRISPREMADES.Macros.Generic.Environment.HeatArmorTypes.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.HeatArmorTypes.Hint',
             get options() { return constants.armorOptions; }
         },
         exhaustion: {
@@ -250,8 +248,8 @@ export const environment = {
             default: 1,
             type: 'number',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Generic.Environment.Exhaustion',
-            hint: 'CHRISPREMADES.Macros.Generic.Environment.ExhaustionHint'
+            label: 'CHRISPREMADES.Macros.Generic.Environment.Exhaustion.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Environment.Exhaustion.Hint'
         }
     }
 };

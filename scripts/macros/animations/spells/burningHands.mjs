@@ -143,7 +143,7 @@ export const burningHands = {
                 default: 'detailed',
                 type: 'select',
                 label: 'CHRISPREMADES.Animations.SpellParts.Style',
-                hint: 'CHRISPREMADES.Animations.BurningHandsStyleHint',
+                hint: 'CHRISPREMADES.Animations.BurningHandsStyle.Hint',
                 options: {
                     detailed: {
                         label: 'CHRISPREMADES.Animations.SpellParts.Styles.Detailed'

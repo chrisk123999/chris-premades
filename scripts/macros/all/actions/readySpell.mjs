@@ -159,16 +159,16 @@ export const readyItem = {
             default: ['action'],
             type: 'select-many',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.All.ReadySpell.ActivationTypes',
-            hint: 'CHRISPREMADES.Macros.All.ReadySpell.ActivationTypesHint',
+            label: 'CHRISPREMADES.Macros.All.ReadySpell.ActivationTypes.Label',
+            hint: 'CHRISPREMADES.Macros.All.ReadySpell.ActivationTypes.Hint',
             get options() { return constants.activationTypeOptions; }
         },
         turnStart: {
             default: 'lose',
             type: 'select',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.All.ReadySpell.TurnStart',
-            hint: 'CHRISPREMADES.Macros.All.ReadySpell.TurnStartHint',
+            label: 'CHRISPREMADES.Macros.All.ReadySpell.TurnStart.Label',
+            hint: 'CHRISPREMADES.Macros.All.ReadySpell.TurnStart.Hint',
             options: [
                 {value: 'prompt', label: 'CHRISPREMADES.Macros.All.ReadySpell.TurnStartPrompt'},
                 {value: 'lose', label: 'CHRISPREMADES.Macros.All.ReadySpell.TurnStartLose'}

@@ -70,8 +70,8 @@ const holdBreath = {
         startsOutOfAir: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.Modern.Suffocation.StartsOutOfAir',
-            hint: 'CHRISPREMADES.Macros.Modern.Suffocation.StartsOutOfAirHint',
+            label: 'CHRISPREMADES.Macros.Modern.Suffocation.StartsOutOfAir.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.Suffocation.StartsOutOfAir.Hint',
             category: 'mechanics'
         },
         breathFormula: {
@@ -79,8 +79,8 @@ const holdBreath = {
             type: 'formula',
             deterministic: true,
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Modern.Suffocation.BreathFormula',
-            hint: 'CHRISPREMADES.Macros.Modern.Suffocation.BreathFormulaHint'
+            label: 'CHRISPREMADES.Macros.Modern.Suffocation.BreathFormula.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.Suffocation.BreathFormula.Hint'
         }
     }
 };
@@ -98,8 +98,8 @@ export const holdBreathLegacy = {
             type: 'formula',
             deterministic: true,
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Modern.Suffocation.SurvivalFormula',
-            hint: 'CHRISPREMADES.Macros.Modern.Suffocation.SurvivalFormulaHint'
+            label: 'CHRISPREMADES.Macros.Modern.Suffocation.SurvivalFormula.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.Suffocation.SurvivalFormula.Hint'
         }
     }
 };

@@ -78,20 +78,9 @@ async function use({document, workflow}) {
     }
 }
 /**
- * Teleports the user, or each target that failed its save, once the roll finishes.
- * Bound on an activity. Fires on `activityRollFinished`.
- * Provide preselected targets by setting the workflow property `chris-premades.teleportCompanions` to an array of token ids.
- *
- * Config:
- * - `targets`: teleport the user, each target that failed its save, or the user to a space near one of the targets. The user picks every destination. `swap` trades places with the first target that failed its save.
- * - `range`: maximum teleport distance formula. `@item.level` and `@scaling` use the cast level and upcast levels. Leave blank to use the activity's own range.
- * - `rangeFromRoll`: use the activity's utility roll total as the maximum distance. Falls back to `range`.
- * - `requireSight`: only allow spaces the user can see. Turn off for teleports that need no sight.
- * - `companions`: how many allies within `companionRange` the user may bring along. They keep their position relative to the user and are dropped from the activity's targets.
- * - `companionMaxSize`: only offer companions no larger than the user.
- * - `excludeUser`: drop the user from the activity's targets on a self teleport, for areas centered on the space the user leaves.
- * - `visitedThisTurn`: on a self teleport, only allow spaces the user occupied earlier this turn.
- * - `animation`: played during the teleport.
+ * Teleports the user or the targets that failed their save once the activity's roll finishes, or swaps the user with
+ * a target. The user picks every destination. Set the workflow property `chris-premades.teleportCompanions` to an
+ * array of token ids to preselect companions.
  */
 export const teleport = {
     rules: 'all',
@@ -116,8 +105,8 @@ export const teleport = {
             default: 'self',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Teleport.Targets',
-            hint: 'CHRISPREMADES.Macros.Generic.Teleport.TargetsHint',
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.Targets.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.Targets.Hint',
             options: [
                 {value: 'self', label: 'CHRISPREMADES.Macros.Generic.Teleport.Self'},
                 {value: 'failedSaves', label: 'CHRISPREMADES.Macros.Generic.Teleport.FailedSaves'},
@@ -130,54 +119,56 @@ export const teleport = {
             type: 'formula',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Range',
-            hint: 'CHRISPREMADES.Macros.Generic.Teleport.RangeHint'
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.Range.Hint'
         },
         rangeFromRoll: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Teleport.RangeFromRoll',
-            hint: 'CHRISPREMADES.Macros.Generic.Teleport.RangeFromRollHint'
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.RangeFromRoll.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.RangeFromRoll.Hint'
         },
         requireSight: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Teleport.RequireSight',
-            hint: 'CHRISPREMADES.Macros.Generic.Teleport.RequireSightHint'
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.RequireSight.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.RequireSight.Hint'
         },
         companions: {
             default: 0,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Teleport.Companions',
-            hint: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionsHint'
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.Companions.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.Companions.Hint'
         },
         companionRange: {
             default: 5,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionRange'
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionRange.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionRange.Hint'
         },
         companionMaxSize: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionMaxSize'
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionMaxSize.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionMaxSize.Hint'
         },
         visitedThisTurn: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Teleport.VisitedThisTurn',
-            hint: 'CHRISPREMADES.Macros.Generic.Teleport.VisitedThisTurnHint'
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.VisitedThisTurn.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.VisitedThisTurn.Hint'
         },
         excludeUser: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Teleport.ExcludeUser',
-            hint: 'CHRISPREMADES.Macros.Generic.Teleport.ExcludeUserHint'
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.ExcludeUser.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.ExcludeUser.Hint'
         },
         animation: {
             default: {
@@ -187,7 +178,8 @@ export const teleport = {
             type: 'selectAnimation',
             inputs: ['token', 'options'],
             category: 'animations',
-            label: 'CHRISPREMADES.Config.Animation'
+            label: 'CHRISPREMADES.Config.Animation',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.Animation.Hint'
         }
     }
 };

@@ -306,8 +306,8 @@ export const wildShape = {
             default: [],
             type: 'packOrFolderMultiSelect',
             mode: 'pack',
-            label: 'CHRISPREMADES.Macros.All.WildShape.FormCompendiums',
-            hint: 'CHRISPREMADES.Macros.All.WildShape.FormCompendiumsHint',
+            label: 'CHRISPREMADES.Macros.All.WildShape.FormCompendiums.Label',
+            hint: 'CHRISPREMADES.Macros.All.WildShape.FormCompendiums.Hint',
             category: 'linked'
         }
     },

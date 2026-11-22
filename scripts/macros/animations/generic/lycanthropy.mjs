@@ -377,14 +377,14 @@ export const moonFrenzy = {
     category: 'generic',
     config: {
         moonColor: {
-            label: 'CHRISPREMADES.Config.MoonColor',
-            hint: 'CHRISPREMADES.Config.MoonColorHint',
+            label: 'CHRISPREMADES.Config.MoonColor.Label',
+            hint: 'CHRISPREMADES.Config.MoonColor.Hint',
             type: 'checkbox',
             default: true
         },
         tintMap: {
-            label: 'CHRISPREMADES.Config.TintMap',
-            hint: 'CHRISPREMADES.Config.TintMapHint',
+            label: 'CHRISPREMADES.Config.TintMap.Label',
+            hint: 'CHRISPREMADES.Config.TintMap.Hint',
             type: 'checkbox',
             default: false
         }

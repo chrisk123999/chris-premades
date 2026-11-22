@@ -1,25 +1,33 @@
-import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, dataUtils, documentUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, dataUtils, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
     category: 'behavior',
     label: 'CHRISPREMADES.Config.Identifiers',
-    hint: 'CHRISPREMADES.Macros.Generic.Common.IdentifierHint'
+    hint: 'CHRISPREMADES.Macros.Generic.Common.Identifier.Hint'
 };
 export const attackTypeConfig = {
     default: '',
     type: 'select',
     category: 'behavior',
     label: 'CHRISPREMADES.Config.AttackType.Label',
-    hint: 'CHRISPREMADES.Macros.Generic.Common.AttackTypeHint',
+    hint: 'CHRISPREMADES.Macros.Generic.Common.AttackType.Hint',
     get options() { return constants.attackTypeOptions; }
 };
+function getSourceItem(document) {
+    if (document.documentName === 'Item') return document;
+    if (document.parent?.documentName === 'Item') return document.parent;
+    const origin = effectUtils.getOriginSync(document);
+    if (origin?.documentName === 'Item') return origin;
+    if (origin?.documentName === 'ActiveEffect') return origin.parent?.documentName === 'Item' ? origin.parent : undefined;
+    return origin?.item;
+}
 async function damage({document, workflow}) {
     if (!workflow.targets.count || (!workflow.activity.hasDamage && !workflow.activity.hasHealing)) return;
     if (!itemUtils.getEquipmentState(document)) return;
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
     if (!config.bonus.length) return;
-    if (config.excludeSelf && workflow.item?.uuid === (document.documentName === 'Item' ? document : document.parent)?.uuid) return;
+    if (config.excludeSelf && workflow.item && workflow.item.uuid === getSourceItem(document)?.uuid) return;
     const combatData = (config.oncePerTurn || config.oncePerTurnPerTarget) && workflow.token ? tokenUtils.getCombatData(workflow.token.document) : undefined;
     const stamps = document.flags['chris-premades']?.damageBonusToOneRoll?.stamps ?? [];
     if (config.oncePerTurn && combatData && combatUtils.isStampedThisTurn(stamps, workflow.token.id, combatData)) return;
@@ -106,39 +114,9 @@ async function damage({document, workflow}) {
     return bonus;
 }
 /**
- * Offers a damage bonus on a matching damage or healing roll.
- * Bound on an effect or an item. Fires on `actorOptionalBonusDamage`.
- *
- * Config:
- * - `bonus`: damage bonus formula. On an effect, `@scaling` is the number of levels the spell that created it was upcast.
- * - `bonusDamageType`: damage types offered as choices for this bonus.
- * - `applyTo`: add the bonus to damage, healing, or both.
- * - `attackType`: only trigger for this attack type.
- * - `thrownRanged`: with `attackType`, also trigger for ranged weapon attacks made with a thrown weapon.
- * - `damageType`: only trigger when the roll deals one of these damage types.
- * - `healingType`: only trigger when the activity heals one of these healing types.
- * - `identifiers`: only trigger for items with one of these identifiers.
- * - `properties`: only trigger for items with one of these properties.
- * - `sourceClasses`: only trigger for spells from these comma-separated class identifiers.
- * - `itemType`: only trigger for these item types.
- * - `spellLevel`: only trigger for spells cast at one of these levels. This setting is checked against spell items only.
- * - `spellSchool`: only trigger for spells of these schools. This setting is checked against spell items only.
- * - `rollActivity`: activity rolled when the bonus is used.
- * - `rollItem`: roll this item when the bonus is used.
- * - `maxTargets`: limit the bonus to this many targets. 0 applies it to every target.
- * - `everyRoll`: add the bonus to every roll of a multi-attack. Off adds it to one roll.
- * - `requireHit`: only apply to targets that were hit.
- * - `attackerRange`: only apply to targets within this many feet of the attacker. 0 ignores distance.
- * - `targetWounded`: only apply when the target is missing hit points.
- * - `targetEffects`: only apply to hit targets that carry one of these effects created by the user.
- * - `targetCreatureTypes`: only apply to hit targets of these creature types.
- * - `useActivityCosts`: apply the item's default costs. Not offered when they cannot be paid.
- * - `allowCritical`: critical hit rules can be applied to this bonus.
- * - `oncePerTurn`: offer the bonus once per turn. Outside combat it is always offered.
- * - `oncePerTurnPerTarget`: each creature can take the bonus once per turn. Outside combat it is always offered.
- * - `excludeSelf`: skip rolls made with the item that carries the bonus.
- *
- * Records each used bonus on the workflow property `damageBonusToOneRoll`, keyed by the bonus document's uuid, as `{formula, total, type, targets}`.
+ * Adds a bonus formula to the actor's matching damage or healing rolls, either offered as an optional bonus or applied
+ * automatically. Its options limit which rolls and targets qualify. Each used bonus is recorded on the workflow
+ * property `damageBonusToOneRoll`, keyed by the bonus document's uuid, as `{formula, total, type, targets}`.
  */
 export const damageBonusToOneRoll = {
     rules: 'all',
@@ -158,29 +136,30 @@ export const damageBonusToOneRoll = {
             default: '',
             type: 'formula',
             label: 'CHRISPREMADES.Config.DamageBonus',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Bonus.Hint',
             category: 'behavior'
         },
         contextual: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Contextual',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ContextualHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Contextual.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Contextual.Hint'
         },
         bonusDamageType: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageTypeHint',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.BonusDamageType.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         applyTo: {
             default: 'damage',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ApplyTo',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ApplyToHint',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ApplyTo.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ApplyTo.Hint',
             options: [
                 {label: 'DND5E.HEAL.Type.HealingShort', value: 'healing'},
                 {label: 'DND5E.Damage', value: 'damage'},
@@ -192,23 +171,23 @@ export const damageBonusToOneRoll = {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ThrownRanged',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ThrownRangedHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ThrownRanged.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ThrownRanged.Hint'
         },
         damageType: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.DamageType.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         healingType: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.HealingType',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.HealingTypeHint',
+            label: 'CHRISPREMADES.Macros.Generic.Common.HealingType.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.HealingType.Hint',
             get options() { return constants.healingTypeOptions; }
         },
         identifiers: identifiersConfig,
@@ -216,8 +195,8 @@ export const damageBonusToOneRoll = {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Properties',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.PropertyHint',
+            label: 'CHRISPREMADES.Macros.Generic.Common.Properties',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.Property.Hint',
             get options() { return constants.itemProperties; }
         },
         itemType: {
@@ -225,7 +204,7 @@ export const damageBonusToOneRoll = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.ItemTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.ItemType.Hint',
             get options() { return constants.usableItemTypes; }
         },
         spellLevel: {
@@ -233,126 +212,129 @@ export const damageBonusToOneRoll = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SpellLevel',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellLevelHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellLevel.Hint',
             get options() { return constants.spellSlotOptions; }
         },
         sourceClasses: {
             default: '',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.SourceClasses',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.SourceClassesHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.SourceClasses.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.SourceClasses.Hint'
         },
         spellSchool: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SpellSchool',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchoolHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchool.Hint',
             get options() { return constants.spellSchoolOptions; }
         },
         firstCastOnly: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.FirstCast',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.FirstCastHint'
+            label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.FirstCast.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.FirstCast.Hint'
         },
         rollActivity: {
             default: '',
             type: 'selectActivity',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity'
+            label: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RollActivity.Hint'
         },
         rollItem: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.Common.RollItem'
+            label:'CHRISPREMADES.Macros.Generic.Common.RollItem.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RollItem.Hint'
         },
         maxTargets: {
             default: 0,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargets',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargetsHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargets.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.MaxTargets.Hint'
         },
         everyRoll: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRoll',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRollHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRoll.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.EveryRoll.Hint'
         },
         requireHit: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.RequireHit',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.RequireHitHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.RequireHit.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.RequireHit.Hint'
         },
         attackerRange: {
             default: 0,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.AttackerRange',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.AttackerRangeHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.AttackerRange.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.AttackerRange.Hint'
         },
         targetWounded: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWounded',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWoundedHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWounded.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetWounded.Hint'
         },
         targetEffects: {
             default: [],
             type: 'selectIdentifiers',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffects',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffectsHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffects.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetEffects.Hint'
         },
         targetCreatureTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetCreatureTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetCreatureTypesHint',
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetCreatureTypes.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.TargetCreatureTypes.Hint',
             get options() { return constants.creatureTypeOptions; }
         },
         useActivityCosts: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.Common.Costs'
+            label:'CHRISPREMADES.Macros.Generic.Common.Costs',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.UseActivityCosts.Hint'
         },
         allowCritical: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Critical',
-            hint:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.CriticalHint'
+            label:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Critical.Label',
+            hint:'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.Critical.Hint'
         },
         oncePerTurn: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurnHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn.Hint'
         },
         oncePerTurnPerTarget: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurnPerTarget',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurnPerTargetHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurnPerTarget.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurnPerTarget.Hint'
         },
         excludeSelf: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ExcludeSelf',
-            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ExcludeSelfHint'
+            label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ExcludeSelf.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.ExcludeSelf.Hint'
         }
     }
 };

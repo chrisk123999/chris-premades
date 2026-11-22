@@ -15,21 +15,13 @@ const contextPass = [
     }
 ];
 /**
- * Before a listed ability check, saving throw, skill or tool check, CAT asks whether to roll it with advantage.
- * Bound on an item or an effect. Fires on `actorContext`. An item must be equipped, and attuned if it needs attunement.
- *
- * Config:
- * - `check`: abilities whose checks get the option, including skill and tool checks that use them.
- * - `save`: saving throws the option is offered on.
- * - `skill`: skills the option is offered on.
- * - `tool`: tools the option is offered on.
- * - `statuses`: conditions that stop the option from being offered.
- * - `label`: option label, formatted with `{name}`. Blank uses the document name.
+ * Offers advantage as a roll option on the chosen ability checks, saving throws, skill checks and tool checks. An item
+ * must be equipped, and attuned if it needs attunement. The option is not offered when the roll already has advantage.
  */
 export const contextAdvantage = {
     rules: 'all',
     version: '2.1.7',
-    category: 'utility',
+    category: 'rolls',
     generic: true,
     documents: ['activeeffect', 'item'],
     check: contextPass,
@@ -41,14 +33,16 @@ export const contextAdvantage = {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.CheckAbilities',
+            label: 'CHRISPREMADES.Macros.Generic.ContextAdvantage.CheckAbilities',
+            hint: 'CHRISPREMADES.Macros.Generic.ContextAdvantage.Check.Hint',
             get options() { return constants.abilityOptions; }
         },
         save: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.SaveAbilities',
+            label: 'CHRISPREMADES.Macros.Generic.ContextAdvantage.SaveAbilities',
+            hint: 'CHRISPREMADES.Macros.Generic.ContextAdvantage.Save.Hint',
             get options() { return constants.abilityOptions; }
         },
         skill: {
@@ -56,6 +50,7 @@ export const contextAdvantage = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Skills',
+            hint: 'CHRISPREMADES.Macros.Generic.ContextAdvantage.Skill.Hint',
             get options() { return constants.skillOptions; }
         },
         tool: {
@@ -63,6 +58,7 @@ export const contextAdvantage = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Tools',
+            hint: 'CHRISPREMADES.Macros.Generic.ContextAdvantage.Tool.Hint',
             get options() { return constants.toolOptions; }
         },
         statuses: {
@@ -70,13 +66,15 @@ export const contextAdvantage = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.BlockingConditions',
+            hint: 'CHRISPREMADES.Macros.Generic.ContextAdvantage.Statuses.Hint',
             get options() { return constants.statusOptions; }
         },
         label: {
             default: '',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Label'
+            label: 'CHRISPREMADES.Macros.Generic.ContextAdvantage.Label.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ContextAdvantage.Label.Hint'
         }
     }
 };

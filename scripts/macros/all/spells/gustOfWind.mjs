@@ -61,7 +61,7 @@ export const gustOfWind = {
             default: 15,
             type: 'number',
             label: 'CHRISPREMADES.Config.Distance',
-            hint: 'CHRISPREMADES.Macros.All.GustOfWind.DistanceHint',
+            hint: 'CHRISPREMADES.Macros.All.GustOfWind.Distance.Hint',
             category: 'homebrew'
         },
         animation: {

@@ -92,14 +92,9 @@ async function repair({document: item, workflow}) {
     await ChatMessage.implementation.create({speaker: ChatMessage.implementation.getSpeaker({token: workflow.token?.document}), content: _loc('CHRISPREMADES.Macros.Generic.Firearm.' + (repaired ? 'Repaired' : 'Broke'), {item: item._source.name})});
 }
 /**
- * Firearm rules. A natural roll at or below the misfire score turns the attack into a miss and damages the firearm, and a damaged or broken firearm can't attack.
- * Weapon properties: `explosive` makes creatures within 5 feet of each hit target save (Dex, DC 8 + Dex + proficiency) or take 1d8 Fire; `recoil` blocks attacks beyond the weapon's normal range for the rest of the turn after an attack in combat; `blaring` gives Disadvantage on Stealth until the start of the user's next turn.
- * Bound on an item. Fires on `itemPreTargeting`, `itemPreambleComplete`, `itemAttackRollComplete` and `itemRollFinished`.
- * The item's `repair` activity rolls a tinker's tools check against 8 + the misfire score; a failure breaks the firearm.
- *
- * Config:
- * - `misfire`: misfire score. 0 turns misfires off.
- * - `unproficientPenalty`: added to the misfire score when the wielder isn't proficient.
+ * Applies firearm rules and the explosive, recoil and blaring weapon properties to the weapon. A natural attack roll at
+ * or below the misfire score misses and damages the firearm, and a damaged or broken firearm can't attack. The item's
+ * `repair` activity rolls a tinker's tools check against 8 + the misfire score, and a failure breaks the firearm.
  */
 export const firearm = {
     rules: 'all',
@@ -144,13 +139,15 @@ export const firearm = {
             default: 0,
             type: 'number',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.Firearm.Misfire'
+            label: 'CHRISPREMADES.Macros.Generic.Firearm.Misfire.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Firearm.Misfire.Hint'
         },
         unproficientPenalty: {
             default: 1,
             type: 'number',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Generic.Firearm.UnproficientPenalty'
+            label: 'CHRISPREMADES.Macros.Generic.Firearm.UnproficientPenalty.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Firearm.UnproficientPenalty.Hint'
         }
     }
 };

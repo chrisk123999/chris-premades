@@ -80,7 +80,7 @@ export function getPalette(palettes, color) {
 export function getColor(color, damageType) {
     return color === 'auto' ? elementColors[damageType] : color;
 }
-export function colorOption(colorMap, freeColors, {auto = true, random, hint = 'CHRISPREMADES.Animations.SpellParts.ColorHint'} = {}) {
+export function colorOption(colorMap, freeColors, {auto = true, random, hint = 'CHRISPREMADES.Animations.SpellParts.Color.Hint'} = {}) {
     const options = animationUtils.buildColorOptions(colorMap, {
         freeColors,
         requirements: ['jb2a_patreon'],
@@ -95,11 +95,11 @@ export function colorOption(colorMap, freeColors, {auto = true, random, hint = '
         options: auto ? {auto: {label: 'CHRISPREMADES.Config.Colors.Auto'}, ...options} : options
     };
 }
-export function partOption(part, {defaultValue = true, hint = 'CHRISPREMADES.Animations.SpellParts.' + part + 'Hint'} = {}) {
+export function partOption(part, {defaultValue = true, hint = 'CHRISPREMADES.Animations.SpellParts.' + part + '.Hint'} = {}) {
     return {
         default: defaultValue,
         type: 'checkbox',
-        label: 'CHRISPREMADES.Animations.SpellParts.' + part,
+        label: 'CHRISPREMADES.Animations.SpellParts.' + part + '.Label',
         hint
     };
 }

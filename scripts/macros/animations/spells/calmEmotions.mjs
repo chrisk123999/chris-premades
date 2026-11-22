@@ -103,7 +103,7 @@ export const calmEmotions = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.CalmEmotions.ColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.CalmEmotions.Color.Hint'}),
             cast: partOption('Cast')
         };
     }

@@ -29,7 +29,7 @@ async function rageBegin({document: activity, macroClass: {identifier, source}, 
         }, {
             label: activity.name, name: 'group', options: {image: activity.img, subinputs, tags: [
                 {label: activity.labels.range, id: 'range', tooltip: 'DND5E.Range'},
-                {label: _loc('CHRISPREMADES.Macros.Generic.TargetCreatureTypes.ChooseTargets'), id: 'targets'}
+                {label: _loc('CHRISPREMADES.Macros.Generic.TargetCreatureTypes.ChooseTargets.Label'), id: 'targets'}
             ]}
         }], {displayAsRows: true, radioName: 'activity'}]],
         'okCancel'

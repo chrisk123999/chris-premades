@@ -70,9 +70,9 @@ export const entanglingVines = {
     category: 'classFeature',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.EntanglingVines.ColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.EntanglingVines.Color.Hint'}),
             cast: partOption('Cast'),
-            persist: partOption('Aura', {hint: 'CHRISPREMADES.Animations.SpellParts.PersistentHint'})
+            persist: partOption('Aura', {hint: 'CHRISPREMADES.Animations.SpellParts.Persistent.Hint'})
         };
     }
 };

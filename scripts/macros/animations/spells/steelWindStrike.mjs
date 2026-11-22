@@ -323,14 +323,14 @@ export const steelWindStrike = {
         cameraZoom: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Animations.SteelWindStrike.CameraZoom',
-            hint: 'CHRISPREMADES.Animations.SteelWindStrike.CameraZoomHint'
+            label: 'CHRISPREMADES.Animations.SteelWindStrike.CameraZoom.Label',
+            hint: 'CHRISPREMADES.Animations.SteelWindStrike.CameraZoom.Hint'
         },
         sound: {
             default: '',
             type: 'file',
-            label: 'CHRISPREMADES.Config.Sound',
-            hint: 'CHRISPREMADES.Animations.SteelWindStrike.SoundHint'
+            label: 'CHRISPREMADES.Config.Sound.Label',
+            hint: 'CHRISPREMADES.Animations.SteelWindStrike.Sound.Hint'
         }
     },
     get credits() { return [animationUtils.getCredits('eskie')]; }

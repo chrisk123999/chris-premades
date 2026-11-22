@@ -56,8 +56,8 @@ export const potionOfPoison = {
         dice: {
             default: 0,
             type: 'number',
-            label: 'CHRISPREMADES.Macros.All.PotionOfPoison.Dice',
-            hint: 'CHRISPREMADES.Macros.All.PotionOfPoison.DiceHint',
+            label: 'CHRISPREMADES.Macros.All.PotionOfPoison.Dice.Label',
+            hint: 'CHRISPREMADES.Macros.All.PotionOfPoison.Dice.Hint',
             category: 'homebrew'
         },
         saveDC: {

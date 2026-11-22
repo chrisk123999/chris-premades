@@ -15,25 +15,13 @@ async function roll({document: item, config, macroClass: {identifier}, roll}) {
     return await roll.reroll();
 }
 /**
- * Adds d20 modifiers to a roll and rerolls it.
- * Bound on an effect or an item. Fires on `actorBonus`.
- *
- * Variants:
- * - `checkModifier`: ability checks.
- * - `saveModifier`: saving throws.
- * - `skillModifier`: skill checks. Adds the `skill` config.
- * - `toolModifier`: tool checks. Adds the `tool` config.
- *
- * Config:
- * - `modifier`: comma-separated d20 modifiers. Modifiers already on the roll are skipped.
- * - `ability`: limit the modifier to a list of abilities.
- * - `skill`: limit the modifier to a list of skills.
- * - `tool`: limit the modifier to a list of tools.
+ * Adds dice modifiers to the d20 of a roll, with one variant each for ability checks, saving throws, skill checks and
+ * tool checks. The roll is rerolled with the new modifiers, so its dice change. Modifiers already on the roll are skipped.
  */
 export const checkModifier = {
     rules: 'all',
     version: '2.0.2',
-    category: 'utility',
+    category: 'rolls',
     generic: true,
     documents: ['activeeffect', 'item'],
     check: [
@@ -55,7 +43,8 @@ export const checkModifier = {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Abilities',
+            label: 'CHRISPREMADES.Macros.Generic.Common.Abilities',
+            hint: 'CHRISPREMADES.Macros.Generic.RollModifier.Ability.Hint',
             get options() { return constants.abilityOptions; }
         }
     }
@@ -83,6 +72,7 @@ export const skillModifier = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Skills',
+            hint: 'CHRISPREMADES.Macros.Generic.RollModifier.Skill.Hint',
             get options() { return constants.skillOptions; }
         }
     }
@@ -101,6 +91,7 @@ export const toolModifier = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Tools',
+            hint: 'CHRISPREMADES.Macros.Generic.RollModifier.Tool.Hint',
             get options() { return constants.toolOptions; }
         }
     }

@@ -10,12 +10,14 @@ async function coverBonus({document, identifier, workflow}) {
     const cover = tokenUtils.checkCover(workflow.token.document, target.document, {activity: workflow.activity});
     if (!cover) return;
     if (cover === 999 && config.cover == 999) {
-        workflow.tracker.attribution.NOCOVER = {[identifier]: document.name};
-        return genericUtils.setProperty(workflow.activity, 'midiProperties.ignoreFullCover', true);
+        workflow.tracker.attribution.NOCOVER = {...workflow.tracker.attribution.NOCOVER, [identifier]: document.name};
+        genericUtils.setProperty(workflow.activity, 'midiProperties.ignoreFullCover', true);
+        return;
     }
     if (cover <= config.cover) {
-        workflow.tracker.attribution.NOCOVER = {[identifier]: document.name};
-        await workflowUtils.bonusAttack(workflow, cover);
+        const ignored = !!workflow.tracker.attribution.NOCOVER;
+        workflow.tracker.attribution.NOCOVER = {...workflow.tracker.attribution.NOCOVER, [identifier]: document.name};
+        if (!ignored) await workflowUtils.bonusAttack(workflow, cover);
     }
 }
 // Midi refuses a total cover target before the attack bonus pass, so the item is enchanted for the use.
@@ -33,10 +35,15 @@ async function fullCover({document, activity}) {
     });
     await itemUtils.enchantItem(activity.actor.items.get(activity.item.id), effectData);
 }
+/**
+ * Lets the actor's single-target attacks ignore cover up to the chosen level by adding an attack bonus equal to the
+ * target's cover bonus. Ignoring total cover sets the activity's `midiProperties.ignoreFullCover` for that use. An
+ * unequipped item does not apply.
+ */
 export const ignoreCover = {
     rules: 'all',
-    version: '2.1.7',
-    category: 'utility',
+    version: '2.1.11',
+    category: 'mechanics',
     generic: true,
     documents: ['activeeffect', 'item'],
     roll: [
@@ -57,7 +64,7 @@ export const ignoreCover = {
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.AttackType.Label',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.AttackTypeHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.AttackType.Hint',
             get options() { return constants.attackTypeOptions; }
         },
         cover: {
@@ -65,6 +72,7 @@ export const ignoreCover = {
             type: 'select',
             category: 'behavior',
             label: 'DND5E.Cover',
+            hint: 'CHRISPREMADES.Macros.Generic.IgnoreCover.Cover.Hint',
             get options() { return constants.coverOptions; }
         }
     }

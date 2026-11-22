@@ -65,16 +65,16 @@ export const moonbeam = {
     category: 'spell',
     config: {
         cast: partOption('Cast'),
-        impact: partOption('Impact', {hint: 'CHRISPREMADES.Animations.Moonbeam.ImpactHint'}),
+        impact: partOption('Impact', {hint: 'CHRISPREMADES.Animations.Moonbeam.Impact.Hint'}),
         opacity: {
             label: 'CHRISPREMADES.Config.Opacity',
-            hint: 'CHRISPREMADES.Animations.Moonbeam.OpacityHint',
+            hint: 'CHRISPREMADES.Animations.Moonbeam.Opacity.Hint',
             type: 'number',
             default: 0.8
         },
         scale: {
             label: 'CHRISPREMADES.Config.Scale',
-            hint: 'CHRISPREMADES.Animations.Moonbeam.ScaleHint',
+            hint: 'CHRISPREMADES.Animations.Moonbeam.Scale.Hint',
             type: 'number',
             default: 1.5
         }

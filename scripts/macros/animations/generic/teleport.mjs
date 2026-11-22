@@ -64,7 +64,7 @@ export const mistyStep = {
                 default: 'blue',
                 type: 'select',
                 label: 'CHRISPREMADES.Config.Color',
-                hint: 'CHRISPREMADES.Animations.MistyStepColorHint',
+                hint: 'CHRISPREMADES.Animations.MistyStepColor.Hint',
                 options: animationUtils.buildColorOptions(colorMap, {
                     freeColors: ['blue'],
                     labelPrefix: 'CHRISPREMADES.Config.Colors.',

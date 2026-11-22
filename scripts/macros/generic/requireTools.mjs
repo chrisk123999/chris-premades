@@ -8,17 +8,13 @@ async function check({document: activity, workflow}) {
     return true;
 }
 /**
- * Cancels this activity unless its user has one of the listed tools.
- * Bound on an activity. Fires on `activityPreItemRoll`, and on `castEnchantmentPreItemRoll` for spells cast through it.
- *
- * Config:
- * - `tools`: tools that satisfy the requirement. Any one is enough.
- * - `equipped`: the tool must be equipped, standing in for "in hand".
+ * Cancels the activity, and spells cast through it, unless the user has one of the listed tools. A warning names the
+ * missing tools.
  */
 export const requireTools = {
     rules: 'all',
     version: '2.1.11',
-    category: 'utility',
+    category: 'mechanics',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -39,14 +35,15 @@ export const requireTools = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Tools',
+            hint: 'CHRISPREMADES.Macros.Generic.RequireTools.Tools.Hint',
             get options() { return constants.toolOptions; }
         },
         equipped: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.RequireTools.Equipped',
-            hint: 'CHRISPREMADES.Macros.Generic.RequireTools.EquippedHint'
+            label: 'CHRISPREMADES.Macros.Generic.RequireTools.Equipped.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.RequireTools.Equipped.Hint'
         }
     }
 };

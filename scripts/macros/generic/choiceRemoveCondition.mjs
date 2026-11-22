@@ -13,7 +13,7 @@ async function preChecks({activity, config, macroClass: {identifier}}) {
     if (affects === 'target') {
         const targetActor = getTargetActor(config);
         if (!targetActor || !requireCondition || getConditions(activity, identifier, targetActor)?.length) return;
-        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No removable conditions on target.');
+        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.NoTargetConditions', {notify: 'info'});
         return true;
     }
     const prefetched = workflowUtils.getWorkflowProperty(config.workflow, 'choiceRemoveCondition');
@@ -24,7 +24,7 @@ async function preChecks({activity, config, macroClass: {identifier}}) {
     }
     const effects = getConditions(activity, identifier);
     if (!effects?.length && requireCondition) {
-        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No removable conditions on actor.');
+        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.NoConditions', {notify: 'info'});
         return true;
     }
     workflowUtils.setWorkflowProperty(config.workflow, 'choiceRemoveCondition', effects?.map(effect => effect.uuid));
@@ -94,30 +94,15 @@ async function rollConditions(activity, conditions) {
     await workflowUtils.syntheticActivityRoll(activity, [], {options, userId: queryUtils.firstOwner(activity.actor, true)});
 }
 /**
- * Prompts to remove listed conditions from the user or its target once the roll finishes.
- * Bound on an activity. Fires on `activityPreTargeting` and `activityRollFinished`.
- *
- * Variants:
- * - `choiceRemoveCondition`: runs when the activity is used.
- * - `turnEndChoiceRemoveCondition`: also rolls the activity on `actorTurnEnd` when a listed condition is present.
- * - `turnStartChoiceRemoveCondition`: also rolls the activity on `actorTurnStart` when a listed condition is present.
- * - `conditionGainedChoiceRemoveCondition`: also rolls the activity on `actorDoCreated` when an effect would give a listed condition the creature does not have, and prevents the effect when the roll reaches `minimumRoll`.
- *
- * Config:
- * - `conditions`: conditions that can be removed. The use is cancelled when the creature has none of them.
- *   Choosing exhaustion lowers it by one level.
- * - `affects`: remove from the activity's user or its single target.
- * - `count`: formula for how many conditions can be removed per use.
- * - `targetChooses`: with `affects` set to target, the target's owner picks the conditions.
- * - `autoSingle`: remove the conditions without a prompt when no more than `count` qualify.
- * - `requireCondition`: cancel the use when the creature has none of the conditions.
- * - `reactionConditions`: conditions the creature can end with its reaction.
- * - `minimumRoll`: removing from the user needs the activity's roll total to reach this. 0 removes on any roll.
+ * Prompts to remove chosen conditions from the activity's user or its target after the activity rolls. The turn end and
+ * turn start variants also roll the activity on the owner's turn while it has one of the conditions. The condition gained
+ * variant rolls the activity when an effect would give the owner a new listed condition, and prevents that effect when
+ * the roll reaches the minimum roll.
  */
 export const choiceRemoveCondition = {
     rules: 'all',
-    version: '2.1.9',
-    category: 'utility',
+    version: '2.1.11',
+    category: 'conditions',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -138,14 +123,15 @@ export const choiceRemoveCondition = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Conditions',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Conditions.Hint',
             get options() { return constants.statusOptions;}
         },
         affects: {
             default: 'self',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Affects',
-            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.AffectsHint',
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Affects.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Affects.Hint',
             options: [
                 {label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Self', value: 'self'},
                 {label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Target', value: 'target'}
@@ -155,44 +141,44 @@ export const choiceRemoveCondition = {
             default: '1',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Count',
-            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.CountHint'
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Count.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.Count.Hint'
         },
         targetChooses: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.TargetChooses',
-            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.TargetChoosesHint'
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.TargetChooses.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.TargetChooses.Hint'
         },
         autoSingle: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.AutoSingle',
-            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.AutoSingleHint'
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.AutoSingle.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.AutoSingle.Hint'
         },
         requireCondition: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.RequireCondition',
-            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.RequireConditionHint'
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.RequireCondition.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.RequireCondition.Hint'
         },
         reactionConditions: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.ReactionConditions',
-            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.ReactionConditionsHint',
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.ReactionConditions.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.ReactionConditions.Hint',
             get options() { return constants.statusOptions;}
         },
         minimumRoll: {
             default: '0',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.MinimumRoll',
-            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.MinimumRollHint'
+            label: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.MinimumRoll.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.MinimumRoll.Hint'
         }
     }
 };

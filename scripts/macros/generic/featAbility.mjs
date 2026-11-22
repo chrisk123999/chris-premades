@@ -41,18 +41,14 @@ async function added({document: item}) {
     if (Object.keys(updates).length) await documentUtils.update(item, updates);
 }
 /**
- * Uses the ability chosen for a feat's ability score increase in the item's save DCs, attacks and cast spells.
- * Bound on an item. Fires on `created`, `medkit`, and `munched`.
- * The choice is read from the item, the feature that granted it, or the feat it is part of.
- * Without a recorded choice, save DCs keep their formula and attacks and spells use the highest listed ability.
- *
- * Config:
- * - `abilities`: abilities the feat chooses between.
+ * Uses the ability chosen in a feat's Ability Score Improvement for the item's save DCs, attack rolls and cast spells.
+ * The choice is read from the item, the feature that granted it, or the feat it is part of. Without a recorded choice,
+ * save DCs keep their formula and attacks and spells use the highest listed ability.
  */
 export const featAbility = {
     version: '2.1.9',
     rules: 'all',
-    category: 'utility',
+    category: 'mechanics',
     generic: true,
     documents: ['item'],
     item: [
@@ -65,8 +61,8 @@ export const featAbility = {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Abilities',
-            hint: 'CHRISPREMADES.Macros.Generic.FeatAbility.AbilitiesHint',
+            label: 'CHRISPREMADES.Macros.Generic.Common.Abilities',
+            hint: 'CHRISPREMADES.Macros.Generic.FeatAbility.Abilities.Hint',
             get options() { return constants.abilityOptions; }
         }
     }

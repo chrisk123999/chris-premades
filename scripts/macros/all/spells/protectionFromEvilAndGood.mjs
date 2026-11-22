@@ -66,7 +66,7 @@ export const protectionFromEvilAndGood = {
             default: ['charmed', 'frightened'],
             type: 'select-many',
             label: 'CHRISPREMADES.Config.Conditions',
-            hint: 'CHRISPREMADES.Macros.All.ProtectionFromEvilAndGood.ConditionsHint',
+            hint: 'CHRISPREMADES.Macros.All.ProtectionFromEvilAndGood.Conditions.Hint',
             category: 'homebrew',
             get options() { return constants.statusOptions; }
         }

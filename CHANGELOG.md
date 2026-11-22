@@ -5,8 +5,21 @@
 ## Generic Macros:
 - New `attackDisadvantage` generic.
 - `attackRider`, `nextHitRider`, `summonModifier`, `actionDismissal` and `damageBonusToOneRoll` have new options.
+- Every generic has a display name and a category, and every option has a hint in the CatKit.
 ## Automation Improvements:
 - 2024 Battle Master maneuvers match Player's Handbook and DDB Importer items.
+## Bug Fixes:
+- `touchDelivery` no longer cancels weapon attacks or non-touch spells while a touch spell is readied, and no longer stops other macros on the activity when no summon is on the canvas.
+- `modifyNextDamage` doubles damage with separate copies of each roll.
+- `reduceMaxHP` only reduces targets that were hit.
+- `rerollWithBonus` rerolls once when it has no prompt and Once Per Roll is off, instead of rerolling without end.
+- `nextHitRider` applies `@scaling` to bonus damage on incoming hits.
+- `damageBonusToOneRoll` with Exclude Self skips the source item when the effect sits on the actor.
+- `ignoreCover` no longer adds its attack bonus twice when two features ignore the same cover, and no longer stops later macros when ignoring total cover.
+- `packTactics` no longer grants advantage to allies while its owner is incapacitated, or to the owner's enemies.
+- `multiSingleTarget`, `redirectAttack` and `targetCreatureTypes` no longer error on tokens without an actor or a user without a token.
+- `hide` no longer grants Hiding when the activity makes no check.
+- `extraAttack`, `useOnEvent` and `choiceRemoveCondition` warnings are localized.
 # 2.1.10 Pre-Release:
 ## Automated Class Features:
 - Illrigger: Base class and Painkiller subclass.

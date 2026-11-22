@@ -24,15 +24,8 @@ async function saveShot({document, workflow}) {
     await attack({document, workflow});
 }
 /**
- * Plays an attack animation from the attacker to each target after the attack roll, or after the saves for a weapon's save activity such as a cone or burst of fire.
- * Bound on an item. Fires on `itemAttackRollComplete` and `itemSavesComplete`.
- * Set the workflow property `skipWeaponAnimation` to turn off.
- *
- * Config:
- * - `activityId`: only animate when this activity is used. Empty animates every activity.
- * - `advanced`: play `advancedAnimation` instead of `animation`.
- * - `animation`: played from the attacker to each target. The default, Weapon Attack, picks a swing, throw or shot from the weapon, and plays a smoke puff when a firearm misfires.
- * - `advancedAnimation`: played from the attacker to all targets, using the attack's range as the switch distance. The default is Advanced Melee Attack.
+ * Plays an attack animation from the attacker to each target after the attack roll, or after the saves for a weapon's
+ * save activity such as a cone or burst of fire. Set the workflow property `skipWeaponAnimation` to turn it off.
  */
 export const weaponAnimation = {
     rules: 'all',
@@ -56,14 +49,16 @@ export const weaponAnimation = {
         activityId: {
             default: '',
             type: 'selectActivity',
+            category: 'behavior',
             label: 'CHRISPREMADES.Config.Activity',
-            hint: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.ActivityHint'
+            hint: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.Activity.Hint'
         },
         advanced: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.Advanced',
-            hint: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.AdvancedHint'
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.Advanced.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.Advanced.Hint'
         },
         animation: {
             default: {
@@ -71,9 +66,10 @@ export const weaponAnimation = {
                 identifier: 'weaponAttack'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['sourceToken', 'targetToken', 'options'],
             label: 'CHRISPREMADES.Config.Animation',
-            hint: ''
+            hint: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.Animation.Hint'
         },
         advancedAnimation: {
             default: {
@@ -81,9 +77,10 @@ export const weaponAnimation = {
                 identifier: 'advancedMeleeAttack'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['sourceToken', 'targetTokens', 'options'],
-            label: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.AdvancedAnimation',
-            hint: ''
+            label: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.AdvancedAnimation.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.WeaponAnimation.AdvancedAnimation.Hint'
         }
     }
 };

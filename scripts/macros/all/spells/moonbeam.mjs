@@ -49,15 +49,15 @@ export const moonbeam = {
         lightColor: {
             default: '#bcd7ff',
             type: 'text',
-            label: 'CHRISPREMADES.Macros.All.Moonbeam.LightColor',
-            hint: 'CHRISPREMADES.Macros.All.Moonbeam.LightColorHint',
+            label: 'CHRISPREMADES.Macros.All.Moonbeam.LightColor.Label',
+            hint: 'CHRISPREMADES.Macros.All.Moonbeam.LightColor.Hint',
             category: 'homebrew'
         },
         lightAnimation: {
             default: '',
             type: 'select',
-            label: 'CHRISPREMADES.Macros.All.Moonbeam.LightAnimation',
-            hint: 'CHRISPREMADES.Macros.All.Moonbeam.LightAnimationHint',
+            label: 'CHRISPREMADES.Macros.All.Moonbeam.LightAnimation.Label',
+            hint: 'CHRISPREMADES.Macros.All.Moonbeam.LightAnimation.Hint',
             category: 'homebrew',
             get options() {
                 return [{value: '', label: _loc('DND5E.None')}, ...Object.entries(CONFIG.Canvas.lightAnimations).map(([value, config]) => ({value, label: config.label}))];
@@ -66,8 +66,8 @@ export const moonbeam = {
         shapechangerIdentifiers: {
             default: ['shapechanger', 'change-shape'],
             type: 'selectIdentifiers',
-            label: 'CHRISPREMADES.Macros.All.Moonbeam.ShapechangerIdentifiers',
-            hint: 'CHRISPREMADES.Macros.All.Moonbeam.ShapechangerIdentifiersHint',
+            label: 'CHRISPREMADES.Macros.All.Moonbeam.ShapechangerIdentifiers.Label',
+            hint: 'CHRISPREMADES.Macros.All.Moonbeam.ShapechangerIdentifiers.Hint',
             category: 'homebrew'
         },
         animation: {

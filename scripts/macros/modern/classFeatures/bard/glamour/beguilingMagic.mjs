@@ -52,7 +52,7 @@ export const beguilingMagic = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.SpellSchool',
-            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchoolHint',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.SpellSchool.Hint',
             get options() { return constants.spellSchoolOptions; }
         }
     }

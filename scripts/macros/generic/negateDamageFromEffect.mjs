@@ -6,11 +6,7 @@ async function damage({document, workflow, ditem, targetToken}) {
     workflowUtils.negateDamageItemDamage(ditem);
 }
 /**
- * Negates the item's damage to targets that carry one of the listed effects.
- * Bound on an item. Fires on `itemDamageComplete`.
- *
- * Config:
- * - `identifiers`: identifiers of the effects that negate the damage.
+ * Negates the item's damage to each target that has an effect with one of the chosen identifiers.
  */
 export const negateDamageFromEffect = {
     rules: 'all',
@@ -29,8 +25,9 @@ export const negateDamageFromEffect = {
         identifiers: {
             default: [],
             type: 'selectIdentifiers',
+            category: 'behavior',
             label: 'CHRISPREMADES.Config.Identifiers',
-            hint: ''
+            hint: 'CHRISPREMADES.Macros.Generic.NegateDamageFromEffect.Identifiers.Hint'
         }
     }
 };

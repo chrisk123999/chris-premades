@@ -100,7 +100,7 @@ export const charmPerson = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.CharmPersonColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.CharmPersonColor.Hint'}),
             cast: partOption('Cast')
         };
     },

@@ -47,7 +47,7 @@ export const earthTremor = {
     get config() {
         return {
             cast: partOption('Cast'),
-            shake: partOption('Shake', {hint: 'CHRISPREMADES.Animations.EarthTremorShakeHint'})
+            shake: partOption('Shake', {hint: 'CHRISPREMADES.Animations.EarthTremorShake.Hint'})
         };
     }
 };

@@ -31,18 +31,12 @@ async function use({document: activity, workflow}) {
     }]);
 }
 /**
- * Prompts for languages the actor doesn't know and grants them with an effect.
- * Bound on an activity. Fires on `activityRollFinished`.
- *
- * Config:
- * - `count`: formula for how many languages can be picked.
- * - `replace`: each use replaces the languages granted by the previous use.
- * - `replaceLimit`: formula for how many previously granted languages one use can swap out. Blank allows any number.
+ * Prompts for languages the actor doesn't know and grants the chosen ones with an effect on the actor.
  */
 export const languageChoice = {
     rules: 'all',
     version: '2.1.10',
-    category: 'utility',
+    category: 'mechanics',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -57,19 +51,22 @@ export const languageChoice = {
             default: '1',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.LanguageChoice.Count'
+            label: 'CHRISPREMADES.Macros.Generic.LanguageChoice.Count.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.LanguageChoice.Count.Hint'
         },
         replace: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.LanguageChoice.Replace'
+            label: 'CHRISPREMADES.Macros.Generic.LanguageChoice.Replace.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.LanguageChoice.Replace.Hint'
         },
         replaceLimit: {
             default: '',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.LanguageChoice.ReplaceLimit'
+            label: 'CHRISPREMADES.Macros.Generic.LanguageChoice.ReplaceLimit.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.LanguageChoice.ReplaceLimit.Hint'
         }
     }
 };

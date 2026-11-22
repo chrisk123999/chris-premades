@@ -7,9 +7,9 @@ async function inherit({document: activity, config, dialog}) {
     dialog.configure = false;
 }
 /**
- * Uses a follow-up activity at the level the concentration spell was cast at, without the configuration dialog.
- * A number in the concentration effect's `flags.cat.castLevelBonus` raises that level.
- * Bound on an activity. Fires on `activityPreTargeting`.
+ * Uses a follow-up activity at the level its concentration spell was cast at and skips the configuration dialog. A
+ * number in the concentration effect's `flags.cat.castLevelBonus` raises that level, up to 9th. Without an active
+ * concentration effect from the item, the activity is used normally.
  */
 export const inheritCastLevel = {
     rules: 'all',

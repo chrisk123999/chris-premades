@@ -74,8 +74,8 @@ export const findFamiliar = {
         creatureType: {
             default: '',
             type: 'select',
-            label: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureType',
-            hint: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureTypeHint',
+            label: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureType.Label',
+            hint: 'CHRISPREMADES.Macros.All.FindFamiliar.CreatureType.Hint',
             category: 'summons',
             get options() { return [{value: '', label: 'CHRISPREMADES.Macros.All.FindFamiliar.Ask'}, ...constants.spiritTypeOptions]; }
         },

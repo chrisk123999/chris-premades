@@ -50,7 +50,7 @@ export const wardingFlare = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Legacy.IntimidatingPresence.Immune',
-            hint: 'CHRISPREMADES.Macros.All.WardingFlare.ImmuneHint',
+            hint: 'CHRISPREMADES.Macros.All.WardingFlare.Immune.Hint',
             get options() { return constants.statusOptions; }
         }
     }

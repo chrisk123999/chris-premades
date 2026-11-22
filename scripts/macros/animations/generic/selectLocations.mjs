@@ -60,19 +60,19 @@ export const selectLocations = {
     config: {
         dark: {
             label: 'CHRISPREMADES.Config.Dark',
-            hint: 'CHRISPREMADES.Animations.SelectLocations.DarkHint',
+            hint: 'CHRISPREMADES.Animations.SelectLocations.Dark.Hint',
             type: 'checkbox',
             default: false
         },
         displayHint: {
-            label: 'CHRISPREMADES.Animations.SelectLocations.DisplayHint',
-            hint: 'CHRISPREMADES.Animations.SelectLocations.DisplayHintHint',
+            label: 'CHRISPREMADES.Animations.SelectLocations.DisplayHint.Label',
+            hint: 'CHRISPREMADES.Animations.SelectLocations.DisplayHint.Hint',
             type: 'checkbox',
             default: true
         },
         spendMovement: {
-            label: 'CHRISPREMADES.Animations.SelectLocations.SpendMovement',
-            hint: 'CHRISPREMADES.Animations.SelectLocations.SpendMovementHint',
+            label: 'CHRISPREMADES.Animations.SelectLocations.SpendMovement.Label',
+            hint: 'CHRISPREMADES.Animations.SelectLocations.SpendMovement.Hint',
             type: 'checkbox',
             default: true
         }

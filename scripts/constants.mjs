@@ -47,8 +47,8 @@ const firearmBaseItems = {
 const darknessAnimationConfig = {
     default: '',
     type: 'select',
-    label: 'CHRISPREMADES.Config.DarknessAnimation',
-    hint: 'CHRISPREMADES.Config.DarknessAnimationHint',
+    label: 'CHRISPREMADES.Config.DarknessAnimation.Label',
+    hint: 'CHRISPREMADES.Config.DarknessAnimation.Hint',
     category: 'mechanics',
     get options() {
         return [{value: '', label: _loc('DND5E.None')}, ...Object.entries(CONFIG.Canvas.darknessAnimations).map(([value, config]) => ({value, label: config.label}))];

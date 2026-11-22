@@ -29,7 +29,7 @@ export const antilifeShell = {
     requirements: ['JB2A_DnD5e'],
     category: 'spell',
     get config() {
-        return {circle: partOption('Circle', {hint: 'CHRISPREMADES.Animations.AntilifeShellCircleHint'})};
+        return {circle: partOption('Circle', {hint: 'CHRISPREMADES.Animations.AntilifeShellCircle.Hint'})};
     },
     get credits() { return [animationUtils.getCredits('tyler')]; }
 };

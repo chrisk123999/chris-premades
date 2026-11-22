@@ -38,7 +38,7 @@ Hooks.once('init', () => {
     for (const [baseItem, uuid] of Object.entries(constants.firearmBaseItems)) CONFIG.DND5E.weaponIds[baseItem] = 'Compendium.' + uuid;
 });
 Hooks.once('setup', () => {
-    const validKeys = [...catConstants.triggerTypes, 'rules', 'generic', 'genericConfig', 'documents'];
+    const validKeys = [...catConstants.triggerTypes, 'rules', 'generic', 'genericConfig', 'documents', 'category'];
     Object.entries(animations).forEach(([identifier, value]) => api.registerAnimation({
         ...value,
         source: 'chris-premades',
@@ -53,6 +53,8 @@ Hooks.once('setup', () => {
         validKeys.forEach(key => {
             if (value[key] !== undefined) functionData[key] = value[key];
         });
+        const nameKey = 'CHRISPREMADES.Macros.Generic.' + identifier.capitalize() + '.Name';
+        if (value.generic && game.i18n.has(nameKey)) functionData.label = _loc(nameKey);
         api.registerFnMacro(functionData);
         if (value.scales) {
             value.scales.forEach(i => {

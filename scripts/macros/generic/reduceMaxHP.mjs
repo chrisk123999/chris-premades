@@ -16,7 +16,7 @@ async function use({document, workflow}) {
     const checkSaves = automationUtils.getGenericConfigValue(document, 'chris-premades', 'reduceMaxHP', 'checkSaves');
     const removeOnSave = automationUtils.getGenericConfigValue(document, 'chris-premades', 'reduceMaxHP', 'removeOnSave');
     const damageTypes = automationUtils.getGenericConfigValue(document, 'chris-premades', 'reduceMaxHP', 'damageTypes');
-    await Promise.all(workflow.targets.documents.map(async token => {
+    await Promise.all(workflow.hitTargets.documents.map(async token => {
         let targetDamage = rollDamage;
         const effect = documentUtils.getEffectByIdentifier(token.actor, 'reduceMaxHP', {multiple: true}).find(effect => effect.origin === document.uuid);
         if (checkSaves && !workflow.failedSaves.has(token)) {
@@ -80,28 +80,17 @@ async function use({document, workflow}) {
             }
             await effectUtils.createEffects(token.actor, [effectData]);
         }
-        if (Math.abs(token.actor.system.attributes.hp.tempmax) >= totalMax) actorUtils.applyConditions(token.actor, ['dead'], {overlay: true});
+        if (Math.abs(token.actor.system.attributes.hp.tempmax) >= totalMax) await actorUtils.applyConditions(token.actor, ['dead'], {overlay: true});
     }));
 }
 /**
- * Reduces the hit point maximum of targets by the damage dealt or by a rolled formula.
- * Bound on an activity. Fires on `activityRollFinished`.
- * Nothing happens when no target was hit.
- * Repeat uses add to the existing reduction from the same activity.
- * A target whose reduction reaches its hit point maximum is marked dead.
- *
- * Config:
- * - `reduceByRoll`: formula rolled once per use. Its total is used instead of the damage dealt.
- * - `halfDamage`: halve the reduction, rounded down.
- * - `checkSaves`: only targets that failed the save are reduced.
- * - `removeOnSave`: with `checkSaves`, a successful save removes the existing reduction from this activity.
- * - `shortRestCures`: the reduction ends on a short rest.
- * - `longRestCures`: the reduction ends on a long rest. Ignored when `shortRestCures` is on.
- * - `damageTypes`: only damage of these types counts. Ignored when `reduceByRoll` is set.
+ * Reduces the hit point maximum of the activity's targets by the damage dealt or by a rolled formula, once at least one
+ * target is hit. Repeat uses add to the existing reduction from the same activity. A target whose reduction reaches
+ * its hit point maximum is marked dead.
  */
 export const reduceMaxHP = {
     rules: 'all',
-    version: '2.1.9',
+    version: '2.1.11',
     category: 'mechanics',
     generic: true,
     documents: ['activity'],
@@ -117,43 +106,50 @@ export const reduceMaxHP = {
             default: '',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.ReduceByRoll'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.ReduceByRoll.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.ReduceByRoll.Hint'
         },
         halfDamage: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.HalfDamage'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.HalfDamage.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.HalfDamage.Hint'
         },
         checkSaves: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.CheckSaves'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.CheckSaves.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.CheckSaves.Hint'
         },
         removeOnSave: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.RemoveOnSave'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.RemoveOnSave.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.RemoveOnSave.Hint'
         },
         shortRestCures: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.ShortRestCures'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.ShortRestCures.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.ShortRestCures.Hint'
         },
         longRestCures: {
             default: true,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.LongRestCures'
+            label: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.LongRestCures.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.LongRestCures.Hint'
         },
         damageTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageTypes',
+            hint: 'CHRISPREMADES.Macros.Generic.ReduceMaxHP.DamageTypes.Hint',
             get options() {return constants.damageTypeOptions;}
         }
     }

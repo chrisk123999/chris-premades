@@ -85,7 +85,7 @@ export const crownOfStars = {
             boltSound: {
                 default: '',
                 type: 'file',
-                label: 'CHRISPREMADES.Config.Sound'
+                label: 'CHRISPREMADES.Config.Sound.Label'
             }
         };
     },

@@ -44,7 +44,7 @@ export const cantrips = {
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Modern.Cantrips.TrueStrikeAbility',
-            hint: 'CHRISPREMADES.Macros.Generic.RollBonus.AbilityHint',
+            hint: 'CHRISPREMADES.Macros.Generic.RollBonus.Ability.Hint',
             get options() { return constants.abilityOptions; }
         }
     }

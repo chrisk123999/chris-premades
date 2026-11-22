@@ -44,16 +44,16 @@ export const detectMagic = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.DetectMagic.ColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.DetectMagic.Color.Hint'}),
             opacity: {
                 label: 'CHRISPREMADES.Config.Opacity',
-                hint: 'CHRISPREMADES.Animations.DetectMagic.OpacityHint',
+                hint: 'CHRISPREMADES.Animations.DetectMagic.Opacity.Hint',
                 type: 'number',
                 default: 1
             },
             sound: {
-                label: 'CHRISPREMADES.Config.Sound',
-                hint: 'CHRISPREMADES.Animations.DetectMagic.SoundHint',
+                label: 'CHRISPREMADES.Config.Sound.Label',
+                hint: 'CHRISPREMADES.Animations.DetectMagic.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
                 default: ''

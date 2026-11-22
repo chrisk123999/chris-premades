@@ -46,7 +46,7 @@ export const wickerRising = {
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.DamageType',
-            hint: 'CHRISPREMADES.Macros.Modern.WickerRising.DamageTypeHint',
+            hint: 'CHRISPREMADES.Macros.Modern.WickerRising.DamageType.Hint',
             get options() { return [{value: '', label: 'CHRISPREMADES.Macros.Modern.WickerRising.Ask'}, ...constants.damageTypeOptions.filter(option => option.value !== 'force')]; }
         },
         conditions: {
@@ -60,8 +60,8 @@ export const wickerRising = {
             default: 5,
             type: 'number',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.Modern.WickerRising.HitPointCost',
-            hint: 'CHRISPREMADES.Macros.Modern.WickerRising.HitPointCostHint'
+            label: 'CHRISPREMADES.Macros.Modern.WickerRising.HitPointCost.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.WickerRising.HitPointCost.Hint'
         }
     }
 };

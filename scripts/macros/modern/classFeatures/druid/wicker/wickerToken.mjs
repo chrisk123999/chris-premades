@@ -62,8 +62,8 @@ export const wickerToken = {
         partyMembers: {
             default: false,
             type: 'checkbox',
-            label: 'CHRISPREMADES.Macros.Modern.WickerToken.PartyMembers',
-            hint: 'CHRISPREMADES.Macros.Modern.WickerToken.PartyMembersHint',
+            label: 'CHRISPREMADES.Macros.Modern.WickerToken.PartyMembers.Label',
+            hint: 'CHRISPREMADES.Macros.Modern.WickerToken.PartyMembers.Hint',
             category: 'homebrew'
         }
     }

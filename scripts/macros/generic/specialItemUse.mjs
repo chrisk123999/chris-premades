@@ -19,24 +19,14 @@ async function use({document, workflow}) {
     await workflowUtils.specialItemUse(item, targets, document.item, {activity, consumeResources: config.consumeResources});
 }
 /**
- * Uses an activity from another of the user's items once the roll finishes.
- * Bound on an activity. Fires on `activityRollFinished`.
- * The item and activity are prompted for when more than one qualifies.
- * An `attackTypes` config on the item limits it to attack activities of those attack types.
- *
- * Config:
- * - `identifiers`: items this feature can use. When set, item types are ignored.
- * - `itemTypes`: item types this feature can use when no identifiers are set.
- * - `equippedOnly`: only equipped items can be used.
- * - `activityIdentifier`: use only the activity with this identifier. Leave blank to allow any matching activity.
- * - `activationTypes`: only activities with one of these activation types can be used. Leave empty to allow any.
- * - `excludeActivityTypes`: activities of these types cannot be used.
- * - `consumeResources`: spend the resources the used activity consumes.
+ * Uses an activity from another of the user's items on the same targets once the roll finishes. The user picks the item
+ * and the activity when more than one qualifies. Hidden activities and activities that cannot be used are skipped. An
+ * `attackTypes` config on this item limits the choice to attack activities of those attack types.
  */
 export const specialItemUse = {
     rules: 'all',
     version: '2.1.9',
-    category: 'utility',
+    category: 'uses',
     generic: true,
     documents: ['activity'],
     roll: [
@@ -52,51 +42,52 @@ export const specialItemUse = {
             type: 'selectIdentifiers',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Identifiers',
-            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.IdentifiersHint'
+            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.Identifiers.Hint'
         },
         itemTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.ItemTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ItemTypesHint',
+            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ItemTypes.Hint',
             get options() { return constants.usableItemTypes; }
         },
         equippedOnly: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.EquippedOnly'
+            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.EquippedOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.EquippedOnly.Hint'
         },
         activityIdentifier: {
             default: '',
             type: 'text',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivityIdentifier',
-            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivityIdentifierHint'
+            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivityIdentifier.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivityIdentifier.Hint'
         },
         activationTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivationTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivationTypesHint',
+            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivationTypes.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ActivationTypes.Hint',
             get options() { return constants.activationTypeOptions; }
         },
         excludeActivityTypes: {
             default: [],
             type: 'select-many',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ExcludeActivityTypes',
-            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ExcludeActivityTypesHint',
+            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ExcludeActivityTypes.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ExcludeActivityTypes.Hint',
             get options() { return constants.activityTypeOptions; }
         },
         consumeResources: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ConsumeResources',
-            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ConsumeResourcesHint'
+            label: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ConsumeResources.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SpecialItemUse.ConsumeResources.Hint'
         }
     }
 };

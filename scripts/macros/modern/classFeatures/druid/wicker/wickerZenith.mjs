@@ -52,7 +52,7 @@ export const wickerZenith = {
             type: 'select',
             category: 'behavior',
             label: 'CHRISPREMADES.Config.Ability',
-            hint: 'CHRISPREMADES.Macros.Modern.WickerZenith.AbilityHint',
+            hint: 'CHRISPREMADES.Macros.Modern.WickerZenith.Ability.Hint',
             get options() { return [{value: '', label: 'CHRISPREMADES.Macros.Modern.WickerZenith.Ask'}, ...constants.abilityOptions]; }
         }
     }

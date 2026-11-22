@@ -6,12 +6,7 @@ async function created({document: effect}) {
     await documentUtils.update(effect, {duration: {value: roll.total, units: config.units + 's'}});
 }
 /**
- * Rolls the effect's duration when it is created.
- * Bound on an effect. Fires on `created`.
- *
- * Config:
- * - `formula`: rolled for the duration.
- * - `units`: time unit of the rolled number.
+ * Rolls the effect's duration when the effect is created and posts the roll to chat.
  */
 export const rolledDuration = {
     rules: 'all',
@@ -31,13 +26,15 @@ export const rolledDuration = {
             default: '1d4',
             type: 'formula',
             category: 'behavior',
-            label: 'CHRISPREMADES.Config.Formula'
+            label: 'CHRISPREMADES.Config.Formula',
+            hint: 'CHRISPREMADES.Macros.Generic.RolledDuration.Formula.Hint'
         },
         units: {
             default: 'hour',
             type: 'select',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.RolledDuration.Units',
+            label: 'CHRISPREMADES.Macros.Generic.RolledDuration.Units.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.RolledDuration.Units.Hint',
             get options() { return ['round', 'minute', 'hour', 'day'].map(value => ({value, label: CONFIG.DND5E.timePeriods[value]})); }
         }
     }

@@ -140,9 +140,9 @@ export const bless = {
     category: 'spell',
     get config() {
         return {
-            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.BlessColorHint'}),
+            color: colorOption(colorMap, Object.keys(palettes.free), {auto: false, hint: 'CHRISPREMADES.Animations.BlessColor.Hint'}),
             cast: partOption('Cast'),
-            aura: partOption('Aura', {hint: 'CHRISPREMADES.Animations.SpellParts.PersistentHint'})
+            aura: partOption('Aura', {hint: 'CHRISPREMADES.Animations.SpellParts.Persistent.Hint'})
         };
     },
     get credits() { return [animationUtils.getCredits('eskie')]; }

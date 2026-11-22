@@ -48,8 +48,8 @@ const weaponConfig = (key, defaults) => ({
     default: defaults,
     type: 'select-many',
     category: 'homebrew',
-    label: 'CHRISPREMADES.Macros.All.Underwater.' + key,
-    hint: 'CHRISPREMADES.Macros.All.Underwater.' + key + 'Hint',
+    label: 'CHRISPREMADES.Macros.All.Underwater.' + key + '.Label',
+    hint: 'CHRISPREMADES.Macros.All.Underwater.' + key + '.Hint',
     get options() { return constants.weaponOptions; }
 });
 export const underwaterLegacy = {
@@ -70,8 +70,8 @@ export const underwaterModern = {
             default: ['piercing'],
             type: 'select-many',
             category: 'homebrew',
-            label: 'CHRISPREMADES.Macros.All.Underwater.MeleeDamageTypes',
-            hint: 'CHRISPREMADES.Macros.All.Underwater.MeleeDamageTypesHint',
+            label: 'CHRISPREMADES.Macros.All.Underwater.MeleeDamageTypes.Label',
+            hint: 'CHRISPREMADES.Macros.All.Underwater.MeleeDamageTypes.Hint',
             get options() { return constants.damageTypeOptions; }
         },
         rangedWeapons: weaponConfig('RangedWeapons', [])

@@ -43,14 +43,8 @@ function late({document, workflow}) {
     playArea(document, workflow);
 }
 /**
- * Plays an animation at each target and an animation over the placed area once the roll finishes.
- * Bound on an item. Fires on `itemRollFinished`.
- *
- * Config:
- * - `animation`: played from the user to each target. Receives the damage type, each target's hit or save result, and whether the roll dropped it to 0 HP.
- * - `includeSelf`: also play the target animation on the user for utility activities that affect only the user.
- * - `areaAnimation`: played over the placed region, or around the user when no region was placed. Receives the damage type and each target's hit or save result.
- * - `areaOnly`: only play the area animation for activities that have an area.
+ * Plays an animation at each target and an animation over the placed area once the item's roll finishes. Both
+ * animations receive the damage type and each target's hit, save and 0 HP result.
  */
 export const spellAnimation = {
     rules: 'all',
@@ -72,15 +66,17 @@ export const spellAnimation = {
                 identifier: 'none'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['sourceToken', 'targetToken', 'options'],
-            label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.TargetAnimation',
-            hint: 'CHRISPREMADES.Macros.Generic.SpellAnimation.TargetAnimationHint'
+            label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.TargetAnimation.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SpellAnimation.TargetAnimation.Hint'
         },
         includeSelf: {
             default: false,
             type: 'checkbox',
             category: 'animations',
-            label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.IncludeSelf'
+            label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.IncludeSelf.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SpellAnimation.IncludeSelf.Hint'
         },
         areaAnimation: {
             default: {
@@ -88,16 +84,17 @@ export const spellAnimation = {
                 identifier: 'none'
             },
             type: 'selectAnimation',
+            category: 'animations',
             inputs: ['sourceToken', 'region', 'options'],
-            label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.AreaAnimation',
-            hint: 'CHRISPREMADES.Macros.Generic.SpellAnimation.AreaAnimationHint'
+            label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.AreaAnimation.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SpellAnimation.AreaAnimation.Hint'
         },
         areaOnly: {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.AreaOnly',
-            hint: 'CHRISPREMADES.Macros.Generic.SpellAnimation.AreaOnlyHint'
+            label: 'CHRISPREMADES.Macros.Generic.SpellAnimation.AreaOnly.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SpellAnimation.AreaOnly.Hint'
         }
     }
 };

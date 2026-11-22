@@ -47,8 +47,8 @@ export const witherAndBloom = {
         hitDiceOffset: {
             default: -1,
             type: 'number',
-            label: 'CHRISPREMADES.Macros.Legacy.WitherAndBloom.HitDiceOffset',
-            hint: 'CHRISPREMADES.Macros.Legacy.WitherAndBloom.HitDiceOffsetHint',
+            label: 'CHRISPREMADES.Macros.Legacy.WitherAndBloom.HitDiceOffset.Label',
+            hint: 'CHRISPREMADES.Macros.Legacy.WitherAndBloom.HitDiceOffset.Hint',
             category: 'homebrew'
         },
         animation: {

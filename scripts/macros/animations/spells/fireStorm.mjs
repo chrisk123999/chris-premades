@@ -42,7 +42,7 @@ export const fireStorm = {
     category: 'spell',
     config: {
         cast: partOption('Cast'),
-        ground: partOption('Ground', {hint: 'CHRISPREMADES.Animations.FireStorm.GroundHint'})
+        ground: partOption('Ground', {hint: 'CHRISPREMADES.Animations.FireStorm.Ground.Hint'})
     },
     get credits() { return [animationUtils.getCredits('tyler')]; }
 };

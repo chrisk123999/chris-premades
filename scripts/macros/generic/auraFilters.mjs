@@ -67,15 +67,13 @@ async function designate({document: item, workflow}) {
     await designateCreatures(item, workflow, workflow.actor, 'CHRISPREMADES.Macros.Generic.AuraDesignation.Prompt', key);
 }
 /**
- * Before the spell's aura is created, prompts the caster for creatures it leaves unaffected; the caster is always one.
- * Without `choose`, nothing is designated and the filter leaves out the caster's allies.
- * Pair with the `notDesignatedBySource` aura filter on an aura effect whose identifier matches the item's.
- * Bound on an item. Fires on `itemPreambleComplete` for the item's first activity.
+ * When the spell's first activity is used, prompts the caster for creatures its aura leaves unaffected. The caster is
+ * always unaffected. Pair it with the `notDesignatedBySource` aura filter on an aura whose identifier matches the item's.
  */
 export const auraDesignation = {
     rules: 'all',
     version: '2.1.4',
-    category: 'utility',
+    category: 'targeting',
     generic: true,
     documents: ['item'],
     roll: [
@@ -90,8 +88,8 @@ export const auraDesignation = {
             default: false,
             type: 'checkbox',
             category: 'behavior',
-            label: 'CHRISPREMADES.Macros.Generic.AuraDesignation.Choose',
-            hint: 'CHRISPREMADES.Macros.Generic.AuraDesignation.ChooseHint'
+            label: 'CHRISPREMADES.Macros.Generic.AuraDesignation.Choose.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AuraDesignation.Choose.Hint'
         }
     }
 };

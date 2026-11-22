@@ -44,10 +44,10 @@ export const spellfireFlare = {
     category: 'rangedAttack',
     get config() {
         return {
-            color: colorOption(colorMap, ['bluegreen'], {auto: false, random: true, hint: 'CHRISPREMADES.Animations.SpellfireFlareColorHint'}),
+            color: colorOption(colorMap, ['bluegreen'], {auto: false, random: true, hint: 'CHRISPREMADES.Animations.SpellfireFlareColor.Hint'}),
             sound: {
-                label: 'CHRISPREMADES.Config.Sound',
-                hint: 'CHRISPREMADES.Config.SoundHint',
+                label: 'CHRISPREMADES.Config.Sound.Label',
+                hint: 'CHRISPREMADES.Config.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
                 default: ''
