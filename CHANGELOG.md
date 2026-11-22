@@ -1,3 +1,8 @@
+# 1.5.53 Release
+## Bug Fixes
+- Separate initiative for summons (Thanks Moto)
+- Actor Medkit
+
 # 1.5.52 Release
 ## Bug Fixes
 - Blood Sacrifice

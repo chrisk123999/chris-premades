@@ -72,7 +72,7 @@ export class Summons {
                     await genericUtils.remove(summonedEffect.parent.token);
                 }
                 return;
-            } 
+            }
         }
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
         let scenes = effect.flags['chris-premades']?.summons?.scenes[effect.name];
@@ -140,8 +140,8 @@ export class Summons {
         let attackBonus = bonuses + prof + abilityModifier;
         if (!compendium) compendium = rules === 'modern' ? constants.modernPacks.summonFeatures : constants.featurePacks.summonFeatures;
         let documentData = await compendiumUtils.getItemFromCompendium(compendium, name, {
-            object: true, 
-            getDescription: true, 
+            object: true,
+            getDescription: true,
             translate,
             identifier,
             flatAttack: flatAttack ? attackBonus : false,
@@ -211,7 +211,7 @@ export class Summons {
         }, {inplace: true, overwrite: false});
         crosshairsConfig.direction += rotation;
         const templateData = await crosshairUtils.aimCrosshair({
-            token: this.summonerToken, 
+            token: this.summonerToken,
             maxRange: this.options.range,
             crosshairsConfig,
             drawBoundries: false,
@@ -228,7 +228,7 @@ export class Summons {
                     'chris-premades': {
                         summons: {
                             control: {
-                                user: game.user.id, 
+                                user: game.user.id,
                                 actor: this.summonerToken.actor.uuid
                             }
                         }
@@ -369,7 +369,7 @@ export class Summons {
         let summonEffects = this.spawnedTokens.map(i => actorUtils.getEffects(i.actor).find(e => e.name === genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature')));
         // I think doesn't need to be dependent since when parent effect is deleted we destroy all the summoned tokens anyway
         // await effectUtils.addDependent(effect, summonEffects);
-        
+
         // Make caster effect dependent on each summon effect
         // await Promise.all(summonEffects.map(async e => await effectUtils.addDependent(e, [effect])));
 
@@ -399,6 +399,7 @@ export class Summons {
         if (!casterCombatant) return;
         let initiativeType = this.options?.initiativeType ?? 'seperate';
         switch (initiativeType) {
+            case ('separate'):
             case ('seperate'): {
                 await Promise.all(this.spawnedTokens.map(async tok => {
                     let initiativeRoll = await tok.actor.getInitiativeRoll().evaluate();
@@ -512,7 +513,7 @@ export class Summons {
                     },
                     summons: {
                         ids: {
-                            [this.originItem.name]: this.spawnedTokensIds 
+                            [this.originItem.name]: this.spawnedTokensIds
                         },
                         scenes: {
                             [this.originItem.name]: this.spawnedTokensScenes

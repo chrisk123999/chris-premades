@@ -168,7 +168,17 @@ function checkPlayerOwnership(entity) {
     });
 }
 function getRules(entity) {
-    if (entity.documentName === 'Item') return entity.system.source.rules === '' ? 'legacy' : entity.system.source.rules === '2014' ? 'legacy' : 'modern';
+    if (entity.documentName === 'Item') switch (entity.system.source?.rules) {
+        case '':
+        case null:
+        case '2014':
+        case undefined:
+            return 'legacy';
+        case '2024':
+            return 'modern';
+        default:
+            return 'modern';
+    }
     return entity.flags['chris-premades']?.rules ?? 'legacy';
 }
 function getCPRIdentifier(name, rules = 'legacy') {
