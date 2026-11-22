@@ -5,3 +5,9 @@ dist/
 module.json
 node_modules/
 symlinks/
+wiki/*.md
+!wiki/Home.md
+!wiki/FAQ.md
+!wiki/Getting-Started.md
+!wiki/Info.md
+!wiki/_Sidebar.md

@@ -1,0 +1,47 @@
+name: Publish wiki
+
+on:
+  push:
+    branches: [docs]
+    paths:
+      - wiki/**
+      - scripts/macros/generic.mjs
+      - scripts/macros/generic/**
+      - lang/en.json
+      - packData/**
+      - docs/generics/**
+      - .github/workflows/publish-wiki.yml
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: publish-wiki
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  publish-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: docs
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+
+      - name: Fetch CAT labels
+        run: curl -sfL https://raw.githubusercontent.com/chrisk123999/covens-automation-toolkit/main/lang/en.json -o "$RUNNER_TEMP/cat-en.json"
+
+      - name: Generate generic pages
+        env:
+          CAT_LANG: ${{ runner.temp }}/cat-en.json
+        run: node --import ./docs/generics/foundry-stub.mjs docs/generics/generics.mjs wiki
+
+      - name: Fail if hand-written pages changed
+        run: git diff --exit-code --stat -- wiki
+
+      - uses: Andrew-Chen-Wang/github-wiki-action@v4
