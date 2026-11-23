@@ -1,4 +1,4 @@
-import {activityUtils, actorUtils, automationUtils, combatUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, itemUtils, Logging, queryUtils, rollUtils, summonUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, combatUtils, constants, DamageBonus, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils, rollUtils, summonUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig, identifiersConfig} from './damageBonusToOneRoll.mjs';
 import {getCastDamageType} from './selectDamageType.mjs';
 export const riderNearbyRangeConfig = {
@@ -45,6 +45,9 @@ function applies(activity, actor, workflow, config) {
     }
     if (config.sizeAboveUser !== '' && workflow.hitTargets.documents.some(token => actorUtils.getSize(token.actor) > actorUtils.getSize(actor) + Number(config.sizeAboveUser))) return false;
     if (config.attackModes.length && !config.attackModes.includes(workflow.attackMode)) return false;
+    if (config.itemFlag && !genericUtils.getProperty(workflow.item, config.itemFlag)) return false;
+    if (!config.bonus && config.creatureTypeBonus && config.targetCreatureTypes.length && !workflow.hitTargets.documents.every(token => token.actor && config.targetCreatureTypes.includes(actorUtils.typeOrRace(token.actor)))) return false;
+    if (config.targetEffects.length && workflow.hitTargets.documents.some(token => !config.targetEffects.some(identifier => documentUtils.getEffectByIdentifier(token.actor, identifier, {sourceActor: actor})))) return false;
     if (own && config.properties.length && !config.properties.some(property => workflow.item.system.properties?.has(property))) return false;
     if (config.oncePerTurn && isStamped(activity)) return false;
     if (config.requiredItems.length && !actorUtils.getItemByIdentifiers(actor, config.requiredItems)) return false;
@@ -117,7 +120,9 @@ async function damage({document: activity, actor, workflow}) {
     if (config.ownsTag) return await ownerBonus(activity, actor, workflow, config);
     const typeMatch = config.creatureTypeBonus && config.targetCreatureTypes.length && workflow.hitTargets.documents.every(token => token.actor && config.targetCreatureTypes.includes(actorUtils.typeOrRace(token.actor)));
     const formula = typeMatch ? config.bonus + ' + ' + config.creatureTypeBonus : config.bonus;
-    const bonus = new DamageBonus(activity, {formula, type: config.bonusDamageType || getCastDamageType(activity.item), optional: !config.automatic})
+    const flagType = config.itemFlag ? genericUtils.getProperty(workflow.item, config.itemFlag) : undefined;
+    const type = config.bonusDamageType || (CONFIG.DND5E.damageTypes[flagType] ? flagType : getCastDamageType(activity.item));
+    const bonus = new DamageBonus(activity, {formula, type, optional: !config.automatic})
         .withOnUse(async ({workflow, bonus}) => {
             addRiders(workflow, [bonus.document.uuid]);
             if (config.oncePerTurn && !config.riderPick) await stamp(activity);
@@ -394,6 +399,20 @@ export const attackRider = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn.Label',
             hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OncePerTurn.Hint'
+        },
+        itemFlag: {
+            default: '',
+            type: 'text',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.ItemFlag.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.ItemFlag.Hint'
+        },
+        targetEffects: {
+            default: [],
+            type: 'selectIdentifiers',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.TargetEffects.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.TargetEffects.Hint'
         },
         summonAttacks: {
             default: [],

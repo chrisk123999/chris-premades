@@ -1,0 +1,235 @@
+{
+  "_id": "HX7Dmckmi54OvV0f",
+  "name": "Blood Curse of the Fallen Puppet",
+  "type": "feat",
+  "img": "icons/magic/control/control-influence-puppet.webp",
+  "folder": "nHpZDQvWhmS4HBxH",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "blood-curses-blood-curse-of-the-fallen-puppet",
+    "activities": {
+      "bvT1FD9kqb1uVl2o": {
+        "_id": "bvT1FD9kqb1uVl2o",
+        "type": "utility",
+        "name": "Curse",
+        "sort": 0,
+        "img": "icons/magic/control/control-influence-puppet.webp",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "curse",
+        "midiProperties": {
+          "identifier": "curse",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "useConditionText": "false"
+      },
+      "fZ5TFBxCGCj1LSpR": {
+        "_id": "fZ5TFBxCGCj1LSpR",
+        "type": "utility",
+        "name": "Amplified",
+        "sort": 1,
+        "img": "icons/magic/control/control-influence-puppet.webp",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "amplify",
+        "midiProperties": {
+          "identifier": "amplify",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "selfDamage",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "selfDamage": {
+                  "formula": "@scale.blood-hunter.crimson-rite"
+                }
+              }
+            }
+          }
+        },
+        "useConditionText": "false"
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "blood-curse-of-the-fallen-puppet",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!HX7Dmckmi54OvV0f"
+}

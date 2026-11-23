@@ -1,0 +1,137 @@
+{
+  "_id": "ai5y5zEhnA5wP4mJ",
+  "name": "Mutagencraft",
+  "type": "feat",
+  "img": "icons/commodities/materials/bowl-liquid-red.webp",
+  "folder": "UMklnQo1YqPrmgxH",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "1 + min(1, floor(@classes.blood-hunter.levels / 7)) + floor(@classes.blood-hunter.levels / 15)",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "mutagencraft",
+    "activities": {
+      "GhxtR3NtzATOr1yl": {
+        "_id": "GhxtR3NtzATOr1yl",
+        "type": "utility",
+        "name": "Flush Mutagens",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "flush",
+        "midiProperties": {
+          "identifier": "flush",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {}
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "mutagencraft",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!ai5y5zEhnA5wP4mJ"
+}

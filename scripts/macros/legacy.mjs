@@ -124,6 +124,15 @@ export {wildShape as 'wild-shape', wildShapeActive} from './legacy/classFeatures
 export {echoAvatar as 'echo-avatar', legionOfOne as 'legion-of-one', manifestEcho as 'manifest-echo', unleashIncarnation as 'unleash-incarnation'} from './legacy/classFeatures/fighter/echoKnight/manifestEcho.mjs';
 
 /******************************/
+/*        Blood Hunter        */
+/******************************/
+export {bloodCurseOfBloatedAgonyEffect as 'blood-curse-of-bloated-agony-effect', bloodCurseTarget as 'blood-curse-target', bloodCurseOfExposure as 'blood-curse-of-exposure', bloodCurseOfTheExorcist as 'blood-curse-of-the-exorcist', bloodCurseOfTheFallenPuppet as 'blood-curse-of-the-fallen-puppet', bloodCurseOfTheHowl as 'blood-curse-of-the-howl'} from './legacy/classFeatures/bloodHunter/bloodCurses.mjs';
+export {brandOfCastigationBranded as 'brand-of-castigation-branded'} from './legacy/classFeatures/bloodHunter/brandOfCastigation.mjs';
+export {bloodMaledict as 'blood-maledict', crimsonRite as 'crimson-rite', riteOfTheDawn as 'crimson-rite-rite-of-the-dawn', riteRevival as 'rite-revival'} from './legacy/classFeatures/bloodHunter/crimsonRite.mjs';
+export {hybridTransformation as 'hybrid-transformation', hybridTransformationForm as 'hybrid-transformation-form'} from './legacy/classFeatures/bloodHunter/hybridTransformation.mjs';
+export {exaltedMutation as 'exalted-mutation', mutagencraft as 'mutagencraft', mutagenNighteye as 'formulas-nighteye', mutagenReconstruction as 'formulas-reconstruction', strangeMetabolism as 'strange-metabolism'} from './legacy/classFeatures/bloodHunter/mutagens.mjs';
+
+/******************************/
 /*         Illrigger          */
 /******************************/
 export {interdictBoonAcheronsChain as 'acherons-chain'} from './legacy/classFeatures/illrigger/acheronsChain.mjs';

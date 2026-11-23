@@ -1,0 +1,16 @@
+{
+  "_id": "UMklnQo1YqPrmgxH",
+  "name": "Order of the Mutant",
+  "type": "Item",
+  "folder": "odLQIcDTtEL60NVt",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!UMklnQo1YqPrmgxH"
+}

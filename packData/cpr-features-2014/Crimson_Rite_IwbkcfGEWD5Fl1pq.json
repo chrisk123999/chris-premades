@@ -1,0 +1,65 @@
+{
+  "_id": "IwbkcfGEWD5Fl1pq",
+  "name": "Crimson Rite",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-sword-blood-red.webp",
+  "folder": "odLQIcDTtEL60NVt",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "crimson-rite",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "rest": [
+          {
+            "source": "chris-premades",
+            "identifier": "crimson-rite",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!IwbkcfGEWD5Fl1pq"
+}

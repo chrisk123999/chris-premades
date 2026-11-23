@@ -1,0 +1,457 @@
+{
+  "_id": "AOGkh1rNRbxojjVH",
+  "name": "Brand of Castigation",
+  "type": "feat",
+  "img": "icons/magic/death/weapon-sword-skull-purple.webp",
+  "folder": "odLQIcDTtEL60NVt",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "brand-of-castigation",
+    "activities": {
+      "bc0taImu47LL1jfZ": {
+        "_id": "bc0taImu47LL1jfZ",
+        "type": "utility",
+        "name": "Brand of Castigation",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "perm",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "HpfaZyHm1T4PA1n3"
+          }
+        ],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "brand",
+        "midiProperties": {
+          "identifier": "brand",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "itemFlag": "flags.chris-premades.crimsonRite"
+                }
+              }
+            }
+          }
+        }
+      },
+      "pDOEVzGjRB1sIuQf": {
+        "_id": "pDOEVzGjRB1sIuQf",
+        "type": "damage",
+        "name": "Brand of Castigation: Damage",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "brand-damage",
+        "midiProperties": {
+          "identifier": "brand-damage",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "psychic"
+              ],
+              "custom": {
+                "enabled": true,
+                "formula": "max(1, @flags.chris-premades.hemocraft) * (1 + floor(@classes.blood-hunter.levels / 13))"
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ],
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true
+        }
+      },
+      "GJx0ait0IRezaOhC": {
+        "_id": "GJx0ait0IRezaOhC",
+        "type": "save",
+        "name": "Brand of Axiom",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "2AVQjI1ZGYtkQtuz",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "axiom",
+        "midiProperties": {
+          "identifier": "axiom",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "8 + @prof + @flags.chris-premades.hemocraft"
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [],
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "HpfaZyHm1T4PA1n3",
+      "name": "Branded",
+      "img": "icons/magic/death/weapon-sword-skull-purple.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "brandOfCastigation",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "brand-of-castigation-branded",
+                "rules": "2014"
+              }
+            ],
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "brand-of-castigation-branded",
+                "rules": "2014"
+              },
+              {
+                "source": "chris-premades",
+                "identifier": "uniqueEffect",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "uniqueEffect": {
+                "scope": "origin"
+              }
+            }
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!AOGkh1rNRbxojjVH.HpfaZyHm1T4PA1n3"
+    },
+    {
+      "_id": "2AVQjI1ZGYtkQtuz",
+      "name": "Brand of Axiom",
+      "img": "icons/magic/death/weapon-sword-skull-purple.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [
+        "stunned"
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceEnd",
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "brandOfAxiom"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!AOGkh1rNRbxojjVH.2AVQjI1ZGYtkQtuz"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!AOGkh1rNRbxojjVH"
+}

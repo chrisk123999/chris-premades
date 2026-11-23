@@ -1,0 +1,284 @@
+{
+  "_id": "NodKFokXPasxkf1Q",
+  "name": "Blood Curse of Exposure",
+  "type": "feat",
+  "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+  "folder": "nHpZDQvWhmS4HBxH",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "blood-curses-blood-curse-of-exposure",
+    "activities": {
+      "jGTnx9WyYIqvo95s": {
+        "_id": "jGTnx9WyYIqvo95s",
+        "type": "utility",
+        "name": "Curse",
+        "sort": 0,
+        "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "PIbtZvEqE3thy64I"
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "curse",
+        "midiProperties": {
+          "identifier": "curse",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "useConditionText": "false"
+      },
+      "OlZKCAy423BBBrRA": {
+        "_id": "OlZKCAy423BBBrRA",
+        "type": "utility",
+        "name": "Amplified",
+        "sort": 1,
+        "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "PIbtZvEqE3thy64I"
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "amplify",
+        "midiProperties": {
+          "identifier": "amplify",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "selfDamage",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "selfDamage": {
+                  "formula": "@scale.blood-hunter.crimson-rite"
+                }
+              }
+            }
+          }
+        },
+        "useConditionText": "false"
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "PIbtZvEqE3thy64I",
+      "name": "Blood Curse of Exposure",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "targetEnd",
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "bloodCurseOfExposure"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!NodKFokXPasxkf1Q.PIbtZvEqE3thy64I"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "blood-curse-of-exposure",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!NodKFokXPasxkf1Q"
+}

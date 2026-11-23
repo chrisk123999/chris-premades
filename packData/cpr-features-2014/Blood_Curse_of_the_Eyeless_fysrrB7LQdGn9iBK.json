@@ -1,0 +1,310 @@
+{
+  "_id": "fysrrB7LQdGn9iBK",
+  "name": "Blood Curse of the Eyeless",
+  "type": "feat",
+  "img": "icons/magic/perception/eye-slit-red-orange.webp",
+  "folder": "nHpZDQvWhmS4HBxH",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "blood-curses-blood-curse-of-the-eyeless",
+    "activities": {
+      "Iea8CjMQOALPeOwG": {
+        "_id": "Iea8CjMQOALPeOwG",
+        "type": "utility",
+        "name": "Curse",
+        "sort": 0,
+        "img": "icons/magic/perception/eye-slit-red-orange.webp",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "curse",
+        "midiProperties": {
+          "identifier": "curse",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackBonus",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackBonus": {
+                  "bonus": "-@scale.blood-hunter.crimson-rite",
+                  "phase": "preResult",
+                  "enemyRange": 30,
+                  "rollActivity": "Iea8CjMQOALPeOwG",
+                  "autoEffect": [],
+                  "immuneCondition": "blinded"
+                }
+              }
+            }
+          }
+        },
+        "useConditionText": "false"
+      },
+      "ClP0aBlfOcrETaud": {
+        "_id": "ClP0aBlfOcrETaud",
+        "type": "utility",
+        "name": "Amplified",
+        "sort": 1,
+        "img": "icons/magic/perception/eye-slit-red-orange.webp",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "RbI4tgfT2uuPaEiS"
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "amplify",
+        "midiProperties": {
+          "identifier": "amplify",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "selfDamage",
+                  "rules": "all"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackBonus",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "selfDamage": {
+                  "formula": "@scale.blood-hunter.crimson-rite"
+                },
+                "attackBonus": {
+                  "bonus": "-@scale.blood-hunter.crimson-rite",
+                  "phase": "preResult",
+                  "enemyRange": 30,
+                  "rollActivity": "ClP0aBlfOcrETaud",
+                  "autoEffect": [
+                    "bloodCurseOfTheEyeless"
+                  ],
+                  "immuneCondition": "blinded"
+                }
+              }
+            }
+          }
+        },
+        "useConditionText": "false"
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "RbI4tgfT2uuPaEiS",
+      "name": "Blood Curse of the Eyeless",
+      "img": "icons/magic/perception/eye-slit-red-orange.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "bloodCurseOfTheEyeless"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!fysrrB7LQdGn9iBK.RbI4tgfT2uuPaEiS"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!fysrrB7LQdGn9iBK"
+}

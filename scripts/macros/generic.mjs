@@ -37,6 +37,7 @@ export {nextHitRider} from './generic/nextHitRider.mjs';
 export {reduceDamageTaken} from './generic/reduceDamageTaken.mjs';
 export {reflectOnHit} from './generic/reflectOnHit.mjs';
 export {selectDamageType} from './generic/selectDamageType.mjs';
+export {selfDamage} from './generic/selfDamage.mjs';
 
 /*============================*/
 /*         MECHANICS          */
@@ -49,6 +50,7 @@ export {environment, environmentEffect} from './generic/environment.mjs';
 export {featAbility} from './generic/featAbility.mjs';
 export {firearm} from './generic/firearm.mjs';
 export {grappleAttackAdvantage} from './generic/grappleAttackAdvantage.mjs';
+export {grappleSizeBonus} from './generic/grappleSizeBonus.mjs';
 export {hide} from './generic/hide.mjs';
 export {ignoreCover} from './generic/ignoreCover.mjs';
 export {immuneAutoSucceed} from './generic/immuneAutoSucceed.mjs';
@@ -114,3 +116,4 @@ export {useOnEvent} from './generic/useOnEvent.mjs';
 export {actionDismissal} from './generic/actionDismissal.mjs';
 export {removeRegion} from './generic/removeRegion.mjs';
 export {skillAbility} from './generic/skillAbility.mjs';
+export {uniqueEffect} from './generic/uniqueEffect.mjs';

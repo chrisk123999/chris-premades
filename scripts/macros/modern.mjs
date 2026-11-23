@@ -166,13 +166,6 @@ export {elementalStrike as 'elemental-strike'} from './modern/classFeatures/pala
 export {nobleScion as 'noble-scion'} from './modern/classFeatures/paladin/nobleGenies/nobleScion.mjs';
 
 /*********************************/
-/*            Pugilist           */
-/*********************************/
-
-/*        Squared Circle         */
-export {heavyweight} from './modern/classFeatures/pugilist/squaredCircle/heavyweight.mjs';
-
-/*********************************/
 /*            Ranger             */
 /*********************************/
 export {favoredEnemy as 'favored-enemy'} from './modern/classFeatures/ranger/favoredEnemy.mjs';

@@ -1,7 +1,7 @@
-import {automationUtils, constants, D20Bonus, dataUtils, dialogUtils, documentUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, D20Bonus, dataUtils, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig, identifiersConfig} from './damageBonusToOneRoll.mjs';
 const keyOf = (identifier, document) => identifier + '.' + document.id;
-function createBonus(document, settings, holder, identifier, roll) {
+function createBonus(document, settings, holder, identifier, roll, targets) {
     const bonus = new D20Bonus(document, {
         phase: settings.phase === 'all' ? Object.values(constants.bonusPhases) : settings.phase,
         optional: settings.optional,
@@ -9,7 +9,7 @@ function createBonus(document, settings, holder, identifier, roll) {
     });
     if (settings.rollItem || settings.rollActivity) bonus.withOnUse(async ({bonus}) => {
         settings.storedOptionalBonus = bonus;
-        if (!settings.consumeSuccessOnly) await workflowUtils.rollConfiguredSource(bonus, settings);
+        if (!settings.consumeSuccessOnly) await workflowUtils.rollConfiguredSource(bonus, settings, targets);
         else workflowUtils.setWorkflowProperty(holder, keyOf(identifier, document), settings);
     });
     if (settings.useActivityCosts) {
@@ -42,12 +42,25 @@ async function onSuccess({document, macroClass: {identifier}, message, roll}) {
 }
 function attack({document, macroClass: {identifier}, workflow}) {
     const settings = automationUtils.getGenericConfigValues(document, 'chris-premades', identifier, configKeys);
-    if (!settings.bonus?.length) return;
+    if (!settings.bonus?.length || settings.enemyRange) return;
     if (settings.ability?.length && !settings.ability.includes(workflow.activity.ability)) return;
     if (settings.identifiers?.length && !settings.identifiers.includes(documentUtils.getIdentifier(workflow.item))) return;
     if (settings.attackType && !workflowUtils.isAttackType(workflow, settings.attackType)) return;
     const roll = new D20Bonus.rollClass(settings.bonus, dataUtils.getFormulaData({document, workflow}));
     return createBonus(document, settings, workflow, identifier, roll);
+}
+function enemyAttack({document, macroClass: {identifier}, workflow}) {
+    const settings = automationUtils.getGenericConfigValues(document, 'chris-premades', identifier, configKeys);
+    const owner = document.actor ?? document.parent?.actor;
+    if (!settings.bonus?.length || !settings.enemyRange || !owner || !workflow.token || workflow.actor === owner) return;
+    if (settings.attackType && !workflowUtils.isAttackType(workflow, settings.attackType)) return;
+    if (settings.immuneCondition && actorUtils.checkTrait(workflow.actor, 'ci', settings.immuneCondition)) return;
+    const roll = new D20Bonus.rollClass(settings.bonus, dataUtils.getFormulaData({document, workflow}));
+    if (settings.autoEffect.some(identifier => documentUtils.getEffectByIdentifier(workflow.actor, identifier, {sourceActor: owner}))) return new D20Bonus(document, {phase: settings.phase === 'all' ? Object.values(constants.bonusPhases) : settings.phase, optional: false, roll});
+    const ownerToken = actorUtils.getFirstToken(owner);
+    if (!ownerToken || actorUtils.hasUsedReaction(owner) || !tokenUtils.isEnemy(ownerToken, workflow.token.document)) return;
+    if (!tokenUtils.isWithinDistance(ownerToken, workflow.token.document, settings.enemyRange) || !tokenUtils.canSee(ownerToken, workflow.token.document)) return;
+    return createBonus(document, settings, workflow, identifier, roll, [workflow.token.document])?.withDefaultRequest();
 }
 async function onHit({document, macroClass: {identifier}, workflow}) {
     const key = keyOf(identifier, document);
@@ -140,10 +153,32 @@ const proficientOnlyConfig = {
     label: 'CHRISPREMADES.Macros.Generic.RollBonus.ProficientOnly.Label',
     hint: 'CHRISPREMADES.Macros.Generic.RollBonus.ProficientOnly.Hint'
 };
-const configKeys = [...Object.keys(genericConfig), 'skill', 'tool', 'proficientOnly', 'identifiers', 'attackType'];
+const enemyRangeConfig = {
+    default: 0,
+    type: 'number',
+    category: 'behavior',
+    label: 'CHRISPREMADES.Macros.Generic.RollBonus.EnemyRange.Label',
+    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.EnemyRange.Hint'
+};
+const autoEffectConfig = {
+    default: [],
+    type: 'selectIdentifiers',
+    category: 'behavior',
+    label: 'CHRISPREMADES.Macros.Generic.RollBonus.AutoEffect.Label',
+    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.AutoEffect.Hint'
+};
+const immuneConditionConfig = {
+    default: '',
+    type: 'select',
+    category: 'behavior',
+    label: 'CHRISPREMADES.Macros.Generic.RollBonus.ImmuneCondition.Label',
+    hint: 'CHRISPREMADES.Macros.Generic.RollBonus.ImmuneCondition.Hint',
+    get options() { return [{value: '', label: 'CHRISPREMADES.Config.None'}, ...constants.statusOptions]; }
+};
+const configKeys = [...Object.keys(genericConfig), 'skill', 'tool', 'proficientOnly', 'identifiers', 'attackType', 'enemyRange', 'autoEffect', 'immuneCondition'];
 const base = {
     rules: 'all',
-    version: '1.1.0',
+    version: '2.1.11',
     category: 'behavior',
     generic: true,
     documents: ['activeeffect', 'activity', 'item'],
@@ -164,6 +199,8 @@ const pass = [
 /**
  * Offers a bonus formula on a d20 roll, with one variant each for attack rolls, ability checks, saving throws, skill
  * checks and tool checks. The bonus can be optional or always applied, and can roll an activity or item when it's used.
+ * The attack variant can instead be offered to the owner when a nearby enemy it can see attacks, while the owner still
+ * has its reaction.
  */
 export const attackBonus = {
     ...base,
@@ -177,9 +214,15 @@ export const attackBonus = {
             pass: 'actorAttackRollComplete',
             macro: onHit,
             priority: 300
+        },
+        {
+            pass: 'sceneOptionalBonusAttack',
+            macro: enemyAttack,
+            priority: 250,
+            canOverlap: true
         }
     ],
-    genericConfig: {...genericConfig, identifiers: identifiersConfig, attackType: attackTypeConfig}
+    genericConfig: {...genericConfig, identifiers: identifiersConfig, attackType: attackTypeConfig, enemyRange: enemyRangeConfig, autoEffect: autoEffectConfig, immuneCondition: immuneConditionConfig}
 };
 export const checkBonus = {...base, check: pass};
 export const saveBonus = {...base, save: pass};

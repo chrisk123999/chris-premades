@@ -1,0 +1,124 @@
+{
+  "_id": "VKP1obyC5l4Wapap",
+  "name": "Blood Maledict",
+  "type": "feat",
+  "img": "icons/skills/wounds/blood-spurt-spray-red.webp",
+  "folder": "odLQIcDTtEL60NVt",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "1 + min(1, floor(@classes.blood-hunter.levels / 6)) + floor(@classes.blood-hunter.levels / 13) + floor(@classes.blood-hunter.levels / 17) + @flags.chris-premades.bloodMaledict.extra",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "blood-maledict",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "RRFcHc7zAEQFh097",
+      "name": "Hemocraft Modifier",
+      "img": "icons/skills/wounds/blood-spurt-spray-red.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.chris-premades.hemocraft",
+            "value": "@abilities.int.mod",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "flags.chris-premades.bloodMaledict.extra",
+            "value": "0",
+            "type": "add",
+            "priority": 10
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "hemocraftModifier"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!VKP1obyC5l4Wapap.RRFcHc7zAEQFh097"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "item": [
+          {
+            "source": "chris-premades",
+            "identifier": "blood-maledict",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!VKP1obyC5l4Wapap"
+}

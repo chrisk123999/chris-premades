@@ -1,0 +1,334 @@
+{
+  "_id": "QtNjPgYLxmfqa4Rt",
+  "name": "Blood Curse of the Muddled Mind",
+  "type": "feat",
+  "img": "icons/magic/death/skull-weapon-staff-glow-pink.webp",
+  "folder": "nHpZDQvWhmS4HBxH",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "blood-curses-blood-curse-of-the-muddled-mind",
+    "activities": {
+      "vL2ekCQJmg42uB59": {
+        "_id": "vL2ekCQJmg42uB59",
+        "type": "utility",
+        "name": "Curse",
+        "sort": 0,
+        "img": "icons/magic/death/skull-weapon-staff-glow-pink.webp",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "67vWTT6bes0AjCFL"
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "curse",
+        "midiProperties": {
+          "identifier": "curse",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "targetMustBeSeen": true
+        },
+        "flags": {}
+      },
+      "HB8wwrTUriPFdjhY": {
+        "_id": "HB8wwrTUriPFdjhY",
+        "type": "utility",
+        "name": "Amplified",
+        "sort": 1,
+        "img": "icons/magic/death/skull-weapon-staff-glow-pink.webp",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "nAh9Pw6CGq2tDi3J"
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "amplify",
+        "midiProperties": {
+          "identifier": "amplify",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "targetMustBeSeen": true
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "selfDamage",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "selfDamage": {
+                  "formula": "@scale.blood-hunter.crimson-rite"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "67vWTT6bes0AjCFL",
+      "name": "Blood Curse of the Muddled Mind",
+      "img": "icons/magic/death/skull-weapon-staff-glow-pink.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.disadvantage.concentration",
+            "value": "1",
+            "type": "custom",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceEnd",
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [
+            "isConcentrationSave"
+          ]
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!QtNjPgYLxmfqa4Rt.67vWTT6bes0AjCFL"
+    },
+    {
+      "_id": "nAh9Pw6CGq2tDi3J",
+      "name": "Blood Curse of the Muddled Mind",
+      "img": "icons/magic/death/skull-weapon-staff-glow-pink.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.midi-qol.disadvantage.concentration",
+            "value": "1",
+            "type": "custom",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceEnd",
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!QtNjPgYLxmfqa4Rt.nAh9Pw6CGq2tDi3J"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "blood-curse-target",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!QtNjPgYLxmfqa4Rt"
+}
