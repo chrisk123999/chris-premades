@@ -2821,6 +2821,7 @@
                     "ArmorRestriction": "You can't use Bladesong while wearing medium or heavy armor or wielding a shield.",
                     "EnforceArmorRestriction": "Enforce Armor Restriction"
                 },
+                "BlessingHearth": "Select any hit dice you would like to reroll.<br><b>Formula:</b> <code>{formula}</code>",
                 "BolsteringMagic": "The target must finish a long rest before gaining this benefit again!",
                 "BoomingBlade": {
                     "WillingMove": "Did {actorName} move willingly?"
@@ -3043,6 +3044,11 @@
                     "No": "No",
                     "Prompt": "Use {itemName}?",
                     "Use": "Expend {count}"
+                },
+                "MagnificentFeast": {
+                    "Meals": "Meal Icons",
+                    "Name": "Magnificent Feast",
+                    "Prompt": "Hand out up to {maxAmount} meals."
                 },
                 "ManifestMind": {
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",

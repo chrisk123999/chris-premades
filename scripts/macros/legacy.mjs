@@ -109,6 +109,12 @@ export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatur
 export {arcaneAbjuration as 'channel-divinity-arcane-abjuration'} from './legacy/classFeatures/cleric/arcana/arcaneAbjuration.mjs';
 export {spellBreaker as 'spell-breaker'} from './legacy/classFeatures/cleric/arcana/spellBreaker.mjs';
 
+/*          Community         */
+export {blessingOfTheHearth as 'blessing-of-the-hearth'} from './legacy/classFeatures/cleric/community/blessingOfTheHearth.mjs';
+export {communityWatch as 'channel-divinity-community-watch', communityWatchEffect} from './legacy/classFeatures/cleric/community/communityWatch.mjs';
+export {magnificentFeast as 'channel-divinity-magnificent-feast'} from './legacy/classFeatures/cleric/community/magnificentFeast.mjs';
+export {paragonOfThePeople as 'paragon-of-the-people'} from './legacy/classFeatures/cleric/community/paragonOfThePeople.mjs';
+
 /*            Grave           */
 export {pathToTheGrave as 'channel-divinity-path-to-the-grave'} from './legacy/classFeatures/cleric/grave/pathToTheGrave.mjs';
 

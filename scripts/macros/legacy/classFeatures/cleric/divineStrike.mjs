@@ -1,5 +1,6 @@
 import {animationUtils, automationUtils, DamageBonus, Logging, workflowUtils} from '../../../../proxy.mjs';
 const DAMAGE_TYPE = {
+    community: 'psychic',
     death: 'necrotic',
     forge: 'fire',
     nature: ['cold', 'fire', 'lightning'],

@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "vbEPQf2ITgXEhWsP",
+  "name": "Cleric",
+  "color": null,
+  "sorting": "a",
+  "_id": "dH6DsAJkgydL5lp2",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.1.1"
+  },
+  "_key": "!folders!dH6DsAJkgydL5lp2"
+}

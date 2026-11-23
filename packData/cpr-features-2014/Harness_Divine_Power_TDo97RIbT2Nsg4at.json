@@ -7,7 +7,7 @@
       "utilityHaDPclass": {
         "type": "utility",
         "_id": "utilityHaDPclass",
-        "img": "",
+        "img": "icons/environment/settlement/gazebo.webp",
         "sort": 0,
         "activation": {
           "type": "bonus",
@@ -181,7 +181,7 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": ""
+        "name": "Harness Divine Power"
       }
     },
     "uses": {
@@ -221,7 +221,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       }
     }
   },
@@ -231,7 +231,7 @@
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "6.0.6"
+    "systemVersion": "6.1.1"
   },
   "_key": "!items!TDo97RIbT2Nsg4at"
 }
