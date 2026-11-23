@@ -1,0 +1,381 @@
+{
+  "_id": "KLUMns5V5BCC9HYR",
+  "name": "Formulas: Sagacity",
+  "type": "feat",
+  "img": "icons/tools/laboratory/bowl-liquid-pink-yellow-green.webp",
+  "folder": "zmAKOO0F6Yv40j4q",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "formulas-sagacity",
+    "activities": {
+      "puDNYn84UfDjaXyM": {
+        "_id": "puDNYn84UfDjaXyM",
+        "type": "utility",
+        "name": "Sagacity Mutagen",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:mutagencraft",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "perm",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "eRbNCgjUypy6F7Ak",
+            "level": {
+              "min": 3,
+              "max": 10
+            }
+          },
+          {
+            "_id": "CS8MTijnVL4igb4n",
+            "level": {
+              "min": 11,
+              "max": 17
+            }
+          },
+          {
+            "_id": "yNPOSgfJqwPlqHDj",
+            "level": {
+              "min": 18,
+              "max": null
+            }
+          },
+          {
+            "_id": "oEsg2vZRcl02mB80"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "consume",
+        "midiProperties": {
+          "identifier": "consume",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "visibility": {
+          "identifier": "blood-hunter",
+          "level": {
+            "min": 3,
+            "max": null
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "eRbNCgjUypy6F7Ak",
+      "name": "Sagacity Mutagen",
+      "img": "icons/tools/laboratory/bowl-liquid-pink-yellow-green.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.abilities.int.value",
+            "value": "3",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.int.max",
+            "value": "3",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [
+            "shortRest",
+            "longRest"
+          ]
+        },
+        "chris-premades": {
+          "mutagen": "positive"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!KLUMns5V5BCC9HYR.eRbNCgjUypy6F7Ak"
+    },
+    {
+      "_id": "CS8MTijnVL4igb4n",
+      "name": "Sagacity Mutagen",
+      "img": "icons/tools/laboratory/bowl-liquid-pink-yellow-green.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.abilities.int.value",
+            "value": "4",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.int.max",
+            "value": "4",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [
+            "shortRest",
+            "longRest"
+          ]
+        },
+        "chris-premades": {
+          "mutagen": "positive"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!KLUMns5V5BCC9HYR.CS8MTijnVL4igb4n"
+    },
+    {
+      "_id": "yNPOSgfJqwPlqHDj",
+      "name": "Sagacity Mutagen",
+      "img": "icons/tools/laboratory/bowl-liquid-pink-yellow-green.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.abilities.int.value",
+            "value": "5",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.int.max",
+            "value": "5",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [
+            "shortRest",
+            "longRest"
+          ]
+        },
+        "chris-premades": {
+          "mutagen": "positive"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!KLUMns5V5BCC9HYR.yNPOSgfJqwPlqHDj"
+    },
+    {
+      "_id": "oEsg2vZRcl02mB80",
+      "name": "Sagacity Mutagen: Side Effect",
+      "img": "icons/tools/laboratory/bowl-liquid-pink-yellow-green.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.abilities.cha.save.roll.mode",
+            "value": "-1",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [
+            "shortRest",
+            "longRest"
+          ]
+        },
+        "chris-premades": {
+          "mutagen": "negative"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!KLUMns5V5BCC9HYR.oEsg2vZRcl02mB80"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!KLUMns5V5BCC9HYR"
+}

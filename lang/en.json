@@ -1454,6 +1454,14 @@
                     },
                     "MaxSize": {
                         "Hint": "Only offer this option when every hit target is this size or smaller."
+                    },
+                    "ItemFlag": {
+                        "Label": "Item Flag",
+                        "Hint": "Only offer for attacks with items that have this flag path set. A damage type stored there is used when no damage type is set."
+                    },
+                    "TargetEffects": {
+                        "Label": "Target Effects",
+                        "Hint": "Only offer when every hit target has an effect from the owner with one of these identifiers."
                     }
                 },
                 "BladeSpell": {
@@ -1908,6 +1916,10 @@
                     },
                     "AlliesOnly": {
                         "Hint": "With a range set, only protect allies of the owner."
+                    },
+                    "RequiredEffects": {
+                        "Label": "Required Effects",
+                        "Hint": "Only trigger while the actor or one of its items has an effect with one of these identifiers."
                     }
                 },
                 "AllyAttack": {
@@ -2132,6 +2144,18 @@
                     },
                     "Tool": {
                         "Hint": "Limit this bonus to a list of tools."
+                    },
+                    "AutoEffect": {
+                        "Label": "Automatic Effect",
+                        "Hint": "The bonus applies without a prompt while the attacker has an effect from the owner with this identifier."
+                    },
+                    "EnemyRange": {
+                        "Label": "Enemy Range",
+                        "Hint": "Offer the bonus to the owner when an enemy it can see within this many feet attacks, instead of on its own attacks."
+                    },
+                    "ImmuneCondition": {
+                        "Label": "Immune Condition",
+                        "Hint": "Attackers immune to this condition are never affected."
                     }
                 },
                 "SaveToEndWhenFar": {
@@ -2650,6 +2674,19 @@
                 "GrappleAttackAdvantage": {
                     "Name": "Grapple Attack Advantage"
                 },
+                "GrappleSizeBonus": {
+                    "Name": "Grapple Size Bonus",
+                    "SizeBonus": {
+                        "Label": "Size Bonus",
+                        "Hint": "Sizes added to the actor's size when checking which creatures it can grapple or shove."
+                    },
+                    "AppliesTo": {
+                        "Label": "Applies To",
+                        "Hint": "Which size checks the bonus applies to.",
+                        "Both": "Grapple and Shove",
+                        "Shove": "Shove"
+                    }
+                },
                 "IgnoreCover": {
                     "Name": "Ignore Cover",
                     "Cover": {
@@ -2729,6 +2766,21 @@
                     "Tool": {
                         "Hint": "Only modify checks with these tools. Leave empty to allow every tool."
                     }
+                },
+                "SelfDamage": {
+                    "Formula": {
+                        "Hint": "Damage the user takes when the activity is used. It can't be reduced in any way."
+                    },
+                    "Name": "Self Damage"
+                },
+                "UniqueEffect": {
+                    "Item": "This Document",
+                    "Origin": "Origin Item in the Scene",
+                    "Scope": {
+                        "Label": "Unique Per",
+                        "Hint": "Where only one copy of this effect may exist."
+                    },
+                    "Name": "Unique Effect"
                 }
             },
             "Legacy": {
@@ -3354,6 +3406,36 @@
                 },
                 "TelekineticSeal": {
                     "NoSeal": "You have no seals left to place."
+                },
+                "BloodCurses": {
+                    "Amplified": "Amplified",
+                    "Amplify": "Amplify this blood curse?",
+                    "FallenPuppet": "Choose the creature to puppet.",
+                    "InvalidTarget": "{feature} can't target that creature.",
+                    "Normal": "Normal",
+                    "SelectTarget": "Choose the creature it attacks.",
+                    "SelectWeapon": "Choose the weapon it attacks with."
+                },
+                "BloodHunter": {
+                    "GrimPsychometry": "Recalling the sinister history of a touched object or this location",
+                    "HeightenedSenses": "Relies on hearing or smell",
+                    "HuntersBane": "Tracking fey, fiends or undead, or recalling information about them"
+                },
+                "BloodMaledict": {
+                    "Ability": {
+                        "Hint": "Ability used for the Hemocraft modifier."
+                    }
+                },
+                "CrimsonRite": {
+                    "NotHolding": "A rite can only be activated on a weapon you're holding."
+                },
+                "Mutagens": {
+                    "ExaltEnd": "Choose the mutagen to end.",
+                    "ExaltStart": "Choose the mutagen that takes its place.",
+                    "NoMutagen": "{feature} has no active mutagen to affect.",
+                    "Sunlight": "Is the attacker or the target in direct sunlight?",
+                    "SunlightCheck": "Nighteye: In Direct Sunlight",
+                    "Suppress": "Choose the side effect to ignore."
                 }
             },
             "Modern": {
@@ -3480,9 +3562,6 @@
                         "never": "Never",
                         "prompt": "Prompt"
                     }
-                },
-                "Heavyweight": {
-                    "SizeBonus": "Size Bonus"
                 },
                 "HeightenedFocus": {
                     "Prompt": "Bring an ally with you?",

@@ -1,0 +1,435 @@
+{
+  "_id": "9HQI2dIR0e133H0i",
+  "name": "Blood Curse of Binding",
+  "type": "feat",
+  "img": "icons/magic/control/debuff-chains-shackles-movement-purple.webp",
+  "folder": "nHpZDQvWhmS4HBxH",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "blood-curses-blood-curse-of-binding",
+    "activities": {
+      "JnE29Ch0Hh5xzgkE": {
+        "_id": "JnE29Ch0Hh5xzgkE",
+        "type": "save",
+        "name": "Curse",
+        "sort": 0,
+        "img": "icons/magic/control/debuff-chains-shackles-movement-purple.webp",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "XBdy05D9Cjpb5eeO",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "curse",
+        "midiProperties": {
+          "identifier": "curse",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "targetMustBeSeen": true
+        },
+        "flags": {},
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "8 + @prof + @flags.chris-premades.hemocraft"
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [],
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true
+        }
+      },
+      "ROjI3jgTdGwB82UQ": {
+        "_id": "ROjI3jgTdGwB82UQ",
+        "type": "save",
+        "name": "Amplified",
+        "sort": 1,
+        "img": "icons/magic/control/debuff-chains-shackles-movement-purple.webp",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:blood-maledict",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "1POPLQ0CXHrAFXJN",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "amplify",
+        "midiProperties": {
+          "identifier": "amplify",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "targetMustBeSeen": true
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "selfDamage",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "selfDamage": {
+                  "formula": "@scale.blood-hunter.crimson-rite"
+                }
+              }
+            }
+          }
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "8 + @prof + @flags.chris-premades.hemocraft"
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [],
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "XBdy05D9Cjpb5eeO",
+      "name": "Blood Curse of Binding",
+      "img": "icons/magic/control/debuff-chains-shackles-movement-purple.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.walk",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "system.attributes.movement.speeds.fly",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "system.attributes.movement.speeds.swim",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "system.attributes.movement.speeds.climb",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "system.attributes.movement.speeds.burrow",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "flags.midi-qol.actions.reactionsMax",
+            "value": "0",
+            "type": "override",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceEnd",
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!9HQI2dIR0e133H0i.XBdy05D9Cjpb5eeO"
+    },
+    {
+      "_id": "1POPLQ0CXHrAFXJN",
+      "name": "Blood Curse of Binding",
+      "img": "icons/magic/control/debuff-chains-shackles-movement-purple.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.walk",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "system.attributes.movement.speeds.fly",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "system.attributes.movement.speeds.swim",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "system.attributes.movement.speeds.climb",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "system.attributes.movement.speeds.burrow",
+            "value": "0",
+            "type": "override",
+            "priority": 30
+          },
+          {
+            "key": "flags.midi-qol.actions.reactionsMax",
+            "value": "0",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "flags.midi-qol.OverTime",
+            "value": "turn=end,rollType=save,saveAbility=str,saveDC=$activity.dc,saveRemove=true",
+            "type": "custom",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!9HQI2dIR0e133H0i.1POPLQ0CXHrAFXJN"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "blood-curse-target",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!9HQI2dIR0e133H0i"
+}

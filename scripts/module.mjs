@@ -5,6 +5,7 @@ import {alertHooks} from './macros/modern/feats/alert.mjs';
 import * as animations from './macros/animations.mjs';
 import {environmentHooks} from './macros/generic/environment.mjs';
 import {selectDamageTypeHooks} from './macros/generic/selectDamageType.mjs';
+import {crimsonRiteHooks} from './macros/legacy/classFeatures/bloodHunter/crimsonRite.mjs';
 import {bg3Hooks} from './macros/legacy/homebrew/bg3WeaponActions.mjs';
 import {dmgCleaveHooks} from './macros/legacy/homebrew/dmgCleave.mjs';
 import * as weaponMasteries from './macros/weaponMasteries.mjs';
@@ -25,6 +26,7 @@ Hooks.on('dnd5e.preRollDamageV2', selectDamageTypeHooks.preRollDamage);
 Hooks.on('updateCombatant', alertHooks.updateCombatant);
 Hooks.on('updateItem', bg3Hooks.equipped);
 Hooks.on('dnd5e.restCompleted', bg3Hooks.rest);
+Hooks.on('dnd5e.canEnchant', crimsonRiteHooks.canEnchant);
 Hooks.once('init', () => {
     const firearmKey = 'CHRISPREMADES.Macros.Generic.Firearm.';
     CONFIG.DND5E.weaponTypes.firearm = firearmKey + 'Type';

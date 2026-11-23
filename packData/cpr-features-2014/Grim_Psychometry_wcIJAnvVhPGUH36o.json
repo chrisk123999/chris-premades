@@ -1,0 +1,89 @@
+{
+  "_id": "wcIJAnvVhPGUH36o",
+  "name": "Grim Psychometry",
+  "type": "feat",
+  "img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
+  "folder": "odLQIcDTtEL60NVt",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "grim-psychometry",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "check": [
+          {
+            "source": "chris-premades",
+            "identifier": "contextAdvantage",
+            "rules": "all"
+          }
+        ],
+        "save": [
+          {
+            "source": "chris-premades",
+            "identifier": "contextAdvantage",
+            "rules": "all"
+          }
+        ],
+        "skill": [
+          {
+            "source": "chris-premades",
+            "identifier": "contextAdvantage",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "contextAdvantage": {
+            "skill": [
+              "his"
+            ],
+            "label": "CHRISPREMADES.Macros.Legacy.BloodHunter.GrimPsychometry"
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!wcIJAnvVhPGUH36o"
+}

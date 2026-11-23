@@ -1,0 +1,151 @@
+{
+  "_id": "tpIfZf2NJiYm1xZX",
+  "name": "Rite Revival",
+  "type": "feat",
+  "img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
+  "folder": "XfgQrP6BS3znr2ow",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "rite-revival",
+    "activities": {
+      "gI7OqapvWWwH5E0r": {
+        "_id": "gI7OqapvWWwH5E0r",
+        "type": "utility",
+        "name": "Rite Revival",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "revive",
+        "midiProperties": {
+          "identifier": "revive",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "preventDeath",
+            "rules": "all"
+          },
+          {
+            "source": "chris-premades",
+            "identifier": "rite-revival",
+            "rules": "2014"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "preventDeath": {
+            "requiredEffects": [
+              "crimsonRite"
+            ],
+            "useActivity": "gI7OqapvWWwH5E0r"
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!tpIfZf2NJiYm1xZX"
+}

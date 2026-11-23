@@ -42,14 +42,14 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.8"
+        "version": "2.1.11"
       },
       "macros": {
         "grapple": [
           {
             "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "heavyweight"
+            "rules": "all",
+            "identifier": "grappleSizeBonus"
           }
         ]
       }

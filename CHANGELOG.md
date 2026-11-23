@@ -2,9 +2,11 @@
 ## Automated Class Features:
 - 2014 Artificer: Alchemist, Armorer, Artillerist and Battle Smith.
 - 2024 Artificer: Armorer, Battle Smith and Forge Adept.
+- Blood Hunter: Class features, Order of the Ghostslayer, Order of the Lycan and Order of the Mutant.
 ## Generic Macros:
-- New `attackDisadvantage` generic.
-- `attackRider`, `nextHitRider`, `summonModifier`, `actionDismissal` and `damageBonusToOneRoll` have new options.
+- New `attackDisadvantage`, `selfDamage` and `uniqueEffect` generics.
+- New `grappleSizeBonus` generic counts its owner as larger when checking which creatures it can grapple or shove, or only one of the two. Heavyweight uses it.
+- `attackRider`, `nextHitRider`, `summonModifier`, `actionDismissal`, `damageBonusToOneRoll`, `rollBonus` and `preventDeath` have new options.
 - Every generic has a display name and a category, and every option has a hint in the CatKit.
 ## Automation Improvements:
 - 2024 Battle Master maneuvers match Player's Handbook and DDB Importer items.
