@@ -1,66 +1,12 @@
 {
-  "name": "Family First",
+  "name": "Zhentarim Ruffian",
   "type": "feat",
-  "effects": [
-    {
-      "name": "Family First",
-      "img": "icons/skills/social/diplomacy-unity-alliance.webp",
-      "origin": null,
-      "transfer": false,
-      "_id": "7xmdTRw8ifieYdFA",
-      "type": "base",
-      "system": {
-        "changes": [
-          {
-            "key": "system.attributes.init.roll.mode",
-            "value": "1",
-            "priority": 20,
-            "type": "add",
-            "_id": "7xmdTRw8ifieYdF0",
-            "phase": "initial",
-            "conditions": "{}",
-            "replacement": ""
-          }
-        ]
-      },
-      "disabled": false,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": "combatEnd",
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [],
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "flags": {
-        "dae": {
-          "stackable": "noneName",
-          "specialDuration": [
-            "isInitiative"
-          ]
-        },
-        "cat": {
-          "identifier": "familyFirst"
-        }
-      },
-      "_stats": {
-        "coreVersion": "14.369",
-        "systemId": "dnd5e",
-        "systemVersion": "6.0.6"
-      },
-      "_key": "!items.effects!m2mTc1vaEs2IbDhe.7xmdTRw8ifieYdFA"
-    }
-  ],
+  "img": "icons/skills/melee/hand-grip-sword-strike-orange.webp",
   "system": {
     "activities": {
-      "sOUDXttPjC2vvCnj": {
+      "aOMnXVOPTMVn2YJa": {
         "type": "utility",
-        "_id": "sOUDXttPjC2vvCnj",
-        "img": "",
+        "img": "icons/skills/social/diplomacy-unity-alliance.webp",
         "sort": 0,
         "activation": {
           "type": "special",
@@ -77,12 +23,14 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "",
+          "value": ""
         },
         "duration": {
           "units": "inst",
           "concentration": false,
-          "override": false
+          "override": false,
+          "expiry": null
         },
         "effects": [
           {
@@ -90,12 +38,34 @@
             "level": {
               "min": null,
               "max": null
-            }
+            },
+            "uuid": null
+          },
+          {
+            "_id": "2oQ6L8WbQP48nPAv",
+            "uuid": null,
+            "level": {}
           }
         ],
         "flags": {
           "cat": {
-            "hidden": true
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2024",
+                  "identifier": "zhentarim-ruffian"
+                }
+              ],
+              "combat": [
+                {
+                  "source": "chris-premades",
+                  "rules": "2024",
+                  "identifier": "zhentarim-ruffian"
+                }
+              ]
+            }
           }
         },
         "range": {
@@ -187,7 +157,12 @@
           "magicDamage": false,
           "noConcentrationCheck": false,
           "skipConcentrationCheck": false,
-          "autoCEEffects": "default"
+          "autoCEEffects": "default",
+          "followUp": false,
+          "followUpTargets": "default",
+          "followUpCondition": "",
+          "targetMustBeSeen": false,
+          "statuses": []
         },
         "isOverTimeFlag": false,
         "overTimeProperties": {
@@ -204,7 +179,11 @@
           "wallRestriction": "none",
           "regionVisibility": 2,
           "attachToken": "default",
-          "rules": []
+          "rules": [],
+          "moveDistance": 0,
+          "moveDirection": "away",
+          "moveTiming": "start",
+          "templateOrigin": "default"
         },
         "regionLight": {
           "enabled": false,
@@ -219,8 +198,9 @@
         },
         "otherActivityId": "none",
         "otherActivityAsParentType": true,
-        "name": "",
-        "identifier": "family-first"
+        "name": "Family First",
+        "behaviors": [],
+        "_id": "aOMnXVOPTMVn2YJa"
       }
     },
     "uses": {
@@ -233,7 +213,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "family-first",
+    "identifier": "zhentarim-ruffian",
     "source": {
       "book": "FRHoF",
       "page": "",
@@ -246,7 +226,8 @@
     "enchant": {},
     "prerequisites": {
       "items": [],
-      "repeatable": false
+      "repeatable": false,
+      "level": null
     },
     "properties": [],
     "requirements": "",
@@ -255,30 +236,97 @@
       "subtype": "origin"
     }
   },
+  "effects": [
+    {
+      "name": "Family First",
+      "img": "icons/skills/social/diplomacy-unity-alliance.webp",
+      "origin": null,
+      "transfer": false,
+      "_id": "2oQ6L8WbQP48nPAv",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.init.roll.mode",
+            "value": 1,
+            "priority": 20,
+            "type": "add",
+            "_id": "7xmdTRw8ifieYdF0",
+            "phase": "initial",
+            "conditions": "{}",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "behavior": null,
+          "item": "Compendium.chris-premades.CPRFeatures2024.Item.SXXf1XhHDpRO20jJ",
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "combatEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [
+            "isInitiative"
+          ],
+          "enableCondition": "",
+          "disableCondition": "",
+          "applicationMode": "default",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false
+        },
+        "cat": {
+          "identifier": "familyFirst"
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.1.1"
+      },
+      "_key": "!items.effects!SXXf1XhHDpRO20jJ.2oQ6L8WbQP48nPAv"
+    }
+  ],
+  "folder": "M3jqOSOgp6TElvqU",
   "flags": {
     "cat": {
-      "macros": {
-        "combat": [
-          {
-            "source": "chris-premades",
-            "rules": "2024",
-            "identifier": "family-first"
-          }
-        ]
-      },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.11"
       }
     }
   },
-  "img": "icons/skills/social/diplomacy-unity-alliance.webp",
-  "folder": "M3jqOSOgp6TElvqU",
-  "_id": "m2mTc1vaEs2IbDhe",
+  "_id": "SXXf1XhHDpRO20jJ",
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "6.0.6"
+    "systemVersion": "6.1.1"
   },
-  "_key": "!items!m2mTc1vaEs2IbDhe"
+  "_key": "!items!SXXf1XhHDpRO20jJ"
 }
