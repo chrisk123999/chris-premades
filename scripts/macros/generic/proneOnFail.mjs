@@ -4,7 +4,7 @@ async function skipProne({document: activity, workflow}) {
     const proneTargets = workflow.targets.documents.filter(token => !token.actor || token.actor.statuses.has('prone') || actorUtils.checkTrait(token.actor, 'ci', 'prone'));
     if (!proneTargets.length) return;
     if (proneTargets.length === workflow.targets.count) {
-        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'All targets are already prone or immune to prone.');
+        Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'All targets are already prone or immune to prone.');
         return true;
     }
     await workflowUtils.removeTargets(workflow, proneTargets);

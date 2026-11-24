@@ -46,7 +46,7 @@ async function extraTarget({document: item, workflow}) {
     if (config.rollItem) await workflowUtils.completeItemUse(item);
     else {
         const activity = item.system.activities.get(config.rollActivity);
-        if (!activity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(item), 'Configured roll activity not found.', {notify: 'warn'});
+        if (!activity) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(item), 'Configured roll activity not found.', {notify: 'warn'});
         await workflowUtils.completeActivityUse(activity);
     }
 }

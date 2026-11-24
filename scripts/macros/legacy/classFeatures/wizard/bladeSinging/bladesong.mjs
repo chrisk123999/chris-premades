@@ -4,7 +4,7 @@ async function preChecks({workflow}) {
     const armorType = workflow.actor.system.attributes.ac.equippedArmor?.system.type.value;
     const hasShield = !!workflow.actor.system.attributes.ac.equippedShield;
     if (!['medium', 'heavy'].includes(armorType) && !hasShield) return;
-    Logging.addMacroWarning('CPR', 'bladesong', 'CHRISPREMADES.Macros.Legacy.Bladesong.ArmorRestriction', {notify: 'warn'});
+    Logging.addMacroWarning('chris-premades', 'bladesong', 'CHRISPREMADES.Macros.Legacy.Bladesong.ArmorRestriction', {notify: 'warn'});
     workflow.aborted = true;
     return true;
 }

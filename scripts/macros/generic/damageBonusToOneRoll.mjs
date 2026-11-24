@@ -109,7 +109,7 @@ async function damage({document, workflow}) {
         if (!workflow.hitTargets.count) return;
         const activity = config.rollActivity ? document.system.activities?.get(config.rollActivity) : undefined;
         bonus.withDefaultCosts({activity}).initialize(workflow);
-        if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'Not enough uses or resources.');
+        if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(document), 'Not enough uses or resources.');
     }
     return bonus;
 }

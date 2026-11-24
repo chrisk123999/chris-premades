@@ -1,7 +1,7 @@
 import {documentUtils, effectUtils, Logging} from '../../../../../proxy.mjs';
 async function halve({document: activity}) {
     const effect = documentUtils.getEffectByIdentifier(activity.item, 'elementalRebuke');
-    if (!effect) return Logging.addMacroWarning('CPR', 'elemental-rebuke', 'Elemental Rebuke effect is missing from the item.', {notify: 'warn'});
+    if (!effect) return Logging.addMacroWarning('chris-premades', 'elemental-rebuke', 'Elemental Rebuke effect is missing from the item.', {notify: 'warn'});
     await effectUtils.createEffects(activity.actor, [documentUtils.getEffectData(activity.item, effect.id)]);
 }
 export const elementalRebuke = {

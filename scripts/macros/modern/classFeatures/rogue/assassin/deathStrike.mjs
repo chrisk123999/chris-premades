@@ -2,7 +2,7 @@ import {automationUtils, itemUtils, Logging, rollUtils, workflowUtils} from '../
 async function useSave({document: item, data: {workflow, targetToken}}) {
     if (workflow.token?.document.combatant?.combat.round !== 1) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'death-strike');
-    if (!activity) return Logging.addMacroWarning('CPR', 'death-strike', 'Death Strike activity missing from item.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'death-strike', 'Death Strike activity missing from item.', {notify: 'warn'});
     const saveWorkflow = await workflowUtils.syntheticActivityRoll(activity, [targetToken]);
     if (!saveWorkflow?.failedSaves.count) return;
     workflowUtils.setWorkflowProperty(workflow, 'deathStrike', true);

@@ -46,7 +46,7 @@ function getSpacesNear(token, target, range) {
 }
 async function use({document, workflow}) {
     if (workflow.workflowOptions?.rollAttackPerTarget) return;
-    if (!workflow.token) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'No token on the scene.');
+    if (!workflow.token) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'No token on the scene.');
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'teleport', configKeys);
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'teleport'});
     const rolledRange = config.rangeFromRoll ? workflow.utilityRolls?.[0]?.total : undefined;

@@ -3,7 +3,7 @@ const mindActivities = ['manifestMindCast', 'manifestMindMove', 'manifestMindDis
 async function use({document: item, workflow}) {
     if (workflow.activity.identifier !== 'manifestMind') return;
     const sourceActor = await compendiumUtils.getDocumentByIdentifier('chris-premades.CPRSummons2014', 'manifestMind');
-    if (!sourceActor) return Logging.addMacroWarning('CPR', 'manifest-mind', 'Spectral mind summon actor not found.', {notify: 'warn'});
+    if (!sourceActor) return Logging.addMacroWarning('chris-premades', 'manifest-mind', 'Spectral mind summon actor not found.', {notify: 'warn'});
     let name = automationUtils.getConfigValue(item, 'name');
     if (!name?.length) name = _loc('CHRISPREMADES.Macros.Legacy.ManifestMind.SummonName');
     const avatarImg = automationUtils.getConfigValue(item, 'avatar') || undefined;
@@ -37,7 +37,7 @@ async function cast({document: item, workflow}) {
     if (workflow.activity.identifier !== 'manifestMindCast') return;
     const [summon] = summonUtils.getSummonsBySource(item);
     const mindToken = summon?.token;
-    if (!mindToken) return Logging.addMacroWarning('CPR', 'manifest-mind', 'Spectral mind is not summoned.');
+    if (!mindToken) return Logging.addMacroWarning('chris-premades', 'manifest-mind', 'Spectral mind is not summoned.');
     const effectData = documentUtils.getBaseEffectData(item, {
         name: item.name,
         img: item.img,
@@ -53,7 +53,7 @@ async function cast({document: item, workflow}) {
 async function move({document: item, workflow}) {
     if (workflow.activity.identifier !== 'manifestMindMove') return;
     const [summon] = summonUtils.getSummonsBySource(item);
-    if (!summon) return Logging.addMacroWarning('CPR', 'manifest-mind', 'Spectral mind is not summoned.');
+    if (!summon) return Logging.addMacroWarning('chris-premades', 'manifest-mind', 'Spectral mind is not summoned.');
     await summon.move(30);
 }
 async function dismiss({document: item, workflow}) {
@@ -74,7 +74,7 @@ async function turnEnd({document: effect, token}) {
 }
 async function early({activity, actor}) {
     if (activity.item.type !== 'spell') {
-        Logging.addMacroWarning('CPR', 'manifest-mind-cast', 'CHRISPREMADES.Macros.Legacy.ManifestMind.Invalid', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'manifest-mind-cast', 'CHRISPREMADES.Macros.Legacy.ManifestMind.Invalid', {notify: 'warn'});
         return true;
     }
     const effect = actorUtils.getEffectByIdentifier(actor, 'manifestMind');

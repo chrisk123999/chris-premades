@@ -42,7 +42,7 @@ export async function burnSeals(item, target, count, {multiplier = 1, userId} = 
     const activity = itemUtils.getActivityByIdentifier(item, 'burn');
     const config = automationUtils.getConfigValues(item, ['classIdentifier', 'damageScale']);
     const scale = item.actor.system.scale[config.classIdentifier]?.[config.damageScale];
-    if (!activity || !scale) return Logging.addMacroWarning('CPR', 'baleful-interdict', 'Missing burn activity or damage scale.', {notify: 'warn'});
+    if (!activity || !scale) return Logging.addMacroWarning('chris-premades', 'baleful-interdict', 'Missing burn activity or damage scale.', {notify: 'warn'});
     const damageType = await dialogUtils.selectDamageType(['fire', 'necrotic'], item.name, translations + 'DamageType', {userId}) || 'fire';
     const activityData = activity.toObject();
     activityData.damage.parts[0].custom = {enabled: true, formula: (seals.length * scale.number * multiplier) + 'd' + scale.faces};

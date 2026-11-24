@@ -20,7 +20,7 @@ async function naturalAttack({document, workflow}) {
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'transform') return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'formOfTheBeastEffect');
-    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'form-of-the-beast-warlock', 'Form of the Beast effect missing from item.', {notify: 'warn'});
+    if (!sourceEffect) return Logging.addMacroWarning('chris-premades', 'form-of-the-beast-warlock', 'Form of the Beast effect missing from item.', {notify: 'warn'});
     const config = automationUtils.getConfigValues(document, ['classIdentifier', 'animation', 'diceSteps', 'maxDenomination', 'itemIdentifiers', 'activityIdentifiers']);
     const levels = workflow.actor.classes[config.classIdentifier]?.system.levels ?? 0;
     const identifiers = ['bite', 'claw'];

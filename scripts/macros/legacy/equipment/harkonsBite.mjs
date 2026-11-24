@@ -1,9 +1,9 @@
 import {actorUtils, automationUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, workflowUtils} from '../../../proxy.mjs';
 async function shapechange({document, workflow}) {
     if (!['hybrid', 'wolf'].includes(workflow.activity.identifier)) return;
-    if (!itemUtils.getEquipmentState(document)) return Logging.addMacroWarning('CPR', 'harkons-bite', "Harkon's Bite must be equipped.");
+    if (!itemUtils.getEquipmentState(document)) return Logging.addMacroWarning('chris-premades', 'harkons-bite', "Harkon's Bite must be equipped.");
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'harkonsBiteEffect');
-    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'harkons-bite', 'Shapechange effect missing from item.', {notify: 'warn'});
+    if (!sourceEffect) return Logging.addMacroWarning('chris-premades', 'harkons-bite', 'Shapechange effect missing from item.', {notify: 'warn'});
     const form = workflow.activity.identifier;
     const isHybrid = form === 'hybrid';
     const identifiers = isHybrid ? ['bite', 'claws', 'human'] : ['bite', 'human'];

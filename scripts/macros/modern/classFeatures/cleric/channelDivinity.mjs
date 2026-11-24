@@ -3,7 +3,7 @@ import {applyDamageType, rememberCombat} from '../../../generic/selectDamageType
 import {'channel-divinity|class:cleric' as channelDivinityLegacy, turnUndead as turnUndeadLegacy} from '../../../legacy.mjs';
 async function promptChannelDivinities({data: {workflow}}) {
     if (!workflow) return;
-    const notFound = id => Logging.addMacroWarning('CPR', 'channel-divinity', 'Could not find an activity with identifier ' + id, {notify: 'warn'});
+    const notFound = id => Logging.addMacroWarning('chris-premades', 'channel-divinity', 'Could not find an activity with identifier ' + id, {notify: 'warn'});
     const choices = [];
     const turn = itemUtils.getActivityByIdentifier(workflow.item, 'turn-undead');
     if (!turn) notFound('turn');

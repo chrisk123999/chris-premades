@@ -9,7 +9,7 @@ async function use({document, workflow}) {
         && (!attackTypes?.length || attackTypes.includes(activity.attack?.type?.value));
     const items = config.identifiers.length ? actorUtils.getItemByIdentifiers(workflow.actor, config.identifiers, {multiple: true}) : workflow.actor.items.filter(item => config.itemTypes.includes(item.type));
     const candidates = items.filter(item => item !== document.item && (!config.equippedOnly || item.system.equipped) && item.system.activities?.some(validActivity));
-    if (!candidates.length) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document.item), 'No valid item to use.');
+    if (!candidates.length) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(document.item), 'No valid item to use.');
     const item = candidates.length === 1 ? candidates[0] : await dialogUtils.selectDocumentDialog(document.item.name, 'CHRISPREMADES.Macros.Generic.SpecialItemUse.SelectItem', candidates, {sort: 'alphabetical'});
     if (!item) return;
     const activities = item.system.activities.filter(validActivity);

@@ -14,17 +14,17 @@ async function getConfigs(item) {
     const level = classItem?.system.levels ?? 0;
     const canFly = level >= (config.grantFlySpeed || 99);
     const canSwim = level >= (config.grantSwimSpeed ?? 0);
-    if (!forms) return Logging.addMacroWarning('CPR', identifier, 'Could not evaluate wild shape count scale value: ' + config.forms, {notify: 'warn'});
-    if (cr === undefined) return Logging.addMacroWarning('CPR', identifier, 'Could not evaluate wild shape CR scale value: ' + config.cr, {notify: 'warn'});
+    if (!forms) return Logging.addMacroWarning('chris-premades', identifier, 'Could not evaluate wild shape count scale value: ' + config.forms, {notify: 'warn'});
+    if (cr === undefined) return Logging.addMacroWarning('chris-premades', identifier, 'Could not evaluate wild shape CR scale value: ' + config.cr, {notify: 'warn'});
     return {...config, canFly, canSwim, cr, forms, packs};
 }
 async function learnForm({identifier, workflow}) {
     const config = await getConfigs(workflow.item);
     if (!config) return;
     const wildShapeActivity = itemUtils.getActivityByIdentifier(workflow.item, 'change-form');
-    if (!wildShapeActivity) return Logging.addMacroWarning('CPR', identifier, 'Missing wild shape activity: change-form', {notify: 'warn'});
+    if (!wildShapeActivity) return Logging.addMacroWarning('chris-premades', identifier, 'Missing wild shape activity: change-form', {notify: 'warn'});
     const forms = (await Promise.all(wildShapeActivity.profiles.map(p => fromUuid(p.uuid)))).filter(Boolean);
-    if (forms.length > config.forms) return Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.All.WildShape.MaxKnown', {notify: 'warn', format: {count: forms.length, max: config.forms}});
+    if (forms.length > config.forms) return Logging.addMacroWarning('chris-premades', identifier, 'CHRISPREMADES.Macros.All.WildShape.MaxKnown', {notify: 'warn', format: {count: forms.length, max: config.forms}});
     let selected;
     if (forms.length) {
         const addNoneDocument = forms.length < config.forms;
@@ -77,7 +77,7 @@ async function preWildShape({actor, config, document: activity, token}) {
     });
     forms.push(...additionalForms);
     if (!forms.length) {
-        Logging.addMacroWarning('CPR', 'wild-shape', 'CHRISPREMADES.Macros.All.WildShape.NoForms', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'wild-shape', 'CHRISPREMADES.Macros.All.WildShape.NoForms', {notify: 'warn'});
         return true;
     }
     const getTags = data => {
@@ -163,14 +163,14 @@ async function postWildShape({identifier, workflow}) {
     const newActor = workflow.transformedActors?.[0];
     if (!newActor) return;
     const effectID = workflow.item.effects.contents[0]?.id;
-    if (!effectID) return Logging.addMacroWarning('CPR', identifier, 'Wild Shape effect missing from item.', {notify: 'warn'});
+    if (!effectID) return Logging.addMacroWarning('chris-premades', identifier, 'Wild Shape effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, effectID);
     const keepItems = (workflow.workflowOptions['chris-premades']?.wildShapeItems ?? []).map(uuid => fromUuidSync(uuid, {strict: false})).filter(Boolean);
     const revertFeature = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'wild-shape-revert', {
         translate: 'CHRISPREMADES.Macros.All.WildShape.Revert',
         object: true
     });
-    if (!revertFeature) return Logging.addMacroWarning('CPR', identifier, 'Wild Shape Revert item not found.', {notify: 'warn'});
+    if (!revertFeature) return Logging.addMacroWarning('chris-premades', identifier, 'Wild Shape Revert item not found.', {notify: 'warn'});
     const rules = documentUtils.getRules(workflow.item);
     const classItem = getClassItem(workflow.item);
     await automationUtils.calledEvent('wildShape', workflow.actor, {canOverlap: true, data: {

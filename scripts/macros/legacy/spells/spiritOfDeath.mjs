@@ -18,7 +18,7 @@ function hauntedFilter({source, target}) {
 }
 function scytheTarget({workflow}) {
     if (isHaunted(workflow.actor, workflow.targets.documents[0]?.actor)) return;
-    Logging.addMacroWarning('CPR', 'spirit-of-death-scythe', 'CHRISPREMADES.Macros.Legacy.SpiritOfDeath.InvalidTarget', {notify: 'info'});
+    Logging.addMacroWarning('chris-premades', 'spirit-of-death-scythe', 'CHRISPREMADES.Macros.Legacy.SpiritOfDeath.InvalidTarget', {notify: 'info'});
     return true;
 }
 function scytheAdvantage({document, workflow}) {

@@ -45,7 +45,7 @@ async function doFall({workflow}) {
             const targetSize = actorUtils.getSize(target.actor);
             const sourceSize = actorUtils.getSize(workflow.actor);
             if (sourceSize === 0 || targetSize === 0) {
-                Logging.addMacroWarning('CPR', 'fall', 'CHRISPREMADES.Macros.All.Fall.Tiny', {notify: 'info'});
+                Logging.addMacroWarning('chris-premades', 'fall', 'CHRISPREMADES.Macros.All.Fall.Tiny', {notify: 'info'});
                 await ground(workflow.actor);
                 break;
             }

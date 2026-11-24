@@ -5,18 +5,18 @@ async function confirmHeal({document, config}) {
     const target = fromUuidSync(targetUuid, {strict: false});
     if (!target?.actor) return;
     if (automationUtils.getConfigValue(document, 'excludedCreatureTypes').includes(actorUtils.typeOrRace(target.actor))) {
-        Logging.addMacroWarning('CPR', 'healing-spirit-heal', 'Healing Spirit cannot heal this creature type.');
+        Logging.addMacroWarning('chris-premades', 'healing-spirit-heal', 'Healing Spirit cannot heal this creature type.');
         return true;
     }
     const selection = await dialogUtils.confirm(document.name, _loc('CHRISPREMADES.Macros.Legacy.HealingSpirit.Apply', {name: target.name, uses: document.system.uses.value}));
     if (selection) return;
-    Logging.addMacroWarning('CPR', 'healing-spirit-heal', 'Healing declined.');
+    Logging.addMacroWarning('chris-premades', 'healing-spirit-heal', 'Healing declined.');
     return true;
 }
 async function vanish({document}) {
     if (document.system.uses.value > 0) return;
     const summon = summonUtils.getSummonData(document.actor);
-    if (!summon) return Logging.addMacroWarning('CPR', 'healing-spirit-heal', 'Heal used up outside a summoned spirit.');
+    if (!summon) return Logging.addMacroWarning('chris-premades', 'healing-spirit-heal', 'Heal used up outside a summoned spirit.');
     await summonUtils.deleteSummon(summon);
 }
 export const healingSpiritHeal = {

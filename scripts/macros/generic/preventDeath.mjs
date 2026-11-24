@@ -12,7 +12,7 @@ async function damage({document, ditem, targetToken, workflow}) {
     if (config.excludeDamageTypes.length && workflowUtils.getDamageTypes(workflow.damageRolls).intersects(new Set(config.excludeDamageTypes))) return;
     if (config.healingTraits && actorUtils.checkTrait(actor, 'di', 'healing')) return;
     if (config.requiredEffects.length && !config.requiredEffects.some(identifier => documentUtils.getEffectByIdentifier(actor, identifier, {includeItemEffects: true}))) return;
-    if (document.system.uses.max && !document.system.uses.value) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'No uses remaining.');
+    if (document.system.uses.max && !document.system.uses.value) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(document), 'No uses remaining.');
     const selection = await dialogUtils.confirmUseItem(document, {userId: queryUtils.firstOwner(document.actor, true)});
     if (!selection) return;
     const saveActivity = document.system.activities.get(config.saveActivity);

@@ -5,7 +5,7 @@ async function damage({document: item, workflow}) {
     const roll = workflow.damageRolls?.find(roll => roll.dice.length);
     if (!roll) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'orcish-fury');
-    if (!activity) return Logging.addMacroWarning('CPR', 'orcish-fury-extra-damage', 'Missing the orcish-fury activity.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'orcish-fury-extra-damage', 'Missing the orcish-fury activity.', {notify: 'warn'});
     return new DamageBonus(item, {formula: automationUtils.getConfigValue(item, 'extraDice') + 'd' + roll.dice[0].faces, type: roll.options.type})
         .withOnUse(async () => await workflowUtils.completeActivityUse(activity, []));
 }

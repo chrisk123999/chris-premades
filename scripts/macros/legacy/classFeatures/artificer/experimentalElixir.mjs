@@ -9,7 +9,7 @@ async function addElixir(actor, type) {
     const existing = getElixirs(actor).find(item => item.flags['chris-premades'].experimentalElixir === type);
     if (existing) return await documentUtils.update(existing, {'system.quantity': existing.system.quantity + 1});
     const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'experimental-elixir-' + type, {object: true, translate: label(type)});
-    if (!itemData) return Logging.addMacroWarning('CPR', 'experimental-elixir', 'Elixir missing from pack. (type) ' + type, {notify: 'warn'});
+    if (!itemData) return Logging.addMacroWarning('chris-premades', 'experimental-elixir', 'Elixir missing from pack. (type) ' + type, {notify: 'warn'});
     const intMod = actor.system.abilities.int.mod;
     const activities = Object.values(itemData.system.activities);
     const drink = activities.find(activity => activity.midiProperties?.identifier === 'drink');

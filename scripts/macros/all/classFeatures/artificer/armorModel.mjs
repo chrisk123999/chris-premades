@@ -44,7 +44,7 @@ async function use({document: item, workflow}) {
     await Promise.all(modelEffects.filter(effect => effect !== current).map(effect => documentUtils.deleteDocument(effect)));
     if (!current) return;
     const weapon = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, data.weapon, {object: true});
-    if (!weapon) return Logging.addMacroWarning('CPR', 'armor-model', 'Armor model weapon missing from pack.', {notify: 'warn'});
+    if (!weapon) return Logging.addMacroWarning('chris-premades', 'armor-model', 'Armor model weapon missing from pack.', {notify: 'warn'});
     weapon.system.equipped = true;
     if (actorUtils.getItemByIdentifier(actor, 'improved-armorer')) weapon.system.magicalBonus = 1;
     if (data.perfected && actorUtils.getItemByIdentifier(actor, 'perfected-armor')) genericUtils.mergeObject(weapon.system.damage.base, data.perfected);

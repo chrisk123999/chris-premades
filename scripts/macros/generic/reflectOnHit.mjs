@@ -18,7 +18,7 @@ async function attacked({document: effect, sourceToken, workflow, castData}) {
     if (!isStrongest(effect, sourceToken.actor)) return;
     const item = effect.transfer && effect.parent?.documentName === 'Item' ? effect.parent : effectUtils.getOriginActivitySync(effect)?.item;
     const activity = item?.system.activities.get(config.rollActivity);
-    if (!activity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(effect), 'CHRISPREMADES.Macros.Generic.ReflectOnHit.NoActivity', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(effect), 'CHRISPREMADES.Macros.Generic.ReflectOnHit.NoActivity', {notify: 'warn'});
     if (config.oncePerTurn) {
         const combatData = tokenUtils.getCombatData(sourceToken);
         const stamps = effect.flags['chris-premades']?.reflectOnHit?.stamps ?? [];

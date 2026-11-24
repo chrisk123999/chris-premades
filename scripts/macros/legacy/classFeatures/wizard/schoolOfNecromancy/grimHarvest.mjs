@@ -21,7 +21,7 @@ async function late({document: item, workflow, token}) {
     const necromancyMultiplier = automationUtils.getConfigValue(item, 'necromancyMultiplier') ?? 3;
     const healingAmount = spellLevel * (spellSchool === 'nec' ? necromancyMultiplier : healingMultiplier);
     const feature = itemUtils.getActivityByIdentifier(item, 'grimHarvest');
-    if (!feature) return Logging.addMacroWarning('CPR', 'grim-harvest', 'Grim Harvest healing activity missing.', {notify: 'warn'});
+    if (!feature) return Logging.addMacroWarning('chris-premades', 'grim-harvest', 'Grim Harvest healing activity missing.', {notify: 'warn'});
     const activityData = activityUtils.getDamageModifiedActivityData(feature, healingAmount);
     await workflowUtils.syntheticActivityDataRoll(activityData, item, [token]);
     if (item.system.hasLimitedUses && combatData.inCombat) await documentUtils.update(item, {'system.uses.spent': item.system.uses.spent + 1});

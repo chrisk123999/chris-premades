@@ -9,11 +9,11 @@ async function early({document, activity, config}) {
     const uses = document.system.uses;
     if (activity.id === restoreActivity.id) {
         if (!uses.spent) {
-            Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'CHRISPREMADES.Macros.Generic.RestoreUses.NoneSpent', {notify: 'info', format: {item: document.name}});
+            Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(document), 'CHRISPREMADES.Macros.Generic.RestoreUses.NoneSpent', {notify: 'info', format: {item: document.name}});
             return true;
         }
         if (settings.requireEmpty && uses.value) {
-            Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'CHRISPREMADES.Macros.Generic.RestoreUses.NotEmpty', {notify: 'info', format: {item: document.name}});
+            Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(document), 'CHRISPREMADES.Macros.Generic.RestoreUses.NotEmpty', {notify: 'info', format: {item: document.name}});
             return true;
         }
         return;

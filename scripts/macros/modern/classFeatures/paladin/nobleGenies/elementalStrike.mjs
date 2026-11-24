@@ -17,7 +17,7 @@ async function strike({actor, data: {activity, targets}, document: item, token})
     const target = targets[0];
     if (!token || !target) return;
     const activities = strikes.map(identifier => itemUtils.getActivityByIdentifier(item, identifier)).filter(Boolean);
-    if (activities.length !== strikes.length) return Logging.addMacroWarning('CPR', 'elemental-strike', 'Elemental Strike activities are missing from the item.', {notify: 'warn'});
+    if (activities.length !== strikes.length) return Logging.addMacroWarning('chris-premades', 'elemental-strike', 'Elemental Strike activities are missing from the item.', {notify: 'warn'});
     if (!activityUtils.checkCosts(activities[0])) return;
     const userId = queryUtils.firstOwner(actor, true);
     const buttons = activities.map(strikeActivity => [strikeActivity.name, strikeActivity.id, {image: strikeActivity.img}]);

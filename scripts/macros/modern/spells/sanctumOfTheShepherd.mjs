@@ -15,7 +15,7 @@ async function use({document: item, workflow}) {
     const region = workflow.template;
     if (!region) return;
     const markerEffect = documentUtils.getEffectByIdentifier(item, 'sanctumOfTheShepherd');
-    if (!markerEffect) return Logging.addMacroWarning('CPR', 'sanctum-of-the-shepherd', 'CHRISPREMADES.Macros.Modern.SanctumOfTheShepherd.MissingEffect', {notify: 'warn'});
+    if (!markerEffect) return Logging.addMacroWarning('chris-premades', 'sanctum-of-the-shepherd', 'CHRISPREMADES.Macros.Modern.SanctumOfTheShepherd.MissingEffect', {notify: 'warn'});
     const candidates = workflow.targets.documents.filter(token => token.actor && token !== workflow.tokenDocument);
     let chosen = [];
     if (candidates.length) {
@@ -36,7 +36,7 @@ async function longRest({document: effect, token}) {
     if (!region || !token?.regions?.has(region)) return;
     const activity = effectUtils.getOriginActivitySync(effect);
     const wardEffect = activity ? documentUtils.getEffectByIdentifier(activity.item, 'sanctumOfTheShepherdWard') : undefined;
-    if (!wardEffect) return Logging.addMacroWarning('CPR', 'sanctum-of-the-shepherd', 'CHRISPREMADES.Macros.Modern.SanctumOfTheShepherd.MissingEffect', {notify: 'warn'});
+    if (!wardEffect) return Logging.addMacroWarning('chris-premades', 'sanctum-of-the-shepherd', 'CHRISPREMADES.Macros.Modern.SanctumOfTheShepherd.MissingEffect', {notify: 'warn'});
     if (resolvedRegions.has(regionUuid)) return;
     resolvedRegions.add(regionUuid);
     const remaining = Math.floor(effect.duration.secondsRemaining ?? 0);

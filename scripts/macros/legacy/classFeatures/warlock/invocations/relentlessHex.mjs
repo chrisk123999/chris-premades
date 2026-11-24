@@ -6,7 +6,7 @@ async function use({document, workflow}) {
     const cursed = tokenUtils.findNearby(token, automationUtils.getConfigValue(document, 'teleportRange') + range, {disposition: 'enemy'})
         .filter(nearbyToken => identifiers.some(identifier => actorUtils.getEffectByIdentifier(nearbyToken.actor, identifier)));
     if (!cursed.length) {
-        Logging.addMacroWarning('CPR', 'relentless-hex', 'CHRISPREMADES.Macros.Legacy.RelentlessHex.NoTargets', {notify: 'info'});
+        Logging.addMacroWarning('chris-premades', 'relentless-hex', 'CHRISPREMADES.Macros.Legacy.RelentlessHex.NoTargets', {notify: 'info'});
         return;
     }
     const targetToken = cursed.length === 1 ? cursed[0] : (await dialogUtils.selectTargetDialog(document.name, _loc('CHRISPREMADES.Macros.Legacy.RelentlessHex.Select'), cursed, {type: 'one'}))?.result;

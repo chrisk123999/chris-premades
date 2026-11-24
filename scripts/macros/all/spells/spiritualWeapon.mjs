@@ -46,7 +46,7 @@ async function preCreate({document, updates}) {
     const path = automationUtils.getConfigValue(document, 'savedTokenImg') || await pickWeapon(document, queryUtils.firstOwner(document.actor, true));
     if (!path) return;
     const file = resolveFile(path);
-    if (!file) return Logging.addMacroWarning('CPR', 'spiritual-weapon', 'CHRISPREMADES.Macros.All.SpiritualWeapon.MissingFile', {notify: 'warn'});
+    if (!file) return Logging.addMacroWarning('chris-premades', 'spiritual-weapon', 'CHRISPREMADES.Macros.All.SpiritualWeapon.MissingFile', {notify: 'warn'});
     genericUtils.setProperty(updates, 'prototypeToken.texture.src', file);
 }
 function early({document, activity, config, dialog}) {
@@ -63,7 +63,7 @@ function validate({document, workflow}) {
     if (!targetToken) return;
     const reach = automationUtils.getConfigValue(document, 'reach');
     if (getWeaponTokens(document).some(token => tokenUtils.isWithinDistance(token, targetToken, reach))) return;
-    Logging.addMacroWarning('CPR', 'spiritual-weapon', 'CHRISPREMADES.Macros.All.SpiritualWeapon.OutOfReach', {notify: 'info'});
+    Logging.addMacroWarning('chris-premades', 'spiritual-weapon', 'CHRISPREMADES.Macros.All.SpiritualWeapon.OutOfReach', {notify: 'info'});
     return true;
 }
 async function late({document, workflow}) {

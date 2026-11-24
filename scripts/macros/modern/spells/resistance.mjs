@@ -7,7 +7,7 @@ async function use({document, workflow}) {
     const damageType = await dialogUtils.selectDamageType(damageTypes, document.name, 'CHRISPREMADES.Generic.SelectDamageType');
     if (!damageType) return await cancel();
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'resistanceEffect');
-    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'resistance', 'Resistance effect missing from item.', {notify: 'warn'});
+    if (!sourceEffect) return Logging.addMacroWarning('chris-premades', 'resistance', 'Resistance effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {parentEntity: concentrationEffect});
     effectData.name = `${effectData.name}: ${CONFIG.DND5E.damageTypes[damageType]?.label ?? damageType}`;
     genericUtils.setProperty(effectData, 'flags.chris-premades.resistance', {

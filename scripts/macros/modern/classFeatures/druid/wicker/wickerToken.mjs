@@ -6,7 +6,7 @@ async function weave({document, workflow}) {
     const quantity = rollUtils.rollDiceSync(automationUtils.getConfigValue(document, 'quantity'), {document}).total;
     if (quantity < 1) return;
     const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'wicker-token-charm', {object: true, translate: 'CHRISPREMADES.Macros.Modern.WickerToken.Token'});
-    if (!itemData) return Logging.addMacroWarning('CPR', 'wicker-token', 'Wicker Token missing from the automation items compendium.', {notify: 'warn'});
+    if (!itemData) return Logging.addMacroWarning('chris-premades', 'wicker-token', 'Wicker Token missing from the automation items compendium.', {notify: 'warn'});
     const druidToken = workflow.token?.document;
     const candidates = new Map();
     const onScene = new Set([workflow.actor]);

@@ -12,7 +12,7 @@ async function summon({workflow}) {
     const folder = automationUtils.getConfigValue(workflow.item, 'folder');
     const actors = folder ? await folderUtils.getActorsInFolder(folder) : await compendiumUtils.getDocumentsBySlug('dnd5e.monsters', srdSteeds[identifier] ?? []);
     if (!actors.length) {
-        Logging.addMacroWarning('CPR', 'find-steed', 'CHRISPREMADES.Macros.Legacy.FindSteed.NoActors', {notify: 'warn', format: {folder}});
+        Logging.addMacroWarning('chris-premades', 'find-steed', 'CHRISPREMADES.Macros.Legacy.FindSteed.NoActors', {notify: 'warn', format: {folder}});
         return;
     }
     const sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.Legacy.FindSteed.Choose', actors, {sort: 'alphabetical'});

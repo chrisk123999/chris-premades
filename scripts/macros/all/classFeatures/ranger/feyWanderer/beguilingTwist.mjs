@@ -6,7 +6,7 @@ const conditions = [
 async function use({document: item, workflow}) {
     if (workflow.targets.count !== 1 || !workflow.failedSaves.count) return;
     const available = conditions.filter(([, identifier]) => documentUtils.getEffectByIdentifier(item, identifier));
-    if (!available.length) return Logging.addMacroWarning('CPR', 'beguiling-twist', 'Charmed/Frightened effects missing from item.', {notify: 'warn'});
+    if (!available.length) return Logging.addMacroWarning('chris-premades', 'beguiling-twist', 'Charmed/Frightened effects missing from item.', {notify: 'warn'});
     const selection = available.length === 1
         ? available[0][1]
         : await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Macros.All.BeguilingTwist.Select', available);

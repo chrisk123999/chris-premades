@@ -43,7 +43,7 @@ async function suddenStrike(workflow, stalkersFlurry) {
     const nearTarget = tokenUtils.findNearby(targetToken, automationUtils.getConfigValue(stalkersFlurry, 'suddenStrikeRange'), {disposition: 'ally'});
     const candidates = tokenUtils.findNearby(workflow.token.document, workflowUtils.getRange(workflow), {disposition: 'enemy'})
         .filter(candidate => candidate !== targetToken && nearTarget.includes(candidate));
-    if (!candidates.length) return Logging.addMacroWarning('CPR', 'dread-ambusher', 'CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {notify: 'info'});
+    if (!candidates.length) return Logging.addMacroWarning('chris-premades', 'dread-ambusher', 'CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {notify: 'info'});
     const selection = await dialogUtils.selectTargetDialog(_loc('CHRISPREMADES.Macros.Modern.StalkersFlurry.SuddenStrike'), _loc('DND5E.Target'), candidates, {buttons: 'yesNo'});
     if (!selection?.result) return;
     await workflowUtils.completeItemUse(workflow.item, [selection.result], {fast: true});
@@ -57,7 +57,7 @@ async function massFear(workflow, stalkersFlurry) {
     if (!targetToken) return;
     const targets = tokenUtils.findNearby(targetToken, range, {includeToken: true})
         .filter(target => includeSelf || target.actor !== workflow.actor);
-    if (!targets.length) return Logging.addMacroWarning('CPR', 'dread-ambusher', 'CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {notify: 'info'});
+    if (!targets.length) return Logging.addMacroWarning('chris-premades', 'dread-ambusher', 'CHRISPREMADES.Macros.Modern.StalkersFlurry.NoTargets', {notify: 'info'});
     await workflowUtils.completeActivityUse(activity, targets);
 }
 export const dreadAmbusher = {

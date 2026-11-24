@@ -18,7 +18,7 @@ async function weave({document: activity, workflow}) {
         if (!ability) return;
     }
     const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'twisted-hex-charm', {object: true, translate: 'CHRISPREMADES.Macros.Modern.TwistedHex.Charm'});
-    if (!itemData) return Logging.addMacroWarning('CPR', 'twisted-hex', 'Twisted Hex charm missing from the automation items compendium.', {notify: 'warn'});
+    if (!itemData) return Logging.addMacroWarning('chris-premades', 'twisted-hex', 'Twisted Hex charm missing from the automation items compendium.', {notify: 'warn'});
     itemData.effects.forEach(effect => effect.system.changes.forEach(change => change.key = change.key.replaceAll('{ability}', ability)));
     genericUtils.setProperty(itemData, 'flags.chris-premades.twistedHex', {ability, dc: getSaveDC(workflow.actor, activity.item)});
     await cprUtils.deleteCharms(workflow.actor, 'twistedHex');

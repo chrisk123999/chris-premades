@@ -1,7 +1,7 @@
 import {automationUtils, constants, dialogUtils, documentUtils, Logging, queryUtils} from '../../../../../proxy.mjs';
 async function setType(item, {initial = false} = {}) {
     const effect = documentUtils.getEffectByIdentifier(item, 'auraOfElementalShieldingAura');
-    if (!effect) return Logging.addMacroWarning('CPR', 'aura-of-elemental-shielding', 'Aura of Elemental Shielding effect is missing from the item.', {notify: 'warn'});
+    if (!effect) return Logging.addMacroWarning('chris-premades', 'aura-of-elemental-shielding', 'Aura of Elemental Shielding effect is missing from the item.', {notify: 'warn'});
     const changes = effect.toObject().system.changes;
     const change = changes.find(entry => entry.key === 'system.traits.dr.value');
     if (!change) return;

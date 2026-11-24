@@ -8,11 +8,11 @@ async function use({document, workflow}) {
     const targetToken = workflow.targets.documents[0];
     if (!targetToken?.actor) return;
     const effect = documentUtils.getEffectByIdentifier(document, 'soulboundPoppet');
-    if (!effect) return Logging.addMacroWarning('CPR', 'soulbound-poppet', 'Soulbound Poppet effect missing from item.', {notify: 'warn'});
+    if (!effect) return Logging.addMacroWarning('chris-premades', 'soulbound-poppet', 'Soulbound Poppet effect missing from item.', {notify: 'warn'});
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [documentUtils.getEffectData(workflow.activity, effect.id, {activityUuid: workflow.activity.uuid})]) ?? [];
     if (!casterEffect) return;
     const itemData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'soulbound-poppet-doll', {object: true});
-    if (!itemData) return Logging.addMacroWarning('CPR', 'soulbound-poppet', 'Soulbound Poppet doll missing from the automation items compendium.', {notify: 'warn'});
+    if (!itemData) return Logging.addMacroWarning('chris-premades', 'soulbound-poppet', 'Soulbound Poppet doll missing from the automation items compendium.', {notify: 'warn'});
     itemData.name = _loc('CHRISPREMADES.Macros.Modern.SoulboundPoppet.Doll', {name: targetToken.name});
     genericUtils.setProperty(itemData, 'flags.chris-premades.soulboundPoppet', {
         target: targetToken.actor.uuid,

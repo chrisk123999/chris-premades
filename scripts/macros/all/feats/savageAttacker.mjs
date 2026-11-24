@@ -13,7 +13,7 @@ async function damage({document: item, workflow}) {
     const rolls = workflow.damageRolls.slice(0, rollCount);
     if (!rolls.some(roll => roll.dice.length)) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'savage-attacker');
-    if (!activity) return Logging.addMacroWarning('CPR', 'savage-attacker', 'Missing the savage-attacker activity.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'savage-attacker', 'Missing the savage-attacker activity.', {notify: 'warn'});
     const legacy = documentUtils.getRules(item) === '2014';
     if (legacy) {
         const total = rolls.reduce((sum, roll) => sum + roll.total, 0);

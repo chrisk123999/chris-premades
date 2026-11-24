@@ -20,7 +20,7 @@ async function use({document, workflow}) {
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'compelledDuelSource');
     const targetEffect = documentUtils.getEffectByIdentifier(document, 'compelledDuelTarget');
-    if (!sourceEffect || !targetEffect) return Logging.addMacroWarning('CPR', 'compelled-duel', 'Compelled Duel effects missing from item.', {notify: 'warn'});
+    if (!sourceEffect || !targetEffect) return Logging.addMacroWarning('chris-premades', 'compelled-duel', 'Compelled Duel effects missing from item.', {notify: 'warn'});
     const sourceEffectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {parentEntity: concentrationEffect, activityUuid: workflow.activity.uuid});
     genericUtils.setProperty(sourceEffectData, 'flags.chris-premades.compelledDuel.targets', workflow.failedSaves.uuids);
     const [casterEffect] = await effectUtils.createEffects(workflow.actor, [sourceEffectData]);
@@ -67,7 +67,7 @@ async function moved({document: effect, token, action, teleport}) {
         const stamps = duelData.stamps ?? [];
         if (combatUtils.isStampedThisTurn(stamps, token.id, combatData)) return;
         const activity = itemUtils.getActivityByIdentifier(item, 'moved');
-        if (!activity) return Logging.addMacroWarning('CPR', 'compelled-duel', 'Moved activity missing from item.', {notify: 'warn'});
+        if (!activity) return Logging.addMacroWarning('chris-premades', 'compelled-duel', 'Moved activity missing from item.', {notify: 'warn'});
         const saveWorkflow = await workflowUtils.syntheticActivityRoll(activity, [token], {spellSlot: false});
         if (!saveWorkflow) return;
         if (!saveWorkflow.failedSaves.count) {

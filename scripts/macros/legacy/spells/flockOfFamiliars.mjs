@@ -5,27 +5,27 @@ async function summon({workflow}) {
     const familiars = summonUtils.getSummonsByIdentifier('find-familiar', {actor: workflow.actor});
     const total = automationUtils.getConfigValue(workflow.item, 'baseSummons') + workflowUtils.getCastLevel(workflow) - workflow.item.system.level - (familiars.length ? 1 : 0);
     if (total < 1) {
-        Logging.addMacroWarning('CPR', identifier, 'No familiars to summon.');
+        Logging.addMacroWarning('chris-premades', identifier, 'No familiars to summon.');
         await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }
     const folder = automationUtils.getConfigValue(workflow.item, 'folder');
     const actors = folder ? await folderUtils.getActorsInFolder(folder) : await compendiumUtils.getDocumentsBySlug('dnd5e.monsters', srdFamiliars);
     if (!actors.length) {
-        Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.All.FindFamiliar.NoActors', {notify: 'warn', format: {folder}});
+        Logging.addMacroWarning('chris-premades', identifier, 'CHRISPREMADES.Macros.All.FindFamiliar.NoActors', {notify: 'warn', format: {folder}});
         await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }
     const selection = await dialogUtils.selectDocumentDialog(workflow.item.name, _loc('CHRISPREMADES.Summons.SelectSummons', {max: total}), actors, {max: total, combobox: true, sort: 'alphabetical'});
     const sourceActors = selection ? selection.flatMap(({document, amount}) => Array(amount).fill(document)) : [];
     if (!sourceActors.length) {
-        Logging.addMacroWarning('CPR', identifier, 'No familiars selected.');
+        Logging.addMacroWarning('chris-premades', identifier, 'No familiars selected.');
         await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }
     const creatureType = automationUtils.getConfigValue(workflow.item, 'creatureType') || familiars[0]?.actor?.system.details.type.value || await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Legacy.FlockOfFamiliars.Type', constants.spiritTypeOptions.map(option => [option.label, option.value, {image: option.image}]));
     if (!creatureType) {
-        Logging.addMacroWarning('CPR', identifier, 'No creature type selected.');
+        Logging.addMacroWarning('chris-premades', identifier, 'No creature type selected.');
         await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }

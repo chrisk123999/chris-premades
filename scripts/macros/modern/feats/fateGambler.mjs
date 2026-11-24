@@ -5,7 +5,7 @@ function hasCR(actor) {
 async function betBig(item, token) {
     if (item.actor.system.attributes.inspiration) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'bet-big');
-    if (!activity) return Logging.addMacroWarning('CPR', 'fate-gambler', 'Missing the bet-big activity.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'fate-gambler', 'Missing the bet-big activity.', {notify: 'warn'});
     await workflowUtils.completeActivityUse(activity, token ? [token] : []);
 }
 async function rollFinished({document: item, workflow}) {

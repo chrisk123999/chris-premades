@@ -5,7 +5,7 @@ async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'sprout-foliage') return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'sproutFoliage');
     const attack = itemUtils.getActivityByIdentifier(document, 'sprout-foliage-attack');
-    if (!sourceEffect || !attack) return Logging.addMacroWarning('CPR', 'sprout-foliage', 'Sprout Foliage effect or attack activity missing from item.', {notify: 'warn'});
+    if (!sourceEffect || !attack) return Logging.addMacroWarning('chris-premades', 'sprout-foliage', 'Sprout Foliage effect or attack activity missing from item.', {notify: 'warn'});
     const existingEffect = documentUtils.getEffectByIdentifier(workflow.actor, 'sproutFoliage');
     if (existingEffect) await documentUtils.deleteDocument(existingEffect);
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {

@@ -111,7 +111,7 @@ async function ownerBonus(activity, actor, workflow, config) {
     if (!config.useActivityCosts) return bonus;
     bonus.withDefaultCosts();
     bonus.initialize(workflow);
-    if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'Not enough uses or resources.');
+    if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'Not enough uses or resources.');
     return bonus;
 }
 async function damage({document: activity, actor, workflow}) {
@@ -134,7 +134,7 @@ async function damage({document: activity, actor, workflow}) {
         if (formula) bonus.withDefaultScaling();
         else bonus.withScalingHandler(({bonus: current}) => current.roll);
         bonus.initialize(workflow);
-        if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'Not enough uses or resources.');
+        if (!DamageBonus.CheckCost(bonus)) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'Not enough uses or resources.');
     }
     return bonus;
 }

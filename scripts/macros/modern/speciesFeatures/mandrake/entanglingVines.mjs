@@ -21,7 +21,7 @@ async function early({document: item, workflow}) {
     if (!target?.actor) return;
     const reason = canTarget(getLimits(item), target, getSeason(item));
     if (!reason) return;
-    Logging.addMacroWarning('CPR', 'entangling-vines', reason, {notify: 'info', format: {name: target.name}});
+    Logging.addMacroWarning('chris-premades', 'entangling-vines', reason, {notify: 'info', format: {name: target.name}});
     return true;
 }
 async function targeting({document: item, workflow}) {
@@ -53,7 +53,7 @@ async function finished({document: item, workflow}) {
         for (const token of targets) if (token.object) await tokenUtils.displaceToken(token, {sourceToken: workflow.token.document, range});
     } else if (season === 'winter') {
         const activity = itemUtils.getActivityByIdentifier(item, 'winter');
-        if (!activity) return Logging.addMacroWarning('CPR', 'entangling-vines', 'Winter activity missing from item.', {notify: 'warn'});
+        if (!activity) return Logging.addMacroWarning('chris-premades', 'entangling-vines', 'Winter activity missing from item.', {notify: 'warn'});
         await workflowUtils.syntheticActivityRoll(activity, targets, {consumeResources: false});
     }
 }

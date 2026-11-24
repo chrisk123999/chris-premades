@@ -2,7 +2,7 @@ import {dialogUtils, documentUtils, itemUtils, Logging} from '../../../../../pro
 async function use({document, workflow}) {
     const spells = workflow.actor.items.filter(spell => spell.type === 'spell');
     if (!spells.length) {
-        Logging.addMacroWarning('CPR', 'psionic-spells', 'CHRISPREMADES.Macros.Legacy.PsionicSpells.NoSpells', {notify: 'info'});
+        Logging.addMacroWarning('chris-premades', 'psionic-spells', 'CHRISPREMADES.Macros.Legacy.PsionicSpells.NoSpells', {notify: 'info'});
         return;
     }
     const checked = new Set(document.flags['chris-premades']?.psionicSpells?.spells ?? []);

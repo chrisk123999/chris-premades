@@ -4,7 +4,7 @@ async function explode({document, workflow, castData}) {
     const target = workflow.targets.tokens[0];
     if (!target) return;
     const activity = itemUtils.getActivityByIdentifier(document, 'explosion');
-    if (!activity) return Logging.addMacroWarning('CPR', 'ice-knife', 'Explosion activity missing from item.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'ice-knife', 'Explosion activity missing from item.', {notify: 'warn'});
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     if (workflow.token && animation?.macros?.play) {
         await animation.macros.play(workflow.token.document, target.document, {
