@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 function getMutagenEffects(actor, side) {
     return actorUtils.getEffects(actor).filter(effect => effect.flags['chris-premades']?.mutagen && (!side || effect.flags['chris-premades'].mutagen === side));
 }

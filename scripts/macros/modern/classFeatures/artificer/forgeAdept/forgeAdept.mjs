@@ -1,5 +1,5 @@
-import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, dataUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
-import {applyDamageType} from '../../../generic/selectDamageType.mjs';
+import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, dataUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {applyDamageType} from '../../../../generic/selectDamageType.mjs';
 function isGhaalShaarat(item) {
     return !!item?.flags['chris-premades']?.ghaalShaarat;
 }

@@ -41,14 +41,10 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.advantage.skill.prc",
-            "type": "custom",
-            "value": 1,
-            "priority": 20,
-            "phase": "initial",
-            "_id": "hzp0jHdhqJb5Sb9F",
-            "conditions": "{}",
-            "replacement": ""
+            "key": "system.skills.prc.roll.mode",
+            "type": "add",
+            "value": "1",
+            "priority": 20
           }
         ],
         "origin": {
@@ -93,7 +89,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       },
       "macros": {
         "aura": [

@@ -1,5 +1,5 @@
-import {actorUtils, compendiumUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
-import {cpr} from '../../../../module.mjs';
+import {actorUtils, compendiumUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
+import {cpr} from '../../../../../module.mjs';
 async function use({workflow}) {
     if (workflow.activity.identifier === 'revert') {
         const effect = actorUtils.getEffectByIdentifier(workflow.actor, 'hybridTransformation');

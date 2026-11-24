@@ -68,7 +68,8 @@
               "0"
             ],
             "useActivityCosts": false,
-            "allowCritical": true
+            "allowCritical": true,
+            "sourceClasses": "druid"
           }
         }
       }

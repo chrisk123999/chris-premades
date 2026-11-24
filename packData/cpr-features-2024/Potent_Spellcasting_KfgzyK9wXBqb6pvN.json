@@ -50,7 +50,8 @@
             "spellLevel": [
               "0"
             ],
-            "useActivityCosts": false
+            "useActivityCosts": false,
+            "sourceClasses": "cleric"
           }
         }
       },

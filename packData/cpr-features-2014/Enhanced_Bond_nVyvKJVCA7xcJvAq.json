@@ -1,0 +1,84 @@
+{
+  "_id": "nVyvKJVCA7xcJvAq",
+  "name": "Enhanced Bond",
+  "type": "feat",
+  "img": "icons/magic/nature/wolf-paw-glow-large-orange.webp",
+  "folder": "circleOfWildfire",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "enhanced-bond",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "damageBonusToOneRoll",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "damageBonusToOneRoll": {
+            "bonus": "1d8",
+            "applyTo": "any",
+            "itemType": [
+              "spell"
+            ],
+            "damageType": [
+              "fire",
+              "healing"
+            ],
+            "requiredSummons": [
+              "summon-wildfire-spirit"
+            ],
+            "firstCastOnly": true
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!nVyvKJVCA7xcJvAq"
+}

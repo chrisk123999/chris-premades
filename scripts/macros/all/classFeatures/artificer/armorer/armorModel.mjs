@@ -1,5 +1,5 @@
-import {cpr} from '../../../../module.mjs';
-import {activityUtils, actorUtils, compendiumUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {cpr} from '../../../../../module.mjs';
+import {activityUtils, actorUtils, compendiumUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 import {isWearingArcaneArmor} from './arcaneArmor.mjs';
 function getModel(activity) {
     return activity.flags['chris-premades']?.armorModel;

@@ -1,4 +1,7 @@
-import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, dataUtils, documentUtils, effectUtils, itemUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, dataUtils, documentUtils, effectUtils, itemUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+export function hasRequiredSummons(actor, identifiers) {
+    return !identifiers?.length || summonUtils.getSummons(actor).some(summon => identifiers.includes(documentUtils.getIdentifier(summon.sourceItem)));
+}
 export const identifiersConfig = {
     default: [],
     type: 'selectIdentifiers',
@@ -64,7 +67,9 @@ async function damage({document, workflow}) {
             if (!['spell', 'weapon'].some(t => config.itemType.includes(t))) return;
         } else if (!config.itemType.includes(workflow.item.type)) return;
     }
-    if (config.sourceClasses && !config.sourceClasses.split(',').map(value => value.trim()).includes(workflow.item.system.classIdentifier)) return;
+    if (!hasRequiredSummons(workflow.actor, config.requiredSummons)) return;
+    const classIdentifier = workflow.item.system.classIdentifier;
+    if (config.sourceClasses && classIdentifier && !config.sourceClasses.split(',').map(value => value.trim()).includes(classIdentifier)) return;
     if (workflow.item.type === 'spell' || bladeCantrip) {
         if (config.spellLevel.length) {
             const castLevel = bladeCantrip ? 0 : workflowUtils.getCastLevel(workflow);
@@ -214,6 +219,13 @@ export const damageBonusToOneRoll = {
             label: 'CHRISPREMADES.Config.SpellLevel',
             hint: 'CHRISPREMADES.Macros.Generic.Common.SpellLevel.Hint',
             get options() { return constants.spellSlotOptions; }
+        },
+        requiredSummons: {
+            default: [],
+            type: 'selectIdentifiers',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Common.RequiredSummons.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RequiredSummons.Hint'
         },
         sourceClasses: {
             default: '',

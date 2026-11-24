@@ -1,5 +1,5 @@
-import {cpr} from '../../../../module.mjs';
-import {actorUtils, automationUtils, compendiumUtils, dialogUtils, documentUtils, genericUtils, itemUtils, Logging, rollUtils} from '../../../../proxy.mjs';
+import {cpr} from '../../../../../module.mjs';
+import {actorUtils, automationUtils, compendiumUtils, dialogUtils, documentUtils, genericUtils, itemUtils, Logging, rollUtils} from '../../../../../proxy.mjs';
 const types = ['healing', 'swiftness', 'resilience', 'boldness', 'flight', 'transformation'];
 const label = type => 'CHRISPREMADES.Macros.Legacy.ExperimentalElixir.' + type.capitalize();
 function getElixirs(actor) {

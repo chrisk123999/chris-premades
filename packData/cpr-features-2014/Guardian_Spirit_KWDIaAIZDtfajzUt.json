@@ -1,0 +1,78 @@
+{
+  "_id": "KWDIaAIZDtfajzUt",
+  "name": "Guardian Spirit",
+  "type": "feat",
+  "img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
+  "folder": "circleShepherd01",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "guardian-spirit",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "summon": [
+          {
+            "source": "chris-premades",
+            "identifier": "summonModifier",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "summonModifier": {
+            "sourceIdentifiers": [
+              "spirit-totem"
+            ],
+            "items": [
+              "Compendium.chris-premades.CPRAutomationItems.Item.LnsllFOqPG6wCXEj"
+            ],
+            "ownerFormulas": true
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!KWDIaAIZDtfajzUt"
+}

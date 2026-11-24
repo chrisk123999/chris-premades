@@ -602,6 +602,7 @@
             "DiceSize": "Dice Size",
             "DieSize": "Die Size",
             "Distance": "Distance",
+            "DurationRounds": "Duration (Rounds)",
             "DurationSeconds": "Duration (Seconds)",
             "Enable3rdPartyReaction": "Enable 3rd Party Reaction",
             "ExcludeWeaponProperties": "Exclude Weapon Properties",
@@ -744,6 +745,16 @@
                 "CheckCover": {
                     "TargetCover": "Cover each creature has from you:",
                     "YourCover": "Cover you have from each creature:"
+                },
+                "StarryForm": {
+                    "Chalice": "Choose a creature to regain hit points from the Healing Chalice.",
+                    "Keep": "Keep Current Form",
+                    "Swap": "Change your starry form?",
+                    "Arrow": "Choose a creature to hurl a luminous arrow at.",
+                    "ChaliceAnyCreature": "Chalice Heals Any Creature",
+                    "ChaliceRange": "Healing Chalice Range",
+                    "ArcherRange": "Luminous Arrow Range",
+                    "SwapLevel": "Form Swap Level"
                 },
                 "SteelDefender": {
                     "RepairTarget": "Repair can only target the defender itself or a Construct or object it can see."
@@ -1235,6 +1246,14 @@
                     "Immune": {
                         "Hint": "An attacker is unaffected by this feature if they are immune to one of these conditions."
                     }
+                },
+                "CosmicOmen": {
+                    "Initiative": "Use {omen} on {name}'s initiative?"
+                },
+                "CircleForms": {
+                    "CR": "Maximum CR Formula",
+                    "AC": "Armor Class Formula",
+                    "TempHP": "Temporary Hit Points Formula"
                 }
             },
             "Generic": {
@@ -1330,6 +1349,15 @@
                     "Name": "Require Tools",
                     "Tools": {
                         "Hint": "Tools that satisfy the requirement. Any one of them is enough."
+                    }
+                },
+                "SpellSlotRecovery": {
+                    "Name": "Spell Slot Recovery",
+                    "Formula": {
+                        "Hint": "Total spell slot levels that can be recovered."
+                    },
+                    "MaxSlotLevel": {
+                        "Hint": "Highest spell slot level that can be recovered."
                     }
                 },
                 "StoredItem": {
@@ -1631,7 +1659,11 @@
                         "Hint": "Only attacks of this type are affected."
                     },
                     "NoTargets": "No valid targets within range!",
-                    "NotEnoughUses": "Not enough uses to trigger."
+                    "NotEnoughUses": "Not enough uses to trigger.",
+                    "RequiredSummons": {
+                        "Label": "Required Summons",
+                        "Hint": "Only trigger while the owner has a summon created by an item with one of these identifiers."
+                    }
                 },
                 "ContestedCheck": {
                     "Grapple": "Grapple",
@@ -2156,6 +2188,21 @@
                     "ImmuneCondition": {
                         "Label": "Immune Condition",
                         "Hint": "Attackers immune to this condition are never affected."
+                    },
+                    "Range": {
+                        "Label": "Other Creatures Range",
+                        "Hint": "Offer the bonus to the owner, as a reaction, when another creature it can see within this many feet makes the roll. 0 offers it on the owner's own rolls."
+                    },
+                    "Disposition": {
+                        "Label": "Other Creatures",
+                        "Hint": "With Other Creatures Range, which creatures' rolls the bonus is offered on.",
+                        "Enemy": "Enemies",
+                        "Ally": "Allies",
+                        "Any": "Any Creature"
+                    },
+                    "IncludeOwner": {
+                        "Label": "Include Owner",
+                        "Hint": "Also offer the bonus on the owner's own rolls."
                     }
                 },
                 "SaveToEndWhenFar": {
@@ -2223,6 +2270,10 @@
                     },
                     "ItemTypes": {
                         "Hint": "Item types this feature can use when no identifiers are set."
+                    },
+                    "SpellSlot": {
+                        "Label": "Spend Spell Slot",
+                        "Hint": "Spend a spell slot when the used item is a leveled spell."
                     }
                 },
                 "SummonModifier": {
@@ -2238,7 +2289,7 @@
                         "Hint": "Only modify summons created by items with these identifiers. Leave empty for any summon."
                     },
                     "MagicalWeapons": {
-                        "Hint": "The summon's items that deal damage gain the magical property."
+                        "Hint": "The summon's natural weapons gain the magical property."
                     },
                     "Effect": {
                         "Hint": "Effect from this item to add to the summon."
@@ -2246,6 +2297,18 @@
                     "Confirm": {
                         "Hint": "Prompt the owner before the summon is modified.",
                         "Prompt": "Apply {document} to {summon}?"
+                    },
+                    "HpPerHitDie": {
+                        "Label": "Hit Points per Hit Die",
+                        "Hint": "Hit points added to the summon's maximum for each of its hit dice."
+                    },
+                    "OwnerFormulas": {
+                        "Label": "Use Owner Formulas",
+                        "Hint": "Resolve the added items' healing and damage formulas against this item's owner."
+                    },
+                    "SourceItemTypes": {
+                        "Label": "Source Item Types",
+                        "Hint": "Only modify summons created by items of these types. Leave empty for any item type."
                     }
                 },
                 "TouchDelivery": {
@@ -2344,7 +2407,7 @@
                     },
                     "Targets": {
                         "Label": "Teleported Creatures",
-                        "Hint": "Teleport the user, each target that failed its save, or the user to a space near one of the targets. Swap With a Target trades places with the first target that failed its save."
+                        "Hint": "Teleport the user, each target, each target that failed its save, or the user to a space near one of the targets. Swap With a Target trades places with the first target that failed its save."
                     },
                     "Self": "Self",
                     "FailedSaves": "Failed Saves",
@@ -2361,6 +2424,21 @@
                     },
                     "Animation": {
                         "Hint": "Played during the teleport."
+                    },
+                    "EachTarget": "Each Target",
+                    "CompanionPlacement": {
+                        "Label": "Companion Placement Range",
+                        "Hint": "Each companion gets its own destination within this distance of the user's new space. 0 keeps their positions relative to the user."
+                    }
+                },
+                "UseOnDeath": {
+                    "Name": "Use on Death",
+                    "Statuses": {
+                        "Label": "Statuses",
+                        "Hint": "Statuses that trigger this item."
+                    },
+                    "Confirm": {
+                        "Hint": "Prompt the owner before the item is used."
                     }
                 },
                 "UseOnEvent": {
@@ -2573,14 +2651,14 @@
                         "Barrel": "Barrel",
                         "Blackpowder": "Blackpowder",
                         "Blaring": "Blaring",
-                        "BurstFire": "Burst Fire",
+                        "Burstfire": "Burst Fire",
                         "Cumbersome": "Cumbersome",
                         "Explosive": "Explosive",
                         "Loud": "Loud",
                         "Magazine": "Magazine",
                         "Recoil": "Recoil",
-                        "SpreadFire": "Spread Fire",
-                        "TwinnedBarrel": "Twinned Barrel"
+                        "Spreadfire": "Spread Fire",
+                        "Twinnedbarrel": "Twinned Barrel"
                     },
                     "Name": "Firearm"
                 },
@@ -2753,9 +2831,6 @@
                 "TurnStartChoiceRemoveCondition": {
                     "Name": "Remove Condition Choice at Turn Start"
                 },
-                "UseOnDeath": {
-                    "Name": "Use on Death"
-                },
                 "RollModifier": {
                     "Ability": {
                         "Hint": "Only modify rolls that use these abilities. Leave empty to allow every ability."
@@ -2802,6 +2877,13 @@
                     "Prompt": "Use {itemName}? (Roll Total: {rollTotal})",
                     "Retaliate": "Choose an enemy to take the Hit Die damage."
                 },
+                "CauterizingFlames": {
+                    "Damage": "Damage",
+                    "Heal": "Heal",
+                    "None": "Do Nothing",
+                    "Prompt": "{name} entered the spectral flame. Use your reaction?",
+                    "ExcludedSizes": "Excluded Sizes"
+                },
                 "CombatMasteryLies": {
                     "Select": "Choose the melee weapon type that uses Charisma."
                 },
@@ -2822,6 +2904,12 @@
                     "Protector": "Eldritch Cannon: Protector",
                     "Second": "Create your second cannon with the same action?",
                     "TooFar": "You must be within {distance} feet of the cannon."
+                },
+                "ElementalWildShape": {
+                    "AirName": "Air Elemental Name",
+                    "EarthName": "Earth Elemental Name",
+                    "FireName": "Fire Elemental Name",
+                    "WaterName": "Water Elemental Name"
                 },
                 "ExperimentalElixir": {
                     "Administer": "An elixir can only be administered to an Incapacitated creature.",
@@ -3436,9 +3524,19 @@
                     "Sunlight": "Is the attacker or the target in direct sunlight?",
                     "SunlightCheck": "Nighteye: In Direct Sunlight",
                     "Suppress": "Choose the side effect to ignore."
+                },
+                "FaithfulSummons": {
+                    "SpellSummon": "Counts as Summoned by a Spell"
+                },
+                "CombatWildShape": {
+                    "NotTransformed": "You can only use this while transformed by Wild Shape."
                 }
             },
             "Modern": {
+                "LandsAid": {
+                    "Select": "Choose a creature to regain hit points.",
+                    "Damage": "Choose the creatures that must save against the damage."
+                },
                 "PerfectWeapon": {
                     "Convert": "Change the weapon's damage to {type}?",
                     "Element": "Choose the Elemental Strike damage type.",
@@ -3944,13 +4042,33 @@
                 },
                 "BatteringRoots": {
                     "Select": "Also use a mastery property from Battering Roots?"
+                },
+                "CircleOfTheLandSpells": {
+                    "Choose": "Choose a type of land.",
+                    "Lands": {
+                        "Label": "Land Item Identifiers",
+                        "Hint": "Comma-separated identifiers of the land items offered when choosing a land."
+                    },
+                    "RestPrompt": {
+                        "Label": "Prompt on Long Rest",
+                        "Hint": "Offer a land change after each long rest."
+                    }
+                },
+                "NaturalRecovery": {
+                    "Spells": {
+                        "Label": "Circle Spell Identifiers",
+                        "Hint": "Comma-separated spell identifiers that replace the spells granted by the current land."
+                    }
+                },
+                "NaturesWard": {
+                    "LandItem": "Your land comes from your Circle of the Land Spells choice."
                 }
             }
         },
         "Settings": {
             "AddActions": {
                 "Name": "Add Actions to Tokens",
-                "Hint": "Which creatures get actions when their token is placed.",
+                "Hint": "Which creatures get actions when placed.",
                 "Off": "None - No Actions",
                 "All": "All - Any Creature",
                 "Character": "All Characters Only",
@@ -3960,11 +4078,22 @@
             },
             "GenericActionsItem": {
                 "Name": "Add as One Generic Actions Item",
-                "Hint": "Add one Generic Actions item that picks an action. When off, every action is added as its own item."
+                "Hint": "Add actions as one item instead of one item each."
             },
             "HealingSurge": {
                 "Name": "Healing Surge",
-                "Hint": "Include Healing Surge with the added actions. From the 2014 Dungeon Master's Guide."
+                "Hint": "Include Healing Surge with the added actions."
+            },
+            "Firearms": {
+                "Name": "Firearms",
+                "Hint": "Adds firearms. Third party adds Grim Hollow firearms. Requires a reload.",
+                "Off": "Off",
+                "FirstParty": "First Party",
+                "ThirdParty": "First and Third Party"
+            },
+            "ThirdPartyMasteries": {
+                "Name": "Third-Party Weapon Masteries",
+                "Hint": "Adds third-party weapon masteries. Requires a reload."
             },
             "Mechanics": {
                 "Name": "Game Mechanic Options",
@@ -3978,7 +4107,7 @@
             },
             "DmgCleave": {
                 "Name": "DMG Cleave",
-                "Hint": "Leftover melee damage that drops a creature carries to another creature within reach. From the 2014 Dungeon Master's Guide.",
+                "Hint": "Leftover melee damage carries to another creature within reach.",
                 "Off": "Disabled",
                 "Any": "Enabled (Any Health)",
                 "Full": "Enabled (Full Health Only)"
