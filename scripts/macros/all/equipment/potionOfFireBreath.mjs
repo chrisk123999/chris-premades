@@ -6,7 +6,7 @@ async function use({workflow}) {
     if (!effect) return;
     const featureData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'potion-of-fire-breath-attack', {object: true, translate: 'CHRISPREMADES.Macros.All.PotionOfFireBreath.Attack'});
     if (!featureData) {
-        Logging.addMacroWarning('CPR', 'potion-of-fire-breath', 'Potion of Fire Breath Attack missing from the automation items compendium.', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'potion-of-fire-breath', 'Potion of Fire Breath Attack missing from the automation items compendium.', {notify: 'warn'});
         return;
     }
     const config = automationUtils.getConfigValues(workflow.item, configKeys);

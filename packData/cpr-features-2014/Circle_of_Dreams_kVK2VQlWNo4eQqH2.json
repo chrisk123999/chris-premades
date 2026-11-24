@@ -1,0 +1,16 @@
+{
+  "_id": "kVK2VQlWNo4eQqH2",
+  "name": "Circle of Dreams",
+  "type": "Item",
+  "folder": "HPNohpxDJVTcZMqJ",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!kVK2VQlWNo4eQqH2"
+}

@@ -8,7 +8,7 @@ async function transformActor(document) {
 async function early({document, message}) {
     const actor = await transformActor(document);
     if (!actor) {
-        Logging.addMacroWarning('CPR', 'feline-form', 'CHRISPREMADES.Macros.Modern.FelineForm.NoActor', {notify: 'warn', format: {name: automationUtils.getConfigValue(document, 'actorName')}});
+        Logging.addMacroWarning('chris-premades', 'feline-form', 'CHRISPREMADES.Macros.Modern.FelineForm.NoActor', {notify: 'warn', format: {name: automationUtils.getConfigValue(document, 'actorName')}});
         return true;
     }
     genericUtils.setProperty(message, 'data.flags.dnd5e.transform.uuid', actor.uuid);

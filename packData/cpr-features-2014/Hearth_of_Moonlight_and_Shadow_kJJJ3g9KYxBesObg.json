@@ -1,0 +1,216 @@
+{
+  "_id": "kJJJ3g9KYxBesObg",
+  "name": "Hearth of Moonlight and Shadow",
+  "type": "feat",
+  "img": "icons/magic/water/orb-water-transparent.webp",
+  "folder": "kVK2VQlWNo4eQqH2",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "hearth-of-moonlight-and-shadow",
+    "activities": {
+      "Hoc7zpGf4e0nqyGi": {
+        "_id": "Hoc7zpGf4e0nqyGi",
+        "type": "utility",
+        "name": "Hearth of Moonlight and Shadow",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "hour",
+          "concentration": false,
+          "override": false,
+          "value": "8"
+        },
+        "effects": [],
+        "range": {
+          "units": "touch",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "1",
+            "contiguous": false,
+            "type": "sphere",
+            "size": "30",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "hearth",
+        "midiProperties": {
+          "identifier": "hearth",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "placed": {
+              "region": {
+                "effects": [
+                  "7zjfOamB51fpkdmc"
+                ],
+                "effectDisposition": "ally",
+                "macros": {
+                  "region": [
+                    {
+                      "source": "chris-premades",
+                      "identifier": "hearth-of-moonlight-and-shadow",
+                      "rules": "2014"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "7zjfOamB51fpkdmc",
+      "name": "Hearth of Moonlight and Shadow",
+      "img": "icons/magic/water/orb-water-transparent.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.ste.bonuses.check",
+            "value": "+5",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.skills.ste.bonuses.passive",
+            "value": "+5",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.skills.prc.bonuses.check",
+            "value": "+5",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.skills.prc.bonuses.passive",
+            "value": "+5",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!kJJJ3g9KYxBesObg.7zjfOamB51fpkdmc"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "rest": [
+          {
+            "source": "chris-premades",
+            "identifier": "hearth-of-moonlight-and-shadow",
+            "rules": "2014"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!kJJJ3g9KYxBesObg"
+}

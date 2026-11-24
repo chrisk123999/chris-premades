@@ -1,0 +1,16 @@
+{
+  "_id": "cd4cHOcSs7RmQNZU",
+  "name": "Circle of the Land",
+  "type": "Item",
+  "folder": "bbR7kJffMX4MkL49",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!cd4cHOcSs7RmQNZU"
+}

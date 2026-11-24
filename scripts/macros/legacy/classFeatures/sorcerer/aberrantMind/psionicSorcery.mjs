@@ -6,7 +6,7 @@ async function use({document, workflow}) {
     const available = actorUtils.getItemByIdentifier(workflow.actor, 'font-of-magic')?.system.uses.value ?? 0;
     const spells = spellIds.map(id => workflow.actor.items.get(id)).filter(spell => spell && spell.system.level <= available);
     if (!spells.length) {
-        Logging.addMacroWarning('CPR', 'psionic-sorcery', 'CHRISPREMADES.Macros.Legacy.PsionicSorcery.NoSpells', {notify: 'info'});
+        Logging.addMacroWarning('chris-premades', 'psionic-sorcery', 'CHRISPREMADES.Macros.Legacy.PsionicSorcery.NoSpells', {notify: 'info'});
         return;
     }
     const selection = await dialogUtils.selectDocumentDialog(document.item.name, _loc('CHRISPREMADES.Macros.Legacy.PsionicSorcery.Select'), spells, {sort: 'level', showSpellLevel: true});

@@ -1,4 +1,5 @@
 import {automationUtils, documentUtils, summonUtils, tokenUtils} from '../../proxy.mjs';
+import {sourceItemType} from './summonModifier.mjs';
 import {designateCreatures} from './wallSpell.mjs';
 function grappled({sourceToken, targetToken}) {
     return tokenUtils.getGrappled(sourceToken).includes(targetToken);
@@ -32,6 +33,43 @@ export const summonerOfSource = {
         {
             pass: 'filter',
             macro: summoner,
+            priority: 50
+        }
+    ]
+};
+function ownerSpellSummon({source, target}) {
+    const owner = summonUtils.getSummonData(source)?.owner;
+    const summon = summonUtils.getSummonData(target);
+    return !!owner && summon?.owner === owner && sourceItemType(summon.sourceItem) === 'spell';
+}
+/**
+ * Aura filter that only passes creatures the aura source's summoner conjured with a spell.
+ * Selected as an aura's `filter`. Fires on `filter`.
+ */
+export const spellSummonOfOwner = {
+    rules: 'all',
+    version: '2.1.11',
+    aura: [
+        {
+            pass: 'filter',
+            macro: ownerSpellSummon,
+            priority: 50
+        }
+    ]
+};
+function sameDisposition({sourceToken, targetToken}) {
+    return !!sourceToken && targetToken?.disposition === sourceToken.disposition;
+}
+/**
+ * Aura filter that only passes creatures with the same disposition as the aura's source.
+ */
+export const alliesOfSource = {
+    rules: 'all',
+    version: '2.1.11',
+    aura: [
+        {
+            pass: 'filter',
+            macro: sameDisposition,
             priority: 50
         }
     ]

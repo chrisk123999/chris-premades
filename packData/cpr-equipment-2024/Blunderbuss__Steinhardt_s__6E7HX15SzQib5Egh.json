@@ -90,8 +90,8 @@
       "barrel",
       "blaring",
       "fir",
-      "spreadFire",
-      "twinnedBarrel",
+      "spreadfire",
+      "twinnedbarrel",
       "two"
     ],
     "proficient": null,
@@ -492,7 +492,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.7"
+        "version": "2.1.11"
       },
       "macros": {
         "roll": [

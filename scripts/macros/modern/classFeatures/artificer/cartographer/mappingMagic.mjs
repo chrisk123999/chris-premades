@@ -7,7 +7,7 @@ async function portalJump({workflow}) {
     if (!token) return;
     const speed = actorUtils.getSpeed(workflow.actor, 'max');
     const warn = message => {
-        Logging.addMacroWarning('CPR', 'mapping-magic', message, {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'mapping-magic', message, {notify: 'warn'});
         return true;
     };
     if (!speed) return warn('CHRISPREMADES.Macros.Modern.MappingMagic.NoSpeed');

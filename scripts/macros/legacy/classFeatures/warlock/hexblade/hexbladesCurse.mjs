@@ -6,7 +6,7 @@ function getCursedToken(effect, workflow) {
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'hexblades-curse') return;
-    if (workflow.targets.count !== 1) return Logging.addMacroWarning('CPR', 'hexblades-curse', 'Select exactly one target.');
+    if (workflow.targets.count !== 1) return Logging.addMacroWarning('chris-premades', 'hexblades-curse', 'Select exactly one target.');
     const targetToken = workflow.targets.documents[0];
     const sourceEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,

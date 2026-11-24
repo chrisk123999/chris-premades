@@ -3,13 +3,13 @@ async function early({document, config, dialog}) {
     if (document.item.system.uses.value) return;
     const spendActivity = itemUtils.getActivityByIdentifier(document.item, 'warping-implosion-cost');
     if (!spendActivity) {
-        Logging.addMacroWarning('CPR', 'warping-implosion', 'Sorcery point cost activity missing.', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'warping-implosion', 'Sorcery point cost activity missing.', {notify: 'warn'});
         return true;
     }
     const sorceryPoints = actorUtils.getItemByIdentifier(document.actor, 'font-of-magic');
     const cost = Number(spendActivity.consumption.targets[0]?.value ?? 0);
     if (!sorceryPoints || sorceryPoints.system.uses.value < cost) {
-        Logging.addMacroWarning('CPR', 'warping-implosion', 'Not enough sorcery points.');
+        Logging.addMacroWarning('chris-premades', 'warping-implosion', 'Not enough sorcery points.');
         return true;
     }
     const selection = await dialogUtils.confirmUseExtraCost(document.item, cost, sorceryPoints.name);

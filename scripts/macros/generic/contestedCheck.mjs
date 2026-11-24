@@ -10,7 +10,7 @@ async function targeting({document: activity, token, workflow}) {
     }
     if (!invalid.length) return;
     if (grappledOnly && invalid.length === workflow.targets.count) {
-        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No target is grappled by the user.', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'No target is grappled by the user.', {notify: 'warn'});
         return true;
     }
     await workflowUtils.removeTargets(workflow, invalid);
@@ -21,7 +21,7 @@ async function contest({document: activity, actor, workflow}) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'contestedCheck', configKeys);
     const request = config.sourceSkills.length ? 'skill' : 'check';
     const key = config.sourceSkills.length ? actorUtils.getBestSkill(actor, config.sourceSkills) : actorUtils.getBestAbility(actor, config.sourceAbilities);
-    if (!key) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'No source skill or ability configured.', {notify: 'warn'});
+    if (!key) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'No source skill or ability configured.', {notify: 'warn'});
     const maxSize = CONFIG.DND5E.actorSizes[config.advantageMaxSize]?.numerical;
     const advantage = maxSize !== undefined && targets.every(target => actorUtils.getSize(target.actor) <= maxSize);
     const roll = await rollUtils.requestRoll(actor, request, key, {advantage});

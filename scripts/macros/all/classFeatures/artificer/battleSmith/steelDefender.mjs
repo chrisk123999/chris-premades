@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, documentUtils, genericUtils, queryUtils, summonUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, dialogUtils, documentUtils, genericUtils, queryUtils, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function deflect({document: item, workflow}) {
     if (!workflow.token || !workflowUtils.isAttackType(workflow, 'attack')) return;
     if (workflow.tracker.disadvantage.isActive) return;

@@ -1,4 +1,4 @@
-import {actorUtils, dataUtils, dialogUtils, documentUtils, itemUtils} from '../../../../proxy.mjs';
+import {actorUtils, dataUtils, dialogUtils, documentUtils, itemUtils} from '../../../../../proxy.mjs';
 const bodyArmor = ['light', 'medium', 'heavy'];
 function getEnchantment(armor) {
     return armor?.effects.find(effect => documentUtils.getIdentifier(effect) === 'arcaneArmorEnchantment');

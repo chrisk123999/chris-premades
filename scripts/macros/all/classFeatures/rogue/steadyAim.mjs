@@ -12,7 +12,7 @@ async function use({document, workflow}) {
     if (workflow.workflowOptions?.steadyAimLockout) return;
     if (actorUtils.getItemByIdentifier(workflow.actor, 'infiltration-expertise')) return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'steady-aim-movement');
-    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'steady-aim', 'Steady Aim movement effect missing from item.', {notify: 'warn'});
+    if (!sourceEffect) return Logging.addMacroWarning('chris-premades', 'steady-aim', 'Steady Aim movement effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(document, sourceEffect.id);
     await effectUtils.createEffects(workflow.actor, [effectData]);
 }

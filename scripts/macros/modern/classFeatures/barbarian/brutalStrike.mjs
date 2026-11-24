@@ -13,7 +13,7 @@ async function preAttack({document: activity, identifier, workflow}) {
     });
     await automationUtils.calledEvent('brutalStrike', workflow.actor, {canOverlap: true, multiResult: true, data});
     const choices = activities.filter(a => a instanceof dnd5e.dataModels.activity.BaseActivityData);
-    if (!choices?.length) return Logging.addMacroWarning('CPR', 'brutal-strike', 'No Brutal Strike options found.');
+    if (!choices?.length) return Logging.addMacroWarning('chris-premades', 'brutal-strike', 'No Brutal Strike options found.');
     const config = automationUtils.getConfigValues(activity.item, ['count', 'damage']);
     config.count = (await rollUtils.rollDice(config.count, {document: activity.item})).total;
     const options = {addNoneDocument: true, checkbox: true, displayTooltips: true, max: config.count};

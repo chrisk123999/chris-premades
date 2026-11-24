@@ -22,7 +22,7 @@ export async function bounce(document, target, {state, stateKey, activityIdentif
         if (!nextTarget) return;
     }
     const activity = itemUtils.getActivityByIdentifier(document, activityIdentifier);
-    if (!activity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'Bounce activity missing from item.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(document), 'Bounce activity missing from item.', {notify: 'warn'});
     await workflowUtils.syntheticActivityRoll(activity, [nextTarget], {
         atLevel: castLevel,
         options: {workflowOptions: {'chris-premades': {[stateKey]: {...extraState, ignoredUuids, castLevel, lastTargetUuid: target.document.uuid}}}}

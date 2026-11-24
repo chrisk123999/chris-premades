@@ -1,9 +1,9 @@
 import {activityUtils, automationUtils, documentUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 async function use({document, workflow}) {
-    if (!workflow.targets.count) return Logging.addMacroWarning('CPR', 'hound-of-ill-omen', 'No target selected.');
+    if (!workflow.targets.count) return Logging.addMacroWarning('chris-premades', 'hound-of-ill-omen', 'No target selected.');
     const [summonData] = automationUtils.getConfigValue(document, 'summons') ?? [];
     const sourceActor = summonData?.sourceActorUuid ? await fromUuid(summonData.sourceActorUuid) : undefined;
-    if (!sourceActor) return Logging.addMacroWarning('CPR', 'hound-of-ill-omen', 'Hound summon actor not configured.', {notify: 'warn'});
+    if (!sourceActor) return Logging.addMacroWarning('chris-premades', 'hound-of-ill-omen', 'Hound summon actor not configured.', {notify: 'warn'});
     const targetToken = workflow.targets.documents[0];
     const markerEffect = documentUtils.getEffectByIdentifier(targetToken.actor, 'houndOfIllOmenTarget');
     await Promise.all(summonUtils.getSummonsBySource(document).map(async summon => await summonUtils.deleteSummon(summon)));

@@ -1,4 +1,5 @@
 import {activityUtils, actorUtils, automationUtils, constants, dialogUtils, documentUtils, Logging, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {hasRequiredSummons} from './damageBonusToOneRoll.mjs';
 async function damage({document, ditem, targetToken, workflow}) {
     if (!ditem.isHit || ditem.oldHP <= 0) return;
     const resultingHP = ditem.oldHP + (ditem.oldTempHP ?? 0) - ditem.totalDamage;
@@ -12,7 +13,8 @@ async function damage({document, ditem, targetToken, workflow}) {
     if (config.excludeDamageTypes.length && workflowUtils.getDamageTypes(workflow.damageRolls).intersects(new Set(config.excludeDamageTypes))) return;
     if (config.healingTraits && actorUtils.checkTrait(actor, 'di', 'healing')) return;
     if (config.requiredEffects.length && !config.requiredEffects.some(identifier => documentUtils.getEffectByIdentifier(actor, identifier, {includeItemEffects: true}))) return;
-    if (document.system.uses.max && !document.system.uses.value) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'No uses remaining.');
+    if (!hasRequiredSummons(document.actor, config.requiredSummons)) return;
+    if (document.system.uses.max && !document.system.uses.value) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(document), 'No uses remaining.');
     const selection = await dialogUtils.confirmUseItem(document, {userId: queryUtils.firstOwner(document.actor, true)});
     if (!selection) return;
     const saveActivity = document.system.activities.get(config.saveActivity);
@@ -146,6 +148,13 @@ export const preventDeath = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivity.Label',
             hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivity.Hint'
+        },
+        requiredSummons: {
+            default: [],
+            type: 'selectIdentifiers',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Common.RequiredSummons.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RequiredSummons.Hint'
         },
         requiredEffects: {
             default: [],

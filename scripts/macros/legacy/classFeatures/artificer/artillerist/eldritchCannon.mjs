@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, dialogUtils, documentUtils, genericUtils, queryUtils, summonUtils, tokenUtils, workflowUtils} from '../../../../proxy.mjs';
+import {actorUtils, automationUtils, dialogUtils, documentUtils, genericUtils, queryUtils, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 function abort(workflow, message, format) {
     genericUtils.notify(message, {type: 'warn', format});
     workflow.aborted = true;

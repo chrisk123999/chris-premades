@@ -935,7 +935,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       },
       "macros": {
         "move": [
@@ -958,6 +958,13 @@
             "rules": "2014",
             "identifier": "spirit-totem"
           }
+        ],
+        "effect": [
+          {
+            "source": "chris-premades",
+            "rules": "2014",
+            "identifier": "spirit-totem"
+          }
         ]
       },
       "genericConfig": {
@@ -968,7 +975,7 @@
             "replaceExisting": true,
             "favorite": true,
             "followUpTiming": "create",
-            "followUpTargets": "all",
+            "followUpTargets": "choose",
             "followUpRange": 30,
             "summons": [
               {

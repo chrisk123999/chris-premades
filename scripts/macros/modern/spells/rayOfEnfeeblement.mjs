@@ -3,7 +3,7 @@ async function use({document, workflow}) {
     const savedTargets = workflow.targets.documents.filter(token => token.actor && !workflow.failedSaves.has(token));
     if (!savedTargets.length) return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'rayOfEnfeeblementBrief');
-    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'ray-of-enfeeblement', 'Brief Enfeeblement effect missing from item.', {notify: 'warn'});
+    if (!sourceEffect) return Logging.addMacroWarning('chris-premades', 'ray-of-enfeeblement', 'Brief Enfeeblement effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {activityUuid: workflow.activity.uuid});
     if (!effectData) return;
     await Promise.all(savedTargets.map(token => effectUtils.createEffects(token.actor, [effectData])));

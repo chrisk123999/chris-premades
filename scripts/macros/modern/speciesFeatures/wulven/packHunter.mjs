@@ -2,7 +2,7 @@ import {actorUtils, dialogUtils, itemUtils, Logging, queryUtils, workflowUtils} 
 async function offer(item, token, message) {
     if (!item.system.uses.value || actorUtils.hasUsedReaction(item.actor)) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'pack-hunter');
-    if (!activity) return Logging.addMacroWarning('CPR', 'pack-hunter', 'Pack Hunter activity is missing.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'pack-hunter', 'Pack Hunter activity is missing.', {notify: 'warn'});
     if (!await dialogUtils.confirm(item.name, _loc(message, {name: token.name}), {userId: queryUtils.firstOwner(item.actor, true)})) return;
     await workflowUtils.syntheticActivityRoll(activity, [token]);
     return true;

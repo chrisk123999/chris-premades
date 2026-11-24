@@ -49,7 +49,16 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.11"
+      },
+      "macros": {
+        "called": [
+          {
+            "source": "chris-premades",
+            "identifier": "lunar-form",
+            "rules": "2024"
+          }
+        ]
       }
     }
   },

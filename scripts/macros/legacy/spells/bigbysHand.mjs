@@ -16,7 +16,7 @@ async function forceful({workflow}) {
 async function grasp({workflow}) {
     const target = workflow.targets.tokens[0];
     if (!target?.actor || !workflow.token) return;
-    if (actorUtils.getSize(target.actor) > CONFIG.DND5E.actorSizes.huge.numerical) return Logging.addMacroWarning('CPR', 'bigbys-hand', 'CHRISPREMADES.Macros.Legacy.BigbysHand.Big', {notify: 'info'});
+    if (actorUtils.getSize(target.actor) > CONFIG.DND5E.actorSizes.huge.numerical) return Logging.addMacroWarning('chris-premades', 'bigbys-hand', 'CHRISPREMADES.Macros.Legacy.BigbysHand.Big', {notify: 'info'});
     if (await contest(workflow, target, ['ath', 'acr']) <= 0) return;
     await tokenUtils.grapple(workflow.token.document, target.document, {contest: false, checkSize: false});
 }
@@ -48,7 +48,7 @@ async function crush({workflow}) {
         await workflowUtils.updateTargets(workflow, [target]);
         return;
     }
-    Logging.addMacroWarning('CPR', 'bigbys-hand', 'CHRISPREMADES.Macros.Legacy.BigbysHand.NoGrapple', {notify: 'info'});
+    Logging.addMacroWarning('chris-premades', 'bigbys-hand', 'CHRISPREMADES.Macros.Legacy.BigbysHand.NoGrapple', {notify: 'info'});
     return true;
 }
 function getSummoner(effect) {

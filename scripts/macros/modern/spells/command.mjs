@@ -8,7 +8,7 @@ const orders = {
 };
 async function turnStart({document}) {
     const order = orders[documentUtils.getIdentifier(document)];
-    if (!order) return Logging.addMacroWarning('CPR', 'command-effect', 'Command effect has no recognised order identifier.', {notify: 'warn'});
+    if (!order) return Logging.addMacroWarning('chris-premades', 'command-effect', 'Command effect has no recognised order identifier.', {notify: 'warn'});
     const actor = document.parent;
     if (order === 'Grovel') await actorUtils.applyConditions(actor, ['prone']);
     await dialogUtils.confirm(document.name, _loc('CHRISPREMADES.Macros.Modern.Command.' + order), {buttons: 'ok', userId: queryUtils.firstOwner(actor, true)});

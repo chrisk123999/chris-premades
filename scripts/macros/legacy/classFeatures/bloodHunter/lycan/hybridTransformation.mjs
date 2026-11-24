@@ -1,5 +1,5 @@
-import {actorUtils, compendiumUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../../proxy.mjs';
-import {cpr} from '../../../../module.mjs';
+import {actorUtils, compendiumUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../../../proxy.mjs';
+import {cpr} from '../../../../../module.mjs';
 async function use({workflow}) {
     if (workflow.activity.identifier === 'revert') {
         const effect = actorUtils.getEffectByIdentifier(workflow.actor, 'hybridTransformation');
@@ -14,7 +14,7 @@ async function use({workflow}) {
     effectUtils.pushImageChanges(effectData, workflow.item);
     await documentUtils.update(effect, {'system.changes': effectData.system.changes});
     const weapon = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'predatory-strike', {object: true});
-    if (!weapon) return Logging.addMacroWarning('CPR', 'hybrid-transformation', 'Predatory Strike missing from pack.', {notify: 'warn'});
+    if (!weapon) return Logging.addMacroWarning('chris-premades', 'hybrid-transformation', 'Predatory Strike missing from pack.', {notify: 'warn'});
     await itemUtils.createItems(workflow.actor, [weapon], {favorite: true, parentEntity: effect});
 }
 async function turnStart({document: effect, token}) {

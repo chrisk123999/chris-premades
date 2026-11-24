@@ -10,7 +10,7 @@ function damage({document, workflow}) {
     const unarmed = workflow.item.system.type?.value === 'unarmed' || documentUtils.getIdentifier(workflow.item) === 'unarmed-strike';
     if (unarmed && !automationUtils.getConfigValue(document, 'allowUnarmed')) return;
     const slots = dialogUtils.getSpellSlotOptions(workflow.actor);
-    if (!slots.length) return Logging.addMacroWarning('CPR', 'divine-smite', 'No spell slots remaining.');
+    if (!slots.length) return Logging.addMacroWarning('chris-premades', 'divine-smite', 'No spell slots remaining.');
     const targetActor = workflow.hitTargets.documents[0].actor;
     const extraDie = !!targetActor && automationUtils.getConfigValue(document, 'creatureTypes').includes(actorUtils.typeOrRace(targetActor));
     let selected = slots[0];

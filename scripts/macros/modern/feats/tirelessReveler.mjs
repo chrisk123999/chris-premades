@@ -4,7 +4,7 @@ async function spent({document: item, actor, token}) {
     const targetToken = actorUtils.getFirstToken(item.actor);
     if (!targetToken) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'tireless-reveler');
-    if (!activity) return Logging.addMacroWarning('CPR', 'tireless-reveler', 'Missing the tireless-reveler activity.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'tireless-reveler', 'Missing the tireless-reveler activity.', {notify: 'warn'});
     if (!activityUtils.checkCosts(activity)) return;
     if (!tokenUtils.canSee(targetToken, token)) return;
     if (!await dialogUtils.confirmUseItem(item, {userId: queryUtils.firstOwner(item.actor, true)})) return;

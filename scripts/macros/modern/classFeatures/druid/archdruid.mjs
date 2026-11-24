@@ -3,7 +3,7 @@ import {addItemRecovery} from '../../../generic/itemRecovery.mjs';
 async function early({document}) {
     const spells = document.actor.system.spells ?? {};
     if (Object.values(spells).some(i => i.max > 0 && i.value < i.max)) return;
-    Logging.addMacroWarning('CPR', 'archdruid', 'CHRISPREMADES.Macros.Modern.Archdruid.NoSpellSlots', {notify: 'info'});
+    Logging.addMacroWarning('chris-premades', 'archdruid', 'CHRISPREMADES.Macros.Modern.Archdruid.NoSpellSlots', {notify: 'info'});
     return true;
 }
 async function added({document}) {

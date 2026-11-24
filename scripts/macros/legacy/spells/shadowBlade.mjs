@@ -3,12 +3,12 @@ import {actorUtils, automationUtils, compendiumUtils, constants, documentUtils, 
 async function createSword(document, workflow) {
     const effect = documentUtils.getEffectByIdentifier(workflow.actor, 'shadowBlade');
     if (!effect) {
-        Logging.addMacroWarning('CPR', 'shadow-blade', 'Shadow Blade effect missing from ' + workflow.actor.name + '.', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'shadow-blade', 'Shadow Blade effect missing from ' + workflow.actor.name + '.', {notify: 'warn'});
         return;
     }
     const swordData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'shadow-blade-sword', {object: true, translate: 'CHRISPREMADES.Macros.Legacy.ShadowBlade.Sword'});
     if (!swordData) {
-        Logging.addMacroWarning('CPR', 'shadow-blade', 'Shadow Blade Sword missing from the automation items compendium.', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'shadow-blade', 'Shadow Blade Sword missing from the automation items compendium.', {notify: 'warn'});
         return;
     }
     const castLevel = workflowUtils.getCastLevel(workflow) ?? document.system.level;
@@ -27,7 +27,7 @@ async function use({document, workflow}) {
 async function recall({document, workflow}) {
     if (workflow.activity.identifier !== 'recall') return;
     if (actorUtils.getItemByIdentifier(workflow.actor, 'shadow-blade-sword')) {
-        Logging.addMacroWarning('CPR', 'shadow-blade', 'Shadow Blade Sword already present.');
+        Logging.addMacroWarning('chris-premades', 'shadow-blade', 'Shadow Blade Sword already present.');
         return;
     }
     await createSword(document, workflow);
