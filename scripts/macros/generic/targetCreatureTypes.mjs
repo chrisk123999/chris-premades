@@ -17,7 +17,15 @@ async function filterTargets({document, workflow}) {
         if (!config.creatureTypes.length) return false;
         return config.creatureTypes.includes(actorUtils.typeOrRace(target.actor)) === config.invert;
     });
-    if (invalid.length) await workflowUtils.removeTargets(workflow, invalid);
+    if (invalid.length) {
+        const counter = {value: 1};
+        const hide = game.settings.get('cat', 'hideNames');
+        const names = `<ul>${invalid.map(t =>
+            `<li>${dialogUtils.getTokenName(t, {hide, counter})}</li>`
+        ).join('')}</ul>`;
+        await workflowUtils.removeTargets(workflow, invalid);
+        await MidiQOL.addCardNote(workflow, `<b>${_loc('CHRISPREMADES.Macros.Generic.TargetCreatureTypes.Unaffected')}</b>` + names);
+    }
     const candidates = workflow.targets.documents;
     if (!candidates.length) return;
     if (config.limit) config.limit = (await rollUtils.rollDice(config.limit, {workflow}))?.total;

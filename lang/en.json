@@ -1342,6 +1342,10 @@
                     "NeutralTarget": "Neutral",
                     "AdditionalTargets": "Additional Targets",
                     "Attacker": "Attacker",
+                    "Original": {
+                        "Label": "Original Target Limit",
+                        "Hint": "The normal target count must be equal to or less than this value. Any value below one is unlimited."
+                    },
                     "RangeFrom": {
                         "Label": "Range From",
                         "Hint": "Measure range from each target or from the attacker."
@@ -2280,6 +2284,7 @@
                     },
                     "SelectTargets": "Select up to {maxAmount} targets.",
                     "Name": "Target Creature Types",
+                    "Unaffected": "Unaffected Targets",
                     "CreatureTypes": {
                         "Hint": "Keep only targets of these creature types. Leave empty to skip the creature type check."
                     },
