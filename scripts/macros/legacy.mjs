@@ -132,6 +132,10 @@ export {communityWatch as 'channel-divinity-community-watch', communityWatchEffe
 export {magnificentFeast as 'channel-divinity-magnificent-feast'} from './legacy/classFeatures/cleric/community/magnificentFeast.mjs';
 export {paragonOfThePeople as 'paragon-of-the-people'} from './legacy/classFeatures/cleric/community/paragonOfThePeople.mjs';
 
+/*             Forge             */
+export {artisansBlessing as 'channel-divinity-artisans-blessing'} from './legacy/classFeatures/cleric/forge/artisansBlessing.mjs';
+export {blessingOfTheForge as 'blessing-of-the-forge'} from './legacy/classFeatures/cleric/forge/blessingOfTheForge.mjs';
+
 /*             Grave             */
 export {pathToTheGrave as 'channel-divinity-path-to-the-grave'} from './legacy/classFeatures/cleric/grave/pathToTheGrave.mjs';
 

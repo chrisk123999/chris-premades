@@ -1,0 +1,191 @@
+{
+  "name": "Saint of Forge and Fire",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Saint of Forge and Fire",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.di.value",
+            "value": "fire",
+            "type": "add",
+            "priority": 1,
+            "phase": "initial",
+            "_id": "XGaciGjCke40mPHG",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "bludgeoning",
+            "phase": "initial",
+            "_id": "KzaVSxLdZ5yx1HpH",
+            "conditions": "[{\"k\":\"attributes.ac.equippedArmor.system.type.value\",\"o\":\"exact\",\"v\":\"heavy\"}]",
+            "replacement": "",
+            "priority": null
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "piercing",
+            "phase": "initial",
+            "conditions": "[{\"k\":\"attributes.ac.equippedArmor.system.type.value\",\"o\":\"exact\",\"v\":\"heavy\"}]",
+            "replacement": "",
+            "priority": null,
+            "_id": "x4vp5CpEDkBxC6K2"
+          },
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "slashing",
+            "phase": "initial",
+            "conditions": "[{\"k\":\"attributes.ac.equippedArmor.system.type.value\",\"o\":\"exact\",\"v\":\"heavy\"}]",
+            "replacement": "",
+            "priority": null,
+            "_id": "CGbCY7DGeXDrUTGz"
+          },
+          {
+            "key": "system.traits.dr.bypasses",
+            "type": "custom",
+            "value": "mgc",
+            "phase": "initial",
+            "_id": "CZjt4oR9bxyTNDBj",
+            "conditions": "[{\"k\":\"attributes.ac.equippedArmor.system.type.value\",\"o\":\"exact\",\"v\":\"heavy\"}]",
+            "replacement": "",
+            "priority": null
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "description": "",
+      "img": "icons/equipment/shoulder/pauldron-segmented-steel-yellow.webp",
+      "_id": "d51vQ22PFwEIAkui",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.1.1"
+      },
+      "_key": "!items.effects!B6YRRkg4NYUd53hg.d51vQ22PFwEIAkui"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {
+      "SGXHVin1daGWMJWn": {
+        "configuration": {
+          "allowReplacements": false,
+          "choices": [],
+          "grants": [
+            "di:fire"
+          ],
+          "mode": "default"
+        },
+        "_id": "SGXHVin1daGWMJWn",
+        "type": "Trait",
+        "flags": {},
+        "level": 17,
+        "hint": "",
+        "name": "Saint of Forge and Fire",
+        "value": {
+          "chosen": [
+            "di:fire"
+          ]
+        }
+      }
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "saint-of-forge-and-fire",
+    "source": {
+      "book": "XGtE",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 17,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "img": "icons/equipment/shoulder/pauldron-segmented-steel-yellow.webp",
+  "folder": "VTvdaPzpP8vIqAQU",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.1.1"
+  },
+  "_id": "B6YRRkg4NYUd53hg",
+  "_key": "!items!B6YRRkg4NYUd53hg"
+}

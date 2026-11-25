@@ -2867,6 +2867,11 @@
                 "AberrantDragonmark": {
                     "SelectHitDie": "Expend a Hit Die to empower your mark?"
                 },
+                "ArtisansBlessing": {
+                    "CostHint": "Limit the value of the created item in gold pieces.",
+                    "Note": "Created <b>{item}</b> on {actor}.",
+                    "Prompt": "Choose an item to forge."
+                },
                 "BalefulInterdict": {
                     "AlreadyPlaced": "You already placed a seal this turn.",
                     "Boons": "Interdict Boons",
@@ -2877,6 +2882,11 @@
                     "PlacePrompt": "Place a seal on {target}?",
                     "Seals": "Seals",
                     "SelectSource": "Move the seals from which creature?"
+                },
+                "BlessingOfTheForge": {
+                    "NoItems": "You and your allies are not carrying any valid items for {feature}!",
+                    "NonmagicalOnly": "Nonmagical Only",
+                    "Prompt": "Choose an item to grant {feature}."
                 },
                 "BloodPrice": {
                     "Prompt": "Use {itemName}? (Roll Total: {rollTotal})",
