@@ -21,7 +21,7 @@ async function damage({document: effect, workflow}) {
     if (!config.bonus || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
     if (config.incoming) return;
     const {item, scaling} = getSpell(effect);
-    if (!item) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(effect), 'Origin spell not found.', {notify: 'warn'});
+    if (!item) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(effect), 'Origin spell not found.', {notify: 'warn'});
     const roll = new CONFIG.Dice.DamageRoll(config.bonus, {...item.getRollData(), scaling});
     const bonus = new DamageBonus(effect, {roll, optional: false, maxTargets: 1, maxScaling: 0, type: config.bonusDamageType})
         .withOnUse(({workflow, bonus}) => {

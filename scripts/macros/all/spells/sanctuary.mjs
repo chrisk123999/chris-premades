@@ -4,11 +4,11 @@ async function targeted({document, sourceToken, workflow}) {
     if (workflow.activity.target?.template?.type || workflowUtils.isSustainedRoll(workflow)) return;
     if (workflow.token.document.disposition === sourceToken.disposition) return;
     const item = effectUtils.getOriginActivitySync(document)?.item;
-    if (!item) return Logging.addMacroWarning('CPR', 'sanctuary', 'Origin item missing.', {notify: 'warn'});
+    if (!item) return Logging.addMacroWarning('chris-premades', 'sanctuary', 'Origin item missing.', {notify: 'warn'});
     const harmfulSpell = workflow.item.type === 'spell' && (documentUtils.getRules(item) === '2014' || !!workflow.activity.damage?.parts?.length);
     if (!harmfulSpell && !workflowUtils.isAttackType(workflow, 'attack')) return;
     const saveActivity = itemUtils.getActivityByIdentifier(item, 'sanctuarySave');
-    if (!saveActivity) return Logging.addMacroWarning('CPR', 'sanctuary', 'Save activity missing from item.', {notify: 'warn'});
+    if (!saveActivity) return Logging.addMacroWarning('chris-premades', 'sanctuary', 'Save activity missing from item.', {notify: 'warn'});
     const saveWorkflow = await workflowUtils.syntheticActivityRoll(saveActivity, [workflow.token.document], {spellSlot: false});
     if (!saveWorkflow?.failedSaves?.count) return;
     const {animation, options} = automationUtils.getResolvedAnimation(item, 'animation');

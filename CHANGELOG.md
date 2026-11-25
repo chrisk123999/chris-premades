@@ -1,10 +1,26 @@
 # 2.1.11 Pre-Release:
+## Update Notes:
+- New Firearms setting in Game Mechanic Options. First Party: firearm weapon type, proficiency, Burst Fire and DMG/Exandria firearms. Third Party: Grim Hollow firearms and properties.
+- New Third-Party Weapon Masteries setting in Game Mechanic Options.
 ## Automated Class Features:
 - 2014 Artificer: Alchemist, Armorer, Artillerist and Battle Smith.
 - 2024 Artificer: Armorer, Battle Smith and Forge Adept.
+- Blood Hunter: Class features, Order of the Ghostslayer, Order of the Lycan and Order of the Mutant.
+- 2014 Druid: Circle of Dreams, Circle of Stars, Circle of the Moon, Circle of the Shepherd and Circle of Wildfire.
+- 2024 Druid: Circle of the Land, Circle of the Moon and Circle of the Stars.
 ## Generic Macros:
-- New `attackDisadvantage` generic.
-- `attackRider`, `nextHitRider`, `summonModifier`, `actionDismissal` and `damageBonusToOneRoll` have new options.
+- New `attackDisadvantage`, `selfDamage` and `uniqueEffect` generics.
+- New `grappleSizeBonus` generic counts its owner as larger when checking which creatures it can grapple or shove, or only one of the two. Heavyweight uses it.
+- `attackRider`, `nextHitRider`, `summonModifier`, `actionDismissal`, `damageBonusToOneRoll`, `rollBonus` and `preventDeath` have new options.
+- New `spellSlotRecovery` generic recovers expended spell slots up to a total number of levels.
+- New `spellSummonOfOwner` and `alliesOfSource` aura filters.
+- `rollBonus` can be offered as a reaction to nearby creatures' rolls and can include its owner's own rolls.
+- `summonModifier` can filter by source item type, add hit points per hit die, and resolve added items' formulas against its owner.
+- `damageBonusToOneRoll` and `preventDeath` can require a summon from chosen items.
+- `useOnDeath` can trigger on chosen statuses and prompt before use.
+- `specialItemUse` can cast a spell without a spell slot.
+- `teleport` can move each target of the activity and place companions separately.
+- New `wildShapeOptions` called event changes Wild Shape's maximum CR, forms and movement limits. `wildShape` passes the chosen form.
 - Every generic has a display name and a category, and every option has a hint in the CatKit.
 ## Automation Improvements:
 - 2024 Battle Master maneuvers match Player's Handbook and DDB Importer items.
@@ -20,6 +36,14 @@
 - `multiSingleTarget`, `redirectAttack` and `targetCreatureTypes` no longer error on tokens without an actor or a user without a token.
 - `hide` no longer grants Hiding when the activity makes no check.
 - `extraAttack`, `useOnEvent` and `choiceRemoveCondition` warnings are localized.
+- 2024 Lunar Form adds radiant damage to Wild Shape attacks.
+- Potent Spellcasting only applies to its own class's cantrips or classless cantrips.
+- 2014 Spirit Totem's Bear and Hawk use the system's roll modes, and Unicorn grants advantage on detection checks.
+- 2014 Summon Wildfire Spirit vanishes at 0 hit points.
+- Burst Fire, Spread Fire and Twinned Barrel no longer duplicate DDB Importer's copies.
+- `summonModifier` magical weapons only marks natural and monster weapon attacks.
+- `useOnDeath` works while its owner is incapacitated.
+- `specialItemUse` and `spellSlotRecovery` refund the use when cancelled or with nothing to pick.
 # 2.1.10 Pre-Release:
 ## Automated Class Features:
 - Illrigger: Base class and Painkiller subclass.

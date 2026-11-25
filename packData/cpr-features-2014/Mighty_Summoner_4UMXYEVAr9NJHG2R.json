@@ -1,0 +1,80 @@
+{
+  "_id": "4UMXYEVAr9NJHG2R",
+  "name": "Mighty Summoner",
+  "type": "feat",
+  "img": "icons/magic/control/debuff-energy-hold-levitate-green.webp",
+  "folder": "circleShepherd01",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "mighty-summoner",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "summon": [
+          {
+            "source": "chris-premades",
+            "identifier": "summonModifier",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "summonModifier": {
+            "creatureTypes": [
+              "beast",
+              "fey"
+            ],
+            "sourceItemTypes": [
+              "spell"
+            ],
+            "hpPerHitDie": 2,
+            "magicalWeapons": true
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!4UMXYEVAr9NJHG2R"
+}

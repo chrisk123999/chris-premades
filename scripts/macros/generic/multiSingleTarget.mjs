@@ -12,9 +12,9 @@ async function use({document, workflow}) {
     if (!totalTargets) return;
     const skipDeadAndUnconscious = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'skipDeadAndUnconscious');
     const attackActivityId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'attackActivityId');
-    if (!attackActivityId) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Attack activity not found.', {notify: 'warn'});
+    if (!attackActivityId) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'Attack activity not found.', {notify: 'warn'});
     let attackActivity = workflow.item.system.activities.get(attackActivityId);
-    if (!attackActivity) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Attack activity not found.', {notify: 'warn'});
+    if (!attackActivity) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'Attack activity not found.', {notify: 'warn'});
     const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'multiSingleTarget'});
     if (animation?.macros?.start) await animation.macros.start(workflow.token.document, animationOptions);
     const reactionItemIdentifiers = automationUtils.getGenericConfigValue(document, 'chris-premades', 'multiSingleTarget', 'reactionItemIdentifiers');

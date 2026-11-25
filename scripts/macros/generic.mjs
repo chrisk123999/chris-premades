@@ -37,6 +37,7 @@ export {nextHitRider} from './generic/nextHitRider.mjs';
 export {reduceDamageTaken} from './generic/reduceDamageTaken.mjs';
 export {reflectOnHit} from './generic/reflectOnHit.mjs';
 export {selectDamageType} from './generic/selectDamageType.mjs';
+export {selfDamage} from './generic/selfDamage.mjs';
 
 /*============================*/
 /*         MECHANICS          */
@@ -49,6 +50,7 @@ export {environment, environmentEffect} from './generic/environment.mjs';
 export {featAbility} from './generic/featAbility.mjs';
 export {firearm} from './generic/firearm.mjs';
 export {grappleAttackAdvantage} from './generic/grappleAttackAdvantage.mjs';
+export {grappleSizeBonus} from './generic/grappleSizeBonus.mjs';
 export {hide} from './generic/hide.mjs';
 export {ignoreCover} from './generic/ignoreCover.mjs';
 export {immuneAutoSucceed} from './generic/immuneAutoSucceed.mjs';
@@ -92,7 +94,7 @@ export {touchDelivery, touchDeliveryEffect} from './generic/touchDelivery.mjs';
 /*         TARGETING          */
 /*============================*/
 export {additionalTargets} from './generic/additionalTargets.mjs';
-export {auraDesignation, grappledBySource, notDesignatedBySource, summonerOfSource} from './generic/auraFilters.mjs';
+export {alliesOfSource, auraDesignation, grappledBySource, notDesignatedBySource, spellSummonOfOwner, summonerOfSource} from './generic/auraFilters.mjs';
 export {extraAttack} from './generic/extraAttack.mjs';
 export {multiSingleTarget} from './generic/multiSingleTarget.mjs';
 export {redirectAttack} from './generic/redirectAttack.mjs';
@@ -104,6 +106,7 @@ export {targetCreatureTypes} from './generic/targetCreatureTypes.mjs';
 export {itemRecovery} from './generic/itemRecovery.mjs';
 export {restoreUses} from './generic/restoreUses.mjs';
 export {specialItemUse} from './generic/specialItemUse.mjs';
+export {spellSlotRecovery} from './generic/spellSlotRecovery.mjs';
 export {storedItem} from './generic/storedItem.mjs';
 export {useOnDeath} from './generic/useOnDeath.mjs';
 export {useOnEvent} from './generic/useOnEvent.mjs';
@@ -114,3 +117,4 @@ export {useOnEvent} from './generic/useOnEvent.mjs';
 export {actionDismissal} from './generic/actionDismissal.mjs';
 export {removeRegion} from './generic/removeRegion.mjs';
 export {skillAbility} from './generic/skillAbility.mjs';
+export {uniqueEffect} from './generic/uniqueEffect.mjs';

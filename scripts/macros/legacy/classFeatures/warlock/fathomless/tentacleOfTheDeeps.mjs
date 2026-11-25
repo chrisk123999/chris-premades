@@ -24,7 +24,7 @@ async function use({document, workflow}) {
     const existing = documentUtils.getEffectByIdentifier(workflow.actor, 'tentacleOfTheDeeps');
     if (existing) await documentUtils.deleteDocument(existing);
     const sourceActor = await compendiumUtils.getDocumentByIdentifier(cpr.packs.legacy.summons, 'spectralTentacle');
-    if (!sourceActor) return Logging.addMacroWarning('CPR', 'tentacle-of-the-deeps', 'Spectral Tentacle summon actor not found.', {notify: 'warn'});
+    if (!sourceActor) return Logging.addMacroWarning('chris-premades', 'tentacle-of-the-deeps', 'Spectral Tentacle summon actor not found.', {notify: 'warn'});
     const markerEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: document.name,
         img: document.img,
@@ -53,7 +53,7 @@ async function early({document, activity, actor}) {
     if (activity.identifier !== attackActivity) return;
     const markerEffect = documentUtils.getEffectByIdentifier(actor, 'tentacleOfTheDeeps');
     const tentacleActor = summonUtils.getSummonsBySource(document)[0]?.actor;
-    if (!markerEffect || !tentacleActor) return Logging.addMacroWarning('CPR', 'tentacle-of-the-deeps', 'No active tentacle found.');
+    if (!markerEffect || !tentacleActor) return Logging.addMacroWarning('chris-premades', 'tentacle-of-the-deeps', 'No active tentacle found.');
     const effectData = rangeOverrideData(document, markerEffect);
     await effectUtils.createEffects(actor, [effectData]);
     await effectUtils.createEffects(tentacleActor, [effectData]);

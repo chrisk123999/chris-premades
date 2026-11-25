@@ -4,7 +4,7 @@ async function unerringPath({document: item, workflow}) {
     if (workflow.item.system.linkedActivity?.item?.id !== item.id) return;
     const atlas = actorUtils.getItemByIdentifier(workflow.actor, 'adventurers-atlas');
     if (getMap(workflow.actor, atlas)) return;
-    Logging.addMacroWarning('CPR', 'superior-atlas', 'CHRISPREMADES.Macros.Modern.SuperiorAtlas.HaveMap', {notify: 'warn'});
+    Logging.addMacroWarning('chris-premades', 'superior-atlas', 'CHRISPREMADES.Macros.Modern.SuperiorAtlas.HaveMap', {notify: 'warn'});
     return true;
 }
 async function safeHaven({document: effect, ditem, targetToken}) {
@@ -18,7 +18,7 @@ async function safeHaven({document: effect, ditem, targetToken}) {
     if (!feature) return;
     const config = automationUtils.getConfigValues(feature, ['hitPoints', 'range']);
     const hitPoints = rollUtils.rollDiceSync(config.hitPoints, {document: feature}).total;
-    if (!(hitPoints > 0)) return Logging.addMacroWarning('CPR', 'superior-atlas', `Safe Haven exited early, the hit point formula resolved to 0. (formula) ${config.hitPoints} (actor) ${creator.uuid}`);
+    if (!(hitPoints > 0)) return Logging.addMacroWarning('chris-premades', 'superior-atlas', `Safe Haven exited early, the hit point formula resolved to 0. (formula) ${config.hitPoints} (actor) ${creator.uuid}`);
     const token = targetToken;
     const creatorToken = token.parent.tokens.find(sceneToken => sceneToken.actor === creator);
     const candidates = [...new Set([creatorToken, ...getMapHolders(atlas, token.parent)])].filter(candidate => candidate && candidate.actor !== holder);

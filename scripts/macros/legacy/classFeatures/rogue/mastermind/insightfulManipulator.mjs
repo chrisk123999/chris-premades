@@ -16,7 +16,7 @@ function compare(type, actor, targetActor) {
     return _loc('CHRISPREMADES.Macros.Legacy.InsightfulManipulator.Equal', {ability});
 }
 async function use({document, actor, workflow}) {
-    if (!workflow.targets.count) return Logging.addMacroWarning('CPR', 'insightful-manipulator', 'No target selected.');
+    if (!workflow.targets.count) return Logging.addMacroWarning('chris-premades', 'insightful-manipulator', 'No target selected.');
     const options = [
         ['CHRISPREMADES.Macros.Legacy.InsightfulManipulator.IntScore', 'int'],
         ['CHRISPREMADES.Macros.Legacy.InsightfulManipulator.WisScore', 'wis'],

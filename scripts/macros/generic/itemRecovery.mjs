@@ -1,7 +1,7 @@
 import {actorUtils, automationUtils, documentUtils, itemUtils, Logging} from '../../proxy.mjs';
 export async function addItemRecovery(feature, targetIdentifier, recovery) {
     const target = actorUtils.getItemByIdentifier(feature.actor, targetIdentifier);
-    if (!target) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(feature), 'Target item not found on actor: ' + targetIdentifier);
+    if (!target) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(feature), 'Target item not found on actor: ' + targetIdentifier);
     const identifier = 'recovery-' + documentUtils.getIdentifier(feature);
     const existing = documentUtils.getEffectByIdentifier(target, identifier);
     if (existing && foundry.utils.equals(existing.system.changes[0]?.value, [recovery])) return;

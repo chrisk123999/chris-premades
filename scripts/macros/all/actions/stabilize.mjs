@@ -28,7 +28,7 @@ async function use({document: item, workflow}) {
         if (!roll || roll.total < 10) return;
     }
     await documentUtils.update(actor, {'system.attributes.death.success': 0, 'system.attributes.death.failure': 0});
-    const {roll} = await rollUtils.rollDice('1d4', {document: workflow.actor, message: true, flavor: _loc('CHRISPREMADES.Macros.All.Stabilize.WakeUp'), rollMode: 'blindroll'});
+    const {roll} = await rollUtils.rollDice('1d4', {document: workflow.actor, message: true, flavor: _loc('CHRISPREMADES.Macros.All.Stabilize.WakeUp'), mode: 'blind'});
     await effectUtils.createEffects(actor, [{
         name: _loc(CONFIG.statusEffects.find(status => status.id === 'stable')?.name ?? 'EFFECT.DND5E.StatusStable'),
         img: 'systems/dnd5e/icons/svg/statuses/stable.svg',

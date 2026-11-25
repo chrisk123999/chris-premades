@@ -151,4 +151,22 @@ export const firearm = {
         }
     }
 };
+export function registerFirearms() {
+    const firearms = game.settings.get('chris-premades', 'firearms');
+    if (firearms === 'off') return;
+    const thirdParty = firearms === 'thirdParty';
+    const firearmKey = 'CHRISPREMADES.Macros.Generic.Firearm.';
+    CONFIG.DND5E.weaponTypes.firearm = firearmKey + 'Type';
+    CONFIG.DND5E.weaponTypeMap.firearm = 'ranged';
+    CONFIG.DND5E.weaponProficiencies.firearm = firearmKey + 'Proficiency';
+    CONFIG.DND5E.weaponProficienciesMap.firearm = 'firearm';
+    for (const property of cpr.firearmProperties) {
+        if (!thirdParty && !cpr.firstPartyFirearmProperties.includes(property)) continue;
+        CONFIG.DND5E.itemProperties[property] = {label: firearmKey + 'Properties.' + property.capitalize()};
+        CONFIG.DND5E.validProperties.weapon.add(property);
+    }
+    for (const [baseItem, uuid] of Object.entries(cpr.firearmBaseItems)) {
+        if (thirdParty || !cpr.thirdPartyFirearmBaseItems.includes(baseItem)) CONFIG.DND5E.weaponIds[baseItem] = 'Compendium.' + uuid;
+    }
+}
 const configKeys = Object.keys(firearm.genericConfig);

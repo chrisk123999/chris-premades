@@ -1,0 +1,284 @@
+{
+  "_id": "VBBNj5SwPKdq9siC",
+  "name": "Natural Recovery",
+  "type": "feat",
+  "img": "icons/magic/nature/leaf-glow-teal.webp",
+  "folder": "cd4cHOcSs7RmQNZU",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "natural-recovery",
+    "activities": {
+      "Yu9RBLVRb2sSJZXF": {
+        "_id": "Yu9RBLVRb2sSJZXF",
+        "type": "utility",
+        "name": "Cast a Circle Spell",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "activityUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "1",
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "cast",
+        "midiProperties": {
+          "identifier": "cast",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "specialItemUse",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "specialItemUse": {
+                  "identifiers": [
+                    "blur",
+                    "burning-hands",
+                    "fireball",
+                    "blight",
+                    "wall-of-stone",
+                    "fog-cloud",
+                    "hold-person",
+                    "sleet-storm",
+                    "ice-storm",
+                    "cone-of-cold",
+                    "misty-step",
+                    "sleep",
+                    "lightning-bolt",
+                    "freedom-of-movement",
+                    "tree-stride",
+                    "ray-of-sickness",
+                    "web",
+                    "stinking-cloud",
+                    "polymorph",
+                    "insect-plague"
+                  ],
+                  "consumeResources": false,
+                  "spellSlot": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "un7kLIC2Ut7q1LXQ": {
+        "_id": "un7kLIC2Ut7q1LXQ",
+        "type": "utility",
+        "name": "Recover Spell Slots",
+        "sort": 1,
+        "img": "",
+        "activation": {
+          "type": "shortRest",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "activityUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "1",
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "recover",
+        "midiProperties": {
+          "identifier": "recover",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "spellSlotRecovery",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "spellSlotRecovery": {
+                  "formula": "ceil(@classes.druid.levels / 2)",
+                  "maxSlotLevel": 5
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "natural-recovery",
+            "rules": "2024"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!VBBNj5SwPKdq9siC"
+}

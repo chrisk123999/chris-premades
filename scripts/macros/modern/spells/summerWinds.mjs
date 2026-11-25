@@ -21,7 +21,7 @@ async function late({document, workflow, castData}) {
     }
     if (!undead.length) return;
     const activity = itemUtils.getActivityByIdentifier(document, 'summer-winds-undead');
-    if (!activity) return Logging.addMacroWarning('CPR', 'summer-winds', 'CHRISPREMADES.Macros.Modern.SummerWinds.MissingActivity', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'summer-winds', 'CHRISPREMADES.Macros.Modern.SummerWinds.MissingActivity', {notify: 'warn'});
     await workflowUtils.syntheticActivityRoll(activity, undead, {spellSlot: false, atLevel: castData.castLevel});
 }
 export const summerWinds = {

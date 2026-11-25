@@ -13,7 +13,7 @@ async function use({document, workflow}) {
     const targetToken = workflow.failedSaves.documents[0];
     const casterEffect = documentUtils.getEffectByIdentifier(document, 'controlUndead');
     const targetEffect = documentUtils.getEffectByIdentifier(document, 'controlUndeadControlled');
-    if (!casterEffect || !targetEffect) return Logging.addMacroWarning('CPR', 'channel-divinity-control-undead', 'Control Undead effects missing from item.', {notify: 'warn'});
+    if (!casterEffect || !targetEffect) return Logging.addMacroWarning('chris-premades', 'channel-divinity-control-undead', 'Control Undead effects missing from item.', {notify: 'warn'});
     const [effect] = await effectUtils.createEffects(workflow.actor, [documentUtils.getEffectData(workflow.activity, casterEffect.id, {activityUuid: workflow.activity.uuid})]);
     if (!effect) return;
     await effectUtils.createEffects(targetToken.actor, [documentUtils.getEffectData(workflow.activity, targetEffect.id, {activityUuid: workflow.activity.uuid})], {parentEntity: effect});

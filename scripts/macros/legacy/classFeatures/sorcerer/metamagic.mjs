@@ -20,7 +20,7 @@ function getTargets(workflow) {
 }
 async function selectSpell(item, spells) {
     if (!spells.length) {
-        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(item), 'CHRISPREMADES.Macros.Legacy.Metamagic.NoValid', {notify: 'info'});
+        Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(item), 'CHRISPREMADES.Macros.Legacy.Metamagic.NoValid', {notify: 'info'});
         return;
     }
     const cost = getCost(getMetamagicActivity(item));
@@ -84,7 +84,7 @@ async function damageEmpowered({document, workflow}) {
     if (!workflow.hitTargets.count || workflow.item.type !== 'spell' || !workflow.damageRolls?.length) return;
     const activity = getMetamagicActivity(document);
     const cost = getCost(activity);
-    if (getAvailablePoints(workflow.actor) < cost) return Logging.addMacroWarning('CPR', 'empowered-spell', 'Not enough sorcery points.');
+    if (getAvailablePoints(workflow.actor) < cost) return Logging.addMacroWarning('chris-premades', 'empowered-spell', 'Not enough sorcery points.');
     const max = getCharismaMax(workflow.actor);
     const selection = await dialogUtils.selectDie(workflow.damageRolls, document.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.Empowered', {cost, max}), {max});
     if (!selection?.length) return;
@@ -123,7 +123,7 @@ async function attackSeeking({document, workflow}) {
     if (!workflow.attackRoll || !workflow.targets.count || workflow.item.type !== 'spell') return;
     if (workflow.targets.documents.every(target => (target.actor?.system.attributes.ac.value ?? Infinity) <= workflow.attackRoll.total)) return;
     const activity = getMetamagicActivity(document);
-    if (getAvailablePoints(workflow.actor) < getCost(activity)) return Logging.addMacroWarning('CPR', 'seeking-spell', 'Not enough sorcery points.');
+    if (getAvailablePoints(workflow.actor) < getCost(activity)) return Logging.addMacroWarning('chris-premades', 'seeking-spell', 'Not enough sorcery points.');
     const selection = await dialogUtils.confirmUseForRollTotal(document, workflow.item.name, workflow.attackRoll.total);
     if (!selection) return;
     await workflowUtils.completeActivityUse(activity, []);
@@ -154,7 +154,7 @@ function getTransmutedUpdates(spell, oldType, newType) {
 }
 async function useTransmuted({document, workflow}) {
     const transmutableTypes = new Set(automationUtils.getConfigValue(document, 'damageTypes'));
-    if (!transmutableTypes.size) return Logging.addMacroWarning('CPR', 'transmuted-spell', 'No damage types configured.', {notify: 'warn'});
+    if (!transmutableTypes.size) return Logging.addMacroWarning('chris-premades', 'transmuted-spell', 'No damage types configured.', {notify: 'warn'});
     const selection = await selectSpell(document, getValidSpells(workflow.actor, spell => itemUtils.getItemDamageTypes(spell).intersects(transmutableTypes)));
     if (!selection) return;
     const currentTypes = Array.from(itemUtils.getItemDamageTypes(selection).intersection(transmutableTypes));
@@ -177,7 +177,7 @@ async function useTwinned({document, workflow}) {
     const available = getAvailablePoints(workflow.actor);
     const spells = getValidSpells(workflow.actor, spell => isTwinnable(spell) && Math.max(1, spell.system.level) <= available && spell.system.source.rules === '2014');
     if (!spells.length) {
-        Logging.addMacroWarning('CPR', 'twinned-spell', 'CHRISPREMADES.Macros.Legacy.Metamagic.NoValid', {notify: 'info'});
+        Logging.addMacroWarning('chris-premades', 'twinned-spell', 'CHRISPREMADES.Macros.Legacy.Metamagic.NoValid', {notify: 'info'});
         return;
     }
     const selection = await dialogUtils.selectDocumentDialog(document.item.name, _loc('CHRISPREMADES.Macros.Legacy.Metamagic.TwinnedWhich'), spells, {
@@ -202,14 +202,14 @@ async function useTwinned({document, workflow}) {
     });
 }
 async function abortTwinned(workflow, message) {
-    Logging.addMacroWarning('CPR', 'twinned-spell-cast', message, {notify: 'info'});
+    Logging.addMacroWarning('chris-premades', 'twinned-spell-cast', message, {notify: 'info'});
     workflow.aborted = true;
     await effectUtils.endConcentration(workflow.actor, workflow.item);
     return true;
 }
 async function earlyTwinned({workflow}) {
     const metamagic = actorUtils.getItemByIdentifier(workflow.actor, 'twinned-spell');
-    if (!metamagic) return Logging.addMacroWarning('CPR', 'twinned-spell-cast', 'Twinned Spell feature not found on actor.', {notify: 'warn'});
+    if (!metamagic) return Logging.addMacroWarning('chris-premades', 'twinned-spell-cast', 'Twinned Spell feature not found on actor.', {notify: 'warn'});
     const castLevel = workflowUtils.getCastLevel(workflow) ?? workflow.item.system.level;
     if (!isTwinnable(workflow.item, castLevel)) {
         return await abortTwinned(workflow, 'CHRISPREMADES.Macros.Legacy.Metamagic.TwinnedUpcastTargets');

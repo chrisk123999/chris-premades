@@ -1,6 +1,6 @@
 import {documentUtils, effectUtils, Logging, tokenUtils} from '../../../proxy.mjs';
 async function use({document: item, workflow}) {
-    if (!workflow.targets.count || !workflow.token) return Logging.addMacroWarning('CPR', 'help', 'No target selected.');
+    if (!workflow.targets.count || !workflow.token) return Logging.addMacroWarning('chris-premades', 'help', 'No target selected.');
     const targetToken = workflow.targets.documents[0];
     const sourceToken = workflow.token.document;
     const ally = !tokenUtils.isEnemy(sourceToken, targetToken);

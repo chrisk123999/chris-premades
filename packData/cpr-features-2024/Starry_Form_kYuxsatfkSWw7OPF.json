@@ -1,0 +1,1336 @@
+{
+  "_id": "kYuxsatfkSWw7OPF",
+  "name": "Starry Form",
+  "type": "feat",
+  "img": "icons/creatures/magical/spirit-undead-ghost-blue.webp",
+  "folder": "kdO5QruyosIAr4AZ",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "starry-form",
+    "activities": {
+      "TBuAgYWDsrgcvXHJ": {
+        "_id": "TBuAgYWDsrgcvXHJ",
+        "type": "utility",
+        "name": "Starry Form: Archer",
+        "sort": 0,
+        "img": "icons/magic/light/projectile-beams-salvo-yellow.webp",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:wild-shape",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "10"
+        },
+        "effects": [
+          {
+            "_id": "BhvxjYugnggUJ7Lu",
+            "level": {
+              "min": null,
+              "max": 13
+            }
+          },
+          {
+            "_id": "8FuKE9IxC2C8pFt8",
+            "level": {
+              "min": 14,
+              "max": null
+            }
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "archer",
+        "midiProperties": {
+          "identifier": "archer",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "visibility": {
+          "identifier": "druid",
+          "level": {
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "f0Zsibe2dHtDtJIs": {
+        "_id": "f0Zsibe2dHtDtJIs",
+        "type": "utility",
+        "name": "Starry Form: Chalice",
+        "sort": 1,
+        "img": "icons/magic/holy/chalice-glowing-gold.webp",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:wild-shape",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "10"
+        },
+        "effects": [
+          {
+            "_id": "3DnHgdCrBItiYpUE",
+            "level": {
+              "min": null,
+              "max": 13
+            }
+          },
+          {
+            "_id": "IOoLGMnt42tWJHFz",
+            "level": {
+              "min": 14,
+              "max": null
+            }
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "chalice",
+        "midiProperties": {
+          "identifier": "chalice",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "visibility": {
+          "identifier": "druid",
+          "level": {
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "Y484VTLZhRCEFr5a": {
+        "_id": "Y484VTLZhRCEFr5a",
+        "type": "utility",
+        "name": "Starry Form: Dragon",
+        "sort": 2,
+        "img": "icons/creatures/abilities/dragon-head-breath-fire-blue.webp",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:wild-shape",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "10"
+        },
+        "effects": [
+          {
+            "_id": "IxAjAftdh0qfM55i",
+            "level": {
+              "min": null,
+              "max": 9
+            }
+          },
+          {
+            "_id": "JwXtcOGzHGqBcnGO",
+            "level": {
+              "min": 10,
+              "max": 13
+            }
+          },
+          {
+            "_id": "hdxXVVvutigecxgD",
+            "level": {
+              "min": 14,
+              "max": null
+            }
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "dragon",
+        "midiProperties": {
+          "identifier": "dragon",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "visibility": {
+          "identifier": "druid",
+          "level": {
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "vtCywmr0y2wkjqah": {
+        "_id": "vtCywmr0y2wkjqah",
+        "type": "attack",
+        "name": "Luminous Arrow",
+        "sort": 3,
+        "img": "icons/magic/light/projectile-beams-salvo-yellow.webp",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "60"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "luminous-arrow",
+        "midiProperties": {
+          "identifier": "luminous-arrow",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "custom": {
+                "enabled": true,
+                "formula": "@scale.druid.starry-form + @abilities.wis.mod"
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ],
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": false
+        },
+        "attack": {
+          "ability": "wis",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": "spell"
+          }
+        }
+      },
+      "08oymGuJhNhWauQ6": {
+        "_id": "08oymGuJhNhWauQ6",
+        "type": "heal",
+        "name": "Healing Chalice",
+        "sort": 4,
+        "img": "icons/magic/holy/chalice-glowing-gold.webp",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "healing-chalice",
+        "midiProperties": {
+          "identifier": "healing-chalice",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        },
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": true,
+            "formula": "@scale.druid.starry-form + @abilities.wis.mod"
+          },
+          "scaling": {
+            "mode": "",
+            "number": 1,
+            "formula": ""
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "BhvxjYugnggUJ7Lu",
+      "name": "Starry Form: Archer",
+      "img": "icons/magic/light/projectile-beams-salvo-yellow.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "token.light.dim",
+            "value": "20",
+            "type": "upgrade",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 10,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "starryForm",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "uniqueEffect",
+                "rules": "all"
+              },
+              {
+                "source": "chris-premades",
+                "identifier": "unhideActivities",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ],
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "uniqueEffect": {
+                "scope": "origin"
+              },
+              "unhideActivities": {
+                "activityIds": [
+                  "vtCywmr0y2wkjqah"
+                ],
+                "favorite": true
+              }
+            }
+          },
+          "specialDuration": [
+            "incapacitated"
+          ]
+        },
+        "chris-premades": {
+          "starryForm": "archer"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!kYuxsatfkSWw7OPF.BhvxjYugnggUJ7Lu"
+    },
+    {
+      "_id": "8FuKE9IxC2C8pFt8",
+      "name": "Starry Form: Archer",
+      "img": "icons/magic/light/projectile-beams-salvo-yellow.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "token.light.dim",
+            "value": "20",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "value": "bludgeoning",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "value": "piercing",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "value": "slashing",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 10,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "starryForm",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "uniqueEffect",
+                "rules": "all"
+              },
+              {
+                "source": "chris-premades",
+                "identifier": "unhideActivities",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ],
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "uniqueEffect": {
+                "scope": "origin"
+              },
+              "unhideActivities": {
+                "activityIds": [
+                  "vtCywmr0y2wkjqah"
+                ],
+                "favorite": true
+              }
+            }
+          },
+          "specialDuration": [
+            "incapacitated"
+          ]
+        },
+        "chris-premades": {
+          "starryForm": "archer"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!kYuxsatfkSWw7OPF.8FuKE9IxC2C8pFt8"
+    },
+    {
+      "_id": "3DnHgdCrBItiYpUE",
+      "name": "Starry Form: Chalice",
+      "img": "icons/magic/holy/chalice-glowing-gold.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "token.light.dim",
+            "value": "20",
+            "type": "upgrade",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 10,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "starryForm",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "uniqueEffect",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ],
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "uniqueEffect": {
+                "scope": "origin"
+              }
+            }
+          },
+          "specialDuration": [
+            "incapacitated"
+          ]
+        },
+        "chris-premades": {
+          "starryForm": "chalice"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!kYuxsatfkSWw7OPF.3DnHgdCrBItiYpUE"
+    },
+    {
+      "_id": "IOoLGMnt42tWJHFz",
+      "name": "Starry Form: Chalice",
+      "img": "icons/magic/holy/chalice-glowing-gold.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "token.light.dim",
+            "value": "20",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "value": "bludgeoning",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "value": "piercing",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "value": "slashing",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 10,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "starryForm",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "uniqueEffect",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ],
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "uniqueEffect": {
+                "scope": "origin"
+              }
+            }
+          },
+          "specialDuration": [
+            "incapacitated"
+          ]
+        },
+        "chris-premades": {
+          "starryForm": "chalice"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!kYuxsatfkSWw7OPF.IOoLGMnt42tWJHFz"
+    },
+    {
+      "_id": "IxAjAftdh0qfM55i",
+      "name": "Starry Form: Dragon",
+      "img": "icons/creatures/abilities/dragon-head-breath-fire-blue.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "token.light.dim",
+            "value": "20",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.int.check.roll.min",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.wis.check.roll.min",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.attributes.concentration.roll.min",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 10,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "starryForm",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "uniqueEffect",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ],
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "uniqueEffect": {
+                "scope": "origin"
+              }
+            }
+          },
+          "specialDuration": [
+            "incapacitated"
+          ]
+        },
+        "chris-premades": {
+          "starryForm": "dragon"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!kYuxsatfkSWw7OPF.IxAjAftdh0qfM55i"
+    },
+    {
+      "_id": "JwXtcOGzHGqBcnGO",
+      "name": "Starry Form: Dragon",
+      "img": "icons/creatures/abilities/dragon-head-breath-fire-blue.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "token.light.dim",
+            "value": "20",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.int.check.roll.min",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.wis.check.roll.min",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.attributes.concentration.roll.min",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.attributes.movement.speeds.fly",
+            "value": "20",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.attributes.movement.hover",
+            "value": "true",
+            "type": "override",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 10,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "starryForm",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "uniqueEffect",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ],
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "uniqueEffect": {
+                "scope": "origin"
+              }
+            }
+          },
+          "specialDuration": [
+            "incapacitated"
+          ]
+        },
+        "chris-premades": {
+          "starryForm": "dragon"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!kYuxsatfkSWw7OPF.JwXtcOGzHGqBcnGO"
+    },
+    {
+      "_id": "hdxXVVvutigecxgD",
+      "name": "Starry Form: Dragon",
+      "img": "icons/creatures/abilities/dragon-head-breath-fire-blue.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "token.light.dim",
+            "value": "20",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.int.check.roll.min",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.wis.check.roll.min",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.attributes.concentration.roll.min",
+            "value": "10",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.attributes.movement.speeds.fly",
+            "value": "20",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.attributes.movement.hover",
+            "value": "true",
+            "type": "override",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "value": "bludgeoning",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "value": "piercing",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.dr.value",
+            "value": "slashing",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 10,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "identifier": "starryForm",
+          "macros": {
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "uniqueEffect",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ],
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "starry-form-active",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "uniqueEffect": {
+                "scope": "origin"
+              }
+            }
+          },
+          "specialDuration": [
+            "incapacitated"
+          ]
+        },
+        "chris-premades": {
+          "starryForm": "dragon"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!kYuxsatfkSWw7OPF.hdxXVVvutigecxgD"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "starry-form",
+            "rules": "all"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!kYuxsatfkSWw7OPF"
+}

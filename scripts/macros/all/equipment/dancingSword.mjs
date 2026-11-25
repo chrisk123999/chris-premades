@@ -22,7 +22,7 @@ async function fly({document, workflow}) {
     const target = workflow.targets.tokens[0]?.document;
     if (!sword || !target) return;
     if (!tokenUtils.isWithinDistance(sword, target, 35)) {
-        Logging.addMacroWarning('CPR', 'dancing-sword', 'CHRISPREMADES.Macros.Legacy.DancingSword.TooFar', {notify: 'info'});
+        Logging.addMacroWarning('chris-premades', 'dancing-sword', 'CHRISPREMADES.Macros.Legacy.DancingSword.TooFar', {notify: 'info'});
         return true;
     }
     if (tokenUtils.isWithinDistance(sword, target, 5)) return;

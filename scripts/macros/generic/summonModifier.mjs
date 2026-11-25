@@ -1,7 +1,25 @@
-import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, queryUtils} from '../../proxy.mjs';
+import {actorUtils, automationUtils, constants, dialogUtils, documentUtils, genericUtils, queryUtils} from '../../proxy.mjs';
+const formulaKeys = ['healing.bonus', 'healing.custom.formula'];
+export function sourceItemType(item) {
+    if (item && automationUtils.getConfigValue(item, 'spellSummon')) return 'spell';
+    return item?.type;
+}
+function resolveOwnerFormulas(itemData, rollData) {
+    for (const activityData of Object.values(itemData.system.activities ?? {})) {
+        for (const key of formulaKeys) {
+            const formula = genericUtils.getProperty(activityData, key);
+            if (formula) genericUtils.setProperty(activityData, key, Roll.replaceFormulaData(formula, rollData));
+        }
+        for (const part of activityData.damage?.parts ?? []) {
+            if (part.bonus) part.bonus = Roll.replaceFormulaData(part.bonus, rollData);
+            if (part.custom?.formula) part.custom.formula = Roll.replaceFormulaData(part.custom.formula, rollData);
+        }
+    }
+}
 async function preCreate({document, actor, summon, updates}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'summonModifier', configKeys);
-    if (!config.effect && !config.magicalWeapons && !config.items.length) return;
+    if (!config.effect && !config.magicalWeapons && !config.items.length && !config.hpPerHitDie) return;
+    if (config.sourceItemTypes.length && !config.sourceItemTypes.includes(sourceItemType(summon.sourceItem))) return;
     if (config.sourceIdentifiers.length) {
         const source = summon.sourceDocument;
         if (!source || !config.sourceIdentifiers.includes(documentUtils.getIdentifier(source.item ?? source))) return;
@@ -21,20 +39,32 @@ async function preCreate({document, actor, summon, updates}) {
         const itemData = (await Promise.all(config.items.map(uuid => fromUuid(uuid)))).filter(Boolean).map(item => {
             const data = item.toObject();
             delete data._id;
+            if (config.ownerFormulas) resolveOwnerFormulas(data, document.getRollData());
             return data;
         });
         updates.items ??= sourceActor.items.map(item => item.toObject());
         updates.items.push(...itemData);
     }
+    if (config.hpPerHitDie) {
+        const dice = Number(sourceActor.system.attributes.hp.formula?.match(/(\d+)\s*d\s*\d+/)?.[1] ?? 0);
+        if (dice) {
+            const max = (genericUtils.getProperty(updates, 'system.attributes.hp.max') ?? sourceActor.system.attributes.hp.max) + dice * config.hpPerHitDie;
+            genericUtils.setProperty(updates, 'system.attributes.hp.max', max);
+            genericUtils.setProperty(updates, 'system.attributes.hp.value', max);
+        }
+    }
     if (!config.magicalWeapons) return;
     updates.items ??= sourceActor.items.map(item => item.toObject());
     updates.items.forEach(itemData => {
-        if (!Object.values(itemData.system.activities ?? {}).some(activityData => activityData.damage?.parts?.length)) return;
-        if (!itemData.system.properties?.includes('mgc')) itemData.system.properties?.push('mgc');
+        const naturalWeapon = itemData.type === 'weapon' && itemData.system.type?.value === 'natural';
+        const monsterAttack = itemData.type === 'feat' && Object.values(itemData.system.activities ?? {}).some(activity => activity.attack?.type?.classification === 'weapon');
+        if (!naturalWeapon && !monsterAttack) return;
+        itemData.system.properties ??= [];
+        if (!itemData.system.properties.includes('mgc')) itemData.system.properties.push('mgc');
     });
 }
 /**
- * Adds an effect, items or the magical property on damaging items to summons as they are created. Only summons that
+ * Adds an effect, items, hit points per hit die or the magical property on damaging items to summons as they are created. Only summons that
  * match the source and creature type filters are changed.
  */
 export const summonModifier = {
@@ -58,6 +88,14 @@ export const summonModifier = {
             label: 'CHRISPREMADES.Config.Identifiers',
             hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.SourceIdentifiers.Hint'
         },
+        sourceItemTypes: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.SummonModifier.SourceItemTypes.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.SourceItemTypes.Hint',
+            get options() { return constants.usableItemTypes; }
+        },
         creatureTypes: {
             default: [],
             type: 'select-many',
@@ -79,6 +117,20 @@ export const summonModifier = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.SummonModifier.Items.Label',
             hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.Items.Hint'
+        },
+        ownerFormulas: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.SummonModifier.OwnerFormulas.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.OwnerFormulas.Hint'
+        },
+        hpPerHitDie: {
+            default: 0,
+            type: 'number',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.SummonModifier.HpPerHitDie.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.SummonModifier.HpPerHitDie.Hint'
         },
         magicalWeapons: {
             default: false,

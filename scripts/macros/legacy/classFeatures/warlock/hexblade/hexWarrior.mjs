@@ -5,7 +5,7 @@ async function use({document, workflow}) {
     if (existing) await documentUtils.deleteDocument(existing);
     const validWeapons = weapons.filter(item => item.system.equipped && !documentUtils.getEffectByIdentifier(item, 'pactWeapon'));
     if (!validWeapons.length) {
-        Logging.addMacroWarning('CPR', 'hex-warrior', 'CHRISPREMADES.Macros.Legacy.HexWarrior.NoWeapons', {notify: 'info'});
+        Logging.addMacroWarning('chris-premades', 'hex-warrior', 'CHRISPREMADES.Macros.Legacy.HexWarrior.NoWeapons', {notify: 'info'});
         return;
     }
     let selection = validWeapons[0];

@@ -10,7 +10,7 @@ async function selectNearby(document, targets, count) {
 async function use({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'bladeSpell', configKeys);
     if (config.activityId && config.activityId !== workflow.activity.id) return;
-    if (workflow.targets.count !== 1) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Select exactly one target.');
+    if (workflow.targets.count !== 1) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'Select exactly one target.');
     const targetToken = workflow.targets.documents[0];
     const weapons = actorUtils.getEquippedWeapons(workflow.actor).filter(weapon =>
         weapon.system.activities.getByType('attack').length &&
@@ -18,7 +18,7 @@ async function use({document, workflow}) {
         (!config.proficientOnly || weapon.system.proficiencyMultiplier >= 1)
     );
     if (!weapons.length) {
-        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Generic.BladeSpell.NoWeapons', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Generic.BladeSpell.NoWeapons', {notify: 'warn'});
         return;
     }
     const weapon = weapons.length === 1 ? weapons[0] : await dialogUtils.selectDocumentDialog(document.name, 'CHRISPREMADES.Macros.Generic.BladeSpell.Weapon', weapons);

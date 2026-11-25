@@ -2,7 +2,7 @@ import {actorUtils, automationUtils, combatUtils, dialogUtils, documentUtils, ef
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'form-of-dread') return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'formOfDreadActive');
-    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'form-of-dread', 'Form of Dread effect missing from item.', {notify: 'warn'});
+    if (!sourceEffect) return Logging.addMacroWarning('chris-premades', 'form-of-dread', 'Form of Dread effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {
         activityUuid: workflow.activity.uuid
     });
@@ -18,7 +18,7 @@ async function late({workflow}) {
     const originItem = actorUtils.getItemByIdentifier(workflow.actor, 'form-of-dread');
     const activity = itemUtils.getActivityByIdentifier(originItem, 'form-of-dread-fear');
     if (!activity?.canUse) return;
-    if (!activity.uses.value) return Logging.addMacroWarning('CPR', 'form-of-dread', 'Fear already used this turn.');
+    if (!activity.uses.value) return Logging.addMacroWarning('chris-premades', 'form-of-dread', 'Fear already used this turn.');
     const selection = await dialogUtils.confirm(activity.name, _loc('CHRISPREMADES.Macros.Legacy.FormOfDread.Use'));
     if (!selection) return;
     await workflowUtils.completeActivityUse(activity, workflow.hitTargets.documents);

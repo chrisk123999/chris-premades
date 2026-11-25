@@ -4,7 +4,7 @@ async function buff({summon, updates}) {
     if (school !== 'nec') return;
     const owner = summon.owner;
     const wizardLevels = owner?.classes?.wizard?.system?.levels;
-    if (!wizardLevels) return Logging.addMacroWarning('CPR', 'undead-thralls', 'Wizard class levels not found.', {notify: 'warn'});
+    if (!wizardLevels) return Logging.addMacroWarning('chris-premades', 'undead-thralls', 'Wizard class levels not found.', {notify: 'warn'});
     const sourceActor = await summon.getSourceActor();
     const hp = {...sourceActor.system.attributes.hp, ...updates.system?.attributes?.hp};
     const damageBonuses = sourceActor.system.rolls.damage;

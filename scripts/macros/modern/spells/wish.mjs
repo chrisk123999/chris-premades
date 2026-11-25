@@ -2,7 +2,7 @@ import {actorUtils, automationUtils, compendiumUtils, constants, dialogUtils, do
 const dayLength = 86400;
 async function selectSpell(maxLevel) {
     const packIds = compendiumUtils.getEnabledCompendiumIds('spellCompendiums');
-    if (!packIds.length) return Logging.addMacroWarning('CPR', 'wish', 'CAT.Error.NoSpellCompendiums', {notify: 'warn'});
+    if (!packIds.length) return Logging.addMacroWarning('chris-premades', 'wish', 'CAT.Error.NoSpellCompendiums', {notify: 'warn'});
     const lockedFilters = maxLevel === undefined ? undefined : {additional: {level: {max: maxLevel}}};
     const [spell] = await compendiumUtils.selectFromCompendiumBrowser('spells', {packIds, lockedFilters, maxAmount: 1}) ?? [];
     return spell;
@@ -45,7 +45,7 @@ async function resistance({document, workflow}) {
     const damageType = await dialogUtils.selectDamageType(types, document.name, 'CHRISPREMADES.Generic.SelectDamageType');
     if (!damageType) return;
     const effectData = documentUtils.getEffectData(document, documentUtils.getEffectByIdentifier(document, 'wishResistance')?.id);
-    if (!effectData) return Logging.addMacroWarning('CPR', 'wish', 'Wish: Resistance effect missing from item.', {notify: 'warn'});
+    if (!effectData) return Logging.addMacroWarning('chris-premades', 'wish', 'Wish: Resistance effect missing from item.', {notify: 'warn'});
     effectData.system.changes[0].value = damageType;
     await Promise.all(workflow.targets.documents.map(token => effectUtils.createEffects(token.actor, [genericUtils.duplicate(effectData)])));
 }
@@ -54,7 +54,7 @@ async function spellImmunity({document, workflow}) {
     const spell = await selectSpell();
     if (!spell) return;
     const effectData = documentUtils.getEffectData(workflow.activity, documentUtils.getEffectByIdentifier(document, 'wishImmunity')?.id);
-    if (!effectData) return Logging.addMacroWarning('CPR', 'wish', 'Wish: Spell Immunity effect missing from item.', {notify: 'warn'});
+    if (!effectData) return Logging.addMacroWarning('chris-premades', 'wish', 'Wish: Spell Immunity effect missing from item.', {notify: 'warn'});
     effectData.name += ' (' + spell.name + ')';
     genericUtils.setProperty(effectData, 'flags.chris-premades.wish', {spellName: spell.name, spellIdentifier: spell.system.identifier});
     await Promise.all(workflow.targets.documents.map(token => effectUtils.createEffects(token.actor, [genericUtils.duplicate(effectData)])));
@@ -66,7 +66,7 @@ async function stress({document, workflow}) {
     const {stressDurationFormula, chanceFormula, chanceNumber} = automationUtils.getConfigValues(document, ['stressDurationFormula', 'chanceFormula', 'chanceNumber']);
     const {roll: days} = await rollUtils.rollDice(stressDurationFormula, {document, message: true, flavor: document.name});
     const effectData = documentUtils.getEffectData(document, documentUtils.getEffectByIdentifier(document, 'wishStress')?.id, {duration: {value: days.total * dayLength, units: 'seconds'}});
-    if (!effectData) return Logging.addMacroWarning('CPR', 'wish', 'Wish: Stress effect missing from item.', {notify: 'warn'});
+    if (!effectData) return Logging.addMacroWarning('chris-premades', 'wish', 'Wish: Stress effect missing from item.', {notify: 'warn'});
     genericUtils.setProperty(effectData, 'flags.chris-premades.wish', {itemUuid: document.uuid, castDamage: true});
     await effectUtils.createEffects(workflow.actor, [effectData]);
     if (!chanceNumber) return;

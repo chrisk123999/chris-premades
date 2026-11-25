@@ -4,7 +4,9 @@ import {genericActionsHooks} from './macros/all/actions/genericActions.mjs';
 import {alertHooks} from './macros/modern/feats/alert.mjs';
 import * as animations from './macros/animations.mjs';
 import {environmentHooks} from './macros/generic/environment.mjs';
+import {registerFirearms} from './macros/generic/firearm.mjs';
 import {selectDamageTypeHooks} from './macros/generic/selectDamageType.mjs';
+import {crimsonRiteHooks} from './macros/legacy/classFeatures/bloodHunter/crimsonRite.mjs';
 import {bg3Hooks} from './macros/legacy/homebrew/bg3WeaponActions.mjs';
 import {dmgCleaveHooks} from './macros/legacy/homebrew/dmgCleave.mjs';
 import * as weaponMasteries from './macros/weaponMasteries.mjs';
@@ -16,6 +18,7 @@ export {constants as cpr};
 
 Hooks.once('catInit', () => {
     registerSettings();
+    registerFirearms();
     Hooks.on(catConstants.workflowHookNames.rollFinished, dmgCleaveHooks.rollFinished);
 });
 Hooks.on('createToken', genericActionsHooks.createToken);
@@ -25,18 +28,7 @@ Hooks.on('dnd5e.preRollDamageV2', selectDamageTypeHooks.preRollDamage);
 Hooks.on('updateCombatant', alertHooks.updateCombatant);
 Hooks.on('updateItem', bg3Hooks.equipped);
 Hooks.on('dnd5e.restCompleted', bg3Hooks.rest);
-Hooks.once('init', () => {
-    const firearmKey = 'CHRISPREMADES.Macros.Generic.Firearm.';
-    CONFIG.DND5E.weaponTypes.firearm = firearmKey + 'Type';
-    CONFIG.DND5E.weaponTypeMap.firearm = 'ranged';
-    CONFIG.DND5E.weaponProficiencies.firearm = firearmKey + 'Proficiency';
-    CONFIG.DND5E.weaponProficienciesMap.firearm = 'firearm';
-    for (const property of constants.firearmProperties) {
-        CONFIG.DND5E.itemProperties[property] = {label: firearmKey + 'Properties.' + property.capitalize()};
-        CONFIG.DND5E.validProperties.weapon.add(property);
-    }
-    for (const [baseItem, uuid] of Object.entries(constants.firearmBaseItems)) CONFIG.DND5E.weaponIds[baseItem] = 'Compendium.' + uuid;
-});
+Hooks.on('dnd5e.canEnchant', crimsonRiteHooks.canEnchant);
 Hooks.once('setup', () => {
     const validKeys = [...catConstants.triggerTypes, 'rules', 'generic', 'genericConfig', 'documents', 'category'];
     Object.entries(animations).forEach(([identifier, value]) => api.registerAnimation({
@@ -69,7 +61,10 @@ Hooks.once('setup', () => {
             });
         }
     });
-    Object.entries(weaponMasteries).forEach(([mastery, value]) => api.registerMastery({...value, mastery}));
+    if (game.settings.get('chris-premades', 'thirdPartyMasteries')) {
+        delete CONFIG.DND5E.weaponMasteries.strongDraw;
+        Object.entries(weaponMasteries).forEach(([mastery, value]) => api.registerMastery({...value, mastery}));
+    }
 });
 Hooks.once('catReady', () => {
     const ignoredPackIds = [constants.packs.samples.embeddedMacros, constants.packs.misc.automationItems];

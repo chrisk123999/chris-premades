@@ -14,17 +14,19 @@ async function getConfigs(item) {
     const level = classItem?.system.levels ?? 0;
     const canFly = level >= (config.grantFlySpeed || 99);
     const canSwim = level >= (config.grantSwimSpeed ?? 0);
-    if (!forms) return Logging.addMacroWarning('CPR', identifier, 'Could not evaluate wild shape count scale value: ' + config.forms, {notify: 'warn'});
-    if (cr === undefined) return Logging.addMacroWarning('CPR', identifier, 'Could not evaluate wild shape CR scale value: ' + config.cr, {notify: 'warn'});
-    return {...config, canFly, canSwim, cr, forms, packs};
+    if (!forms) return Logging.addMacroWarning('chris-premades', identifier, 'Could not evaluate wild shape count scale value: ' + config.forms, {notify: 'warn'});
+    if (cr === undefined) return Logging.addMacroWarning('chris-premades', identifier, 'Could not evaluate wild shape CR scale value: ' + config.cr, {notify: 'warn'});
+    const options = {...config, canFly, canSwim, cr, forms, packs};
+    await automationUtils.calledEvent('wildShapeOptions', item.actor, {canOverlap: true, data: {actor: item.actor, classLevel: level, options, rules: documentUtils.getRules(item)}});
+    return options;
 }
 async function learnForm({identifier, workflow}) {
     const config = await getConfigs(workflow.item);
     if (!config) return;
     const wildShapeActivity = itemUtils.getActivityByIdentifier(workflow.item, 'change-form');
-    if (!wildShapeActivity) return Logging.addMacroWarning('CPR', identifier, 'Missing wild shape activity: change-form', {notify: 'warn'});
+    if (!wildShapeActivity) return Logging.addMacroWarning('chris-premades', identifier, 'Missing wild shape activity: change-form', {notify: 'warn'});
     const forms = (await Promise.all(wildShapeActivity.profiles.map(p => fromUuid(p.uuid)))).filter(Boolean);
-    if (forms.length > config.forms) return Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.All.WildShape.MaxKnown', {notify: 'warn', format: {count: forms.length, max: config.forms}});
+    if (forms.length > config.forms) return Logging.addMacroWarning('chris-premades', identifier, 'CHRISPREMADES.Macros.All.WildShape.MaxKnown', {notify: 'warn', format: {count: forms.length, max: config.forms}});
     let selected;
     if (forms.length) {
         const addNoneDocument = forms.length < config.forms;
@@ -77,7 +79,7 @@ async function preWildShape({actor, config, document: activity, token}) {
     });
     forms.push(...additionalForms);
     if (!forms.length) {
-        Logging.addMacroWarning('CPR', 'wild-shape', 'CHRISPREMADES.Macros.All.WildShape.NoForms', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'wild-shape', 'CHRISPREMADES.Macros.All.WildShape.NoForms', {notify: 'warn'});
         return true;
     }
     const getTags = data => {
@@ -141,7 +143,7 @@ async function preWildShape({actor, config, document: activity, token}) {
     const usedAdditional = additionalMap.get(choices.shape);
     const rollOptions = {
         config: {transform: {profile: choices.shape}},
-        options: {'chris-premades': {wildShape: true, wildShapeItems: keepItems.map(item => item.uuid)}}
+        options: {'chris-premades': {wildShape: true, wildShapeItems: keepItems.map(item => item.uuid), wildShapeForm: activity.profiles?.find(profile => profile._id === choices.shape)?.uuid ?? choices.shape}}
     };
     if (usedAdditional) {
         for (const source of usedAdditional) {
@@ -163,21 +165,23 @@ async function postWildShape({identifier, workflow}) {
     const newActor = workflow.transformedActors?.[0];
     if (!newActor) return;
     const effectID = workflow.item.effects.contents[0]?.id;
-    if (!effectID) return Logging.addMacroWarning('CPR', identifier, 'Wild Shape effect missing from item.', {notify: 'warn'});
+    if (!effectID) return Logging.addMacroWarning('chris-premades', identifier, 'Wild Shape effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, effectID);
     const keepItems = (workflow.workflowOptions['chris-premades']?.wildShapeItems ?? []).map(uuid => fromUuidSync(uuid, {strict: false})).filter(Boolean);
     const revertFeature = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'wild-shape-revert', {
         translate: 'CHRISPREMADES.Macros.All.WildShape.Revert',
         object: true
     });
-    if (!revertFeature) return Logging.addMacroWarning('CPR', identifier, 'Wild Shape Revert item not found.', {notify: 'warn'});
+    if (!revertFeature) return Logging.addMacroWarning('chris-premades', identifier, 'Wild Shape Revert item not found.', {notify: 'warn'});
     const rules = documentUtils.getRules(workflow.item);
     const classItem = getClassItem(workflow.item);
+    const form = await fromUuid(workflow.workflowOptions['chris-premades']?.wildShapeForm ?? '');
     await automationUtils.calledEvent('wildShape', workflow.actor, {canOverlap: true, data: {
         actor: workflow.actor,
         classIdentifier: classItem?.identifier,
         classLevel: classItem?.system.levels ?? 0,
         effectData,
+        form,
         keepItems,
         newActor,
         rules
@@ -246,9 +250,9 @@ async function wildShapeExpire({document: effect, overflowDamage}) {
 }
 export const wildShape = {
     name: 'Wild Shape',
-    version: '2.1.9',
+    version: '2.1.11',
     rules: 'all',
-    notes: 'Use the "actorWildShape" called event (async) to modify the wild shape active effect and worn items.\n\tData available: actor, classIdentifier, classLevel, newActor, keepItems, effectData, rules.\nUse the "actorWildShapeForms" called event (async) to provide additional actor documents as choices. Return {actor, source}, where source is the granting item and will be rolled if the actor is used.\n\tData available: activity, actor, canFly, canSwim, cr, creatureTypes, packs, rules.',
+    notes: 'Use the "actorWildShapeOptions" called event (async) to change the wild shape options before forms are offered. Mutate data.options: canFly, canSwim, cr, creatureTypes, forms, packs.\n\tData available: actor, classLevel, options, rules.\nUse the "actorWildShape" called event (async) to modify the wild shape active effect and worn items.\n\tData available: actor, classIdentifier, classLevel, form, newActor, keepItems, effectData, rules.\nUse the "actorWildShapeForms" called event (async) to provide additional actor documents as choices. Return {actor, source}, where source is the granting item and will be rolled if the actor is used.\n\tData available: activity, actor, canFly, canSwim, cr, creatureTypes, packs, rules.',
     revert: calledRevert,
     roll: [
         {

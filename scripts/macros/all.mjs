@@ -7,9 +7,9 @@
 /* has no match.                                                            */
 /****************************************************************************/
 
-/*============================*/
-/*          ACTIONS           */
-/*============================*/
+/*===============================*/
+/*            ACTIONS            */
+/*===============================*/
 export {checkCover as 'check-cover'} from './all/actions/checkCover.mjs';
 export {fall} from './all/actions/fall.mjs';
 export {genericActions as 'generic-actions'} from './all/actions/genericActions.mjs';
@@ -21,92 +21,104 @@ export {readyItem as ready, readySpell as 'ready-spell', readySpellHeld as 'read
 export {stabilize, stabilized} from './all/actions/stabilize.mjs';
 export {underwater} from './all/actions/underwater.mjs';
 
-/*============================*/
-/*       CLASS FEATURES       */
-/*============================*/
+/*===============================*/
+/*        CLASS FEATURES         */
+/*===============================*/
 
-/******************************/
-/*         Artificer          */
-/******************************/
-export {arcaneArmor as 'arcane-armor'} from './all/classFeatures/artificer/arcaneArmor.mjs';
-export {armorModel as 'armor-model', perfectedArmor as 'perfected-armor'} from './all/classFeatures/artificer/armorModel.mjs';
+/*********************************/
+/*           Artificer           */
+/*********************************/
 export {flashOfGenius as 'flash-of-genius'} from './all/classFeatures/artificer/flashOfGenius.mjs';
 export {spellStoringItem as 'spell-storing-item'} from './all/classFeatures/artificer/spellStoring.mjs';
-export {steelDefenderDeflectAttack as 'steel-defender-deflect-attack', steelDefenderRepair as 'steel-defender-repair'} from './all/classFeatures/artificer/steelDefender.mjs';
 export {fromPlanCreateArtificerPlan, fromPlanSwapArtificerPlan, infusionPrechecks, swapArtificerPlan, useArtificerPlan} from './all/classFeatures/artificer/useOrSwapPlan.mjs';
 
-/******************************/
-/*         Barbarian          */
-/******************************/
+/*            Armorer            */
+export {arcaneArmor as 'arcane-armor'} from './all/classFeatures/artificer/armorer/arcaneArmor.mjs';
+export {armorModel as 'armor-model', perfectedArmor as 'perfected-armor'} from './all/classFeatures/artificer/armorer/armorModel.mjs';
+
+/*         Battle Smith          */
+export {steelDefenderDeflectAttack as 'steel-defender-deflect-attack', steelDefenderRepair as 'steel-defender-repair'} from './all/classFeatures/artificer/battleSmith/steelDefender.mjs';
+
+/*********************************/
+/*           Barbarian           */
+/*********************************/
 export {indomitableMight as 'indomitable-might'} from './all/classFeatures/barbarian/indomitableMight.mjs';
 export {instinctivePounce as 'instinctive-pounce'} from './all/classFeatures/barbarian/instinctivePounce.mjs';
 export {persistentRage as 'persistent-rage'} from './all/classFeatures/barbarian/persistentRage.mjs';
 export {rage, raging} from './all/classFeatures/barbarian/rage.mjs';
 export {relentlessRage as 'relentless-rage'} from './all/classFeatures/barbarian/relentlessRage.mjs';
 
-/*          Berserker         */
+/*           Berserker           */
 export {mindlessRage as 'mindless-rage'} from './all/classFeatures/barbarian/berserker/mindlessRage.mjs';
 export {retaliation} from './all/classFeatures/barbarian/berserker/retaliation.mjs';
 
-/*           Zealot           */
+/*            Zealot             */
 export {divineFury as 'divine-fury', divineFuryDamage} from './all/classFeatures/barbarian/zealot/divineFury.mjs';
 export {fanaticalFocus as 'fanatical-focus'} from './all/classFeatures/barbarian/zealot/fanaticalFocus.mjs';
 
-/******************************/
-/*            Bard            */
-/******************************/
+/*********************************/
+/*             Bard              */
+/*********************************/
 export {bardicInspiration as 'bardic-inspiration', bardicInspirationEffect} from './all/classFeatures/bard/bardicInspiration.mjs';
 
-/*           Glamour          */
+/*            Glamour            */
 export {mantleOfInspiration as 'mantle-of-inspiration'} from './all/classFeatures/bard/glamour/mantleOfInspiration.mjs';
 export {mantleOfMajesty as 'mantle-of-majesty', mantleOfMajestyCommand, mantleOfMajestyRecover} from './all/classFeatures/bard/glamour/mantleOfMajesty.mjs';
 
-/*            Lore            */
+/*             Lore              */
 export {cuttingWords as 'cutting-words'} from './all/classFeatures/bard/lore/cuttingWords.mjs';
 
-/*            Valor           */
+/*             Valor             */
 export {battleMagic as 'battle-magic'} from './all/classFeatures/bard/valor/battleMagic.mjs';
 export {combatInspiration as 'combat-inspiration', combatInspirationEffect} from './all/classFeatures/bard/valor/combatInspiration.mjs';
 
-/******************************/
-/*           Cleric           */
-/******************************/
+/*********************************/
+/*            Cleric             */
+/*********************************/
 
-/*           Grave            */
+/*             Grave             */
 export {circleOfMortality as 'circle-of-mortality'} from './all/classFeatures/cleric/grave/circleOfMortality.mjs';
 export {keeperOfSouls as 'keeper-of-souls'} from './all/classFeatures/cleric/grave/keeperOfSouls.mjs';
 export {sentinelAtDeathsDoor as 'sentinel-at-deaths-door'} from './all/classFeatures/cleric/grave/sentinelAtDeathsDoor.mjs';
 
-/*            Life            */
+/*             Life              */
 export {blessedHealer as 'blessed-healer'} from './all/classFeatures/cleric/life/blessedHealer.mjs';
 export {preserveLife as 'channel-divinity-preserve-life', preserveLife as 'preserve-life'} from './all/classFeatures/cleric/life/preserveLife.mjs';
 export {supremeHealing as 'supreme-healing'} from './all/classFeatures/cleric/life/supremeHealing.mjs';
 
-/*            Light           */
+/*             Light             */
 export {coronaOfLight as 'corona-of-light'} from './all/classFeatures/cleric/light/coronaOfLight.mjs';
 export {radianceOfTheDawn as 'channel-divinity-radiance-of-the-dawn', radianceOfTheDawn as 'radiance-of-the-dawn'} from './all/classFeatures/cleric/light/radianceOfTheDawn.mjs';
 export {wardingFlare as 'warding-flare'} from './all/classFeatures/cleric/light/wardingFlare.mjs';
 
-/*           Trickery         */
+/*           Trickery            */
 export {blessingOfTheTrickster as 'blessing-of-the-trickster'} from './all/classFeatures/cleric/trickery/blessingOfTheTrickster.mjs';
 export {invokeDuplicity, invokeDuplicityDistraction, invokeDuplicitySpell} from './all/classFeatures/cleric/trickery/invokeDuplicity.mjs';
 
-/*             War            */
+/*              War              */
 export {warGodsBlessing as 'channel-divinity-war-gods-blessing', warGodsBlessing as 'guided-strike'} from './all/classFeatures/cleric/war/warGodsBlessing.mjs';
 export {warPriest as 'war-priest'} from './all/classFeatures/cleric/war/warPriest.mjs';
 
-/******************************/
-/*           Druid            */
-/******************************/
+/*********************************/
+/*             Druid             */
+/*********************************/
 export {beastSpells as 'beast-spells'} from './all/classFeatures/druid/beastSpells.mjs';
 export {wildShape as 'wild-shape', wildShapeChooseForms, wildShapeRevert} from './all/classFeatures/druid/wildShape.mjs';
 
-/******************************/
-/*          Fighter           */
-/******************************/
+/*             Moon              */
+export {circleForms as 'circle-forms'} from './all/classFeatures/druid/moon/circleForms.mjs';
+
+/*             Stars             */
+export {cosmicOmen as 'cosmic-omen', cosmicOmenActive as 'cosmic-omen-active'} from './all/classFeatures/druid/stars/cosmicOmen.mjs';
+export {starMap as 'star-map'} from './all/classFeatures/druid/stars/starMap.mjs';
+export {starryForm as 'starry-form', starryFormActive as 'starry-form-active'} from './all/classFeatures/druid/stars/starryForm.mjs';
+
+/*********************************/
+/*            Fighter            */
+/*********************************/
 export {indomitable} from './all/classFeatures/fighter/indomitable.mjs';
 
-/*       Battle Master        */
+/*         Battle Master         */
 export {ambush as 'maneuvers-ambush'} from './all/classFeatures/fighter/battleMaster/ambush.mjs';
 export {baitAndSwitch as 'maneuvers-bait-and-switch'} from './all/classFeatures/fighter/battleMaster/baitAndSwitch.mjs';
 export {commandersStrike as 'maneuvers-commanders-strike'} from './all/classFeatures/fighter/battleMaster/commandersStrike.mjs';
@@ -115,47 +127,47 @@ export {brace as 'maneuvers-brace', riposte as 'maneuvers-riposte'} from './all/
 export {superiorityDice as 'superiority-dice'} from './all/classFeatures/fighter/battleMaster/superiorityDice.mjs';
 export {sweepingAttack as 'maneuvers-sweeping-attack'} from './all/classFeatures/fighter/battleMaster/sweepingAttack.mjs';
 
-/******************************/
-/*            Monk            */
-/******************************/
+/*********************************/
+/*             Monk              */
+/*********************************/
 export {stepOfTheWindJump} from './all/classFeatures/monk/flurryOfBlows.mjs';
 export {slowFall as 'slow-fall'} from './all/classFeatures/monk/slowFall.mjs';
 
-/******************************/
-/*          Paladin           */
-/******************************/
+/*********************************/
+/*            Paladin            */
+/*********************************/
 export {layOnHands as 'lay-on-hands'} from './all/classFeatures/paladin/layOnHands.mjs';
 
-/******************************/
-/*           Ranger           */
-/******************************/
+/*********************************/
+/*            Ranger             */
+/*********************************/
 
-/*        Fey Wanderer        */
+/*         Fey Wanderer          */
 export {beguilingTwist as 'beguiling-twist'} from './all/classFeatures/ranger/feyWanderer/beguilingTwist.mjs';
 export {dreadfulStrikes as 'dreadful-strikes'} from './all/classFeatures/ranger/feyWanderer/dreadfulStrikes.mjs';
 
-/*       Gloom Stalker        */
+/*         Gloom Stalker         */
 export {umbralSight as 'umbral-sight'} from './all/classFeatures/ranger/gloomStalker/umbralSight.mjs';
 
-/******************************/
-/*           Rogue            */
-/******************************/
+/*********************************/
+/*             Rogue             */
+/*********************************/
 export {sneakAttack as 'sneak-attack'} from './all/classFeatures/rogue/sneakAttack.mjs';
 export {steadyAim as 'steady-aim'} from './all/classFeatures/rogue/steadyAim.mjs';
 
-/*         Soulknife          */
+/*           Soulknife           */
 export {psychicBlades as 'psychic-blades'} from './all/classFeatures/rogue/soulknife/psychicBlades.mjs';
 
-/******************************/
-/*          Warlock           */
-/******************************/
+/*********************************/
+/*            Warlock            */
+/*********************************/
 
-/*    Eldritch Invocations    */
+/*     Eldritch Invocations      */
 export {oneWithShadows as 'one-with-shadows'} from './all/classFeatures/warlock/invocations/oneWithShadows.mjs';
 
-/*============================*/
-/*         EQUIPMENT          */
-/*============================*/
+/*===============================*/
+/*           EQUIPMENT           */
+/*===============================*/
 export {arcaneGrimoire as 'arcane-grimoire-1', arcaneGrimoire as 'arcane-grimoire-2', arcaneGrimoire as 'arcane-grimoire-3'} from './all/equipment/arcaneGrimoire.mjs';
 export {blackrazor as 'blackrazor', blackrazorDevoured as 'blackrazor-devoured'} from './all/equipment/blackrazor.mjs';
 export {capOfWaterBreathing as 'cap-of-water-breathing'} from './all/equipment/capOfWaterBreathing.mjs';
@@ -187,9 +199,9 @@ export {spellRefuelingRing as 'spell-refueling-ring'} from './all/equipment/spel
 export {thunderbuss as 'thunderbuss'} from './all/equipment/thunderbuss.mjs';
 export {wingsOfFlying as 'wings-of-flying', wingsOfFlyingRecharge as 'wings-of-flying-recharge'} from './all/equipment/wingsOfFlying.mjs';
 
-/*============================*/
-/*           FEATS            */
-/*============================*/
+/*===============================*/
+/*             FEATS             */
+/*===============================*/
 export {crusher} from './all/feats/crusher.mjs';
 export {heavyArmorMaster as 'heavy-armor-master'} from './all/feats/heavyArmorMaster.mjs';
 export {piercer} from './all/feats/piercer.mjs';
@@ -197,27 +209,27 @@ export {preciseStrike as 'precise-strike'} from './all/feats/preciseStrike.mjs';
 export {savageAttacker as 'savage-attacker'} from './all/feats/savageAttacker.mjs';
 export {tavernBrawler as 'tavern-brawler'} from './all/feats/tavernBrawler.mjs';
 
-/*============================*/
-/*      FIGHTING STYLES       */
-/*============================*/
+/*===============================*/
+/*        FIGHTING STYLES        */
+/*===============================*/
 export {dueling, dueling as 'fighting-style-dueling'} from './all/fightingStyles/dueling.mjs';
 export {greatWeaponFighting as 'fighting-style-great-weapon-fighting', greatWeaponFighting as 'great-weapon-fighting'} from './all/fightingStyles/greatWeaponFighting.mjs';
 export {interception as 'fighting-style-interception', interception} from './all/fightingStyles/interception.mjs';
 export {protection} from './all/fightingStyles/protection.mjs';
 export {unarmedFighting} from './all/fightingStyles/unarmedFighting.mjs';
 
-/*============================*/
-/*      SPECIES FEATURES      */
-/*============================*/
+/*===============================*/
+/*       SPECIES FEATURES        */
+/*===============================*/
 
-/******************************/
-/*          Plasmoid          */
-/******************************/
+/*********************************/
+/*           Plasmoid            */
+/*********************************/
 export {amorphous} from './all/speciesFeatures/plasmoid/amorphous.mjs';
 
-/*============================*/
-/*           SPELLS           */
-/*============================*/
+/*===============================*/
+/*            SPELLS             */
+/*===============================*/
 export {acidArrow as 'acid-arrow'} from './all/spells/acidArrow.mjs';
 export {animateDead as 'animate-dead', animateDeadEffectDeleted as 'animate-dead-effect-deleted', animateDeadPlace as 'animate-dead-place', animateDeadReassert as 'animate-dead-reassert', animateDeadRecall as 'animate-dead-recall', animateDeadSummon as 'animate-dead-summon'} from './all/spells/animateDead.mjs';
 export {armsOfHadar as 'arms-of-hadar'} from './all/spells/armsOfHadar.mjs';

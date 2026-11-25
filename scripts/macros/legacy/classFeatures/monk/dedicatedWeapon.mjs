@@ -14,7 +14,7 @@ async function use({document: activity}) {
             tags[w.id] = _loc('CHRISPREMADES.Macros.Legacy.DedicatedWeapon.Current');
         return true;
     });
-    if (!items.length) return Logging.addMacroWarning('CPR', 'dedicated-weapon', 'CHRISPREMADES.Macros.Legacy.DedicatedWeapon.NoValid', {notify: 'info'});
+    if (!items.length) return Logging.addMacroWarning('chris-premades', 'dedicated-weapon', 'CHRISPREMADES.Macros.Legacy.DedicatedWeapon.NoValid', {notify: 'info'});
     const choice = await dialogUtils.selectDocumentDialog(activity.item.name, '', items, {displayTooltips: true, addNoneDocument: true, tags});
     if (!choice) return;
     const enchantData = activity.item.effects.contents[0]?.toObject();

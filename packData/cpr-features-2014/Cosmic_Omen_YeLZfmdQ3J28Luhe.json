@@ -1,0 +1,591 @@
+{
+  "_id": "YeLZfmdQ3J28Luhe",
+  "name": "Cosmic Omen",
+  "type": "feat",
+  "img": "icons/magic/nature/leaf-glow-green.webp",
+  "folder": "O3xlLnkYDEx40i1F",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "@prof",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "cosmic-omen",
+    "activities": {
+      "a4zz7Wy6hU4NaUHe": {
+        "_id": "a4zz7Wy6hU4NaUHe",
+        "type": "utility",
+        "name": "Cosmic Omen",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "activityUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "1",
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "omen",
+        "midiProperties": {
+          "identifier": "omen",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {},
+        "roll": {
+          "formula": "1d6",
+          "name": "Cosmic Omen",
+          "prompt": false,
+          "visible": false
+        }
+      },
+      "y40rMwuxsKLvEHpm": {
+        "_id": "y40rMwuxsKLvEHpm",
+        "type": "utility",
+        "name": "Weal",
+        "sort": 1,
+        "img": "",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "weal",
+        "midiProperties": {
+          "identifier": "weal",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        },
+        "useConditionText": "false"
+      },
+      "EhR5he7UcHayAkhB": {
+        "_id": "EhR5he7UcHayAkhB",
+        "type": "utility",
+        "name": "Woe",
+        "sort": 2,
+        "img": "",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "30"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "woe",
+        "midiProperties": {
+          "identifier": "woe",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        },
+        "useConditionText": "false"
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "SRlnq86MDehOzfTq",
+      "name": "Cosmic Omen: Weal",
+      "img": "icons/magic/light/explosion-star-glow-yellow.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [
+            "longRest"
+          ]
+        },
+        "cat": {
+          "identifier": "cosmicOmenWeal",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "attackBonus",
+                "rules": "all"
+              }
+            ],
+            "check": [
+              {
+                "source": "chris-premades",
+                "identifier": "checkBonus",
+                "rules": "all"
+              }
+            ],
+            "save": [
+              {
+                "source": "chris-premades",
+                "identifier": "saveBonus",
+                "rules": "all"
+              }
+            ],
+            "skill": [
+              {
+                "source": "chris-premades",
+                "identifier": "skillBonus",
+                "rules": "all"
+              }
+            ],
+            "tool": [
+              {
+                "source": "chris-premades",
+                "identifier": "toolBonus",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "identifier": "cosmic-omen-active",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "attackBonus": {
+                "bonus": "1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "y40rMwuxsKLvEHpm",
+                "includeOwner": true
+              },
+              "checkBonus": {
+                "bonus": "1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "y40rMwuxsKLvEHpm",
+                "includeOwner": true
+              },
+              "saveBonus": {
+                "bonus": "1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "y40rMwuxsKLvEHpm",
+                "includeOwner": true
+              },
+              "skillBonus": {
+                "bonus": "1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "y40rMwuxsKLvEHpm",
+                "includeOwner": true
+              },
+              "toolBonus": {
+                "bonus": "1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "y40rMwuxsKLvEHpm",
+                "includeOwner": true
+              }
+            }
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!YeLZfmdQ3J28Luhe.SRlnq86MDehOzfTq"
+    },
+    {
+      "_id": "xPvin0S310rrzzOf",
+      "name": "Cosmic Omen: Woe",
+      "img": "icons/magic/unholy/orb-glowing-purple.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": [
+            "longRest"
+          ]
+        },
+        "cat": {
+          "identifier": "cosmicOmenWoe",
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "attackBonus",
+                "rules": "all"
+              }
+            ],
+            "check": [
+              {
+                "source": "chris-premades",
+                "identifier": "checkBonus",
+                "rules": "all"
+              }
+            ],
+            "save": [
+              {
+                "source": "chris-premades",
+                "identifier": "saveBonus",
+                "rules": "all"
+              }
+            ],
+            "skill": [
+              {
+                "source": "chris-premades",
+                "identifier": "skillBonus",
+                "rules": "all"
+              }
+            ],
+            "tool": [
+              {
+                "source": "chris-premades",
+                "identifier": "toolBonus",
+                "rules": "all"
+              }
+            ],
+            "combat": [
+              {
+                "source": "chris-premades",
+                "identifier": "cosmic-omen-active",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "attackBonus": {
+                "bonus": "-1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "EhR5he7UcHayAkhB",
+                "includeOwner": true
+              },
+              "checkBonus": {
+                "bonus": "-1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "EhR5he7UcHayAkhB",
+                "includeOwner": true
+              },
+              "saveBonus": {
+                "bonus": "-1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "EhR5he7UcHayAkhB",
+                "includeOwner": true
+              },
+              "skillBonus": {
+                "bonus": "-1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "EhR5he7UcHayAkhB",
+                "includeOwner": true
+              },
+              "toolBonus": {
+                "bonus": "-1d6",
+                "range": 30,
+                "disposition": "any",
+                "phase": "preRoll",
+                "useActivityCosts": true,
+                "rollActivity": "EhR5he7UcHayAkhB",
+                "includeOwner": true
+              }
+            }
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!YeLZfmdQ3J28Luhe.xPvin0S310rrzzOf"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "cosmic-omen",
+            "rules": "all"
+          }
+        ],
+        "rest": [
+          {
+            "source": "chris-premades",
+            "identifier": "cosmic-omen",
+            "rules": "all"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!YeLZfmdQ3J28Luhe"
+}

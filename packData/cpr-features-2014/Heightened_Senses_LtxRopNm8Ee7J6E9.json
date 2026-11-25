@@ -1,0 +1,89 @@
+{
+  "_id": "LtxRopNm8Ee7J6E9",
+  "name": "Heightened Senses",
+  "type": "feat",
+  "img": "icons/creatures/eyes/human-single-blue.webp",
+  "folder": "7zFAgiPBWbBQ5Enj",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "heightened-senses",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "check": [
+          {
+            "source": "chris-premades",
+            "identifier": "contextAdvantage",
+            "rules": "all"
+          }
+        ],
+        "save": [
+          {
+            "source": "chris-premades",
+            "identifier": "contextAdvantage",
+            "rules": "all"
+          }
+        ],
+        "skill": [
+          {
+            "source": "chris-premades",
+            "identifier": "contextAdvantage",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "contextAdvantage": {
+            "skill": [
+              "prc"
+            ],
+            "label": "CHRISPREMADES.Macros.Legacy.BloodHunter.HeightenedSenses"
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!LtxRopNm8Ee7J6E9"
+}

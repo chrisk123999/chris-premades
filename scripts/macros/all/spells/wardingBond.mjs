@@ -8,12 +8,12 @@ async function endExistingBonds(actor) {
 }
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'warding-bond') return;
-    if (!workflow.token) return Logging.addMacroWarning('CPR', 'warding-bond', 'CHRISPREMADES.Macros.All.WardingBond.NoToken', {notify: true});
+    if (!workflow.token) return Logging.addMacroWarning('chris-premades', 'warding-bond', 'CHRISPREMADES.Macros.All.WardingBond.NoToken', {notify: true});
     const targets = workflow.targets.documents.filter(token => token.actor && token.uuid !== workflow.tokenDocument.uuid);
-    if (!targets.length) return Logging.addMacroWarning('CPR', 'warding-bond', 'No target selected.');
+    if (!targets.length) return Logging.addMacroWarning('chris-premades', 'warding-bond', 'No target selected.');
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'wardingBondSource');
     const targetEffect = documentUtils.getEffectByIdentifier(document, 'wardingBondTarget');
-    if (!sourceEffect || !targetEffect) return Logging.addMacroWarning('CPR', 'warding-bond', 'Warding Bond effects missing from item.', {notify: 'warn'});
+    if (!sourceEffect || !targetEffect) return Logging.addMacroWarning('chris-premades', 'warding-bond', 'Warding Bond effects missing from item.', {notify: 'warn'});
     const maxDistance = automationUtils.getConfigValue(document, 'maxDistance');
     for (const target of targets) await endExistingBonds(target.actor);
     const sourceEffectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {activityUuid: workflow.activity.uuid});
@@ -27,7 +27,7 @@ async function use({document, workflow}) {
 async function dismiss({workflow}) {
     if (workflow.activity.identifier !== 'dismiss') return;
     const effects = documentUtils.getEffectByIdentifier(workflow.actor, 'wardingBondSource', {multiple: true}) ?? [];
-    if (!effects.length) return Logging.addMacroWarning('CPR', 'warding-bond', 'No active Warding Bond to dismiss.');
+    if (!effects.length) return Logging.addMacroWarning('chris-premades', 'warding-bond', 'No active Warding Bond to dismiss.');
     await documentUtils.deleteEmbeddedDocuments(workflow.actor, 'ActiveEffect', effects.map(effect => effect.id));
 }
 async function damaged({document: effect, ditem}) {
@@ -37,7 +37,7 @@ async function damaged({document: effect, ditem}) {
     if (!casterToken?.actor) return;
     const item = effectUtils.getOriginActivitySync(effect)?.item;
     const activity = item ? itemUtils.getActivityByIdentifier(item, 'damage') : undefined;
-    if (!activity) return Logging.addMacroWarning('CPR', 'warding-bond', 'Damage activity missing from item.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'warding-bond', 'Damage activity missing from item.', {notify: 'warn'});
     const activityData = activityUtils.getDamageModifiedActivityData(activity, String(damage));
     await workflowUtils.syntheticActivityDataRoll(activityData, item, [casterToken]);
 }

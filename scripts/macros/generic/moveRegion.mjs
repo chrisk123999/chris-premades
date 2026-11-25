@@ -33,12 +33,12 @@ async function use({document, workflow}) {
     const sourceActivity = workflow.item.system.activities.get(config.sourceActivityId);
     if (!sourceActivity) {
         await documentUtils.deleteDocument(newRegion);
-        return Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.Generic.MoveRegion.NoSourceActivity', {notify: 'warn'});
+        return Logging.addMacroWarning('chris-premades', identifier, 'CHRISPREMADES.Macros.Generic.MoveRegion.NoSourceActivity', {notify: 'warn'});
     }
     const region = getPlacedRegion(sourceActivity, newRegion.parent);
     if (!region) {
         await documentUtils.deleteDocument(newRegion);
-        return Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.Generic.MoveRegion.NoRegion');
+        return Logging.addMacroWarning('chris-premades', identifier, 'CHRISPREMADES.Macros.Generic.MoveRegion.NoRegion');
     }
     if (config.maxRange) {
         const oldArea = regionUtils.getArea(region);
@@ -46,7 +46,7 @@ async function use({document, workflow}) {
         const distance = distanceUtils.measureDistance(region.parent, [oldArea, newArea]);
         if (!distanceUtils.isWithinRange(region.parent, distance, config.maxRange)) {
             await documentUtils.deleteDocument(newRegion);
-            return Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.Generic.MoveRegion.TooFar', {notify: true, format: {maxRange: config.maxRange}});
+            return Logging.addMacroWarning('chris-premades', identifier, 'CHRISPREMADES.Macros.Generic.MoveRegion.TooFar', {notify: true, format: {maxRange: config.maxRange}});
         }
     }
     const {shapes, elevation, levels} = newRegion.toObject();

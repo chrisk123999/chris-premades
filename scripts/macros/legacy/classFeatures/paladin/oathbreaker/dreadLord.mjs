@@ -2,7 +2,7 @@ import {documentUtils, effectUtils, Logging, tokenUtils} from '../../../../../pr
 async function use({document, workflow}) {
     if (workflow.activity.identifier !== 'dread-lord') return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'dreadLord');
-    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'dread-lord', 'Dread Lord effect missing from item.', {notify: 'warn'});
+    if (!sourceEffect) return Logging.addMacroWarning('chris-premades', 'dread-lord', 'Dread Lord effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {activityUuid: workflow.activity.uuid});
     effectUtils.pushImageChanges(effectData, document);
     const effect = (await effectUtils.createEffects(workflow.actor, [effectData]))?.[0];

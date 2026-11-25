@@ -4,7 +4,7 @@ async function use(activity, token, event) {
     if (!config.events.includes(event)) return;
     if (event === 'long' && config.events.includes('short')) return;
     if (['turnStart', 'turnEnd'].includes(event) && activity.actor.statuses.has('incapacitated')) return;
-    if (!activityUtils.checkCosts(activity)) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'CHRISPREMADES.Macros.Generic.Common.NotEnoughUses');
+    if (!activityUtils.checkCosts(activity)) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'CHRISPREMADES.Macros.Generic.Common.NotEnoughUses');
     const pools = activityUtils.getRecoveryPools(activity).filter(({document}) => document.documentName === 'Item').map(({document}) => document);
     if (config.poolCondition === 'empty' && !(pools.length && pools.every(pool => !pool.system.uses.value))) return;
     if (config.poolCondition === 'notFull' && !pools.some(pool => pool.system.uses.spent)) return;

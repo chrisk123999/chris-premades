@@ -25,6 +25,18 @@ const settings = {
         }
     },
     genericActionsItem: {menu: 'mechanics', type: Boolean, default: true},
+    firearms: {
+        menu: 'mechanics',
+        type: String,
+        default: 'off',
+        choices: {
+            off: 'CHRISPREMADES.Settings.Firearms.Off',
+            firstParty: 'CHRISPREMADES.Settings.Firearms.FirstParty',
+            thirdParty: 'CHRISPREMADES.Settings.Firearms.ThirdParty'
+        },
+        requiresReload: true
+    },
+    thirdPartyMasteries: {menu: 'mechanics', type: Boolean, default: false, requiresReload: true},
     healingSurge: {menu: 'mechanics', type: Boolean, default: false},
     bg3WeaponActions: {type: Boolean, default: false},
     bg3WeaponActionUses: {type: Number, default: 1},

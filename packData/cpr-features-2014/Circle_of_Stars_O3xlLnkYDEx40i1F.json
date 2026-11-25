@@ -1,0 +1,16 @@
+{
+  "_id": "O3xlLnkYDEx40i1F",
+  "name": "Circle of Stars",
+  "type": "Item",
+  "folder": "HPNohpxDJVTcZMqJ",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!O3xlLnkYDEx40i1F"
+}

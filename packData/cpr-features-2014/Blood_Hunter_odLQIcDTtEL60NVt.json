@@ -1,0 +1,16 @@
+{
+  "_id": "odLQIcDTtEL60NVt",
+  "name": "Blood Hunter",
+  "type": "Item",
+  "folder": "vbEPQf2ITgXEhWsP",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!odLQIcDTtEL60NVt"
+}

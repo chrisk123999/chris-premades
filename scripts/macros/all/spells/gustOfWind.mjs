@@ -8,7 +8,7 @@ async function early({workflow}) {
     if (workflow.activity.identifier !== 'gust-of-wind-push' || !workflow.token) return;
     if (!workflow.targets.has(workflow.token)) return;
     if (workflow.targets.count === 1) {
-        Logging.addMacroWarning('CPR', 'gust-of-wind', 'CHRISPREMADES.Macros.All.GustOfWind.SkipCaster');
+        Logging.addMacroWarning('chris-premades', 'gust-of-wind', 'CHRISPREMADES.Macros.All.GustOfWind.SkipCaster');
         return true;
     }
     await workflowUtils.removeTargets(workflow, [workflow.tokenDocument]);
@@ -17,7 +17,7 @@ async function push(item, workflow, region) {
     const tokens = workflow.failedSaves.tokens.filter(token => token !== workflow.token && token.actor);
     if (!tokens.length) return;
     const shape = region?.shapes[0];
-    if (!shape) return Logging.addMacroWarning('CPR', 'gust-of-wind', 'CHRISPREMADES.Macros.All.GustOfWind.NoRegion');
+    if (!shape) return Logging.addMacroWarning('chris-premades', 'gust-of-wind', 'CHRISPREMADES.Macros.All.GustOfWind.NoRegion');
     const ray = foundry.canvas.geometry.Ray.fromAngle(0, 0, Math.toRadians(shape.rotation), 1);
     const distance = Number(automationUtils.getConfigValue(item, 'distance'));
     if (!distance) return;
@@ -29,7 +29,7 @@ async function use({document, workflow}) {
         const region = workflow.template;
         if (!region || !workflow.token) {
             await effectUtils.endConcentration(workflow.actor, workflow.item);
-            Logging.addMacroWarning('CPR', 'gust-of-wind', 'CHRISPREMADES.Macros.All.GustOfWind.NoRegion');
+            Logging.addMacroWarning('chris-premades', 'gust-of-wind', 'CHRISPREMADES.Macros.All.GustOfWind.NoRegion');
             return;
         }
         const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');

@@ -35,7 +35,7 @@
         "_id": "dnd5eactivity000",
         "type": "summon",
         "activation": {
-          "type": "special",
+          "type": "action",
           "value": 1,
           "condition": "",
           "override": false
@@ -607,7 +607,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.10"
+        "version": "2.1.11"
       },
       "macros": {
         "move": [
@@ -622,6 +622,13 @@
             "source": "cat",
             "rules": "all",
             "identifier": "summon"
+          }
+        ],
+        "effect": [
+          {
+            "source": "chris-premades",
+            "identifier": "summon-wildfire-spirit",
+            "rules": "2014"
           }
         ]
       },
@@ -660,7 +667,8 @@
                     "name": "CHRISPREMADES.Macros.Legacy.DrakeCompanion.Dodge",
                     "identifier": "wildfire-spirit-dodge"
                   }
-                ]
+                ],
+                "dismissAtZero": true
               }
             ],
             "controlActivityId": "wUkNiHWwAXZH0uW8"

@@ -3,7 +3,7 @@ function getSummons(activity, config) {
     return config.summonIdentifier ? summonUtils.getSummonsByIdentifier(config.summonIdentifier, {actor: activity.actor}) : summonUtils.getSummonsBySource(activity.item);
 }
 function warn(key) {
-    Logging.addMacroWarning('CPR', 'touchDelivery', 'CHRISPREMADES.Macros.Generic.TouchDelivery.' + key, {notify: 'info'});
+    Logging.addMacroWarning('chris-premades', 'touchDelivery', 'CHRISPREMADES.Macros.Generic.TouchDelivery.' + key, {notify: 'info'});
 }
 async function prepare({document: activity, workflow}) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'touchDelivery', configKeys);

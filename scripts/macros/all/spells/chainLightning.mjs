@@ -4,7 +4,7 @@ async function leap({document: item, workflow, castData}) {
     const primary = workflow.targets.tokens[0]?.document;
     if (!primary) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'chain-lightning-leap');
-    if (!activity) return Logging.addMacroWarning('CPR', 'chain-lightning', 'Leap activity missing from item.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'chain-lightning', 'Leap activity missing from item.', {notify: 'warn'});
     const maxTargets = Math.max(castData.castLevel - 3, 0);
     const excluded = new Set([workflow.token?.document.id, ...workflow.targets.documents.map(token => token.id)]);
     const anyCreature = automationUtils.getConfigValue(item, 'anyCreature');

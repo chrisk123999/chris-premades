@@ -15,7 +15,7 @@ async function attack({document: item, workflow}) {
 async function damage({document: item, workflow}) {
     if (!workflowUtils.getWorkflowProperty(workflow, 'preciseStrike') || !workflow.hitTargets.count) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'precise-strike');
-    if (!activity) return Logging.addMacroWarning('CPR', 'precise-strike', 'Missing the precise-strike activity.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'precise-strike', 'Missing the precise-strike activity.', {notify: 'warn'});
     const formula = automationUtils.getConfigValue(item, 'formula');
     const type = workflow.damageRolls[0]?.options.type ?? workflow.defaultDamageType;
     return new DamageBonus(item, {formula, optional: false, type, maxTargets: 1})
