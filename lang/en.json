@@ -2902,6 +2902,7 @@
                 "CombatMasteryLies": {
                     "Select": "Choose the melee weapon type that uses Charisma."
                 },
+                "DampenElements": "Use {feature} for {type} damage on {target}?",
                 "DispatersSupremacy": {
                     "CriticalRange": "Critical Range Increase"
                 },

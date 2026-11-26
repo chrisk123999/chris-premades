@@ -139,6 +139,9 @@ export {blessingOfTheForge as 'blessing-of-the-forge'} from './legacy/classFeatu
 /*             Grave             */
 export {pathToTheGrave as 'channel-divinity-path-to-the-grave'} from './legacy/classFeatures/cleric/grave/pathToTheGrave.mjs';
 
+/*             Nature            */
+export {dampenElements as 'dampen-elements'} from './legacy/classFeatures/cleric/nature/dampenElements.mjs';
+
 /*********************************/
 /*             Druid             */
 /*********************************/
