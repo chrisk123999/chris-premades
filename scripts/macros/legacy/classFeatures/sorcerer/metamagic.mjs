@@ -127,7 +127,7 @@ async function attackSeeking({document, workflow}) {
     const selection = await dialogUtils.confirmUseForRollTotal(document, workflow.item.name, workflow.attackRoll.total);
     if (!selection) return;
     await workflowUtils.completeActivityUse(activity, []);
-    const [newRoll] = await workflow.activity.rollAttack({}, {}, {create: false});
+    const newRoll = await workflow.attackRoll.reroll();
     if (newRoll) await workflow.setAttackRoll(newRoll);
 }
 async function useSubtle({document, workflow}) {

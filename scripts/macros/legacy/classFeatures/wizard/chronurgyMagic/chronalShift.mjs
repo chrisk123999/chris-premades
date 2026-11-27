@@ -68,7 +68,7 @@ async function selfAttack({document: item, workflow}) {
     if (!selection) return;
     const selfToken = actorUtils.getFirstToken(item.actor);
     await workflowUtils.syntheticItemRoll(item, selfToken ? [selfToken] : []);
-    const [newRoll] = await workflow.activity.rollAttack({}, {}, {create: false});
+    const newRoll = await workflow.attackRoll.reroll();
     if (newRoll) await workflow.setAttackRoll(newRoll);
 }
 async function thirdPartyAttack({document: item, workflow}) {
@@ -88,7 +88,7 @@ async function thirdPartyAttack({document: item, workflow}) {
         const selection = await dialogUtils.queuedConfirmDialog(target.actor.name + ': ' + feature.name, _loc('CHRISPREMADES.Macros.Legacy.ChronalShift.UseRollTotalBy', {itemName: feature.name, rollTotal: workflow.attackRoll.total, name: token.name}), {userId});
         if (!selection) continue;
         await workflowUtils.syntheticItemRoll(feature, [token], {userId});
-        const [newRoll] = await workflow.activity.rollAttack({}, {}, {create: false});
+        const newRoll = await workflow.attackRoll.reroll();
         if (newRoll) {
             await workflow.setAttackRoll(newRoll);
             break;

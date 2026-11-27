@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, documentUtils, effectUtils, genericUtils, queryUtils, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
+import {actorUtils, dialogUtils, documentUtils, effectUtils, genericUtils, itemUtils, queryUtils, summonUtils, tokenUtils, workflowUtils} from '../../../../../proxy.mjs';
 const translations = 'CHRISPREMADES.Macros.Legacy.ManifestEcho.';
 function getEchoes(actor) {
     const item = actorUtils.getItemByIdentifier(actor, 'manifest-echo');
@@ -29,11 +29,11 @@ async function swap({workflow}) {
     const echo = await pickEcho(workflow);
     if (echo && workflow.token) await tokenUtils.swapTokens(workflow.token.document, echo);
 }
-export async function attackFromEcho({workflow}) {
+export async function attackFromEcho({workflow}, meleeOnly = false) {
     if (!workflow.targets.count) return;
     const echo = await pickEcho(workflow);
     if (!echo) return;
-    const weapons = workflow.actor.items.filter(item => item.hasAttack && (item.type !== 'weapon' || item.system.equipped));
+    const weapons = workflow.actor.items.filter(item => item.hasAttack && (item.type !== 'weapon' || item.system.equipped) && (!meleeOnly || item.system.activities.some(activity => activity.type === 'attack' && activity.attack?.type?.value === 'melee')));
     if (!weapons.length) {
         genericUtils.notify(translations + 'NoWeapons', {type: 'info'});
         return;
@@ -46,21 +46,25 @@ export async function attackFromEcho({workflow}) {
         origin: workflow.item.uuid,
         system: {changes: [{key: 'flags.midi-qol.rangeOverride.attack.all', type: 'custom', value: '1', priority: 20}]}
     };
-    const effects = (await effectUtils.createEffects(workflow.actor, [effectData])) ?? [];
+    const effects = (await Promise.all([workflow.actor, echo.actor].filter(Boolean).map(actor => effectUtils.createEffects(actor, [effectData])))).flat().filter(Boolean);
     try {
         await workflowUtils.syntheticItemRoll(weapon, workflow.targets.documents);
     } finally {
         await Promise.all(effects.map(effect => documentUtils.deleteDocument(effect)));
     }
+    return true;
+}
+async function unleash(args) {
+    if (!await attackFromEcho(args, true)) await workflowUtils.refundUse(args.workflow);
 }
 async function dismiss({workflow}) {
     await Promise.all(getEchoes(workflow.actor).map(echo => summonUtils.deleteSummon(echo)));
 }
 async function use({workflow}) {
     switch (workflow.activity.identifier) {
-        case 'teleport': return await swap({workflow});
-        case 'attack': return await attackFromEcho({workflow});
-        case 'dismiss': return await dismiss({workflow});
+        case 'teleport': await swap({workflow}); break;
+        case 'attack': await attackFromEcho({workflow}); break;
+        case 'dismiss': await dismiss({workflow}); break;
     }
 }
 async function turnEnd({document, token}) {
@@ -79,10 +83,33 @@ async function destroyed({document, summon}) {
     if (!await dialogUtils.confirmUseItem(reclaim, {userId: queryUtils.firstOwner(owner, true)})) return;
     await workflowUtils.completeItemUse(reclaim);
 }
-async function legion({document}) {
-    const unleash = actorUtils.getItemByIdentifier(document.actor, 'unleash-incarnation');
-    if (!unleash || unleash.system.uses.value) return;
-    await documentUtils.update(unleash, {'system.uses.spent': unleash.system.uses.spent - 1});
+function freeSpace(echo, target) {
+    const size = target.parent.grid.size;
+    for (let dx = -echo.width; dx <= target.width; dx++) {
+        for (let dy = -echo.height; dy <= target.height; dy++) {
+            const position = {x: target.x + dx * size, y: target.y + dy * size};
+            if (dx > -echo.width && dx < target.width && dy > -echo.height && dy < target.height) continue;
+            if (!tokenUtils.isOccupied(echo, position)) return position;
+        }
+    }
+}
+async function martyr({document: item, workflow}) {
+    if (!workflow.token || workflow.actor === item.actor || workflow.targets.count !== 1 || !workflowUtils.isAttackType(workflow, 'attack')) return;
+    if (!item.system.uses.value || actorUtils.hasUsedReaction(item.actor) || item.actor.statuses.has('incapacitated')) return;
+    const target = workflow.targets.documents[0];
+    const owner = actorUtils.getFirstToken(item.actor);
+    const echoes = getEchoes(item.actor).map(echo => echo.token);
+    if (!owner || target === owner || echoes.includes(target) || !tokenUtils.canSee(owner, target)) return;
+    const echo = echoes.find(token => token.parent === target.parent);
+    if (!echo) return;
+    const position = freeSpace(echo, target);
+    if (!position) return;
+    const userId = queryUtils.firstOwner(item.actor, true);
+    if (!await dialogUtils.queuedConfirmDialog(item.name, _loc(translations + 'Martyr', {item: item.name, name: target.name}), {userId})) return;
+    const activity = itemUtils.getActivityByIdentifier(item, 'use') ?? item.system.activities.contents[0];
+    await workflowUtils.completeActivityUse(activity, [], {userId});
+    await documentUtils.update(echo, position, {teleport: true, animate: false});
+    await workflowUtils.updateTargets(workflow, [echo], queryUtils.firstOwner(workflow.actor, true));
 }
 async function avatar({workflow}) {
     const existing = actorUtils.getEffectByIdentifier(workflow.actor, 'echoAvatar');
@@ -111,18 +138,18 @@ export const manifestEcho = {
 };
 export const unleashIncarnation = {
     name: 'Unleash Incarnation',
-    version: manifestEcho.version,
+    version: '2.1.11',
     rules: manifestEcho.rules,
     roll: [
-        {pass: 'itemRollFinished', macro: attackFromEcho, priority: 50}
+        {pass: 'itemRollFinished', macro: unleash, priority: 50}
     ]
 };
-export const legionOfOne = {
-    name: 'Legion of One',
-    version: manifestEcho.version,
+export const shadowMartyr = {
+    name: 'Shadow Martyr',
+    version: '2.1.11',
     rules: manifestEcho.rules,
-    combat: [
-        {pass: 'actorCombatStart', macro: legion, priority: 50}
+    roll: [
+        {pass: 'sceneAttackRollConfig', macro: martyr, priority: 40, canOverlap: true}
     ]
 };
 export const echoAvatar = {

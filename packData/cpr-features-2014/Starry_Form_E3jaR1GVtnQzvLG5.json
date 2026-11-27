@@ -221,7 +221,7 @@
         "type": "utility",
         "name": "Starry Form: Dragon",
         "sort": 2,
-        "img": "icons/creatures/abilities/dragon-head-breath-fire-blue.webp",
+        "img": "icons/creatures/abilities/dragon-ice-breath-blue.webp",
         "activation": {
           "type": "bonus",
           "value": 1,
@@ -953,7 +953,7 @@
     {
       "_id": "wk3VZ4evt5ur8zHr",
       "name": "Starry Form: Dragon",
-      "img": "icons/creatures/abilities/dragon-head-breath-fire-blue.webp",
+      "img": "icons/creatures/abilities/dragon-ice-breath-blue.webp",
       "type": "base",
       "origin": null,
       "transfer": false,
@@ -1061,7 +1061,7 @@
     {
       "_id": "BNClmF5tbxMCR8U1",
       "name": "Starry Form: Dragon",
-      "img": "icons/creatures/abilities/dragon-head-breath-fire-blue.webp",
+      "img": "icons/creatures/abilities/dragon-ice-breath-blue.webp",
       "type": "base",
       "origin": null,
       "transfer": false,
@@ -1181,7 +1181,7 @@
     {
       "_id": "zr1zWGUIvHdTDrRu",
       "name": "Starry Form: Dragon",
-      "img": "icons/creatures/abilities/dragon-head-breath-fire-blue.webp",
+      "img": "icons/creatures/abilities/dragon-ice-breath-blue.webp",
       "type": "base",
       "origin": null,
       "transfer": false,

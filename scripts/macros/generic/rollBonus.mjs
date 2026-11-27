@@ -1,4 +1,4 @@
-import {actorUtils, automationUtils, constants, D20Bonus, dataUtils, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, actorUtils, automationUtils, constants, D20Bonus, dataUtils, dialogUtils, documentUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 import {attackTypeConfig, identifiersConfig} from './damageBonusToOneRoll.mjs';
 const keyOf = (identifier, document) => identifier + '.' + document.id;
 const getOwner = document => document.actor ?? (document.parent?.documentName === 'Actor' ? document.parent : document.parent?.actor);
@@ -12,6 +12,11 @@ function inReach(owner, token, settings) {
     return tokenUtils.isWithinDistance(ownerToken, token, getRange(settings)) && tokenUtils.canSee(ownerToken, token);
 }
 function createBonus(document, settings, holder, identifier, roll, {targetActor, targets} = {}) {
+    const item = document.documentName === 'Activity' ? document.item : document;
+    for (const id of [settings.rollActivity, settings.failActivity]) {
+        const activity = id ? item?.system?.activities?.get(id) : undefined;
+        if (activity && !activityUtils.checkCosts(activity)) return;
+    }
     const bonus = new D20Bonus(document, {
         phase: settings.phase === 'all' ? Object.values(constants.bonusPhases) : settings.phase,
         optional: settings.optional,
@@ -62,6 +67,7 @@ async function onSuccess({document, macroClass: {identifier}, message, roll}) {
         consume ||= await dialogUtils.confirm(settings.storedOptionalBonus.name, _loc('CHRISPREMADES.Macros.Generic.RollBonus.Success', {total: roll.total}));
     settings.consume = consume;
     await workflowUtils.rollConfiguredSource(settings.storedOptionalBonus, settings);
+    if (!consume && settings.failActivity) await workflowUtils.rollConfiguredSource(settings.storedOptionalBonus, {rollActivity: settings.failActivity, consume: true});
 }
 function attack({document, macroClass: {identifier}, workflow}) {
     const settings = automationUtils.getGenericConfigValues(document, 'chris-premades', identifier, configKeys);
@@ -90,6 +96,7 @@ async function onHit({document, macroClass: {identifier}, workflow}) {
     workflowUtils.setWorkflowProperty(workflow, key, undefined);
     settings.consume = workflow.hitTargets.count > 0;
     await workflowUtils.rollConfiguredSource(settings.storedOptionalBonus, settings);
+    if (!settings.consume && settings.failActivity) await workflowUtils.rollConfiguredSource(settings.storedOptionalBonus, {rollActivity: settings.failActivity, consume: true});
 }
 const genericConfig = {
     bonus: {
@@ -142,6 +149,13 @@ const genericConfig = {
         category: 'behavior',
         label: 'CHRISPREMADES.Macros.Generic.Common.Costs',
         hint: 'CHRISPREMADES.Macros.Generic.RollBonus.Costs.Hint'
+    },
+    failActivity: {
+        default: '',
+        type: 'selectActivity',
+        category: 'behavior',
+        label: 'CHRISPREMADES.Macros.Generic.RollBonus.FailActivity.Label',
+        hint: 'CHRISPREMADES.Macros.Generic.RollBonus.FailActivity.Hint'
     },
     consumeSuccessOnly: {
         default: false,

@@ -148,11 +148,17 @@ export {wickerZenith as 'wicker-zenith'} from './modern/classFeatures/druid/wick
 export {studiedAttacks as 'studied-attacks'} from './modern/classFeatures/fighter/studiedAttacks.mjs';
 export {tacticalShift as 'tactical-shift'} from './modern/classFeatures/fighter/tacticalShift.mjs';
 
+/*           Banneret            */
+export {rallyingSurge as 'rallying-surge'} from './modern/classFeatures/fighter/banneret/rallyingSurge.mjs';
+
 /*         Battle Master         */
 export {demoralizingShout as 'maneuvers-demoralizing-shout'} from './modern/classFeatures/fighter/battleMaster/demoralizingShout.mjs';
 export {knowYourEnemy as 'know-your-enemy'} from './modern/classFeatures/fighter/battleMaster/knowYourEnemy.mjs';
 export {relentless} from './modern/classFeatures/fighter/battleMaster/relentless.mjs';
 export {wardingManeuver as 'maneuvers-warding-maneuver'} from './modern/classFeatures/fighter/battleMaster/wardingManeuver.mjs';
+
+/*           Champion            */
+export {survivor} from './modern/classFeatures/fighter/champion/survivor.mjs';
 
 /*********************************/
 /*             Monk              */
@@ -161,6 +167,10 @@ export {deflectAttacks as 'deflect-attacks'} from './modern/classFeatures/monk/d
 export {empoweredStrikes as 'empowered-strikes'} from './modern/classFeatures/monk/empoweredStrikes.mjs';
 export {heightenedFocus as 'heightened-focus'} from './modern/classFeatures/monk/heightenedFocus.mjs';
 export {stunningStrike as 'stunning-strike'} from './modern/classFeatures/monk/stunningStrike.mjs';
+
+/*    Warrior of the Elements    */
+export {elementalAttunement as 'elemental-attunement', elementalAttunementActive} from './modern/classFeatures/monk/warriorOfTheElements/elementalAttunement.mjs';
+export {elementalEpitome as 'elemental-epitome', elementalEpitomeStride} from './modern/classFeatures/monk/warriorOfTheElements/elementalEpitome.mjs';
 
 /*     Warrior of the Street     */
 export {combo, comboEffect} from './modern/classFeatures/monk/warriorOfTheStreet/combo.mjs';
@@ -174,6 +184,22 @@ export {auraOfElementalShielding as 'aura-of-elemental-shielding'} from './moder
 export {elementalRebuke as 'elemental-rebuke'} from './modern/classFeatures/paladin/nobleGenies/elementalRebuke.mjs';
 export {elementalStrike as 'elemental-strike'} from './modern/classFeatures/paladin/nobleGenies/elementalStrike.mjs';
 export {nobleScion as 'noble-scion'} from './modern/classFeatures/paladin/nobleGenies/nobleScion.mjs';
+
+/*********************************/
+/*           Pugilist            */
+/*********************************/
+export {bloodiedButUnbowed as 'bloodied-but-unbowed'} from './modern/classFeatures/pugilist/bloodiedButUnbowed.mjs';
+export {braceUp as 'brace-up'} from './modern/classFeatures/pugilist/braceUp.mjs';
+export {digDeepEffect, pugilistExhaustionRestore} from './modern/classFeatures/pugilist/digDeep.mjs';
+export {fisticuffs} from './modern/classFeatures/pugilist/fisticuffs.mjs';
+export {moxieFueledFists as 'moxie-fueled-fists'} from './modern/classFeatures/pugilist/moxieFueledFists.mjs';
+export {peakPhysicalCondition as 'peak-physical-condition'} from './modern/classFeatures/pugilist/peakPhysicalCondition.mjs';
+export {pugnacious, shakeItOff as 'shake-it-off'} from './modern/classFeatures/pugilist/shakeItOff.mjs';
+
+/*        Squared Circle         */
+export {cleanFinish as 'clean-finish'} from './modern/classFeatures/pugilist/squaredCircle/cleanFinish.mjs';
+export {groundwork} from './modern/classFeatures/pugilist/squaredCircle/groundwork.mjs';
+export {meatShield as 'meat-shield'} from './modern/classFeatures/pugilist/squaredCircle/meatShield.mjs';
 
 /*********************************/
 /*            Ranger             */

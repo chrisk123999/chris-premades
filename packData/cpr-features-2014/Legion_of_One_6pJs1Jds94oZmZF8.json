@@ -75,16 +75,25 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.3"
+        "version": "2.1.11"
       },
       "macros": {
-        "combat": [
+        "item": [
           {
             "source": "chris-premades",
-            "rules": "2014",
-            "identifier": "legion-of-one"
+            "identifier": "itemRecovery",
+            "rules": "all"
           }
         ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "itemRecovery": {
+            "identifier": "unleash-incarnation",
+            "period": "initiative",
+            "formula": "1 - sign(@item.uses.value)"
+          }
+        }
       }
     }
   },

@@ -2,7 +2,7 @@
   "_id": "4deyYr1ByEPGKEhB",
   "name": "Aether Walk",
   "type": "feat",
-  "img": "icons/magic/air/wind-weather-sailing-blue.webp",
+  "img": "icons/magic/air/wind-weather-sailing-ship.webp",
   "folder": "XfgQrP6BS3znr2ow",
   "system": {
     "description": {
@@ -126,7 +126,7 @@
     {
       "_id": "SyTNGPdMGxGdyqgF",
       "name": "Aether Walk",
-      "img": "icons/magic/air/wind-weather-sailing-blue.webp",
+      "img": "icons/magic/air/wind-weather-sailing-ship.webp",
       "type": "base",
       "origin": null,
       "transfer": false,

@@ -4,7 +4,7 @@
   "effects": [
     {
       "name": "Invisible Hand",
-      "img": "icons/magic/perception/eye-slit-thin-white.webp",
+      "img": "icons/magic/perception/eye-slit-orange.webp",
       "origin": null,
       "transfer": false,
       "_id": "lgdmInvisibleHnd",

@@ -23,7 +23,7 @@ async function early({document, activity, config}) {
     const cost = restoreActivity.consumption.targets.find(target => !isOwnUses(document, target));
     const pool = cost?.type === 'itemUses' ? document.actor.items.get(cost.target) : undefined;
     if (pool && pool.system.uses.value < Number(cost.value)) return;
-    const selection = await dialogUtils.confirmUseExtraCost(document, cost?.value ?? 0, pool?.name ?? restoreActivity.name);
+    const selection = cost ? await dialogUtils.confirmUseExtraCost(document, cost.value, pool?.name ?? restoreActivity.name) : await dialogUtils.confirmUseItem(restoreActivity);
     if (!selection) return true;
     await workflowUtils.completeActivityUse(restoreActivity);
     const freshActivity = document.actor.items.get(document.id)?.system.activities.get(activity.id);
