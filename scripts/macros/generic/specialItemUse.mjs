@@ -26,7 +26,8 @@ async function use({document, workflow}) {
         return;
     }
     const targets = workflow.targets.documents;
-    await workflowUtils.specialItemUse(item, targets, document.item, {activity, consumeResources: config.consumeResources, spellSlot: config.spellSlot});
+    const used = await workflowUtils.specialItemUse(item, targets, document.item, {activity, consumeResources: config.consumeResources, spellSlot: config.spellSlot});
+    if (!used || used.aborted) await workflowUtils.refundUse(workflow);
 }
 /**
  * Uses an activity from another of the user's items on the same targets once the roll finishes. The user picks the item

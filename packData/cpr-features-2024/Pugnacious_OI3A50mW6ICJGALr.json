@@ -1,0 +1,169 @@
+{
+  "_id": "OI3A50mW6ICJGALr",
+  "name": "Pugnacious",
+  "type": "feat",
+  "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
+  "folder": "DaCCKHmNsmtRhEWW",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "pugnacious",
+    "activities": {
+      "yH6BaePCem6hP5NN": {
+        "_id": "yH6BaePCem6hP5NN",
+        "type": "utility",
+        "name": "Pugnacious",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            },
+            {
+              "type": "itemUses",
+              "target": "feat:dig-deep",
+              "value": "-1",
+              "scaling": {}
+            },
+            {
+              "type": "itemUses",
+              "target": "feat:down-but-not-out",
+              "value": "-1",
+              "scaling": {}
+            },
+            {
+              "type": "itemUses",
+              "target": "feat:shake-it-off",
+              "value": "-1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "pugnacious",
+        "midiProperties": {
+          "identifier": "pugnacious",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {}
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "pugnacious",
+            "rules": "2024"
+          }
+        ],
+        "combat": [
+          {
+            "source": "chris-premades",
+            "identifier": "pugnacious",
+            "rules": "2024"
+          }
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!OI3A50mW6ICJGALr"
+}

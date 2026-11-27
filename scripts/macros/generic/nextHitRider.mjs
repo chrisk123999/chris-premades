@@ -12,13 +12,16 @@ function getHitTargetUuids(effect, workflow, config) {
     if (!workflow.hitTargets.count || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
     return [workflow.hitTargets.uuids[0]];
 }
+function weaponMatches(config, workflow) {
+    return !config.weaponTypes.length || config.weaponTypes.includes(workflow.item?.system.type?.value);
+}
 function isAttacked(effect, workflow) {
     return workflow.targets.documents.some(token => token.actor?.uuid === effect.parent?.uuid);
 }
 async function damage({document: effect, workflow}) {
     if (!workflow.hitTargets.count) return;
     const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'nextHitRider', configKeys);
-    if (!config.bonus || !workflowUtils.isAttackType(workflow, config.attackType || 'attack')) return;
+    if (!config.bonus || !workflowUtils.isAttackType(workflow, config.attackType || 'attack') || !weaponMatches(config, workflow)) return;
     if (config.incoming) return;
     const {item, scaling} = getSpell(effect);
     if (!item) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(effect), 'Origin spell not found.', {notify: 'warn'});
@@ -49,9 +52,12 @@ async function incomingRider({document: effect, workflow}) {
 }
 async function rider({document: effect, workflow}) {
     const config = automationUtils.getGenericConfigValues(effect, 'chris-premades', 'nextHitRider', configKeys);
-    if (config.incoming) return;
+    if (config.incoming || !weaponMatches(config, workflow)) return;
     const targetUuids = getHitTargetUuids(effect, workflow, config);
-    if (!targetUuids) return;
+    if (!targetUuids) {
+        if (config.consumeOnMiss && !workflow.hitTargets.count && workflowUtils.isAttackType(workflow, config.attackType || 'attack')) await documentUtils.deleteDocument(effect);
+        return;
+    }
     const {item, concentration, scaling} = getSpell(effect);
     const activity = config.rollActivity ? item?.system.activities.get(config.rollActivity) : undefined;
     const hitTokens = targetUuids.map(uuid => fromUuidSync(uuid, {strict: false})).filter(Boolean);
@@ -151,6 +157,21 @@ export const nextHitRider = {
             label: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpell.Label',
             hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpell.Hint',
             get options() { return ['never', 'always', 'onSave'].map(value => ({value, label: 'CHRISPREMADES.Macros.Generic.NextHitRider.EndSpellOptions.' + value})); }
+        },
+        weaponTypes: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.WeaponTypes',
+            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.WeaponTypes.Hint',
+            get options() { return constants.weaponTypes; }
+        },
+        consumeOnMiss: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.NextHitRider.ConsumeOnMiss.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.NextHitRider.ConsumeOnMiss.Hint'
         },
         incoming: {
             default: false,

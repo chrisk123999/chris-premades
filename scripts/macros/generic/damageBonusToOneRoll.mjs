@@ -1,6 +1,6 @@
 import {actorUtils, automationUtils, combatUtils, constants, DamageBonus, dataUtils, documentUtils, effectUtils, itemUtils, Logging, summonUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
 export function hasRequiredSummons(actor, identifiers) {
-    return !identifiers?.length || summonUtils.getSummons(actor).some(summon => identifiers.includes(documentUtils.getIdentifier(summon.sourceItem)));
+    return !identifiers?.length || summonUtils.getSummons(actor).some(summon => summon.sourceItem && identifiers.includes(documentUtils.getIdentifier(summon.sourceItem)));
 }
 export const identifiersConfig = {
     default: [],
@@ -31,6 +31,7 @@ async function damage({document, workflow}) {
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'damageBonusToOneRoll', configKeys);
     if (!config.bonus.length) return;
     if (config.excludeSelf && workflow.item && workflow.item.uuid === getSourceItem(document)?.uuid) return;
+    if (config.ownTurn && workflow.token && !combatUtils.isOwnTurn(workflow.token.document)) return;
     const combatData = (config.oncePerTurn || config.oncePerTurnPerTarget) && workflow.token ? tokenUtils.getCombatData(workflow.token.document) : undefined;
     const stamps = document.flags['chris-premades']?.damageBonusToOneRoll?.stamps ?? [];
     if (config.oncePerTurn && combatData && combatUtils.isStampedThisTurn(stamps, workflow.token.id, combatData)) return;
@@ -68,6 +69,7 @@ async function damage({document, workflow}) {
         } else if (!config.itemType.includes(workflow.item.type)) return;
     }
     if (!hasRequiredSummons(workflow.actor, config.requiredSummons)) return;
+    if (config.weaponTypes.length && !config.weaponTypes.includes(workflow.item.system.type?.value)) return;
     const classIdentifier = workflow.item.system.classIdentifier;
     if (config.sourceClasses && classIdentifier && !config.sourceClasses.split(',').map(value => value.trim()).includes(classIdentifier)) return;
     if (workflow.item.type === 'spell' || bladeCantrip) {
@@ -220,6 +222,14 @@ export const damageBonusToOneRoll = {
             hint: 'CHRISPREMADES.Macros.Generic.Common.SpellLevel.Hint',
             get options() { return constants.spellSlotOptions; }
         },
+        weaponTypes: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Config.WeaponTypes',
+            hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.WeaponTypes.Hint',
+            get options() { return constants.weaponTypes; }
+        },
         requiredSummons: {
             default: [],
             type: 'selectIdentifiers',
@@ -333,6 +343,13 @@ export const damageBonusToOneRoll = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn.Label',
             hint: 'CHRISPREMADES.Macros.Generic.DamageBonusToOneRoll.OncePerTurn.Hint'
+        },
+        ownTurn: {
+            default: false,
+            type: 'checkbox',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnTurn.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.AttackRider.OwnTurn.Hint'
         },
         oncePerTurnPerTarget: {
             default: false,

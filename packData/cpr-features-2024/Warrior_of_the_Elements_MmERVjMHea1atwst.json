@@ -1,0 +1,16 @@
+{
+  "_id": "MmERVjMHea1atwst",
+  "name": "Warrior of the Elements",
+  "type": "Item",
+  "folder": "tJ727NhyyBNb6ZNf",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!MmERVjMHea1atwst"
+}

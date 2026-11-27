@@ -5,25 +5,39 @@
 ## Automated Class Features:
 - 2014 Artificer: Alchemist, Armorer, Artillerist and Battle Smith.
 - 2024 Artificer: Armorer, Battle Smith and Forge Adept.
-- Blood Hunter: Class features, Order of the Ghostslayer, Order of the Lycan and Order of the Mutant.
+- 2014 Blood Hunter: Class features, Order of the Ghostslayer, Order of the Lycan and Order of the Mutant.
 - 2014 Druid: Circle of Dreams, Circle of Stars, Circle of the Moon, Circle of the Shepherd and Circle of Wildfire.
 - 2024 Druid: Circle of the Land, Circle of the Moon and Circle of the Stars.
+- 2014 Fighter: Class features, Battle Master, Echo Knight, Gunslinger, Rune Knight and Samurai.
+- 2024 Fighter: Class features, Banneret and Champion.
+- 2014 Monk: Class features, Way of Shadow, Way of the Ascendant Dragon and Way of the Cobalt Soul.
+- 2024 Monk: Warrior of the Elements.
+- 2024 Pugilist: Class features and Squared Circle.
 ## Generic Macros:
-- New `attackDisadvantage`, `selfDamage` and `uniqueEffect` generics.
-- New `grappleSizeBonus` generic counts its owner as larger when checking which creatures it can grapple or shove, or only one of the two. Heavyweight uses it.
-- `attackRider`, `nextHitRider`, `summonModifier`, `actionDismissal`, `damageBonusToOneRoll`, `rollBonus` and `preventDeath` have new options.
-- New `spellSlotRecovery` generic recovers expended spell slots up to a total number of levels.
+- New `attackDisadvantage`, `selfDamage`, `uniqueEffect` and `spellSlotRecovery` generics.
+- New `grappleSizeBonus` generic counts its owner as larger for grapple and shove size checks.
 - New `spellSummonOfOwner` and `alliesOfSource` aura filters.
-- `rollBonus` can be offered as a reaction to nearby creatures' rolls and can include its owner's own rolls.
-- `summonModifier` can filter by source item type, add hit points per hit die, and resolve added items' formulas against its owner.
-- `damageBonusToOneRoll` and `preventDeath` can require a summon from chosen items.
-- `useOnDeath` can trigger on chosen statuses and prompt before use.
-- `specialItemUse` can cast a spell without a spell slot.
-- `teleport` can move each target of the activity and place companions separately.
-- New `wildShapeOptions` called event changes Wild Shape's maximum CR, forms and movement limits. `wildShape` passes the chosen form.
-- Every generic has a display name and a category, and every option has a hint in the CatKit.
+- New `wildShapeOptions` called event changes Wild Shape's maximum CR, forms and movement limits.
+- Every generic has a display name and category, and every option has a CatKit hint.
+- `useOnEvent`: new item use, initiative, nearby turn end and damage taken triggers; grappled targets with a creature picker; required effects; bloodied and own-turn requirements; turn events while incapacitated.
+- `modifyNextDamage`: weapon and attack type limits, incoming damage, wait for a hit, end after the next attack, roll an activity on change.
+- `rollBonus`: offered as a reaction to nearby rolls, includes its owner's rolls, rolls an activity when the roll still fails.
+- `attackRider`: riders more than once per turn, skipped items, the attack's damage type.
+- `damageBonusToOneRoll`: weapon type, own-turn and summon-source limits.
+- `nextHitRider`: weapon type limits and ends on a miss.
+- `summonModifier`: source item type filter, hit points per hit die, added item formulas from its owner.
+- `preventDeath`: summon-source limit.
+- `useOnDeath`: status triggers and a prompt before use.
+- `teleport`: moves each target and places companions separately.
+- `specialItemUse`: casts a spell without a slot.
+- `contextAdvantage`: spends an activity's costs for advantage.
+- `rerollSaveWithBonus` and its check, skill and tool versions: offered to allies in range.
+- `firearm`: per-attack misfire score increase or misfire immunity.
+- `proficiencyChoice`: saving throws and limited choices.
+- `wildShape` passes the chosen form.
 ## Automation Improvements:
 - 2024 Battle Master maneuvers match Player's Handbook and DDB Importer items.
+- Martial Adept and Superior Technique share one pool of maneuver dice.
 ## Bug Fixes:
 - `touchDelivery` no longer cancels weapon attacks or non-touch spells while a touch spell is readied, and no longer stops other macros on the activity when no summon is on the canvas.
 - `modifyNextDamage` doubles damage with separate copies of each roll.
@@ -43,7 +57,19 @@
 - Burst Fire, Spread Fire and Twinned Barrel no longer duplicate DDB Importer's copies.
 - `summonModifier` magical weapons only marks natural and monster weapon attacks.
 - `useOnDeath` works while its owner is incapacitated.
-- `specialItemUse` and `spellSlotRecovery` refund the use when cancelled or with nothing to pick.
+- `specialItemUse` refunds the use when cancelled, with nothing to pick, or when the picked item can't be used.
+- A firearm's Repair can only be used while the firearm is damaged and its owner has Tinker's Tools.
+- `preventDeath` uses its activity after the triggering damage is applied, so its temporary hit points are not spent on that damage.
+- `rollBonus` is not offered when its roll or fail activity can't be paid.
+- `rerollWithBonus` with Failed Only skips rolls that have no DC.
+- `extraAttack` attacks with their own animation no longer also play the weapon animation.
+- Blood Hunter formulas show in the compendium.
+- 2014 Unleash Incarnation only offers melee weapons.
+- 2014 Legion of One regains a use of Unleash Incarnation when initiative is rolled with none left.
+- Seeking Spell and Chronal Shift reroll the attack without opening a roll dialog.
+- `modifyNextDamage` maximizing an attack also maximizes that attack's `attackRider` damage.
+- `restoreUses` asks to use the restore activity, such as Reload, when it has no extra cost, instead of showing a cost of 0.
+- Starry Form, Wraps of Unarmed Power, Aether Walk, Mage Hand Legerdemain and Spellfire Spark icons load.
 # 2.1.10 Pre-Release:
 ## Automated Class Features:
 - Illrigger: Base class and Painkiller subclass.

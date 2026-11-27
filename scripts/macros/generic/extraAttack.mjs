@@ -20,6 +20,9 @@ async function use({document: activity, workflow, macroClass: {source, identifie
     if (!targetData) return;
     const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(workflow.item, 'animation', {source, identifier});
     const ownAnimation = animation?.macros?.attack;
+    const attackOptions = {};
+    if (ownAnimation) workflowUtils.setWorkflowProperty(attackOptions, 'skipWeaponAnimation', true);
+    workflowUtils.setWorkflowProperty(attackOptions, 'extraAttack.' + activity.identifier, true);
     while (totalAttacks > 0) {
         for (let s = 0; s < targetData.result.length; s++) {
             const target = targetData.result[s].document; 
@@ -28,7 +31,7 @@ async function use({document: activity, workflow, macroClass: {source, identifie
             if (targetData.skip && target.actor.system.attributes.hp.value <= 0) continue;
             for (let i = 0; i < attacks; i++) {
                 if (targetData.skip && target.actor.system.attributes.hp.value <= 0) break;
-                const workflow = await workflowUtils.syntheticItemRoll(strike, [target], {options: ownAnimation ? {cat: {skipWeaponAnimation: true}} : {}});
+                const workflow = await workflowUtils.syntheticItemRoll(strike, [target], {options: attackOptions});
                 if (ownAnimation && target.object) await ownAnimation(workflow.token.document, [target], {missed: !workflow.hitTargets.count, ...animationOptions});
                 totalAttacks--;
                 if (targetData.skip && target.actor.system.attributes.hp.value <= 0) break;

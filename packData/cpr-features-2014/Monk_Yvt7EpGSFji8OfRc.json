@@ -1,0 +1,16 @@
+{
+  "_id": "Yvt7EpGSFji8OfRc",
+  "name": "Monk",
+  "type": "Item",
+  "folder": "vbEPQf2ITgXEhWsP",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!Yvt7EpGSFji8OfRc"
+}

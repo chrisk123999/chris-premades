@@ -1,0 +1,112 @@
+{
+  "_id": "hPOHDtfhiYvK2mxO",
+  "name": "Stride of the Elements",
+  "type": "feat",
+  "img": "icons/creatures/fish/fish-shark-swimming.webp",
+  "folder": "MmERVjMHea1atwst",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "stride-of-the-elements",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "w5xZc7bUCkc8zpvZ",
+      "name": "Stride of the Elements",
+      "img": "icons/creatures/fish/fish-shark-swimming.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.movement.speeds.fly",
+            "value": "@attributes.movement.walk",
+            "type": "upgrade",
+            "priority": 20
+          },
+          {
+            "key": "system.attributes.movement.speeds.swim",
+            "value": "@attributes.movement.walk",
+            "type": "upgrade",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "disableCondition": [
+            "!elementalAttunement"
+          ]
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!hPOHDtfhiYvK2mxO.w5xZc7bUCkc8zpvZ"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!hPOHDtfhiYvK2mxO"
+}

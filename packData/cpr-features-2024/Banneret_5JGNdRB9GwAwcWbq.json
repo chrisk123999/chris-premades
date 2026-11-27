@@ -1,8 +1,8 @@
 {
-  "_id": "zmAKOO0F6Yv40j4q",
-  "name": "Formulas",
+  "_id": "5JGNdRB9GwAwcWbq",
+  "name": "Banneret",
   "type": "Item",
-  "folder": "UMklnQo1YqPrmgxH",
+  "folder": "8ax5XkSTWyxxPBH8",
   "sorting": "a",
   "color": null,
   "description": "",
@@ -12,5 +12,5 @@
     "systemId": "dnd5e",
     "systemVersion": "6.0.6"
   },
-  "_key": "!folders!zmAKOO0F6Yv40j4q"
+  "_key": "!folders!5JGNdRB9GwAwcWbq"
 }

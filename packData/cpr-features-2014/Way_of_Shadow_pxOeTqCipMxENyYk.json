@@ -1,0 +1,16 @@
+{
+  "_id": "pxOeTqCipMxENyYk",
+  "name": "Way of Shadow",
+  "type": "Item",
+  "folder": "nH8135F1PzU9skht",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!pxOeTqCipMxENyYk"
+}
