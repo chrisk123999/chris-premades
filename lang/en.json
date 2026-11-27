@@ -2883,6 +2883,7 @@
                     "Seals": "Seals",
                     "SelectSource": "Move the seals from which creature?"
                 },
+                "BalmOfPeace": "Your extra movement from Balm of Peace has been spent. End the effect?",
                 "BlessingOfTheForge": {
                     "NoItems": "You and your allies are not carrying any valid items for {feature}!",
                     "NonmagicalOnly": "Nonmagical Only",
@@ -3251,6 +3252,12 @@
                 },
                 "Overchannel": {
                     "Damage": "Use {itemName} at the cost of {damageFormula} damage?"
+                },
+                "ProtectiveBond": {
+                    "BloodiedHint": "Prompt for bloodied targets only.",
+                    "PercentHint": "Prompt when damage total exceeds a percentage of the target's max HP.",
+                    "Prompt": "Ask for Protective Bond? (Damage Total: {damage})",
+                    "Request": "Use Protective Bond on {target}? (Damage Total: {damage})"
                 },
                 "PsionicSorcery": {
                     "NoSpells": "No Psionic Spells you can afford to cast!",

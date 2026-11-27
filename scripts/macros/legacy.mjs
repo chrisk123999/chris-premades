@@ -142,6 +142,12 @@ export {pathToTheGrave as 'channel-divinity-path-to-the-grave'} from './legacy/c
 /*             Nature            */
 export {dampenElements as 'dampen-elements'} from './legacy/classFeatures/cleric/nature/dampenElements.mjs';
 
+/*             Peace             */
+export {balmOfPeaceRegion} from './legacy/classFeatures/cleric/peace/balmOfPeace.mjs';
+export {emboldeningBond as 'emboldening-bond', emboldeningBondEffect} from './legacy/classFeatures/cleric/peace/emboldeningBond.mjs';
+export {expansiveBond} from './legacy/classFeatures/cleric/peace/expansiveBond.mjs';
+export {protectiveBond as 'protective-bond', protectiveBondEffect} from './legacy/classFeatures/cleric/peace/protectiveBond.mjs';
+
 /*********************************/
 /*             Druid             */
 /*********************************/
