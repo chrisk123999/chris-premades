@@ -1,0 +1,311 @@
+{
+  "_id": "l4oQZ8KrSmAmJz7i",
+  "name": "Forceful Shot",
+  "type": "feat",
+  "img": "icons/weapons/guns/gun-blunderbuss-gold.webp",
+  "folder": "ohtKNq3bSHLO3JFr",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "forceful-shot",
+    "activities": {
+      "SFKQ60DNdZnNeE7A": {
+        "_id": "SFKQ60DNdZnNeE7A",
+        "type": "utility",
+        "name": "Forceful Shot",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:adept-marksman",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "MQDzIXAmnHEBSCDx"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "use",
+        "midiProperties": {
+          "identifier": "use",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {}
+      },
+      "NyWc1exJpST8FI3Q": {
+        "_id": "NyWc1exJpST8FI3Q",
+        "type": "save",
+        "name": "Forceful Shot: Save",
+        "sort": 1,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "save",
+        "midiProperties": {
+          "identifier": "save",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "pushOnFail",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "pushOnFail": {
+                  "distance": "15"
+                }
+              }
+            }
+          }
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "dex",
+            "formula": ""
+          }
+        },
+        "damage": {
+          "onSave": "none",
+          "parts": [],
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "MQDzIXAmnHEBSCDx",
+      "name": "Forceful Shot",
+      "img": "icons/weapons/guns/gun-blunderbuss-gold.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "nextHitRider",
+                "rules": "all"
+              }
+            ],
+            "effect": [
+              {
+                "source": "chris-premades",
+                "identifier": "uniqueEffect",
+                "rules": "all"
+              }
+            ]
+          },
+          "genericConfig": {
+            "chris-premades": {
+              "nextHitRider": {
+                "rollActivity": "NyWc1exJpST8FI3Q",
+                "weaponTypes": [
+                  "firearm"
+                ],
+                "attackType": "weaponAttack",
+                "endSpell": "always",
+                "consumeOnMiss": true
+              },
+              "uniqueEffect": {
+                "scope": "item"
+              }
+            }
+          },
+          "identifier": "trickShot"
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!l4oQZ8KrSmAmJz7i.MQDzIXAmnHEBSCDx"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11",
+        "sourceType": "subclass:gunslinger"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!l4oQZ8KrSmAmJz7i"
+}

@@ -174,9 +174,25 @@ export {summonWildfireSpirit as 'summon-wildfire-spirit'} from './legacy/classFe
 /*********************************/
 /*            Fighter            */
 /*********************************/
+export {knowYourEnemy as 'know-your-enemy'} from './legacy/classFeatures/fighter/knowYourEnemy.mjs';
 
 /*          Echo Knight          */
-export {echoAvatar as 'echo-avatar', legionOfOne as 'legion-of-one', manifestEcho as 'manifest-echo', unleashIncarnation as 'unleash-incarnation'} from './legacy/classFeatures/fighter/echoKnight/manifestEcho.mjs';
+export {echoAvatar as 'echo-avatar', manifestEcho as 'manifest-echo', shadowMartyr as 'shadow-martyr', unleashIncarnation as 'unleash-incarnation'} from './legacy/classFeatures/fighter/echoKnight/manifestEcho.mjs';
+
+/*          Gunslinger           */
+export {adeptMarksman as 'adept-marksman', hemorrhagingCritical as 'hemorrhaging-critical', hemorrhagingCriticalEffect as 'hemorrhaging-critical-effect', viciousIntent as 'vicious-intent'} from './legacy/classFeatures/fighter/gunslinger/adeptMarksman.mjs';
+export {piercingShot as 'piercing-shot-trick-shot', violentShot as 'violent-shot'} from './legacy/classFeatures/fighter/gunslinger/trickShots.mjs';
+
+/*          Rune Knight          */
+export {cloudRune as 'cloud-rune'} from './legacy/classFeatures/fighter/runeKnight/cloudRune.mjs';
+export {giantsMight as 'giants-might'} from './legacy/classFeatures/fighter/runeKnight/giantsMight.mjs';
+export {runicShield as 'runic-shield'} from './legacy/classFeatures/fighter/runeKnight/runicShield.mjs';
+export {stormRune as 'storm-rune'} from './legacy/classFeatures/fighter/runeKnight/stormRune.mjs';
+export {fireRune as 'fire-rune'} from './legacy/classFeatures/fighter/runeKnight/fireRune.mjs';
+
+/*            Samurai            */
+export {rapidStrike as 'rapid-strike'} from './legacy/classFeatures/fighter/samurai/rapidStrike.mjs';
+export {strengthBeforeDeath as 'strength-before-death'} from './legacy/classFeatures/fighter/samurai/strengthBeforeDeath.mjs';
 
 /*********************************/
 /*           Illrigger           */
@@ -211,7 +227,21 @@ export {dispatersInterdictionTelekineticSeal as 'dispaters-interdiction-telekine
 /*********************************/
 export {dedicatedWeapon as 'dedicated-weapon'} from './legacy/classFeatures/monk/dedicatedWeapon.mjs';
 export {focusedAim as 'focused-aim'} from './legacy/classFeatures/monk/focusedAim.mjs';
+export {kiEmpoweredStrikes as 'ki-empowered-strikes'} from './legacy/classFeatures/monk/kiEmpoweredStrikes.mjs';
 export {stunningStrike as 'stunning-strike'} from './legacy/classFeatures/monk/stunningStrike.mjs';
+
+/*       Ascendant Dragon        */
+export {aspectOfTheWyrm as 'aspect-of-the-wyrm'} from './legacy/classFeatures/monk/ascendantDragon/aspectOfTheWyrm.mjs';
+export {draconicStrike as 'draconic-strike'} from './legacy/classFeatures/monk/ascendantDragon/draconicStrike.mjs';
+
+/*          Cobalt Soul          */
+export {debilitatingBarrage as 'debilitating-barrage', debilitatingBarrageEffect} from './legacy/classFeatures/monk/cobaltSoul/debilitatingBarrage.mjs';
+export {extractAspects as 'extract-aspects'} from './legacy/classFeatures/monk/cobaltSoul/extractAspects.mjs';
+export {shadowStep as 'shadow-step', cloakOfShadows as 'cloak-of-shadows', cloakOfShadowsEffect as 'cloak-of-shadows-effect'} from './legacy/classFeatures/monk/wayOfShadow/shadowLight.mjs';
+export {mindOfMercury as 'mind-of-mercury'} from './legacy/classFeatures/monk/cobaltSoul/mindOfMercury.mjs';
+
+/*            Shadow             */
+export {opportunist} from './legacy/classFeatures/monk/wayOfShadow/opportunist.mjs';
 
 /*********************************/
 /*            Paladin            */

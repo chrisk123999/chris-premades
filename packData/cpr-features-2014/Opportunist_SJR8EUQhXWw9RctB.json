@@ -1,0 +1,167 @@
+{
+  "_id": "SJR8EUQhXWw9RctB",
+  "name": "Opportunist",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-blade-hooked-orange-blue.webp",
+  "folder": "pxOeTqCipMxENyYk",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "opportunist",
+    "activities": {
+      "wwX39jJuIPGoUZ83": {
+        "_id": "wwX39jJuIPGoUZ83",
+        "type": "utility",
+        "name": "Opportunist",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "reaction",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "5"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "attack",
+        "midiProperties": {
+          "identifier": "attack",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "specialItemUse",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "specialItemUse": {
+                  "itemTypes": [
+                    "weapon"
+                  ],
+                  "excludeActivityTypes": [
+                    "utility",
+                    "save",
+                    "check",
+                    "heal",
+                    "damage"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "useConditionText": "false"
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "opportunist",
+            "rules": "2014"
+          }
+        ]
+      },
+      "config": {
+        "attackTypes": [
+          "melee"
+        ]
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!SJR8EUQhXWw9RctB"
+}

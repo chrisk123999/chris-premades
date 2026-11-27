@@ -1,0 +1,312 @@
+{
+  "_id": "2RzSoPBiXaRCLL6t",
+  "name": "Storm Rune",
+  "type": "feat",
+  "img": "icons/commodities/treasure/stone-cracked-lightning-blue.webp",
+  "folder": "x964Cp1zmFulGbOi",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "1 + @flags.chris-premades.masterOfRunes",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "storm-rune",
+    "activities": {
+      "N8VN0XiFnHJr0wUQ": {
+        "_id": "N8VN0XiFnHJr0wUQ",
+        "type": "utility",
+        "name": "Storm Rune",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "dbkK0Ws1lxAH7Wxj"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "use",
+        "midiProperties": {
+          "identifier": "use",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {}
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "XJQv38MLrAlTkH5A",
+      "name": "Rune Knight",
+      "img": "icons/commodities/treasure/stone-cracked-lightning-blue.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.chris-premades.masterOfRunes",
+            "value": "0",
+            "type": "override",
+            "priority": 10
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!2RzSoPBiXaRCLL6t.XJQv38MLrAlTkH5A"
+    },
+    {
+      "_id": "Xp54ZMPBmeKUl4zz",
+      "name": "Storm Rune",
+      "img": "icons/commodities/treasure/stone-cracked-lightning-blue.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.arc.roll.mode",
+            "value": "1",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.traits.ci.value",
+            "value": "surprised",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!2RzSoPBiXaRCLL6t.Xp54ZMPBmeKUl4zz"
+    },
+    {
+      "_id": "dbkK0Ws1lxAH7Wxj",
+      "name": "Storm Rune",
+      "img": "icons/commodities/treasure/stone-cracked-lightning-blue.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [],
+        "magical": true
+      },
+      "duration": {
+        "value": 1,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        },
+        "cat": {
+          "macros": {
+            "roll": [
+              {
+                "source": "chris-premades",
+                "identifier": "storm-rune",
+                "rules": "2014"
+              }
+            ],
+            "save": [
+              {
+                "source": "chris-premades",
+                "identifier": "storm-rune",
+                "rules": "2014"
+              }
+            ],
+            "check": [
+              {
+                "source": "chris-premades",
+                "identifier": "storm-rune",
+                "rules": "2014"
+              }
+            ],
+            "skill": [
+              {
+                "source": "chris-premades",
+                "identifier": "storm-rune",
+                "rules": "2014"
+              }
+            ],
+            "tool": [
+              {
+                "source": "chris-premades",
+                "identifier": "storm-rune",
+                "rules": "2014"
+              }
+            ]
+          }
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!2RzSoPBiXaRCLL6t.dbkK0Ws1lxAH7Wxj"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11",
+        "sourceType": "subclass:rune-knight"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!2RzSoPBiXaRCLL6t"
+}

@@ -1,7 +1,11 @@
 import {automationUtils, queryUtils, tokenUtils} from '../../proxy.mjs';
 export async function moveWithin(token, fraction = 0.5) {
     const range = Math.floor((token.actor?.system.attributes.movement.walk ?? 0) * fraction);
-    if (range) await tokenUtils.displaceToken(token, {sourceToken: token, range, userId: queryUtils.firstOwner(token.actor, true)});
+    if (!range) return;
+    const destination = await tokenUtils.aimDestinationAs(queryUtils.firstOwner(token.actor, true), token, {range});
+    if (!destination || destination.cancelled) return;
+    await tokenUtils.displaceToken(token, {sourceToken: token, destination, range});
+    return true;
 }
 async function use({document: activity, workflow}) {
     const config = automationUtils.getGenericConfigValues(activity, 'chris-premades', 'moveTargets', configKeys);

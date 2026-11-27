@@ -1,0 +1,298 @@
+{
+  "_id": "a5QYz7gAYExXwpeu",
+  "name": "Frost Rune",
+  "type": "feat",
+  "img": "icons/commodities/treasure/token-engraved-spiral-grey.webp",
+  "folder": "x964Cp1zmFulGbOi",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "1 + @flags.chris-premades.masterOfRunes",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "frost-rune",
+    "activities": {
+      "6NtHT9fTcxdCyDgr": {
+        "_id": "6NtHT9fTcxdCyDgr",
+        "type": "utility",
+        "name": "Frost Rune",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "minute",
+          "concentration": false,
+          "override": false,
+          "value": "10"
+        },
+        "effects": [
+          {
+            "_id": "y3cPFFMBO22qzAbJ"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "use",
+        "midiProperties": {
+          "identifier": "use",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {}
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [
+    {
+      "_id": "XJQv38MLrAlTkH5A",
+      "name": "Rune Knight",
+      "img": "icons/commodities/treasure/token-engraved-spiral-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "flags.chris-premades.masterOfRunes",
+            "value": "0",
+            "type": "override",
+            "priority": 10
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!a5QYz7gAYExXwpeu.XJQv38MLrAlTkH5A"
+    },
+    {
+      "_id": "Oiw2f9lH6AymJ63U",
+      "name": "Frost Rune",
+      "img": "icons/commodities/treasure/token-engraved-spiral-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": true,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.ani.roll.mode",
+            "value": "1",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.skills.itm.roll.mode",
+            "value": "1",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!a5QYz7gAYExXwpeu.Oiw2f9lH6AymJ63U"
+    },
+    {
+      "_id": "y3cPFFMBO22qzAbJ",
+      "name": "Frost Rune",
+      "img": "icons/commodities/treasure/token-engraved-spiral-grey.webp",
+      "type": "base",
+      "origin": null,
+      "transfer": false,
+      "disabled": false,
+      "statuses": [],
+      "description": "",
+      "tint": "#ffffff",
+      "sort": 0,
+      "showIcon": 1,
+      "folder": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.abilities.str.bonuses.check",
+            "value": "+2",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.str.bonuses.save",
+            "value": "+2",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.con.bonuses.check",
+            "value": "+2",
+            "type": "add",
+            "priority": 20
+          },
+          {
+            "key": "system.abilities.con.bonuses.save",
+            "value": "+2",
+            "type": "add",
+            "priority": 20
+          }
+        ],
+        "magical": true
+      },
+      "duration": {
+        "value": 10,
+        "units": "minutes",
+        "expiry": null,
+        "expired": false
+      },
+      "flags": {
+        "dae": {
+          "stackable": "noneName",
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "dnd5e",
+        "systemVersion": "6.0.6"
+      },
+      "_key": "!items.effects!a5QYz7gAYExXwpeu.y3cPFFMBO22qzAbJ"
+    }
+  ],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11",
+        "sourceType": "subclass:rune-knight"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!a5QYz7gAYExXwpeu"
+}

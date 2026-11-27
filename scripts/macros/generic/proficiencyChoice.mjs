@@ -1,12 +1,12 @@
 import {automationUtils, constants, dialogUtils, documentUtils, effectUtils, Logging} from '../../proxy.mjs';
-function getChoices(actor, traits, proficiency, options) {
-    return traits.flatMap(trait => options[trait].map(({value, label, image}) => ({
+function getChoices(actor, traits, proficiency, options, limit) {
+    return traits.flatMap(trait => options[trait].filter(({value}) => !limit.length || limit.includes(value)).map(({value, label, image}) => ({
         id: trait + '.' + value,
         name: label,
         img: image,
         trait,
         key: value,
-        current: actor.system[trait]?.[value]?.value ?? 0
+        current: (trait === 'abilities' ? actor.system.abilities?.[value]?.proficient : actor.system[trait]?.[value]?.value) ?? 0
     }))).filter(choice => {
         if (proficiency === 'lacking') return choice.current < 1;
         if (proficiency === 'proficient') return choice.current === 1;
@@ -18,9 +18,9 @@ async function use({document: activity, workflow}) {
     if (!config.effect) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'No proficiency effect configured.', {notify: 'warn'});
     const actors = workflow.targets.count ? workflow.targets.documents.map(token => token.actor).filter(Boolean) : [workflow.actor];
     const parentEntity = effectUtils.getConcentrationEffect(workflow.actor, activity.item);
-    const options = {skills: constants.skillOptions, tools: constants.toolOptions};
+    const options = {skills: constants.skillOptions, tools: constants.toolOptions, abilities: constants.abilityOptions};
     for (const actor of actors) {
-        const choices = getChoices(actor, config.traits, config.proficiency, options);
+        const choices = getChoices(actor, config.traits, config.proficiency, options, config.limit);
         if (!choices.length) continue;
         const tags = Object.fromEntries(choices.filter(choice => choice.current).map(choice => [choice.id, CONFIG.DND5E.proficiencyLevels[choice.current]]));
         const selection = await dialogUtils.selectDocumentDialog(activity.item.name, _loc('CHRISPREMADES.Macros.Generic.ProficiencyChoice.Prompt', {name: actor.name}), choices, {combobox: true, sort: 'alphabetical', tags});
@@ -39,7 +39,7 @@ async function use({document: activity, workflow}) {
     }
 }
 /**
- * Prompts for a skill or tool for each target once the roll finishes, then applies an effect built around the choice.
+ * Prompts for a skill, tool or saving throw for each target once the roll finishes, then applies an effect built around the choice.
  * With no targets, the user makes the choice for themselves. A chosen tool the target does not have yet is added with
  * its default ability. The effect ends with the item's concentration when it has one.
  */
@@ -72,8 +72,17 @@ export const proficiencyChoice = {
             hint: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Traits.Hint',
             get options() { return [
                 {value: 'skills', label: _loc('CHRISPREMADES.Config.Skills')},
-                {value: 'tools', label: _loc('CHRISPREMADES.Config.Tools')}
+                {value: 'tools', label: _loc('CHRISPREMADES.Config.Tools')},
+                {value: 'abilities', label: _loc('DND5E.ClassSaves')}
             ]; }
+        },
+        limit: {
+            default: [],
+            type: 'select-many',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Limit.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.ProficiencyChoice.Limit.Hint',
+            get options() { return [...constants.abilityOptions, ...constants.skillOptions, ...constants.toolOptions]; }
         },
         proficiency: {
             default: '',

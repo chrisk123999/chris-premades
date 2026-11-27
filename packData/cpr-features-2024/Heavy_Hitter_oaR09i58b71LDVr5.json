@@ -1,0 +1,563 @@
+{
+  "_id": "oaR09i58b71LDVr5",
+  "name": "Heavy Hitter",
+  "type": "feat",
+  "img": "icons/tools/smithing/anvil.webp",
+  "folder": "DaCCKHmNsmtRhEWW",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "heavy-hitter",
+    "activities": {
+      "gsgStPqrPQA7tYu7": {
+        "_id": "gsgStPqrPQA7tYu7",
+        "type": "utility",
+        "name": "Heavy Hitter",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "heavy-hitter",
+        "midiProperties": {
+          "identifier": "heavy-hitter",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "ownsTag": "heavyHitter",
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "singleTarget": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "9HFLVyJIRdxNPFeU": {
+        "_id": "9HFLVyJIRdxNPFeU",
+        "type": "utility",
+        "name": "Heavy Hitter: Grapple",
+        "sort": 1,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "heavy-grapple",
+        "midiProperties": {
+          "identifier": "heavy-grapple",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "specialItemUse",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "tag": "heavyHitter",
+                  "limit": "1",
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "singleTarget": true,
+                  "suppressedBy": [
+                    "groundwork"
+                  ]
+                },
+                "specialItemUse": {
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "activityIdentifier": "grapple",
+                  "consumeResources": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "DbZmMJ90IKQXumyA": {
+        "_id": "DbZmMJ90IKQXumyA",
+        "type": "utility",
+        "name": "Heavy Hitter: Shove (Prone)",
+        "sort": 2,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "heavy-shove-prone",
+        "midiProperties": {
+          "identifier": "heavy-shove-prone",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "specialItemUse",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "tag": "heavyHitter",
+                  "limit": "1",
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "singleTarget": true
+                },
+                "specialItemUse": {
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "activityIdentifier": "shove-prone",
+                  "consumeResources": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "phxpVR7oS8A5NDxx": {
+        "_id": "phxpVR7oS8A5NDxx",
+        "type": "utility",
+        "name": "Heavy Hitter: Shove (Push)",
+        "sort": 3,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "heavy-shove-push",
+        "midiProperties": {
+          "identifier": "heavy-shove-push",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "specialItemUse",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "tag": "heavyHitter",
+                  "limit": "1",
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "singleTarget": true
+                },
+                "specialItemUse": {
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "activityIdentifier": "shove-push",
+                  "consumeResources": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "wgF4PgQedKQ9ExyJ": {
+        "_id": "wgF4PgQedKQ9ExyJ",
+        "type": "utility",
+        "name": "Stop and Drop: Grapple",
+        "sort": 4,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "any",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "heavy-grapple-free",
+        "midiProperties": {
+          "identifier": "heavy-grapple-free",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true,
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "attackRider",
+                  "rules": "all"
+                },
+                {
+                  "source": "chris-premades",
+                  "identifier": "specialItemUse",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "attackRider": {
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "singleTarget": true,
+                  "requiredItems": [
+                    "groundwork"
+                  ]
+                },
+                "specialItemUse": {
+                  "identifiers": [
+                    "unarmed-strike"
+                  ],
+                  "activityIdentifier": "grapple",
+                  "consumeResources": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!oaR09i58b71LDVr5"
+}

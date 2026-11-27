@@ -29,9 +29,20 @@ async function damage({document, ditem, targetToken, workflow}) {
     if (config.healingTraits && actorUtils.checkTrait(actor, 'dr', 'healing')) targetHP = Math.max(Math.floor(targetHP / 2), 1);
     workflowUtils.preventZeroHP(ditem, {targetHP});
     const useActivity = document.system.activities.get(config.useActivity);
-    if (useActivity) await workflowUtils.completeActivityUse(useActivity, [targetToken]);
-    else if (config.display && !saveActivity) await workflowUtils.completeItemUse(document, [targetToken]);
+    if (useActivity || (config.display && !saveActivity)) {
+        const pending = workflowUtils.getWorkflowProperty(workflow, 'preventDeathUses') ?? [];
+        workflowUtils.setWorkflowProperty(workflow, 'preventDeathUses', [...pending, {item: document.uuid, activity: useActivity?.id, token: targetToken.uuid}]);
+    }
     await automationUtils.calledEvent('preventDeath', document.actor, {canOverlap: true, data: {item: document, workflow}});
+}
+async function deferredUse({document, workflow}) {
+    const pending = (workflowUtils.getWorkflowProperty(workflow, 'preventDeathUses') ?? []).filter(entry => entry.item === document.uuid);
+    for (const entry of pending) {
+        const token = await fromUuid(entry.token);
+        const activity = entry.activity ? document.system.activities.get(entry.activity) : undefined;
+        if (activity) await workflowUtils.completeActivityUse(activity, token ? [token] : []);
+        else await workflowUtils.completeItemUse(document, token ? [token] : []);
+    }
 }
 function reactionSpent(document) {
     const activity = document.system.activities.get(automationUtils.getGenericConfigValue(document, 'chris-premades', 'preventDeath', 'useActivity'));
@@ -54,7 +65,8 @@ async function nearbyDamage({document, ditem, targetToken, workflow}) {
 /**
  * Offers to use this item when a hit would drop a creature from above 0 hit points to 0, and keeps it above 0
  * instead. The item needs a use remaining, and each trigger asks the owner to confirm. Once it keeps a creature up, it
- * runs the `preventDeath` called event with the item and the workflow.
+ * runs the `preventDeath` called event with the item and the workflow. The use activity rolls once the triggering roll
+ * finishes, after its damage is applied.
  */
 export const preventDeath = {
     rules: 'all',
@@ -74,6 +86,12 @@ export const preventDeath = {
             macro: nearbyDamage,
             thirdParty: true,
             priority: 150,
+            canOverlap: true
+        },
+        {
+            pass: 'sceneRollFinished',
+            macro: deferredUse,
+            priority: 50,
             canOverlap: true
         }
     ],

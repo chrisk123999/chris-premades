@@ -1,23 +1,26 @@
-import {activityUtils, automationUtils, constants, dialogUtils, rollUtils, workflowUtils} from '../../proxy.mjs';
-async function reroll({actor, config, dialog, document: item, message, roll, macroClass: {identifier}, checkId, saveId, skillId, toolId}) {
+import {activityUtils, actorUtils, automationUtils, constants, dialogUtils, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+async function reroll({actor, config, dialog, document: item, message, roll, macroClass: {identifier}, checkId, saveId, skillId, toolId}, nearby = false) {
     const settings = automationUtils.getGenericConfigValues(item, 'chris-premades', identifier, configKeys);
-    if (settings.failedOnly && roll.isSuccess) return;
+    if (nearby !== !!settings.distance) return;
+    if (settings.failedOnly && (roll.isSuccess || !Number.isNumeric(roll.options.target))) return;
     const activity = item.system.activities.get(settings.rollActivity);
     const prompts = !!(activity && settings.consume);
     if ((settings.oncePerRoll || !prompts) && workflowUtils.getWorkflowProperty(config, identifier)) return;
     if (settings.ability?.length && !settings.ability.includes(config.ability)) return;
     if (settings.skill?.length && !settings.skill.includes(config.skill)) return;
     if (settings.tool?.length && !settings.tool.includes(config.tool)) return;
-    if (activity && settings.consume) {
+    if (nearby && !activity) return;
+    if (activity && (settings.consume || nearby)) {
         if (!activityUtils.checkCosts(activity)) return;
-        if (!await dialogUtils.confirmUseRollTotal(item, roll.total)) return;
+        const userId = queryUtils.firstOwner(item.actor, true);
+        if (!await (nearby ? dialogUtils.confirmUseForRollTotal(item, actor.name, roll.total, {userId}) : dialogUtils.confirmUseRollTotal(item, roll.total, {userId}))) return;
     }
     const rerollConfig = {...config};
     const rerollDialog = {...dialog, configure: false};
     const rerollMessage = {...message, create: false};
     if (settings.bonus?.length) {
         rerollConfig.rolls ??= [];
-        rerollConfig.rolls.push({parts: [settings.bonus]});
+        rerollConfig.rolls.push({parts: [nearby ? Roll.replaceFormulaData(settings.bonus, item.getRollData()) : settings.bonus]});
     }
     workflowUtils.setWorkflowProperty(rerollConfig, identifier, true);
     let newRoll;
@@ -105,7 +108,22 @@ const tool = {
     hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Tool.Hint',
     get options() { return constants.toolOptions; }
 };
+genericConfig.distance = {
+    default: 0,
+    type: 'number',
+    category: 'behavior',
+    label: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Distance.Label',
+    hint: 'CHRISPREMADES.Macros.Generic.RerollWithBonus.Distance.Hint'
+};
 const configKeys = [...Object.keys(genericConfig), 'skill', 'tool'];
+async function nearbyReroll(data) {
+    const owner = data.document.actor;
+    if (!owner || owner === data.actor || actorUtils.hasUsedReaction(owner)) return;
+    const ownerToken = actorUtils.getFirstToken(owner);
+    const token = actorUtils.getFirstToken(data.actor);
+    if (!ownerToken || !token || !tokenUtils.canSee(ownerToken, token)) return;
+    return reroll(data, true);
+}
 const base = {
     rules: 'all',
     version: '2.1.11',
@@ -119,12 +137,21 @@ const pass = [
         pass: 'actorBonus',
         macro: reroll,
         priority: 300
+    },
+    {
+        pass: 'nearbyBonus',
+        macro: nearbyReroll,
+        priority: 300,
+        configDistance: 'distance',
+        dispositions: ['ally'],
+        disabled: ['incapacitated']
     }
 ];
 /**
  * Rerolls a d20 roll with an added bonus and keeps the new result, with one variant each for ability checks, saving
  * throws, skill checks and tool checks. The discarded roll stays visible on the chat card. When the reroll consumes the
- * roll activity's costs, the owner confirms first and the reroll is skipped if the costs can't be paid.
+ * roll activity's costs, the owner confirms first and the reroll is skipped if the costs can't be paid. With an Ally
+ * Range, the reroll is offered on allies' rolls within that range instead of the owner's.
  */
 export const rerollCheckWithBonus = {...base, check: pass};
 export const rerollSaveWithBonus = {...base, save: pass};

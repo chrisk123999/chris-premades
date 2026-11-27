@@ -1,0 +1,16 @@
+{
+  "_id": "xB9kdZsvZ6kX0kkQ",
+  "name": "Way of the Cobalt Soul",
+  "type": "Item",
+  "folder": "Yvt7EpGSFji8OfRc",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!xB9kdZsvZ6kX0kkQ"
+}
