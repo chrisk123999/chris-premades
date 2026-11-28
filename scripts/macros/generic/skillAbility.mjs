@@ -1,12 +1,16 @@
 import {automationUtils, constants, workflowUtils} from '../../proxy.mjs';
-function score(actor, ability) {
-    const data = actor.system.abilities[ability];
-    return data ? data.mod + data.check.bonus : -Infinity;
+function score(actor, ability, skill) {
+    const sData = actor.system.skills[skill];
+    const cData = actor.system.abilities[ability];
+    let total = 0;
+    if (sData) total += sData.bonus + 3 * sData.roll.mode;
+    if (cData) total += cData.mod + cData.check.bonus + 3 * cData.check.roll.mode;
+    return total !== 0 ? total : -Infinity;
 }
 export async function swapSkillAbility({actor, config, item, skills, abilities}) {
     if (!skills.includes(config.skill)) return;
     const original = config.ability ?? actor.system.skills[config.skill]?.ability;
-    const best = abilities.reduce((current, ability) => score(actor, ability) > score(actor, current) ? ability : current, original);
+    const best = abilities.reduce((current, ability) => score(actor, ability, config.skill) > score(actor, current, config.skill) ? ability : current, original);
     if (best === original) return;
     if (item) await workflowUtils.completeItemUse(item);
     config.ability = best;
