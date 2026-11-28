@@ -43,7 +43,7 @@ async function swapDamage({document: effect, ditem, targetToken, macroClass: {id
     await MidiQOL.applyTokenDamage(newDamage, workflow.damageTotal, [ally], workflow.item, new Set(), {workflow});
     workflowUtils.negateDamageItemDamage(ditem);
 }
-async function prompt({damage, name, target, allies}) {
+async function prompt({damage, name, target, allies, signal}) {
     const nearby = (await Promise.all(allies.map(a => fromUuid(a)))).filter(Boolean);
     if (!nearby.length) return;
     const choice = await applications.DialogApp.dialog(
@@ -58,7 +58,7 @@ async function prompt({damage, name, target, allies}) {
                 const result = await dialogUtils.confirm(
                     name,
                     _loc('CHRISPREMADES.Macros.Legacy.ProtectiveBond.Request', {target, damage}),
-                    {userId: user.id}
+                    {userId: user.id, signal}
                 );
                 return result ? result : {result, reason: `${user.name} ${_loc('CAT.Dialog.Request.Declined')}`};
             },
@@ -73,7 +73,7 @@ async function prompt({damage, name, target, allies}) {
             }
         }))]],
         'okCancel',
-        {timer: true}
+        {timer: true, signal}
     );
     if (choice?.buttons) return Object.entries(choice).find(e => e[1] === 'true')?.[0];
 }
