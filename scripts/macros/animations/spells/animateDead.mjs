@@ -118,6 +118,7 @@ async function postPlace(summon, location, token) {
 }
 export const animateDeadSummon = {
     name: 'CHRISPREMADES.Animations.AnimateDeadSummon',
+    sound: 'psfx.magic-signs.circle.v1.necromancy.complete',
     macros: {
         prePlace,
         postPlace,

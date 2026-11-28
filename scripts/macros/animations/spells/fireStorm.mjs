@@ -1,12 +1,13 @@
 import {animationUtils} from '../../../proxy.mjs';
-import {addCast, casts, getPalette, partOption, pickFile} from '../generic/spellParts.mjs';
-async function play(sourceToken, region, {cast = true, ground = true} = {}) {
+import {addCast, addSound, casts, getPalette, partOption, pickFile} from '../generic/spellParts.mjs';
+async function play(sourceToken, region, {cast = true, ground = true, impactSound, soundVolume} = {}) {
     if (!region) return;
     const sequence = new Sequence();
     if (cast && sourceToken) addCast(sequence, sourceToken, undefined, {file: getPalette(casts, 'orange'), wait: -500});
     const explosion = pickFile('jb2a.explosion.01.orange', 'jb2a.explosion.02.orange');
     const scorch = pickFile('jb2a.ground_cracks.orange.01', 'jb2a.impact.ground_crack.orange.01');
     const gridSize = region.parent.grid.size;
+    addSound(sequence, impactSound, {volume: soundVolume});
     region.shapes.forEach((shape, index) => {
         const center = {x: shape.x + shape.width / 2, y: shape.y + shape.height / 2};
         const size = shape.width / gridSize;
@@ -34,6 +35,8 @@ async function play(sourceToken, region, {cast = true, ground = true} = {}) {
 }
 export const fireStorm = {
     name: 'CHRISPREMADES.Animations.FireStorm.Name',
+    sound: 'psfx.casting.fire-side.001',
+    impactSound: 'psfx.3rd-level-spells.fireball.v1.001.explosion',
     macros: {
         play
     },

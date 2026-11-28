@@ -60,6 +60,7 @@ async function create(effect, targetToken, {cast = true, tether = true} = {}, {s
 }
 export const wardingBond = {
     name: 'CHRISPREMADES.Animations.WardingBond',
+    sound: 'psfx.magic-signs.circle.v1.abjuration.outro',
     macros: {
         create
     },

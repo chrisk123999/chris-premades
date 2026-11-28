@@ -80,6 +80,7 @@ async function play(sourceToken, region, {cast = true, impact = true, targets = 
 }
 export const iceStorm = {
     name: 'CHRISPREMADES.Animations.IceStorm',
+    sound: 'psfx.5th-level-spells.cone-of-cold.v1.001',
     macros: {
         play
     },

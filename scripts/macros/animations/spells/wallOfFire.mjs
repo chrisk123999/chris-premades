@@ -48,6 +48,7 @@ async function play(sourceToken, region, {cast = true, shimmer = true, path, sid
 }
 export const wallOfFire = {
     name: 'CHRISPREMADES.Animations.WallOfFire',
+    sound: 'psfx.1st-level-spells.burning-hands.v1.001',
     macros: {
         play
     },

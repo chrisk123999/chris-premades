@@ -1,4 +1,4 @@
-import {animationUtils, distanceUtils, itemUtils} from '../../../proxy.mjs';
+import {animationUtils, constants, distanceUtils, itemUtils} from '../../../proxy.mjs';
 import {pickFile} from './spellParts.mjs';
 const groupedWeapons = {
     'melee_attack.01': ['butterflysword', 'chakram', 'magic_sword', 'shortsword', 'sickle'],
@@ -214,7 +214,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
                 .waitUntilFinished(-1000)
             .animation()
                 .on(sourceToken)
-            .sound()
+            .sound().name(constants.soundName)
                 .file(soundMelee)
                 .playIf(soundMelee)
             .effect()
@@ -273,7 +273,7 @@ async function attack(sourceToken, targetTokens, {soundMelee, soundRanged, enabl
         const easeOption = 'easeInOutSine';
         /* eslint-disable indent */
         new Sequence()
-            .sound()
+            .sound().name(constants.soundName)
                 .file(soundRanged)
                 .playIf(soundRanged)
                 .delay(soundDelay)

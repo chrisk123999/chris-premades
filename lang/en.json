@@ -2977,6 +2977,33 @@
                         "Hint": "Where only one copy of this effect may exist."
                     },
                     "Name": "Unique Effect"
+                },
+                "SoundEffects": {
+                    "Name": "Sound Effects",
+                    "Use": {
+                        "Label": "Use Sound",
+                        "Hint": "Sound played when the item is used."
+                    },
+                    "Attack": {
+                        "Label": "Attack Sound",
+                        "Hint": "Sound played when the attack is rolled."
+                    },
+                    "Hit": {
+                        "Label": "Hit Sound",
+                        "Hint": "Sound played when the attack hits."
+                    },
+                    "Miss": {
+                        "Label": "Miss Sound",
+                        "Hint": "Sound played when the attack misses."
+                    },
+                    "Crit": {
+                        "Label": "Critical Sound",
+                        "Hint": "Sound played on a critical hit."
+                    },
+                    "Damage": {
+                        "Label": "Damage Sound",
+                        "Hint": "Sound played when the damage is rolled."
+                    }
                 }
             },
             "Legacy": {

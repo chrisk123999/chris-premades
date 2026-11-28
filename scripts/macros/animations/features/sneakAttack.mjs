@@ -140,6 +140,7 @@ async function attack(sourceToken, targetToken, attackType) {
 }
 export const sneakAttack = {
     name: 'CHRISPREMADES.Animations.SneakAttack.Name',
+    sound: 'psfx.casting.generic.002.003',
     macros: {
         attack
     },

@@ -38,6 +38,7 @@ async function play(sourceToken, region, {cast = true, shake = true, targets = [
 }
 export const earthTremor = {
     name: 'CHRISPREMADES.Animations.EarthTremor',
+    sound: 'psfx.creature.movement.burrow.001.ranged',
     macros: {
         play
     },

@@ -133,6 +133,7 @@ async function create(effect, targetToken, config, {activity} = {}) {
 }
 export const faerieFire = {
     name: 'CHRISPREMADES.Animations.FaerieFire.Name',
+    sound: 'psfx.1st-level-spells.burning-hands.v1.001',
     macros: {
         play,
         create,

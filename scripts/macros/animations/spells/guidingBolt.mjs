@@ -1,5 +1,5 @@
 import {animationUtils} from '../../../proxy.mjs';
-import {addCast, partOption} from '../generic/spellParts.mjs';
+import {addCast, addSound, partOption} from '../generic/spellParts.mjs';
 const palettes = {
     patreon: {
         marker: 'jb2a.markers.light.complete.yellow',
@@ -14,7 +14,7 @@ const palettes = {
         glow: 'jb2a.glint.yellow.many'
     }
 };
-async function play(sourceToken, targetToken, {cast = true, hit} = {}) {
+async function play(sourceToken, targetToken, {cast = true, hit, impactSound, soundVolume} = {}) {
     const files = palettes[animationUtils.jb2aCheck()];
     if (!files || !sourceToken) return;
     const sequence = new Sequence();
@@ -52,6 +52,7 @@ async function play(sourceToken, targetToken, {cast = true, hit} = {}) {
             .scaleIn(0, 500, {ease: 'easeOutCubic'})
             .zIndex(2);
     /* eslint-enable indent */
+    addSound(sequence, impactSound, {volume: soundVolume, delay: 300, playIf: hit !== false});
     await sequence.play();
 }
 async function create(effect, targetToken) {
@@ -91,6 +92,8 @@ async function create(effect, targetToken) {
 }
 export const guidingBolt = {
     name: 'CHRISPREMADES.Animations.GuidingBolt',
+    sound: 'psfx.class-features.divine-smite.v1.001.caster',
+    impactSound: 'psfx.class-features.divine-smite.v1.001.target',
     macros: {
         play,
         create

@@ -57,6 +57,7 @@ async function play(sourceToken, region, {cast = true, impact = true, targets = 
 }
 export const tidalWave = {
     name: 'CHRISPREMADES.Animations.TidalWave',
+    sound: 'psfx.casting.water.001',
     macros: {
         play
     },

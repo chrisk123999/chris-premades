@@ -125,6 +125,7 @@ async function remove(effect, token) {
 }
 export const armorOfAgathys = {
     name: 'CHRISPREMADES.Animations.ArmorOfAgathys',
+    sound: 'psfx.cantrips.ray-of-frost.v2',
     macros: {
         play,
         create,

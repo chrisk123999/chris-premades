@@ -91,6 +91,7 @@ async function create(effect, targetToken, {color = 'pink', cast = true} = {}, {
 }
 export const charmPerson = {
     name: 'CHRISPREMADES.Animations.CharmPerson',
+    sound: 'psfx.casting.generic.002.001',
     macros: {
         play,
         create

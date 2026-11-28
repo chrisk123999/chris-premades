@@ -30,6 +30,7 @@ async function create(effect, targetToken, {color = 'green'} = {}) {
 }
 export const huntersMark = {
     name: 'CHRISPREMADES.Animations.HuntersMark',
+    sound: 'psfx.casting.sound.001',
     macros: {
         create,
         delete: endPersist('huntersMark')

@@ -91,6 +91,7 @@ async function play(sourceToken, targets, strike) {
 }
 export const elementalStrike = {
     name: 'CHRISPREMADES.Animations.ElementalStrike',
+    sound: 'psfx.casting.fire-side.001',
     macros: {
         play
     },

@@ -127,6 +127,7 @@ async function teleIn(token) {
 }
 export const teleportSpell = {
     name: 'CHRISPREMADES.Animations.TeleportSpell',
+    sound: 'psfx.2nd-level-spells.misty-step.v1.complete.generic',
     macros: {
         preAnimation: teleOut,
         postAnimation: teleIn

@@ -54,6 +54,7 @@ async function create(effect, targetToken, {color = 'red'} = {}) {
 }
 export const compelledDuel = {
     name: 'CHRISPREMADES.Animations.CompelledDuel',
+    sound: 'psfx.magic-signs.rune.v1.enchantment.intro',
     macros: {
         play,
         create

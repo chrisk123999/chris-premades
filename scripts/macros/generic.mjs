@@ -7,6 +7,7 @@
 /*============================*/
 /*         ANIMATIONS         */
 /*============================*/
+export {soundEffects} from './generic/soundEffects.mjs';
 export {spellAnimation} from './generic/spellAnimation.mjs';
 export {wallPanels, wallPermanence} from './generic/wallSpell.mjs';
 export {weaponAnimation} from './generic/weaponAnimation.mjs';

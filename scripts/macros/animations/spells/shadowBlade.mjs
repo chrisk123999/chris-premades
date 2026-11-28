@@ -82,6 +82,7 @@ async function create(effect, targetToken, {color = 'purple', cast = true} = {})
 }
 export const shadowBlade = {
     name: 'CHRISPREMADES.Animations.ShadowBlade',
+    sound: 'psfx.casting.fire-side.001',
     macros: {
         play,
         create

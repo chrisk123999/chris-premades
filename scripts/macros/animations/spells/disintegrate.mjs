@@ -122,6 +122,7 @@ async function play(sourceToken, targetToken, {killed} = {}) {
 }
 export const disintegrate = {
     name: 'CHRISPREMADES.Animations.Disintegrate',
+    sound: 'psfx.ranged-magic.generic.beam.002',
     macros: {
         play
     },

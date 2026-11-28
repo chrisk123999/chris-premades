@@ -41,6 +41,7 @@ async function move(region) {
 }
 export const cloudkill = {
     name: 'CHRISPREMADES.Animations.Cloudkill',
+    sound: 'psfx.cantrips.poison-spray.v1',
     macros: {
         play,
         move

@@ -53,7 +53,7 @@ export const eldritchBlast = {
                 hint: 'CHRISPREMADES.Config.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
-                default: ''
+                default: 'psfx.cantrips.eldritch-blast.v1'
             }
         };
     },
