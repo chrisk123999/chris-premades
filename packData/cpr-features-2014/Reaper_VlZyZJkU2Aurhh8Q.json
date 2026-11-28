@@ -1,0 +1,91 @@
+{
+  "name": "Reaper",
+  "type": "feat",
+  "effects": [],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "reaper",
+    "source": {
+      "book": "DMG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 1,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "genericConfig": {
+        "chris-premades": {
+          "additionalTargets": {
+            "damageType": [],
+            "healingType": [],
+            "identifiers": [],
+            "itemType": [
+              "spell"
+            ],
+            "disposition": "ally",
+            "range": 5,
+            "rangeFrom": "target",
+            "rollActivity": "",
+            "rollItem": true,
+            "targets": 1,
+            "spellLevel": [
+              "0"
+            ],
+            "spellSchool": [
+              "nec"
+            ],
+            "firstCastOnly": true
+          }
+        }
+      },
+      "macros": {
+        "roll": [
+          {
+            "source": "chris-premades",
+            "identifier": "additionalTargets",
+            "rules": "all"
+          }
+        ]
+      },
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "img": "icons/magic/death/skull-horned-goat-pentagram-red.webp",
+  "folder": "5uZ5kNucLVwQXioA",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.1.1"
+  },
+  "_id": "VlZyZJkU2Aurhh8Q",
+  "_key": "!items!VlZyZJkU2Aurhh8Q"
+}

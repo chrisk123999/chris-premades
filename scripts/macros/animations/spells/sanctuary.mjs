@@ -150,6 +150,7 @@ async function play(_sourceToken, targetToken) {
 }
 export const sanctuary = {
     name: 'CHRISPREMADES.Animations.Sanctuary',
+    sound: 'psfx.magic-signs.rune.v1.abjuration.complete',
     macros: {
         play,
         create

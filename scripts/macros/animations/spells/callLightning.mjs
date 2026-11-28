@@ -1,5 +1,5 @@
 import {animationUtils, distanceUtils, effectUtils, regionUtils} from '../../../proxy.mjs';
-import {addImpact, partOption, persistName} from '../generic/spellParts.mjs';
+import {addImpact, addSound, partOption, persistName} from '../generic/spellParts.mjs';
 function addStorm(sequence, sourceToken, center, concentration, {cast, size}) {
     const isPatreon = animationUtils.jb2aCheck() === 'patreon';
     /* eslint-disable indent */
@@ -38,7 +38,7 @@ function addStorm(sequence, sourceToken, center, concentration, {cast, size}) {
             .tieToDocuments(concentration);
     /* eslint-enable indent */
 }
-function addBolt(sequence, center, grid, {impact, targets}) {
+function addBolt(sequence, center, grid, {impact, targets, impactSound, soundVolume}) {
     const isPatreon = animationUtils.jb2aCheck() === 'patreon';
     /* eslint-disable indent */
     sequence
@@ -46,7 +46,9 @@ function addBolt(sequence, center, grid, {impact, targets}) {
             .file('jb2a.lightning_strike.blue')
             .atLocation(center)
             .size(2.5 * grid)
-            .zIndex(100)
+            .zIndex(100);
+    addSound(sequence, impactSound, {volume: soundVolume});
+    sequence
         .canvasPan()
             .delay(250)
             .shake({duration: 1000, strength: 2, rotation: false, fadeOut: 500})
@@ -60,7 +62,7 @@ function addBolt(sequence, center, grid, {impact, targets}) {
     /* eslint-enable indent */
     if (impact) targets.filter(target => target.saved !== true).forEach(target => addImpact(sequence, target.token, 'blue'));
 }
-async function play(sourceToken, region, {cast = true, impact = true, targets = []} = {}) {
+async function play(sourceToken, region, {cast = true, impact = true, targets = [], impactSound, soundVolume} = {}) {
     const activity = region ? regionUtils.getActivity(region) : undefined;
     if (!activity) return;
     const area = regionUtils.getArea(region);
@@ -68,11 +70,12 @@ async function play(sourceToken, region, {cast = true, impact = true, targets = 
     const concentration = effectUtils.getConcentrationEffect(activity.actor, activity.item);
     const sequence = new Sequence();
     if (concentration && !Sequencer.EffectManager.getEffects({name: persistName('callLightning', concentration)}).length) addStorm(sequence, sourceToken, center, concentration, {cast, size: distanceUtils.toPixels(region.parent, 120)});
-    addBolt(sequence, center, region.parent.grid.size, {impact, targets});
+    addBolt(sequence, center, region.parent.grid.size, {impact, targets, impactSound, soundVolume});
     await sequence.play();
 }
 export const callLightning = {
     name: 'CHRISPREMADES.Animations.CallLightning',
+    impactSound: 'psfx.3rd-level-spells.call-lightning.v1.primary',
     macros: {
         play
     },

@@ -27,6 +27,7 @@ async function destroyLayer(region, layer) {
 }
 export const prismaticWall = {
     name: 'CHRISPREMADES.Animations.PrismaticWall',
+    sound: 'psfx.2nd-level-spells.moonbeam.intro.v3.005',
     macros: {
         play: playPrismatic,
         destroyLayer

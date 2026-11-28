@@ -1,4 +1,5 @@
 import {activityUtils, actorUtils, automationUtils, constants, dialogUtils, documentUtils, Logging, queryUtils, rollUtils, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {hasRequiredSummons} from './damageBonusToOneRoll.mjs';
 async function damage({document, ditem, targetToken, workflow}) {
     if (!ditem.isHit || ditem.oldHP <= 0) return;
     const resultingHP = ditem.oldHP + (ditem.oldTempHP ?? 0) - ditem.totalDamage;
@@ -11,7 +12,9 @@ async function damage({document, ditem, targetToken, workflow}) {
     if (config.excludeCritical && workflow.isCritical) return;
     if (config.excludeDamageTypes.length && workflowUtils.getDamageTypes(workflow.damageRolls).intersects(new Set(config.excludeDamageTypes))) return;
     if (config.healingTraits && actorUtils.checkTrait(actor, 'di', 'healing')) return;
-    if (!document.system.uses.value) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(document), 'No uses remaining.');
+    if (config.requiredEffects.length && !config.requiredEffects.some(identifier => documentUtils.getEffectByIdentifier(actor, identifier, {includeItemEffects: true}))) return;
+    if (!hasRequiredSummons(document.actor, config.requiredSummons)) return;
+    if (document.system.uses.max && !document.system.uses.value) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(document), 'No uses remaining.');
     const selection = await dialogUtils.confirmUseItem(document, {userId: queryUtils.firstOwner(document.actor, true)});
     if (!selection) return;
     const saveActivity = document.system.activities.get(config.saveActivity);
@@ -26,9 +29,20 @@ async function damage({document, ditem, targetToken, workflow}) {
     if (config.healingTraits && actorUtils.checkTrait(actor, 'dr', 'healing')) targetHP = Math.max(Math.floor(targetHP / 2), 1);
     workflowUtils.preventZeroHP(ditem, {targetHP});
     const useActivity = document.system.activities.get(config.useActivity);
-    if (useActivity) await workflowUtils.completeActivityUse(useActivity, [targetToken]);
-    else if (config.display && !saveActivity) await workflowUtils.completeItemUse(document, [targetToken]);
+    if (useActivity || (config.display && !saveActivity)) {
+        const pending = workflowUtils.getWorkflowProperty(workflow, 'preventDeathUses') ?? [];
+        workflowUtils.setWorkflowProperty(workflow, 'preventDeathUses', [...pending, {item: document.uuid, activity: useActivity?.id, token: targetToken.uuid}]);
+    }
     await automationUtils.calledEvent('preventDeath', document.actor, {canOverlap: true, data: {item: document, workflow}});
+}
+async function deferredUse({document, workflow}) {
+    const pending = (workflowUtils.getWorkflowProperty(workflow, 'preventDeathUses') ?? []).filter(entry => entry.item === document.uuid);
+    for (const entry of pending) {
+        const token = await fromUuid(entry.token);
+        const activity = entry.activity ? document.system.activities.get(entry.activity) : undefined;
+        if (activity) await workflowUtils.completeActivityUse(activity, token ? [token] : []);
+        else await workflowUtils.completeItemUse(document, token ? [token] : []);
+    }
 }
 function reactionSpent(document) {
     const activity = document.system.activities.get(automationUtils.getGenericConfigValue(document, 'chris-premades', 'preventDeath', 'useActivity'));
@@ -51,11 +65,12 @@ async function nearbyDamage({document, ditem, targetToken, workflow}) {
 /**
  * Offers to use this item when a hit would drop a creature from above 0 hit points to 0, and keeps it above 0
  * instead. The item needs a use remaining, and each trigger asks the owner to confirm. Once it keeps a creature up, it
- * runs the `preventDeath` called event with the item and the workflow.
+ * runs the `preventDeath` called event with the item and the workflow. The use activity rolls once the triggering roll
+ * finishes, after its damage is applied.
  */
 export const preventDeath = {
     rules: 'all',
-    version: '2.1.10',
+    version: '2.1.11',
     category: 'mechanics',
     generic: true,
     documents: ['item'],
@@ -71,6 +86,12 @@ export const preventDeath = {
             macro: nearbyDamage,
             thirdParty: true,
             priority: 150,
+            canOverlap: true
+        },
+        {
+            pass: 'sceneRollFinished',
+            macro: deferredUse,
+            priority: 50,
             canOverlap: true
         }
     ],
@@ -145,6 +166,20 @@ export const preventDeath = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivity.Label',
             hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.UseActivity.Hint'
+        },
+        requiredSummons: {
+            default: [],
+            type: 'selectIdentifiers',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Common.RequiredSummons.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Common.RequiredSummons.Hint'
+        },
+        requiredEffects: {
+            default: [],
+            type: 'selectIdentifiers',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.PreventDeath.RequiredEffects.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.PreventDeath.RequiredEffects.Hint'
         },
         range: {
             default: '0',

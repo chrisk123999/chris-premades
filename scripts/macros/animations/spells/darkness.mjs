@@ -21,6 +21,7 @@ async function endDarkness(region) {
 }
 export const darknessSphere = {
     name: 'CHRISPREMADES.Animations.Darkness.Name',
+    sound: 'psfx.magic-signs.rune.v1.evocation.intro',
     macros: {
         darkness,
         endDarkness

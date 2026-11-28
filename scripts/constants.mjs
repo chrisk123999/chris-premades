@@ -28,7 +28,9 @@ const sangromancyFeatures = [
     'sangromantic-initiate',
     'stolen-power'
 ];
-const firearmProperties = ['barrel', 'blackpowder', 'blaring', 'burstFire', 'cumbersome', 'explosive', 'loud', 'magazine', 'recoil', 'spreadFire', 'twinnedBarrel'];
+const firearmProperties = ['barrel', 'blackpowder', 'blaring', 'burstfire', 'cumbersome', 'explosive', 'loud', 'magazine', 'recoil', 'spreadfire', 'twinnedbarrel'];
+const firstPartyFirearmProperties = ['burstfire'];
+const thirdPartyFirearmBaseItems = ["blunderbuss(steinhardt's)", 'double-barrelshotgun', 'dragonrifle', 'flamebellows'];
 const firearmBaseItems = {
     'automaticrifle': packs.modern.equipment + '.Item.wZSoPUAn0IoSPkRu',
     'badnews(exandria)': packs.legacy.equipment + '.Item.6Lm04WMHVTQIN50N',
@@ -58,6 +60,8 @@ export default {
     packs,
     sangromancyFeatures,
     firearmProperties,
+    firstPartyFirearmProperties,
+    thirdPartyFirearmBaseItems,
     firearmBaseItems,
     darknessAnimationConfig
 };

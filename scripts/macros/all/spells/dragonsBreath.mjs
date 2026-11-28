@@ -2,7 +2,7 @@ import {cpr} from '../../../module.mjs';
 import {automationUtils, compendiumUtils, constants, dialogUtils, documentUtils, effectUtils, itemUtils, Logging, workflowUtils} from '../../../proxy.mjs';
 async function use({document, workflow}) {
     if (!workflow.targets.count) {
-        Logging.addMacroWarning('CPR', 'dragons-breath', 'No target selected.');
+        Logging.addMacroWarning('chris-premades', 'dragons-breath', 'No target selected.');
         await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }
@@ -10,7 +10,7 @@ async function use({document, workflow}) {
     const damageType = await dialogUtils.selectDamageType(types, document.name, 'CHRISPREMADES.Generic.SelectDamageType') || types[0];
     const featureData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'dragon-breath', {object: true, translate: 'CHRISPREMADES.Macros.All.DragonsBreath.DragonBreath', flatDC: itemUtils.getSaveDC(workflow.item)});
     if (!featureData) {
-        Logging.addMacroWarning('CPR', 'dragons-breath', 'Dragon Breath missing from the automation items compendium.', {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'dragons-breath', 'Dragon Breath missing from the automation items compendium.', {notify: 'warn'});
         await effectUtils.endConcentration(workflow.actor, workflow.item);
         return;
     }
@@ -21,7 +21,7 @@ async function use({document, workflow}) {
     for (const target of workflow.targets.documents) {
         const effect = documentUtils.getEffectByIdentifier(target.actor, 'dragonsBreath', {sourceActor: workflow.actor});
         if (!effect) {
-            Logging.addMacroWarning('CPR', 'dragons-breath', 'Dragon\'s Breath effect missing from ' + target.name + '.', {notify: 'warn'});
+            Logging.addMacroWarning('chris-premades', 'dragons-breath', 'Dragon\'s Breath effect missing from ' + target.name + '.', {notify: 'warn'});
             continue;
         }
         await itemUtils.createItems(target.actor, [featureData], {favorite: true, parentEntity: effect});

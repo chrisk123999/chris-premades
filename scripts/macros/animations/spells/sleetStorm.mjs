@@ -20,6 +20,7 @@ async function play(sourceToken, region, {color = 'blue', cast = true} = {}) {
 }
 export const sleetStorm = {
     name: 'CHRISPREMADES.Animations.SleetStorm',
+    sound: 'psfx.5th-level-spells.cone-of-cold.v1.001',
     macros: {
         play
     },

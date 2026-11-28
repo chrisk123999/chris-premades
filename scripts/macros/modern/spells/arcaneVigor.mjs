@@ -6,7 +6,7 @@ async function damage({workflow}) {
     const selections = await dialogUtils.selectHitDie(workflow.actor, workflow.item.name, _loc('CHRISPREMADES.Macros.Modern.ArcaneVigor.Choose'), {max, additionalItems: features});
     const {count, formula} = await actorUtils.spendHitDice(workflow.actor, selections, {roll: false});
     if (!count) {
-        Logging.addMacroWarning('CPR', 'arcane-vigor', 'No hit dice spent.');
+        Logging.addMacroWarning('chris-premades', 'arcane-vigor', 'No hit dice spent.');
         return;
     }
     const roll = await rollUtils.damageRoll(formula + ' + @mod', workflow.activity, workflow.damageRolls[0].options);

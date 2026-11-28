@@ -76,6 +76,7 @@ async function play(sourceToken, region, {cast = true} = {}) {
 }
 export const grease = {
     name: 'CHRISPREMADES.Animations.Grease.Name',
+    sound: 'psfx.casting.water.001',
     macros: {
         play
     },

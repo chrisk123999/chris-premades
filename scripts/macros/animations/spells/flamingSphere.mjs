@@ -1,4 +1,4 @@
-import {animationUtils} from '../../../proxy.mjs';
+import {animationUtils, constants} from '../../../proxy.mjs';
 import {addShake, partOption} from '../generic/spellParts.mjs';
 async function prePlace(summon, location, preToken) {
     const sourceActor = await summon.getSourceActor();
@@ -22,7 +22,7 @@ async function postPlace(summon, location, token) {
             .scaleToObject(1.5)
             .belowTokens()
             .fadeOut(500)
-        .sound()
+        .sound().name(constants.soundName)
             .playIf(sound)
             .file(sound)
         .animation()
@@ -64,6 +64,7 @@ async function play(sourceToken, targetToken, {saved, shake = true} = {}) {
 }
 export const flamingSphere = {
     name: 'CHRISPREMADES.Animations.FlamingSphere',
+    sound: 'psfx.1st-level-spells.burning-hands.v1.001',
     macros: {
         prePlace,
         postPlace,

@@ -70,6 +70,7 @@ async function damage(targetToken) {
 }
 export const hex = {
     name: 'CHRISPREMADES.Animations.Hex',
+    sound: 'psfx.magic-signs.rune.v1.transmutation.complete',
     macros: {
         play,
         damage

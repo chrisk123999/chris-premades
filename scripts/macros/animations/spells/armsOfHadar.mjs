@@ -134,6 +134,7 @@ async function play(sourceToken, region, {pull: pullTargets = true, targets = []
 }
 export const armsOfHadar = {
     name: 'CHRISPREMADES.Animations.ArmsOfHadar.Name',
+    sound: 'psfx.1st-level-spells.arms-of-hadar.v1.001',
     macros: {
         play
     },

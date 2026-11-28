@@ -41,24 +41,16 @@
       "system": {
         "changes": [
           {
-            "key": "flags.midi-qol.advantage.ability.check.str",
-            "type": "custom",
-            "value": 1,
-            "priority": 20,
-            "phase": "initial",
-            "_id": "7G1nIrYsBjUDkDgs",
-            "conditions": "{}",
-            "replacement": ""
+            "key": "system.abilities.str.check.roll.mode",
+            "type": "add",
+            "value": "1",
+            "priority": 20
           },
           {
-            "key": "flags.midi-qol.advantage.ability.save.str",
-            "type": "custom",
-            "value": 1,
-            "priority": 20,
-            "phase": "initial",
-            "_id": "XDirlMmhyGUziJsz",
-            "conditions": "{}",
-            "replacement": ""
+            "key": "system.abilities.str.save.roll.mode",
+            "type": "add",
+            "value": "1",
+            "priority": 20
           }
         ],
         "origin": {
@@ -103,7 +95,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       },
       "macros": {
         "aura": [

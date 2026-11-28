@@ -996,13 +996,6 @@
     }
   },
   "flags": {
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
     "cat": {
       "animationGenericConfig": {
         "chris-premades": {
@@ -1015,18 +1008,9 @@
           }
         }
       },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "identifier": "multiAttack",
-            "rules": "all"
-          }
-        ]
-      },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.11"
       }
     }
   },

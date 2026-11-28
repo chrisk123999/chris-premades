@@ -23,7 +23,7 @@ async function manifest({workflow, macroClass: {identifier}}) {
     const actor = activity.actor;
     if (!token || !actor) return;
     const ongoing = await compendiumUtils.getDocumentByIdentifier(cpr.packs.modern.features, 'wrath-of-the-sea-ongoing', {object: true});
-    if (!ongoing) return Logging.addMacroWarning('CPR', identifier, 'Missing the Wrath of the Sea: Ongoing pack item.', {notify: 'warn'});
+    if (!ongoing) return Logging.addMacroWarning('chris-premades', identifier, 'Missing the Wrath of the Sea: Ongoing pack item.', {notify: 'warn'});
     const ongoingActivity = Object.values(ongoing.system.activities)[0];
     ongoingActivity.damage.parts[0].number = Math.max(1, actor.system.abilities.wis.mod);
     ongoingActivity.save.dc = {calculation: '', formula: String(actor.system.attributes.spell.dc)};

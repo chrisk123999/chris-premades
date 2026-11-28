@@ -49,6 +49,7 @@ async function play(sourceToken, region, {targets = [], radius} = {}) {
 }
 export const frostFingers = {
     name: 'CHRISPREMADES.Animations.FrostFingers',
+    sound: 'psfx.5th-level-spells.cone-of-cold.v1.001',
     macros: {
         play
     },

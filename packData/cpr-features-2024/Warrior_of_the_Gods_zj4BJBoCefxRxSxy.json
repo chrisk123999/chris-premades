@@ -185,7 +185,7 @@
     },
     "uses": {
       "spent": 0,
-      "max": "@scale.zealot.warrior-of-the-gods.number",
+      "max": "@scale.path-zealot.warrior-of-the-gods.number",
       "recovery": [
         {
           "period": "lr",
@@ -225,7 +225,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.11"
       }
     }
   },

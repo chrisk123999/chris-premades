@@ -1,4 +1,4 @@
-import {animationUtils} from '../../../proxy.mjs';
+import {animationUtils, constants} from '../../../proxy.mjs';
 import {endPersist, persistName} from '../generic/spellParts.mjs';
 const crownColors = {
     blue: 'Blue',
@@ -31,7 +31,7 @@ async function create(effect, targetToken, {crownColor = 'blue', sound} = {}) {
             .fadeOut(500)
             .persist()
             .tieToDocuments(effect)
-        .sound()
+        .sound().name(constants.soundName)
             .file(sound)
             .playIf(!!sound)
         .play();
@@ -47,7 +47,7 @@ async function play(sourceToken, targetToken, {boltColor = 'bluegreen', boltSoun
             .atLocation(sourceToken)
             .stretchTo(targetToken)
             .missed(hit === false)
-        .sound()
+        .sound().name(constants.soundName)
             .file(boltSound)
             .playIf(!!boltSound)
         .play();
@@ -78,7 +78,7 @@ export const crownOfStars = {
                 options: animationUtils.buildColorOptions(boltColors, {freeColors: ['bluegreen'], requirements: ['jb2a_patreon'], labelPrefix: 'CHRISPREMADES.Config.Colors.', random: true})
             },
             sound: {
-                default: '',
+                default: 'psfx.class-features.divine-smite.v1.001.target',
                 type: 'file',
                 label: 'CHRISPREMADES.Config.TokenSound'
             },

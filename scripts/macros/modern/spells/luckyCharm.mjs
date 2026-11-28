@@ -3,9 +3,9 @@ import {cpr, cprUtils} from '../../../module.mjs';
 async function use({document: item, workflow}) {
     if (workflow.activity.identifier !== 'lucky-charm') return;
     const casterEffect = documentUtils.getEffectByIdentifier(item, 'luckyCharmCaster');
-    if (!casterEffect) return Logging.addMacroWarning('CPR', 'lucky-charm', 'CHRISPREMADES.Macros.Modern.LuckyCharm.MissingEffect', {notify: 'warn'});
+    if (!casterEffect) return Logging.addMacroWarning('chris-premades', 'lucky-charm', 'CHRISPREMADES.Macros.Modern.LuckyCharm.MissingEffect', {notify: 'warn'});
     const charmData = await compendiumUtils.getDocumentByIdentifier(cpr.packs.misc.automationItems, 'lucky-charm-object', {object: true});
-    if (!charmData) return Logging.addMacroWarning('CPR', 'lucky-charm', 'CHRISPREMADES.Macros.Modern.LuckyCharm.MissingItem', {notify: 'warn'});
+    if (!charmData) return Logging.addMacroWarning('chris-premades', 'lucky-charm', 'CHRISPREMADES.Macros.Modern.LuckyCharm.MissingItem', {notify: 'warn'});
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, item);
     const effectData = documentUtils.getEffectData(workflow.activity, casterEffect.id, {parentEntity: concentrationEffect, activityUuid: workflow.activity.uuid});
     const [sourceEffect] = await effectUtils.createEffects(workflow.actor, [effectData]) ?? [];

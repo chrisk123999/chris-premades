@@ -13,7 +13,7 @@ async function preChecks({activity, config, macroClass: {identifier}}) {
     if (affects === 'target') {
         const targetActor = getTargetActor(config);
         if (!targetActor || !requireCondition || getConditions(activity, identifier, targetActor)?.length) return;
-        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.NoTargetConditions', {notify: 'info'});
+        Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.NoTargetConditions', {notify: 'info'});
         return true;
     }
     const prefetched = workflowUtils.getWorkflowProperty(config.workflow, 'choiceRemoveCondition');
@@ -24,7 +24,7 @@ async function preChecks({activity, config, macroClass: {identifier}}) {
     }
     const effects = getConditions(activity, identifier);
     if (!effects?.length && requireCondition) {
-        Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.NoConditions', {notify: 'info'});
+        Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'CHRISPREMADES.Macros.Generic.ChoiceRemoveCondition.NoConditions', {notify: 'info'});
         return true;
     }
     workflowUtils.setWorkflowProperty(config.workflow, 'choiceRemoveCondition', effects?.map(effect => effect.uuid));

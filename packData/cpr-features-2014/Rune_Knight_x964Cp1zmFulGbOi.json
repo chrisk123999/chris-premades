@@ -1,0 +1,16 @@
+{
+  "_id": "x964Cp1zmFulGbOi",
+  "name": "Rune Knight",
+  "type": "Item",
+  "folder": "Oz52XoWXHOkDQLvw",
+  "sorting": "a",
+  "color": null,
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!folders!x964Cp1zmFulGbOi"
+}

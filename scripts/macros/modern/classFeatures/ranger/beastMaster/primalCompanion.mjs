@@ -37,9 +37,9 @@ async function use({document, workflow}) {
         getFeatures(cpr.packs.misc.automationItems, ['primal-companion-primal-bond', ...beastFeatures[creatureType]], {flatAttack: prof + wisdom}),
         getFeatures(cpr.packs.modern.misc, actions)
     ]);
-    if (!sourceActor) return Logging.addMacroWarning('CPR', 'primal-companion', 'CHRISPREMADES.Error.ActorNotFound', {notify: 'warn'});
+    if (!sourceActor) return Logging.addMacroWarning('chris-premades', 'primal-companion', 'CHRISPREMADES.Error.ActorNotFound', {notify: 'warn'});
     const items = [...features, ...actionItems];
-    if (items.some(itemData => !itemData)) return Logging.addMacroWarning('CPR', 'primal-companion', 'CHRISPREMADES.Error.MissingPackItem', {notify: 'warn'});
+    if (items.some(itemData => !itemData)) return Logging.addMacroWarning('chris-premades', 'primal-companion', 'CHRISPREMADES.Error.MissingPackItem', {notify: 'warn'});
     items.forEach(itemData => {
         if (!Object.values(itemData.system.activities ?? {}).some(activityData => activityData.type === 'attack')) return;
         const macros = genericUtils.getProperty(itemData, 'flags.cat.macros.roll') ?? [];

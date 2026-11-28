@@ -602,6 +602,7 @@
             "DiceSize": "Dice Size",
             "DieSize": "Die Size",
             "Distance": "Distance",
+            "DurationRounds": "Duration (Rounds)",
             "DurationSeconds": "Duration (Seconds)",
             "Enable3rdPartyReaction": "Enable 3rd Party Reaction",
             "ExcludeWeaponProperties": "Exclude Weapon Properties",
@@ -744,6 +745,16 @@
                 "CheckCover": {
                     "TargetCover": "Cover each creature has from you:",
                     "YourCover": "Cover you have from each creature:"
+                },
+                "StarryForm": {
+                    "Chalice": "Choose a creature to regain hit points from the Healing Chalice.",
+                    "Keep": "Keep Current Form",
+                    "Swap": "Change your starry form?",
+                    "Arrow": "Choose a creature to hurl a luminous arrow at.",
+                    "ChaliceAnyCreature": "Chalice Heals Any Creature",
+                    "ChaliceRange": "Healing Chalice Range",
+                    "ArcherRange": "Luminous Arrow Range",
+                    "SwapLevel": "Form Swap Level"
                 },
                 "SteelDefender": {
                     "RepairTarget": "Repair can only target the defender itself or a Construct or object it can see."
@@ -1235,6 +1246,14 @@
                     "Immune": {
                         "Hint": "An attacker is unaffected by this feature if they are immune to one of these conditions."
                     }
+                },
+                "CosmicOmen": {
+                    "Initiative": "Use {omen} on {name}'s initiative?"
+                },
+                "CircleForms": {
+                    "CR": "Maximum CR Formula",
+                    "AC": "Armor Class Formula",
+                    "TempHP": "Temporary Hit Points Formula"
                 }
             },
             "Generic": {
@@ -1332,6 +1351,15 @@
                         "Hint": "Tools that satisfy the requirement. Any one of them is enough."
                     }
                 },
+                "SpellSlotRecovery": {
+                    "Name": "Spell Slot Recovery",
+                    "Formula": {
+                        "Hint": "Total spell slot levels that can be recovered."
+                    },
+                    "MaxSlotLevel": {
+                        "Hint": "Highest spell slot level that can be recovered."
+                    }
+                },
                 "StoredItem": {
                     "Missing": "The stored item could not be found.",
                     "Name": "Stored Item"
@@ -1342,6 +1370,10 @@
                     "NeutralTarget": "Neutral",
                     "AdditionalTargets": "Additional Targets",
                     "Attacker": "Attacker",
+                    "Original": {
+                        "Label": "Original Target Limit",
+                        "Hint": "The normal target count must be equal to or less than this value. Any value below one is unlimited."
+                    },
                     "RangeFrom": {
                         "Label": "Range From",
                         "Hint": "Measure range from each target or from the attacker."
@@ -1394,6 +1426,14 @@
                     "OwnTurn": {
                         "Label": "Own Turn Only",
                         "Hint": "In combat, only offer this option on the attacker's own turn."
+                    },
+                    "MatchDamageType": {
+                        "Label": "Match Damage Type",
+                        "Hint": "The bonus damage and the rider activity's damage use the type the attack dealt."
+                    },
+                    "ExcludeIdentifiers": {
+                        "Label": "Excluded Identifiers",
+                        "Hint": "Never offer this option on attacks with items that have one of these identifiers."
                     },
                     "RequiredItems": {
                         "Label": "Required Items",
@@ -1454,6 +1494,18 @@
                     },
                     "MaxSize": {
                         "Hint": "Only offer this option when every hit target is this size or smaller."
+                    },
+                    "ItemFlag": {
+                        "Label": "Item Flag",
+                        "Hint": "Only offer for attacks with items that have this flag path set. A damage type stored there is used when no damage type is set."
+                    },
+                    "TargetEffects": {
+                        "Label": "Target Effects",
+                        "Hint": "Only offer when every hit target has an effect from the owner with one of these identifiers."
+                    },
+                    "TurnLimit": {
+                        "Label": "Uses per Turn",
+                        "Hint": "With Once Per Turn, how many times per turn this item's riders can be used. Accepts a formula."
                     }
                 },
                 "BladeSpell": {
@@ -1623,7 +1675,11 @@
                         "Hint": "Only attacks of this type are affected."
                     },
                     "NoTargets": "No valid targets within range!",
-                    "NotEnoughUses": "Not enough uses to trigger."
+                    "NotEnoughUses": "Not enough uses to trigger.",
+                    "RequiredSummons": {
+                        "Label": "Required Summons",
+                        "Hint": "Only trigger while the owner has a summon created by an item with one of these identifiers."
+                    }
                 },
                 "ContestedCheck": {
                     "Grapple": "Grapple",
@@ -1723,6 +1779,9 @@
                     },
                     "UseActivityCosts": {
                         "Hint": "Pay the item's default costs when the bonus is used. The bonus needs a hit and is not offered when the costs cannot be paid."
+                    },
+                    "WeaponTypes": {
+                        "Hint": "Only trigger for weapons of these types."
                     }
                 },
                 "Grapple": {
@@ -1843,6 +1902,13 @@
                     },
                     "RollActivity": {
                         "Hint": "Activity rolled on the hit target after the bonus damage."
+                    },
+                    "ConsumeOnMiss": {
+                        "Label": "End on Miss",
+                        "Hint": "End the effect when a matching attack hits nothing."
+                    },
+                    "WeaponTypes": {
+                        "Hint": "Only trigger for attacks with weapons of these types."
                     }
                 },
                 "PackTactics": {
@@ -1908,6 +1974,10 @@
                     },
                     "AlliesOnly": {
                         "Hint": "With a range set, only protect allies of the owner."
+                    },
+                    "RequiredEffects": {
+                        "Label": "Required Effects",
+                        "Hint": "Only trigger while the actor or one of its items has an effect with one of these identifiers."
                     }
                 },
                 "AllyAttack": {
@@ -1943,14 +2013,18 @@
                         "Label": "Proficiency",
                         "Hint": "Limit the choices by the target's current proficiency. Proficient offers only choices with plain proficiency, not expertise."
                     },
-                    "Prompt": "Choose a skill or tool for {name}.",
+                    "Prompt": "Choose a proficiency for {name}.",
                     "Traits": {
                         "Label": "Choices",
-                        "Hint": "Offer skills, tools, or both."
+                        "Hint": "Offer skills, tools, saving throws, or any mix."
                     },
                     "Name": "Proficiency Choice",
                     "Effect": {
-                        "Hint": "Effect applied to each target. The {key} placeholder in its change keys becomes the chosen skill or tool path."
+                        "Hint": "Effect applied to each target. The {key} placeholder in its change keys becomes the chosen skill, tool or ability path."
+                    },
+                    "Limit": {
+                        "Label": "Limit Choices",
+                        "Hint": "Only offer these saving throws, skills or tools. Empty offers every choice of the selected kinds."
                     }
                 },
                 "PushOnFail": {
@@ -2089,6 +2163,10 @@
                     },
                     "Tool": {
                         "Hint": "Only reroll checks with these tools. Leave empty to allow every tool."
+                    },
+                    "Distance": {
+                        "Label": "Ally Range",
+                        "Hint": "Offer the reroll to allies within this distance instead of the owner. The owner confirms and the activity is used."
                     }
                 },
                 "RestoreUses": {
@@ -2132,6 +2210,37 @@
                     },
                     "Tool": {
                         "Hint": "Limit this bonus to a list of tools."
+                    },
+                    "AutoEffect": {
+                        "Label": "Automatic Effect",
+                        "Hint": "The bonus applies without a prompt while the attacker has an effect from the owner with this identifier."
+                    },
+                    "EnemyRange": {
+                        "Label": "Enemy Range",
+                        "Hint": "Offer the bonus to the owner when an enemy it can see within this many feet attacks, instead of on its own attacks."
+                    },
+                    "ImmuneCondition": {
+                        "Label": "Immune Condition",
+                        "Hint": "Attackers immune to this condition are never affected."
+                    },
+                    "Range": {
+                        "Label": "Other Creatures Range",
+                        "Hint": "Offer the bonus to the owner, as a reaction, when another creature it can see within this many feet makes the roll. 0 offers it on the owner's own rolls."
+                    },
+                    "Disposition": {
+                        "Label": "Other Creatures",
+                        "Hint": "With Other Creatures Range, which creatures' rolls the bonus is offered on.",
+                        "Enemy": "Enemies",
+                        "Ally": "Allies",
+                        "Any": "Any Creature"
+                    },
+                    "IncludeOwner": {
+                        "Label": "Include Owner",
+                        "Hint": "Also offer the bonus on the owner's own rolls."
+                    },
+                    "FailActivity": {
+                        "Label": "Activity on Failure",
+                        "Hint": "With Consume On Success, roll this activity with its costs when the roll fails."
                     }
                 },
                 "SaveToEndWhenFar": {
@@ -2199,6 +2308,10 @@
                     },
                     "ItemTypes": {
                         "Hint": "Item types this feature can use when no identifiers are set."
+                    },
+                    "SpellSlot": {
+                        "Label": "Spend Spell Slot",
+                        "Hint": "Spend a spell slot when the used item is a leveled spell."
                     }
                 },
                 "SummonModifier": {
@@ -2214,7 +2327,7 @@
                         "Hint": "Only modify summons created by items with these identifiers. Leave empty for any summon."
                     },
                     "MagicalWeapons": {
-                        "Hint": "The summon's items that deal damage gain the magical property."
+                        "Hint": "The summon's natural weapons gain the magical property."
                     },
                     "Effect": {
                         "Hint": "Effect from this item to add to the summon."
@@ -2222,6 +2335,18 @@
                     "Confirm": {
                         "Hint": "Prompt the owner before the summon is modified.",
                         "Prompt": "Apply {document} to {summon}?"
+                    },
+                    "HpPerHitDie": {
+                        "Label": "Hit Points per Hit Die",
+                        "Hint": "Hit points added to the summon's maximum for each of its hit dice."
+                    },
+                    "OwnerFormulas": {
+                        "Label": "Use Owner Formulas",
+                        "Hint": "Resolve the added items' healing and damage formulas against this item's owner."
+                    },
+                    "SourceItemTypes": {
+                        "Label": "Source Item Types",
+                        "Hint": "Only modify summons created by items of these types. Leave empty for any item type."
                     }
                 },
                 "TouchDelivery": {
@@ -2280,6 +2405,7 @@
                     },
                     "SelectTargets": "Select up to {maxAmount} targets.",
                     "Name": "Target Creature Types",
+                    "Unaffected": "Unaffected Targets",
                     "CreatureTypes": {
                         "Hint": "Keep only targets of these creature types. Leave empty to skip the creature type check."
                     },
@@ -2320,7 +2446,7 @@
                     },
                     "Targets": {
                         "Label": "Teleported Creatures",
-                        "Hint": "Teleport the user, each target that failed its save, or the user to a space near one of the targets. Swap With a Target trades places with the first target that failed its save."
+                        "Hint": "Teleport the user, each target, each target that failed its save, or the user to a space near one of the targets. Swap With a Target trades places with the first target that failed its save."
                     },
                     "Self": "Self",
                     "FailedSaves": "Failed Saves",
@@ -2337,6 +2463,21 @@
                     },
                     "Animation": {
                         "Hint": "Played during the teleport."
+                    },
+                    "EachTarget": "Each Target",
+                    "CompanionPlacement": {
+                        "Label": "Companion Placement Range",
+                        "Hint": "Each companion gets its own destination within this distance of the user's new space. 0 keeps their positions relative to the user."
+                    }
+                },
+                "UseOnDeath": {
+                    "Name": "Use on Death",
+                    "Statuses": {
+                        "Label": "Statuses",
+                        "Hint": "Statuses that trigger this item."
+                    },
+                    "Confirm": {
+                        "Hint": "Prompt the owner before the item is used."
                     }
                 },
                 "UseOnEvent": {
@@ -2352,11 +2493,69 @@
                         "Hint": "Only use this activity when the items whose uses it recovers are in this state."
                     },
                     "ShortRest": "Short Rest",
+                    "TargetGrappled": {
+                        "Label": "Target Grappled Creatures",
+                        "Hint": "Turn events only. Use this activity on the creatures the owner is grappling. Skipped when there are none."
+                    },
                     "TurnStart": "Start of Turn",
                     "TurnEnd": "End of Turn",
                     "Name": "Use on Event",
                     "Confirm": {
                         "Hint": "Ask the owner before the activity is used."
+                    },
+                    "ItemUsed": "Item Used",
+                    "Initiative": "Initiative",
+                    "NearbyTurnEnd": "Nearby Creature Turn End",
+                    "Damaged": "Owner Takes Damage",
+                    "Bloodied": "Bloodied",
+                    "HpCondition": {
+                        "Label": "Hit Point Condition",
+                        "Hint": "Only use this activity when the owner has at least 1 hit point and is bloodied."
+                    },
+                    "WhileIncapacitated": {
+                        "Label": "While Incapacitated",
+                        "Hint": "Turn events still fire while the owner is incapacitated."
+                    },
+                    "Identifiers": {
+                        "Hint": "Item Used only. The owner used an item with one of these identifiers."
+                    },
+                    "ActivityIdentifiers": {
+                        "Label": "Activity Identifiers",
+                        "Hint": "Item Used only. The used activity has one of these identifiers."
+                    },
+                    "ActivationTypes": {
+                        "Label": "Activation Types",
+                        "Hint": "Item Used only. The used activity has one of these activation types."
+                    },
+                    "ConsumedItems": {
+                        "Label": "Consumed Items",
+                        "Hint": "Item Used only. The used activity spends uses of an item with one of these identifiers."
+                    },
+                    "OwnTurn": {
+                        "Label": "Own Turn Only",
+                        "Hint": "Item Used only. In combat, only fires on the owner's own turn."
+                    },
+                    "RequiredEffects": {
+                        "Label": "Required Effects",
+                        "Hint": "Only fires while the owner has an effect with one of these identifiers."
+                    },
+                    "Range": {
+                        "Hint": "Nearby Creature Turn End only. Only creatures within this many feet of the owner trigger it."
+                    },
+                    "Disposition": {
+                        "Hint": "Nearby Creature Turn End only. Which creatures' turn ends trigger it."
+                    },
+                    "CanSee": {
+                        "Label": "Must See Creature",
+                        "Hint": "Nearby Creature Turn End only. The owner must see the creature."
+                    },
+                    "RequireReaction": {
+                        "Label": "Requires Reaction",
+                        "Hint": "Nearby Creature Turn End only. Skip once the owner's reaction is used."
+                    },
+                    "SameTargets": {
+                        "Label": "Use on the Same Targets",
+                        "Hint": "Item Used only. Use this activity on the used activity's targets."
                     }
                 },
                 "ReflectOnHit": {
@@ -2514,6 +2713,26 @@
                     },
                     "MaxSpellLevel": {
                         "Hint": "Spells cast above this level are not modified."
+                    },
+                    "ConsumeOn": {
+                        "Label": "End After",
+                        "Hint": "Attack also ends the effect after the bearer's next matching attack, even on a miss."
+                    },
+                    "ConsumeOnAttack": "Attack",
+                    "ConsumeOnRoll": "Damage Roll",
+                    "Incoming": {
+                        "Label": "Incoming Damage",
+                        "Hint": "Modify the next matching damage roll that hits the bearer instead of the bearer's own."
+                    },
+                    "RequireHit": {
+                        "Label": "Require a Hit",
+                        "Hint": "Only modify attacks that hit."
+                    },
+                    "RollActivity": {
+                        "Hint": "Roll this activity of the effect's origin item when the effect changes a damage roll."
+                    },
+                    "WeaponTypes": {
+                        "Hint": "Only modify rolls from weapons of these types."
                     }
                 },
                 "RolledDuration": {
@@ -2540,6 +2759,7 @@
                     "Unusable": "{item} is {status} and can't attack.",
                     "Misfired": "{item} misfired!",
                     "NoTinkers": "You have no Tinker's Tools to make the repair with!",
+                    "NotDamaged": "{item} isn't damaged.",
                     "Repaired": "{item} is successfully repaired!",
                     "Broke": "{item} is now broken!",
                     "Type": "Firearm",
@@ -2549,14 +2769,14 @@
                         "Barrel": "Barrel",
                         "Blackpowder": "Blackpowder",
                         "Blaring": "Blaring",
-                        "BurstFire": "Burst Fire",
+                        "Burstfire": "Burst Fire",
                         "Cumbersome": "Cumbersome",
                         "Explosive": "Explosive",
                         "Loud": "Loud",
                         "Magazine": "Magazine",
                         "Recoil": "Recoil",
-                        "SpreadFire": "Spread Fire",
-                        "TwinnedBarrel": "Twinned Barrel"
+                        "Spreadfire": "Spread Fire",
+                        "Twinnedbarrel": "Twinned Barrel"
                     },
                     "Name": "Firearm"
                 },
@@ -2605,6 +2825,9 @@
                     },
                     "Statuses": {
                         "Hint": "The option is not offered while the creature has one of these conditions."
+                    },
+                    "RollActivity": {
+                        "Hint": "Items only. Ask before the roll and use this activity, paying its costs, for advantage."
                     }
                 },
                 "UnhideActivities": {
@@ -2649,6 +2872,19 @@
                 },
                 "GrappleAttackAdvantage": {
                     "Name": "Grapple Attack Advantage"
+                },
+                "GrappleSizeBonus": {
+                    "Name": "Grapple Size Bonus",
+                    "SizeBonus": {
+                        "Label": "Size Bonus",
+                        "Hint": "Sizes added to the actor's size when checking which creatures it can grapple or shove."
+                    },
+                    "AppliesTo": {
+                        "Label": "Applies To",
+                        "Hint": "Which size checks the bonus applies to.",
+                        "Both": "Grapple and Shove",
+                        "Shove": "Shove"
+                    }
                 },
                 "IgnoreCover": {
                     "Name": "Ignore Cover",
@@ -2716,9 +2952,6 @@
                 "TurnStartChoiceRemoveCondition": {
                     "Name": "Remove Condition Choice at Turn Start"
                 },
-                "UseOnDeath": {
-                    "Name": "Use on Death"
-                },
                 "RollModifier": {
                     "Ability": {
                         "Hint": "Only modify rolls that use these abilities. Leave empty to allow every ability."
@@ -2729,11 +2962,67 @@
                     "Tool": {
                         "Hint": "Only modify checks with these tools. Leave empty to allow every tool."
                     }
+                },
+                "SelfDamage": {
+                    "Formula": {
+                        "Hint": "Damage the user takes when the activity is used. It can't be reduced in any way."
+                    },
+                    "Name": "Self Damage"
+                },
+                "UniqueEffect": {
+                    "Item": "This Document",
+                    "Origin": "Origin Item in the Scene",
+                    "Scope": {
+                        "Label": "Unique Per",
+                        "Hint": "Where only one copy of this effect may exist."
+                    },
+                    "Name": "Unique Effect"
+                },
+                "SoundEffects": {
+                    "Name": "Sound Effects",
+                    "Use": {
+                        "Label": "Use Sound",
+                        "Hint": "Sound played when the item is used."
+                    },
+                    "Attack": {
+                        "Label": "Attack Sound",
+                        "Hint": "Sound played when the attack is rolled."
+                    },
+                    "Hit": {
+                        "Label": "Hit Sound",
+                        "Hint": "Sound played when the attack hits."
+                    },
+                    "Miss": {
+                        "Label": "Miss Sound",
+                        "Hint": "Sound played when the attack misses."
+                    },
+                    "Crit": {
+                        "Label": "Critical Sound",
+                        "Hint": "Sound played on a critical hit."
+                    },
+                    "Damage": {
+                        "Label": "Damage Sound",
+                        "Hint": "Sound played when the damage is rolled."
+                    }
                 }
             },
             "Legacy": {
+                "WayOfShadow": {
+                    "LightCheck": "Check Light Level"
+                },
+                "ExtractAspects": {
+                    "Strike": "{name} missed you. Use your reaction to make an Unarmed Strike against it?"
+                },
                 "AberrantDragonmark": {
                     "SelectHitDie": "Expend a Hit Die to empower your mark?"
+                },
+                "ArtisansBlessing": {
+                    "CostHint": "Limit the value of the created item in gold pieces.",
+                    "Note": "Created <b>{item}</b> on {actor}.",
+                    "Prompt": "Choose an item to forge."
+                },
+                "AspectOfTheWyrm": {
+                    "Resistance": "Choose a damage type for the aura's resistance."
                 },
                 "BalefulInterdict": {
                     "AlreadyPlaced": "You already placed a seal this turn.",
@@ -2746,13 +3035,27 @@
                     "Seals": "Seals",
                     "SelectSource": "Move the seals from which creature?"
                 },
+                "BalmOfPeace": "Your extra movement from Balm of Peace has been spent. End the effect?",
+                "BlessingOfTheForge": {
+                    "NoItems": "You and your allies are not carrying any valid items for {feature}!",
+                    "NonmagicalOnly": "Nonmagical Only",
+                    "Prompt": "Choose an item to grant {feature}."
+                },
                 "BloodPrice": {
                     "Prompt": "Use {itemName}? (Roll Total: {rollTotal})",
                     "Retaliate": "Choose an enemy to take the Hit Die damage."
                 },
+                "CauterizingFlames": {
+                    "Damage": "Damage",
+                    "Heal": "Heal",
+                    "None": "Do Nothing",
+                    "Prompt": "{name} entered the spectral flame. Use your reaction?",
+                    "ExcludedSizes": "Excluded Sizes"
+                },
                 "CombatMasteryLies": {
                     "Select": "Choose the melee weapon type that uses Charisma."
                 },
+                "DampenElements": "Use {feature} for {type} damage on {target}?",
                 "DispatersSupremacy": {
                     "CriticalRange": "Critical Range Increase"
                 },
@@ -2770,6 +3073,12 @@
                     "Protector": "Eldritch Cannon: Protector",
                     "Second": "Create your second cannon with the same action?",
                     "TooFar": "You must be within {distance} feet of the cannon."
+                },
+                "ElementalWildShape": {
+                    "AirName": "Air Elemental Name",
+                    "EarthName": "Earth Elemental Name",
+                    "FireName": "Fire Elemental Name",
+                    "WaterName": "Water Elemental Name"
                 },
                 "ExperimentalElixir": {
                     "Administer": "An elixir can only be administered to an Incapacitated creature.",
@@ -2821,6 +3130,7 @@
                     "ArmorRestriction": "You can't use Bladesong while wearing medium or heavy armor or wielding a shield.",
                     "EnforceArmorRestriction": "Enforce Armor Restriction"
                 },
+                "BlessingHearth": "Select any hit dice you would like to reroll.<br><b>Formula:</b> <code>{formula}</code>",
                 "BolsteringMagic": "The target must finish a long rest before gaining this benefit again!",
                 "BoomingBlade": {
                     "WillingMove": "Did {actorName} move willingly?"
@@ -3044,6 +3354,11 @@
                     "Prompt": "Use {itemName}?",
                     "Use": "Expend {count}"
                 },
+                "MagnificentFeast": {
+                    "Meals": "Meal Icons",
+                    "Name": "Magnificent Feast",
+                    "Prompt": "Hand out up to {maxAmount} meals."
+                },
                 "ManifestMind": {
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
                     "Invalid": "Invalid Action Type!",
@@ -3089,6 +3404,12 @@
                 },
                 "Overchannel": {
                     "Damage": "Use {itemName} at the cost of {damageFormula} damage?"
+                },
+                "ProtectiveBond": {
+                    "BloodiedHint": "Prompt for bloodied targets only.",
+                    "PercentHint": "Prompt when damage total exceeds a percentage of the target's max HP.",
+                    "Prompt": "Ask for Protective Bond? (Damage Total: {damage})",
+                    "Request": "Use Protective Bond on {target}? (Damage Total: {damage})"
                 },
                 "PsionicSorcery": {
                     "NoSpells": "No Psionic Spells you can afford to cast!",
@@ -3191,7 +3512,34 @@
                 "DancingSword": {
                     "TooFar": "The weapon can only fly 30 feet before it attacks."
                 },
+                "CloudRune": {
+                    "Reaction": "{name} is hit. Use {item} to turn the attack on another creature?"
+                },
+                "KnowYourEnemy": {
+                    "Select": "Choose two characteristics to compare.",
+                    "Str": "Strength Score",
+                    "Dex": "Dexterity Score",
+                    "Con": "Constitution Score",
+                    "Ac": "Armor Class",
+                    "Hp": "Current Hit Points",
+                    "Levels": "Total Class Levels",
+                    "Fighter": "Fighter Levels",
+                    "Superior": "Superior",
+                    "Equal": "Equal",
+                    "Inferior": "Inferior"
+                },
+                "RunicShield": {
+                    "Use": "{name} is hit. Use {item} to force the attacker to reroll?"
+                },
+                "StormRune": {
+                    "AdvDis": "{tokenName} is rolling: {actionType}. Give it advantage or disadvantage?"
+                },
+                "TrickShots": {
+                    "NoFirearm": "You have no equipped firearm.",
+                    "SelectFirearm": "Choose a firearm."
+                },
                 "ManifestEcho": {
+                    "Martyr": "{name} is being attacked. Use {item} to put your echo in the way?",
                     "Echo": "Echo of {name}",
                     "Far": "{actorName}'s echo is more than 30 feet away. Destroy it?",
                     "NoWeapons": "No equipped weapons to attack with.",
@@ -3354,9 +3702,74 @@
                 },
                 "TelekineticSeal": {
                     "NoSeal": "You have no seals left to place."
+                },
+                "BloodCurses": {
+                    "Amplified": "Amplified",
+                    "Amplify": "Amplify this blood curse?",
+                    "FallenPuppet": "Choose the creature to puppet.",
+                    "InvalidTarget": "{feature} can't target that creature.",
+                    "Normal": "Normal",
+                    "SelectTarget": "Choose the creature it attacks.",
+                    "SelectWeapon": "Choose the weapon it attacks with."
+                },
+                "BloodHunter": {
+                    "GrimPsychometry": "Recalling the sinister history of a touched object or this location",
+                    "HeightenedSenses": "Relies on hearing or smell",
+                    "HuntersBane": "Tracking fey, fiends or undead, or recalling information about them"
+                },
+                "BloodMaledict": {
+                    "Ability": {
+                        "Hint": "Ability used for the Hemocraft modifier."
+                    }
+                },
+                "CrimsonRite": {
+                    "NotHolding": "A rite can only be activated on a weapon you're holding."
+                },
+                "Mutagens": {
+                    "ExaltEnd": "Choose the mutagen to end.",
+                    "ExaltStart": "Choose the mutagen that takes its place.",
+                    "NoMutagen": "{feature} has no active mutagen to affect.",
+                    "Sunlight": "Is the attacker or the target in direct sunlight?",
+                    "SunlightCheck": "Nighteye: In Direct Sunlight",
+                    "Suppress": "Choose the side effect to ignore."
+                },
+                "FaithfulSummons": {
+                    "SpellSummon": "Counts as Summoned by a Spell"
+                },
+                "CombatWildShape": {
+                    "NotTransformed": "You can only use this while transformed by Wild Shape."
                 }
             },
             "Modern": {
+                "DigDeep": {
+                    "TooExhausted": "You can't gain more Exhaustion this way."
+                },
+                "ElementalAttunement": {
+                    "Move": "Push or pull the target up to 10 feet?",
+                    "None": "Neither",
+                    "Pull": "Pull",
+                    "Push": "Push"
+                },
+                "ElementalEpitome": {
+                    "Resistance": "Choose a damage type to resist."
+                },
+                "Fisticuffs": {
+                    "Armored": "Fisticuffs needs Light or no armor and no Shield."
+                },
+                "Groundwork": {
+                    "Inescapable": "Spend 1 Moxie to give the target disadvantage on the saving throw?"
+                },
+                "LandsAid": {
+                    "Select": "Choose a creature to regain hit points.",
+                    "Damage": "Choose the creatures that must save against the damage."
+                },
+                "MeatShield": {
+                    "Redirect": "Redirect the attack to a creature you are grappling?"
+                },
+                "MoxieFueledFists": {
+                    "AutoApply": "Always Deal Force Damage",
+                    "Force": "Deal force damage with this attack?"
+                },
                 "PerfectWeapon": {
                     "Convert": "Change the weapon's damage to {type}?",
                     "Element": "Choose the Elemental Strike damage type.",
@@ -3364,6 +3777,10 @@
                 },
                 "RunesOfWar": {
                     "NotWielding": "You must be wielding your Ghaal'Shaarat."
+                },
+                "ShakeItOff": {
+                    "Conditions": "Conditions",
+                    "Select": "Choose a condition to shake off."
                 },
                 "WrathOfTheSea": {
                     "Ally": "An Ally",
@@ -3375,6 +3792,11 @@
                 },
                 "IOpenedTheGate": {
                     "Use": "Use Foul Arcana to give {name} +2 to its save DC? You have the Paralyzed condition until the start of your next turn."
+                },
+                "RallyingSurge": {
+                    "Choose": "{name} can use its reaction to attack or move.",
+                    "Attack": "Attack",
+                    "Move": "Move"
                 },
                 "KnowYourEnemy": {
                     "None": "It has no immunities, resistances or vulnerabilities."
@@ -3480,9 +3902,6 @@
                         "never": "Never",
                         "prompt": "Prompt"
                     }
-                },
-                "Heavyweight": {
-                    "SizeBonus": "Size Bonus"
                 },
                 "HeightenedFocus": {
                     "Prompt": "Bring an ally with you?",
@@ -3865,13 +4284,33 @@
                 },
                 "BatteringRoots": {
                     "Select": "Also use a mastery property from Battering Roots?"
+                },
+                "CircleOfTheLandSpells": {
+                    "Choose": "Choose a type of land.",
+                    "Lands": {
+                        "Label": "Land Item Identifiers",
+                        "Hint": "Comma-separated identifiers of the land items offered when choosing a land."
+                    },
+                    "RestPrompt": {
+                        "Label": "Prompt on Long Rest",
+                        "Hint": "Offer a land change after each long rest."
+                    }
+                },
+                "NaturalRecovery": {
+                    "Spells": {
+                        "Label": "Circle Spell Identifiers",
+                        "Hint": "Comma-separated spell identifiers that replace the spells granted by the current land."
+                    }
+                },
+                "NaturesWard": {
+                    "LandItem": "Your land comes from your Circle of the Land Spells choice."
                 }
             }
         },
         "Settings": {
             "AddActions": {
                 "Name": "Add Actions to Tokens",
-                "Hint": "Which creatures get actions when their token is placed.",
+                "Hint": "Which creatures get actions when placed.",
                 "Off": "None - No Actions",
                 "All": "All - Any Creature",
                 "Character": "All Characters Only",
@@ -3881,11 +4320,22 @@
             },
             "GenericActionsItem": {
                 "Name": "Add as One Generic Actions Item",
-                "Hint": "Add one Generic Actions item that picks an action. When off, every action is added as its own item."
+                "Hint": "Add actions as one item instead of one item each."
             },
             "HealingSurge": {
                 "Name": "Healing Surge",
-                "Hint": "Include Healing Surge with the added actions. From the 2014 Dungeon Master's Guide."
+                "Hint": "Include Healing Surge with the added actions."
+            },
+            "Firearms": {
+                "Name": "Firearms",
+                "Hint": "Adds firearms. Third party adds Grim Hollow firearms. Requires a reload.",
+                "Off": "Off",
+                "FirstParty": "First Party",
+                "ThirdParty": "First and Third Party"
+            },
+            "ThirdPartyMasteries": {
+                "Name": "Third-Party Weapon Masteries",
+                "Hint": "Adds third-party weapon masteries. Requires a reload."
             },
             "Mechanics": {
                 "Name": "Game Mechanic Options",
@@ -3899,7 +4349,7 @@
             },
             "DmgCleave": {
                 "Name": "DMG Cleave",
-                "Hint": "Leftover melee damage that drops a creature carries to another creature within reach. From the 2014 Dungeon Master's Guide.",
+                "Hint": "Leftover melee damage carries to another creature within reach.",
                 "Off": "Disabled",
                 "Any": "Enabled (Any Health)",
                 "Full": "Enabled (Full Health Only)"

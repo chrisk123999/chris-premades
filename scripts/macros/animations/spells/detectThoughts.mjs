@@ -69,6 +69,7 @@ async function create(effect, targetToken, {color = 'purple', opacity = 1, cast 
 }
 export const detectThoughts = {
     name: 'CHRISPREMADES.Animations.DetectThoughts.Name',
+    sound: 'psfx.magic-signs.rune.v1.divination.complete',
     macros: {
         play,
         create,

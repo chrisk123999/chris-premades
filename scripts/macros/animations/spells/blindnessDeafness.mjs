@@ -76,6 +76,7 @@ async function create(effect, targetToken, {color = 'purple', cast = true, shake
 }
 export const blindnessDeafness = {
     name: 'CHRISPREMADES.Animations.BlindnessDeafness',
+    sound: 'psfx.casting.sound.001',
     macros: {
         play,
         create

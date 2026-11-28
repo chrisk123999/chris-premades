@@ -11,7 +11,7 @@ function getNearbyShrubs(item, targetToken) {
 async function created({document, summon}) {
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'forestGuardThorns');
     const lash = itemUtils.getActivityByIdentifier(document, 'forest-guard-lash');
-    if (!sourceEffect || !lash) return Logging.addMacroWarning('CPR', 'forest-guard', 'Thorns effect or lash activity missing from item.', {notify: 'warn'});
+    if (!sourceEffect || !lash) return Logging.addMacroWarning('chris-premades', 'forest-guard', 'Thorns effect or lash activity missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(document, sourceEffect.id, {activityUuid: lash.uuid});
     genericUtils.setProperty(effectData, 'flags.cat.identifier', 'forestGuardThorns' + summon.actor.id);
     await effectUtils.createEffects(summon.actor, [effectData]);
@@ -25,7 +25,7 @@ function early({document, workflow}) {
     if (workflow.activity.identifier !== 'forest-guard-attack') return;
     const targetToken = workflow.targets.tokens[0];
     if (!targetToken || getNearbyShrubs(document, targetToken.document).length) return;
-    Logging.addMacroWarning('CPR', 'forest-guard', 'CHRISPREMADES.Macros.Modern.ForestGuard.NoShrub', {notify: 'info', format: {distance: automationUtils.getConfigValue(document, 'shrubRange')}});
+    Logging.addMacroWarning('chris-premades', 'forest-guard', 'CHRISPREMADES.Macros.Modern.ForestGuard.NoShrub', {notify: 'info', format: {distance: automationUtils.getConfigValue(document, 'shrubRange')}});
     return true;
 }
 async function damage({document, workflow}) {

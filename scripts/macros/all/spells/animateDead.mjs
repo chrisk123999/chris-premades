@@ -8,7 +8,7 @@ async function early({document}) {
     const zombie = await automationUtils.getCompendiumDocumentByName(zombieName, 'monster');
     if (!skeleton || !zombie) {
         const notFound = !skeleton ? !zombie ? skeletonName + ' & ' + zombieName : skeletonName : zombieName;
-        Logging.addMacroWarning('CPR', 'animate-dead-summon', 'CHRISPREMADES.Macros.All.AnimateDead.NotFound', {notify: 'warn', format: {creature: notFound}});
+        Logging.addMacroWarning('chris-premades', 'animate-dead-summon', 'CHRISPREMADES.Macros.All.AnimateDead.NotFound', {notify: 'warn', format: {creature: notFound}});
     }
     const newConfig = [];
     if (skeleton) newConfig.push({sourceActorUuid: skeleton.uuid, sourceActorName: skeleton.name, sourceActorImg: skeleton.img});
@@ -18,7 +18,7 @@ async function early({document}) {
 }
 async function use({document, workflow, castData}) {
     const summonsConfig = automationUtils.getConfigValue(document.item, 'summons');
-    if (!summonsConfig.length) return Logging.addMacroWarning('CPR', 'animate-dead-summon', 'No summon creatures configured.', {notify: 'warn'});
+    if (!summonsConfig.length) return Logging.addMacroWarning('chris-premades', 'animate-dead-summon', 'No summon creatures configured.', {notify: 'warn'});
     let maxSummons = automationUtils.getConfigValue(document.item, 'baseMaxSummons') + ((castData.castLevel - 3) * 2);
     let undeadThralls = actorUtils.getItemByIdentifier(document.actor, 'undead-thralls');
     if (undeadThralls) maxSummons += undeadThralls.system.charges.value;
@@ -96,7 +96,7 @@ async function use({document, workflow, castData}) {
 }
 async function reassert({document}) {
     let summonActivity = itemUtils.getActivityByIdentifier(document.item, 'animate-dead-summon');
-    if (!summonActivity) return Logging.addMacroWarning('CPR', 'animate-dead-reassert', 'Summon activity missing from item.', {notify: 'warn'});
+    if (!summonActivity) return Logging.addMacroWarning('chris-premades', 'animate-dead-reassert', 'Summon activity missing from item.', {notify: 'warn'});
     let summons = summonUtils.getSummonsBySource(summonActivity);
     if (!summons.length) return;
     let maxReassert = automationUtils.getConfigValue(document.item, 'reassertMax');

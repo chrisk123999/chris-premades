@@ -6,7 +6,7 @@ async function use({document, workflow}) {
     const affectedTargets = workflow.hitTargets.documents.filter(token => token.actor && creatureTypes.includes(actorUtils.typeOrRace(token.actor)));
     if (!affectedTargets.length) return;
     const sourceEffect = documentUtils.getEffectByIdentifier(document, 'chillTouchUndead');
-    if (!sourceEffect) return Logging.addMacroWarning('CPR', 'chill-touch', 'Undead effect missing from item.', {notify: 'warn'});
+    if (!sourceEffect) return Logging.addMacroWarning('chris-premades', 'chill-touch', 'Undead effect missing from item.', {notify: 'warn'});
     const effectData = documentUtils.getEffectData(workflow.activity, sourceEffect.id, {activityUuid: workflow.activity.uuid});
     if (!effectData) return;
     await Promise.all(affectedTargets.map(token => effectUtils.createEffects(token.actor, [effectData])));

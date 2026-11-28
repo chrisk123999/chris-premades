@@ -25,8 +25,8 @@ async function use({document, workflow}) {
         getFeature('drake-companion-bite', translations + 'Bite'),
         getFeature('drake-companion-dodge', translations + 'Dodge')
     ]);
-    if (!sourceActor) return Logging.addMacroWarning('CPR', 'drake-companion-summon', 'CHRISPREMADES.Error.ActorNotFound', {notify: 'warn'});
-    if (items.some(item => !item)) return Logging.addMacroWarning('CPR', 'drake-companion-summon', 'CHRISPREMADES.Error.MissingPackItem', {notify: 'warn'});
+    if (!sourceActor) return Logging.addMacroWarning('chris-premades', 'drake-companion-summon', 'CHRISPREMADES.Error.ActorNotFound', {notify: 'warn'});
+    if (items.some(item => !item)) return Logging.addMacroWarning('chris-premades', 'drake-companion-summon', 'CHRISPREMADES.Error.MissingPackItem', {notify: 'warn'});
     const [, strikes, bite] = items;
     genericUtils.setProperty(strikes, 'flags.cat.config.damageType', damageType);
     if (upgrades) Object.values(bite.system.activities)[0].damage.parts.push({number: upgrades, denomination: 6, types: [damageType]});

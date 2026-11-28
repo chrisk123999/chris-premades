@@ -18,6 +18,17 @@ function statusData(item, status) {
     };
 }
 function gate({document: item, activity}) {
+    if (activity.identifier === 'repair') {
+        if (getStatus(item) !== 'damaged') {
+            genericUtils.notify('CHRISPREMADES.Macros.Generic.Firearm.NotDamaged', {type: 'info', format: {item: item.name}});
+            return true;
+        }
+        if (!item.actor?.items.some(i => i.type === 'tool' && i.system.type.baseItem === 'tinker')) {
+            genericUtils.notify('CHRISPREMADES.Macros.Generic.Firearm.NoTinkers', {type: 'info'});
+            return true;
+        }
+        return;
+    }
     if (activity.type !== 'attack') return;
     const status = getStatus(item);
     if (!status) return;
@@ -64,9 +75,9 @@ async function explosive({document: item, workflow}) {
     await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, Array.from(targets));
 }
 async function misfire({document: item, workflow}) {
-    if (!workflow.attackRoll) return;
+    if (!workflow.attackRoll || workflowUtils.getWorkflowProperty(workflow, 'firearmNoMisfire')) return;
     const config = automationUtils.getGenericConfigValues(item, 'chris-premades', 'firearm', configKeys);
-    if (!config.misfire || workflow.d20AttackRoll > getMisfireScore(item, config)) return;
+    if (!config.misfire || workflow.d20AttackRoll > getMisfireScore(item, config) + Number(workflowUtils.getWorkflowProperty(workflow, 'firearmMisfireBonus') ?? 0)) return;
     workflowUtils.setWorkflowProperty(workflow, 'firearmMisfire', true);
     workflow.hitTargets = new Set();
     await Promise.all([
@@ -78,10 +89,6 @@ async function repair({document: item, workflow}) {
     if (workflow.activity.identifier !== 'repair') return;
     const damaged = documentUtils.getEffectByIdentifier(item, 'firearmDamaged');
     if (!damaged) return;
-    if (!workflow.actor.items.some(i => i.type === 'tool' && i.system.type.baseItem === 'tinker')) {
-        genericUtils.notify('CHRISPREMADES.Macros.Generic.Firearm.NoTinkers', {type: 'info'});
-        return;
-    }
     const config = automationUtils.getGenericConfigValues(item, 'chris-premades', 'firearm', configKeys);
     const dc = 8 + getMisfireScore(item, config);
     const roll = await rollUtils.requestRoll(workflow.actor, 'tool', 'tinker', {rollDC: dc});
@@ -94,11 +101,13 @@ async function repair({document: item, workflow}) {
 /**
  * Applies firearm rules and the explosive, recoil and blaring weapon properties to the weapon. A natural attack roll at
  * or below the misfire score misses and damages the firearm, and a damaged or broken firearm can't attack. The item's
- * `repair` activity rolls a tinker's tools check against 8 + the misfire score, and a failure breaks the firearm.
+ * `repair` activity rolls a tinker's tools check against 8 + the misfire score, and a failure breaks the firearm. The
+ * workflow property `firearmMisfireBonus` raises the misfire score for one attack, and `firearmNoMisfire` stops that
+ * attack from misfiring.
  */
 export const firearm = {
     rules: 'all',
-    version: '2.1.10',
+    version: '2.1.11',
     category: 'mechanics',
     generic: true,
     documents: ['item'],
@@ -151,4 +160,22 @@ export const firearm = {
         }
     }
 };
+export function registerFirearms() {
+    const firearms = game.settings.get('chris-premades', 'firearms');
+    if (firearms === 'off') return;
+    const thirdParty = firearms === 'thirdParty';
+    const firearmKey = 'CHRISPREMADES.Macros.Generic.Firearm.';
+    CONFIG.DND5E.weaponTypes.firearm = firearmKey + 'Type';
+    CONFIG.DND5E.weaponTypeMap.firearm = 'ranged';
+    CONFIG.DND5E.weaponProficiencies.firearm = firearmKey + 'Proficiency';
+    CONFIG.DND5E.weaponProficienciesMap.firearm = 'firearm';
+    for (const property of cpr.firearmProperties) {
+        if (!thirdParty && !cpr.firstPartyFirearmProperties.includes(property)) continue;
+        CONFIG.DND5E.itemProperties[property] = {label: firearmKey + 'Properties.' + property.capitalize()};
+        CONFIG.DND5E.validProperties.weapon.add(property);
+    }
+    for (const [baseItem, uuid] of Object.entries(cpr.firearmBaseItems)) {
+        if (thirdParty || !cpr.thirdPartyFirearmBaseItems.includes(baseItem)) CONFIG.DND5E.weaponIds[baseItem] = 'Compendium.' + uuid;
+    }
+}
 const configKeys = Object.keys(firearm.genericConfig);

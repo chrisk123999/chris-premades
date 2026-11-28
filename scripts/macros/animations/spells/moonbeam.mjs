@@ -55,6 +55,7 @@ async function pulse(targetToken, {impact = true} = {}) {
 }
 export const moonbeam = {
     name: 'CHRISPREMADES.Animations.Moonbeam.Name',
+    sound: 'psfx.2nd-level-spells.moonbeam.intro.v1.003',
     macros: {
         play,
         move,

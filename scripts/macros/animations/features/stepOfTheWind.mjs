@@ -250,6 +250,7 @@ async function move(token, positions) {
 }
 export const stepOfTheWind = {
     name: 'CHRISPREMADES.Animations.StepOfTheWind',
+    sound: 'psfx.cantrips.gust.v1',
     macros: {
         move
     },

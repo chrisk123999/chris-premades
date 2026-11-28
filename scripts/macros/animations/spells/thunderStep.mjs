@@ -74,6 +74,7 @@ async function postAnimation(token) {
 }
 export const thunderStep = {
     name: 'CHRISPREMADES.Animations.ThunderStep',
+    sound: 'psfx.cantrips.thunderclap.v1.0',
     macros: {
         preAnimation,
         postAnimation

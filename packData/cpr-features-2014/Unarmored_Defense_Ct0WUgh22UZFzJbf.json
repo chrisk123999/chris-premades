@@ -83,27 +83,11 @@
     }
   },
   "flags": {
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
-    "dae": {
-      "alwaysActive": false,
-      "activeEquipped": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.0"
+        "version": "2.1.11",
+        "sourceType": "class:monk"
       }
     }
   },

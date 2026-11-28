@@ -18,13 +18,13 @@ async function reach({document, workflow}) {
     const outOfReach = workflow.targets.documents.filter(token => !token.object || !tokenUtils.isWithinDistance(hand, token, range));
     if (!outOfReach.length) return;
     await workflowUtils.removeTargets(workflow, outOfReach);
-    Logging.addMacroWarning('CPR', 'maximilians-earthen-grasp', 'CHRISPREMADES.Macros.Legacy.MaximiliansEarthenGrasp.OutOfReach', {notify: true});
+    Logging.addMacroWarning('chris-premades', 'maximilians-earthen-grasp', 'CHRISPREMADES.Macros.Legacy.MaximiliansEarthenGrasp.OutOfReach', {notify: true});
 }
 async function aim({workflow}) {
     if (workflow.activity.identifier !== 'maximilians-earthen-grasp-crush') return;
     const targetUuid = getGraspingEffect(workflow.actor)?.flags['chris-premades']?.maximiliansEarthenGrasp?.targetUuid;
     const target = targetUuid ? fromUuidSync(targetUuid) : undefined;
-    if (!target) return Logging.addMacroWarning('CPR', 'maximilians-earthen-grasp', 'CHRISPREMADES.Macros.Legacy.MaximiliansEarthenGrasp.NoTarget', {notify: true});
+    if (!target) return Logging.addMacroWarning('chris-premades', 'maximilians-earthen-grasp', 'CHRISPREMADES.Macros.Legacy.MaximiliansEarthenGrasp.NoTarget', {notify: true});
     await workflowUtils.updateTargets(workflow, [target]);
 }
 async function grasp({document, workflow}) {
@@ -32,7 +32,7 @@ async function grasp({document, workflow}) {
     const target = workflow.failedSaves.documents[0];
     if (!target) return;
     const targetEffect = documentUtils.getEffectByIdentifier(target.actor, 'maximiliansEarthenGraspRestrained', {multiple: true}).at(-1);
-    if (!targetEffect) return Logging.addMacroWarning('CPR', 'maximilians-earthen-grasp', 'Restrained effect was not applied to the target.');
+    if (!targetEffect) return Logging.addMacroWarning('chris-premades', 'maximilians-earthen-grasp', 'Restrained effect was not applied to the target.');
     const casterEffectData = documentUtils.getBaseEffectData(workflow.activity, {
         name: _loc('CHRISPREMADES.Macros.Legacy.MaximiliansEarthenGrasp.Grasping'),
         img: document.img,

@@ -133,6 +133,7 @@ async function vortexWarpPost(token) {
 }
 export const vortexWarp = {
     name: 'CHRISPREMADES.Animations.VortexWarp',
+    sound: 'psfx.magic-signs.rune.v1.conjuration.intro',
     macros: {
         preAnimation: vortexWarpPre,
         postAnimation: vortexWarpPost

@@ -1,0 +1,92 @@
+{
+  "_id": "tPx1SXW77eDo9wMo",
+  "name": "Hunter's Bane",
+  "type": "feat",
+  "img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
+  "folder": "odLQIcDTtEL60NVt",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "identifier": "hunters-bane",
+    "activities": {},
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "check": [
+          {
+            "source": "chris-premades",
+            "identifier": "contextAdvantage",
+            "rules": "all"
+          }
+        ],
+        "save": [
+          {
+            "source": "chris-premades",
+            "identifier": "contextAdvantage",
+            "rules": "all"
+          }
+        ],
+        "skill": [
+          {
+            "source": "chris-premades",
+            "identifier": "contextAdvantage",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "chris-premades": {
+          "contextAdvantage": {
+            "skill": [
+              "sur"
+            ],
+            "check": [
+              "int"
+            ],
+            "label": "CHRISPREMADES.Macros.Legacy.BloodHunter.HuntersBane"
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!tPx1SXW77eDo9wMo"
+}

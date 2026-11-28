@@ -85,6 +85,7 @@ async function play(sourceToken, targetToken, {leaps = [], color = 'blue'} = {})
 }
 export const chainLightning = {
     name: 'CHRISPREMADES.Animations.ChainLightning',
+    sound: 'psfx.3rd-level-spells.call-lightning.v1.primary',
     macros: {
         play
     },

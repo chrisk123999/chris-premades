@@ -175,7 +175,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "blessed-strikes-divine-strike",
+    "identifier": "divine-strike",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -232,7 +232,7 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.11"
       }
     }
   },

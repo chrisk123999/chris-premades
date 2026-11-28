@@ -174,6 +174,7 @@ async function attack(sourceToken, targetToken, {missed, strike} = {}) {
 }
 export const trueStrike = {
     name: 'CHRISPREMADES.Animations.TrueStrike',
+    sound: 'psfx.cantrips.sacred-flame.v1.001.caster',
     macros: {
         attack
     },

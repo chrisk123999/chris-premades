@@ -1,3 +1,4 @@
+import {constants} from '../../../proxy.mjs';
 import {getPalette} from '../generic/spellParts.mjs';
 const palettes = {
     patreon: {
@@ -49,7 +50,7 @@ async function postPlace(summon, _location, token) {
             .atLocation(token)
             .scaleToObject(2.5)
             .zIndex(2)
-        .sound()
+        .sound().name(constants.soundName)
             .playIf(sound)
             .file(sound)
         .animation()

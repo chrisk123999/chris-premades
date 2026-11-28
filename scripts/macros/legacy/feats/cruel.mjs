@@ -1,7 +1,7 @@
 import {automationUtils, combatUtils, constants, D20Bonus, DamageBonus, dialogUtils, documentUtils, itemUtils, Logging, queryUtils, tokenUtils, workflowUtils} from '../../../proxy.mjs';
 function getActivity(item, identifier) {
     const activity = itemUtils.getActivityByIdentifier(item, identifier);
-    if (!activity) Logging.addMacroWarning('CPR', 'cruel', 'Missing the ' + identifier + ' activity.', {notify: 'warn'});
+    if (!activity) Logging.addMacroWarning('chris-premades', 'cruel', 'Missing the ' + identifier + ' activity.', {notify: 'warn'});
     return activity;
 }
 function canUse(item, token) {

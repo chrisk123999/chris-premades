@@ -290,14 +290,14 @@
       "type": ""
     },
     "mastery": "slow",
-    "identifier": "blunderbuss-of-the-grinning-sinner"
+    "identifier": "blunderbuss-of-the-grinning-sinner-1"
   },
   "effects": [],
   "flags": {
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       },
       "macros": {
         "roll": [

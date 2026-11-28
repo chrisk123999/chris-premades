@@ -1,0 +1,129 @@
+{
+  "name": "Inescapable Destruction",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Inescapable Destruction",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "damage",
+            "value": "necrotic",
+            "type": "dnd5e.damage.ignore.resistance",
+            "priority": 20,
+            "conditions": "{\"o\":\"OR\",\"v\":[{\"k\":\"item.classIdentifier\",\"o\":\"exact\",\"v\":\"cleric\"},{\"k\":\"item.identifier\",\"o\":\"exact\",\"v\":\"channel-divinity\"}]}",
+            "phase": "initial",
+            "_id": "eX4t4KPDRDUhkTui",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "description": "",
+      "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
+      "_id": "vUXySABRsISQKIWp",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.1.1"
+      },
+      "_key": "!items.effects!ZFlBdYJOsUGusqzE.vUXySABRsISQKIWp"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {},
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "inescapable-destruction",
+    "source": {
+      "book": "DMG",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 6,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "img": "icons/magic/earth/orb-stone-smoke-teal.webp",
+  "folder": "5uZ5kNucLVwQXioA",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.1.1"
+  },
+  "_id": "ZFlBdYJOsUGusqzE",
+  "_key": "!items!ZFlBdYJOsUGusqzE"
+}

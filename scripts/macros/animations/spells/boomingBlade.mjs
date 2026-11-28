@@ -27,6 +27,7 @@ async function create(effect, sourceToken, {color = 'blue'} = {}) {
 }
 export const boomingBlade = {
     name: 'CHRISPREMADES.Animations.BoomingBlade',
+    sound: 'psfx.cantrips.thunderclap.v1',
     macros: {
         create
     },

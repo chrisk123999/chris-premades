@@ -14,7 +14,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "blessed-strikes-potent-spellcasting",
+    "identifier": "potent-spellcasting",
     "source": {
       "book": "PHB 2024",
       "page": "",
@@ -50,7 +50,8 @@
             "spellLevel": [
               "0"
             ],
-            "useActivityCosts": false
+            "useActivityCosts": false,
+            "sourceClasses": "cleric"
           }
         }
       },
@@ -65,7 +66,8 @@
       },
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.8"
+        "version": "2.1.11",
+        "sourceType": "class:cleric"
       }
     }
   },

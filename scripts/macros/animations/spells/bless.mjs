@@ -130,6 +130,7 @@ async function create(effect, targetToken, {color = 'yellow', aura = true} = {})
 }
 export const bless = {
     name: 'CHRISPREMADES.Animations.Bless',
+    sound: 'psfx.1st-level-spells.bless.v1.005',
     macros: {
         play,
         create,

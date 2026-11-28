@@ -16,7 +16,7 @@
       "value": "",
       "chat": ""
     },
-    "identifier": "elemental-fury-potent-spellcasting",
+    "identifier": "potent-spellcasting",
     "source": {
       "revision": 1,
       "rules": "2024",
@@ -44,7 +44,8 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.8"
+        "version": "2.1.11",
+        "sourceType": "class:druid"
       },
       "macros": {
         "roll": [
@@ -67,7 +68,8 @@
               "0"
             ],
             "useActivityCosts": false,
-            "allowCritical": true
+            "allowCritical": true,
+            "sourceClasses": "druid"
           }
         }
       }

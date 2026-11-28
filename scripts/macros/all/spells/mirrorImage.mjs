@@ -27,7 +27,7 @@ async function attacked({document: effect, sourceToken, workflow}) {
     if (!sourceToken.object || !tokenUtils.canSee(workflow.token.document, sourceToken)) return;
     if (tokenUtils.canSense(workflow.token.document, sourceToken, ['blindsight', 'seeAll'])) return;
     const item = effectUtils.getOriginActivitySync(effect)?.item;
-    if (!item) return Logging.addMacroWarning('CPR', 'mirror-image', 'Origin item missing.', {notify: 'warn'});
+    if (!item) return Logging.addMacroWarning('chris-premades', 'mirror-image', 'Origin item missing.', {notify: 'warn'});
     const remaining = getRemaining(effect);
     if (!remaining) return;
     if (documentUtils.getRules(item) === '2014') {

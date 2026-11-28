@@ -66,7 +66,7 @@ export const preserveLife = {
     config: {
         pctLimit: {
             default: 50,
-            type: 'slider',
+            type: 'number',
             category: 'behavior',
             max: 100, min: 1, step: 1,
             label: 'CHRISPREMADES.Macros.All.PreserveLife.Limit'

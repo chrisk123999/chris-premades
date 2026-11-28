@@ -9,7 +9,7 @@ async function naturalWeapons({document, workflow}) {
     const cancel = () => effectUtils.endConcentration(workflow.actor, workflow.item);
     const unarmedStrike = actorUtils.getItemByIdentifier(workflow.actor, 'unarmed-strike');
     if (!unarmedStrike) {
-        Logging.addMacroWarning('CPR', 'alter-self', _loc('CHRISPREMADES.Macros.Modern.AlterSelf.NoUnarmedStrike'), {notify: 'warn'});
+        Logging.addMacroWarning('chris-premades', 'alter-self', _loc('CHRISPREMADES.Macros.Modern.AlterSelf.NoUnarmedStrike'), {notify: 'warn'});
         return cancel();
     }
     const buttons = growths.map(([growth, damageType]) => [_loc('CHRISPREMADES.Macros.Modern.AlterSelf.' + growth) + ' (' + CONFIG.DND5E.damageTypes[damageType].label + ')', growth]);

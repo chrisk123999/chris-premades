@@ -31,7 +31,7 @@ async function use({document, workflow}) {
     const concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     const cancel = () => effectUtils.endConcentration(workflow.actor, workflow.item);
     if (!workflow.targets.count) {
-        Logging.addMacroWarning('CPR', 'hex', 'No target selected.');
+        Logging.addMacroWarning('chris-premades', 'hex', 'No target selected.');
         return await cancel();
     }
     const ability = await dialogUtils.buttonDialog(document.name, _loc('CHRISPREMADES.Macros.All.Hex.SelectAbility'), abilityOptions());
@@ -64,7 +64,7 @@ async function use({document, workflow}) {
 async function move({document, workflow}) {
     if (workflow.activity.identifier !== 'hex-move' || workflow.targets.count !== 1) return;
     const casterEffect = documentUtils.getEffectByIdentifier(workflow.actor, 'hex');
-    if (!casterEffect) return Logging.addMacroWarning('CPR', 'hex', 'No active Hex to move.');
+    if (!casterEffect) return Logging.addMacroWarning('chris-premades', 'hex', 'No active Hex to move.');
     const hexData = casterEffect.flags['chris-premades'].hex;
     const current = hexData.targets.map(uuid => fromUuidSync(uuid)).filter(token => token);
     let previous = current[0];

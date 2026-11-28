@@ -1,0 +1,199 @@
+{
+  "_id": "1hjelmfniV3hQDSF",
+  "name": "Faithful Summons",
+  "type": "feat",
+  "img": "icons/magic/nature/wolf-paw-glow-large-purple-teal.webp",
+  "folder": "circleShepherd01",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "uses": {
+      "spent": 0,
+      "max": "1",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "faithful-summons",
+    "activities": {
+      "hJqcPVS7nGvMd4Cp": {
+        "_id": "hJqcPVS7nGvMd4Cp",
+        "type": "utility",
+        "name": "Faithful Summons",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "hour",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [],
+        "range": {
+          "units": "ft",
+          "special": "",
+          "override": false,
+          "value": "20"
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "space",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "faithful-summons",
+        "midiProperties": {
+          "identifier": "faithful-summons",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {}
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      },
+      "macros": {
+        "summon": [
+          {
+            "source": "cat",
+            "identifier": "summon",
+            "rules": "all"
+          }
+        ],
+        "move": [
+          {
+            "source": "cat",
+            "identifier": "summon",
+            "rules": "all"
+          }
+        ],
+        "effect": [
+          {
+            "source": "chris-premades",
+            "identifier": "useOnDeath",
+            "rules": "all"
+          }
+        ]
+      },
+      "genericConfig": {
+        "cat": {
+          "summon": {
+            "activityId": "hJqcPVS7nGvMd4Cp",
+            "summons": [
+              {
+                "initiative": "follows",
+                "animation": {
+                  "source": "chris-premades",
+                  "identifier": "natureSummon"
+                },
+                "compendium": {
+                  "types": [
+                    "beast"
+                  ],
+                  "tiers": "2|4",
+                  "ownerPicks": true
+                },
+                "updates": [
+                  {
+                    "path": "system.details.type.value",
+                    "value": "fey",
+                    "mode": "literal"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "chris-premades": {
+          "useOnDeath": {
+            "statuses": [
+              "unconscious",
+              "incapacitated"
+            ],
+            "confirm": true
+          }
+        }
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!1hjelmfniV3hQDSF"
+}

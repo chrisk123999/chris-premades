@@ -2,7 +2,7 @@ import {automationUtils, DamageBonus, documentUtils, itemUtils, Logging, workflo
 async function damage({document: item, workflow}) {
     if (!item.system.uses.value || !workflow.activity?.hasDamage || !workflow.targets.count) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'guided-precision');
-    if (!activity) return Logging.addMacroWarning('CPR', 'guided-precision', 'Guided Precision activity not found.');
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'guided-precision', 'Guided Precision activity not found.');
     const config = automationUtils.getConfigValues(item, configKeys);
     const listSpell = workflow.item.type === 'spell' && config.spells.includes(documentUtils.getIdentifier(workflow.item));
     const marked = workflow.activity.hasAttack
@@ -19,7 +19,7 @@ async function concentration({document: item, workflow}) {
     const actor = item.actor;
     const spells = automationUtils.getConfigValue(item, 'concentrationSpells');
     if (!Array.from(actor.concentration?.items ?? []).some(spell => spells.includes(documentUtils.getIdentifier(spell)))) return;
-    if (workflow.targets.documents.some(token => token.actor && token.actor !== actor && token.actor.concentration?.effects.size)) return Logging.addMacroWarning('CPR', 'guided-precision', `Guided Precision did not skip the concentration check, another target is concentrating. (actor) ${actor.uuid}`);
+    if (workflow.targets.documents.some(token => token.actor && token.actor !== actor && token.actor.concentration?.effects.size)) return Logging.addMacroWarning('chris-premades', 'guided-precision', `Guided Precision did not skip the concentration check, another target is concentrating. (actor) ${actor.uuid}`);
     workflow.workflowOptions.noConcentrationCheck = true;
 }
 export const guidedPrecision = {

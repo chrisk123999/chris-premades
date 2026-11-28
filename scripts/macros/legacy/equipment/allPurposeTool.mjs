@@ -14,7 +14,7 @@ async function transform({document: item, workflow}) {
 async function channel({document: item, workflow}) {
     if (workflow.activity.identifier !== 'channel-creative-forces' || !itemUtils.getEquipmentState(item)) return;
     const packIds = compendiumUtils.getEnabledCompendiumIds('spellCompendiums');
-    if (!packIds.length) return Logging.addMacroWarning('CPR', 'all-purpose-tool', 'CAT.Error.NoSpellCompendiums', {notify: 'warn'});
+    if (!packIds.length) return Logging.addMacroWarning('chris-premades', 'all-purpose-tool', 'CAT.Error.NoSpellCompendiums', {notify: 'warn'});
     const [spell] = await compendiumUtils.selectFromCompendiumBrowser('spells', {packIds, lockedFilters: {additional: {level: {min: 0, max: 0}}}, maxAmount: 1, title: item.name}) ?? [];
     if (!spell) return;
     const spellData = spell.toObject();

@@ -1,12 +1,12 @@
-import {activityUtils, automationUtils, documentUtils, effectUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, automationUtils, dataUtils, documentUtils, effectUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     const bonus = activityUtils.getRange(workflow.activity) || workflowUtils.getRange(workflow);
     const range = bonus || tokenUtils.movementSpent(workflow.token.document, true);
-    if (!range) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Generic.MovementAnimation.NoMovement', {notify: 'warn'});
+    if (!range) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Generic.MovementAnimation.NoMovement', {notify: 'warn'});
     const {animation: selectLocationsAnimation, options: selectLocationsOptions} = automationUtils.getResolvedAnimation(document, 'selectLocationsAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});
-    if (!selectLocationsAnimation) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Select locations animation not available.', {notify: 'warn'});
+    if (!selectLocationsAnimation) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'Select locations animation not available.', {notify: 'warn'});
     const {animation: moveAnimation} = automationUtils.getResolvedAnimation(document, 'moveAnimation', {source: 'chris-premades', identifier: 'movementAnimation'});
-    if (!moveAnimation) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Move animation not available.', {notify: 'warn'});
+    if (!moveAnimation) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'Move animation not available.', {notify: 'warn'});
     const positions = await selectLocationsAnimation.macros?.select(workflow.token.document, range, selectLocationsOptions);
     if (!positions?.length) return;
     const movementEffectId = automationUtils.getGenericConfigValue(document, 'chris-premades', 'movementAnimation', 'movementEffect');
@@ -16,7 +16,7 @@ async function use({document, workflow}) {
         if (sourceEffect) {
             const effectData = sourceEffect.toObject();
             delete effectData._id;
-            effectData.origin = sourceEffect.uuid;
+            dataUtils.setOrigin(effectData, sourceEffect);
             effect = (await effectUtils.createEffects(workflow.actor, [effectData]))?.[0];
         }
     }

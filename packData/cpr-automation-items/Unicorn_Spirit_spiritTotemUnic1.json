@@ -56,33 +56,22 @@
       "flags": {
         "cat": {
           "macros": {
-            "check": [
-              {
-                "source": "chris-premades",
-                "rules": "all",
-                "identifier": "contextAdvantage"
-              }
-            ],
             "skill": [
               {
                 "source": "chris-premades",
-                "rules": "all",
-                "identifier": "contextAdvantage"
+                "identifier": "contextAdvantage",
+                "rules": "all"
               }
             ]
           },
           "genericConfig": {
             "chris-premades": {
               "contextAdvantage": {
-                "check": [
-                  "str",
-                  "dex",
-                  "con",
-                  "int",
-                  "wis",
-                  "cha"
-                ],
-                "label": "CHRISPREMADES.Macros.Legacy.SpiritTotem.Detect"
+                "label": "CHRISPREMADES.Macros.Legacy.SpiritTotem.Detect",
+                "skill": [
+                  "prc",
+                  "inv"
+                ]
               }
             }
           }
@@ -116,7 +105,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       },
       "macros": {
         "aura": [

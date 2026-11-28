@@ -1,4 +1,4 @@
-import {animationUtils, tokenUtils} from '../../../proxy.mjs';
+import {animationUtils, constants, tokenUtils} from '../../../proxy.mjs';
 import {castTouch} from '../generic/castTouch.mjs';
 const files = [
     'animated-spell-effects-cartoon.mix.electric ball.01',
@@ -224,7 +224,7 @@ async function start(sourceToken, targets, {cameraZoom, sound} = {}) {
         const next = last ? sourceToken : initialPoints[index + 1];
         const previous = last ? sourceToken : initialPoints.at(index - 1);
         const sequence = afterimage(sourceToken, point, previous, next, (200 * (index + 1)) - 199);
-        if (sound && !last) sequence.sound().file(sound);
+        if (sound && !last) sequence.sound().name(constants.soundName).file(sound);
         sequence.thenDo(() => targets.forEach(target => shakeTarget(target)));
         if (last) {
             /* eslint-disable indent */
@@ -254,7 +254,7 @@ async function start(sourceToken, targets, {cameraZoom, sound} = {}) {
                 .fadeOut(1000)
                 .filter('ColorMatrix', {hue: 70})
                 .zIndex(4);
-        if (sound) slash.sound().file(sound);
+        if (sound) slash.sound().name(constants.soundName).file(sound);
         slash
             .effect()
                 .file('animated-spell-effects-cartoon.magic.mind sliver')
@@ -327,7 +327,7 @@ export const steelWindStrike = {
             hint: 'CHRISPREMADES.Animations.SteelWindStrike.CameraZoom.Hint'
         },
         sound: {
-            default: '',
+            default: 'psfx.impacts.slashing.v1.0',
             type: 'file',
             label: 'CHRISPREMADES.Config.Sound.Label',
             hint: 'CHRISPREMADES.Animations.SteelWindStrike.Sound.Hint'

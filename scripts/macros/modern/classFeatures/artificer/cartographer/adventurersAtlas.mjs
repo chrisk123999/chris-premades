@@ -9,7 +9,7 @@ export function getMapHolders(atlas, scene) {
 async function requireTools({document: activity, workflow}) {
     if (!automationUtils.getConfigValue(activity.item, 'requireTools')) return;
     if (actorUtils.hasTools(workflow.actor, ['cartographer'], {equipped: false})) return;
-    Logging.addMacroWarning('CPR', 'adventurers-atlas', 'CHRISPREMADES.Macros.Modern.AdventurersAtlas.NeedTools', {notify: 'warn', format: {itemName: activity.item.name}});
+    Logging.addMacroWarning('chris-premades', 'adventurers-atlas', 'CHRISPREMADES.Macros.Modern.AdventurersAtlas.NeedTools', {notify: 'warn', format: {itemName: activity.item.name}});
     workflow.aborted = true;
     return true;
 }
@@ -26,7 +26,7 @@ async function chooseTargets({document: activity, workflow}) {
 }
 async function makeMaps({document: activity, workflow}) {
     const targets = workflow.targets.documents.filter(token => token.actor);
-    if (targets.length < 2) return Logging.addMacroWarning('CPR', 'adventurers-atlas', 'CHRISPREMADES.Macros.Modern.AdventurersAtlas.TooFew', {notify: 'warn'});
+    if (targets.length < 2) return Logging.addMacroWarning('chris-premades', 'adventurers-atlas', 'CHRISPREMADES.Macros.Modern.AdventurersAtlas.TooFew', {notify: 'warn'});
     const item = activity.item;
     const oldSource = documentUtils.getEffectByIdentifier(workflow.actor, 'adventurersAtlasSource');
     if (oldSource) await documentUtils.deleteDocument(oldSource);

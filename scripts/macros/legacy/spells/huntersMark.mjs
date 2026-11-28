@@ -47,7 +47,7 @@ function isValidTarget(token, marked) {
 }
 async function selectNewTarget(document, token, range, marked, prefix, {userId} = {}) {
     const candidates = tokenUtils.findNearby(token, range, {disposition: 'enemy', includeIncapacitated: false}).filter(candidate => isValidTarget(candidate, marked));
-    if (!candidates.length) return Logging.addMacroWarning('CPR', 'hunters-mark', prefix + '.NoTargets', {notify: 'info'});
+    if (!candidates.length) return Logging.addMacroWarning('chris-premades', 'hunters-mark', prefix + '.NoTargets', {notify: 'info'});
     const selection = await dialogUtils.selectTargetDialog(document.name, _loc(prefix + '.MoveSelect'), candidates, {userId});
     return selection?.result;
 }

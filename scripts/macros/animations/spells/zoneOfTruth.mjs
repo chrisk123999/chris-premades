@@ -61,6 +61,7 @@ async function play(sourceToken, region, {cast = true, persist = true} = {}) {
 }
 export const zoneOfTruth = {
     name: 'CHRISPREMADES.Animations.ZoneOfTruth.Name',
+    sound: 'psfx.magic-signs.rune.v1.enchantment.intro-fade',
     macros: {
         play
     },

@@ -136,19 +136,7 @@
             }
           }
         ],
-        "flags": {
-          "cat": {
-            "macros": {
-              "roll": [
-                {
-                  "source": "chris-premades",
-                  "rules": "all",
-                  "identifier": "zealous-presence"
-                }
-              ]
-            }
-          }
-        },
+        "flags": {},
         "range": {
           "value": "",
           "units": "self",
@@ -487,7 +475,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.4"
+        "version": "2.1.11"
       }
     }
   },

@@ -1,0 +1,161 @@
+{
+  "name": "Soul of the Forge",
+  "type": "feat",
+  "effects": [
+    {
+      "name": "Soul of the Forge",
+      "statuses": [],
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dr.value",
+            "type": "add",
+            "value": "fire",
+            "priority": 1,
+            "phase": "initial",
+            "_id": "7T0lIFgjvbhzIpLV",
+            "conditions": "{}",
+            "replacement": ""
+          },
+          {
+            "key": "system.attributes.ac.bonus",
+            "value": 1,
+            "type": "add",
+            "priority": 18,
+            "phase": "initial",
+            "_id": "6yh0sLet9bkTLKeY",
+            "conditions": "[{\"k\":\"attributes.ac.equippedArmor.system.type.value\",\"o\":\"exact\",\"v\":\"heavy\"}]",
+            "replacement": ""
+          }
+        ],
+        "origin": {
+          "actor": null,
+          "behavior": null,
+          "effect": null,
+          "item": null,
+          "message": null
+        },
+        "conditions": "{}",
+        "magical": false,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "tint": "#ffffff",
+      "transfer": true,
+      "disabled": false,
+      "showIcon": 1,
+      "flags": {
+        "dae": {
+          "transfer": true,
+          "stackable": "noneNameOnly",
+          "disableCondition": "",
+          "expiryMode": "delete",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "description": "",
+      "img": "icons/magic/defensive/shield-barrier-flaming-diamond-orange.webp",
+      "_id": "w2rJ8bA5wALfNGVC",
+      "type": "base",
+      "origin": null,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "dnd5e",
+        "systemVersion": "6.1.1"
+      },
+      "_key": "!items.effects!NboVdkNIxjopUFDB.w2rJ8bA5wALfNGVC"
+    }
+  ],
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "advancement": {
+      "aatl7jgryCphBoAi": {
+        "configuration": {
+          "allowReplacements": false,
+          "choices": [],
+          "grants": [
+            "dr:fire"
+          ],
+          "mode": "default"
+        },
+        "_id": "aatl7jgryCphBoAi",
+        "type": "Trait",
+        "flags": {},
+        "level": 6,
+        "hint": "",
+        "name": "Soul of the Forge",
+        "value": {
+          "chosen": [
+            "dr:fire"
+          ]
+        }
+      }
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "identifier": "soul-of-the-forge",
+    "source": {
+      "book": "XGtE",
+      "page": "",
+      "license": "",
+      "custom": "",
+      "rules": "2014",
+      "revision": 1
+    },
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "items": [],
+      "level": 6,
+      "repeatable": false
+    },
+    "properties": [],
+    "requirements": "",
+    "type": {
+      "value": "class",
+      "subtype": ""
+    }
+  },
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-orange.webp",
+  "folder": "VTvdaPzpP8vIqAQU",
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.1.1"
+  },
+  "_id": "NboVdkNIxjopUFDB",
+  "_key": "!items!NboVdkNIxjopUFDB"
+}

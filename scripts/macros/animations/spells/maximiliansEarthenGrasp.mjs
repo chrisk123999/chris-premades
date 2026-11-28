@@ -41,6 +41,7 @@ async function play(sourceToken, targetToken, {shake = true, crush, saved} = {})
 }
 export const maximiliansEarthenGrasp = {
     name: 'CHRISPREMADES.Animations.MaximiliansEarthenGrasp',
+    sound: 'psfx.creature.movement.burrow.001.ranged',
     macros: {
         play
     },

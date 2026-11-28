@@ -3,7 +3,7 @@ async function use({document: activity, workflow, macroClass: {source, identifie
     const config = automationUtils.getGenericConfigValues(activity, source, identifier, Object.keys(extraAttack.genericConfig));
     if (!config.prompt) return;
     const strike = actorUtils.getItemByIdentifier(workflow.actor, config.identifier);
-    if (!strike) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'Attack item not found on actor.', {notify: 'warn'});
+    if (!strike) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'Attack item not found on actor.', {notify: 'warn'});
     const {value, reach} = itemUtils.getRange(strike);
     const range = value || reach;
     const bonuses = await automationUtils.calledEvent('extraAttack', workflow.actor, {multiResult: true, canOverlap: true, data: {workflow, baseCount: config.attacks, macroActivity: activity}}) ?? [];
@@ -20,6 +20,9 @@ async function use({document: activity, workflow, macroClass: {source, identifie
     if (!targetData) return;
     const {animation, options: animationOptions} = automationUtils.getResolvedAnimation(workflow.item, 'animation', {source, identifier});
     const ownAnimation = animation?.macros?.attack;
+    const attackOptions = {};
+    if (ownAnimation) workflowUtils.setWorkflowProperty(attackOptions, 'skipWeaponAnimation', true);
+    workflowUtils.setWorkflowProperty(attackOptions, 'extraAttack.' + activity.identifier, true);
     while (totalAttacks > 0) {
         for (let s = 0; s < targetData.result.length; s++) {
             const target = targetData.result[s].document; 
@@ -28,7 +31,7 @@ async function use({document: activity, workflow, macroClass: {source, identifie
             if (targetData.skip && target.actor.system.attributes.hp.value <= 0) continue;
             for (let i = 0; i < attacks; i++) {
                 if (targetData.skip && target.actor.system.attributes.hp.value <= 0) break;
-                const workflow = await workflowUtils.syntheticItemRoll(strike, [target], {options: ownAnimation ? {cat: {skipWeaponAnimation: true}} : {}});
+                const workflow = await workflowUtils.syntheticItemRoll(strike, [target], {options: attackOptions});
                 if (ownAnimation && target.object) await ownAnimation(workflow.token.document, [target], {missed: !workflow.hitTargets.count, ...animationOptions});
                 totalAttacks--;
                 if (targetData.skip && target.actor.system.attributes.hp.value <= 0) break;
@@ -47,7 +50,7 @@ function getNearby(token, range, skipDead) {
 }
 async function getTargets(workflow, range, maxAmount, skipDeadAndUnconscious, nearby) {
     if (!nearby?.length) nearby = getNearby(workflow.token.document, range, skipDeadAndUnconscious);
-    if (!nearby.length) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Generic.Common.NoTargets', {notify: 'warn'});
+    if (!nearby.length) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'CHRISPREMADES.Macros.Generic.Common.NoTargets', {notify: 'warn'});
     if (nearby.length === 1) return {result: [{document: nearby[0], value: maxAmount}], skip: skipDeadAndUnconscious};
     const selection = await dialogUtils.selectTargetDialog(
         workflow.item.name, 

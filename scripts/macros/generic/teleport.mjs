@@ -46,7 +46,7 @@ function getSpacesNear(token, target, range) {
 }
 async function use({document, workflow}) {
     if (workflow.workflowOptions?.rollAttackPerTarget) return;
-    if (!workflow.token) return Logging.addMacroWarning('CPR', documentUtils.getIdentifier(workflow.item), 'No token on the scene.');
+    if (!workflow.token) return Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(workflow.item), 'No token on the scene.');
     const config = automationUtils.getGenericConfigValues(document, 'chris-premades', 'teleport', configKeys);
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation', {source: 'chris-premades', identifier: 'teleport'});
     const rolledRange = config.rangeFromRoll ? workflow.utilityRolls?.[0]?.total : undefined;
@@ -64,13 +64,21 @@ async function use({document, workflow}) {
         if (target) await tokenUtils.swapTokens(workflow.token.document, target, {animation, options});
         return;
     }
+    if (config.targets === 'targets') {
+        for (const target of workflow.targets.documents) await tokenUtils.teleportToken(target, {animation, options, range, requireSight: config.requireSight, centerpoint: target.object?.center, sightToken: workflow.token.document});
+        return;
+    }
     if (config.targets !== 'failedSaves') {
         const followers = getCompanions(workflow) ?? [];
         const token = workflow.token.document;
         const current = token.getCenterPoint();
         const allowedPoints = config.visitedThisTurn ? token.movementHistory.map(point => token.getCenterPoint(point)).filter(point => point.x !== current.x || point.y !== current.y) : undefined;
         if (allowedPoints && !allowedPoints.length) return genericUtils.notify('CHRISPREMADES.Macros.Generic.Teleport.NoVisited', {type: 'warn'});
-        await tokenUtils.teleportToken(token, {animation, options, range, requireSight: config.requireSight, followers, allowedPoints});
+        const placement = Number(config.companionPlacement) || 0;
+        await tokenUtils.teleportToken(token, {animation, options, range, requireSight: config.requireSight, followers: placement ? [] : followers, allowedPoints});
+        if (!placement) return;
+        const userId = queryUtils.firstOwner(workflow.actor, true);
+        for (const follower of followers) await tokenUtils.teleportToken(follower, {animation, options, range: placement, requireSight: config.requireSight, centerpoint: token.getCenterPoint(), sightToken: token, userId});
         return;
     }
     for (const target of workflow.failedSaves.tokens) {
@@ -78,13 +86,13 @@ async function use({document, workflow}) {
     }
 }
 /**
- * Teleports the user or the targets that failed their save once the activity's roll finishes, or swaps the user with
+ * Teleports the user, every target or the targets that failed their save once the activity's roll finishes, or swaps the user with
  * a target. The user picks every destination. Set the workflow property `chris-premades.teleportCompanions` to an
  * array of token ids to preselect companions.
  */
 export const teleport = {
     rules: 'all',
-    version: '2.1.9',
+    version: '2.1.11',
     category: 'movement',
     generic: true,
     documents: ['activity'],
@@ -110,6 +118,7 @@ export const teleport = {
             options: [
                 {value: 'self', label: 'CHRISPREMADES.Macros.Generic.Teleport.Self'},
                 {value: 'failedSaves', label: 'CHRISPREMADES.Macros.Generic.Teleport.FailedSaves'},
+                {value: 'targets', label: 'CHRISPREMADES.Macros.Generic.Teleport.EachTarget'},
                 {value: 'nearTarget', label: 'CHRISPREMADES.Macros.Generic.Teleport.NearTarget'},
                 {value: 'swap', label: 'CHRISPREMADES.Macros.Generic.Teleport.Swap'}
             ]
@@ -148,6 +157,13 @@ export const teleport = {
             category: 'behavior',
             label: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionRange.Label',
             hint: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionRange.Hint'
+        },
+        companionPlacement: {
+            default: 0,
+            type: 'number',
+            category: 'behavior',
+            label: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionPlacement.Label',
+            hint: 'CHRISPREMADES.Macros.Generic.Teleport.CompanionPlacement.Hint'
         },
         companionMaxSize: {
             default: false,

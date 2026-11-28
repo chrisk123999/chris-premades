@@ -25,6 +25,7 @@ async function play(sourceToken, region, {cast = true, opacity = 0.8} = {}) {
 }
 export const spikeGrowth = {
     name: 'CHRISPREMADES.Animations.SpikeGrowth.Name',
+    sound: 'psfx.1st-level-spells.entangle.vines.v1.001.intro',
     macros: {
         play
     },

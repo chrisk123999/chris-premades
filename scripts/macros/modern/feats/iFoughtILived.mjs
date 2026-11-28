@@ -3,7 +3,7 @@ async function damage({document: item, workflow}) {
     if (!workflow.hitTargets.count || !workflow.damageRolls?.length) return;
     if (!workflowUtils.isAttackType(workflow, 'attack') || !actorUtils.isBloodied(workflow.actor)) return;
     const activity = itemUtils.getActivityByIdentifier(item, 'defiant-strike');
-    if (!activity) return Logging.addMacroWarning('CPR', 'i-fought-i-lived', 'Missing the defiant-strike activity.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'i-fought-i-lived', 'Missing the defiant-strike activity.', {notify: 'warn'});
     if (!activityUtils.checkCosts(activity)) return;
     if (!await dialogUtils.confirmUseItem(item)) return;
     const rolls = await Promise.all(workflow.damageRolls.map(rollUtils.maximizeRoll));

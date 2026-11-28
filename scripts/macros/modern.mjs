@@ -21,7 +21,6 @@ export {influence} from './modern/actions/influence.mjs';
 /*********************************/
 /*           Artificer           */
 /*********************************/
-export {ghaalShaarat as 'ghaal-shaarat', perfectWeapon as 'perfect-weapon', runesOfWar as 'runes-of-war'} from './modern/classFeatures/artificer/forgeAdept.mjs';
 export {magicItemTinker as 'magic-item-tinker', magicItemTinkerCharge, magicItemTinkerDrain, magicItemTinkerTransmute} from './modern/classFeatures/artificer/magicItemTinker.mjs';
 export {replicateMagicItem as 'replicate-magic-item'} from './modern/classFeatures/artificer/replicateMagicItem.mjs';
 export {soulOfArtifice as 'soul-of-artifice'} from './modern/classFeatures/artificer/soulOfArtifice.mjs';
@@ -33,6 +32,9 @@ export {guidedPrecision as 'guided-precision'} from './modern/classFeatures/arti
 export {ingeniousMovement as 'ingenious-movement'} from './modern/classFeatures/artificer/cartographer/ingeniousMovement.mjs';
 export {mappingMagic as 'mapping-magic'} from './modern/classFeatures/artificer/cartographer/mappingMagic.mjs';
 export {superiorAtlas as 'superior-atlas', superiorAtlasSafeHaven} from './modern/classFeatures/artificer/cartographer/superiorAtlas.mjs';
+
+/*          Forge Adept          */
+export {ghaalShaarat as 'ghaal-shaarat', perfectWeapon as 'perfect-weapon', runesOfWar as 'runes-of-war'} from './modern/classFeatures/artificer/forgeAdept/forgeAdept.mjs';
 
 /*********************************/
 /*           Barbarian           */
@@ -46,10 +48,6 @@ export {extendRage, keepRage} from './modern/classFeatures/barbarian/rage.mjs';
 
 /*           Berserker           */
 export {frenzy, frenzyDamage} from './modern/classFeatures/barbarian/berserker/frenzy.mjs';
-
-/*            Zealot             */
-export {rageOfTheGods as 'rage-of-the-gods', rageOfTheGodsRevivification} from './modern/classFeatures/barbarian/zealot/rageOfTheGods.mjs';
-export {warriorOfTheGods as 'warrior-of-the-gods'} from './modern/classFeatures/barbarian/zealot/warriorOfTheGods.mjs';
 
 /*         Muscle Wizard         */
 export {cantrips, cantripsShockingGrasp, cantripsTrueStrike} from './modern/classFeatures/barbarian/muscleWizard/cantrips.mjs';
@@ -67,13 +65,17 @@ export {branchesOfTheTree as 'branches-of-the-tree'} from './modern/classFeature
 export {travelAlongTheTree as 'travel-along-the-tree', travelAlongTheTreePreChecks} from './modern/classFeatures/barbarian/worldTree/travelAlongTheTree.mjs';
 export {lifeGivingForce, vitalityOfTheTree as 'vitality-of-the-tree'} from './modern/classFeatures/barbarian/worldTree/vitalityOfTheTree.mjs';
 
+/*            Zealot             */
+export {rageOfTheGods as 'rage-of-the-gods', rageOfTheGodsRevivification} from './modern/classFeatures/barbarian/zealot/rageOfTheGods.mjs';
+export {warriorOfTheGods as 'warrior-of-the-gods'} from './modern/classFeatures/barbarian/zealot/warriorOfTheGods.mjs';
+
 /*********************************/
 /*             Bard              */
 /*********************************/
 export {countercharm} from './modern/classFeatures/bard/countercharm.mjs';
 export {fontOfInspiration as 'font-of-inspiration'} from './modern/classFeatures/bard/fontOfInspiration.mjs';
 
-/*            Dance             */
+/*             Dance             */
 export {dazzlingFootwork as 'dazzling-footwork'} from './modern/classFeatures/bard/dance/dazzlingFootwork.mjs';
 export {inspiringMovement as 'inspiring-movement'} from './modern/classFeatures/bard/dance/inspiringMovement.mjs';
 export {leadingEvasion as 'leading-evasion'} from './modern/classFeatures/bard/dance/leadingEvasion.mjs';
@@ -88,7 +90,7 @@ export {unbreakableMajesty as 'unbreakable-majesty'} from './modern/classFeature
 /*********************************/
 export {channelDivinity as 'channel-divinity|class:cleric', divineSparkDamage, turnUndead} from './modern/classFeatures/cleric/channelDivinity.mjs';
 export {divineIntervention as 'divine-intervention'} from './modern/classFeatures/cleric/divineIntervention.mjs';
-export {divineStrike as 'blessed-strikes-divine-strike'} from './modern/classFeatures/cleric/divineStrike.mjs';
+export {divineStrike as 'divine-strike'} from './modern/classFeatures/cleric/divineStrike.mjs';
 export {greaterDivineIntervention as 'greater-divine-intervention', greaterDivineInterventionRest as 'greater-divine-intervention-rest'} from './modern/classFeatures/cleric/greaterDivineIntervention.mjs';
 export {improvedPotentSpellcasting as 'improved-blessed-strikes'} from './modern/classFeatures/cleric/improvedPotentSpellcasting.mjs';
 
@@ -104,22 +106,30 @@ export {pathToTheGrave as 'path-to-the-grave'} from './modern/classFeatures/cler
 /*             Light             */
 export {improvedWardingFlare as 'improved-warding-flare'} from './modern/classFeatures/cleric/light/improvedWardingFlare.mjs';
 
-/*            Trickery           */
+/*           Trickery            */
 export {improvedDuplicity as 'improved-duplicity'} from './modern/classFeatures/cleric/trickery/improvedDuplicity.mjs';
 export {trickstersTransposition as 'tricksters-transposition'} from './modern/classFeatures/cleric/trickery/trickstersTransposition.mjs';
 
-/*               War             */
+/*              War              */
 export {warGodsBlessing as 'war-gods-blessing'} from './modern/classFeatures/cleric/war/warGodsBlessing.mjs';
 
 /*********************************/
 /*             Druid             */
 /*********************************/
 export {archdruid} from './modern/classFeatures/druid/archdruid.mjs';
-export {primalStrike as 'elemental-fury-primal-strike'} from './modern/classFeatures/druid/primalStrike.mjs';
+export {primalStrike as 'primal-strike'} from './modern/classFeatures/druid/primalStrike.mjs';
 export {wildResurgence as 'wild-resurgence'} from './modern/classFeatures/druid/wildResurgence.mjs';
 export {wildShape as 'wild-shape'} from './modern/classFeatures/druid/wildShape.mjs';
 
+/*             Land              */
+export {circleOfTheLandSpells as 'circle-of-the-land-spells'} from './modern/classFeatures/druid/land/circleOfTheLandSpells.mjs';
+export {landsAid as 'lands-aid'} from './modern/classFeatures/druid/land/landsAid.mjs';
+export {naturalRecovery as 'natural-recovery'} from './modern/classFeatures/druid/land/naturalRecovery.mjs';
+export {naturesSanctuary as 'natures-sanctuary'} from './modern/classFeatures/druid/land/naturesSanctuary.mjs';
+export {naturesWard as 'natures-ward'} from './modern/classFeatures/druid/land/naturesWard.mjs';
+
 /*             Moon              */
+export {improvedCircleForms as 'improved-circle-forms'} from './modern/classFeatures/druid/moon/improvedCircleForms.mjs';
 export {lunarForm as 'lunar-form'} from './modern/classFeatures/druid/moon/lunarForm.mjs';
 
 /*              Sea              */
@@ -138,11 +148,17 @@ export {wickerZenith as 'wicker-zenith'} from './modern/classFeatures/druid/wick
 export {studiedAttacks as 'studied-attacks'} from './modern/classFeatures/fighter/studiedAttacks.mjs';
 export {tacticalShift as 'tactical-shift'} from './modern/classFeatures/fighter/tacticalShift.mjs';
 
-/*        Battle Master          */
+/*           Banneret            */
+export {rallyingSurge as 'rallying-surge'} from './modern/classFeatures/fighter/banneret/rallyingSurge.mjs';
+
+/*         Battle Master         */
 export {demoralizingShout as 'maneuvers-demoralizing-shout'} from './modern/classFeatures/fighter/battleMaster/demoralizingShout.mjs';
 export {knowYourEnemy as 'know-your-enemy'} from './modern/classFeatures/fighter/battleMaster/knowYourEnemy.mjs';
 export {relentless} from './modern/classFeatures/fighter/battleMaster/relentless.mjs';
 export {wardingManeuver as 'maneuvers-warding-maneuver'} from './modern/classFeatures/fighter/battleMaster/wardingManeuver.mjs';
+
+/*           Champion            */
+export {survivor} from './modern/classFeatures/fighter/champion/survivor.mjs';
 
 /*********************************/
 /*             Monk              */
@@ -151,6 +167,10 @@ export {deflectAttacks as 'deflect-attacks'} from './modern/classFeatures/monk/d
 export {empoweredStrikes as 'empowered-strikes'} from './modern/classFeatures/monk/empoweredStrikes.mjs';
 export {heightenedFocus as 'heightened-focus'} from './modern/classFeatures/monk/heightenedFocus.mjs';
 export {stunningStrike as 'stunning-strike'} from './modern/classFeatures/monk/stunningStrike.mjs';
+
+/*    Warrior of the Elements    */
+export {elementalAttunement as 'elemental-attunement', elementalAttunementActive} from './modern/classFeatures/monk/warriorOfTheElements/elementalAttunement.mjs';
+export {elementalEpitome as 'elemental-epitome', elementalEpitomeStride} from './modern/classFeatures/monk/warriorOfTheElements/elementalEpitome.mjs';
 
 /*     Warrior of the Street     */
 export {combo, comboEffect} from './modern/classFeatures/monk/warriorOfTheStreet/combo.mjs';
@@ -166,11 +186,20 @@ export {elementalStrike as 'elemental-strike'} from './modern/classFeatures/pala
 export {nobleScion as 'noble-scion'} from './modern/classFeatures/paladin/nobleGenies/nobleScion.mjs';
 
 /*********************************/
-/*            Pugilist           */
+/*           Pugilist            */
 /*********************************/
+export {bloodiedButUnbowed as 'bloodied-but-unbowed'} from './modern/classFeatures/pugilist/bloodiedButUnbowed.mjs';
+export {braceUp as 'brace-up'} from './modern/classFeatures/pugilist/braceUp.mjs';
+export {digDeepEffect, pugilistExhaustionRestore} from './modern/classFeatures/pugilist/digDeep.mjs';
+export {fisticuffs} from './modern/classFeatures/pugilist/fisticuffs.mjs';
+export {moxieFueledFists as 'moxie-fueled-fists'} from './modern/classFeatures/pugilist/moxieFueledFists.mjs';
+export {peakPhysicalCondition as 'peak-physical-condition'} from './modern/classFeatures/pugilist/peakPhysicalCondition.mjs';
+export {pugnacious, shakeItOff as 'shake-it-off'} from './modern/classFeatures/pugilist/shakeItOff.mjs';
 
 /*        Squared Circle         */
-export {heavyweight} from './modern/classFeatures/pugilist/squaredCircle/heavyweight.mjs';
+export {cleanFinish as 'clean-finish'} from './modern/classFeatures/pugilist/squaredCircle/cleanFinish.mjs';
+export {groundwork} from './modern/classFeatures/pugilist/squaredCircle/groundwork.mjs';
+export {meatShield as 'meat-shield'} from './modern/classFeatures/pugilist/squaredCircle/meatShield.mjs';
 
 /*********************************/
 /*            Ranger             */
@@ -255,8 +284,6 @@ export {fullBlooded as 'full-blooded'} from './modern/classFeatures/wizard/sangr
 /*===============================*/
 export {alert} from './modern/feats/alert.mjs';
 export {charmTwister as 'charm-twister', oldBlessing, twistedHexCharm as 'twisted-hex-charm'} from './modern/feats/charmTwister.mjs';
-export {exploitOpening as 'exploit-opening'} from './modern/feats/exploitOpening.mjs';
-export {familyFirst as 'family-first'} from './modern/feats/familyFirst.mjs';
 export {fateGambler as 'fate-gambler'} from './modern/feats/fateGambler.mjs';
 export {iFoughtILived as 'i-fought-i-lived'} from './modern/feats/iFoughtILived.mjs';
 export {iHidFromTheTerror as 'i-hid-from-the-terror'} from './modern/feats/iHidFromTheTerror.mjs';
@@ -265,6 +292,7 @@ export {protectionMoved} from './modern/feats/protection.mjs';
 export {sangromanticInitiate as 'sangromantic-initiate'} from './modern/feats/sangromanticInitiate.mjs';
 export {tirelessReveler as 'tireless-reveler'} from './modern/feats/tirelessReveler.mjs';
 export {vampiresPlaything as 'vampires-plaything'} from './modern/feats/vampiresPlaything.mjs';
+export {zhentarimRuffian as 'zhentarim-ruffian'} from './modern/feats/zhentarimRuffian.mjs';
 
 /*===============================*/
 /*         MISCELLANEOUS         */

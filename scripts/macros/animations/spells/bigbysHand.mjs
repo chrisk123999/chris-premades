@@ -28,6 +28,7 @@ async function postPlace(summon, location, token) {
 }
 export const bigbysHandSummon = {
     name: 'CHRISPREMADES.Animations.BigbysHandSummon',
+    sound: 'psfx.class-features.divine-smite.v1.001.caster',
     macros: {
         prePlace,
         postPlace,

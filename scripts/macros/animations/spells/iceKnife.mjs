@@ -1,5 +1,5 @@
 import {animationUtils, distanceUtils} from '../../../proxy.mjs';
-import {addCast, addShake, partOption} from '../generic/spellParts.mjs';
+import {addCast, addShake, addSound, partOption} from '../generic/spellParts.mjs';
 const palettes = {
     patreon: {
         cast: 'jb2a.cast_generic.ice.01.blue',
@@ -13,7 +13,7 @@ const palettes = {
         burst: 'jb2a.ice_spikes.radial.burst.white'
     }
 };
-async function play(sourceToken, targetToken, {cast = true, shake = true, hit} = {}) {
+async function play(sourceToken, targetToken, {cast = true, shake = true, hit, impactSound, soundVolume} = {}) {
     const files = palettes[animationUtils.jb2aCheck()];
     if (!files) return;
     const landed = hit !== false;
@@ -28,7 +28,9 @@ async function play(sourceToken, targetToken, {cast = true, shake = true, hit} =
             .stretchTo(targetToken)
             .missed(!landed)
             .zIndex(2)
-            .waitUntilFinished(-400)
+            .waitUntilFinished(-400);
+    addSound(sequence, impactSound, {volume: soundVolume});
+    sequence
         .effect()
             .file(files.impact)
             .atLocation(targetToken)
@@ -49,6 +51,8 @@ async function play(sourceToken, targetToken, {cast = true, shake = true, hit} =
 }
 export const iceKnife = {
     name: 'CHRISPREMADES.Animations.IceKnife',
+    sound: 'psfx.weapon-swooshes.cold.v1.group01',
+    impactSound: 'psfx.impacts.magicaleffects.cold',
     macros: {
         play
     },

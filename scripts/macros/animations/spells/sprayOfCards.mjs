@@ -40,6 +40,7 @@ async function play(sourceToken, region, {color = 'purple', targets = [], radius
 }
 export const sprayOfCards = {
     name: 'CHRISPREMADES.Animations.SprayOfCards',
+    sound: 'psfx.weapon-swooshes.light.v1.group01.0',
     macros: {
         play
     },

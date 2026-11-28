@@ -1,4 +1,4 @@
-import {animationUtils} from '../../../proxy.mjs';
+import {animationUtils, constants} from '../../../proxy.mjs';
 import {addImpact, colorOption} from '../generic/spellParts.mjs';
 const colorMap = {
     bluegreen: 'BlueGreen',
@@ -21,7 +21,7 @@ async function attack(sourceToken, targetToken, {missed, sound, color = 'bluegre
     const sequence = new Sequence();
     /* eslint-disable indent */
     sequence
-        .sound()
+        .sound().name(constants.soundName)
             .playIf(sound)
             .file(sound)
         .effect()
@@ -50,7 +50,7 @@ export const spellfireFlare = {
                 hint: 'CHRISPREMADES.Config.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
-                default: ''
+                default: 'psfx.cantrips.fire-bolt'
             }
         };
     }

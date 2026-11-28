@@ -1,0 +1,288 @@
+{
+  "_id": "cULf3oliZPMLRR99",
+  "name": "Swagger Streak",
+  "type": "feat",
+  "img": "icons/magic/control/mouth-smile-deception-purple.webp",
+  "folder": "DaCCKHmNsmtRhEWW",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        },
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "identifier": "swagger-streak",
+    "activities": {
+      "olWKjM4lUHox6SMo": {
+        "_id": "olWKjM4lUHox6SMo",
+        "type": "utility",
+        "name": "Swagger Streak",
+        "sort": 0,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "feat:moxie",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "swagger",
+        "midiProperties": {
+          "identifier": "swagger",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "macros": {
+              "check": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "checkBonus",
+                  "rules": "all"
+                }
+              ],
+              "skill": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "skillBonus",
+                  "rules": "all"
+                }
+              ],
+              "tool": [
+                {
+                  "source": "chris-premades",
+                  "identifier": "toolBonus",
+                  "rules": "all"
+                }
+              ]
+            },
+            "genericConfig": {
+              "chris-premades": {
+                "checkBonus": {
+                  "bonus": "@scale.pugilist.fisticuffs",
+                  "phase": "postResult",
+                  "ability": [
+                    "str",
+                    "dex",
+                    "con",
+                    "cha"
+                  ],
+                  "optional": true,
+                  "rollActivity": "olWKjM4lUHox6SMo",
+                  "consumeSuccessOnly": true,
+                  "failActivity": "rzlylanT8CqfdgLI"
+                },
+                "skillBonus": {
+                  "bonus": "@scale.pugilist.fisticuffs",
+                  "phase": "postResult",
+                  "ability": [
+                    "str",
+                    "dex",
+                    "con",
+                    "cha"
+                  ],
+                  "optional": true,
+                  "rollActivity": "olWKjM4lUHox6SMo",
+                  "consumeSuccessOnly": true,
+                  "failActivity": "rzlylanT8CqfdgLI"
+                },
+                "toolBonus": {
+                  "bonus": "@scale.pugilist.fisticuffs",
+                  "phase": "postResult",
+                  "ability": [
+                    "str",
+                    "dex",
+                    "con",
+                    "cha"
+                  ],
+                  "optional": true,
+                  "rollActivity": "olWKjM4lUHox6SMo",
+                  "consumeSuccessOnly": true,
+                  "failActivity": "rzlylanT8CqfdgLI"
+                }
+              }
+            }
+          }
+        }
+      },
+      "rzlylanT8CqfdgLI": {
+        "_id": "rzlylanT8CqfdgLI",
+        "type": "utility",
+        "name": "Swagger Streak: Failed",
+        "sort": 1,
+        "img": "",
+        "activation": {
+          "type": "special",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "identifier": "failed",
+        "midiProperties": {
+          "identifier": "failed",
+          "autoTargetType": "any",
+          "autoTargetAction": "default"
+        },
+        "flags": {
+          "cat": {
+            "hidden": true
+          }
+        }
+      }
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "enchant": {},
+    "advancement": [],
+    "crewed": false
+  },
+  "effects": [],
+  "flags": {
+    "cat": {
+      "automation": {
+        "source": "chris-premades",
+        "version": "2.1.11"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "dnd5e",
+    "systemVersion": "6.0.6"
+  },
+  "_key": "!items!cULf3oliZPMLRR99"
+}

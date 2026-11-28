@@ -201,7 +201,7 @@
           ],
           "custom": {
             "enabled": true,
-            "formula": "@scale.glamour.mantle-of-inspiration"
+            "formula": "@scale.college-glamour.mantle-of-inspiration"
           },
           "scaling": {
             "mode": "whole",
@@ -518,7 +518,7 @@
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.1.9"
+        "version": "2.1.11"
       }
     }
   },

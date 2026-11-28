@@ -1,5 +1,5 @@
 import {cpr} from '../../../module.mjs';
-import {itemUtils} from '../../../proxy.mjs';
+import {constants, itemUtils} from '../../../proxy.mjs';
 import {addImpact, addShake, elementColors, partOption, pickFile} from './spellParts.mjs';
 const meleeFiles = {
     battleaxe: ['jb2a.handaxe.melee.standard.white'],
@@ -126,7 +126,7 @@ async function play(sourceToken, targetToken, {style = 'auto', weapon = 'auto', 
     const color = elementColors[damageType];
     const tintColor = tint ? tints[color] : undefined;
     const sequence = new Sequence();
-    if (sound) sequence.sound().file(sound);
+    if (sound) sequence.sound().name(constants.soundName).file(sound);
     if (resolvedStyle === 'firearm' && misfire) {
         sequence.effect().file(pickFile('jb2a.smoke.puff.side.grey', 'jb2a.smoke.puff.centered.grey')).atLocation(sourceToken).rotateTowards(targetToken).scaleToObject(1.5).zIndex(3);
         await sequence.play();

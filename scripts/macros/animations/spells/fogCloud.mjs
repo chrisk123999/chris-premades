@@ -26,6 +26,7 @@ async function play(sourceToken, region, {cast = true, opacity = 0.5, scale = 1}
 }
 export const fogCloud = {
     name: 'CHRISPREMADES.Animations.FogCloud.Name',
+    sound: 'psfx.cantrips.gust.v1',
     macros: {
         play
     },

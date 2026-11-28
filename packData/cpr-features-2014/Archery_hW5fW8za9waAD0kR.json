@@ -106,27 +106,13 @@
     }
   },
   "flags": {
-    "dae": {
-      "alwaysActive": false,
-      "activeEquipped": false
-    },
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
+        "version": "2.1.11",
+        "aliases": [
+          "archery"
+        ]
       }
     }
   },

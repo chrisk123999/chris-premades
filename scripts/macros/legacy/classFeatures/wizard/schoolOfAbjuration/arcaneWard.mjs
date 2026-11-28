@@ -24,7 +24,7 @@ async function late({document, workflow}) {
     if (!spellLevel) return;
     if (workflowUtils.isSustainedRoll(workflow)) return;
     const sourceClass = itemUtils.getAdvancementSourceItem(document) ?? workflow.actor.classes.wizard;
-    if (!sourceClass) return Logging.addMacroWarning('CPR', 'arcane-ward', 'Wizard class not found.', {notify: 'warn'});
+    if (!sourceClass) return Logging.addMacroWarning('chris-premades', 'arcane-ward', 'Wizard class not found.', {notify: 'warn'});
     const spellcastingAbility = automationUtils.getConfigValue(document, 'spellcastingAbility');
     const maxUses = sourceClass.system.levels * 2 + workflow.actor.system.abilities[spellcastingAbility].mod;
     let add = spellLevel * 2;

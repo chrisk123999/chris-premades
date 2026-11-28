@@ -1,4 +1,4 @@
-import {animationUtils, summonUtils} from '../../../proxy.mjs';
+import {animationUtils, constants, summonUtils} from '../../../proxy.mjs';
 import {addImpact, addShake, partOption, persistName} from '../generic/spellParts.mjs';
 const puff = 'jb2a.smoke.puff.centered.grey';
 function summonPrePlace(color) {
@@ -20,7 +20,7 @@ async function postPlace(summon, _location, token) {
             .randomRotation()
             .belowTokens()
             .playIf(Sequencer.Database.entryExists(puff))
-        .sound()
+        .sound().name(constants.soundName)
             .playIf(sound)
             .file(sound)
         .animation()
@@ -93,6 +93,7 @@ export const dustDevilBlueGrey = summonAnimation('CHRISPREMADES.Animations.DustD
 export const dustDevilBlueWhite = summonAnimation('CHRISPREMADES.Animations.DustDevilBlueWhite', 'bluewhite', ['jb2a_patreon']);
 export const dustDevilContact = {
     name: 'CHRISPREMADES.Animations.DustDevilContact',
+    sound: 'psfx.cantrips.gust.v1',
     macros: {
         play
     },

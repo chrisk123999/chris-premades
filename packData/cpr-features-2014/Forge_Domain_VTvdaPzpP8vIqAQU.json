@@ -1,0 +1,16 @@
+{
+  "type": "Item",
+  "folder": "3c0NSnjmkxO9LGz0",
+  "name": "Forge Domain",
+  "color": null,
+  "sorting": "a",
+  "_id": "VTvdaPzpP8vIqAQU",
+  "description": "",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.369",
+    "systemId": "dnd5e",
+    "systemVersion": "6.1.1"
+  },
+  "_key": "!folders!VTvdaPzpP8vIqAQU"
+}

@@ -24,6 +24,7 @@ async function play(sourceToken, region, {cast = true} = {}) {
 }
 export const gustOfWind = {
     name: 'CHRISPREMADES.Animations.GustOfWind.Name',
+    sound: 'psfx.cantrips.gust.v1',
     macros: {
         play
     },

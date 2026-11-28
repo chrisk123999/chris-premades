@@ -10,19 +10,19 @@ async function late({document, workflow}) {
     const {animation, options} = automationUtils.getResolvedAnimation(document, 'animation');
     playAreaAnimation(workflow, {animation, options});
     const allies = workflow.targets.documents.filter(token => token.disposition === workflow.token.document.disposition && token.actor?.type === 'character');
-    if (!allies.length) return Logging.addMacroWarning('CPR', 'wither-and-bloom', 'No allied character in the area to heal.');
+    if (!allies.length) return Logging.addMacroWarning('chris-premades', 'wither-and-bloom', 'No allied character in the area to heal.');
     let target = allies[0];
     if (allies.length > 1) {
         const selection = await dialogUtils.selectTargetDialog(document.name, _loc('CHRISPREMADES.Macros.Legacy.WitherAndBloom.SelectTarget'), allies, {skipDeadAndUnconscious: false});
-        if (!selection?.result) return Logging.addMacroWarning('CPR', 'wither-and-bloom', 'No creature chosen to heal.');
+        if (!selection?.result) return Logging.addMacroWarning('chris-premades', 'wither-and-bloom', 'No creature chosen to heal.');
         target = selection.result;
     }
     const activity = itemUtils.getActivityByIdentifier(document, 'bloom');
-    if (!activity) return Logging.addMacroWarning('CPR', 'wither-and-bloom', 'Bloom activity missing from item.', {notify: 'warn'});
+    if (!activity) return Logging.addMacroWarning('chris-premades', 'wither-and-bloom', 'Bloom activity missing from item.', {notify: 'warn'});
     const userId = queryUtils.firstOwner(target, true);
     const selections = await dialogUtils.selectHitDie(target.actor, document.name, _loc('CHRISPREMADES.Macros.Legacy.WitherAndBloom.SelectHitDie'), {max: workflowUtils.getCastLevel(workflow) + automationUtils.getConfigValue(document, 'hitDiceOffset'), userId});
     const {count, formula} = await actorUtils.spendHitDice(target.actor, selections, {roll: false});
-    if (!count) return Logging.addMacroWarning('CPR', 'wither-and-bloom', 'No Hit Dice spent.');
+    if (!count) return Logging.addMacroWarning('chris-premades', 'wither-and-bloom', 'No Hit Dice spent.');
     if (animation?.macros?.heal) animation.macros.heal(target);
     const activityData = activityUtils.getDamageModifiedActivityData(activity, formula + ' + @mod');
     await workflowUtils.syntheticActivityDataRoll(activityData, document, [target], {spellSlot: false, consumeResources: false});

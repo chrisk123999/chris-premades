@@ -93,6 +93,7 @@ async function create(effect, targetToken, config, {activity} = {}) {
 }
 export const calmEmotions = {
     name: 'CHRISPREMADES.Animations.CalmEmotions.Name',
+    sound: 'psfx.casting.generic.002.003',
     macros: {
         play,
         create,

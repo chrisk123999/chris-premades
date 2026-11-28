@@ -2,7 +2,7 @@ import {activityUtils, automationUtils, compendiumUtils, constants, dialogUtils,
 export const srdFamiliars = ['bat', 'cat', 'crab', 'frog', 'hawk', 'lizard', 'octopus', 'owl', 'poisonous-snake', 'quipper', 'rat', 'raven', 'sea-horse', 'spider', 'weasel'];
 async function preventRecast({document: activity}) {
     if (!summonUtils.getSummonsBySource(activity.item).length) return;
-    Logging.addMacroWarning('CPR', documentUtils.getIdentifier(activity.item), 'A familiar is already summoned.');
+    Logging.addMacroWarning('chris-premades', documentUtils.getIdentifier(activity.item), 'A familiar is already summoned.');
     return true;
 }
 async function summon({workflow}) {
@@ -10,7 +10,7 @@ async function summon({workflow}) {
     const folder = automationUtils.getConfigValue(workflow.item, 'folder');
     const actors = folder ? await folderUtils.getActorsInFolder(folder) : await compendiumUtils.getDocumentsBySlug('dnd5e.monsters', srdFamiliars);
     if (!actors.length) {
-        Logging.addMacroWarning('CPR', identifier, 'CHRISPREMADES.Macros.All.FindFamiliar.NoActors', {notify: 'warn', format: {folder}});
+        Logging.addMacroWarning('chris-premades', identifier, 'CHRISPREMADES.Macros.All.FindFamiliar.NoActors', {notify: 'warn', format: {folder}});
         return;
     }
     const sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.All.FindFamiliar.Choose', actors, {sort: 'alphabetical'});
@@ -35,7 +35,7 @@ async function summon({workflow}) {
 }
 async function pocket({workflow}) {
     const summons = summonUtils.getSummonsBySource(workflow.item);
-    if (!summons.length) return Logging.addMacroWarning('CPR', 'find-familiar-pocket', 'No familiar summoned.');
+    if (!summons.length) return Logging.addMacroWarning('chris-premades', 'find-familiar-pocket', 'No familiar summoned.');
     if (summons.find(i => i.token)) {
         await summonUtils.recallAllSourceSummons(workflow.item);
     } else {
