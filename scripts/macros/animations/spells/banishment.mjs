@@ -108,6 +108,7 @@ async function banishReturn(targetToken) {
 }
 export const banishment = {
     name: 'CHRISPREMADES.Animations.Banishment',
+    sound: 'psfx.magic-signs.circle.v1.abjuration.complete',
     macros: {
         banish,
         return: banishReturn

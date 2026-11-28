@@ -6,6 +6,7 @@ function getColor() {
 }
 export const conjureCelestial = {
     name: 'CHRISPREMADES.Animations.ConjureCelestial',
+    sound: 'psfx.cantrips.light.v1.001',
     macros: {
         play: (sourceToken, region, options) => moonbeam.macros.play(sourceToken, region, {color: getColor(), ...options}),
         move: (region, options) => moonbeam.macros.move(region, {color: getColor(), ...options})

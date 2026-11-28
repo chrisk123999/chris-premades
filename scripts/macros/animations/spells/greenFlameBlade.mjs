@@ -33,6 +33,7 @@ async function leap(sourceToken, targetToken, {color = 'green'} = {}) {
 }
 export const greenFlameBlade = {
     name: 'CHRISPREMADES.Animations.GreenFlameBlade',
+    sound: 'psfx.1st-level-spells.burning-hands.v1.001',
     macros: {
         attack,
         leap

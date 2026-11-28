@@ -25,6 +25,7 @@ async function play(sourceToken, targetToken, {cast = true, shake = true} = {}) 
 }
 export const heatMetal = {
     name: 'CHRISPREMADES.Animations.HeatMetal',
+    sound: 'psfx.1st-level-spells.burning-hands.v1.001',
     macros: {
         play
     },

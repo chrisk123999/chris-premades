@@ -80,6 +80,7 @@ async function create(effect, targetToken, {color = 'orange', cast = true} = {})
 }
 export const flameBlade = {
     name: 'CHRISPREMADES.Animations.FlameBlade',
+    sound: 'psfx.1st-level-spells.burning-hands.v1.001',
     macros: {
         play,
         create

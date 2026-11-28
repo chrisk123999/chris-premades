@@ -35,6 +35,7 @@ async function play(sourceToken, targetToken, {cast = true, shake = true, target
 }
 export const hailOfThorns = {
     name: 'CHRISPREMADES.Animations.HailOfThorns',
+    sound: 'psfx.magic-signs.circle.v1.conjuration.intro',
     macros: {
         play
     },

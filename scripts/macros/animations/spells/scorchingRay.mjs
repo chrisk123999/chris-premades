@@ -1,4 +1,4 @@
-import {animationUtils, genericUtils} from '../../../proxy.mjs';
+import {animationUtils, constants, genericUtils} from '../../../proxy.mjs';
 const colorMap = {
     orange: 'Orange',
     blue: 'Blue',
@@ -104,7 +104,7 @@ async function attack(sourceToken, targetToken, {missed, sound, color = 'orange'
                 .randomizeMirrorY()
                 .zIndex(1)
                 .missed(missed)
-            .sound()
+            .sound().name(constants.soundName)
                 .playIf(sound)
                 .file(sound)
             .effect()
@@ -177,7 +177,7 @@ export const scorchingRay = {
                 hint: 'CHRISPREMADES.Config.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
-                default: ''
+                default: 'psfx.2nd-level-spells.scorching-ray.v1'
             }
         };
     },

@@ -47,6 +47,7 @@ async function play(sourceToken, targetToken, {color = 'auto', shake = true, dam
 }
 export const spiritualWeapon = {
     name: 'CHRISPREMADES.Animations.SpiritualWeapon',
+    sound: 'psfx.class-features.divine-smite.v1.001.target',
     macros: {
         play
     },

@@ -1,5 +1,5 @@
 import {animationUtils} from '../../../proxy.mjs';
-import {getPalette, partOption} from '../generic/spellParts.mjs';
+import {addSound, getPalette, partOption} from '../generic/spellParts.mjs';
 const orbit = 'jb2a.aura_themed.01.orbit.complete.metal.01.grey';
 const bases = {
     patreon: {
@@ -30,7 +30,7 @@ const elements = {
         thunder: {orb: 'jb2a.markers.light_orb.loop.blue', cast: 'jb2a.impact.002.blue', hit: 'jb2a.soundwave.02.blue'}
     }
 };
-async function play(sourceToken, targetToken, {damageType, hit, cast = true} = {}) {
+async function play(sourceToken, targetToken, {damageType, hit, cast = true, impactSound, soundVolume} = {}) {
     const base = bases[animationUtils.jb2aCheck()];
     const files = getPalette(elements, damageType);
     if (!base || !files) return;
@@ -84,7 +84,9 @@ async function play(sourceToken, targetToken, {damageType, hit, cast = true} = {
             .fadeIn(250)
             .duration(travel)
             .zIndex(1)
-            .waitUntilFinished(-100)
+            .waitUntilFinished(-100);
+    addSound(sequence, impactSound, {volume: soundVolume, playIf: landed});
+    sequence
         .effect()
             .file(files.hit)
             .atLocation(targetToken)
@@ -96,6 +98,8 @@ async function play(sourceToken, targetToken, {damageType, hit, cast = true} = {
 }
 export const chromaticOrb = {
     name: 'CHRISPREMADES.Animations.ChromaticOrb',
+    sound: 'psfx.cantrips.sacred-flame.v1.001.caster',
+    impactSound: 'psfx.cantrips.sacred-flame.v1.001.target',
     macros: {
         play
     },

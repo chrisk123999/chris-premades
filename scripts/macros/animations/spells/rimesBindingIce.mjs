@@ -171,6 +171,7 @@ async function remove(effect, targetToken) {
 }
 export const rimesBindingIce = {
     name: 'CHRISPREMADES.Animations.RimesBindingIce',
+    sound: 'psfx.5th-level-spells.cone-of-cold.v1.001',
     macros: {
         play,
         create,

@@ -1,4 +1,4 @@
-import {animationUtils} from '../../../proxy.mjs';
+import {animationUtils, constants} from '../../../proxy.mjs';
 const colorMap = {
     blue: 'Blue',
     green: 'Green',
@@ -54,7 +54,7 @@ async function attack(sourceToken, targetToken, {missed, sound, color = 'purple'
             .rotateIn(180, 500, {ease: 'easeOutCubic'})
             .opacity(0.8)
             .zIndex(2)
-        .sound()
+        .sound().name(constants.soundName)
             .playIf(sound)
             .file(sound)
         .wait(250)
@@ -99,7 +99,7 @@ export const magicMissile = {
                 hint: 'CHRISPREMADES.Config.Sound.Hint',
                 type: 'file',
                 fileType: 'audio',
-                default: ''
+                default: 'psfx.1st-level-spells.magic-missile.v1'
             }
         };
     },

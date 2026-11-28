@@ -52,6 +52,7 @@ async function play(_sourceToken, targetToken, {effect, index = 0, missed = fals
 }
 export const mirrorImage = {
     name: 'CHRISPREMADES.Animations.MirrorImage',
+    sound: 'psfx.magic-signs.rune.v1.illusion.complete',
     macros: {
         play,
         create

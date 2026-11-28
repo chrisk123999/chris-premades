@@ -131,6 +131,7 @@ async function play(sourceToken, region, {radius, style = 'detailed'} = {}) {
 }
 export const burningHands = {
     name: 'CHRISPREMADES.Animations.BurningHands',
+    sound: 'psfx.1st-level-spells.burning-hands.v1.001',
     macros: {
         play
     },

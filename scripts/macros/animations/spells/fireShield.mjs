@@ -70,6 +70,7 @@ async function create(effect, targetToken, {variant = 'warm'} = {}) {
 }
 export const fireShield = {
     name: 'CHRISPREMADES.Animations.FireShield',
+    sound: 'psfx.1st-level-spells.burning-hands.v1.001',
     macros: {
         create,
         delete: endPersist('fireShield')

@@ -59,6 +59,7 @@ async function play(targetToken, options, {sourceToken} = {}) {
 }
 export const divineSmite = {
     name: 'CHRISPREMADES.Animations.DivineSmite',
+    sound: 'psfx.class-features.divine-smite.v1.001.target',
     macros: {
         play
     },

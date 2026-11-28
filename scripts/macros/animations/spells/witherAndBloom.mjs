@@ -46,6 +46,7 @@ async function heal(targetToken) {
 }
 export const witherAndBloom = {
     name: 'CHRISPREMADES.Animations.WitherAndBloom',
+    sound: 'psfx.1st-level-spells.cure-wounds.v1.001',
     macros: {
         play,
         heal

@@ -18,6 +18,8 @@
 - New `attackDisadvantage`, `selfDamage`, `uniqueEffect` and `spellSlotRecovery` generics.
 - New `grappleSizeBonus` generic counts its owner as larger for grapple and shove size checks.
 - New `spellSummonOfOwner` and `alliesOfSource` aura filters.
+- New `soundEffects` generic plays chosen sounds when an item is used, attacks, hits, misses, crits and rolls damage.
+- Spell and feature animations have default PSFX sounds. They play only while PSFX is installed.
 - New `wildShapeOptions` called event changes Wild Shape's maximum CR, forms and movement limits.
 - Every generic has a display name and category, and every option has a CatKit hint.
 - `useOnEvent`: new item use, initiative, nearby turn end and damage taken triggers; grappled targets with a creature picker; required effects; bloodied and own-turn requirements; turn events while incapacitated.

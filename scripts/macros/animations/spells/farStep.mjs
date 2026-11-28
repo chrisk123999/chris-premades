@@ -34,6 +34,7 @@ async function create(effect, targetToken) {
 }
 export const farStep = {
     name: 'CHRISPREMADES.Animations.FarStep',
+    sound: 'psfx.2nd-level-spells.misty-step.v1.complete.generic',
     macros: {
         preAnimation: token => flash(token, false),
         postAnimation: token => flash(token, true)

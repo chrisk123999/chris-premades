@@ -1,4 +1,4 @@
-import {animationUtils} from '../../../proxy.mjs';
+import {animationUtils, constants} from '../../../proxy.mjs';
 import {getPalette} from '../generic/spellParts.mjs';
 const palettes = {
     patreon: {
@@ -79,7 +79,7 @@ async function postPlace(summon, _location, token) {
             .scaleToObject(1.5)
             .startTime(1500)
             .filter('ColorMatrix', {hue: 15})
-        .sound()
+        .sound().name(constants.soundName)
             .playIf(sound)
             .file(sound)
         .animation()
@@ -147,6 +147,7 @@ async function preRemove(_summon, token) {
 }
 export const healingSpiritSummon = {
     name: 'CHRISPREMADES.Animations.HealingSpiritSummon',
+    sound: 'psfx.magic-signs.rune.v1.conjuration.intro',
     macros: {
         prePlace,
         postPlace,

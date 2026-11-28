@@ -78,6 +78,7 @@ async function remove(effect, targetToken) {
 }
 export const fly = {
     name: 'CHRISPREMADES.Animations.Fly',
+    sound: 'psfx.magic-signs.circle.v1.conjuration.complete',
     macros: {
         create,
         delete: remove

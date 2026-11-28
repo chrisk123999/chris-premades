@@ -103,6 +103,7 @@ async function play(token, {enlarge = true, preScale = 1, postScale = 1, callbac
 }
 export const enlargeReduce = {
     name: 'CHRISPREMADES.Animations.EnlargeReduce',
+    sound: 'psfx.casting.generic.002.001',
     macros: {
         play
     },

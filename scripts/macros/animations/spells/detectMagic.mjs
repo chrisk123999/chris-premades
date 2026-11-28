@@ -1,3 +1,4 @@
+import {constants} from '../../../proxy.mjs';
 import {colorOption, endPersist, getPalette, persistName} from '../generic/spellParts.mjs';
 const colorMap = {
     blue: 'Blue',
@@ -30,7 +31,7 @@ async function create(effect, targetToken, {color = 'blue', opacity = 1, sound =
             .persist()
             .tieToDocuments(effect);
     /* eslint-enable indent */
-    if (sound) sequence.sound().file(sound);
+    if (sound) sequence.sound().name(constants.soundName).file(sound);
     await sequence.play();
 }
 export const detectMagic = {

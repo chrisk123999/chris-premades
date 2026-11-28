@@ -162,6 +162,7 @@ function play(workflow) {
 }
 export const divineStrike = {
     name: 'CHRISPREMADES.Animations.DivineStrike',
+    sound: 'psfx.class-features.divine-smite.v1.001.target',
     macros: {
         play
     },

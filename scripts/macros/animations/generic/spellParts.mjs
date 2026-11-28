@@ -1,4 +1,4 @@
-import {animationUtils, distanceUtils} from '../../../proxy.mjs';
+import {animationUtils, constants, distanceUtils} from '../../../proxy.mjs';
 /**
  * The first Sequencer database entry that exists, so Patreon-only assets fall back to free ones.
  * @param {...string} files Database paths, best first.
@@ -194,9 +194,14 @@ export async function slideWithCopy(targetToken, move, {travel} = {}) {
         .play();
     /* eslint-enable indent */
 }
-export function makePreset(generic, name, defaults) {
+export function addSound(sequence, file, {volume = 0.8, delay = 0, playIf = true} = {}) {
+    if (!file || !playIf) return sequence;
+    return sequence.sound().name(constants.soundName).file(file).volume(volume).delay(delay);
+}
+export function makePreset(generic, name, defaults, {sound} = {}) {
     return {
         name,
+        sound,
         macros: generic.macros,
         inputs: generic.inputs,
         requirements: generic.requirements,
