@@ -1,12 +1,12 @@
 import {animationUtils, automationUtils, DamageBonus, Logging, workflowUtils} from '../../../../proxy.mjs';
 const DAMAGE_TYPE = {
-    death: 'necrotic',
-    forge: 'fire',
-    nature: ['cold', 'fire', 'lightning'],
-    order: 'psychic',
-    tempest: 'thunder',
-    trickery: 'poison',
-    war: '' // workflow default
+    'community-domain': 'psychic',
+    'death-domain': 'necrotic',
+    'forge-domain': 'fire',
+    'nature-domain': ['cold', 'fire', 'lightning'],
+    'tempest-domain': 'thunder',
+    'trickery-domain': 'poison',
+    'war-domain': '' // workflow default
 };
 async function damage({document: activity, workflow}) {
     if (workflow.hitTargets.count !== 1 || workflow.isFumble || !workflowUtils.isAttackType(workflow, 'weaponAttack')) return;

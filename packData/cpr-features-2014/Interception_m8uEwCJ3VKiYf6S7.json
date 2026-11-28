@@ -33,7 +33,19 @@
           "override": false
         },
         "effects": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "fighting-style-interception"
+                }
+              ]
+            }
+          }
+        },
         "range": {
           "value": "5",
           "units": "ft",
@@ -200,15 +212,6 @@
         "aliases": [
           "interception"
         ]
-      },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "rules": "all",
-            "identifier": "fighting-style-interception"
-          }
-        ]
       }
     }
   },
@@ -218,7 +221,7 @@
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "6.0.6"
+    "systemVersion": "6.1.1"
   },
   "_key": "!items!m8uEwCJ3VKiYf6S7"
 }

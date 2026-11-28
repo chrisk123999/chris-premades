@@ -19,7 +19,6 @@ async function select(token, range, {dark = false, displayHint = true, spendMove
                 .name('Dash Crosshair')
                 .copySprite(token)
                 .atLocation(point, {offset})
-                .fadeIn(100)
                 .persist()
                 .opacity(0.65)
                 .locally()
@@ -46,6 +45,7 @@ async function select(token, range, {dark = false, displayHint = true, spendMove
             .play();
         /* eslint-enable indent */
     }
+    await genericUtils.sleep(10); // final copySprite is otherwise left behind
     Sequencer.EffectManager.endEffects({name: 'Dash Crosshair'});
     return positions;
 }

@@ -20,6 +20,7 @@ async function fetchItems(actor, token, tools, rules) {
     const actors = [actor];
     if (token) actors.push(...tokenUtils.findNearby(token, 999, {disposition: 'ally'}).map(t => t.actor));
     for (const a of actors) {
+        if (!a) continue;
         const group = items.get(a.uuid) ?? [];
         group.push(...a.itemTypes.weapon.filter(w => !has(group, w.uuid) && ['simpleM', 'simpleR', 'martialM', 'martialR'].includes(w.system.type.value)));
         group.push(...a.itemTypes.tool.filter(t => !has(group, t.uuid) && tools.has(t.system.type.baseItem) && actor.system.tools[t.system.type.baseItem]?.value >= 1));

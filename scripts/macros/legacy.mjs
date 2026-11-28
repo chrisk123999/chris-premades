@@ -126,8 +126,27 @@ export {harnessDivinePower as 'harness-divine-power'} from './legacy/classFeatur
 export {arcaneAbjuration as 'channel-divinity-arcane-abjuration'} from './legacy/classFeatures/cleric/arcana/arcaneAbjuration.mjs';
 export {spellBreaker as 'spell-breaker'} from './legacy/classFeatures/cleric/arcana/spellBreaker.mjs';
 
+/*           Community           */
+export {blessingOfTheHearth as 'blessing-of-the-hearth'} from './legacy/classFeatures/cleric/community/blessingOfTheHearth.mjs';
+export {communityWatch as 'channel-divinity-community-watch', communityWatchEffect} from './legacy/classFeatures/cleric/community/communityWatch.mjs';
+export {magnificentFeast as 'channel-divinity-magnificent-feast'} from './legacy/classFeatures/cleric/community/magnificentFeast.mjs';
+export {paragonOfThePeople as 'paragon-of-the-people'} from './legacy/classFeatures/cleric/community/paragonOfThePeople.mjs';
+
+/*             Forge             */
+export {artisansBlessing as 'channel-divinity-artisans-blessing'} from './legacy/classFeatures/cleric/forge/artisansBlessing.mjs';
+export {blessingOfTheForge as 'blessing-of-the-forge'} from './legacy/classFeatures/cleric/forge/blessingOfTheForge.mjs';
+
 /*             Grave             */
 export {pathToTheGrave as 'channel-divinity-path-to-the-grave'} from './legacy/classFeatures/cleric/grave/pathToTheGrave.mjs';
+
+/*             Nature            */
+export {dampenElements as 'dampen-elements'} from './legacy/classFeatures/cleric/nature/dampenElements.mjs';
+
+/*             Peace             */
+export {balmOfPeaceRegion} from './legacy/classFeatures/cleric/peace/balmOfPeace.mjs';
+export {emboldeningBond as 'emboldening-bond', emboldeningBondEffect} from './legacy/classFeatures/cleric/peace/emboldeningBond.mjs';
+export {expansiveBond} from './legacy/classFeatures/cleric/peace/expansiveBond.mjs';
+export {protectiveBond as 'protective-bond', protectiveBondEffect} from './legacy/classFeatures/cleric/peace/protectiveBond.mjs';
 
 /*********************************/
 /*             Druid             */

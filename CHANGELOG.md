@@ -6,6 +6,7 @@
 - 2014 Artificer: Alchemist, Armorer, Artillerist and Battle Smith.
 - 2024 Artificer: Armorer, Battle Smith and Forge Adept.
 - 2014 Blood Hunter: Class features, Order of the Ghostslayer, Order of the Lycan and Order of the Mutant.
+- 2014 Cleric: Community Domain, Death Domain, Forge Domain, Nature Domain, and Peace Domain.
 - 2014 Druid: Circle of Dreams, Circle of Stars, Circle of the Moon, Circle of the Shepherd and Circle of Wildfire.
 - 2024 Druid: Circle of the Land, Circle of the Moon and Circle of the Stars.
 - 2014 Fighter: Class features, Battle Master, Echo Knight, Gunslinger, Rune Knight and Samurai.
@@ -70,6 +71,7 @@
 - `modifyNextDamage` maximizing an attack also maximizes that attack's `attackRider` damage.
 - `restoreUses` asks to use the restore activity, such as Reload, when it has no extra cost, instead of showing a cost of 0.
 - Starry Form, Wraps of Unarmed Power, Aether Walk, Mage Hand Legerdemain and Spellfire Spark icons load.
+
 # 2.1.10 Pre-Release:
 ## Automated Class Features:
 - Illrigger: Base class and Painkiller subclass.
@@ -92,6 +94,7 @@
 - Potion of Invulnerability grants resistance to all damage.
 - `preventDeath` no longer triggers on creatures already at 0 hit points.
 - A Find Familiar or Homunculus Servant carrying a touch spell can use its own attacks and spells.
+
 # 2.1.9 Pre-Release:
 ## Update Notes:
 - Requires dnd5e 6.1, midi-qol 14.7, DAE 14.6.10 and CAT 0.1.9.

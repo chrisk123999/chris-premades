@@ -32,7 +32,19 @@
           "override": false
         },
         "effects": [],
-        "flags": {},
+        "flags": {
+          "cat": {
+            "macros": {
+              "roll": [
+                {
+                  "source": "chris-premades",
+                  "rules": "all",
+                  "identifier": "interception"
+                }
+              ]
+            }
+          }
+        },
         "range": {
           "value": "5",
           "units": "ft",
@@ -192,26 +204,10 @@
     }
   },
   "flags": {
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true
-    },
-    "midiProperties": {
-      "confirmTargets": "default"
-    },
     "cat": {
       "automation": {
         "source": "chris-premades",
-        "version": "2.0.3"
-      },
-      "macros": {
-        "roll": [
-          {
-            "source": "chris-premades",
-            "rules": "all",
-            "identifier": "interception"
-          }
-        ]
+        "version": "2.1.11"
       }
     }
   },
@@ -221,7 +217,7 @@
   "_stats": {
     "coreVersion": "14.369",
     "systemId": "dnd5e",
-    "systemVersion": "6.0.6"
+    "systemVersion": "6.1.1"
   },
   "_key": "!items!JgYEQCNqrkEQavJC"
 }

@@ -1,4 +1,4 @@
-import {activityUtils, automationUtils, documentUtils, effectUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
+import {activityUtils, automationUtils, dataUtils, documentUtils, effectUtils, Logging, tokenUtils, workflowUtils} from '../../proxy.mjs';
 async function use({document, workflow}) {
     const bonus = activityUtils.getRange(workflow.activity) || workflowUtils.getRange(workflow);
     const range = bonus || tokenUtils.movementSpent(workflow.token.document, true);
@@ -16,7 +16,7 @@ async function use({document, workflow}) {
         if (sourceEffect) {
             const effectData = sourceEffect.toObject();
             delete effectData._id;
-            effectData.origin = sourceEffect.uuid;
+            dataUtils.setOrigin(effectData, sourceEffect);
             effect = (await effectUtils.createEffects(workflow.actor, [effectData]))?.[0];
         }
     }

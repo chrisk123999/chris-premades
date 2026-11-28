@@ -1370,6 +1370,10 @@
                     "NeutralTarget": "Neutral",
                     "AdditionalTargets": "Additional Targets",
                     "Attacker": "Attacker",
+                    "Original": {
+                        "Label": "Original Target Limit",
+                        "Hint": "The normal target count must be equal to or less than this value. Any value below one is unlimited."
+                    },
                     "RangeFrom": {
                         "Label": "Range From",
                         "Hint": "Measure range from each target or from the attacker."
@@ -2401,6 +2405,7 @@
                     },
                     "SelectTargets": "Select up to {maxAmount} targets.",
                     "Name": "Target Creature Types",
+                    "Unaffected": "Unaffected Targets",
                     "CreatureTypes": {
                         "Hint": "Keep only targets of these creature types. Leave empty to skip the creature type check."
                     },
@@ -2984,6 +2989,11 @@
                 "AberrantDragonmark": {
                     "SelectHitDie": "Expend a Hit Die to empower your mark?"
                 },
+                "ArtisansBlessing": {
+                    "CostHint": "Limit the value of the created item in gold pieces.",
+                    "Note": "Created <b>{item}</b> on {actor}.",
+                    "Prompt": "Choose an item to forge."
+                },
                 "AspectOfTheWyrm": {
                     "Resistance": "Choose a damage type for the aura's resistance."
                 },
@@ -2997,6 +3007,12 @@
                     "PlacePrompt": "Place a seal on {target}?",
                     "Seals": "Seals",
                     "SelectSource": "Move the seals from which creature?"
+                },
+                "BalmOfPeace": "Your extra movement from Balm of Peace has been spent. End the effect?",
+                "BlessingOfTheForge": {
+                    "NoItems": "You and your allies are not carrying any valid items for {feature}!",
+                    "NonmagicalOnly": "Nonmagical Only",
+                    "Prompt": "Choose an item to grant {feature}."
                 },
                 "BloodPrice": {
                     "Prompt": "Use {itemName}? (Roll Total: {rollTotal})",
@@ -3012,6 +3028,7 @@
                 "CombatMasteryLies": {
                     "Select": "Choose the melee weapon type that uses Charisma."
                 },
+                "DampenElements": "Use {feature} for {type} damage on {target}?",
                 "DispatersSupremacy": {
                     "CriticalRange": "Critical Range Increase"
                 },
@@ -3086,6 +3103,7 @@
                     "ArmorRestriction": "You can't use Bladesong while wearing medium or heavy armor or wielding a shield.",
                     "EnforceArmorRestriction": "Enforce Armor Restriction"
                 },
+                "BlessingHearth": "Select any hit dice you would like to reroll.<br><b>Formula:</b> <code>{formula}</code>",
                 "BolsteringMagic": "The target must finish a long rest before gaining this benefit again!",
                 "BoomingBlade": {
                     "WillingMove": "Did {actorName} move willingly?"
@@ -3309,6 +3327,11 @@
                     "Prompt": "Use {itemName}?",
                     "Use": "Expend {count}"
                 },
+                "MagnificentFeast": {
+                    "Meals": "Meal Icons",
+                    "Name": "Magnificent Feast",
+                    "Prompt": "Hand out up to {maxAmount} meals."
+                },
                 "ManifestMind": {
                     "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
                     "Invalid": "Invalid Action Type!",
@@ -3354,6 +3377,12 @@
                 },
                 "Overchannel": {
                     "Damage": "Use {itemName} at the cost of {damageFormula} damage?"
+                },
+                "ProtectiveBond": {
+                    "BloodiedHint": "Prompt for bloodied targets only.",
+                    "PercentHint": "Prompt when damage total exceeds a percentage of the target's max HP.",
+                    "Prompt": "Ask for Protective Bond? (Damage Total: {damage})",
+                    "Request": "Use Protective Bond on {target}? (Damage Total: {damage})"
                 },
                 "PsionicSorcery": {
                     "NoSpells": "No Psionic Spells you can afford to cast!",

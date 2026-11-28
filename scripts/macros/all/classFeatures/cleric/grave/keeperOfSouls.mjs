@@ -20,7 +20,8 @@ async function creatureDeath({document: activity, ditem, macroClass: {identifier
     const range = activityUtils.getRange(activity);
     let near = tokenUtils.findNearby(self, range, {disposition: 'ally', includeToken: true});
     if (modern) near = near.filter(t => self.id === t.id || tokenUtils.canSee(self, t));
-    let prompt = _loc('CHRISPREMADES.Generic.SelectTarget');
+    let prompt = `${_loc('CAT.Dialog.UseOn', {document: activity.item.name, target: dialogUtils.getTokenName(targetToken)})}
+        <br>${_loc('CHRISPREMADES.Generic.SelectTarget')}`;
     const document = activityUtils.hasDefaultName(activity) ? activity.item.name : activity.name;
     const inputs = [['radio', near.map((t, i) => ({
         options: {isChecked: i === 0, image: t.texture.src},
